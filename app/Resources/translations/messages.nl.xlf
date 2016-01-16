@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.0">
+    <file original="file.ext" source-language="nl" datatype="plaintext">
+        <body>
+            <trans-unit id="1">
+                <source>title.dashboard</source>
+                <target>Dashboard</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>exceptions.unknown.locale</source>
+                <target>De taal "locale" wordt niet ondersteund</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>title.exception</source>
+                <target>foutmelding</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>exceptions.ajax.missing.key</source>
+                <target>De ajax call is misgegaan, probeer het later opnieuw. (Er is geen identificatie te vinden voor de sleutel: AjaxKey)</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>exceptions.ajax.missing.method</source>
+                <target>De ajax call is misgegaan, probeer het later opnieuw. (De methode is niet gedefinieerd)</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>exceptions.ajax.no.method</source>
+                <target>De ajax call is misgegaan, probeer het later opnieuw. (De methode MethodName is niet gedefinieerd voor ClassCode)</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>exceptions.ajax.no.interface</source>
+                <target>De ajax call is misgegaan, probeer het later opnieuw. (De service implementeert niet de juiste interface)</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>exceptions.ajax.no.key</source>
+                <target>De ajax call is misgegaan, probeer het later opnieuw. (De code is niet meegegeven)</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

@@ -1,0 +1,83 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: johan
+ * Date: 16-Jan-16
+ * Time: 14:12
+ */
+
+namespace AppBundle\Entity\Course;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="skhole_course_reviews")
+ */
+class CourseReviews
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\Column(type="integer", name="course_id")
+     */
+    protected $courseId;
+
+    /**
+     * @ORM\Column(type="integer", name="user_inserted_id")
+     */
+    protected $userInsertedId;
+
+    /**
+     * @ORM\Column(type="datetime", name="insert_date_time")
+     */
+    protected $insertDateTime;
+
+    /**
+     * @ORM\Column(type="integer", name="user_updated_id", nullable=true)
+     */
+    protected $userUpdatedId;
+
+    /**
+     * @ORM\Column(type="datetime", name="update_date_time", nullable=true)
+     */
+    protected $updateDateTime;
+
+    /**
+     * @ORM\Column(type="integer", name="content_rating", nullable=true)
+     */
+    protected $contentRating;
+
+    /**
+     * @ORM\Column(type="text", length=16777215, nullable=true)
+     */
+    protected $remarks;
+
+    /**
+     * @ORM\Column(type="boolean", name="is_undesirable")
+     */
+    protected $isUndesirable;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\JoinColumn(name="user_inserted_id", referencedColumnName="id")
+     */
+    private $insertUser;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\JoinColumn(name="user_updated_id", referencedColumnName="id")
+     */
+    private $updateUser;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Course\Courses")
+     * @ORM\JoinColumn(name="course_id", referencedColumnName="id")
+     */
+    private $course;
+}

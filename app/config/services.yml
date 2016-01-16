@@ -1,0 +1,28 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+    my_user_provider:
+        class: AppBundle\Security\FOSUBUserProvider
+        arguments: [@fos_user.user_manager.default, {facebook: facebook_id, google: google_id}]
+
+    app.locale_listener:
+        class: AppBundle\EventListener\LocaleListener
+        arguments: [@router, %app_locales%, %locale%]
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+    app.exception_listener:
+        class: AppBundle\EventListener\ExceptionListener
+        arguments: ["@translator.default"]
+        tags:
+            - { name: kernel.event_subscriber }
+    app.ajax_listener:
+        class: AppBundle\EventListener\AjaxListener
+        arguments: ["%ajax_configuration%", "@app.courses_ajax_service"]
+        tags:
+            - { name: kernel.event_subscriber }
+
+    app.courses_ajax_service:
+        class: AppBundle\Service\Ajax\CoursesAjaxService
