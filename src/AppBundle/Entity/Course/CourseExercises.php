@@ -50,7 +50,7 @@ class CourseExercises implements UserReportInterface
     protected $isUndesirable;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Course\Courses")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Course\Courses", inversedBy="courseExercises")
      * @ORM\JoinColumn(name="course_id", referencedColumnName="id")
      */
     private $course;

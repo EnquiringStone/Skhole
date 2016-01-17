@@ -131,14 +131,29 @@ class Courses implements UserStatisticsInterface, UserReportInterface, BasicDeta
     private $courseSchedule;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Course\CourseAnnouncements", mappedBy="course")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Course\CourseAnnouncements", mappedBy="course", fetch="EXTRA_LAZY")
      */
     private $courseAnnouncements;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Course\CourseResources", mappedBy="course")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Course\CourseResources", mappedBy="course", fetch="EXTRA_LAZY")
      */
     private $courseResources;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Course\CourseViews", mappedBy="course", fetch="EXTRA_LAZY")
+     */
+    private $courseViews;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Course\CourseExercises", mappedBy="course", fetch="EXTRA_LAZY")
+     */
+    private $courseExercises;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Course\CourseInstructions", mappedBy="course", fetch="EXTRA_LAZY")
+     */
+    private $courseInstructions;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Course\CourseStates")
@@ -786,5 +801,107 @@ class Courses implements UserStatisticsInterface, UserReportInterface, BasicDeta
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * Add courseView
+     *
+     * @param \AppBundle\Entity\Course\CourseViews $courseView
+     *
+     * @return Courses
+     */
+    public function addCourseView(\AppBundle\Entity\Course\CourseViews $courseView)
+    {
+        $this->courseViews[] = $courseView;
+
+        return $this;
+    }
+
+    /**
+     * Remove courseView
+     *
+     * @param \AppBundle\Entity\Course\CourseViews $courseView
+     */
+    public function removeCourseView(\AppBundle\Entity\Course\CourseViews $courseView)
+    {
+        $this->courseViews->removeElement($courseView);
+    }
+
+    /**
+     * Get courseViews
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCourseViews()
+    {
+        return $this->courseViews;
+    }
+
+    /**
+     * Add courseExercise
+     *
+     * @param \AppBundle\Entity\Course\CourseExercises $courseExercise
+     *
+     * @return Courses
+     */
+    public function addCourseExercise(\AppBundle\Entity\Course\CourseExercises $courseExercise)
+    {
+        $this->courseExercises[] = $courseExercise;
+
+        return $this;
+    }
+
+    /**
+     * Remove courseExercise
+     *
+     * @param \AppBundle\Entity\Course\CourseExercises $courseExercise
+     */
+    public function removeCourseExercise(\AppBundle\Entity\Course\CourseExercises $courseExercise)
+    {
+        $this->courseExercises->removeElement($courseExercise);
+    }
+
+    /**
+     * Get courseExercises
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCourseExercises()
+    {
+        return $this->courseExercises;
+    }
+
+    /**
+     * Add courseInstruction
+     *
+     * @param \AppBundle\Entity\Course\CourseInstructions $courseInstruction
+     *
+     * @return Courses
+     */
+    public function addCourseInstruction(\AppBundle\Entity\Course\CourseInstructions $courseInstruction)
+    {
+        $this->courseInstructions[] = $courseInstruction;
+
+        return $this;
+    }
+
+    /**
+     * Remove courseInstruction
+     *
+     * @param \AppBundle\Entity\Course\CourseInstructions $courseInstruction
+     */
+    public function removeCourseInstruction(\AppBundle\Entity\Course\CourseInstructions $courseInstruction)
+    {
+        $this->courseInstructions->removeElement($courseInstruction);
+    }
+
+    /**
+     * Get courseInstructions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCourseInstructions()
+    {
+        return $this->courseInstructions;
     }
 }

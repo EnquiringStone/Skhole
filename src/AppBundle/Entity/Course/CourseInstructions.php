@@ -60,7 +60,7 @@ class CourseInstructions implements UserReportInterface
     protected $isUndesirable;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Course\Courses")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Course\Courses", inversedBy="courseInstructions")
      * @ORM\JoinColumn(name="course_id", referencedColumnName="id")
      */
     private $course;

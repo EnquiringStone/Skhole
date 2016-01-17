@@ -39,7 +39,7 @@ class CourseViews
     protected $viewedAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Course\Courses")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Course\Courses", inversedBy="courseViews")
      * @ORM\JoinColumn(name="course_id", referencedColumnName="id")
      */
     private $course;

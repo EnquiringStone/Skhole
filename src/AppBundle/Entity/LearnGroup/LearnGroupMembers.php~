@@ -39,27 +39,27 @@ class LearnGroupMembers
     protected $joinedAt;
 
     /**
-     * @ORM\Column(type="number", precision=10, scale=5, name="exercise_progress", nullable=true)
+     * @ORM\Column(type="decimal", precision=10, scale=5, name="exercise_progress", nullable=true)
      */
     protected $exerciseProgress;
 
     /**
-     * @ORM\Column(type="number", precision=10, scale=5, name="instruction_progress", nullable=true)
+     * @ORM\Column(type="decimal", precision=10, scale=5, name="instruction_progress", nullable=true)
      */
     protected $instructionProgress;
 
     /**
-     * @ORM\Column(type="number", precision=10, scale=5, name="total_progress", nullable=true)
+     * @ORM\Column(type="decimal", precision=10, scale=5, name="total_progress", nullable=true)
      */
     protected $totalProgress;
 
     /**
-     * @ORM\Column(type="number", precision=10, scale=5, name="correct_multiple_choice_average", nullable=true)
+     * @ORM\Column(type="decimal", precision=10, scale=5, name="correct_multiple_choice_average", nullable=true)
      */
     protected $correctMultipleChoiceAverage;
 
     /**
-     * @ORM\Column(type="number", precision=10, scale=5, name="open_question_score_average", nullable=true)
+     * @ORM\Column(type="decimal", precision=10, scale=5, name="open_question_score_average", nullable=true)
      */
     protected $openQuestionScoreAverage;
 

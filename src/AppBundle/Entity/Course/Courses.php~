@@ -131,14 +131,29 @@ class Courses implements UserStatisticsInterface, UserReportInterface, BasicDeta
     private $courseSchedule;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Course\CourseAnnouncements", mappedBy="course")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Course\CourseAnnouncements", mappedBy="course", fetch="EXTRA_LAZY")
      */
     private $courseAnnouncements;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Course\CourseResources", mappedBy="course")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Course\CourseResources", mappedBy="course", fetch="EXTRA_LAZY")
      */
     private $courseResources;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Course\CourseViews", mappedBy="course", fetch="EXTRA_LAZY")
+     */
+    private $courseViews;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Course\CourseExercises", mappedBy="course", fetch="EXTRA_LAZY")
+     */
+    private $courseExercises;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Course\CourseInstructions", mappedBy="course", fetch="EXTRA_LAZY")
+     */
+    private $courseInstructions;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Course\CourseStates")

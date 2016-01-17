@@ -11,7 +11,7 @@ namespace AppBundle\Entity\Course;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(readOnly=true)
  * @ORM\Table(name="skhole_course_levels")
  */
 class CourseLevels
