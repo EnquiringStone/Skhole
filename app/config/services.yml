@@ -23,6 +23,11 @@ services:
         arguments: ["%ajax_configuration%", "@app.courses_ajax_service"]
         tags:
             - { name: kernel.event_subscriber }
+    app.entity.life.cycle.listener:
+        class: AppBundle\EventListener\EntityLifeCycleListener
+        arguments: ["@security.token_storage"]
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }
 
     app.courses_ajax_service:
         class: AppBundle\Service\Ajax\CoursesAjaxService

@@ -22,7 +22,7 @@ class HomeController extends Controller {
     }
 
     /**
-     * @Route("/{_locale}/home/search/", name="app_home_search_page")
+     * @Route("/{_locale}/search/", name="app_search_page")
      */
     public function searchAction(Request $request)
     {
