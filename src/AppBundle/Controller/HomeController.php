@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends Controller {
 
     /**
-     * @Route("/{_locale}/", name="app_home_dashboard_page")
+     * @Route("/{_locale}/home/", name="app_home_dashboard_page")
      */
     public function dashboardAction(Request $request)
     {
@@ -26,6 +26,14 @@ class HomeController extends Controller {
      */
     public function searchAction(Request $request)
     {
-        
+
+    }
+
+    /**
+     * @Route("/{_locale}/home/getting-started/", name="app_home_getting_started_page")
+     */
+    public function gettingStarted(Request $request)
+    {
+
     }
 }

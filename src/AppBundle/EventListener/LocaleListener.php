@@ -84,7 +84,7 @@ class LocaleListener
 
         $preferredLanguage = $request->getPreferredLanguage($this->locales);
 
-        $response = new RedirectResponse($this->urlGenerator->generate('app_dashboard_page', array('_locale' => $preferredLanguage)));
+        $response = new RedirectResponse($this->urlGenerator->generate('app_home_dashboard_page', array('_locale' => $preferredLanguage)));
         $event->setResponse($response);
     }
 }
