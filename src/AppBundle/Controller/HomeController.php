@@ -14,10 +14,18 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends Controller {
 
     /**
-     * @Route("/{_locale}/", name="app_dashboard_page")
+     * @Route("/{_locale}/", name="app_home_dashboard_page")
      */
     public function dashboardAction(Request $request)
     {
         return $this->render(':home:dashboard.html.twig');
+    }
+
+    /**
+     * @Route("/{_locale}/home/search/", name="app_home_search_page")
+     */
+    public function searchAction(Request $request)
+    {
+        
     }
 }
