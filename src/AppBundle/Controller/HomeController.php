@@ -32,7 +32,15 @@ class HomeController extends Controller {
     /**
      * @Route("/{_locale}/home/getting-started/", name="app_home_getting_started_page")
      */
-    public function gettingStarted(Request $request)
+    public function gettingStartedAction(Request $request)
+    {
+
+    }
+
+    /**
+     * @Route("/{_locale}/home/other/", name="app_home_other_page")
+     */
+    public function otherAction(Request $request)
     {
 
     }
