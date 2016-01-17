@@ -1,84 +1,17 @@
 {% block base %}
-<!DOCTYPE html>
-<html>
+    <!DOCTYPE html>
+    <html>
     <head>
-
-        <title>Bedrijfsnaam | gebruiker die inglogd is</title>
-        <link rel="incon"type="image/png" href="resources/images/star_rating.png">
-
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <meta name="keywords" content="??????, ??????" >
-        <meta name="description" content="....">
-        <meta name="author" content=".......">
-
-
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
-
-        <!-- Include all chart js -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js"></script>
-
-
-
-        <script src='resources/js/custom.js'></script>
-        <link href="resources/css/style.css" rel="stylesheet">
-
-
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
-
-
-        <script src='resources/js/custom.js'></script>
-        <link href="resources/css/style.css" rel="stylesheet">
-
-
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <meta charset="UTF-8" />
         <title>Skhole {% block title %}{% endblock %}</title>
         {% block prescripts %}{% endblock %}
         {% stylesheets
         'css/bootstrap.min.css'
-        'css/style.css'
+        'css/bootstrap-theme.min.css'
         'css/main.css'
         filter='cssrewrite'
         output='compiled/app.css'%}
-            <link rel="stylesheet" href="{{ asset('compiled/app.css') }}" />
+        <link rel="stylesheet" href="{{ asset('compiled/app.css') }}" />
         {% endstylesheets %}
 
         {% javascripts
@@ -87,178 +20,16 @@
         'js/utils.js'
         'js/main.js'
         output='compiled/app.js'%}
-            <script src="{{ asset('compiled/app.js') }}"></script>
+        <script src="{{ asset('compiled/app.js') }}"></script>
         {% endjavascripts %}
     </head>
     <body>
+    {% include 'elements/header.html.twig' %}
+    {% block body %}{% endblock %}
+    {% include 'elements/footer.html.twig' %}
 
-    <nav class="navbar navbar-default" role="navigation">
-        <div class="container-fluid">
-            <div id="logo0bovenaan0pagina">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="Snelmenu" alt="Snelmenu">
-                        <img src="resources/images/logo-skhole.png" class="img-rounded">
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Veel gestelde vragen</a></li>
-                        <li><a href="#">......</a></li>
-                        <li><a href="#">Aan de slag</a></li>
-                        <li><a href="#">Auteursrecht</a></li>
-                        <li class="divider"></li>
-                        <li><a data-toggle="modal" data-target="#modalLanguagues"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Taal </a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="Gebruikersmenu" alt="Gebruikersmenu">
-                        <img src="resources/images/gebruiker.png" class="img-rounded"> Mijn account
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Mijn account</a></li>
-                        <li><a href="#">Instellingen</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Cursusmandje</a></li>
-                        <li>
-                            <a href="#" data-toggle="modal" data-target="#modalAddCoursCode">
-                                Cursuscode invoeren
-                            </a>
-                        </li>
-                        <li><a href="#">Mijn (zelfgemaakte) cursussen</a></li>
-                        <li><a href="#">Mijn leergroepen</a></li>
-                        <li class="divider"></li>
-                        <li><a data-toggle="modal" data-toggle="modal" data-target="#myModalLogin"> Uitloggen</a></li>
-                        <li><a data-toggle="modal" data-toggle="modal" data-target="#myModalCreateAccountStep01">Sing in/Sing out</a></li>
-                    </ul>
-                </div>
-
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-
-    </nav>
-
-
-
-
-         <div class="container">
-
-
-
-            {% include 'elements/header.html.twig' %}
-            {% block body %}{% endblock %}
-            {% include 'elements/footer.html.twig' %}
-
-            {% block modals %}{% include ':modals:ajax.exception.modal.html.twig' %}{% endblock %}
-            {% block postscripts %}{% endblock %}
-        </div>
-
-
-
-
-    <footer class="navbar navbar-default" role="navigation">
-        <div class="container-fluid">
-
-            <div class="btn-group dropup">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="resources/images/logo-skhole.png" class="img-rounded"> <span class="caret"></span>
-
-                </button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">.......</a></li>
-                    <li><a href="#">Veel gestelde vragen</a></li>
-
-                    <li class="divider"></li>
-                    <li><a href="#">........</a></li>
-                    <li><a href="#">........</a></li>
-                </ul>
-            </div>
-
-            <div class="btn-group dropup">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    Over ons <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="#"></a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Social media</a></li>
-                    <li><a href="#">.......</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">.......</a></li>
-                </ul>
-            </div>
-
-            <div class="btn-group dropup">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    Meer <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Gebruikersovereenkomst</a></li>
-                    <li><a href="#">Privacybeleid</a></li>
-                    <li><a href="#">Cookiebeleid</a></li>
-                    <li><a href="#">Copyrightbeleid</a></li>
-                </ul>
-            </div>
-
-            <br/>
-
-            <div class="centrum">
-                <span class="text-muted">Skhole 2016 &#169;</span>
-
-                <b><span>|</span> </b>
-                <a hre="#"><span class="text-muted">Auteursrecht</span></a>
-                <b><span>|</span> </b>
-                <a hre="#"><span class="text-muted">Cursusmakers</span></a>
-                <b><span>|</span> </b>
-                <a hre="#"><span class="text-muted">Voorwaarden</span> </a>
-                <b><span>|</span> </b>
-                <a hre="#"><span class="text-muted">Help</span> </a>
-
-            </div>
-            <div class="centrum">
-                <a href="#"  data-toggle="modal" data-target="#modalLanguagues"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a>
-                <b><span>|</span> </b>
-                <span><a hre="#">English</a> </span>
-                <b><span>|</span> </b>
-                <span><a hre="#">Nederlands</a> </span>
-                <b><span>|</span> </b>
-                <span><a hre="#">Deutsch</a> </span>
-                <b><span>|</span> </b>
-                <span><a hre="#">Franchise</a> </span>
-                <b><span>|</span> </b>
-                <a href="#"  data-toggle="modal" data-target="#modalLanguagues"><span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span></a>
-
-            </div>
-
-        </div><!-- /.navbar-collapse -->
-
-        </div><!-- /.container-fluid -->
-
-    </footer>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    {% block modals %}{% endblock %}
+    {% block postscripts %}{% endblock %}
     </body>
-</html>
+    </html>
 {% endblock %}
