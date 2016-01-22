@@ -2,29 +2,30 @@
     <!DOCTYPE html>
     <html>
     <head>
+        <link rel="icon" type="image/png" href="{{ asset('images/star_rating.png') }}">
+
         <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="keywords" content="{% block keywords %}{% endblock %}" >
+        <meta name="description" content="{% block description %}{% endblock %}">
+        <meta name="author" content="Skhole Programmers">
+
+
         <title>Skhole {% block title %}{% endblock %}</title>
         {% block prescripts %}{% endblock %}
-        {% stylesheets
-        'css/bootstrap.min.css'
-        'css/bootstrap-theme.min.css'
-        'css/main.css'
-        filter='cssrewrite'
-        output='compiled/app.css'%}
-        <link rel="stylesheet" href="{{ asset('compiled/app.css') }}" />
-        {% endstylesheets %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
-        {% javascripts
-        'js/jquery.min.js'
-        'js/bootstrap.min.js'
-        'js/utils.js'
-        'js/main.js'
-        output='compiled/app.js'%}
-        <script src="{{ asset('compiled/app.js') }}"></script>
-        {% endjavascripts %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+        <script src="{{ asset('js/utils.js') }}"></script>
+        <script src="{{ asset('js/main.js') }}"></script>
     </head>
     <body>
     {% include 'elements/header.html.twig' %}
+    {% include 'elements/navigation.menu.html.twig' %}
+    {% include "elements/#{menu}.navigation.menu.html.twig" %}
     {% block body %}{% endblock %}
     {% include 'elements/footer.html.twig' %}
 

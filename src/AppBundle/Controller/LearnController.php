@@ -20,7 +20,7 @@ class LearnController extends Controller
      */
     public function courseCollectionAction(Request $request)
     {
-
+        return $this->render(':learn:course.collection.html.twig');
     }
 
     /**
@@ -28,6 +28,6 @@ class LearnController extends Controller
      */
     public function studyAction(Request $request)
     {
-
+        return $this->render(':learn:study.html.twig');
     }
 }

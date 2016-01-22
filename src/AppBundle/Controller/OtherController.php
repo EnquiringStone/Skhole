@@ -21,7 +21,7 @@ class OtherController extends Controller
      */
     public function frequentlyAskedQuestionsAction(Request $request)
     {
-
+        return $this->render('other/faq.html.twig');
     }
 
     /**
@@ -29,7 +29,7 @@ class OtherController extends Controller
      */
     public function tipsAndTricksAction(Request $request)
     {
-
+        return $this->render('other/tips.tricks.html.twig');
     }
 
     /**
@@ -37,7 +37,7 @@ class OtherController extends Controller
      */
     public function copyrightAction(Request $request)
     {
-
+        return $this->render('more/copyright.html.twig');
     }
 
     /**
@@ -45,7 +45,7 @@ class OtherController extends Controller
      */
     public function conditionsAction(Request $request)
     {
-
+        return $this->render('other');
     }
 
     /**
@@ -53,6 +53,14 @@ class OtherController extends Controller
      */
     public function helpAction(Request $request)
     {
+        return $this->render('');
+    }
 
+    /**
+     * @Route("/{_locale}/about-us/", name="app_other_about_us")
+     */
+    public function aboutUsAction(Request $request)
+    {
+        return $this->render('more/about.us.html.twig');
     }
 }

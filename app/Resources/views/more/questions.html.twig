@@ -1,1 +1,8 @@
-<!-- Vragen -->
+{% extends 'base.html.twig' %}
+{% block title %}{% trans %}Vragen{% endtrans %}{% endblock %}
+{% block body %}
+    <h1>{% trans %}Vragen{% endtrans %}</h1>
+{% endblock %}
+
+{% set menu = 'more' %}
+{% set subMenu = 'questions' %}

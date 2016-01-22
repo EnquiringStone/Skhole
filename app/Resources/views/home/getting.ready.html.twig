@@ -1,1 +1,8 @@
-<!-- Aan de slag -->
+{% extends 'base.html.twig' %}
+{% block title %}{% trans %}Aan de slag{% endtrans %}{% endblock %}
+{% block body %}
+    <h1>{% trans %}Aan de slag{% endtrans %}</h1>
+{% endblock %}
+
+{% set menu = 'home' %}
+{% set subMenu = 'gettingStarted' %}

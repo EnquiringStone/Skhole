@@ -16,18 +16,18 @@ use Symfony\Component\Routing\Annotation\Route;
 class TeachController extends Controller
 {
     /**
-     * @Route("/{_locale}/teach/my-courses", name="app_teach_my_courses_page")
+     * @Route("/{_locale}/teach/my-courses/", name="app_teach_my_courses_page")
      */
     public function myCoursesAction(Request $request)
     {
-
+        return $this->render('teach/my.courses.html.twig');
     }
 
     /**
-     * @Route("/{_locale}/teach/my-learn-groups", name="app_teach_my_learn_groups")
+     * @Route("/{_locale}/teach/my-learn-groups/", name="app_teach_my_learn_groups")
      */
     public function myLearnGroupsAction(Request $request)
     {
-
+        return $this->render('teach/my.learn.groups.html.twig');
     }
 }

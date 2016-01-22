@@ -1,0 +1,17 @@
+{% block homeNavigationMenu %}
+    <ul class="nav nav-pills">
+        <li class="{% if subMenu == 'dashboard'%}active{% endif %}"><a href="{{ path('app_home_dashboard_page') }}">{% trans %}Dashboard{% endtrans %}</a></li>
+        <li class="{% if subMenu == 'search'%}active{% endif %}"><a href="{{ path('app_search_page') }}">{% trans %}Zoeken{% endtrans %}</a></li>
+        <li class="{% if subMenu == 'gettingStarted'%}active{% endif %}"><a href="{{ path('app_home_getting_started_page') }}">{% trans %}Aan de slag{% endtrans %}</a></li>
+        <li role="presentation" class="dropdown {% if subMenu == 'other'%}active{% endif %}">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                {% trans %}Overige{% endtrans %} <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="{{ path('app_other_frequently_asked_questions_page') }}">{% trans %}Veel gestelde vragen{% endtrans %}</a></li>
+                <li><a href="{{ path('app_other_tips_page') }}">{% trans %}Tips & tricks{% endtrans %}</a></li>
+                <li><a href="{{ path('app_other_help_page') }}">{% trans %}Ik ben nieuw{% endtrans %}</a></li>
+            </ul>
+        </li>
+    </ul>
+{% endblock %}

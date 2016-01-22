@@ -1,1 +1,8 @@
-<!-- The navigation menu here (Home. Learn, Teach, More) -->
+{% block navigationMenu %}
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="{% if menu == 'home' %}active{% endif %}"><a href="{{ path('app_home_dashboard_page') }}">{% trans %}Home{% endtrans %}</a></li>
+        <li class="{% if menu == 'learn' %}active{% endif %}"><a href="{{ path('app_learn_course_collection_page') }}">{% trans %}Learn{% endtrans %}</a></li>
+        <li class="{% if menu == 'teach' %}active{% endif %}"><a href="{{ path('app_teach_my_courses_page') }}">{% trans %}Teach{% endtrans %}</a></li>
+        <li class="{% if menu == 'more' %}active{% endif %}"><a href="{{ path('app_other_about_us') }}">{% trans %}More{% endtrans %}</a></li>
+    </ul>
+{% endblock %}

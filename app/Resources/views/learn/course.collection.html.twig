@@ -1,1 +1,8 @@
-<!-- Cursusmandje -->
+{% extends 'base.html.twig' %}
+{% block title %}{% trans %}Cursusmandje{% endtrans %}{% endblock %}
+{% block body %}
+    <h1>{% trans %}Cursusmandje{% endtrans %}</h1>
+{% endblock %}
+
+{% set menu = 'learn' %}
+{% set subMenu = 'courseCollection' %}

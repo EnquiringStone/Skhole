@@ -12,7 +12,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends Controller {
-
     /**
      * @Route("/{_locale}/home/", name="app_home_dashboard_page")
      */
@@ -26,7 +25,7 @@ class HomeController extends Controller {
      */
     public function searchAction(Request $request)
     {
-
+        return $this->render(':home:search.html.twig');
     }
 
     /**
@@ -34,7 +33,7 @@ class HomeController extends Controller {
      */
     public function gettingStartedAction(Request $request)
     {
-
+        return $this->render(':home:getting.ready.html.twig');
     }
 
     /**
@@ -42,6 +41,6 @@ class HomeController extends Controller {
      */
     public function otherAction(Request $request)
     {
-
+        //????
     }
 }

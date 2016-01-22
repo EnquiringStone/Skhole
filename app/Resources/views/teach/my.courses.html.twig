@@ -1,1 +1,8 @@
-<!-- Mijn cursussen (overzicht) -->
+{% extends 'base.html.twig' %}
+{% block title %}{% trans %}Mijn cursussen{% endtrans %}{% endblock %}
+{% block body %}
+    <h1>{% trans %}Mijn cursussen{% endtrans %}</h1>
+{% endblock %}
+
+{% set menu = 'teach' %}
+{% set subMenu = 'myCourses' %}

@@ -1,1 +1,9 @@
 <!-- Profiel -->
+{% extends 'base.html.twig' %}
+{% block title %}{% trans %}Profiel{% endtrans %}{% endblock %}
+{% block body %}
+    <h1>{% trans %}Profiel{% endtrans %}</h1>
+{% endblock %}
+
+{% set menu = 'home' %}
+{% set subMenu = 'profile' %}
