@@ -1,0 +1,19 @@
+{% extends ':modal:modal.base.html.twig' %}
+{% block modalBaseHeader %}
+    <h4 class="modal-title centrum" id="{{ modalId }}">
+        <b>
+            <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+            {% trans %}Foutmelding{% endtrans %}
+        </b>
+    </h4>
+{% endblock %}
+{% block modalBaseContents %}
+    <div class="centrum">
+        <p>{{ exceptionMessage|trans }}</p>
+    </div>
+{% endblock %}
+
+{% block closeButtonText %}
+    {% trans %}Ok{% endtrans %}
+{% endblock %}
+{% set modalBaseType = 'close' %}

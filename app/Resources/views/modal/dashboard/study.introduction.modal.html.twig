@@ -1,0 +1,30 @@
+{% extends 'modal/modal.base.html.twig' %}
+{% block modalBaseHeader %}
+    <h4 class="modal-title centrum" id="{{ modalId }}">
+        <b>
+            <span class="glyphicon glyphicon-education" aria-hidden="true"></span>
+            {% trans %}Studeren introductie{% endtrans %}
+        </b>
+    </h4>
+{% endblock %}
+{% block modalBaseContents %}
+    <div class="row">
+        <div class="col-md-8">
+            <div class="embed-responsive embed-responsive-4by3">
+                {#TODO youtube url#}
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/AX7r61fyltc" allowfullscreen></iframe>
+            </div>
+            <hr>
+        </div>
+    </div>
+    <p>{% trans %}Bekijk alle introductie video's{% endtrans %}</p>
+    {#TODO buttons?#}
+    <button class="btn btn-default btn-sm"><b><samp>{% trans %}Introductie{% endtrans %}</samp></b></button>
+    <button class="btn btn-default btn-sm"><b><samp>{% trans %}Cursus volgen{% endtrans %}</samp></b></button>
+    <button class="btn btn-default btn-sm"><b><samp>{% trans %}Leergroepen & cursuscode{% endtrans %}</samp></b></button>
+
+{% endblock %}
+{% block closeButtonText %}
+    {% trans %}Sluiten{% endtrans %}
+{% endblock %}
+{% set modalBaseType = 'close' %}

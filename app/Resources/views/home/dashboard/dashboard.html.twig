@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}{% trans %}title.dashboard{% endtrans %}{% endblock %}
+{% block body %}
+    {% include ':elements:dashboard.navigation.menu.html.twig' %}
+    {% include ':panels/dashboard:start.welcome.panel.html.twig' %}
+    {% include ':panels/dashboard:start.what.to.do.panel.html.twig' %}
+    {% include ':panels/general:commercial.panel.html.twig' %}
+{% endblock %}
+
+{% block modals %}
+    {% include ':modal/dashboard:course.code.modal.html.twig' with {'modalId' : 'courseCodeModal'} %}
+    {% include ':modal/dashboard:study.introduction.modal.html.twig' with {'modalId' : 'studyIntroductionModal'} %}
+    {% include ':modal/dashboard:teach.introduction.modal.html.twig' with {'modalId' : 'teachIntroductionModal'} %}
+{% endblock %}
+
+{% set menu = 'home' %}
+{% set subMenu = 'dashboard' %}

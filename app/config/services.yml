@@ -20,7 +20,7 @@ services:
             - { name: kernel.event_subscriber }
     app.ajax_listener:
         class: AppBundle\EventListener\AjaxListener
-        arguments: ["%ajax_configuration%", "@app.courses_ajax_service"]
+        arguments: ["%ajax_configuration%", "@app.courses.ajax.service", "@app.sort.ajax.service", "@app.home.messages.ajax.service", "@app.pagination.ajax.service"]
         tags:
             - { name: kernel.event_subscriber }
     app.entity.life.cycle.listener:
@@ -29,5 +29,27 @@ services:
         tags:
             - { name: doctrine.event_subscriber, connection: default }
 
-    app.courses_ajax_service:
+    app.courses.ajax.service:
         class: AppBundle\Service\Ajax\CoursesAjaxService
+    app.sort.ajax.service:
+        class: AppBundle\Service\Ajax\SortAjaxService
+        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", "@app.transform.manager", "%standard_query_limit%"]
+    app.home.messages.ajax.service:
+        class: AppBundle\Service\Ajax\Home\MessagesAjaxService
+        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage"]
+    app.pagination.ajax.service:
+        class: AppBundle\Service\Ajax\PaginationAjaxService
+        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", "@app.transform.manager", "@twig", "%standard_query_limit%"]
+
+    app.transformer.messages:
+        class: AppBundle\Transformer\MessagesTransformer
+        arguments: ["@app.twig.date.extension", "@twig", "%date_format%"]
+    app.transform.manager:
+        class: AppBundle\Transformer\TransformManager
+        arguments: ["@app.transformer.messages"]
+
+    app.twig.date.extension:
+        class: Twig_Extensions_Extension_Date
+        arguments: ["@translator.default"]
+        tags:
+            - {name: "twig.extension"}

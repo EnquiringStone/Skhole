@@ -1,0 +1,11 @@
+{% block navigationSecondaryMenu %}
+    <div class="centrum">
+        <div class="breadcrumb">
+            <span class="label label-primary">
+                <button type="button" class="btn btn-primary btn-xs unclickable"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button>
+                {% block navigationSecondaryMenuContents %}{% endblock %}
+                <button type="button" class="btn btn-primary btn-xs unclickable"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
+            </span>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% block panelBase %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title centrum">
+                <b>{% block panelBaseTitle %}{% endblock %}</b>
+                <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+            </h4>
+        </div>
+        {% block panelBaseContents %}
+            <div class="panel-body">
+                {% if panelBaseContentType == 'split'%}
+                    <div class="row">
+                        <div class="col-md-6">
+                            {% block panelBaseContentTypeLeft %}{% endblock %}
+                        </div>
+                        <div class="col-md-6">
+                            {% block panelBaseContentTypeRight %}{% endblock %}
+                        </div>
+                    </div>
+                {% elseif panelBaseContentType == 'all' %}
+                    <div class="centrum">
+                        {% block panelBaseContentTypeCentrum %}{% endblock %}
+                    </div>
+                {% else %}
+                    {% block panelBaseContentTypeOther %}{% endblock %}
+                {% endif %}
+            </div>
+        {% endblock %}
+        {% block panelBaseFooter %}{% endblock %}
+    </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends '::base.html.twig' %}
+{% block title %}{% trans %}Berichten{% endtrans %}{% endblock %}
+{% block body %}
+    {% include ':elements:dashboard.navigation.menu.html.twig' %}
+    {% include ':panels/dashboard:messages.panel.html.twig' %}
+    {% include ':panels/general:commercial.panel.html.twig' %}
+    {% include ':elements:loader.html.twig' %}
+{% endblock %}
+
+{% block modals %}
+    {% include ':modal/dashboard:messages.modal.html.twig' with {'modalId' : 'messagesModal'} %}
+    {% include ':modal/dashboard:messages.remove.modal.html.twig' with{'modalId' : 'removeMessagesModal'} %}
+    {#TODO translate exception message#}
+    {% include ':modal/exception:exception.modal.html.twig' with {'modalId' : 'exceptionNoneSelected', 'exceptionMessage': 'Er moet minimaal 1 item geselecteerd zijn'} %}
+{% endblock %}
+
+{% block prescripts %}
+    <script src="{{ asset('js/dashboard/messages.js') }}"></script>
+{% endblock %}
+
+{% set menu = 'home' %}
+{% set subMenu = 'dashboard' %}

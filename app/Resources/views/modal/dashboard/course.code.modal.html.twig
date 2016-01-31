@@ -1,6 +1,6 @@
 {% extends 'modal/modal.base.html.twig' %}
 {% block modalBaseHeader %}
-    <h4 class="modal-title centrum" id="myModalLabel">
+    <h4 class="modal-title centrum" id="{{ modalId }}">
         <b>
             <span class="glyphicon glyphicon-grain" aria-hidden="true"></span>
             {% trans %}Cursuscode invoeren{% endtrans %}
@@ -38,5 +38,7 @@
         </form>
     </div>
 {% endblock %}
-{% set modalId = 'courseCodeModal' %}
+{% block closeButtonText %}
+    {% trans %}Annuleren{% endtrans %}
+{% endblock %}
 {% set modalBaseType = 'close' %}

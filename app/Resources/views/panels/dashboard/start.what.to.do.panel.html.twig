@@ -1,0 +1,32 @@
+{% extends 'panels/panel.base.html.twig' %}
+{% block panelBaseTitle %}
+    {% trans %}Wat wilt u doen{% endtrans %}?
+{% endblock %}
+
+{% block panelBaseContentTypeLeft %}
+    <h4><samp><b>I</b> {% trans %}Studeren{% endtrans %}</samp></h4>
+    <p>
+        {% trans %}
+        U kunt ervoor kiezen om een cursus te volgen. Het is mogelijk om uw cursusvoortgang automatisch
+        door te geven aan een beleider d.m.v. een cursus code.
+        {% endtrans %}
+    </p>
+    <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#studyIntroductionModal">{% trans %}Studeer introductie{% endtrans %}</button>
+    {#TODO Button link#}
+    <button class="btn btn-default btn-sm">{% trans %}Aan de slag learn{% endtrans %}</button>
+{% endblock %}
+
+{% block panelBaseContentTypeRight %}
+    <h4><samp><b>II</b> {% trans %}Onderwijzen{% endtrans %}</samp></h4>
+    <p>
+        {% trans %}
+        U kunt zelf cursussen aanmaken. Of u kunt een bestaande cursus selecteren en daarvoor een leergroep aanmaken.
+        Zodoende krijgt u de mogelijkheid om de cursusvoortgang van individuele studenten te volgen.
+        {% endtrans %}
+    </p>
+    <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#teachIntroductionModal">{% trans %}Onderwijs introductie{% endtrans %}</button>
+    {#TODO Button link#}
+    <button class="btn btn-default btn-sm">{% trans %}Aan de slag teach{% endtrans %}</button>
+{% endblock %}
+
+{% set panelBaseContentType = 'split' %}

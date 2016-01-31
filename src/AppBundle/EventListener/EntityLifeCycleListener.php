@@ -54,6 +54,9 @@ class EntityLifeCycleListener implements EventSubscriber
 
     private function handleUserStatistics(LifecycleEventArgs $args, $isUpdate)
     {
+        if($this->storage->getToken() == null)
+            return;
+
         if(!$this->validateUser($this->storage->getToken()->getUser()))
             return;
 

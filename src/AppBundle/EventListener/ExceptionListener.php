@@ -9,7 +9,7 @@
 namespace AppBundle\EventListener;
 
 
-use AppBundle\Exception\TranslatableException;
+use AppBundle\Exception\FrontEndException;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
@@ -28,7 +28,7 @@ class ExceptionListener implements EventSubscriberInterface
     public function onKernelException(GetResponseForExceptionEvent $event)
     {
         $exception = $event->getException();
-        if($exception instanceof TranslatableException && $event->getRequest()->isXmlHttpRequest())
+        if($exception instanceof FrontEndException && $event->getRequest()->isXmlHttpRequest())
         {
             $message = $this->translator->trans($exception->getTranslationCode(), $exception->getParams());
             $response = new Response(json_encode($message, 412));

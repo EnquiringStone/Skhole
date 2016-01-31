@@ -34,6 +34,10 @@
                 <source>exceptions.ajax.no.key</source>
                 <target>De ajax call is misgegaan, probeer het later opnieuw. (De code is niet meegegeven)</target>
             </trans-unit>
+            <trans-unit id="diff.ago.hour">
+                <source>diff.ago.hour</source>
+                <target>%count% uur geleden</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

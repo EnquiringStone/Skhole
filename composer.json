@@ -18,7 +18,6 @@
         "sensio/distribution-bundle": "~4.0",
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "~2.0",
-        "problematic/acl-manager-bundle": "dev-master",
         "hwi/oauth-bundle": "^0.4.0",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "twig/extensions": "^1.3"

@@ -1,9 +1,6 @@
 # To get started with security, check out the documentation:
 # http://symfony.com/doc/current/book/security.html
 security:
-    acl:
-        connection: default
-
     encoders:
         FOS\UserBundle\Model\UserInterface: sha512
 
@@ -50,4 +47,5 @@ security:
                 domain: ~
 
     access_control:
+        - {path: ^/[a-z][a-z]/home/messages, roles: ROLE_USER}
         - {path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY}

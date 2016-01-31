@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.0">
+    <file original="file.ext" source-language="nl" datatype="plaintext">
+        <body>
+            <trans-unit id="1">
+                <source>diff.ago.hour</source>
+                <target>%count% uur geleden</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>diff.ago.second</source>
+                <target>%count% seconden geleden</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>diff.ago.minute</source>
+                <target>%count% minuten geleden</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>diff.ago.day</source>
+                <target>%count% dagen geleden</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>diff.ago.month</source>
+                <target>%count% maand geleden</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>diff.ago.year</source>
+                <target>%count% jaar geleden</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>diff.in.second</source>
+                <target>in %count% seconden</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>diff.in.minute</source>
+                <target>in %count% minuten</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>diff.in.hour</source>
+                <target>in %count% uren</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>diff.in.day</source>
+                <target>in %count% dagen</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>diff.in.month</source>
+                <target>in %count% maand</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>diff.in.year</source>
+                <target>in %count% jaar</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

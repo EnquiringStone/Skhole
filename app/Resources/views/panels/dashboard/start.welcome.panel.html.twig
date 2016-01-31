@@ -1,0 +1,33 @@
+{% extends 'panels/panel.base.html.twig' %}
+{% block panelBaseTitle %}
+    {% trans %}Welkom{% endtrans %} {% if is_granted('ROLE_USER') %}{{ app.user.username }}{% endif %}
+{% endblock %}
+{% block panelBaseContentTypeLeft %}
+    <h4><samp><b>{% trans %}Snel menu{% endtrans %}</b></samp></h4>
+    <p>{% trans %}Onder kunt u snel en gemakkelijk een cursuscode invoeren, een cursus creëren of een leergroep toevoegen.{% endtrans %}</p>
+    <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#courseCodeModal">
+        <span class="glyphicon glyphicon-grain text-info" aria-hidden="true"></span>
+        <samp><b>{% trans %}Cursuscode invoeren{% endtrans %}</b></samp>
+    </button>
+    <button type="button" class="btn btn-default btn-sm">
+        <span class="glyphicon glyphicon-plus text-success" aria-hidden="true"></span>
+        {#TODO Button link#}
+        <samp>{% trans %}Cursus creeren{% endtrans %}</samp>
+    </button>
+    <button type="button" class="btn btn-default btn-sm">
+        <span class="glyphicon glyphicon-plus text-success" aria-hidden="true"></span>
+        {#TODO Button link#}
+        <samp>{% trans %}Leergroep creeren{% endtrans %}</samp>
+    </button>
+{% endblock %}
+{% block panelBaseContentTypeRight %}
+    <div>
+        <h4><samp><b>{#TODO Contents#}{% trans %}Unknown{% endtrans %}</b></samp></h4>
+        <span>
+            {#TODO Contents#}
+            {% trans %}Unknown{% endtrans %}
+        </span>
+    </div>
+{% endblock %}
+
+{% set panelBaseContentType = 'split' %}

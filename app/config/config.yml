@@ -11,12 +11,10 @@ parameters:
     ajax_configuration:
         method: "method"
         identifier: "ajax_key"
-    acl_admin_configuration:
-        permissions:
-            - VIEW
-            - EDIT
-            - UNDELETE
-
+    standard_query_limit: 10
+    standard_pagination_max: 5
+    date_format: "d-m-Y"
+    date_time_format: "d-m-Y H:i:s"
 
 framework:
     #esi:             ~
@@ -45,6 +43,12 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    date:
+        timezone: Europe/Amsterdam
+    number_format:
+        decimals: 2
+        decimal_point: ','
+        thousands_separator: '.'
 
 # Assetic Configuration
 #assetic:

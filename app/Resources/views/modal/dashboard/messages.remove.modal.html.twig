@@ -1,0 +1,25 @@
+{% extends 'modal/modal.base.html.twig' %}
+{% block modalBaseHeader %}
+    <h4 class="modal-title centrum" id="{{ modalId }}">
+        <b>
+            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+            {% trans %}Bericht(en) verwijderen{% endtrans %}
+        </b>
+    </h4>
+{% endblock %}
+
+{% block modalBaseContents %}
+    <div class="modal-body">
+        <div class="centrum">
+            <br/>
+            <p class="lead">{% trans %}Weet u zeker dat u de geselecteerde bericht(en) wilt verwijderen?{% endtrans %}</p>
+            <br/>
+        </div>
+    </div>
+{% endblock %}
+
+{% block modalBaseYesAction %}
+    delete
+{% endblock %}
+
+{% set modalBaseType = 'choice' %}

@@ -1,0 +1,57 @@
+{% extends 'panels/panel.base.html.twig' %}
+{% block panelBaseTitle %}
+    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>{% trans %}Berichten{% endtrans %}
+{% endblock %}
+{% block panelBaseContents %}
+    {% set dataEntity = "Messages" %}
+    <div class="panel-body" data-url="{{ url('app_home_ajax_page') }}">
+        {% if messages|length == 0 %}
+            <div class="thumbnail">
+                <p class="lead centrum">{% trans %}Uw inbox bevat geen berichten.{% endtrans %}</p>
+            </div>
+            <hr>
+        {% else %}
+            <div class="pull-right">
+                <label>{% trans %}Sorteer op{% endtrans %}:</label>
+                <select class="sortable" name="filterOptions" size="1" aria-controls="example1"
+                        data-entity="{{ dataEntity }}" data-method="sortByAttribute" data-key="SAS1" data-url="{{ url('app_home_ajax_page') }}">
+                    {#TODO Filter system --in progress#}
+                    <option selected="selected" data-attribute="sendDateTime" data-sorted="DESC">{% trans %}Datum (nieuw){% endtrans %}</option>
+                    <option data-attribute="sendDateTime" data-sorted="ASC">{% trans %}Datum (oud){% endtrans %}</option>
+                    <option data-attribute="isRead" data-sorted="ASC">{% trans %}Ongelezen{% endtrans %}</option>
+                    <option data-attribute="isRead" data-sorted="DESC">{% trans %}Gelezen{% endtrans %}</option>
+                </select>
+            </div>
+            <h4><samp>Inbox</samp> <span class="badge total-messages">{{ total }}</span></h4>
+            <hr />
+            <button class="btn btn-default btn-sm remove-selected-messages">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                {% trans %}Verwijder{% endtrans %}
+            </button>
+            <button class="btn btn-default btn-sm read-selected-messages">{% trans %}Markeer als ongelezen{% endtrans %}</button>
+            <hr />
+            <table class="table table-hover messages">
+                <tr>
+                    <th>{% trans %}Bewerk{% endtrans %}</th>
+                    <th>{% trans %}Bericht{% endtrans %}</th>
+                </tr>
+                {% for message in messages %}
+                    <tr data-message-id="{{ message.id }}">
+                        <td><input type="checkbox" /></td>
+                        <td data-send-date="{{ message.sendDateTime|date('d-m-Y') }}" data-title="{{ message.title }}" data-contents="{{ message.contents }}" data-sender="{{ message.senderName }}">
+                            <a class="messageItem" data-target="#messagesModal">
+                                <span class="text-muted clickable message-title">{% if message.isRead %}{{ message.title }}{% else %}<b>{{ message.title }}</b>{% endif %}</span>
+                            </a>
+                            <span class="pull-right text-muted small"><em>{{ message.sendDateTime|time_diff }}</em></span>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+
+            <div class="pagination-container">
+                {% include ':elements:pagination.html.twig' with {'maxEntities' : total, 'limit': limit, 'offset': offset, 'maxPages' : maxPages, 'pageName': 'berichten'|trans, 'entity': dataEntity } %}
+            </div>
+            {#TODO Pagination jquery crap#}
+        {% endif %}
+    </div>
+{% endblock %}

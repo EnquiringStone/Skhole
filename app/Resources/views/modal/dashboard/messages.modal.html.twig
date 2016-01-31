@@ -1,0 +1,25 @@
+{% extends 'modal/modal.base.html.twig' %}
+{% block modalBaseHeader %}
+    <h4 class="modal-title centrum" id="{{ modalId }}">
+        <b>
+            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+            {% trans %}Bericht{% endtrans %}
+        </b>
+        <br />
+        <span class="text-muted messages-sender-name modal-variable"></span>
+    </h4>
+{% endblock %}
+{% block modalBaseContents %}
+    <div class="modal-body">
+        <span class="pull-left text-muted small"><em><b>{% trans %}Verzonden op{% endtrans %}:</b> <i class="messages-send-date-time modal-variable"></i></em> </span>
+        <hr/>
+        <h4 class="messages-title modal-variable">Test</h4>
+        <p class="messages-contents modal-variable"></p>
+    </div>
+{% endblock %}
+{% block modalBaseFooter %}
+    <div class="modal-footer">
+        <button class="btn btn-default btn-sm messages-id remove-message" data-message-id=""><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> {% trans %}Verwijder{% endtrans %}</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">{% trans %}Sluiten{% endtrans %}</button>
+    </div>
+{% endblock %}
