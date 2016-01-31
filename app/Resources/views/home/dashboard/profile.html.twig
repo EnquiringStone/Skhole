@@ -1,7 +1,21 @@
 {% extends 'base.html.twig' %}
 {% block title %}{% trans %}Profiel{% endtrans %}{% endblock %}
 {% block body %}
-    <h1>{% trans %}Profiel{% endtrans %}</h1>
+    {% include ':elements:dashboard.navigation.menu.html.twig' %}
+    {% include ':panels/dashboard:profile.details.panel.html.twig' %}
+    {% include ':panels/dashboard:profile.teach.panel.html.twig' %}
+    {% include ':panels/general:commercial.panel.html.twig' %}
+{% endblock %}
+
+{% block modals %}
+    {% include ':modal/dashboard:profile.details.edit.modal.html.twig' %}
+    {% include ':modal/dashboard:profile.teach.edit.modal.html.twig' %}
+    {% include ':modal/dashboard:profile.education.edit.modal.html.twig' %}
+    {% include ':modal/dashboard:profile.disband.confirmation.modal.html.twig' %}
+{% endblock %}
+
+{% block prescripts %}
+    <script src="{{ asset('js/dashboard/profile.js') }}"></script>
 {% endblock %}
 
 {% set menu = 'home' %}

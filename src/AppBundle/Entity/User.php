@@ -45,6 +45,36 @@ class User extends BaseUser
     protected $google_access_token;
 
     /**
+     * @ORM\Column(name="first_name", type="text", length=16777215, nullable=true)
+     */
+    protected $firstName;
+
+    /**
+     * @ORM\Column(type="text", length=16777215, nullable=true)
+     */
+    protected $surname;
+
+    /**
+     * @ORM\Column(name="insert_date_time", type="datetime")
+     */
+    protected $insertDateTime;
+
+    /**
+     * @ORM\Column(name="date_of_birth", type="datetime", nullable=true)
+     */
+    protected $dateOfBirth;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $language;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $country;
+
+    /**
      * Set facebookId
      *
      * @param string $facebookId
@@ -138,5 +168,149 @@ class User extends BaseUser
     public function getGoogleAccessToken()
     {
         return $this->google_access_token;
+    }
+
+    /**
+     * Set firstName
+     *
+     * @param string $firstName
+     *
+     * @return User
+     */
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    /**
+     * Get firstName
+     *
+     * @return string
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * Set surname
+     *
+     * @param string $surname
+     *
+     * @return User
+     */
+    public function setSurname($surname)
+    {
+        $this->surname = $surname;
+
+        return $this;
+    }
+
+    /**
+     * Get surname
+     *
+     * @return string
+     */
+    public function getSurname()
+    {
+        return $this->surname;
+    }
+
+    /**
+     * Set insertDateTime
+     *
+     * @param \DateTime $insertDateTime
+     *
+     * @return User
+     */
+    public function setInsertDateTime($insertDateTime)
+    {
+        $this->insertDateTime = $insertDateTime;
+
+        return $this;
+    }
+
+    /**
+     * Get insertDateTime
+     *
+     * @return \DateTime
+     */
+    public function getInsertDateTime()
+    {
+        return $this->insertDateTime;
+    }
+
+    /**
+     * Set dateOfBirth
+     *
+     * @param \DateTime $dateOfBirth
+     *
+     * @return User
+     */
+    public function setDateOfBirth($dateOfBirth)
+    {
+        $this->dateOfBirth = $dateOfBirth;
+
+        return $this;
+    }
+
+    /**
+     * Get dateOfBirth
+     *
+     * @return \DateTime
+     */
+    public function getDateOfBirth()
+    {
+        return $this->dateOfBirth;
+    }
+
+    /**
+     * Set language
+     *
+     * @param string $language
+     *
+     * @return User
+     */
+    public function setLanguage($language)
+    {
+        $this->language = $language;
+
+        return $this;
+    }
+
+    /**
+     * Get language
+     *
+     * @return string
+     */
+    public function getLanguage()
+    {
+        return $this->language;
+    }
+
+    /**
+     * Set country
+     *
+     * @param string $country
+     *
+     * @return User
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @return string
+     */
+    public function getCountry()
+    {
+        return $this->country;
     }
 }

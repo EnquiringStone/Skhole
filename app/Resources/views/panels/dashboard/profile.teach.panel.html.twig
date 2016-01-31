@@ -1,0 +1,25 @@
+{% extends 'panels/panel.base.html.twig' %}
+{% block panelBaseTitle %}
+    <h4 class="panel-title centrum"><b>{% trans %}Onderwijzersprofiel{% endtrans %}</b></h4>
+{% endblock %}
+{% block panelBaseContents %}
+    <div class="panel-body">
+        <h4>
+            <img src="{{ asset('images/denker.png') }}" class="img-rounded">
+            {% trans %}Teach gegevens{% endtrans %}
+        </h4>
+        <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Instelling{% endtrans %} (1):</b> {#TODO find out??#}</button>
+        <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Leergroepen aangemaakt{% endtrans %}</b> {#TODO find out??#}</button>
+        <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Cursussen aangemaakt{% endtrans %}</b> {#TODO find out??#}</button>
+        <div class="thumbnail">
+            <b>{% trans %}Korte omschrijving{% endtrans %}:</b>
+            <p>
+                {#TODO Description???#}
+            </p>
+        </div>
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#profileTeachModal">
+            {% trans %}Wijzig{% endtrans %}
+            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+        </button>
+    </div>
+{% endblock %}
