@@ -19,7 +19,13 @@ class HomeController extends Controller {
      */
     public function dashboardAction(Request $request)
     {
-        return $this->render(':home/dashboard:dashboard.html.twig');
+        $login = false;
+        if(array_key_exists('login', $request->query->all())) {
+            $login = $request->query->get('login');
+        }
+        return $this->render(':home/dashboard:dashboard.html.twig', array(
+            'login' => $login
+        ));
     }
 
     /**
@@ -41,6 +47,12 @@ class HomeController extends Controller {
         return $this->render(':home/dashboard:dashboard.html.twig');
     }
 
+    public function createProfilePage(Request $request)
+    {
+        $education = $this->getDoctrine()->getRepository('AppBundle:Education\Educations')->findOneBy(array('userId' => $this->getUser()->getId()));
+        return $this->render(':home/dashboard:profile.html.twig', array('education' => $education));
+    }
+
     public function createMessagesPage(Request $request)
     {
         $offset = $request->query->get('offset');
@@ -52,8 +64,8 @@ class HomeController extends Controller {
 
         $repository = $this->getDoctrine()->getRepository('AppBundle:Messages');
 
-        $messages = $repository->findBy(array('userId' => 4), array('sendDateTime' => 'DESC'), $limit, $offset);
-        $total = $repository->getCountByUserId(4);
+        $messages = $repository->findBy(array('userId' => $this->getUser()->getId()), array('sendDateTime' => 'DESC'), $limit, $offset);
+        $total = $repository->getCountByUserId($this->getUser()->getId());
         return $this->render(':home/dashboard:messages.html.twig',
             array(  'messages' => $messages,
                     'limit' => $limit,

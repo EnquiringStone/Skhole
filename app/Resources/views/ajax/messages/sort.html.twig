@@ -1,0 +1,13 @@
+{% block sort %}
+    {% if not attribute is defined %}{% set attribute = 'sendDateTime' %}{% endif %}
+    {% if not value is defined %}{% set value = 'DESC' %}{% endif %}
+    <div class="pull-right">
+        <label>{% trans %}Sorteer op{% endtrans %}:</label>
+        <select class="sortable" name="filterOptions" size="1" aria-controls="example1">
+            <option {% if attribute == 'sendDateTime' and value == 'DESC' %}selected="selected"{% endif %} data-attribute="sendDateTime" data-sorted="DESC">{% trans %}Datum (nieuw){% endtrans %}</option>
+            <option {% if attribute == 'sendDateTime' and value == 'ASC' %}selected="selected"{% endif %} data-attribute="sendDateTime" data-sorted="ASC">{% trans %}Datum (oud){% endtrans %}</option>
+            <option {% if attribute == 'isRead' and value == 'ASC' %}selected="selected"{% endif %} data-attribute="isRead" data-sorted="ASC">{% trans %}Ongelezen{% endtrans %}</option>
+            <option {% if attribute == 'isRead' and value == 'DESC' %}selected="selected"{% endif %} data-attribute="isRead" data-sorted="DESC">{% trans %}Gelezen{% endtrans %}</option>
+        </select>
+    </div>
+{% endblock %}

@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="skhole_organisations")
+ * @ORM\Table(name="organisations")
  */
 class Organisations
 {
@@ -37,7 +37,7 @@ class Organisations
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Education\Educations", inversedBy="organisations")
      * @ORM\JoinColumn(name="organisation_id", referencedColumnName="id")
      */
-    private $organisation;
+    private $education;
 
     /**
      * Get id
@@ -119,5 +119,29 @@ class Organisations
     public function getOrganisation()
     {
         return $this->organisation;
+    }
+
+    /**
+     * Set education
+     *
+     * @param \AppBundle\Entity\Education\Educations $education
+     *
+     * @return Organisations
+     */
+    public function setEducation(\AppBundle\Entity\Education\Educations $education = null)
+    {
+        $this->education = $education;
+
+        return $this;
+    }
+
+    /**
+     * Get education
+     *
+     * @return \AppBundle\Entity\Education\Educations
+     */
+    public function getEducation()
+    {
+        return $this->education;
     }
 }

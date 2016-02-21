@@ -1,0 +1,33 @@
+{% extends ':modal:modal.base.html.twig' %}
+{% block modalBaseHeader %}
+    <h4 class="modal-title centrum" id="{{ modalId }}">
+        <b>
+            <span class="glyphicon glyphicon-magnet" aria-hidden="true"></span>
+            {% trans %}Reviews{% endtrans %}
+        </b>
+    </h4>
+{% endblock %}
+{% block modalBaseContents %}
+    <div class="modal-body page-controls" data-entity="Course\CourseReviews" data-context="SELF" data-default-search-attributes="courseId,{{ course.id }}">
+        {% if course.courseReviews|length > 0 %}
+            <div class="content-field">
+                {% for review in course.courseReviews.slice(0, limit) %}
+                    {% include ':ajax/my-courses:course.review.body.html.twig' with {'review': review} %}
+                {% endfor %}
+            </div>
+            <div class="pagination-field">
+                {% include ':elements:pagination.html.twig' with {'maxEntities' : course.courseReviews|length, 'limit': limit, 'offset': 0, 'maxPages' : maxPages, 'pageName': 'Reviews'|trans, 'entity': 'Course\\CourseReviews', 'class': 'course-reviews' } %}
+            </div>
+        {% else %}
+            <div class="thumbnail">
+                <div class="centrum">
+                    <p>{% trans %}Deze cursus heeft nog geen reviews{% endtrans %}</p>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+{% block closeButtonText %}
+    {% trans %}Sluiten{% endtrans %}
+{% endblock %}
+{% set modalBaseType = 'close' %}

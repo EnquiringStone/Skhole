@@ -1,0 +1,27 @@
+{% extends 'modal/modal.base.html.twig' %}
+{% block modalBaseHeader %}
+    <h4 class="modal-title centrum" id="{{ modalId }}">
+        <b>
+            <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+            {% trans %}Inloggen{% endtrans %}
+        </b>
+    </h4>
+{% endblock %}
+{% block modalBaseContents %}
+    <div class="centrum">
+        <a href="{{ path('hwi_oauth_connect') }}facebook" class="btn btn-default">
+            <img src="{{ asset('images/socialmedia-facebook.png') }}" class="img-rounded" />
+            {% trans %}Login met Facebook{% endtrans %}
+        </a>
+        <p></p>
+        <a href="{{ path('hwi_oauth_connect') }}google" class="btn btn-default">
+            <img src="{{ asset('images/socialmedia-google+.png') }}">
+            {% trans %}Login met Google{% endtrans %}
+        </a>
+    </div>
+{% endblock %}
+
+{% block closeButtonText %}
+    {% trans %}Sluiten{% endtrans %}
+{% endblock %}
+{% set modalBaseType = 'close' %}

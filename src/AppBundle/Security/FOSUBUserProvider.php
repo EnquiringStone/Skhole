@@ -54,9 +54,32 @@ class FOSUBUserProvider extends BaseClass
             $user->$setterId($username);
             $user->$setterToken($response->getAccessToken());
 
-            $user->setUsername($response->getFirstName() . $response->getLastName());
-            $user->setEmail($response->getEmail());
+            $user->setUsername($response->getUsername());
+            $user->setInsertDateTime(new \DateTime());
+            if($response->getFirstName() == null && $response->getLastName() == null && $response->getRealName() != null)
+            {
+                $name = explode(" ", $response->getRealName());
+
+                if(count($name) >= 1)
+                    $user->setFirstName($name[0]);
+                if(count($name) >= 2)
+                    $user->setSurname(implode(" ", array_slice($name, 1)));
+            } else {
+                $user->setFirstName($response->getFirstName());
+                $user->setSurname($response->getLastName());
+            }
+            if($response->getEmail() == null)
+            {
+                $user->setEmail(uniqid("EmailNotUsed", true));
+            } else {
+                $user->setEmail($response->getEmail());
+                $user->setCustomEmail($response->getEmail());
+            }
+            $user->setNickname($response->getNickname());
+            $user->setRealName($response->getRealName());
+            $user->setPicture($response->getProfilePicture());
             $user->setPassword($username);
+            $user->setRoles(array('ROLE_USER'));
             $user->setEnabled(true);
             $this->userManager->updateUser($user);
             return $user;

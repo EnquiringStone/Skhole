@@ -1,0 +1,86 @@
+{% extends 'modal/modal.base.html.twig' %}
+{% block modalBaseHeader %}
+    <h4 class="modal-title centrum" id="{{ modalId }}">
+        <b>
+            <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+            {% trans %}Cursuskaart{% endtrans %}
+        </b>
+        <br />
+        <span class="text-muted">{{ course.name }}</span>
+    </h4>
+{% endblock %}
+{% block modalBaseContents %}
+    {% if course.courseCard is not null %}
+        <div class="thumbnail">
+            <div class="centrum">
+                {% if course.courseCard.pictureUrl is not null %}
+                    <img src="{{ course.courseCard.pictureUrl }}" class="img-rounded" height="120">
+                {% else %}
+                    <img src="{{ asset('images/optional-course-image.png') }}" class="img-rounded" height="120">
+                {% endif %}
+            </div>
+        </div>
+        <div class="thumbnail">
+            <div class="row">
+                <div class="col-md-6">
+                    {% if course.courseCard.youtubeUrl is not null %}
+                        <div class="embed-responsive embed-responsive-4by3">
+                            <iframe class="embed-responsive-item" allowfullscreen="" src="{{ course.courseCard.youtubeUrl }}"></iframe>
+                        </div>
+                    {% else %}
+                        <p>{% trans %}Geen video gevonden{% endtrans %}</p>
+                    {% endif %}
+                </div>
+                <div class="col-md-6">
+                    <h4>{% trans %}Inhoud{% endtrans %}</h4>
+                    <p>
+                        {% if course.courseCard.description is not null %}
+                            {{ course.courseCard.description }}
+                        {% else %}
+                            {% trans %}Geen omschrijving gevonden{% endtrans %}
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="thumbnail">
+            <h4>{% trans %}Aanbieder{% endtrans %}</h4>
+            {% for provider in course.courseCard.providers %}
+                <div class="row">
+                    <div class="col-md-1">
+                        <img src="{{ asset('images/logo-skhole.png') }}" class="media-object">
+                    </div>
+                    <div class="col-md-11">
+                        <h4>{{ provider.name }}</h4>
+                        <p>{{ provider.description }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="thumbnail">
+            <h4>{% trans %}Docenten{% endtrans %}</h4>
+            {% for teacher in course.courseCard.teachers %}
+                <div class="row">
+                    <div class="col-md-1">
+                        <img src="{{ teacher.pictureUrl is null ? asset('images/head-wiseguy.png') : teacher.pictureUrl }}" class="media-object">
+                    </div>
+                    <div class="col-md-11">
+                        <h4>{{ teacher.name }}</h4>
+                        <p>{{ teacher.description }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="thumbnail">
+            <div class="centrum">
+                <p>{% trans %}Deze cursus heeft nog geen cursuskaart{% endtrans %}</p>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block closeButtonText %}
+    {% trans %}Sluiten{% endtrans %}
+{% endblock %}
+{% set modalBaseType = 'close' %}

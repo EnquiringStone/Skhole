@@ -20,12 +20,11 @@
     {% endif %}
     {# End of magic #}
 
-    {% if renderPages > 1 %}
-    <div class="centrum">
+    <div class="centrum{% if class is defined %} {{ class }}{% endif %}">
         <ul
                 class="pagination" data-entity="{{ entity }}"
                 data-method="paginate" data-key="PAS1" data-url="{{ path('app_home_ajax_page') }}"
-                data-max-pages="{{ maxPages }}" data-name="{{ pageName }}"
+                data-max-pages="{{ maxPages }}" data-name="{{ pageName }}" data-limit="{{ limit }}"
         >
             <li class="disabled"><a class="unclickable"><b>{{ pageName }}</b></a></li>
             {% set offset = 0 %}
@@ -38,5 +37,4 @@
             {% endfor %}
         </ul>
     </div>
-    {% endif %}
 {% endblock %}

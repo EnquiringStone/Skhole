@@ -1,1 +1,48 @@
-<!-- The Mijn Account button, the grey background and the temple -->
+{% block header %}
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div id="logo">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="{% trans %}Snelmenu{% endtrans %}">
+                        <img src="{{ asset('images/logo-skhole.png') }}" class="img-rounded" />
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#{#TODO #}">{% trans %}Veel gestelde vragen{% endtrans %}</a></li>
+                        <li><a href="#{#TODO #}">{% trans %}Auteursrecht{% endtrans %}</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="navbar-header">
+                <div class="btn-group">
+                    {% if app.user %}
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="{% trans %}Gebruikersmenu{% endtrans %}">
+                            <img src="{{ asset('images/gebruiker.png') }}" class="img-rounded"> {% trans %}Mijn account{% endtrans %}
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{ path('app_home_dashboard_pages_page', {'page': 'profile'}) }}">{% trans %}Profiel{% endtrans %}</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">{% trans %}Cursusmandje{% endtrans %}</a></li>
+                            <li><a href="#">{% trans %}Mijn cursussen{% endtrans %}</a></li>
+                            <li><a href="#">{% trans %}Mijn leergroepen{% endtrans %}</a></li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#" data-toggle="modal" data-target="#{#TODO Add course code#}">
+                                    {% trans %}Cususcode invoeren{% endtrans %}
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="{{ url('logout') }}">{% trans %}Uitloggen{% endtrans %}</a></li>
+                        </ul>
+                    {% else %}
+                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#loginModal">
+                            <img src="{{ asset('images/gebruiker.png') }}" class="img-rounded" />
+                            {% trans %}Inloggen{% endtrans %}
+                        </button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+{% endblock %}

@@ -2,42 +2,13 @@
  * Created by johan on 24-Jan-16.
  */
 $(document).ready(function() {
-    modalDateResetValue = $('.messages-send-date-time', $('.messagesModal'))[0].innerText;
-    $('.messages').on('change', ':checkbox', function () {
-        var id = getMessageId(this);
-        if (this.checked) {
-            ids.push(id);
-        } else {
-            var index = ids.indexOf(id);
-            if (index > -1) {
-                ids.splice(index, 1);
-            }
-        }
+    var body = $('body');
+    body.on('click', '.panel-body .pagination a', function(event) {
+        updateReviewModals(this);
     });
 
-    $("body").on('click', '.messageItem', function() {
-        $("div#messagesModal").modal();
-    });
-
-    $('.messages').on('click', '.messageItem', function(event) {
-        clearMessages();
-        var modal = $('.messagesModal');
-        var data = $($(this).closest('td'));
-        var id = getMessageId(this);
-
-        $('.messages-send-date-time', modal).html(' ' + data.data('send-date'));
-        $('.messages-sender-name', modal).html(data.data('sender'));
-        $('.messages-title', modal).html(data.data('title'));
-        $('.messages-contents', modal).html(data.data('contents'));
-        $('.messages-id', modal).data('message-id', id);
-        selectedId = id;
-
-        var url = $('.panel-body').data('url');
-        sendAjaxCall(url, {'ajax_key': 'MAS1', 'method': 'deleteById', 'ids': [id]}, function(data) {
-            readById(id);
-        }, function(message) {
-
-        });
+    body.on('change', '.panel-body .sortable', function(event) {
+        updateReviewModals(this);
     });
 
     $('.remove-selected-messages').on('click', function(event) {
@@ -65,33 +36,16 @@ $(document).ready(function() {
         }
     });
 
-    $('.sortable').on('change', function() {
-        addLoadingScreen($(this).parents('.panel-body'));
-        onSortChange(this, function(data) {
-            clearTable();
-            $.each(data, function(index, item) {
-                $('.messages tr:last').after(createRow(item));
-            });
-            ids = []; //reset
-            removeLoadingScreen();
-        }, function(message) {
-            removeLoadingScreen();
-        });
-    });
-
-    $('.panel-body').on('click', '.pagination a', function(event) {
-        event.preventDefault();
-        addLoadingScreen($(this).parents('.panel-body'));
-        onPaginationClick(this, function(data) {
-            clearTable();
-            $.each(data, function(index, item) {
-                $('.messages tr:last').after(createRow(item));
-            });
-            rebuildPagination($('.pagination', '.panel-body'));
-            ids = [];
-        }, function(message) {
-            removeLoadingScreen();
-        });
+    body.on('change', '.content-field input[type="checkbox"]', function() {
+        var id = getMessageId(this);
+        if (this.checked) {
+            ids.push(id);
+        } else {
+            var index = ids.indexOf(id);
+            if (index > -1) {
+                ids.splice(index, 1);
+            }
+        }
     });
 
     $('.modal-yes', '#removeMessagesModal').on('click', function(event) {
@@ -107,13 +61,12 @@ $(document).ready(function() {
                 $('.total-messages').text(messages - ids.length);
                 ids = []; //reset
             }, function(message) {
-                console.log('test');
                 $('#removeMessagesModal').modal('hide');
             });
         }
     });
 
-    $('.remove-message', '#messagesModal').on('click', function(event) {
+    body.on('click', '.remove-message', function() {
         if(selectedId > 0) {
             var url = $('.panel-body').data('url');
             sendAjaxCall(url, {'ajax_key': 'MAS1', 'method': 'deleteById', ids: [selectedId]}, function(data) {
@@ -122,48 +75,71 @@ $(document).ready(function() {
                 selectedId = 0;
                 var messages = parseInt($('.total-messages').text());
                 $('.total-messages').text(messages - 1);
-                $('#messagesModal').modal('hide');
+                $('.modal').modal('hide');
             }, function(message) {
                 $('#messagesModal').modal('hide');
             });
         }
+    });
 
+    body.on('click', '.content-field td .message-item', function(event) {
+        event.preventDefault();
+        var id = getMessageId(this);
+        selectedId = id;
+
+        var url = $('.panel-body').data('url');
+        sendAjaxCall(url, {'ajax_key': 'MAS1', 'method': 'readById', 'ids': [id]}, function(data) {
+            readById(id);
+        }, function(message) {
+
+        });
     });
 });
+
+function updateReviewModals(caller) {
+    var base = $($(caller).parents('.page-controls'));
+    var pagination = getPagination(base);
+    var sort = getSort(base);
+    var defaultSearchValues = getSearchValues(base);
+
+    var url = base.data('url');
+    var context = base.data('context');
+    var arguments = {};
+
+    if(pagination != null) {
+        arguments['offset'] = pagination['offset'];
+        arguments['limit'] = pagination['limit'];
+    }
+    if(sort != null) {
+        arguments['sortAttribute'] = sort['sortAttribute'];
+        arguments['sortValue'] = sort['sortValue'];
+    }
+    if(defaultSearchValues != null) {
+        arguments['defaultValues'] = defaultSearchValues;
+    }
+
+    arguments['method'] = 'getMessageModals';
+    arguments['ajax_key'] = 'MAS1';
+    arguments['context'] = context;
+
+    sendAjaxCall(url, arguments, function(data) {
+        $('.message-modals').empty();
+        $('.message-modals').append(data['html']);
+    }, function(message) {
+        console.log(message);
+    });
+}
 
 var ids = [];
 var modalDateResetValue;
 var selectedId = 0;
 
-function clearMessages() {
-    var modal = $('.messagesModal');
-    $('.modal-variable', modal).html('');
-}
-
 function getMessageId(object) {
     return $($(object).closest('tr')).data('message-id');
 }
 
-function createRow(entity) {
-    var titleText = entity['isRead'] ? entity['title'] : "<b>"+ entity['title'] +"</b>";
-
-    return  "<tr data-message-id='"+ entity['id'] +"'>" +
-                "<td><input type='checkbox' /></td>" +
-                "<td data-send-date='"+ entity['sendDate'] +"' data-title='"+entity['title']+"' data-contents='"+entity['contents']+"' data-sender='"+ entity['sender'] +"'>" +
-                "<a class='messageItem' data-target='#messageModal'>" +
-                    "<span class='text-muted clickable'>"+ titleText +"</span>" +
-                "</a>" +
-                "<span class='pull-right text-muted small'><em>"+ entity['timeBetween'] +"</em></span>" +
-                "</td>" +
-            "</tr>";
-}
-
-function clearTable() {
-    $('.messages').find("tr:gt(0)").remove();
-}
-
 function readById(id) {
-    var row = $('tr').filterByData('message-id', id);
+    var row = $('.content-field tr').filterByData('message-id', id);
     var title = $('.message-title', row);
     var text = $('b', title).text();
     if(text.length > 0) {

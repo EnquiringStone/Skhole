@@ -28,12 +28,14 @@ security:
                 resource_owners:
                     facebook: "/login/check-facebook"
                     google: "/login/check-google"
-                login_path: /login
-                failure_path: /login
-
+                login_path: "/?login=true"
+                failure_path: "/?login=true"
+#               Goes to other (login ook)
                 oauth_user_provider:
                     service: my_user_provider
-            logout: true
+            logout:
+                path: "/logout"
+                target: "/"
             anonymous: true
 
         login:
@@ -48,4 +50,6 @@ security:
 
     access_control:
         - {path: ^/[a-z][a-z]/home/messages, roles: ROLE_USER}
+        - {path: ^/[a-z][a-z]/home/profile, roles: ROLE_USER}
+        - {path: ^/[a-z][a-z]/teach/*, roles: ROLE_USER}
         - {path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY}

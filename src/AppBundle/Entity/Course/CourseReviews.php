@@ -9,13 +9,14 @@
 namespace AppBundle\Entity\Course;
 
 use AppBundle\Interfaces\Entity\UserReportInterface;
+use AppBundle\Interfaces\Entity\UserStatisticsInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
- * @ORM\Table(name="skhole_course_reviews")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CourseReviewsRepository")
+ * @ORM\Table(name="course_reviews")
  */
-class CourseReviews implements UserReportInterface
+class CourseReviews implements UserReportInterface, UserStatisticsInterface
 {
     /**
      * @ORM\Id
@@ -77,7 +78,7 @@ class CourseReviews implements UserReportInterface
     private $updateUser;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Course\Courses")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Course\Courses", inversedBy="courseReviews")
      * @ORM\JoinColumn(name="course_id", referencedColumnName="id")
      */
     private $course;

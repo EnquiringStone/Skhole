@@ -1,0 +1,51 @@
+{% extends 'panels/panel.base.html.twig' %}
+{% block panelBaseTitle %}
+    <span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span>
+    <b>{% trans %}Zelfgemaakte cursussen{% endtrans %}: <span class="total-courses">{{ totalCourses }}</span></b>
+{% endblock %}
+{% block panelBaseContents %}
+    <div class="panel-body page-controls" data-url="{{ url('app_home_ajax_page') }}" data-context="SELF" data-entity="Course\Courses" data-view="my-courses" data-default-search-attributes="">
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="search-field">
+                    {% include ':ajax/my-courses:search.html.twig' %}
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="sort-field">
+                    {% include ':ajax/my-courses:sort.html.twig' %}
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="thumbnail">
+            {% if totalCourses <= 0 %}
+                <div class="centrum">
+                    <p class="lead">
+                        {% trans %}U heeft nog geen cursussen aangemaakt. Bezoek het aan de slag menu voor meer info{% endtrans %}
+                    </p>
+                </div>
+            {% else %}
+                <div class="content-field">
+                    {% for course in courses %}
+                        {% include ':ajax/my-courses:course.detail.body.html.twig' with {'course': course, 'index': loop.index } %}
+                        {% include ':modal/my-courses:course.details.modal.html.twig' with {'course': course, 'modalId': 'courseDetailsModal' ~ loop.index } %}
+                        {% include ':modal/my-courses:course.remove.modal.html.twig' with {'course': course, 'modalId': 'courseRemoveModal' ~ loop.index } %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <hr />
+            <div class="centrum">
+                <a href="#{#TODO#}" class="btn btn-default btn-lg">
+                    <span class="glyphicon glyphicon-plus text-success" aria-hidden="true"></span>
+                    <samp>{% trans %}Nieuwe cursus{% endtrans %}</samp>
+                </a>
+            </div>
+            <hr />
+            <div class="pagination-field">
+                {% include ':elements:pagination.html.twig' with {'maxEntities' : totalCourses, 'limit': limit, 'offset': offset, 'maxPages' : maxPages, 'pageName': 'Mijn cursussen'|trans, 'entity': 'Course\\Courses', 'class': 'course-details' } %}
+            </div>
+        </div>
+    </div>
+    <div class="review-modals"></div>
+{% endblock %}

@@ -54,13 +54,15 @@ class LocaleListener
         $this->urlGenerator = $urlGenerator;
 
         $this->locales = explode('|', trim($locales));
-        if (empty($this->locales)) {
+        if (empty($this->locales))
+        {
             throw new \UnexpectedValueException('The list of supported locales must not be empty.');
         }
 
         $this->defaultLocale = $defaultLocale ?: $this->locales[0];
 
-        if (!in_array($this->defaultLocale, $this->locales)) {
+        if (!in_array($this->defaultLocale, $this->locales))
+        {
             throw new \UnexpectedValueException(sprintf('The default locale ("%s") must be one of "%s".', $this->defaultLocale, $locales));
         }
 
@@ -78,13 +80,20 @@ class LocaleListener
         $request = $event->getRequest();
 
         // Ignore sub-requests and all URLs but the homepage
-        if ($request->isXmlHttpRequest() || '/' !== $request->getPathInfo()) {
+        if ($request->isXmlHttpRequest() || '/' !== $request->getPathInfo())
+        {
             return;
         }
 
         $preferredLanguage = $request->getPreferredLanguage($this->locales);
 
-        $response = new RedirectResponse($this->urlGenerator->generate('app_home_dashboard_page', array('_locale' => $preferredLanguage)));
+        $login = false;
+        if(array_key_exists('login', $request->query->all()))
+        {
+            $login = $request->query->get('login');
+        }
+
+        $response = new RedirectResponse($this->urlGenerator->generate('app_home_dashboard_page', array('_locale' => $preferredLanguage, 'login' => $login)));
         $event->setResponse($response);
     }
 }

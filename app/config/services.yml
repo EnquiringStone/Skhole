@@ -20,7 +20,7 @@ services:
             - { name: kernel.event_subscriber }
     app.ajax_listener:
         class: AppBundle\EventListener\AjaxListener
-        arguments: ["%ajax_configuration%", "@app.courses.ajax.service", "@app.sort.ajax.service", "@app.home.messages.ajax.service", "@app.pagination.ajax.service"]
+        arguments: ["%ajax_configuration%", "@app.courses.ajax.service", "@app.home.messages.ajax.service", "@app.page.controls.ajax.service"]
         tags:
             - { name: kernel.event_subscriber }
     app.entity.life.cycle.listener:
@@ -30,23 +30,27 @@ services:
             - { name: doctrine.event_subscriber, connection: default }
 
     app.courses.ajax.service:
-        class: AppBundle\Service\Ajax\CoursesAjaxService
-    app.sort.ajax.service:
-        class: AppBundle\Service\Ajax\SortAjaxService
-        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", "@app.transform.manager", "%standard_query_limit%"]
+        class: AppBundle\Service\Ajax\Teach\CoursesAjaxService
+        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", "@twig", "%standard_query_limit%", "%standard_pagination_max%"]
     app.home.messages.ajax.service:
         class: AppBundle\Service\Ajax\Home\MessagesAjaxService
-        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage"]
-    app.pagination.ajax.service:
-        class: AppBundle\Service\Ajax\PaginationAjaxService
-        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", "@app.transform.manager", "@twig", "%standard_query_limit%"]
+        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", "@twig"]
+    app.page.controls.ajax.service:
+        class: AppBundle\Service\Ajax\PageControlsAjaxService
+        arguments: ["@fos_user.entity_manager", "@security.token_storage", "@app.transform.manager", "@twig", "%standard_query_limit%", "%standard_pagination_max%"]
 
     app.transformer.messages:
         class: AppBundle\Transformer\MessagesTransformer
-        arguments: ["@app.twig.date.extension", "@twig", "%date_format%"]
+        arguments: ["@twig"]
+    app.transformer.course.reviews:
+        class: AppBundle\Transformer\CourseReviewsTransformer
+        arguments: ["@twig"]
+    app.transformer.courses:
+        class: AppBundle\Transformer\CoursesTransformer
+        arguments: ["@twig", "%standard_query_limit%", "%standard_pagination_max%"]
     app.transform.manager:
         class: AppBundle\Transformer\TransformManager
-        arguments: ["@app.transformer.messages"]
+        arguments: ["@app.transformer.messages", "@app.transformer.course.reviews", "@app.transformer.courses"]
 
     app.twig.date.extension:
         class: Twig_Extensions_Extension_Date

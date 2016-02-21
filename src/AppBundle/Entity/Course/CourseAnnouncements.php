@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="skhole_course_announcements")
+ * @ORM\Table(name="course_announcements")
  */
 class CourseAnnouncements implements UserStatisticsInterface, UserReportInterface
 {

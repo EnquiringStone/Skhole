@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="skhole_learn_group_members")
+ * @ORM\Table(name="learn_group_members")
  */
 class LearnGroupMembers
 {

@@ -8,10 +8,10 @@
 {% endblock %}
 
 {% block modals %}
-    {% include ':modal/dashboard:profile.details.edit.modal.html.twig' %}
-    {% include ':modal/dashboard:profile.teach.edit.modal.html.twig' %}
-    {% include ':modal/dashboard:profile.education.edit.modal.html.twig' %}
-    {% include ':modal/dashboard:profile.disband.confirmation.modal.html.twig' %}
+    {% include ':modal/dashboard:profile.details.edit.modal.html.twig' with {'modalId': 'profilePersonalInfoModal'} %}
+    {% include ':modal/dashboard:profile.teach.edit.modal.html.twig' with {'modalId': 'profilePersonalInfoModal'} %}
+    {% include ':modal/dashboard:profile.education.edit.modal.html.twig' with {'modalId': 'profilePersonalInfoModal'} %}
+    {% include ':modal/dashboard:profile.disband.confirmation.modal.html.twig' with {'modalId': 'profilePersonalInfoModal'} %}
 {% endblock %}
 
 {% block prescripts %}

@@ -1,6 +1,6 @@
 {% extends 'panels/panel.base.html.twig' %}
 {% block panelBaseTitle %}
-    {% trans %}Welkom{% endtrans %} {% if is_granted('ROLE_USER') %}{{ app.user.username }}{% endif %}
+    {% trans %}Welkom{% endtrans %} {% if is_granted('ROLE_USER') %}{{ app.user.realName }}{% endif %}
 {% endblock %}
 {% block panelBaseContentTypeLeft %}
     <h4><samp><b>{% trans %}Snel menu{% endtrans %}</b></samp></h4>

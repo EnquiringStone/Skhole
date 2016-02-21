@@ -1,7 +1,22 @@
 {% extends 'base.html.twig' %}
 {% block title %}{% trans %}Mijn cursussen{% endtrans %}{% endblock %}
+{% block prescripts %}
+    <script src="{{ asset('js/my-courses/my.courses.js') }}"></script>
+{% endblock %}
 {% block body %}
-    <h1>{% trans %}Mijn cursussen{% endtrans %}</h1>
+    {% include ':panels/my-courses:my.courses.panel.html.twig' %}
+{% endblock %}
+{% block postscripts %}
+    <script>
+        $(document).ready(function() {
+            sendAjaxCall('{{url("app_home_ajax_page")}}', {'method': 'getReviewModals', 'ajax_key': 'CSAS1', 'offset': {{ offset }}, 'limit': {{ limit }}, 'sortAttribute': 'id', 'sortValue': 'ASC', 'context': 'SELF'},
+                    function(args) {
+                        $('.review-modals').append(args['html']);
+                    }, function(message) {
+
+                    });
+        });
+    </script>
 {% endblock %}
 
 {% set menu = 'teach' %}

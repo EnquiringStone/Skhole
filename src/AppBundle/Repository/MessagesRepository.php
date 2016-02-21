@@ -8,93 +8,68 @@
 
 namespace AppBundle\Repository;
 
-use AppBundle\Entity\Messages;
-use AppBundle\Exception\FrontEndException;
+use AppBundle\Interfaces\PageControlsInterface;
 use AppBundle\Interfaces\PaginationInterface;
 use AppBundle\Interfaces\SortableInterface;
 use Doctrine\ORM\EntityRepository;
 
-class MessagesRepository extends EntityRepository implements SortableInterface, PaginationInterface
+class MessagesRepository extends EntityRepository implements PageControlsInterface
 {
-    private $sortItems = array('ASC', 'DESC');
-
     public function getCountByUserId($userId)
     {
-        $query = $this->createQueryBuilder('a')
-            ->select('COUNT(a)')
-            ->where('a.userId = :userId')
-            ->setParameter('userId', $userId);
+        return $this->getCountByCriteria(array('userId' => $userId));
+    }
 
+    public function getCountByCriteria($criteria)
+    {
+        $query = $this->createQueryBuilder('c');
+        $query->select('COUNT(c)');
+        $i = 0;
+        foreach($criteria as $key => $value)
+        {
+            $query->andWhere('c.'.$key.' = ?'.$i);
+            $query->setParameter($i, $value);
+            $i++;
+        }
         return $query->getQuery()->getSingleScalarResult();
     }
 
     /**
-     * Sorts the given attribute and returns a number of entities,
-     * started at the offset
-     *
-     * @param $attribute
-     * @param $order
-     * @param $offset
-     * @param $userId
-     * @param $limit
-     * @return array of entities
-     * @throws \Exception
+     * @return bool
      */
-    public function sortByAttribute($attribute, $order, $offset, $limit, $userId)
+    function hasPagination()
     {
-        if(in_array($attribute, $this->getSortableAttributes())) {
-            if(in_array(strtoupper($order), $this->sortItems)) {
-                return $this->findBy(array('userId' => $userId), array($attribute => $order), $limit, $offset);
-            }
-        }
-        //TODO Create frontend exception with translations
-        throw new \Exception('');
+        return true;
     }
 
     /**
-     * Gets all sortable attributes for the entity
-     *
-     * @return array
+     * @return bool
      */
-    public function getSortableAttributes()
+    function hasSearch()
     {
-        return array(
-            'isRead',
-            'sendDateTime'
-        );
+        return false;
     }
 
     /**
-     * Gets all entities for the given offset and limit belonging to the userId
-     *
-     * @param $offset int
-     * @param $limit int
-     * @param $attribute string
-     * @param $order string
-     * @param $userId int
-     * @return mixed
-     * @throws \Exception
+     * @return bool
      */
-    function getByPage($offset, $limit, $attribute, $order, $userId)
+    function hasSort()
     {
-        $sort = null;
-        if($attribute != null && $order != null)
-            $sort = array($attribute => $order);
-        if($sort == null || in_array($attribute, $this->getSortableAttributes())) {
-            if($sort == null || in_array(strtoupper($order), $this->sortItems)) {
-                return $this->findBy(array('userId' => $userId), $sort, $limit, $offset);
-            }
-        }
-        throw new \Exception('');
+        return true;
     }
 
-    /**
-     * Gets the count of entities
-     *
-     * @return mixed
-     */
-    function getPaginationCount()
+    function getRecords($searchValues, $offset, $limit, $sort, $userId = 0)
     {
-        return $this->getCountByUserId(func_get_args()[0]);
+        $sort = array($sort['sortAttribute'] => $sort['sortValue']);
+
+        if($userId > 0) $search = array_merge($searchValues, array('userId' => $userId));
+        else $search = $searchValues;
+
+        return array('resultSet' => $this->findBy($search, $sort, $limit, $offset), 'total' => $this->getCountByCriteria($search));
+    }
+
+    function getRecordsBySearch($offset, $limit, $sort, $searchAttributes, $userId = 0)
+    {
+        return $this->getRecords(array(), $offset, $limit, $sort, $userId);
     }
 }

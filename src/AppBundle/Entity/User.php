@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="skhole_user")
+ * @ORM\Table(name="study_livre_user")
  */
 class User extends BaseUser
 {
@@ -23,6 +23,11 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @ORM\Column(type="string", length=255, name="custom_email", nullable=true)
+     */
+    protected $customEmail;
 
     /**
      * @ORM\Column(name="facebook_id", type="string", length=255, nullable=true)
@@ -73,6 +78,21 @@ class User extends BaseUser
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $country;
+
+    /**
+     * @ORM\Column(type="string", name="real_name", length=255, nullable=true)
+     */
+    protected $realName;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $nickname;
+
+    /**
+     * @ORM\Column(type="blob", nullable=true)
+     */
+    protected $picture;
 
     /**
      * Set facebookId
@@ -312,5 +332,101 @@ class User extends BaseUser
     public function getCountry()
     {
         return $this->country;
+    }
+
+    /**
+     * Set realName
+     *
+     * @param string $realName
+     *
+     * @return User
+     */
+    public function setRealName($realName)
+    {
+        $this->realName = $realName;
+
+        return $this;
+    }
+
+    /**
+     * Get realName
+     *
+     * @return string
+     */
+    public function getRealName()
+    {
+        return $this->realName;
+    }
+
+    /**
+     * Set nickname
+     *
+     * @param string $nickname
+     *
+     * @return User
+     */
+    public function setNickname($nickname)
+    {
+        $this->nickname = $nickname;
+
+        return $this;
+    }
+
+    /**
+     * Get nickname
+     *
+     * @return string
+     */
+    public function getNickname()
+    {
+        return $this->nickname;
+    }
+
+    /**
+     * Set picture
+     *
+     * @param string $picture
+     *
+     * @return User
+     */
+    public function setPicture($picture)
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    /**
+     * Get picture
+     *
+     * @return string
+     */
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+
+    /**
+     * Set customEmail
+     *
+     * @param string $customEmail
+     *
+     * @return User
+     */
+    public function setCustomEmail($customEmail)
+    {
+        $this->customEmail = $customEmail;
+
+        return $this;
+    }
+
+    /**
+     * Get customEmail
+     *
+     * @return string
+     */
+    public function getCustomEmail()
+    {
+        return $this->customEmail;
     }
 }

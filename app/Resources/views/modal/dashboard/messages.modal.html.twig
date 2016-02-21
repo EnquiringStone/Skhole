@@ -4,6 +4,7 @@
         <b>
             <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
             {% trans %}Bericht{% endtrans %}
+            {{ message.senderName }}
         </b>
         <br />
         <span class="text-muted messages-sender-name modal-variable"></span>
@@ -11,15 +12,15 @@
 {% endblock %}
 {% block modalBaseContents %}
     <div class="modal-body">
-        <span class="pull-left text-muted small"><em><b>{% trans %}Verzonden op{% endtrans %}:</b> <i class="messages-send-date-time modal-variable"></i></em> </span>
+        <span class="pull-left text-muted small"><em><b>{% trans %}Verzonden op{% endtrans %}: {{ message.sendDateTime|date('d-m-Y') }}</b> <i class="messages-send-date-time modal-variable"></i></em> </span>
         <hr/>
-        <h4 class="messages-title modal-variable">Test</h4>
-        <p class="messages-contents modal-variable"></p>
+        <h4 class="messages-title modal-variable">{{ message.title }}</h4>
+        <p class="messages-contents modal-variable">{{ message.contents }}</p>
     </div>
 {% endblock %}
 {% block modalBaseFooter %}
     <div class="modal-footer">
-        <button class="btn btn-default btn-sm messages-id remove-message" data-message-id=""><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> {% trans %}Verwijder{% endtrans %}</button>
+        <button class="btn btn-default btn-sm messages-id remove-message" data-message-id="{{ message.id }}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> {% trans %}Verwijder{% endtrans %}</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">{% trans %}Sluiten{% endtrans %}</button>
     </div>
 {% endblock %}

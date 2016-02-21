@@ -13,5 +13,13 @@
     {% include ':modal/dashboard:teach.introduction.modal.html.twig' with {'modalId' : 'teachIntroductionModal'} %}
 {% endblock %}
 
+{% block postscripts %}
+    {% if login %}
+        <script>
+            $('#loginModal').modal('show');
+        </script>
+    {% endif %}
+{% endblock %}
+
 {% set menu = 'home' %}
 {% set subMenu = 'dashboard' %}

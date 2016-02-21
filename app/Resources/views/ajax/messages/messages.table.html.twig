@@ -1,0 +1,19 @@
+{% block messagesTable %}
+    <table class="table table-hover messages">
+        <tr>
+            <th>{% trans %}Bewerk{% endtrans %}</th>
+            <th>{% trans %}Bericht{% endtrans %}</th>
+        </tr>
+        {% for message in messages %}
+            <tr data-message-id="{{ message.id }}">
+                <td><input type="checkbox" /></td>
+                <td data-send-date="{{ message.sendDateTime|date('d-m-Y') }}" data-title="{{ message.title }}" data-contents="{{ message.contents }}" data-sender="{{ message.senderName }}">
+                    <a class="message-item" data-toggle="modal" data-target="#messagesModal{{ loop.index }}">
+                        <span class="text-muted clickable message-title">{% if message.isRead %}{{ message.title }}{% else %}<b>{{ message.title }}</b>{% endif %}</span>
+                    </a>
+                    <span class="pull-right text-muted small"><em>{{ message.sendDateTime|time_diff }}</em></span>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

@@ -113,11 +113,15 @@ hwi_oauth:
     resource_owners:
         facebook:
             type: facebook
-            client_id: <client_id>
-            client_secret: <client_secret>
-            scope: ""
+            client_id: 1667429226807902
+            client_secret: afcfc589ebefe9afa08df708a103f7f8
+            scope: "email public_profile"
+            options:
+                display: popup
+                auth_type: rerequest
         google:
             type: google
             client_id: 75162887988-3pqjbsennrnr04j9ut77nud5pipv6oem.apps.googleusercontent.com
             client_secret: CHZq5pu3_Ihj9QMyzUpATUQ3
             scope: "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
+#            https://www.googleapis.com/auth/userinfo.email

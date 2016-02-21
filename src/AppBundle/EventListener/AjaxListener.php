@@ -14,6 +14,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
+use Symfony\Component\Security\Core\Security;
+use Symfony\Component\Security\Core\SecurityContext;
 
 class AjaxListener implements EventSubscriberInterface
 {
@@ -56,7 +59,7 @@ class AjaxListener implements EventSubscriberInterface
 
     public static function getSubscribedEvents()
     {
-        return array(KernelEvents::REQUEST => array(array('onKernelRequest', 15)));
+        return array(KernelEvents::REQUEST => array(array('onKernelRequest', 5)));
     }
 
     private function validate(Request $request, array $params)

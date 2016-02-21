@@ -16,25 +16,13 @@ use Twig_Extensions_Extension_Date;
 class MessagesTransformer implements TransformerInterface
 {
     /**
-     * @var Twig_Extensions_Extension_Date
-     */
-    private $extensionDate;
-
-    /**
      * @var \Twig_Environment
      */
     private $environment;
 
-    /**
-     * @var
-     */
-    private $dateFormat;
-
-    public function __construct(Twig_Extensions_Extension_Date $extensionDate, \Twig_Environment $environment, $dateFormat)
+    public function __construct(\Twig_Environment $environment)
     {
-        $this->extensionDate = $extensionDate;
         $this->environment = $environment;
-        $this->dateFormat = $dateFormat;
     }
 
     /**
@@ -45,19 +33,8 @@ class MessagesTransformer implements TransformerInterface
      */
     public function transformToAjaxResponse($entities)
     {
-        $ajaxArray = array();
-        foreach($entities as $entity) {
-            if($entity instanceof Messages) {
-                $timeBetween = $this->extensionDate->diff($this->environment, $entity->getSendDateTime());
-                $ajaxArray[] = ['id' => $entity->getId(), 'title' => $entity->getTitle(),
-                    'contents' => $entity->getContents(), 'isRead' => $entity->getIsRead(),
-                    'sender' => $entity->getSenderName(), 'sendDate' => $entity->getSendDateTime()->format($this->dateFormat),
-                    'timeBetween' => $timeBetween];
-            }
-        }
-        return $ajaxArray;
+        return $this->environment->render(':ajax/messages:messages.table.html.twig', array('messages' => $entities));
     }
-
 
     /**
      * Returns the name. Should be the same as the class name

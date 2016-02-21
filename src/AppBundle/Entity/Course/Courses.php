@@ -14,8 +14,8 @@ use AppBundle\Interfaces\Entity\UserStatisticsInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
- * @ORM\Table(name="skhole_courses")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CoursesRepository")
+ * @ORM\Table(name="courses")
  */
 class Courses implements UserStatisticsInterface, UserReportInterface, BasicDetailsInterface
 {
@@ -47,7 +47,7 @@ class Courses implements UserStatisticsInterface, UserReportInterface, BasicDeta
     protected $updateDateTime;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $name;
 
@@ -57,17 +57,17 @@ class Courses implements UserStatisticsInterface, UserReportInterface, BasicDeta
     protected $description;
 
     /**
-     * @ORM\Column(type="integer", name="language_id")
+     * @ORM\Column(type="integer", name="language_id", nullable=true)
      */
     protected $languageId;
 
     /**
-     * @ORM\Column(type="integer", name="level_id")
+     * @ORM\Column(type="integer", name="level_id", nullable=true)
      */
     protected $levelId;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     protected $difficulty;
 
@@ -92,9 +92,24 @@ class Courses implements UserStatisticsInterface, UserReportInterface, BasicDeta
     protected $isUndesirable;
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $removed;
+
+    /**
      * @ORM\Column(type="decimal", precision=9, scale=5, name="average_content_rating", nullable=true)
      */
     protected $averageContentRating;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $views;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $pages;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
@@ -162,6 +177,11 @@ class Courses implements UserStatisticsInterface, UserReportInterface, BasicDeta
     private $state;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Course\CourseReviews", mappedBy="course")
+     */
+    private $courseReviews;
+
+    /**
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Tags")
      * @ORM\JoinTable
      * (
@@ -177,15 +197,6 @@ class Courses implements UserStatisticsInterface, UserReportInterface, BasicDeta
      * )
      */
     private $tags;
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->courseAnnouncements = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->courseResources = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Get id
@@ -903,5 +914,124 @@ class Courses implements UserStatisticsInterface, UserReportInterface, BasicDeta
     public function getCourseInstructions()
     {
         return $this->courseInstructions;
+    }
+
+    /**
+     * Set views
+     *
+     * @param integer $views
+     *
+     * @return Courses
+     */
+    public function setViews($views)
+    {
+        $this->views = $views;
+
+        return $this;
+    }
+
+    /**
+     * Get views
+     *
+     * @return integer
+     */
+    public function getViews()
+    {
+        return $this->views;
+    }
+
+    /**
+     * Set pages
+     *
+     * @param integer $pages
+     * @return Courses
+     */
+    public function setPages($pages)
+    {
+        $this->pages = $pages;
+
+        return $this;
+    }
+
+    /**
+     * Get pages
+     *
+     * @return integer
+     */
+    public function getPages()
+    {
+        return $this->pages;
+    }
+
+    /**
+     * Add courseReview
+     *
+     * @param \AppBundle\Entity\Course\CourseReviews $courseReview
+     *
+     * @return Courses
+     */
+    public function addCourseReview(\AppBundle\Entity\Course\CourseReviews $courseReview)
+    {
+        $this->courseReviews[] = $courseReview;
+
+        return $this;
+    }
+
+    /**
+     * Remove courseReview
+     *
+     * @param \AppBundle\Entity\Course\CourseReviews $courseReview
+     */
+    public function removeCourseReview(\AppBundle\Entity\Course\CourseReviews $courseReview)
+    {
+        $this->courseReviews->removeElement($courseReview);
+    }
+
+    /**
+     * Get courseReviews
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCourseReviews()
+    {
+        return $this->courseReviews;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->courseAnnouncements = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->courseResources = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->courseViews = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->courseExercises = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->courseInstructions = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->courseReviews = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+
+    /**
+     * Set removed
+     *
+     * @param boolean $removed
+     *
+     * @return Courses
+     */
+    public function setRemoved($removed)
+    {
+        $this->removed = $removed;
+
+        return $this;
+    }
+
+    /**
+     * Get removed
+     *
+     * @return boolean
+     */
+    public function getRemoved()
+    {
+        return $this->removed;
     }
 }

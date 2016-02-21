@@ -72,7 +72,7 @@ class EntityLifeCycleListener implements EventSubscriber
             else
             {
                 $entity->setInsertDateTime(new \DateTime());
-                $entity->setUserInsertedId($this->storage->getToken()->getUser()->getId());
+                $entity->setInsertUser($this->storage->getToken()->getUser());
             }
         }
     }

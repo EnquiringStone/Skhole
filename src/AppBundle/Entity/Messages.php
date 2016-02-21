@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="AppBundle\Repository\MessagesRepository")
- * @ORM\Table(name="skhole_messages")
+ * @ORM\Table(name="messages")
  */
 class Messages
 {

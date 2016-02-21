@@ -12,16 +12,38 @@ $(document).on('click', '.panel-heading span.clickable', function(e){
 });
 
 $(document).ready(function() {
-    //$('.sortable').on('change', function() {
-    //    var sort = $(this);
-    //    var url = sort.data('url');
-    //    var entity = sort.data('entity');
-    //    var attribute = $(sort.find(':selected')).data('attribute');
-    //    var order = $(sort.find(':selected')).data('sorted');
-    //    var method = sort.data('method');
-    //    var key = sort.data('key');
-    //
-    //    sendAjaxCall(url, {'entity' : entity, 'attribute' : attribute, 'order' : order, 'offset': getCurrentOffset($(this)),
-    //            'ajax_key' : key, 'method' : method}, function(data) {console.log('yep')});
-    //});
+    var body = $('body');
+
+    body.on('click', '.search-panel .dropdown-menu a', function(event) {
+        event.preventDefault();
+        if($(this).hasClass('active'))
+            return;
+
+        var param = $(this).attr("href").replace("#","");
+        var concept = $(this).text();
+        $('.search-panel span#search_concept').text(concept);
+        $('.input-group #search_param').val(param);
+
+        var active = $('.search-options').find('.active');
+        if($(active).length)
+            $(active).removeClass('active');
+
+        $(this).addClass('active');
+    });
+
+    body.on('click', '.pagination a', function(event) {
+        event.preventDefault();
+        var pagination = $($(this).parents('.pagination'));
+        var li = $($(this).parent());
+        if(li.hasClass('active'))
+            return;
+        $('.active', pagination).removeClass('active');
+        li.addClass('active');
+
+        refreshPage(this, false, false);
+    });
+
+    body.on('change', '.sortable', function(event) {
+        refreshPage(this, true, false);
+    });
 });

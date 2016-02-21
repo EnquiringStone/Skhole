@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="skhole_course_multiple_choices")
+ * @ORM\Table(name="course_multiple_choices")
  */
 class CourseMultipleChoices
 {

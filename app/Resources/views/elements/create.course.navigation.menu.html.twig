@@ -1,0 +1,16 @@
+{% extends ':elements:navigation.secondary.menu.html.twig' %}
+{% block navigationSecondaryMenuContents %}
+    <button type="button" class="btn btn-default btn-sm"  data-toggle="modal" data-target="#removeCourseModal">
+        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+        {% trans %}Cursus{% endtrans %}
+    </button>
+
+    <button type="button" class="btn btn-default">
+        <samp>&#171; {% trans %}Cursus creatiemenu{% endtrans %} &#187;</samp>
+    </button>
+
+    <button type="button" class="btn btn-default dropdown-toggle btn-sm" data-toggle="modal" data-target="#modalQuitCourseUserCreates" >
+        <span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span>
+        <a>{% trans %}Cursus sluiten{% endtrans %}</a>
+    </button>
+{% endblock %}

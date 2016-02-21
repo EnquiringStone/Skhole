@@ -12,7 +12,7 @@
         <meta name="author" content="Skhole Programmers">
 
 
-        <title>Skhole {% block title %}{% endblock %}</title>
+        <title>StudyLivre {% block title %}{% endblock %}</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
@@ -31,6 +31,7 @@
     {% include 'elements/footer.html.twig' %}
 
     {% block modals %}{% endblock %}
+    {% include ':modal/elements:login.modal.html.twig' with {'modalId': 'loginModal'} %}
     {% block postscripts %}{% endblock %}
     </body>
     </html>

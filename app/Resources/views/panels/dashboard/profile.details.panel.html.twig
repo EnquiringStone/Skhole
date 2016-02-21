@@ -1,6 +1,6 @@
 {% extends 'panels/panel.base.html.twig' %}
 {% block panelBaseTitle %}
-    <h4 class="panel-title centrum"><b>{% trans %}Gebruikersprofiel{% endtrans %}</b></h4>
+    <b>{% trans %}Gebruikersprofiel{% endtrans %}</b>
 {% endblock %}
 {% block panelBaseContents %}
     {% set dataEntity = "Profile" %}
@@ -8,16 +8,16 @@
         <div class="row">
             <div class="col-md-6">
                 <h4>
-                    <img src="" class="img-rounded"/>
+                    <img src="{{ asset('images/gebruiker.png') }}" class="img-rounded"/>
                     {% trans %}Persoon{% endtrans %}
                 </h4>
-                <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Naam{% endtrans %}:</b> {{ profile.firstName|default('-') }}</button>
-                <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Achternaam{% endtrans %}:</b> {{ profile.surname|default('-') }}</button>
-                <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Email{% endtrans %}:</b> {{ profile.email }}</button>
-                <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Geboortedatum{% endtrans %}:</b> {{ profile.dateOfBirth|default('-') }}</button>
-                <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Land{% endtrans %}:</b> {{ profile.country|default('-') }}</button>
-                <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Taal{% endtrans %}:</b> {{ profile.language|default('-') }}</button>
-                <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Lid sinds{% endtrans %}:</b> {{ profile.insertDateTime }}</button>
+                <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Naam{% endtrans %}:</b> {{ app.user.firstName|default('-') }}</button>
+                <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Achternaam{% endtrans %}:</b> {{ app.user.surname|default('-') }}</button>
+                <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Email{% endtrans %}:</b> {{ app.user.customEmail|default('-') }}</button>
+                <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Geboortedatum{% endtrans %}:</b> {{ app.user.dateOfBirth|default('-') }}</button>
+                <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Land{% endtrans %}:</b> {{ app.user.country|default('-') }}</button>
+                <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Taal{% endtrans %}:</b> {{ app.user.language|default('-') }}</button>
+                <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Lid sinds{% endtrans %}:</b> {{ app.user.insertDateTime|date }}</button>
 
                 <hr/>
                 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#profilePersonalInfoModal">{% trans %}Wijzig{% endtrans %}
@@ -30,16 +30,22 @@
                     <img src="{{ asset('images/logo-skhole.png') }}">
                     {% trans %}Educatie{% endtrans %}
                 </h4>
-                {% for organisation in education.organisations %}
-                    <button type="button" class="btn btn-default btn-xs">
-                        <b>{% trans %}Instelling{% endtrans %} {{ loop.index }}:</b> {{ organisation.name }}
-                    </button>
-                {% endfor %}
-                <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Klas{% endtrans %}:</b> {{ education.class|default('-') }}</button>
-                <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Leerjaar{% endtrans %}:</b> {{ education.schoolYear|default('-') }}</button>
-                <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Niveau{% endtrans %}:</b> {{ education.level|default('-') }}</button>
-                <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Curssusen gevolgt{% endtrans %}:</b> {{ education.followedCourses|default('0') }}</button>
-                <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Lid van leergroepen{% endtrans %}:</b> {{ education.followedLearnGroups|default('0') }}</button>
+                {% if education %}
+                    {% if education.organisations %}
+                        {% for organisation in education.getOrganisations %}
+                            <button type="button" class="btn btn-default btn-xs">
+                            <b>{% trans %}Instelling{% endtrans %} {{ loop.index }}:</b> {{ organisation.name }}
+                            </button>
+                        {% endfor %}
+                    {% endif %}
+                    <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Klas{% endtrans %}:</b> {{ education.class|default('-') }}</button>
+                    <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Leerjaar{% endtrans %}:</b> {{ education.schoolYear|default('-') }}</button>
+                    <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Niveau{% endtrans %}:</b> {{ education.level|default('-') }}</button>
+                    <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Curssusen gevolgt{% endtrans %}:</b> {{ education.followedCourses|default('0') }}</button>
+                    <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Lid van leergroepen{% endtrans %}:</b> {{ education.followedLearnGroups|default('0') }}</button>
+                {% else %}
+                    <p class="no-education-data">{% trans %}Geen educatiegegevens beschikbaar. Klik op de knop wijzig om deze toe te voegen{% endtrans %}</p>
+                {% endif %}
                 <hr />
                 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#educationModal">{% trans %}Wijzig{% endtrans %}
                     <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>

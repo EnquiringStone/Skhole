@@ -1,0 +1,90 @@
+{% block courseDetailsPanelElement %}
+    <div class="panel panel-primary" data-id="{{ course.id }}">
+        <div class="centrum">
+            <ol class="breadcrumb">
+                <li><a class="unclickable">{{ course.name|default('? ?-?-? ?') }}</a></li>
+            </ol>
+        </div>
+        <div class="media-list">
+            <div class="media">
+                <img class="media-object img-rounded pull-left" src="{{ asset('images/logo-skhole.png') }}"/>
+                <div class="pull-right">
+                    <div class="btn-group-vertical">
+                        <a href="#{#TODO#}" class="btn btn-primary btn-sm">
+                            {% trans %}Bewerk cursus{% endtrans %}<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                        </a>
+                        <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#courseDetailsModal{{ index }}">
+                            {% trans %}Cursuskaart{% endtrans %}
+                        </button>
+                        <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#courseReviewsModal{{ index }}">
+                            {% trans %}Bekijk reviews{% endtrans %}
+                        </button>
+                        <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#courseRemoveModal{{ index }}">
+                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> {% trans %}Cursus{% endtrans %}
+                        </button>
+                    </div>
+                </div>
+                <div class="media-body">
+                    {{ course.description|length > 250 ? course.description|slice(0, 250) ~ '...' : course.description|default('------') }}
+                    <br />
+                    <button type="button" class="btn btn-default btn-xs unclickable">
+                        <b class="text-primary">
+                            {% trans %}Voldaan aan de minimale eisen{% endtrans %}?
+                            <span class="glyphicon
+                                {% if course.state.stateCode == 'OK' %} glyphicon-ok text-success
+                                {% else %} glyphicon-minus text-danger{% endif %}" aria-hidden="true">
+                            </span>
+                        </b>
+                        <button type="button" class="btn btn-default btn-xs unclickable" data-toggle="tooltip" data-placement="top"
+                                title="{% trans %}Gebruiker die de cursus heeft aangemaakt{% endtrans %}">
+                            <b>{% trans %}Docent{% endtrans %}:</b> {{ course.insertUser.realName }}
+                        </button>
+                        <button type="button" class="btn btn-default btn-xs unclickable" data-toggle="tooltip" data-placement="top"
+                                title="{% trans %}Aantal weergaven{% endtrans %}">
+                            <b>{% trans %}Weergaven{% endtrans %}:</b> {{ course.views }}
+                        </button>
+                        <button type="button" class="btn btn-default btn-xs unclickable" data-toggle="tooltip" data-placement="top"
+                                title="{% trans %}Totaal ratings {% endtrans %}:{{ course.courseViews|length }}">
+                            <b>{% trans %}Rating{% endtrans %}:</b>
+                            {% if course.averageContentRating is not null %}
+                                {% for i in 0..course.averageContentRating|round %}
+                                    <img src="{{ asset('images/star_rating.png') }}" class="img-rounded">
+                                {% endfor %}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </button>
+                        <button type="button" class="btn btn-default btn-xs unclickable" data-toggle="tooltip" data-placement="top"
+                                title="{% trans %}Aantal pagina's{% endtrans %} {{ course.courseExercises|length }}
+                                {% trans %}Opdrachten{% endtrans %} {{ course.courseInstructions|length }} {% trans %}uitlegpagina's{% endtrans %}">
+                            <b>{% trans %}Pagina's{% endtrans %}:</b> {{ course.pages }}
+                        </button>
+                        <button type="button" class="btn btn-default btn-xs unclickable" data-toggle="tooltip" data-placement="top"
+                                title="{% trans %}Educatieve instelling{% endtrans %}">
+                            <b>{% trans %}Aanbieder{% endtrans %}:</b> {{ course.courseCard is not null ? (course.courseCard.providers|length > 0 ? course.courseCard.providers[0].name : '-') : '-' }}
+                        </button>
+                        <button type="button" class="btn btn-default btn-xs unclickable" data-toggle="tooltip" data-placement="top"
+                                title="{% trans %}Schatting{% endtrans %}">
+                            <b>{% trans %}Cursusduur{% endtrans %}:</b> {{ course.estimatedDuration is not null ? (course.estimatedDuration/60)|number_format : '-' }} {% trans %}uur{% endtrans %}
+                        </button>
+                        <button type="button" class="btn btn-default btn-xs unclickable" data-toggle="tooltip" data-placement="top"
+                                title="{% trans %}Schatting{% endtrans %}">
+                            <b>{% trans %}Moeilijkheidsgraad{% endtrans %}:</b>
+                            {% if course.difficulty is not null %}
+                                {% for i in 0..course.difficulty %}
+                                    <img src="{{ asset('images/star_rating.png') }}" class="img-rounded">
+                                {% endfor %}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </button>
+                        <button type="button" class="btn btn-default btn-xs unclickable" data-toggle="tooltip" data-placement="top"
+                                title="{% trans %}Educatie Niveau{% endtrans %}">
+                            <b>{% trans %}Niveau{% endtrans %}:</b> {{ course.level is not null ? course.level.levelLong : '-' }}
+                        </button>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
