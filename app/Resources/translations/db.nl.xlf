@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.0">
+    <file original="file.ext" source-language="nl" datatype="plaintext">
+        <body>
+            <trans-unit id="1">
+                <source>db.course.levels.long.hbo</source>
+                <target>Primair onderwijs</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>db.course.levels.long.mbo</source>
+                <target>Secundair onderwijs</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>db.course.levels.long.high.school</source>
+                <target>Tertair onderwijs</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>db.course.languages.dutch</source>
+                <target>Nederlands</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>db.course.languages.english</source>
+                <target>Engels</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

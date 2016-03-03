@@ -1,0 +1,21 @@
+{% extends 'modal/modal.base.html.twig' %}
+{% block modalBaseHeader %}
+    <h4 class="modal-title centrum" id="{{ modalId }}">
+        <b>
+            <span class="glyphicon glyphicon-list-alt"></span>
+            {% trans %}Mededeling{% endtrans %}
+        </b>
+    </h4>
+{% endblock %}
+{% block modalBaseContents %}
+    <div class="modal-body">
+        <span class="pull-left text-muted small"><em><b>{% trans %}Verzonden op{% endtrans %}: {{ announcement.insertDateTime|date('d-m-Y') }}</b></em></span>
+        <hr/>
+        <h4>{{ announcement.title }}</h4>
+        <p class="messages-contents modal-variable">{{ announcement.contents }}</p>
+    </div>
+{% endblock %}
+{% block closeButtonText %}
+    {% trans %}Sluiten{% endtrans %}
+{% endblock %}
+{% set modalBaseType = 'close' %}

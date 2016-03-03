@@ -1,0 +1,24 @@
+{% block cardTeacherRow %}
+    <ul class="media-list">
+        <li class="media">
+            <div class="pull-left">
+                <img src="{% if teacher.pictureUrl is not null %}{{ asset(teacher.pictureUrl) }}{% else %}{{ asset('images/head-wiseguy.png') }}{% endif %}" class="media-object">
+            </div>
+            <div class="media-body">
+                <div class="btn-group-vertical pull-right">
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#{{ modalId }}">
+                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                        {% trans %}Bewerk{% endtrans %}
+                    </button>
+                    <button type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                        {% trans %}Docent{% endtrans %} {#TODO Delete confirmation#}
+                    </button>
+                </div>
+                <h4>{{ teacher.name|default('-') }}</h4>
+                <p>{{ teacher.description|default('-') }}</p>
+                <br />
+            </div>
+        </li>
+    </ul>
+{% endblock %}

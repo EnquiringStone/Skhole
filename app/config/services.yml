@@ -15,12 +15,12 @@ services:
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
     app.exception_listener:
         class: AppBundle\EventListener\ExceptionListener
-        arguments: ["@translator.default"]
+        arguments: ["@translator.default", "@twig"]
         tags:
             - { name: kernel.event_subscriber }
     app.ajax_listener:
         class: AppBundle\EventListener\AjaxListener
-        arguments: ["%ajax_configuration%", "@app.courses.ajax.service", "@app.home.messages.ajax.service", "@app.page.controls.ajax.service"]
+        arguments: ["%ajax_configuration%", "@app.courses.ajax.service", "@app.home.messages.ajax.service", "@app.page.controls.ajax.service", "@app.create.course.ajax.service"]
         tags:
             - { name: kernel.event_subscriber }
     app.entity.life.cycle.listener:
@@ -38,6 +38,9 @@ services:
     app.page.controls.ajax.service:
         class: AppBundle\Service\Ajax\PageControlsAjaxService
         arguments: ["@fos_user.entity_manager", "@security.token_storage", "@app.transform.manager", "@twig", "%standard_query_limit%", "%standard_pagination_max%"]
+    app.create.course.ajax.service:
+        class: AppBundle\Service\Ajax\Teach\CreateCourseAjaxService
+        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", "@app.validator.validator"]
 
     app.transformer.messages:
         class: AppBundle\Transformer\MessagesTransformer
@@ -51,6 +54,10 @@ services:
     app.transform.manager:
         class: AppBundle\Transformer\TransformManager
         arguments: ["@app.transformer.messages", "@app.transformer.course.reviews", "@app.transformer.courses"]
+
+    app.validator.validator:
+        class: AppBundle\Validator\Validator
+        arguments: ["@doctrine.orm.entity_manager", "%kernel.root_dir%"]
 
     app.twig.date.extension:
         class: Twig_Extensions_Extension_Date

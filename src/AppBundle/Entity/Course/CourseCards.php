@@ -30,7 +30,7 @@ class CourseCards implements BasicDetailsInterface
     protected $courseId;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $name;
 
@@ -40,14 +40,24 @@ class CourseCards implements BasicDetailsInterface
     protected $description;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, name="youtube_url")
      */
-    protected $youtube_url;
+    protected $youtubeUrl;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, name="youtube_embed_url")
      */
-    protected $picture_url;
+    protected $youtubeEmbedUrl;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true, name="picture_url")
+     */
+    protected $pictureUrl;
+
+    /**
+     * @ORM\Column(type="text", length=16777215, nullable=true, name="prior_knowledge")
+     */
+    protected $priorKnowledge;
 
     /**
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Course\Courses", inversedBy="courseCard")
@@ -88,6 +98,12 @@ class CourseCards implements BasicDetailsInterface
      * )
      */
     private $providers;
+
+    public function isComplete()
+    {
+        //TODO implement
+        return false;
+    }
     /**
      * Constructor
      */
@@ -188,7 +204,7 @@ class CourseCards implements BasicDetailsInterface
      */
     public function setYoutubeUrl($youtubeUrl)
     {
-        $this->youtube_url = $youtubeUrl;
+        $this->youtubeUrl = $youtubeUrl;
 
         return $this;
     }
@@ -200,7 +216,7 @@ class CourseCards implements BasicDetailsInterface
      */
     public function getYoutubeUrl()
     {
-        return $this->youtube_url;
+        return $this->youtubeUrl;
     }
 
     /**
@@ -212,7 +228,7 @@ class CourseCards implements BasicDetailsInterface
      */
     public function setPictureUrl($pictureUrl)
     {
-        $this->picture_url = $pictureUrl;
+        $this->pictureUrl = $pictureUrl;
 
         return $this;
     }
@@ -224,7 +240,7 @@ class CourseCards implements BasicDetailsInterface
      */
     public function getPictureUrl()
     {
-        return $this->picture_url;
+        return $this->pictureUrl;
     }
 
     /**
@@ -317,5 +333,53 @@ class CourseCards implements BasicDetailsInterface
     public function getProviders()
     {
         return $this->providers;
+    }
+
+    /**
+     * Set priorKnowledge
+     *
+     * @param string $priorKnowledge
+     *
+     * @return CourseCards
+     */
+    public function setPriorKnowledge($priorKnowledge)
+    {
+        $this->priorKnowledge = $priorKnowledge;
+
+        return $this;
+    }
+
+    /**
+     * Get priorKnowledge
+     *
+     * @return string
+     */
+    public function getPriorKnowledge()
+    {
+        return $this->priorKnowledge;
+    }
+
+    /**
+     * Set youtubeEmbedUrl
+     *
+     * @param string $youtubeEmbedUrl
+     *
+     * @return CourseCards
+     */
+    public function setYoutubeEmbedUrl($youtubeEmbedUrl)
+    {
+        $this->youtubeEmbedUrl = $youtubeEmbedUrl;
+
+        return $this;
+    }
+
+    /**
+     * Get youtubeEmbedUrl
+     *
+     * @return string
+     */
+    public function getYoutubeEmbedUrl()
+    {
+        return $this->youtubeEmbedUrl;
     }
 }

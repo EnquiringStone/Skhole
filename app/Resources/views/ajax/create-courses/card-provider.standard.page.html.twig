@@ -1,0 +1,21 @@
+{% block cardProviderStandardPage %}
+    <div class="tab-pane fade in active">
+        {% include 'ajax/create-courses/elements/standard.navigation.buttons.html.twig' with {'active': 'card provider'} %}
+        <hr />
+        <h4 class="centrum">
+            <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+            <b>{% trans %}Cursuskaart{% endtrans %}</b>
+            <samp>2.2 | {% trans %}Voorkennis & Aanbieder{% endtrans %}</samp>
+        </h4>
+        <hr />
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{% trans %}Voorkennis{% endtrans %}</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control data-value" data-value-name="priorKnowledge" rows="4" placeholder="{% trans %}Beschrijf hier de voorkennis{% endtrans %}">{% if courseCard.priorKnowledge is not null %}{{ courseCard.priorKnowledge }}{% endif %}</textarea>
+                </div>
+            </div>
+        </form>
+        {% include ':ajax/create-courses/elements:standard.footer.html.twig' with {'nextView': path('app_teach_edit_course_page_page', {'id': course.id, 'pageType': 'standard', 'name': 'card-teacher'})} %}
+    </div>
+{% endblock %}

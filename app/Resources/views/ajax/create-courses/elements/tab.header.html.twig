@@ -1,0 +1,18 @@
+{% block tabHeader %}
+    <div class="panel-heading">
+        <ul class="nav nav-tabs">
+            <li {% if active == 'standard' %}class="active"{% endif %}>
+                <a data-toggle="tab" aria-expanded="true">{% trans %}Standaard pagina's{% endtrans %}</a>
+            </li>
+            <li {% if active == 'custom' %}class="active"{% endif %}>
+                <a data-toggle="tab" aria-expanded="false">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    {% trans %}Voeg pagina toe{% endtrans %}
+                </a>
+            </li>
+            <li {% if active == 'finish' %}class="active"{% endif %}>
+                <a data-toggle="tab" aria-expanded="false">{% trans %}Publiceer{% endtrans %}</a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

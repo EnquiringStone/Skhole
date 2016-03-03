@@ -1,0 +1,24 @@
+{% block cardScheduleStandardPage %}
+    <div class="tab-pane fade in active">
+        {% include 'ajax/create-courses/elements/standard.navigation.buttons.html.twig' with {'active': 'schedule'} %}
+        <hr />
+        <h4 class="centrum">
+            <span class="glyphicon glyphicon-list-alt"></span>
+            <samp>3. | {% trans %}Planning{% endtrans %}</samp>
+        </h4>
+        <hr />
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{% trans %}Planning{% endtrans %}</label>
+                <div class="col-sm-10">
+                    {% if schedule is not null %}
+                        <textarea class="form-control data-value" data-value-name="schedule" rows="20" placeholder="{% trans %}Hier kan je een planning maken voor de cursus{% endtrans %}">{% if schedule.schedule is not null %}{{ schedule.schedule }}{% endif %}</textarea>
+                    {% else %}
+                        <textarea class="form-control data-value" data-value-name="schedule" rows="20" placeholder="{% trans %}Hier kan je een planning maken voor de cursus{% endtrans %}"></textarea>
+                    {% endif %}
+                </div>
+            </div>
+        </form>
+        {% include ':ajax/create-courses/elements:standard.footer.html.twig' with {'nextView': path('app_teach_edit_course_page_page', {'id': course.id, 'pageType': 'standard', 'name': 'course-announcement'})} %}
+    </div>
+{% endblock %}

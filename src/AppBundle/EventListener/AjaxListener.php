@@ -29,7 +29,13 @@ class AjaxListener implements EventSubscriberInterface
         //Get all ajax services
         foreach(func_get_args() as $service)
         {
-            if($service instanceof AjaxInterface) $this->ajaxServices[$service->getUniqueCode()] = $service;
+            if($service instanceof AjaxInterface)
+            {
+                if(array_key_exists($service->getUniqueCode(), $this->ajaxServices))
+                    throw new \Exception('Unique code '.$service->getUniqueCode().' already exists');
+
+                $this->ajaxServices[$service->getUniqueCode()] = $service;
+            }
         }
         $this->ajaxConfig = $ajaxConfig;
     }
@@ -41,7 +47,7 @@ class AjaxListener implements EventSubscriberInterface
 
         if($request->isXmlHttpRequest() && array_key_exists($this->getIdentifier(), $params))
         {
-            $validData = $this->validate($request, $params);
+            $validData = $this->validate($params);
             $methodParams = $this->getMethodParams($params);
 
             $returnValues = call_user_func_array(array($this->ajaxServices[$validData['name']], $validData['method']), array($methodParams));
@@ -62,31 +68,30 @@ class AjaxListener implements EventSubscriberInterface
         return array(KernelEvents::REQUEST => array(array('onKernelRequest', 5)));
     }
 
-    private function validate(Request $request, array $params)
+    private function validate(array $params)
     {
-        //TODO Frontend exceptions and translations
         if(!array_key_exists($this->getIdentifier(), $params)) {
-            throw new \Exception('exceptions.ajax.no.key', $request->getLocale());
+            throw new \Exception('Ajax key is not defined');
         }
 
         if(!array_key_exists($params[$this->getIdentifier()], $this->ajaxServices)) {
-            throw new \Exception('exceptions.ajax.missing.key', $request->getLocale(), array('AjaxKey' => $params[$this->getIdentifier()]));
+            throw new \Exception('Service does not exist for the given ajax key');
         }
 
         if(!array_key_exists($this->getMethod(), $params)){
-            throw new \Exception('exceptions.ajax.missing.method', $request->getLocale());
+            throw new \Exception('Method is not defined');
         }
 
         $service = $this->ajaxServices[$params[$this->getIdentifier()]];
         if($service instanceof AjaxInterface)
         {
             if(!in_array($params[$this->getMethod()], $service->getSubscribedMethods())){
-                throw new \Exception('exceptions.ajax.no.method', $request->getLocale(), array('MethodName' => $params[$this->getMethod()], 'ClassCode' => $params[$this->getIdentifier()]));
+                throw new \Exception('Method is not subscribed to the entity');
             }
         }
         else
         {
-            throw new \Exception('exceptions.ajax.no.interface', $request->getLocale());
+            throw new \Exception('Service does not implement the ajax interface');
         }
 
         return array('name' => $params[$this->getIdentifier()], 'method' => $params[$this->getMethod()]);

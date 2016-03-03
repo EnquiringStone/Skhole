@@ -19,10 +19,15 @@ use Symfony\Component\Translation\Translator;
 class ExceptionListener implements EventSubscriberInterface
 {
     private $translator;
+    /**
+     * @var \Twig_Environment
+     */
+    private $environment;
 
-    public function __construct(Translator $translator)
+    public function __construct(Translator $translator, \Twig_Environment $environment)
     {
         $this->translator = $translator;
+        $this->environment = $environment;
     }
 
     public function onKernelException(GetResponseForExceptionEvent $event)
@@ -30,8 +35,10 @@ class ExceptionListener implements EventSubscriberInterface
         $exception = $event->getException();
         if($exception instanceof FrontEndException && $event->getRequest()->isXmlHttpRequest())
         {
-            $message = $this->translator->trans($exception->getTranslationCode(), $exception->getParams());
-            $response = new Response(json_encode($message, 412));
+            $message = $this->translator->trans($exception->getTranslationCode(), $exception->getParams(), $exception->getTranslationDomain());
+            $html = $this->environment->render(':errors:ajax.error.message.modal.html.twig', array('errorMessage' => $message));
+
+            $response = new Response(json_encode(array('html' => $html), 400));
             $response->headers->set('Content-Type', 'application/json');
             $event->setResponse($response);
         }
@@ -40,6 +47,6 @@ class ExceptionListener implements EventSubscriberInterface
 
     public static function getSubscribedEvents()
     {
-        return array(KernelEvents::EXCEPTION => array(array('onKernelException', 17)));
+        return array(KernelEvents::EXCEPTION => array(array('onKernelException', 5)));
     }
 }

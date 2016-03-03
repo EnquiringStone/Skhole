@@ -1,0 +1,57 @@
+{% extends 'modal/modal.base.html.twig' %}
+{% block modalBaseHeader %}
+    <h4 class="modal-title centrum" id="{{ modalId }}">
+        <b>
+            {% trans %}Docent toevoegen{% endtrans %}
+        </b>
+    </h4>
+{% endblock %}
+{% block modalBaseContents %}
+    <div class="modal-body {% if teacher is not defined %}clear-modal-teachers-values{% endif %}">
+        <ul class="media-list">
+            <li class="media">
+                <div class="media-body">
+                    <form class="add-teacher-form">
+                        <div class="form-group">
+                            <label class="control-label">{% trans %}Docent{% endtrans %}</label>
+                            <input required="required" type="text" class="form-control data-value" data-value-name="name" placeholder="{% trans %}Naam van de docent{% endtrans %}" {% if teacher is defined and teacher.name is not null %}value="{{ teacher.name }}"{% endif %}>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">{% trans %}Omschrijving{% endtrans %}</label>
+                            <textarea class="form-control data-value" data-value-name="description" placeholder="{% trans %}Schrijf iets korts over deze docent{% endtrans %}" rows="5">{% if teacher is defined and teacher.description is not null %}{{ teacher.description }}{% endif %}</textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">{% trans %}Selecteer afbeelding{% endtrans %}</label>
+                                    <input class="teacher-picture" type="file">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="control-label">{% trans %}Huidige afbeelding{% endtrans %}</label>
+                                <br />
+                                <div class="teacher-picture-preview" data-error="{% trans %}Graag een plaatje selecteren (png, jpg of jpeg){% endtrans %}">
+                                    {% if teacher is defined and teacher.pictureUrl is not null %}
+                                        <img src="{{ asset(teacher.pictureUrl) }}" class="teacher-picture-preview-img">
+                                    {% else %}
+                                        <img src="{{ asset('images/head-wiseguy.png') }}" class="teacher-picture-preview-img">
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <input type="submit" class="hidden submit-teacher-picture" value="upload">
+                    </form>
+                </div>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
+{% block modalBaseFooter %}
+    <div class="modal-footer">
+        <button class="btn btn-default save-teacher" type="button">
+            <span class="glyphicon glyphicon-floppy-disk text-primary" aria-hidden="true"></span>
+            {% trans %}Bewaar & sluiten{% endtrans %}
+        </button>
+        <button class="btn btn-default" data-dismiss="modal" type="button">{% trans %}Annuleren{% endtrans %}</button>
+    </div>
+{% endblock %}

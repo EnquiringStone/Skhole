@@ -1,3 +1,59 @@
 {% block startStandardPage %}
-    
+    <div class="tab-pane fade in active">
+        {% include 'ajax/create-courses/elements/standard.navigation.buttons.html.twig' with {'active': 'start'} %}
+        <hr />
+        <h4 class="centrum text-muted">
+            {% if course.name is not null %}{{ course.name }}
+            {% else %} {% trans %}Hier komt de naam van de cursus te staan, wanneer ingevuld{% endtrans %}
+            {% endif %}
+        </h4>
+        <div class="row">
+            <div class="col-md-6">
+                <h4>
+                    <samp><b>{% trans %}Startpagina{% endtrans %}</b></samp>
+                </h4>
+                <p>
+                    {% trans %}In dit menu kunt een cursus maken. Bezoek het aan de slag menu indien u meer wilt weten over het aanmaken van cursussen. Voordat u begint, raden we u aan om onze richtlijnen en auteursbeleid door te nemen.{% endtrans %}
+                </p>
+                <button class="btn btn-default btn-sm" type="button">
+                    {% trans %}Auteursrecht{% endtrans %}{#TODO auteursrecht link of modal#}
+                </button>
+                <button class="btn btn-default btn-sm" type="button" data-target="#guidelinesModal" data-toggle="modal">
+                    {% trans %}Richtlijnen{% endtrans %}
+                </button>
+                <button class="btn btn-default btn-sm" type="button" data-target="#instructionsCreateCourseModal" data-toggle="modal">
+                    <span class="glyphicon glyphicon-info-sign text-primary" aria-hidden="true"></span>
+                    {% trans %}Cursus maken{% endtrans %}
+                </button>
+                <hr />
+                <div class="thumbnail">
+                    <h4>
+                        {% trans %}Voldaan aan minimale eisen voor publicatie?{% endtrans %}
+                        <span class="glyphicon {% if course.canPublish %}glyphicon-ok text-success{% else %}glyphicon-minus text-danger{% endif %}" aria-hidden="true"></span>
+                    </h4>
+                    <p>
+                        <samp>1.</samp> | <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
+                        {% trans %}Zoekdata{% endtrans %}
+                        <span class="glyphicon
+                            {% if course.isComplete %}glyphicon-ok text-success{% else %}glyphicon-minus text-danger{% endif %}"></span>
+                    </p>
+                    <p>
+                        <samp>2.</samp> | <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                        {% trans %}Cursuskaart{% endtrans %}
+                        <span class="glyphicon
+                            {% if course.courseCard is not null and course.courseCard.isComplete %}glyphicon-ok text-success{% else %}glyphicon-minus text-danger{% endif %}" aria-hidden="true"></span>
+                    </p>
+                    <p>
+                        <samp>3.</samp> | {% trans %}Tenminste 1 cursusitem toegevoegd{% endtrans %}
+                        <span class="glyphicon {% if course.hasCustomPages %}glyphicon-ok text-success{% else %}glyphicon-minus text-danger{% endif %}" aria-hidden="true"></span>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="embed-responsive embed-responsive-4by3">
+                    <iframe class="embed-responsive-item" allowfullscreen="allowfullscreen" src="https://www.youtube.com/embed/AX7r61fyltc"></iframe>{#TODO Replace youtube url#}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

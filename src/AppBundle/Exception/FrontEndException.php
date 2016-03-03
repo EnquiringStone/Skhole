@@ -13,17 +13,20 @@ class FrontEndException extends \Exception
 {
     private $translationCode;
     private $params;
+    private $translationDomain;
 
     /**
      * TranslatableException constructor.
      *
      * @param string $translationCode
      * @param array  $params
+     * @param string $translationDomain
      */
-    public function __construct($translationCode, array $params = array())
+    public function __construct($translationCode, $translationDomain = '', array $params = array())
     {
         $this->params = $params;
         $this->translationCode = $translationCode;
+        $this->translationDomain = $translationDomain;
     }
 
     /**
@@ -40,5 +43,13 @@ class FrontEndException extends \Exception
     public function getParams()
     {
         return $this->params;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTranslationDomain()
+    {
+        return $this->translationDomain;
     }
 }

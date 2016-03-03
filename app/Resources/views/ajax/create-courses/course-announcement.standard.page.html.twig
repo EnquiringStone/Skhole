@@ -1,0 +1,35 @@
+{% block courseAnnouncementStandardPage %}
+    <div class="tab-pane fade in active">
+        {% include 'ajax/create-courses/elements/standard.navigation.buttons.html.twig' with {'active': 'announcement'} %}
+        <hr />
+        <h4 class="centrum">
+            <b>4. |
+                <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
+                {% trans %}Mededelingen{% endtrans %}
+            </b>
+        </h4>
+        <hr />
+        <div class="panel-body-pages">
+            <div class="centrum">
+                <div class="btn-group-vertical" role="group">
+                    {% if announcements.count > 0 %}
+                        {% for announcement in announcements %}
+                            {% include ':ajax/create-courses/announcement:announcement.row.html.twig' with{'announcement': announcement, 'modalId': 'couseAnnouncementModal'~loop.index} %}
+                            {% include ':modal/create-course:course.announcement.modal.html.twig' with{'announcement': announcement, 'modalId': 'couseAnnouncementModal'~loop.index} %}
+                        {% endfor %}
+                    {% else %}
+                        <p>{% trans %}Er zijn nog geen mededelingen voor deze cursus{% endtrans %}</p>
+                    {% endif %}
+                </div>
+            </div>
+            <hr />
+            <div class="centrum">
+                <button class="btn btn-default btn-lg" data-target="#addCourseAnnouncementModal" data-toggle="modal" type="button">
+                    <span class="glyphicon glyphicon-plus text-success" aria-hidden="true"></span>
+                    <b>{% trans %}Nieuwe Mededeling{% endtrans %}</b>
+                </button>
+            </div>
+        </div>
+        {% include ':ajax/create-courses/elements:standard.footer.html.twig' with {'nextView': 'start.standard'}%}
+    </div>
+{% endblock %}

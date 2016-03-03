@@ -1,0 +1,21 @@
+{% extends 'modal/modal.base.html.twig' %}
+{% block modalBaseHeader %}
+    <h4 class="modal-title centrum" id="{{ modalId }}">
+        <b>
+            <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>
+            {% trans %}Er zijn wijzigingen!{% endtrans %}
+        </b>
+    </h4>
+{% endblock %}
+{% block modalBaseContents %}
+    <div class="modal-body">
+        <div class="centrum">
+            <br/>
+            <p class="lead">{% trans %}Op deze pagina zijn wijzingen aangebracht. Wil je deze opslaan?{% endtrans %}</p>
+            <br/>
+            <input type="hidden" value="" class="url">
+        </div>
+    </div>
+{% endblock %}
+{% set modalBaseType = 'choice' %}
+{% block modalBaseYesAction %}save{% endblock %}

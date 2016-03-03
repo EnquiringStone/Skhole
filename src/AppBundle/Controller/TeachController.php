@@ -9,12 +9,15 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Entity\Course\CourseCards;
 use AppBundle\Entity\Course\Courses;
+use AppBundle\Entity\Course\CourseSchedules;
 use AppBundle\Enum\CourseStateEnum;
 use AppBundle\Util\SecurityHelper;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class TeachController extends Controller
 {
@@ -81,8 +84,33 @@ class TeachController extends Controller
      */
     public function editCourseAction($id)
     {
-        //here the magic
-        print_r($id); exit;
+        $course = $this->getDoctrine()->getRepository('AppBundle:Course\Courses')->find($id);
+        if(SecurityHelper::hasEditRights($course, 'userInsertedId', $this->getUser()->getId()))
+        {
+            return $this->render(':teach:course.edit.html.twig', array('course' => $course, 'type' => 'standard', 'name' => 'start'));
+        }
+        throw new AccessDeniedException();
+    }
+
+    /**
+     * @Route("/{_locale}/teach/edit/{id}/{pageType}/{name}/", name="app_teach_edit_course_page_page")
+     */
+    public function editCoursePageAction($id, $pageType, $name)
+    {
+        $course = $this->getDoctrine()->getRepository('AppBundle:Course\Courses')->find($id);
+        if(SecurityHelper::hasEditRights($course, 'userInsertedId', $this->getUser()->getId()))
+        {
+            $viewName = explode('-', $name);
+            $view = '';
+            foreach($viewName as $item)
+            {
+                $view .= ucfirst($item);
+            }
+
+            $function = 'create'.$view.ucfirst($pageType).'Page';
+            return $this->$function($course, $pageType, $name);
+        }
+        throw new AccessDeniedException();
     }
 
     /**
@@ -91,5 +119,64 @@ class TeachController extends Controller
     public function myLearnGroupsAction(Request $request)
     {
         return $this->render('teach/my.learn.groups.html.twig');
+    }
+
+    protected function createCourseInformationStandardPage(Courses $course, $type, $name)
+    {
+        $languages = $this->getDoctrine()->getRepository('AppBundle:Course\CourseLanguages')->findAll();
+        $tags = $this->getDoctrine()->getRepository('AppBundle:Tags')->findAll();
+        $levels = $this->getDoctrine()->getRepository('AppBundle:Course\CourseLevels')->findAll();
+
+        return $this->render(':teach:course.edit.html.twig',
+            array('course' => $course, 'languages' => $languages, 'tags' => $tags, 'type' => $type, 'name' => $name, 'levels' => $levels));
+    }
+
+    protected function createCardIntroductionStandardPage(Courses $course, $type, $name)
+    {
+        $courseCard = $course->getCourseCard();
+        if($courseCard == null)
+        {
+            $courseCard = new CourseCards();
+            $courseCard->setCourse($course);
+            $course->setCourseCard($courseCard);
+
+            $this->getDoctrine()->getManager()->persist($courseCard);
+            $this->getDoctrine()->getManager()->flush();
+        }
+
+        return $this->render(':teach:course.edit.html.twig', array('course' => $course, 'courseCard' => $courseCard, 'type' => $type, 'name' => $name));
+    }
+
+    protected function createCardTeacherStandardPage(Courses $course, $type, $name)
+    {
+        $courseCard = $course->getCourseCard();
+        if($courseCard == null)
+            return $this->redirectToRoute('app_teach_edit_course_page_page', array('id' => $course->getId(), 'pageType' => 'standard', 'name' => 'card-introduction'));
+
+        return $this->render(':teach:course.edit.html.twig', array('course' => $course, 'teachers' => $courseCard->getTeachers(), 'type' => $type, 'name' => $name));
+    }
+
+    protected function createCardScheduleStandardPage(Courses $course, $type, $name)
+    {
+        $schedule = $course->getCourseSchedule();
+
+        return $this->render(':teach:course.edit.html.twig', array('course' => $course, 'schedule' => $schedule, 'type' => $type, 'name' => $name));
+    }
+
+    protected function createCardProviderStandardPage(Courses $course, $type, $name)
+    {
+        $courseCard = $course->getCourseCard();
+        if($courseCard == null)
+            return $this->redirectToRoute('app_teach_edit_course_page_page', array('id' => $course->getId(), 'pageType' => 'standard', 'name' => 'card-introduction'));
+
+        return $this->render(':teach:course.edit.html.twig',
+            array('course' => $course, 'courseCard' => $courseCard, 'providers' => $courseCard->getProviders(), 'type' => $type, 'name' => $name));
+    }
+
+    protected function createCourseAnnouncementStandardPage(Courses $course, $type, $name)
+    {
+        $announcements = $course->getCourseAnnouncements();
+
+        return $this->render(':teach:course.edit.html.twig', array('course' => $course, 'announcements' => $announcements, 'type' => $type, 'name' => $name));
     }
 }

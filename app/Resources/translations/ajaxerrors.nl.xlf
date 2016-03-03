@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.0">
+    <file original="file.ext" source-language="nl" datatype="plaintext">
+        <body>
+            <trans-unit id="1">
+                <source>course.edit.language.required</source>
+                <target>De taal moet zijn ingevuld</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>course.edit.language.not.found</source>
+                <target>De taal %value% bestaat niet. Kies een andere taal</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>course.edit.name.required</source>
+                <target>De naam moet zijn ingevuld</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>course.edit.name.illegal.characters</source>
+                <target>De naam bevat illegale characters. Je mag alleen characters van het alfabet of nummers gebruiken</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>course.edit.name.too.long</source>
+                <target>De naam is te lang</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>course.edit.level.not.found</source>
+                <target>Het niveau %level% kan niet worden gevonden. Kies een ander niveau</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>course.edit.tag.unacceptable.word</source>
+                <target>De ingevulde trefwoord %tag% kan echt niet. Graag deze verwijderen</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>course.edit.tag.too.long</source>
+                <target>De ingevulde trefwoord is te lang. Trefwoorden mogen 100 characters lang zijn</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>course.edit.estimated.duration.contains.characters</source>
+                <target>De cursusduur mag alleen nummers bevatten. Het mag ook geen comma's of punten bevatten</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>course.edit.estimated.duration.too.long</source>
+                <target>De cursusduur moet onder de 10.000 minuten liggen</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>course.edit.difficulty.contains.characters</source>
+                <target>De moeilijkheidsgraad mag alleen nummers bevatten</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>course.edit.difficulty.too.long</source>
+                <target>De moeilijkheidsgraad kan niet meer dan 5 sterren zijn</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>course.edit.description.too.long</source>
+                <target>De omschrijving is te lang. Je mag tot 15.000 characters gebruiken. Momenteel heb je %size% characters</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>course.edit.tag.empty</source>
+                <target>Trefwoorden mogen niet leeg zijn</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>course.edit.estimated.duration.minus</source>
+                <target>De geschatte cursusduur moet groter dan nul zijn</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>course.edit.difficulty.minus</source>
+                <target>De moeilijkheidsgraad kan niet minder dan nul sterren zijn</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>course.edit.card.youtube.url.or.description</source>
+                <target>Er moet of een video of een introductietekst zijn opgegeven. Het mag ook allebei maar ze mogen niet beide leeg zijn.</target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source>course.edit.card.youtube.url</source>
+                <target>De opgegeven youtube url voldoet niet aan de regels. Zorg ervoor dat de url er als volgt uitziet: https://www.youtube.com/watch?v=ftLIR5AjqMs of https://youtu.be/ftLIR5AjqMs. De "http(s)" en "www" zijn optioneel</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>course.edit.card.title.empty</source>
+                <target>De titel moet zijn ingevuld</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>course.edit.card.illegal.characters</source>
+                <target>De titel bevat illegale characters. Je mag alleen letters van het alfabet en nummers gebruiken</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>course.edit.card.too.long</source>
+                <target>De titel is te lang</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>course.edit.description.contains.coding</source>
+                <target>De characters &lt; en &gt; mogen niet gebruikt worden</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

@@ -1034,4 +1034,21 @@ class Courses implements UserStatisticsInterface, UserReportInterface, BasicDeta
     {
         return $this->removed;
     }
+
+    public function isComplete()
+    {
+        //TODO Implement
+        return false;
+    }
+
+    public function canPublish()
+    {
+        //TODO Implement
+        return false;
+    }
+
+    public function hasCustomPages()
+    {
+        return $this->courseExercises->count() > 0 || $this->courseInstructions->count() > 0;
+    }
 }

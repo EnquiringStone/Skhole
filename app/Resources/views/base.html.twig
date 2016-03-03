@@ -24,15 +24,18 @@
         {% block prescripts %}{% endblock %}
     </head>
     <body>
-    {% include 'elements/header.html.twig' %}
-    {% include 'elements/navigation.menu.html.twig' %}
-    {% include "elements/#{menu}.navigation.menu.html.twig" %}
-    {% block body %}{% endblock %}
-    {% include 'elements/footer.html.twig' %}
+        {% include 'elements/header.html.twig' %}
+        <div class="container">
+            {% include 'elements/navigation.menu.html.twig' %}
+            {% include "elements/#{menu}.navigation.menu.html.twig" %}
+            {% block body %}{% endblock %}
+        </div>
+        {% include 'elements/footer.html.twig' %}
 
-    {% block modals %}{% endblock %}
-    {% include ':modal/elements:login.modal.html.twig' with {'modalId': 'loginModal'} %}
-    {% block postscripts %}{% endblock %}
+        <div class="ajax-error-modal"></div>
+        {% block modals %}{% endblock %}
+        {% include ':modal/elements:login.modal.html.twig' with {'modalId': 'loginModal'} %}
+        {% block postscripts %}{% endblock %}
     </body>
     </html>
 {% endblock %}

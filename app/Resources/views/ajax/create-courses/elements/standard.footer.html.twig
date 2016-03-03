@@ -1,0 +1,12 @@
+{% block standardFooter %}
+    <div class="panel-footer panel-default">
+        <div class="pull-right">
+            <button class="btn btn-default save-view" type="button" data-next-view="{{ nextView }}">
+                <span class="glyphicon glyphicon-floppy-disk text-primary" aria-hidden="true"></span>
+                {% trans %}Bewaar{% endtrans %}
+            </button>
+        </div>
+        <br />
+        <br />
+    </div>
+{% endblock %}

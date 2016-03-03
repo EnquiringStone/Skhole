@@ -1,0 +1,21 @@
+{% extends 'modal/modal.base.html.twig' %}
+{% set modalId = 'ajaxErrorMessageModal' %}
+{% block modalBaseHeader %}
+    <h4 class="modal-title centrum" id="{{ modalId }}">
+        <b class="text-danger">
+            <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>
+            {% trans %}Foutmelding!{% endtrans %}
+        </b>
+    </h4>
+{% endblock %}
+{% block modalBaseContents %}
+    <div class="modal-body">
+        <div class="centrum">
+            <br/>
+            <p class="lead text-exception">{{ errorMessage|trans }}</p>
+            <br/>
+        </div>
+    </div>
+{% endblock %}
+{% set modalBaseType = 'close' %}
+{% block closeButtonText %}{% trans %}Sluiten{% endtrans %}{% endblock %}

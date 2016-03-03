@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% block title %}{% trans %}Aanmaken cursus{% endtrans %}{% endblock %}
+{% block prescripts %}
+    <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}">
+    <script src="{{ asset('js/select2.min.js') }}"></script>
+    <script src="{{ asset('js/create-courses/course.create.js') }}"></script>
+{% endblock %}
+{% block body %}
+    {% include ':elements:create.course.navigation.menu.html.twig' %}
+    <div class="ajax-body" data-name="{{ name }}" data-url="{{ url('app_home_ajax_page') }}" data-id="{{ course.id }}" data-picture-upload-path="{{ url('app_secure_ajax_upload_picture') }}">
+        <div class="ajax-header">
+            {% include ':ajax/create-courses/elements:tab.header.html.twig' with {'active': 'standard'} %}
+        </div>
+
+        <div class="ajax-contents">
+            {% include ':ajax/create-courses:'~name~'.'~type~'.page.html.twig' %}
+        </div>
+    </div>
+{% endblock %}
+{% block modals %}
+    {% if name == 'card-teacher' %}
+        {% include ':modal/create-course:card.add.teacher.modal.html.twig' with {'modalId': 'addTeacherModal'} %}
+    {% endif %}
+    {% include ':modal/create-course/confirmations:not.saved.confirmation.modal.html.twig' with {'modalId': 'notSaveConfirmationModal'} %}
+{% endblock %}
+{% block postscripts %}
+    {% if name == 'course-information' %}
+        <script>
+            var tagsSelect = $('#select2-tags');
+            {% for tag in tags %}
+                var option = $('<option></option>').attr('selected', true).text('{{ tag.tag }}').val('{{ tag.tag }}');
+                option.appendTo(tagsSelect);
+            {% endfor %}
+            tagsSelect.trigger('change');
+            hasChanged = false;
+        </script>
+    {% endif %}
+{% endblock %}
+
+{% set menu = 'teach' %}
+{% set subMenu = 'myCourses' %}

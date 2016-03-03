@@ -1,0 +1,94 @@
+{% block courseInformationStandardPage %}
+    <div class="tab-pane fade in active">
+        {% include 'ajax/create-courses/elements/standard.navigation.buttons.html.twig' with {'active': 'search'} %}
+        <hr />
+        <h4 class="centrum">
+            <b>
+                1. |
+                <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
+                {% trans %}Zoekdata{% endtrans %}
+            </b>
+        </h4>
+        <hr />
+        <form autocomplete="off" class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{% trans %}Cursusnaam{% endtrans %}</label>
+                <div class="col-sm-10">
+                    <input class="form-control data-value" data-entity="Courses" data-attribute="name" data-value-name="name" data-item="input"
+                           placeholder="{% trans %}Naam van de cursus{% endtrans %}" value="{% if course.name is not null %}{{ course.name }}{% endif %}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{% trans %}Trefwoorden{% endtrans %}</label>
+                <div class="col-sm-10">
+                    <select id="select2-tags" data-entity="Courses" data-attribute="tags" data-value-name="tags" class="form-control data-value" data-item="select" multiple="" aria-hidden="true">
+                        {% for tag in tags %}
+                            {% if not course.tags.contains(tag) %}
+                                <option value="{{ tag.tag }}">{{ tag.tag }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{% trans %}Cursusomschrijving{% endtrans %}</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control data-value" data-entity="Courses" data-attribute="description" data-value-name="description" data-item="input"
+                              placeholder="{% trans %}Cursusomschrijving van maximaal 250 woorden{% endtrans %}">{% if course.description is not null %}{{ course.description }}{% endif %}</textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{% trans %}Taal{% endtrans %}</label>
+                <div class="col-sm-10">
+                    <select class="form-control data-value" data-item="select" data-value-name="language" data-entity="Courses" data-attribute="language">
+                        <option {% if course.language is null %}selected="selected"{% endif %} value="">{% trans %}Niet van toepassing{% endtrans %}</option>
+                        {% for language in languages %}
+                            <option value="{{ language.languageCode }}" {% if course.language is not null and course.language == language %}selected="selected"{% endif %}>{{ language.language|trans({}, 'db') }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{% trans %}Niveau{% endtrans %}</label>
+                <div class="col-sm-10">
+                    <select class="form-control data-value" data-item="select" data-value-name="level">
+                        <option {% if course.level is null %}selected="selected"{% endif %} value="">{% trans %}Niet van toepassing{% endtrans %}</option>
+                        {% for level in levels %}
+                            <option value="{{ level.levelShort }}" {% if course.level is not null and course.level.id == level.id %}selected="selected"{% endif %}>{{ level.levelLong|trans({}, 'db') }}</option>
+                        {% endfor %}
+                        {# TODO Create table levels, link many-to-many to course#}
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{% trans %}Moeilijkheidsgraad{% endtrans %}</label>
+                <div class="col-sm-10">
+                    <div class="starrr clickable data-value" data-value-name="difficulty" data-item="starrr" data-difficulty="{% if course.difficulty is not null %}{{ course.difficulty }}{% else %}0{% endif %}"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{% trans %}Geschatte cursusduur{% endtrans %}</label>
+                <div class="col-sm-10">
+                    <input class="form-control data-value" data-value-name="estimatedDuration" data-item="input" placeholder="{% trans %}Schatting in minuten{% endtrans %}" {% if course.estimatedDuration is not null %}value="{{ course.estimatedDuration }}"{% endif %} type="number">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{% trans %}Aanbieder{% endtrans %}</label>
+                <div class="col-sm-10">
+                    <span class="form-control unclickable">
+                        {% if course.courseCard is not null and course.courseCard.providers.count > 0 %}
+                            {% for provider in course.courseCard.providers %}
+                                {{ provider.name }}{% if not loop.last %}, {% endif %}
+                            {% endfor %}
+                        {% else %}
+                            {% trans %}De aanbieder kunt u veranderen in 2.2 Voorkennis en aanbieder{% endtrans %}
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+        </form>
+        {% include ':ajax/create-courses/elements:standard.footer.html.twig'
+            with {
+                'nextView': path('app_teach_edit_course_page_page', {'id': course.id, 'pageType': 'standard', 'name': 'card-introduction'})}%}
+    </div>
+{% endblock %}

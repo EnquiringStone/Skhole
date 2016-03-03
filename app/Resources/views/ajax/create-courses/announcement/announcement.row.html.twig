@@ -1,0 +1,21 @@
+{% block announcementRow %}
+    <ul class="media-list">
+        <li class="media">
+            <div class="media-body">
+                <div class="btn-group-vertical pull-right">
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#{{ modalId }}">
+                        <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
+                        {% trans %}Bekijk{% endtrans %}
+                    </button>
+                    <button type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                        {% trans %}Mededeling{% endtrans %} {#TODO Delete confirmation#}
+                    </button>
+                </div>
+                <h4>{{ announcement.title }}</h4>
+                <p>{% if announcement.contents|length > 150 %}{{ announcement.contents|slice(0, 150) ~ '...' }}{% else %}{{ announcement.contents }}{% endif %}</p>
+                <br />
+            </div>
+        </li>
+    </ul>
+{% endblock %}

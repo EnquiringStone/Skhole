@@ -16,7 +16,7 @@
                         {% endif %}
                         {% if modalBaseType == 'choice' %}
                             <button class="btn btn-default btn-lg modal-yes" data-id="{% block modalBaseYesId %}{% endblock %}" data-action="{% block modalBaseYesAction %}{% endblock %}">{% trans %}Ja{% endtrans %}</button>
-                            <button class="btn btn-default btn-lg" data-dismiss="modal">{% trans %}Nee{% endtrans %}</button>
+                            <button class="btn btn-default btn-lg modal-no" data-dismiss="modal">{% trans %}Nee{% endtrans %}</button>
                         {% endif %}
                     </div>
                 {% endblock %}
