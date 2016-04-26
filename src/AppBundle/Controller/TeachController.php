@@ -124,11 +124,11 @@ class TeachController extends Controller
     }
 
     /**
-     * @Route("/{_locale}/teach/my-learn-groups/", name="app_teach_my_learn_groups")
+     * @Route("/{_locale}/teach/progression-course-member/", name="app_teach_progression_course_members")
      */
-    public function myLearnGroupsAction(Request $request)
+    public function progressionCourseMembers(Request $request)
     {
-        return $this->render('teach/my.learn.groups.html.twig');
+        return $this->render(':teach:progression.course.members.html.twig');
     }
 
     protected function createCourseInformationStandardPage(Courses $course, $type, $name)

@@ -8,8 +8,8 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#{#TODO #}">{% trans %}Veel gestelde vragen{% endtrans %}</a></li>
-                        <li><a href="#{#TODO #}">{% trans %}Auteursrecht{% endtrans %}</a></li>
+                        <li><a href="#{#TODO #}">{% trans %}Zoeken{% endtrans %}</a></li>
+                        <li><a href="#{#TODO #}">{% trans %}Richtlijnen{% endtrans %}</a></li>
                     </ul>
                 </div>
             </div>
@@ -22,16 +22,10 @@
                         </button>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="{{ path('app_home_dashboard_pages_page', {'page': 'profile'}) }}">{% trans %}Profiel{% endtrans %}</a></li>
-                            <li class="divider"></li>
                             <li><a href="#">{% trans %}Cursusmandje{% endtrans %}</a></li>
                             <li><a href="#">{% trans %}Mijn cursussen{% endtrans %}</a></li>
-                            <li><a href="#">{% trans %}Mijn leergroepen{% endtrans %}</a></li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="#" data-toggle="modal" data-target="#{#TODO Add course code#}">
-                                    {% trans %}Cususcode invoeren{% endtrans %}
-                                </a>
-                            </li>
+                            <li><a href="#">{% trans %}Voortgang cursisten{% endtrans %}</a></li>
+                            <li><a href="#">{% trans %}Aan de slag{% endtrans %}</a></li>
                             <li class="divider"></li>
                             <li><a href="{{ url('logout') }}">{% trans %}Uitloggen{% endtrans %}</a></li>
                         </ul>
