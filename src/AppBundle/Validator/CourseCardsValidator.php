@@ -14,8 +14,6 @@ use AppBundle\Util\ValidatorHelper;
 
 class CourseCardsValidator extends Validator
 {
-
-
     public function validateDescription($description)
     {
         if(ValidatorHelper::containsCodingCharacters($description))

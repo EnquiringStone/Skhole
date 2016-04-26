@@ -101,8 +101,7 @@ class CourseCards implements BasicDetailsInterface
 
     public function isComplete()
     {
-        //TODO implement
-        return false;
+        return ($this->getYoutubeUrl() != null || $this->getDescription() != null) && $this->getName() != null;
     }
     /**
      * Constructor

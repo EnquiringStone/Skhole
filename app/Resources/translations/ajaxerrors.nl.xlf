@@ -90,6 +90,82 @@
                 <source>course.edit.description.contains.coding</source>
                 <target>De characters &lt; en &gt; mogen niet gebruikt worden</target>
             </trans-unit>
+            <trans-unit id="23">
+                <source>course.edit.picture.size</source>
+                <target>Het bestand is groter dan 3 MB</target>
+            </trans-unit>
+            <trans-unit id="24">
+                <source>course.edit.picture.invalid.extension</source>
+                <target>Dit bestand mag niet. Er mag alleen %extensions% bestanden worden geupload</target>
+            </trans-unit>
+            <trans-unit id="25">
+                <source>course.edit.picture.unrecognized</source>
+                <target>Het bestand wordt niet herkend. Probeer een ander plaatje</target>
+            </trans-unit>
+            <trans-unit id="26">
+                <source>course.edit.contents.empty</source>
+                <target>De inhoud mag niet leeg zijn</target>
+            </trans-unit>
+            <trans-unit id="27">
+                <source>course.edit.contents.too.long</source>
+                <target>De inhoud bevat meer dan 15000 characters. Momenteel heb je %size% characters</target>
+            </trans-unit>
+            <trans-unit id="28">
+                <source>course.edit.question.empty</source>
+                <target>De vraag mag niet leeg zijn</target>
+            </trans-unit>
+            <trans-unit id="29">
+                <source>course.edit.question.too.long</source>
+                <target>De vraag is groter dan 2500 characters</target>
+            </trans-unit>
+            <trans-unit id="30">
+                <source>course.edit.question.contains.coding</source>
+                <target>De vraag bevat de characters &lt; en &gt;. Deze mogen niet worden gebruikt</target>
+            </trans-unit>
+            <trans-unit id="31">
+                <source>course.edit.question.answer.indication.empty</source>
+                <target>De antwoord indicatie mag niet leeg zijn</target>
+            </trans-unit>
+            <trans-unit id="32">
+                <source>course.edit.question.answer.indication.too.long</source>
+                <target>De antwoord indicatie bevat meer dan 15000 characters. Momenteel heb je %size% characters</target>
+            </trans-unit>
+            <trans-unit id="33">
+                <source>course.edit.question.answer.indication.contains.coding</source>
+                <target>De characters &lt; en &gt; mogen niet gebruikt worden</target>
+            </trans-unit>
+            <trans-unit id="34">
+                <source>course.edit.answer.empty</source>
+                <target>Het antwoord mag niet leeg zijn</target>
+            </trans-unit>
+            <trans-unit id="35">
+                <source>course.edit.answer.too.long</source>
+                <target>Het antwoord is groter dan 250 characters</target>
+            </trans-unit>
+            <trans-unit id="36">
+                <source>course.edit.answer.contains.coding</source>
+                <target>Het antwoord mag de characters &lt; en &gt; niet bevatten</target>
+            </trans-unit>
+            <trans-unit id="37">
+                <source>course.edit.answer.too.few</source>
+                <target>Er moeten minstens twee ingevulde antwoorden zijn opgegeven</target>
+            </trans-unit>
+            <trans-unit id="38">
+                <source>course.edit.exercise.too.many</source>
+                <target>1 opdrachtpagina mag maximaal 10 opdrachten bevatten. Om meerdere opdrachten aan te maken, maak een nieuwe opdrachtpagina</target>
+            </trans-unit>
+            <trans-unit id="39">
+                <source>course.edit.answer.no.correct</source>
+                <target>Er moet minimaal 1 goed antwoord zijn</target>
+            </trans-unit>
+            <trans-unit id="40">
+                <source>course.edit.publish</source>
+                <target>Deze cursus mag nog niet worden gepubliceerd</target>
+            </trans-unit>
+            <trans-unit id="41">
+                <source>course.edit.publish.no.questions</source>
+                <target>De opdrachtpagina %1 bevat geen opdrachten. Verwijder deze pagina of zorg ervoor dat er minstens 1 vraag wordt gesteld</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

@@ -23,9 +23,9 @@
         <div class="thumbnail">
             <div class="row">
                 <div class="col-md-6">
-                    {% if course.courseCard.youtubeUrl is not null %}
+                    {% if course.courseCard.youtubeEmbedUrl is not null %}
                         <div class="embed-responsive embed-responsive-4by3">
-                            <iframe class="embed-responsive-item" allowfullscreen="" src="{{ course.courseCard.youtubeUrl }}"></iframe>
+                            <iframe class="embed-responsive-item" allowfullscreen="" src="{{ course.courseCard.youtubeEmbedUrl }}"></iframe>
                         </div>
                     {% else %}
                         <p>{% trans %}Geen video gevonden{% endtrans %}</p>
@@ -62,7 +62,7 @@
             {% for teacher in course.courseCard.teachers %}
                 <div class="row">
                     <div class="col-md-1">
-                        <img src="{{ teacher.pictureUrl is null ? asset('images/head-wiseguy.png') : teacher.pictureUrl }}" class="media-object">
+                        <img src="{{ teacher.pictureUrl is null ? asset('images/head-wiseguy.png') : asset(teacher.pictureUrl) }}" class="media-object teacher-row-picture">
                     </div>
                     <div class="col-md-11">
                         <h4>{{ teacher.name }}</h4>

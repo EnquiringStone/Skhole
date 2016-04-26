@@ -8,9 +8,11 @@
 
 namespace AppBundle\Entity\Course;
 
+use AppBundle\Exception\FrontEndException;
 use AppBundle\Interfaces\Entity\BasicDetailsInterface;
 use AppBundle\Interfaces\Entity\UserReportInterface;
 use AppBundle\Interfaces\Entity\UserStatisticsInterface;
+use AppBundle\Util\ValidatorHelper;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -161,14 +163,10 @@ class Courses implements UserStatisticsInterface, UserReportInterface, BasicDeta
     private $courseViews;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Course\CourseExercises", mappedBy="course", fetch="EXTRA_LAZY")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Course\CoursePages", mappedBy="course")
+     * @ORM\OrderBy({"pageOrder" = "ASC"})
      */
-    private $courseExercises;
-
-    /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Course\CourseInstructions", mappedBy="course", fetch="EXTRA_LAZY")
-     */
-    private $courseInstructions;
+    private $coursePages;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Course\CourseStates")
@@ -197,6 +195,37 @@ class Courses implements UserStatisticsInterface, UserReportInterface, BasicDeta
      * )
      */
     private $tags;
+
+    public function isComplete()
+    {
+        return !ValidatorHelper::isStringNullOrEmpty($this->getName()) && !ValidatorHelper::isStringNullOrEmpty($this->getDescription())
+            && $this->getLanguage() != null && $this->getLevel() != null && $this->getDifficulty() > 0;
+    }
+
+    public function canPublish()
+    {
+        if($this->getCourseCard() != null)
+            return $this->isComplete() && $this->hasCustomPages() && $this->getCourseCard()->isComplete();
+
+        return false;
+    }
+
+    public function hasCustomPages()
+    {
+        return $this->coursePages->count() > 0;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->courseAnnouncements = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->courseResources = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->courseViews = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->coursePages = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->courseReviews = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -521,6 +550,30 @@ class Courses implements UserStatisticsInterface, UserReportInterface, BasicDeta
     }
 
     /**
+     * Set removed
+     *
+     * @param boolean $removed
+     *
+     * @return Courses
+     */
+    public function setRemoved($removed)
+    {
+        $this->removed = $removed;
+
+        return $this;
+    }
+
+    /**
+     * Get removed
+     *
+     * @return boolean
+     */
+    public function getRemoved()
+    {
+        return $this->removed;
+    }
+
+    /**
      * Set averageContentRating
      *
      * @param string $averageContentRating
@@ -542,6 +595,54 @@ class Courses implements UserStatisticsInterface, UserReportInterface, BasicDeta
     public function getAverageContentRating()
     {
         return $this->averageContentRating;
+    }
+
+    /**
+     * Set views
+     *
+     * @param integer $views
+     *
+     * @return Courses
+     */
+    public function setViews($views)
+    {
+        $this->views = $views;
+
+        return $this;
+    }
+
+    /**
+     * Get views
+     *
+     * @return integer
+     */
+    public function getViews()
+    {
+        return $this->views;
+    }
+
+    /**
+     * Set pages
+     *
+     * @param integer $pages
+     *
+     * @return Courses
+     */
+    public function setPages($pages)
+    {
+        $this->pages = $pages;
+
+        return $this;
+    }
+
+    /**
+     * Get pages
+     *
+     * @return integer
+     */
+    public function getPages()
+    {
+        return $this->pages;
     }
 
     /**
@@ -757,64 +858,6 @@ class Courses implements UserStatisticsInterface, UserReportInterface, BasicDeta
     }
 
     /**
-     * Set state
-     *
-     * @param \AppBundle\Entity\Course\CourseStates $state
-     *
-     * @return Courses
-     */
-    public function setState(\AppBundle\Entity\Course\CourseStates $state = null)
-    {
-        $this->state = $state;
-
-        return $this;
-    }
-
-    /**
-     * Get state
-     *
-     * @return \AppBundle\Entity\Course\CourseStates
-     */
-    public function getState()
-    {
-        return $this->state;
-    }
-
-    /**
-     * Add tag
-     *
-     * @param \AppBundle\Entity\Tags $tag
-     *
-     * @return Courses
-     */
-    public function addTag(\AppBundle\Entity\Tags $tag)
-    {
-        $this->tags[] = $tag;
-
-        return $this;
-    }
-
-    /**
-     * Remove tag
-     *
-     * @param \AppBundle\Entity\Tags $tag
-     */
-    public function removeTag(\AppBundle\Entity\Tags $tag)
-    {
-        $this->tags->removeElement($tag);
-    }
-
-    /**
-     * Get tags
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getTags()
-    {
-        return $this->tags;
-    }
-
-    /**
      * Add courseView
      *
      * @param \AppBundle\Entity\Course\CourseViews $courseView
@@ -849,118 +892,61 @@ class Courses implements UserStatisticsInterface, UserReportInterface, BasicDeta
     }
 
     /**
-     * Add courseExercise
+     * Add coursePage
      *
-     * @param \AppBundle\Entity\Course\CourseExercises $courseExercise
+     * @param \AppBundle\Entity\Course\CoursePages $coursePage
      *
      * @return Courses
      */
-    public function addCourseExercise(\AppBundle\Entity\Course\CourseExercises $courseExercise)
+    public function addCoursePage(\AppBundle\Entity\Course\CoursePages $coursePage)
     {
-        $this->courseExercises[] = $courseExercise;
+        $this->coursePages[] = $coursePage;
 
         return $this;
     }
 
     /**
-     * Remove courseExercise
+     * Remove coursePage
      *
-     * @param \AppBundle\Entity\Course\CourseExercises $courseExercise
+     * @param \AppBundle\Entity\Course\CoursePages $coursePage
      */
-    public function removeCourseExercise(\AppBundle\Entity\Course\CourseExercises $courseExercise)
+    public function removeCoursePage(\AppBundle\Entity\Course\CoursePages $coursePage)
     {
-        $this->courseExercises->removeElement($courseExercise);
+        $this->coursePages->removeElement($coursePage);
     }
 
     /**
-     * Get courseExercises
+     * Get coursePages
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getCourseExercises()
+    public function getCoursePages()
     {
-        return $this->courseExercises;
+        return $this->coursePages;
     }
 
     /**
-     * Add courseInstruction
+     * Set state
      *
-     * @param \AppBundle\Entity\Course\CourseInstructions $courseInstruction
+     * @param \AppBundle\Entity\Course\CourseStates $state
      *
      * @return Courses
      */
-    public function addCourseInstruction(\AppBundle\Entity\Course\CourseInstructions $courseInstruction)
+    public function setState(\AppBundle\Entity\Course\CourseStates $state = null)
     {
-        $this->courseInstructions[] = $courseInstruction;
+        $this->state = $state;
 
         return $this;
     }
 
     /**
-     * Remove courseInstruction
+     * Get state
      *
-     * @param \AppBundle\Entity\Course\CourseInstructions $courseInstruction
+     * @return \AppBundle\Entity\Course\CourseStates
      */
-    public function removeCourseInstruction(\AppBundle\Entity\Course\CourseInstructions $courseInstruction)
+    public function getState()
     {
-        $this->courseInstructions->removeElement($courseInstruction);
-    }
-
-    /**
-     * Get courseInstructions
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCourseInstructions()
-    {
-        return $this->courseInstructions;
-    }
-
-    /**
-     * Set views
-     *
-     * @param integer $views
-     *
-     * @return Courses
-     */
-    public function setViews($views)
-    {
-        $this->views = $views;
-
-        return $this;
-    }
-
-    /**
-     * Get views
-     *
-     * @return integer
-     */
-    public function getViews()
-    {
-        return $this->views;
-    }
-
-    /**
-     * Set pages
-     *
-     * @param integer $pages
-     * @return Courses
-     */
-    public function setPages($pages)
-    {
-        $this->pages = $pages;
-
-        return $this;
-    }
-
-    /**
-     * Get pages
-     *
-     * @return integer
-     */
-    public function getPages()
-    {
-        return $this->pages;
+        return $this->state;
     }
 
     /**
@@ -996,59 +982,38 @@ class Courses implements UserStatisticsInterface, UserReportInterface, BasicDeta
     {
         return $this->courseReviews;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->courseAnnouncements = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->courseResources = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->courseViews = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->courseExercises = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->courseInstructions = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->courseReviews = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
 
     /**
-     * Set removed
+     * Add tag
      *
-     * @param boolean $removed
+     * @param \AppBundle\Entity\Tags $tag
      *
      * @return Courses
      */
-    public function setRemoved($removed)
+    public function addTag(\AppBundle\Entity\Tags $tag)
     {
-        $this->removed = $removed;
+        $this->tags[] = $tag;
 
         return $this;
     }
 
     /**
-     * Get removed
+     * Remove tag
      *
-     * @return boolean
+     * @param \AppBundle\Entity\Tags $tag
      */
-    public function getRemoved()
+    public function removeTag(\AppBundle\Entity\Tags $tag)
     {
-        return $this->removed;
+        $this->tags->removeElement($tag);
     }
 
-    public function isComplete()
+    /**
+     * Get tags
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTags()
     {
-        //TODO Implement
-        return false;
-    }
-
-    public function canPublish()
-    {
-        //TODO Implement
-        return false;
-    }
-
-    public function hasCustomPages()
-    {
-        return $this->courseExercises->count() > 0 || $this->courseInstructions->count() > 0;
+        return $this->tags;
     }
 }

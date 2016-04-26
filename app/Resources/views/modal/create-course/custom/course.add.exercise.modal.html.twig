@@ -1,0 +1,27 @@
+{% extends 'modal/modal.base.html.twig' %}
+{% block modalBaseHeader %}
+    <h4 class="modal-title centrum" id="{{ modalId }}">
+        <b>
+            <span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span>
+            {% trans %}Opdrachtpagina toevoegen{% endtrans %}
+        </b>
+    </h4>
+{% endblock %}
+{% block modalBaseContents %}
+    <div class="modal-body">
+        <hr />
+        <div class="centrum">
+            <p>{% trans %}Hoe gaat de opdrachtpagina heten?{% endtrans %}</p>
+            <div class="form-group">
+                <input required="required" type="text" class="form-control title-exercise-page" placeholder="{% trans %}Titel van de pagina{% endtrans %}" value="">
+            </div>
+            <button class="btn btn-default btn-lg course-add-custom-questions" type="button">
+                <span class="glyphicon glyphicon-plus text-success" aria-hidden="true"></span>
+                {% trans %}Opdracht{% endtrans %}
+            </button>
+        </div>
+    </div>
+{% endblock %}
+{% set modalBaseType = 'close' %}
+{% block closeButtonText %}{% trans %}Sluiten{% endtrans %}{% endblock %}
+{% set modalId = 'courseAddExerciseModal' %}

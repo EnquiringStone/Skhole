@@ -13,3 +13,4 @@
 /app/phpunit.xml
 /.idea/*
 *.php~
+/web/pictures/*

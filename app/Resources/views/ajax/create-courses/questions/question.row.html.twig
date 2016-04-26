@@ -1,0 +1,12 @@
+{% block questionRow %}
+    {% for question in questions %}
+        <li class="list-group-item" data-question-id="{{ question.id }}" data-original-order="{{ question.questionOrder }}">
+            <button data-target="#addMultipleChoiceModal{{ loop.index }}" data-toggle="modal" aria-hidden="true">
+                {% trans %}Pagina{% endtrans %} <span class="page-overview-order">{{ question.questionOrder }}</span>
+                {{ question.question|length > 200 ? question.question|slice(0, 200)~'...' : question.question }}
+            </button>
+            <span class="glyphicon glyphicon-trash clickable pull-right" data-target="#removeQuestionModal{{ loop.index }}" data-toggle="modal" aria-hidden="true"></span>
+        </li>
+        {% include ':modal/create-course/questions:questions.add.multiple.choice.modal.html.twig' with {'modalId': 'addMultipleChoiceModal'~ loop.index, 'question': question} %}
+    {% endfor %}
+{% endblock %}

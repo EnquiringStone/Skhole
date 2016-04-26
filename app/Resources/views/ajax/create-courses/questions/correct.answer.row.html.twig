@@ -1,0 +1,10 @@
+{% block correctAnswerRow %}
+    <label>
+        <input class="data-value" type="checkbox"
+               data-answer-id="{% if answerId is defined %}{{ answerId }}{% else %}-1{% endif %}"
+               data-answer-order="{{ answerOrder }}"
+               data-value-name="correctAnswers"
+               {% if isCorrect is defined and isCorrect %}checked{% endif %}>
+        {{ answerOrder|orderToAlphabet(true) }}
+    </label>
+{% endblock %}

@@ -56,7 +56,6 @@
                         {% for level in levels %}
                             <option value="{{ level.levelShort }}" {% if course.level is not null and course.level.id == level.id %}selected="selected"{% endif %}>{{ level.levelLong|trans({}, 'db') }}</option>
                         {% endfor %}
-                        {# TODO Create table levels, link many-to-many to course#}
                     </select>
                 </div>
             </div>

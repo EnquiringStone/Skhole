@@ -19,6 +19,19 @@ use Doctrine\ORM\EntityRepository;
 
 class CoursesRepository extends EntityRepository implements PageControlsInterface
 {
+    public function getHighestOrder($courseId)
+    {
+        $query = $this->createQueryBuilder('a')
+            ->leftJoin('a.coursePages', 'p')
+            ->select('MAX(p.pageOrder) as highestCount')
+            ->where('a.id = :courseId')
+            ->setParameter('courseId', $courseId);
+
+        $result = $query->getQuery()->execute()[0];
+
+        return intval($result['highestCount']);
+    }
+
     public function getCountByUserId($userId)
     {
         return $this->getCountByCriteria(array('userInsertedId' => $userId));

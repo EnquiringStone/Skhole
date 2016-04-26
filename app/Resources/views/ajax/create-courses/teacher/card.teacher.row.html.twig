@@ -1,8 +1,8 @@
 {% block cardTeacherRow %}
     <ul class="media-list">
-        <li class="media">
-            <div class="pull-left">
-                <img src="{% if teacher.pictureUrl is not null %}{{ asset(teacher.pictureUrl) }}{% else %}{{ asset('images/head-wiseguy.png') }}{% endif %}" class="media-object">
+        <li class="media" data-teacher-id="{{ teacher.id }}">
+            <div class="pull-left teacher-picture-row-image">
+                <img src="{% if teacher.pictureUrl is not null %}{{ asset(teacher.pictureUrl) }}{% else %}{{ asset('images/head-wiseguy.png') }}{% endif %}" class="media-object teacher-row-picture">
             </div>
             <div class="media-body">
                 <div class="btn-group-vertical pull-right">
@@ -10,13 +10,13 @@
                         <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                         {% trans %}Bewerk{% endtrans %}
                     </button>
-                    <button type="button" class="btn btn-default">
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#removeTeacherModal{{ index }}">
                         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                        {% trans %}Docent{% endtrans %} {#TODO Delete confirmation#}
+                        {% trans %}Docent{% endtrans %}
                     </button>
                 </div>
-                <h4>{{ teacher.name|default('-') }}</h4>
-                <p>{{ teacher.description|default('-') }}</p>
+                <h4 class="teacher-name">{{ teacher.name|default('-') }}</h4>
+                <p class="teacher-description">{{ teacher.description|default('-') }}</p>
                 <br />
             </div>
         </li>

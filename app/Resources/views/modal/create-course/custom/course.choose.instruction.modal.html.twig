@@ -1,0 +1,30 @@
+{% extends 'modal/modal.base.html.twig' %}
+{% block modalBaseHeader %}
+    <h4 class="modal-title centrum" id="{{ modalId }}">
+        <b>
+            <span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span>
+            {% trans %}Uitleg toevoegen{% endtrans %}
+        </b>
+    </h4>
+{% endblock %}
+{% block modalBaseContents %}
+    <div class="modal-body">
+        <hr />
+        <div class="centrum">
+            <p class="lead">
+                {% trans %}Welk uitlegonderdeel wil je gaan toevoegen?{% endtrans %}
+            </p>
+            <a class="btn btn-default btn-lg" type="button" href="{{ path('app_teach_edit_course_page_page', {'id': course.id, 'pageType': 'custom', 'name': 'text-instruction'}) }}">
+                <span class="glyphicon glyphicon-plus text-success" aria-hidden="true"></span>
+                {% trans %}Tekst{% endtrans %}
+            </a>
+            <a class="btn btn-default btn-lg" type="button" href="{{ path('app_teach_edit_course_page_page', {'id': course.id, 'pageType': 'custom', 'name': 'text-video-instruction'}) }}">
+                <span class="glyphicon glyphicon-plus text-success" aria-hidden="true"></span>
+                {% trans %}Video & Tekst{% endtrans %}
+            </a>
+        </div>
+    </div>
+{% endblock %}
+{% set modalBaseType = 'close' %}
+{% block closeButtonText %}{% trans %}Sluiten{% endtrans %}{% endblock %}
+{% set modalId = 'courseChooseInstructionModal' %}

@@ -11,14 +11,15 @@
         <hr />
         <div class="panel-body-pages">
             <div class="centrum">
-                <div class="btn-group-vertical" role="group">
+                <div class="btn-group-vertical course-announcements" role="group">
                     {% if announcements.count > 0 %}
                         {% for announcement in announcements %}
-                            {% include ':ajax/create-courses/announcement:announcement.row.html.twig' with{'announcement': announcement, 'modalId': 'couseAnnouncementModal'~loop.index} %}
-                            {% include ':modal/create-course:course.announcement.modal.html.twig' with{'announcement': announcement, 'modalId': 'couseAnnouncementModal'~loop.index} %}
+                            {% include ':ajax/create-courses/announcement:announcement.row.html.twig' with{'announcement': announcement, 'modalId': 'courseAnnouncementModal'~loop.index, 'index': loop.index} %}
+                            {% include ':modal/create-course:course.announcement.modal.html.twig' with{'announcement': announcement, 'modalId': 'courseAnnouncementModal'~loop.index} %}
+                            {% include ':modal/create-course:course.remove.announcement.modal.html.twig' with{'announcement': announcement, 'modalId': 'removeCourseAnnouncementModal'~loop.index} %}
                         {% endfor %}
                     {% else %}
-                        <p>{% trans %}Er zijn nog geen mededelingen voor deze cursus{% endtrans %}</p>
+                        <p class="no-announcements">{% trans %}Er zijn nog geen mededelingen voor deze cursus{% endtrans %}</p>
                     {% endif %}
                 </div>
             </div>
@@ -30,6 +31,6 @@
                 </button>
             </div>
         </div>
-        {% include ':ajax/create-courses/elements:standard.footer.html.twig' with {'nextView': 'start.standard'}%}
+        {% include ':ajax/create-courses/elements:standard.footer.html.twig' with {'nextView': path('app_teach_edit_course_page', {'id': course.id, 'pageType': 'standard', 'name': 'card-schedule'})}%}
     </div>
 {% endblock %}

@@ -38,8 +38,9 @@
                                     {% endif %}
                                 </div>
                             </div>
+                            <input class="uploaded-teacher-picture data-value" data-value-name="pictureUrl" type="hidden" value="{% if teacher is defined and teacher.pictureUrl is not null %}{{ teacher.pictureUrl }}{% endif %}">
+                            <input class="data-value" data-value-name="teacherId" type="hidden" value="{% if teacher is defined %}{{ teacher.id }}{% else %}0{% endif %}">
                         </div>
-                        <input type="submit" class="hidden submit-teacher-picture" value="upload">
                     </form>
                 </div>
             </li>

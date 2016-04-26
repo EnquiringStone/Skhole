@@ -40,7 +40,7 @@ services:
         arguments: ["@fos_user.entity_manager", "@security.token_storage", "@app.transform.manager", "@twig", "%standard_query_limit%", "%standard_pagination_max%"]
     app.create.course.ajax.service:
         class: AppBundle\Service\Ajax\Teach\CreateCourseAjaxService
-        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", "@app.validator.validator"]
+        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", "@app.validator.validator", "@app.transform.manager", "@router", "@twig"]
 
     app.transformer.messages:
         class: AppBundle\Transformer\MessagesTransformer
@@ -51,9 +51,21 @@ services:
     app.transformer.courses:
         class: AppBundle\Transformer\CoursesTransformer
         arguments: ["@twig", "%standard_query_limit%", "%standard_pagination_max%"]
+    app.transformer.course.teachers:
+        class: AppBundle\Transformer\CourseTeachersTransformer
+        arguments: ["@twig"]
+    app.transformer.course.announcements:
+        class: AppBundle\Transformer\CourseAnnouncementsTransformer
+        arguments: ["@twig"]
+    app.transformer.course.provider:
+        class: AppBundle\Transformer\CourseProvidersTransformer
+        arguments: ["@twig"]
+    app.transformer.course.questions:
+        class: AppBundle\Transformer\CourseQuestionsTransformer
+        arguments: ["@twig"]
     app.transform.manager:
         class: AppBundle\Transformer\TransformManager
-        arguments: ["@app.transformer.messages", "@app.transformer.course.reviews", "@app.transformer.courses"]
+        arguments: ["@app.transformer.messages", "@app.transformer.course.reviews", "@app.transformer.courses", "@app.transformer.course.teachers", "@app.transformer.course.announcements", "@app.transformer.course.provider", "@app.transformer.course.questions"]
 
     app.validator.validator:
         class: AppBundle\Validator\Validator
@@ -62,5 +74,11 @@ services:
     app.twig.date.extension:
         class: Twig_Extensions_Extension_Date
         arguments: ["@translator.default"]
+        tags:
+            - {name: "twig.extension"}
+
+    app.twig.order.extension:
+        class: AppBundle\Twig\OrderExtension
+        public: false
         tags:
             - {name: "twig.extension"}

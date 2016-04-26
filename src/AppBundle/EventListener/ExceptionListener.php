@@ -33,7 +33,7 @@ class ExceptionListener implements EventSubscriberInterface
     public function onKernelException(GetResponseForExceptionEvent $event)
     {
         $exception = $event->getException();
-        if($exception instanceof FrontEndException && $event->getRequest()->isXmlHttpRequest())
+        if($exception instanceof FrontEndException)
         {
             $message = $this->translator->trans($exception->getTranslationCode(), $exception->getParams(), $exception->getTranslationDomain());
             $html = $this->environment->render(':errors:ajax.error.message.modal.html.twig', array('errorMessage' => $message));

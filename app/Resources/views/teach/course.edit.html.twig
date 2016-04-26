@@ -2,14 +2,18 @@
 {% block title %}{% trans %}Aanmaken cursus{% endtrans %}{% endblock %}
 {% block prescripts %}
     <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}">
+    <script src="{{ asset('js/basic-upload/jquery.ui.widget.js') }}"></script>
+    <script src="{{ asset('js/basic-upload/jquery.iframe-transport.js') }}"></script>
+    <script src="{{ asset('js/basic-upload/jquery.fileupload.js') }}"></script>
     <script src="{{ asset('js/select2.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('js/create-courses/course.create.js') }}"></script>
 {% endblock %}
 {% block body %}
     {% include ':elements:create.course.navigation.menu.html.twig' %}
-    <div class="ajax-body" data-name="{{ name }}" data-url="{{ url('app_home_ajax_page') }}" data-id="{{ course.id }}" data-picture-upload-path="{{ url('app_secure_ajax_upload_picture') }}">
+    <div class="ajax-body" data-name="{{ name }}" data-url="{{ url('app_home_ajax_page') }}" data-id="{{ course.id }}" data-picture-upload-path="{{ url('app_secure_ajax_upload_picture', {'name': name}) }}">
         <div class="ajax-header">
-            {% include ':ajax/create-courses/elements:tab.header.html.twig' with {'active': 'standard'} %}
+            {% include ':ajax/create-courses/elements:tab.header.html.twig' with {'active': type} %}
         </div>
 
         <div class="ajax-contents">
@@ -20,16 +24,26 @@
 {% block modals %}
     {% if name == 'card-teacher' %}
         {% include ':modal/create-course:card.add.teacher.modal.html.twig' with {'modalId': 'addTeacherModal'} %}
+    {% elseif name == 'course-announcement' %}
+        {% include ':modal/create-course:course.announcement.create.modal.html.twig' with {'modalId': 'addCourseAnnouncementModal'} %}
+    {% elseif name == 'card-provider' %}
+        {% include ':modal/create-course:card.add.provider.modal.html.twig' with {'modalId': 'addProviderModal'} %}
+    {% elseif name == 'start' and type == 'custom' %}
+        {% include ':modal/create-course/custom:course.choose.instruction.modal.html.twig' %}
+        {% include ':modal/create-course/custom:course.add.exercise.modal.html.twig' %}
     {% endif %}
     {% include ':modal/create-course/confirmations:not.saved.confirmation.modal.html.twig' with {'modalId': 'notSaveConfirmationModal'} %}
+    {% include ':modal/create-course:course.remove.modal.html.twig' with {'modalId': 'removeCourseModal'} %}
 {% endblock %}
 {% block postscripts %}
     {% if name == 'course-information' %}
         <script>
             var tagsSelect = $('#select2-tags');
             {% for tag in tags %}
-                var option = $('<option></option>').attr('selected', true).text('{{ tag.tag }}').val('{{ tag.tag }}');
-                option.appendTo(tagsSelect);
+                {% if course.tags.contains(tag) %}
+                    var option = $('<option></option>').attr('selected', true).text('{{ tag.tag }}').val('{{ tag.tag }}');
+                    option.appendTo(tagsSelect);
+                {% endif %}
             {% endfor %}
             tagsSelect.trigger('change');
             hasChanged = false;

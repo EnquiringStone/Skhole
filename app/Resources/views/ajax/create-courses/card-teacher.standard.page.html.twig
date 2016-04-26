@@ -10,14 +10,17 @@
         <hr />
         <div class="panel-body-pages">
             <hr />
-            {% if teachers.count > 0 %}
-                {% for teacher in teachers %}
-                    {% include ':ajax/create-courses/teacher:card.teacher.row.html.twig' with {'teacher': teacher, 'modalId': 'addTeacherModal'~loop.index} %}
-                    {% include ':modal/create-course:card.add.teacher.modal.html.twig' with{'teacher': teacher, 'modalId': 'addTeacherModal'~loop.index} %}
-                {% endfor %}
-            {% else %}
-                <p class="centrum">{% trans %}Geen docenten gevonden voor deze curses{% endtrans %}</p>
-            {% endif %}
+            <div class="teacher-rows">
+                {% if teachers.count > 0 %}
+                    {% for teacher in teachers %}
+                        {% include ':ajax/create-courses/teacher:card.teacher.row.html.twig' with {'teacher': teacher, 'modalId': 'addTeacherModal'~loop.index, 'index': loop.index} %}
+                        {% include ':modal/create-course:card.add.teacher.modal.html.twig' with{'teacher': teacher, 'modalId': 'addTeacherModal'~loop.index} %}
+                        {% include ':modal/create-course:card.remove.teacher.modal.html.twig' with {'teacher': teacher, 'modalId': 'removeTeacherModal'~loop.index} %}
+                    {% endfor %}
+                {% else %}
+                    <p class="centrum">{% trans %}Geen docenten gevonden voor deze curses{% endtrans %}</p>
+                {% endif %}
+            </div>
             <div class="centrum">
                 <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#addTeacherModal">
                     <span class="glyphicon glyphicon-plus text-success" aria-hidden="true"></span>
@@ -25,6 +28,6 @@
                 </button>
             </div>
         </div>
-        {% include ':ajax/create-courses/elements:standard.footer.html.twig' with {'nextView': 'card-schedule.standard'} %}
+        {% include ':ajax/create-courses/elements:standard.footer.html.twig' with {'nextView': path('app_teach_edit_course_page_page', {'id': course.id, 'pageType': 'standard', 'name': 'card-schedule'})} %}
     </div>
 {% endblock %}

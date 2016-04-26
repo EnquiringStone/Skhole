@@ -10,6 +10,7 @@ namespace AppBundle\Controller;
 
 
 use AppBundle\Entity\Course\CourseCards;
+use AppBundle\Entity\Course\CoursePages;
 use AppBundle\Entity\Course\Courses;
 use AppBundle\Entity\Course\CourseSchedules;
 use AppBundle\Enum\CourseStateEnum;
@@ -95,7 +96,7 @@ class TeachController extends Controller
     /**
      * @Route("/{_locale}/teach/edit/{id}/{pageType}/{name}/", name="app_teach_edit_course_page_page")
      */
-    public function editCoursePageAction($id, $pageType, $name)
+    public function editCoursePageAction($id, $pageType, $name, Request $request)
     {
         $course = $this->getDoctrine()->getRepository('AppBundle:Course\Courses')->find($id);
         if(SecurityHelper::hasEditRights($course, 'userInsertedId', $this->getUser()->getId()))
@@ -107,8 +108,17 @@ class TeachController extends Controller
                 $view .= ucfirst($item);
             }
 
+            $page = null;
+            if($request->query->has('pageId'))
+            {
+                $pageId = $request->query->get('pageId');
+                $page = $this->getDoctrine()->getRepository('AppBundle:Course\CoursePages')->find($pageId);
+                if($page->getCourseId() != $course->getId())
+                    throw new AccessDeniedException();
+            }
+
             $function = 'create'.$view.ucfirst($pageType).'Page';
-            return $this->$function($course, $pageType, $name);
+            return $this->$function($course, $pageType, $name, $page);
         }
         throw new AccessDeniedException();
     }
@@ -178,5 +188,45 @@ class TeachController extends Controller
         $announcements = $course->getCourseAnnouncements();
 
         return $this->render(':teach:course.edit.html.twig', array('course' => $course, 'announcements' => $announcements, 'type' => $type, 'name' => $name));
+    }
+
+//    Custom
+
+    protected function createStartCustomPage(Courses $course, $type, $name)
+    {
+        return $this->render(':teach:course.edit.html.twig', array('course' => $course, 'type' => $type, 'name' => $name));
+    }
+
+    protected function createTextInstructionCustomPage(Courses $course, $type, $name, CoursePages $page = null)
+    {
+        $params = array('course' => $course, 'type' => $type, 'name' => $name);
+        if($page != null)
+            $params['instruction'] = $page;
+
+        return $this->render(':teach:course.edit.html.twig', $params);
+    }
+
+    protected function createTextVideoInstructionCustomPage(Courses $course, $type, $name, CoursePages $page = null)
+    {
+        $params = array('course' => $course, 'type' => $type, 'name' => $name);
+        if($page != null)
+            $params['instruction'] = $page;
+
+        return $this->render(':teach:course.edit.html.twig', $params);
+    }
+
+    protected function createQuestionsCustomPage(Courses $course, $type, $name, CoursePages $page = null)
+    {
+        $params = array('course' => $course, 'type' => $type, 'name' => $name);
+        if($page != null)
+            $params['exercise'] = $page;
+
+        return $this->render(':teach:course.edit.html.twig', $params);
+    }
+//Publish
+    protected function createStartPublishPage(Courses $course, $type, $name)
+    {
+        $params = array('course' => $course, 'type' => $type, 'name' => $name);
+        return $this->render(':teach:course.edit.html.twig', $params);
     }
 }

@@ -25,6 +25,10 @@ class TransformManager
         }
     }
 
+    /**
+     * @param $name
+     * @return TransformerInterface | null
+     */
     public function getTransformerByName($name)
     {
         return array_key_exists($name, $this->transformers) ? $this->transformers[$name] : null;

@@ -2,7 +2,15 @@
     <div class="panel panel-primary" data-id="{{ course.id }}">
         <div class="centrum">
             <ol class="breadcrumb">
-                <li><a class="unclickable">{{ course.name|default('? ?-?-? ?') }}</a></li>
+                <li>
+                    <a class="unclickable">
+                        {% if course.name is not null %}
+                            {{ course.name }}
+                        {% else %}
+                            {% trans %}Deze cursus heeft nog geen naam{% endtrans %}
+                        {% endif %}
+                    </a>
+                </li>
             </ol>
         </div>
         <div class="media-list">
@@ -10,7 +18,7 @@
                 <img class="media-object img-rounded pull-left" src="{{ asset('images/logo-skhole.png') }}"/>
                 <div class="pull-right">
                     <div class="btn-group-vertical">
-                        <a href="#{#TODO#}" class="btn btn-primary btn-sm">
+                        <a href="{{ path('app_teach_edit_course_page', {'id': course.id}) }}" class="btn btn-primary btn-sm">
                             {% trans %}Bewerk cursus{% endtrans %}<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                         </a>
                         <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#courseDetailsModal{{ index }}">
@@ -25,11 +33,15 @@
                     </div>
                 </div>
                 <div class="media-body">
-                    {{ course.description|length > 250 ? course.description|slice(0, 250) ~ '...' : course.description|default('------') }}
+                    {% if course.description is not null %}
+                        {{ course.description|length > 250 ? course.description|slice(0, 250) ~ '...' : course.description}}
+                    {% else %}
+                        {% trans %}Geen omschrijving gevonden{% endtrans %}
+                    {% endif %}
                     <br />
                     <button type="button" class="btn btn-default btn-xs unclickable">
                         <b class="text-primary">
-                            {% trans %}Voldaan aan de minimale eisen{% endtrans %}?
+                            {% trans %}Is gepubliceerd{% endtrans %}?
                             <span class="glyphicon
                                 {% if course.state.stateCode == 'OK' %} glyphicon-ok text-success
                                 {% else %} glyphicon-minus text-danger{% endif %}" aria-hidden="true">
@@ -54,10 +66,8 @@
                                 -
                             {% endif %}
                         </button>
-                        <button type="button" class="btn btn-default btn-xs unclickable" data-toggle="tooltip" data-placement="top"
-                                title="{% trans %}Aantal pagina's{% endtrans %} {{ course.courseExercises|length }}
-                                {% trans %}Opdrachten{% endtrans %} {{ course.courseInstructions|length }} {% trans %}uitlegpagina's{% endtrans %}">
-                            <b>{% trans %}Pagina's{% endtrans %}:</b> {{ course.pages }}
+                        <button type="button" class="btn btn-default btn-xs unclickable" data-toggle="tooltip" data-placement="top">
+                            <b>{% trans %}Pagina's{% endtrans %}:</b> {{ course.coursePages|length }}
                         </button>
                         <button type="button" class="btn btn-default btn-xs unclickable" data-toggle="tooltip" data-placement="top"
                                 title="{% trans %}Educatieve instelling{% endtrans %}">
@@ -71,7 +81,7 @@
                                 title="{% trans %}Schatting{% endtrans %}">
                             <b>{% trans %}Moeilijkheidsgraad{% endtrans %}:</b>
                             {% if course.difficulty is not null %}
-                                {% for i in 0..course.difficulty %}
+                                {% for i in 1..course.difficulty %}
                                     <img src="{{ asset('images/star_rating.png') }}" class="img-rounded">
                                 {% endfor %}
                             {% else %}
@@ -80,7 +90,7 @@
                         </button>
                         <button type="button" class="btn btn-default btn-xs unclickable" data-toggle="tooltip" data-placement="top"
                                 title="{% trans %}Educatie Niveau{% endtrans %}">
-                            <b>{% trans %}Niveau{% endtrans %}:</b> {{ course.level is not null ? course.level.levelLong : '-' }}
+                            <b>{% trans %}Niveau{% endtrans %}:</b> {{ course.level is not null ? course.level.levelLong|trans({}, 'db') : '-' }}
                         </button>
                     </button>
                 </div>

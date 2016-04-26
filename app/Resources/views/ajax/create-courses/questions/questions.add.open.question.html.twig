@@ -1,0 +1,45 @@
+{% block questionsAddOpenQuestion %}
+    <h5 class="centrum">
+        <b>
+            <span class="glyphicon glyphicon-pencil"></span>
+            {% trans %}Open vraag toevoegen{% endtrans %}
+        </b>
+    </h5>
+    <hr />
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">{% trans %}Open vraag{% endtrans %}</label>
+            <div class="col-sm-10">
+                <textarea class="form-control data-value" data-value-name="question" rows="3" placeholder="{% trans %}Een open vraag kan hier worden gesteld{% endtrans %}"
+                >{% if question is defined %}{{ question.question }}{% endif %}</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">{% trans %}Antwoord indicatie{% endtrans %}</label>
+            <div class="col-sm-10">
+                <textarea class="form-control data-value" data-value-name="answerIndication" rows="10" placeholder="{% trans %}Hoe de antwoord er ongeveer uit moet komen te zien. Hier kun je ook termwoorden opnemen die het antwoord moet bevatten. Bijv. een jaartal, de plaatsnaam, de naam van een schrijver, etc.{% endtrans %}"
+                          >{% if question is defined %}{{ question.answerIndication }}{% endif %}</textarea>
+            </div>
+        </div>
+        <input class="data-value" type="hidden" value="open-question" data-value-name="type">
+        <input class="data-value" type="hidden" data-value-name="questionId" value="{% if question is defined %}{{ question.id }}{% else %}-1{% endif %}">
+    </form>
+    <div class="panel-footer panel-default">
+        <div class="pull-right">
+            <button class="btn btn-default save-custom-question" type="button">
+                <span class="glyphicon glyphicon-ok text-success"></span>
+                {% trans %}Opslaan{% endtrans %}
+            </button>
+            <button class="btn btn-default remove-custom-question" type="button" data-question-id="{% if question is defined %}{{ question.id }}{% else %}-1{% endif %}">
+                <span class="glyphicon glyphicon-remove text-danger"></span>
+                {% trans %}Verwijder{% endtrans %}
+            </button>
+        </div>
+        <div class="pull-left">
+            <button class="btn btn-default select-questions-overview" type="button">
+                <span class="glyphicon glyphicon-arrow-left"></span>
+                {% trans %}Terug{% endtrans %}
+            </button>
+        </div>
+    </div>
+{% endblock %}

@@ -97,41 +97,516 @@ $(document).ready(function() {
         createSaveAjaxCall(nextView);
     });
 
-    body.on('change', '.teacher-picture', function() {
-        var file = this.files[0];
-        var imageType = file.type;
-        var preview = $('.teacher-picture-preview');
-        preview.empty();
-        //TODO http://blueimp.github.io/jQuery-File-Upload/basic-plus.html
-        if(imageType == 'image/jpeg' || imageType == 'image/png' || imageType == 'image/jpg') {
-            var reader = new FileReader();
-            reader.onload = teacherImageIsLoaded;
-            reader.readAsDataURL(file);
-        } else {
-            var error = $(this).data('error');
-            preview.append('<p>'+error+'</p>');
+    body.on('click', '.save-teacher', function() {
+        var url = $('.ajax-body').data('url');
+        saveTeacherModal($(this));
+    });
+
+    body.on('click', '.save-provider', function() {
+        saveCourseProvider($(this));
+    });
+
+    body.on('click', '.modal-yes', function() {
+        var action = $(this).data('action');
+
+        if(action == 'remove teacher') {
+            removeTeacher($($(this).parents('.modal')), $(this).data('id'));
+        }
+        else if(action == 'remove announcement') {
+            removeCourseAnnouncement($($(this).parents('.modal')), $(this).data('id'));
+        } else if(action == 'remove provider') {
+            removeProvider($($(this).parents('.modal')), $(this).data('id'));
+        } else if(action == 'remove course') {
+            removeCourse($(this).data('id'));
+        } else if(action == 'remove page') {
+            removePage($($(this).parents('.modal')), $(this).data('id'));
         }
     });
 
-    body.on('click', '.save-teacher', function() {
-        //var reader = new FileReader();
-        //reader.readAsText(pictureFile, 'UTF-8');
-        //reader.onload = saveTeacherModal;
+    body.on('click', '.save-announcement', function() {
+        var parent = $($(this).parents('.modal'));
+        saveCourseAnnouncement(parent);
     });
 
+    bindFileUpload();
+
+    $('#sortable').sortable({
+        stop: doSort
+    });
+    $('#sortable').disableSelection();
+
+    body.on('click', '.add-more-question-inputs-button', function() {
+        addAnswerHtml();
+    });
+
+    body.on('click', '.save-multiple-choice', function() {
+        saveMultipleChoice($($(this).parents('.modal')));
+    });
+
+    body.on('click', '.course-add-custom-questions', function() {
+        var titleElement = $('.title-exercise-page', $($(this).parents('.modal')));
+        var titleOfPage = titleElement.val();
+        if(titleOfPage == null || titleOfPage == '') {
+            $(titleElement.parents('.form-group')[0]).addClass('has-error');
+            return;
+        }
+        addExercisePage(titleOfPage);
+    });
+
+    body.on('click', '.load-question', function() {
+        loadQuestion($(this).data('type'), $(this).data('question-id'));
+    });
+
+    body.on('click', '.remove-extra-answer', function(event) {
+        event.preventDefault();
+
+        var answerId = $(this).data('answer-id');
+        if(answerId > 0)
+            removeExtraAnswer(answerId);
+
+        var parent = $($(this).parents('.form-group')[0]);
+        var number = $('.form-control', parent).data('answer-order');
+        parent.remove();
+
+        var checkbox = $($($('input[type="checkbox"]').filterByData('answer-order', number)).parents('label')[0]);
+        checkbox.remove();
+
+        var answers = parseInt($('.answer-amount').val());
+        $('.answer-amount').val(answers - 1);
+
+        $('.form-group', '.answers').each(function(index, item) {
+            $('.control-label', $(item)).html(orderToAlphabet(index + 1));
+            var input = $('.form-control', $(item));
+            input.attr('data-answer-order', index + 1);
+        });
+
+        $('label', '.correct-answers').each(function(index, item) {
+            var input = $('.data-value', $(item));
+            input.attr('data-answer-order', index + 1);
+            var html = input[0].outerHTML;
+            $(item).html(html + ' ' + orderToAlphabet(index + 1));
+        });
+    });
+    body.on('click', '.save-custom-question', function() {
+        saveCustomQuestion('');
+    });
+    body.on('click', '.remove-custom-question', function() {
+        removeCustomQuestion($(this).data('question-id'));
+    });
+    body.on('click', '.select-questions-overview', function() {
+        loadQuestion('overview', -1);
+    });
+
+    body.on('click', '.publish-course', function() {
+        publishCourse($(this).data('course-overview-url'));
+    });
 });
 
-function teacherImageIsLoaded(e) {
-    var sendUrl = $('.ajax-body').data('picture-upload-path');
+var hasChanged = false;
+var addAnswersButtonHtml = '';
 
-    sendAjaxCallForUpload(sendUrl, {data: e.target.result, name: 'teacher'}, function() {
-        var preview = $('.teacher-picture-preview');
-        var html = '<img src="'+ e.target.result+'" class="teacher-picture-preview-img">';
-        preview.append(html);
+function publishCourse(redirectUrl) {
+    var url = $('.ajax-body').data('url');
+    var id = $('.ajax-body').data('id');
+
+    var args = {};
+    args['id'] = id;
+    args['method'] = 'publishCourse';
+    args['ajax_key'] = 'CCAS1';
+
+    sendAjaxCall(url, args, function() {
+        goToUrl(redirectUrl);
+    }, function(error) {
+        var json = error['responseJSON'];
+        showAjaxErrorModal(json['html']);
     });
 }
 
-var hasChanged = false;
+function removeExtraAnswer(answerId) {
+    var url = $('.ajax-body').data('url');
+    var id = $('.ajax-body').data('id');
+
+    var args = {};
+    args['answerId'] = answerId;
+    args['id'] = id;
+    args['method'] = 'removeExtraAnswer';
+    args['ajax_key'] = 'CCAS1';
+    args['pageId'] = $('.exercise-page-id').val();
+
+    sendAjaxCall(url, args, function() {
+
+    }, function() {
+
+    });
+}
+
+function removeCustomQuestion(questionId) {
+    var url = $('.ajax-body').data('url');
+    var id = $('.ajax-body').data('id');
+
+    var args = {};
+    args['id'] = id;
+    args['ids'] = [questionId];
+    args['method'] = 'removeCustomQuestions';
+    args['ajax_key'] = 'CCAS1';
+    args['pageId'] = $('.exercise-page-id').val();
+
+    sendAjaxCall(url, args, function(data) {
+        var div = $('.load-question-type-div');
+        div.empty();
+        div.append(data['html']);
+        hasChanged = false;
+    }, function() {
+
+    });
+}
+
+function saveCustomQuestion(redirectUrl) {
+    var url = $('.ajax-body').data('url');
+    var id = $('.ajax-body').data('id');
+    var args = {};
+    var answers = {};
+
+    $('.data-value').each(function() {
+        var obj = $(this);
+        var attribute = obj.data('value-name');
+
+        if(attribute == 'answers' || attribute == 'correctAnswers') {
+            var order = obj.data('answer-order');
+            var answerId = obj.data('answer-id');
+            var name = attribute == 'answers' ? 'answer' : 'correct';
+
+            if(answers[order] != undefined) {
+                answers[order][name] = name == 'correct' ? obj.is(':checked') : obj.val();
+            } else {
+                answers[order] = {};
+                answers[order]['answerId'] = answerId;
+                answers[order][name] = name == 'correct' ? obj.is(':checked') : obj.val();
+            }
+        } else {
+            args[attribute] = obj.val();
+        }
+    });
+
+    args['answers'] = answers;
+    args['id'] = id;
+    args['ajax_key'] = 'CCAS1';
+    args['method'] = 'saveCustomQuestion';
+
+    sendAjaxCall(url, args, function(data) {
+        var div = $('.load-question-type-div');
+        div.empty();
+        div.append(data['html']);
+        hasChanged = false;
+        if(redirectUrl != null && redirectUrl != '')
+            goToUrl(redirectUrl);
+    }, function(error) {
+        var json = error['responseJSON'];
+        showAjaxErrorModal(json['html']);
+    });
+}
+
+function loadQuestion(type, questionId) {
+    var url = $('.ajax-body').data('url');
+    var id = $('.ajax-body').data('id');
+
+    var args = {};
+    args['id'] = id;
+    args['method'] = 'loadQuestion';
+    args['ajax_key'] = 'CCAS1';
+    args['type'] = type;
+    args['questionId'] = questionId;
+    args['pageId'] = $('.exercise-page-id').val();
+
+    sendAjaxCall(url, args, function(data) {
+        var div = $('.load-question-type-div');
+        div.empty();
+        div.append(data['html']);
+    }, function(error) {
+        var json = error['responseJSON'];
+        showAjaxErrorModal(json['html']);
+    });
+}
+
+function addExercisePage(titleOfPage) {
+    var url = $('.ajax-body').data('url');
+    var id = $('.ajax-body').data('id');
+    var args = {};
+
+    args['id'] = id;
+    args['method'] = 'addCustomExercisePage';
+    args['ajax_key'] = 'CCAS1';
+    args['title'] = titleOfPage;
+
+    sendAjaxCall(url, args, function(data) {
+        goToUrl(data['url']);
+    }, function(error) {
+        var json = error['responseJSON'];
+        showAjaxErrorModal(json['html']);
+    });
+}
+
+function saveMultipleChoice(contextModal) {
+    var url = $('.ajax-body').data('url');
+    var id = $('.ajax-body').data('id');
+    var questionId = $('.modal-body', contextModal).data('question-id');
+
+    var args = {};
+    var answers = {};
+
+    $('.data-value', contextModal).each(function(item) {
+        var obj = $(this);
+        var attribute = obj.data('value-name');
+
+        if(attribute == 'answers' || attribute == 'correctAnswers') {
+            var order = obj.data('answer-order');
+            var answerId = obj.data('answer-id');
+            var name = attribute == 'answers' ? 'answer' : 'correct';
+
+            if(answers[order] != undefined) {
+                answers[order][name] = name == 'correct' ? obj.is(':checked') : obj.val();
+            } else {
+                answers[order] = {};
+                answers[order]['answerId'] = answerId;
+                answers[order][name] = name == 'correct' ? obj.is(':checked') : obj.val();
+            }
+        } else {
+            args[attribute] = obj.val();
+        }
+    });
+
+    args['questionId'] = questionId;
+    args['id'] = id;
+    args['pageId'] = $('.exercise-page-id').val();
+    args['answers'] = answers;
+    args['method'] = 'saveMultipleChoice';
+    args['ajax_key'] = 'CCAS1';
+
+    sendAjaxCall(url, args, function(data) {
+        contextModal.modal('hide');
+        var baseModal = $('.clear-modal-values', contextModal);
+        if(baseModal.length) {
+            resetAddMultipleChoiceModal(contextModal);
+        }
+        $('.questions-overview').empty();
+        $('.questions-overview').append(data['html']);
+        $('.exercise-page-id').val(data['pageId']);
+        hasChanged = false;
+    }, function(error) {
+        var json = error['responseJSON'];
+        showAjaxErrorModal(json['html']);
+    });
+}
+
+
+function addAnswerHtml() {
+    var answers = parseInt($('.answer-amount').val());
+    if(answers >= 5)
+        return;
+    $('.answer-amount').val(answers + 1);
+    answers ++;
+
+    var html = '<div class="form-group added-answer"><label class="col-sm-2 control-label">'+orderToAlphabet(answers)+'</label><div class="col-sm-9">' +
+        '<input type="text" class="form-control data-value" data-value-name="answers" data-answer-id="-1" data-answer-order="'+answers+'">' +
+        '</div><div class="col-sm-1"><a class="remove-extra-answer" href="#" data-answer-id="-1"><span class="glyphicon glyphicon-remove text-danger"></span></a></div></div>';
+
+    $('.answers').append(html);
+
+    $('.correct-answers').append('<label class="added-answer"><input type="checkbox" class="data-value" data-answers-id="-1" data-value-name="correctAnswers" data-answer-order="'+answers+'"> ' +
+        '' + orderToAlphabet(answers) +
+        '</label> ');
+}
+
+function resetAddMultipleChoiceModal(modal) {
+    $('.answer-amount', modal).val(2);
+    $('.answers', modal).after(addAnswersButtonHtml);
+    addAnswersButtonHtml = '';
+    $('.added-answer', modal).remove();
+    $('input', modal).val('');
+    $('textarea', modal).val('');
+}
+
+function orderToAlphabet(number) {
+    var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+    return alphabet[number - 1].toUpperCase();
+}
+
+function removePage(modal, pageId) {
+    var url = $('.ajax-body').data('url');
+    var id = $('.ajax-body').data('id');
+
+    var args = {};
+    args['id'] = id;
+    args['method'] = 'removePages';
+    args['ajax_key'] = 'CCAS1';
+    args['ids'] = [pageId];
+
+    sendAjaxCall(url, args, function() {
+        modal.modal('hide');
+        var contextDiv = $($('li').filterByData('page-id', pageId));
+        contextDiv.remove();
+        refreshOrder($('#sortable'));
+    }, function() {
+
+    });
+}
+
+function doSort(event, ui) {
+    var context = $(this);
+    var name = context.data('name');
+    var ajaxBody = $('.ajax-body');
+    var sendUrl = ajaxBody.data('url');
+    var id = ajaxBody.data('id');
+    var item = $(ui['item']);
+
+    var args = {};
+    args['id'] = id;
+    args['ajax_key'] = 'CCAS1';
+
+    if(name == 'pages') {
+        args['pageId'] = item.data('page-id');
+        args['method'] = 'updatePageOrder';
+    }
+    else if(name == 'questions')
+    {
+        args['questionId'] = item.data('question-id');
+        args['method'] = 'updateQuestionOrder';
+    }
+    args['order'] = $('li', context).index(item) + 1;
+    if(args['order'] == item.attr('data-original-order'))
+        return; //Nothing changed
+
+    sendAjaxCall(sendUrl, args,
+        function(){
+            refreshOrder(context);
+        },
+        function(error){
+        }
+    );
+}
+
+function refreshOrder(context)
+{
+    $('li', context).each(function(index, item) {
+        var li = $(item);
+        $('.page-overview-order', li).html(index + 1);
+        li.attr('data-original-order', index + 1);
+    });
+}
+
+function removeCourse(sendUrl) {
+    var url = $('.ajax-body').data('url');
+    var id = $('.ajax-body').data('id');
+
+    var args = {};
+    args['id'] = id;
+    args['method'] = 'removeCourses';
+    args['ajax_key'] = 'CCAS1';
+    args['ids'] = [id];
+
+    sendAjaxCall(url, args, function() {
+        goToUrl(sendUrl);
+    }, function() {
+
+    });
+}
+
+function removeProvider(modal, providerId) {
+    var url = $('.ajax-body').data('url');
+    var id = $('.ajax-body').data('id');
+
+    var method = 'removeCourseProviders';
+    var key = 'CCAS1';
+
+    var args = {};
+
+    args['ids'] = [providerId];
+    args['method'] = method;
+    args['ajax_key'] = key;
+    args['id'] = id;
+
+    sendAjaxCall(url, args, function() {
+        modal.modal('hide');
+        var contextDiv = $($('li').filterByData('provider-id', providerId));
+        contextDiv.remove();
+    }, function(error) {
+        console.log(error);
+    });
+}
+
+function removeCourseAnnouncement(baseModal, announcementId) {
+    var url = $('.ajax-body').data('url');
+    var id = $('.ajax-body').data('id');
+
+    var method = 'removeCourseAnnouncement';
+    var key = 'CCAS1';
+
+    var args = {};
+
+    args['ids'] = [announcementId];
+    args['method'] = method;
+    args['ajax_key'] = key;
+    args['id'] = id;
+
+    sendAjaxCall(url, args, function() {
+        baseModal.modal('hide');
+        var contextDiv = $($('ul').filterByData('announcement-id', announcementId));
+        contextDiv.remove();
+        hasChanged = false;
+    }, function(error) {
+        console.log(error);
+    });
+}
+
+function removeTeacher(modal, teacherId) {
+    var url = $('.ajax-body').data('url');
+    var id = $('.ajax-body').data('id');
+
+    var method = 'removeCourseTeachers';
+    var key = 'CCAS1';
+
+    var args = {};
+
+    args['ids'] = [teacherId];
+    args['method'] = method;
+    args['ajax_key'] = key;
+    args['id'] = id;
+
+    sendAjaxCall(url, args, function() {
+        modal.modal('hide');
+        var contextDiv = $($('li').filterByData('teacher-id', teacherId));
+        contextDiv.remove();
+        hasChanged = false;
+    }, function(error) {
+        console.log(error);
+    });
+}
+
+function bindFileUpload() {
+    $('.teacher-picture').fileupload({
+        url: $('.ajax-body').data('picture-upload-path'),
+        sequentialUploads: false,
+        dataType: 'json',
+        acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
+        maxFileSize: 999000,
+        done: function(e, data) {
+            var picture = $('.uploaded-teacher-picture');
+            picture.val(data['_response']['result'][0]);
+
+            var preview = $('.teacher-picture-preview');
+
+            var html = '<img src="/'+window.location.pathname.split('/')[1]+'/web/'+ picture.val()+'" class="teacher-picture-preview-img">';
+            preview.empty();
+            preview.append(html);
+        }
+    });
+
+    $('.teacher-picture').bind('fileuploadfail', function(e, data) {
+        $('.modal').modal('hide');
+        var error = data['_response']['jqXHR']['responseJSON']['html'];
+        showAjaxErrorModal(error);
+    });
+}
 
 function showNotSavedConfirmationModal(href) {
     var modal = $("#notSaveConfirmationModal");
@@ -154,6 +629,76 @@ function createSaveAjaxCall(url) {
         saveSchedule(url, sendUrl, id);
     else if(name == 'card-teacher')
         goToUrl(url); //Nothing to save here
+    else if(name == 'course-announcement')
+        goToUrl(url); //Nothing to save here
+    else if(name == 'text-instruction' || name == 'text-video-instruction')
+        saveInstruction(url, sendUrl, id);
+    else if(name == 'questions') {
+        saveCustomQuestion(url);
+    }
+
+}
+
+function saveInstruction(url, sendUrl, id) {
+    if(hasChanged)
+    {
+        var method = 'saveCourseInstruction';
+        var key = 'CCAS1';
+
+        var args = {};
+        $('.data-value').each(function(item) {
+            var obj = $(this);
+            var attribute = obj.data('value-name');
+            args[attribute] = obj.val();
+        });
+        args['ajax_key'] = key;
+        args['method'] = method;
+        args['id'] = id;
+
+        sendAjaxCall(sendUrl, args, function() {
+            goToUrl(url);
+        }, function(error) {
+            var json = error['responseJSON'];
+            showAjaxErrorModal(json['html']);
+        });
+    }
+    else {
+        goToUrl(url);
+    }
+}
+
+function saveCourseAnnouncement(baseModal) {
+    var ajaxBody = $('.ajax-body');
+    var sendUrl = ajaxBody.data('url');
+    var id = ajaxBody.data('id');
+
+    var method = 'saveCourseAnnouncement';
+    var key = 'CCAS1';
+
+    var args = {};
+    $('.data-value').each(function(item) {
+        var obj = $(this);
+        var attribute = obj.data('value-name');
+        args[attribute] = obj.val();
+    });
+    args['ajax_key'] = key;
+    args['method'] = method;
+    args['id'] = id;
+
+    sendAjaxCall(sendUrl, args, function(data) {
+        var row = $('.course-announcements');
+        if($('.no-announcements', row).length)
+            $('.no-announcements', row).remove();
+
+        row.append(data['html']);
+        $('textarea', baseModal).val('');
+        $('input', baseModal).val('');
+        baseModal.modal('hide');
+        hasChanged = false;
+    }, function(error) {
+        var json = error['responseJSON'];
+        showAjaxErrorModal(json['html']);
+    });
 }
 
 function saveCourseInformation(url, sendUrl, id) {
@@ -169,7 +714,7 @@ function saveCourseInformation(url, sendUrl, id) {
             var value = obj.val();
 
             if(attribute == 'tags') {
-                args['tags'] = value.join(',');
+                args['tags'] = value == null ? null : value.join(',');
             }
             else if(attribute == 'difficulty') {
                 args['difficulty'] = obj.attr('data-difficulty');
@@ -229,8 +774,8 @@ function saveCardProvider(url, sendUrl, id) {
         $('.data-value').each(function() {
             var item = $(this);
             var attribute = item.data('value-name');
-
-            args[attribute] = item.val();
+            if(attribute == 'priorKnowledge')
+                args[attribute] = item.val();
         });
         args['method'] = method;
         args['ajax_key'] = key;
@@ -273,11 +818,54 @@ function saveSchedule(url, sendUrl, id) {
     }
 }
 
-function saveTeacherModal(event) {
-    //TODO http://stackoverflow.com/questions/4006520/using-html5-file-uploads-with-ajax-and-jquery
-    var modal = $($(this).parents('.modal'));
+function saveCourseProvider(context) {
+    var modal = $(context.parents('.modal'));
     var ajaxBody = $('.ajax-body');
-    var sendUrl = ajaxBody.data('picture-upload-path');
+    var url = ajaxBody.data('url');
+    var id = ajaxBody.data('id');
+
+    args = {};
+
+    args['id'] = id;
+    args['ajax_key'] = 'CCAS1';
+    args['method'] = 'saveProvider';
+
+    $('.data-value', modal).each(function() {
+        var item = $(this);
+        var attribute = item.data('value-name');
+
+        args[attribute] = item.val();
+    });
+
+    sendAjaxCall(url, args, function(data) {
+        modal.modal('hide');
+        var baseModal = $('.clear-modal-providers-values', modal);
+        if(baseModal.length) {
+            $('input', baseModal).val('');
+            $('textarea', baseModal).val('');
+            if('html' in data) {
+                $('.provider-rows').append(data['html']);
+            }
+        } else {
+            var contextDiv = $($('li').filterByData('provider-id', data['id']));
+            if(contextDiv.length) {
+                $('.provider-name', contextDiv).empty();
+                $('.provider-name', contextDiv).append(args['name']);
+                $('.provider-description', contextDiv).empty();
+                $('.provider-description', contextDiv).append(args['description']);
+            }
+        }
+        hasChanged = false;
+    }, function(error) {
+        modal.modal('hide');
+        var json = error['responseJSON'];
+        showAjaxErrorModal(json['html']);
+    });
+}
+
+function saveTeacherModal(context) {
+    var modal = $(context.parents('.modal'));
+    var ajaxBody = $('.ajax-body');
     var url = ajaxBody.data('url');
     var id = ajaxBody.data('id');
 
@@ -287,36 +875,48 @@ function saveTeacherModal(event) {
     args['ajax_key'] = 'CCAS1';
     args['method'] = 'saveTeacher';
 
-    $('.data-value').each(function() {
+    $('.data-value', modal).each(function() {
         var item = $(this);
         var attribute = item.data('value-name');
 
         args[attribute] = item.val();
     });
 
-    //var fileName = $('.teacher-picture').files[0].name;
-    //console.log(fileName);
+    sendAjaxCall(url, args, function(data) {
+        modal.modal('hide');
+        var baseModal = $('.clear-modal-teachers-values', modal);
+        if(baseModal.length) {
+            $('textarea', baseModal).val('');
+            $('input', baseModal).val('');
+            if('html' in data) {
+                $('.teacher-rows').append(data['html']);
+                bindFileUpload();
+            }
+        } else {
+            var contextDiv = $($('li').filterByData('teacher-id', data['id']));
+            if(contextDiv.length) {
+                $('.teacher-name', contextDiv).empty();
+                $('.teacher-name', contextDiv).append(args['name']);
+                $('.teacher-description', contextDiv).empty();
+                $('.teacher-description', contextDiv).append(args['description']);
 
-    //sendAjaxCall(url, args, function() {
-    //    modal.modal('hide');
-    //    var baseModal = $('.clear-modal-teachers-values', modal);
-    //    if(baseModal.length) {
-    //        $('textarea', baseModal).val('');
-    //        $('input', baseModal).val('');
-    //        pictureFile = null;
-    //    }
-    //}, function(error) {
-    //    modal.modal('hide');
-    //    var json = error['responseJSON'];
-    //    showAjaxErrorModal(json['html']);
-    //});
-
+                if(args['pictureUrl'] != null || args['pictureUrl'] != '') {
+                    $('.teacher-picture-row-image', contextDiv).empty();
+                    $('.teacher-picture-row-image', contextDiv).append('<img src="/'+window.location.pathname.split('/')[1]+'/web/'+args["pictureUrl"]+'" class="media-object teacher-row-picture">');
+                }
+            }
+        }
+        hasChanged = false;
+    }, function(error) {
+        modal.modal('hide');
+        var json = error['responseJSON'];
+        showAjaxErrorModal(json['html']);
+    });
 }
 
 function goToUrl(url) {
     window.location.href = url;
 }
-
 
 //Starsss
 var __slice = [].slice;

@@ -16,10 +16,6 @@ function sendAjaxCall(url, contents, successCallBack, errorCallBack) {
     });
 }
 
-function sendAjaxCallForUpload(url, contents, callback) {
-    $.post(url, contents, callback);
-}
-
 function refreshPage(caller, resetPagination, resetSort) {
     var base = $($(caller).parents('.page-controls'));
 
@@ -148,6 +144,7 @@ function createSearchArray(activeElement, object) {
 
 //TODO use this to show the error message from the ajax call
 function showAjaxErrorModal(errorModalHtml) {
+    $('.modal').modal('hide');
     var modalDiv = $('.ajax-error-modal');
     modalDiv.empty();
     modalDiv.append(errorModalHtml);

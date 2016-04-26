@@ -16,6 +16,27 @@
                 </div>
             </div>
         </form>
+        <hr />
+        <div class="panel-body-pages">
+            <hr />
+            <div class="provider-rows">
+                {% if providers.count > 0 %}
+                    {% for provider in providers %}
+                        {% include ':ajax/create-courses/provider:card.provider.row.html.twig' with {'provider': provider, 'index': loop.index } %}
+                        {% include ':modal/create-course:card.remove.provider.modal.html.twig' with {'provider': provider, 'modalId': 'removeProviderModal'~loop.index } %}
+                        {% include ':modal/create-course:card.add.provider.modal.html.twig' with {'provider': provider, 'modalId': 'addProviderModal'~loop.index } %}
+                    {% endfor %}
+                {% else %}
+                    <p class="centrum">{% trans %}Geen aanbieders gevonden voor deze cursus{% endtrans %}</p>
+                {% endif %}
+            </div>
+            <div class="centrum">
+                <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#addProviderModal">
+                    <span class="glyphicon glyphicon-plus text-success" aria-hidden="true"></span>
+                    <samp><b>{% trans %}Nieuwe aanbieder{% endtrans %}</b></samp>
+                </button>
+            </div>
+        </div>
         {% include ':ajax/create-courses/elements:standard.footer.html.twig' with {'nextView': path('app_teach_edit_course_page_page', {'id': course.id, 'pageType': 'standard', 'name': 'card-teacher'})} %}
     </div>
 {% endblock %}

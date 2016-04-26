@@ -1,0 +1,27 @@
+{% block questionsCustomPage %}
+    <div class="tab-pane fade in active">
+        <h4 class="centrum">
+            <b>
+                <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+                {% trans %}Opdrachten toevoegen{% endtrans %}
+            </b>
+        </h4>
+        <p class="lead centrum">{% trans %}Voeg opdrachten toe aan de pagina:{% endtrans %} <b>{{ exercise.title|upper }}</b></p>
+        <div class="centrum">
+            <button class="btn btn-default btn-lg load-question" data-type="multiple-choice" data-question-id="-1">
+                <span class="glyphicon glyphicon-plus text-success" aria-hidden="true"></span>
+                {% trans %}Meerkeuze vraag{% endtrans %}
+            </button>
+            <button class="btn btn-default btn-lg load-question" data-type="open-question" data-question-id="-1">
+                <span class="glyphicon glyphicon-plus text-success" aria-hidden="true"></span>
+                {% trans %}Open vraag{% endtrans %}
+            </button>
+        </div>
+        <hr />
+        <div class="load-question-type-div">
+            {% include ':ajax/create-courses/questions:question.order.overview.html.twig' with {'exercise': exercise} %}
+        </div>
+        <hr />
+        <input class="exercise-page-id data-value" data-value-name="pageId" type="hidden" value="{{ exercise.id }}">
+    </div>
+{% endblock %}

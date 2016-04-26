@@ -1,0 +1,38 @@
+{% extends 'modal/modal.base.html.twig' %}
+{% block modalBaseHeader %}
+    <h4 class="modal-title centrum" id="{{ modalId }}">
+        <b>
+            {% trans %}Aanbieder toevoegen{% endtrans %}
+        </b>
+    </h4>
+{% endblock %}
+{% block modalBaseContents %}
+    <div class="modal-body {% if provider is not defined %}clear-modal-providers-values{% endif %}">
+        <ul class="media-list">
+            <li class="media">
+                <div class="media-body">
+                    <form class="add-provider-form">
+                        <div class="form-group">
+                            <label class="control-label">{% trans %}Aanbieder{% endtrans %}</label>
+                            <input required="required" type="text" class="form-control data-value" data-value-name="name" placeholder="{% trans %}Naam van de aanbieder{% endtrans %}" {% if provider is defined and provider.name is not null %}value="{{ provider.name }}"{% endif %}>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">{% trans %}Omschrijving{% endtrans %}</label>
+                            <textarea class="form-control data-value" data-value-name="description" placeholder="{% trans %}Schrijf iets korts over deze aanbieder{% endtrans %}" rows="5">{% if provider is defined and provider.description is not null %}{{ provider.description }}{% endif %}</textarea>
+                        </div>
+                    </form>
+                </div>
+                <input class="data-value" data-value-name="providerId" type="hidden" value="{% if provider is defined %}{{ provider.id }}{% else %}0{% endif %}">
+            </li>
+        </ul>
+    </div>
+{% endblock %}
+{% block modalBaseFooter %}
+    <div class="modal-footer">
+        <button class="btn btn-default save-provider" type="button">
+            <span class="glyphicon glyphicon-floppy-disk text-primary" aria-hidden="true"></span>
+            {% trans %}Bewaar & sluiten{% endtrans %}
+        </button>
+        <button class="btn btn-default" data-dismiss="modal" type="button">{% trans %}Annuleren{% endtrans %}</button>
+    </div>
+{% endblock %}

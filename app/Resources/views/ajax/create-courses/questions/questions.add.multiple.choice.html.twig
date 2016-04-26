@@ -1,0 +1,69 @@
+{% block questionsAddMultipleChoice %}
+    <h5 class="centrum">
+        <b>
+            <span class="glyphicon glyphicon-pencil"></span>
+            {% trans %}Meerkeuzevraag toevoegen{% endtrans %}
+        </b>
+    </h5>
+    <hr />
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">{% trans %}Vraag{% endtrans %}</label>
+            <div class="col-sm-10">
+                <textarea class="form-control data-value" data-value-name="question" rows="3" placeholder="{% trans %}De vraag die je wilt gaan stellen. Bijv. Hoeveel is 1+1{% endtrans %}"
+                          >{% if question is defined %}{{ question.question }}{% endif %}</textarea>
+            </div>
+        </div>
+        <h6 class="centrum">{% trans %}Antwoorden{% endtrans %}</h6>
+        <div class="answers">
+            {% if question is defined %}
+                {% for answer in question.courseAnswers %}
+                    {% include ':ajax/create-courses/questions:answer.row.html.twig' with {'answerOrder': answer.answerOrder, 'answerId': answer.id, 'answer': answer.answer} %}
+                {% endfor %}
+            {% else %}
+                {% include ':ajax/create-courses/questions:answer.row.html.twig' with {'answerOrder': 1} %}
+                {% include ':ajax/create-courses/questions:answer.row.html.twig' with {'answerOrder': 2} %}
+            {% endif %}
+        </div>
+        <div class="centrum add-more-question-inputs-button-div">
+            <button class="btn btn-default add-more-question-inputs-button" type="button">
+                <span class="glyphicon glyphicon-plus text-success"></span>
+                {% trans %}Antwoorden toevoegen{% endtrans %}
+            </button>
+        </div>
+        <hr />
+        <div class="centrum correct-answers">
+            <b>{% trans %}Correcte antwoorden{% endtrans %}</b>
+            <br />
+            {% if question is defined %}
+                {% for answer in question.courseAnswers %}
+                    {% include ':ajax/create-courses/questions:correct.answer.row.html.twig' with {'answerOrder': answer.answerOrder, 'answerId': answer.id, 'isCorrect': answer.isCorrect} %}
+                {% endfor %}
+            {% else %}
+                {% include ':ajax/create-courses/questions:correct.answer.row.html.twig' with {'answerOrder': 1} %}
+                {% include ':ajax/create-courses/questions:correct.answer.row.html.twig' with {'answerOrder': 2} %}
+            {% endif %}
+        </div>
+        <input class="data-value" type="hidden" value="multiple-choice" data-value-name="type">
+        <input class="data-value" type="hidden" data-value-name="questionId" value="{% if question is defined %}{{ question.id }}{% else %}-1{% endif %}">
+        <input class="answer-amount" type="hidden" value="{% if question is defined %}{{ question.courseAnswers|length }}{% else %}2{% endif %}">
+    </form>
+    <div class="panel-footer panel-default">
+        <div class="pull-right">
+            <button class="btn btn-default save-custom-question" type="button">
+                <span class="glyphicon glyphicon-ok text-success"></span>
+                {% trans %}Opslaan{% endtrans %}
+            </button>
+            <button class="btn btn-default remove-custom-question" type="button" data-question-id="{% if question is defined %}{{ question.id }}{% else %}-1{% endif %}">
+                <span class="glyphicon glyphicon-remove text-danger"></span>
+                {% trans %}Verwijder{% endtrans %}
+            </button>
+        </div>
+        <div class="pull-left">
+            <button class="btn btn-default select-questions-overview" type="button">
+                <span class="glyphicon glyphicon-arrow-left"></span>
+                {% trans %}Terug{% endtrans %}
+            </button>
+        </div>
+    </div>
+{% endblock %}

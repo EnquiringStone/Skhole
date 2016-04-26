@@ -1,0 +1,16 @@
+{% block answerRow %}
+    <div class="form-group">
+        <label class="col-sm-2 control-label">{{ answerOrder|orderToAlphabet(true) }}</label>
+        <div class="col-sm-9">
+            <input class="form-control data-value" data-value-name="answers" type="text" value="{% if answer is defined %}{{ answer }}{% endif %}" data-answer-order="{{ answerOrder }}"
+                   data-answer-id="{% if answerId is defined %}{{ answerId }}{% else %}-1{% endif %}">
+        </div>
+        <div class="col-sm-1">
+            {% if answerOrder > 2 %}
+                <a class="remove-extra-answer" href="#" data-answer-id="{% if answerId is defined %}{{ answerId }}{% else %}-1{% endif %}">
+                    <span class="glyphicon glyphicon-remove text-danger"></span>
+                </a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

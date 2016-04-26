@@ -1,0 +1,19 @@
+{% block startCustomPage %}
+    <div class="tab-pane fade in active">
+        <div class="min-height-thumbnail">
+            <div class="centrum margin-from-top120">
+                <button class="btn btn-default btn-lg" type="button" data-toggle="modal" data-target="#courseChooseInstructionModal">
+                    <span class="glyphicon glyphicon-plus text-success" aria-hidden="true"></span>
+                    <b>{% trans %}Uitleg{% endtrans %}</b>
+                </button>
+                <button class="btn btn-default btn-lg" type="button" data-toggle="modal" data-target="#courseAddExerciseModal">
+                    <span class="glyphicon glyphicon-plus text-success" aria-hidden="true"></span>
+                    <b>{% trans %}Opdracht{% endtrans %}</b>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% if course.coursePages.count > 0 %}
+        {% include ':ajax/create-courses/elements:custom.pages.overview.html.twig' with {'pages': course.coursePages} %}
+    {% endif %}
+{% endblock %}
