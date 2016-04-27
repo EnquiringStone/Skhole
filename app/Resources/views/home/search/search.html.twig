@@ -1,7 +1,13 @@
 {% extends 'base.html.twig' %}
 {% block title %}{% trans %}Zoeken{% endtrans %}{% endblock %}
 {% block body %}
-    <h1>{% trans %}Zoeken{% endtrans %}</h1>
+    {% include ':panels/dashboard:search.panel.html.twig' %}
+    {% include ':panels/dashboard:search.results.panel.html.twig' %}
+    {% include ':panels/general:commercial.panel.html.twig' %}
+{% endblock %}
+
+{% block prescripts %}
+    <script src="{{ asset('js/dashboard/search.js') }}"></script>
 {% endblock %}
 
 {% set menu = 'home' %}

@@ -28,7 +28,6 @@ function refreshPage(caller, resetPagination, resetSort) {
 
     var pagination = getPagination(base);
     var sort = getSort(base);
-    var search = getSearch(base);
     var defaultSearchValues = getSearchValues(base);
 
     if(pagination != null) {
@@ -44,9 +43,6 @@ function refreshPage(caller, resetPagination, resetSort) {
         arguments['sortAttribute'] = sort['sortAttribute'];
         arguments['sortValue'] = sort['sortValue'];
     }
-    if(search != null) {
-        arguments['searchAttributes'] = search;
-    }
     if(defaultSearchValues != null) {
         arguments['searchValues'] = defaultSearchValues;
     }
@@ -58,10 +54,6 @@ function refreshPage(caller, resetPagination, resetSort) {
     arguments['view'] = view;
 
     sendAjaxCall(url, arguments, function(args) {
-        //if(args['searchHtml'] != null) {
-        //    $('.search-field', base).empty();
-        //    $('.search-field', base).append(args['searchHtml']);
-        //}
         if(args['paginationHtml'] != null) {
             $('.pagination-field', base).empty();
             $('.pagination-field', base).append(args['paginationHtml']);
@@ -102,44 +94,11 @@ function getSort(base) {
     return null;
 }
 
-function getSearch(base) {
-    var input = $('.search-value', base);
-    if(input.length <= 0 || input.val() == '' || input.val() == null)
-        return null;
-    var value = input.val();
-
-    var search = $('.search-form', base);
-    if(search.length) {
-        var object = {};
-        object['value'] = value;
-        var active = $('search-options .active', base);
-        if(active.length) {
-            return createSearchArray($(active), object, value);
-        }
-        else {
-            $('.search-options a', base).each(function(index, value) {
-                object = createSearchArray($(value), object, value);
-            });
-            return object;
-        }
-    }
-    return null;
-}
-
 function getSearchValues(base) {
     var input = base.data('default-search-attributes');
     if(input.length <= 0 || input == '' || input == null)
         return null;
-
     return input;
-}
-
-function createSearchArray(activeElement, object) {
-    if(activeElement.length) {
-        var entity = activeElement.data('entity');
-        object[entity] = activeElement.data('attribute');
-    }
-    return object;
 }
 
 //TODO use this to show the error message from the ajax call

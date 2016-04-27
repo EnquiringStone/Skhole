@@ -1,0 +1,86 @@
+{% extends 'panels/panel.base.html.twig' %}
+{% block panelBaseTitle %}
+    {% trans %}Zoeken{% endtrans %}
+{% endblock %}
+{% block panelBaseContents %}
+    <div class="panel-body" data-url="{{ url('app_home_ajax_page') }}">
+        <hr />
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-sm-2">{% trans %}Zoekterm{% endtrans %}</label>
+                <div class="col-sm-10">
+                    <div class="input-group">
+                        <input type="text" class="form-control data-value" data-value-name="simpleSearchValue" placeholder="{% trans %}Zoekopdracht{% endtrans %}">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default simple-search" type="button">
+                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                {% trans %}Zoek{% endtrans %}
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <hr />
+        <div class="panel-group" id="accordion" role="tablist">
+            <div class="centrum">
+                <button type="submit" class="btn btn-primary btn-lg" data-toggle="collapse" data-parent="#accordion" href="#collapseSearch" aria-expanded="true" aria-controls="collapseSearch">
+                    {% trans %}Geadvanceerd zoeken{% endtrans %}
+                </button>
+            </div>
+            <br />
+            <div id="collapseSearch" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSearch" aria-expanded="true">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{% trans %}Trefwoorden{% endtrans %}</label>
+                        <div class="col-sm-10">
+                            <input class="form-control data-value" data-value-name="tags" placeholder="{% trans %}Trefwoorden / Tags{% endtrans %}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{% trans %}Aanbieder{% endtrans %}</label>
+                        <div class="col-sm-10">
+                            <input class="form-control data-value" data-value-name="provider" placeholder="{% trans %}Naam van een aanbieder{% endtrans %}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{% trans %}Docent{% endtrans %}</label>
+                        <div class="col-sm-10">
+                            <input class="form-control data-value" data-value-name="teacher" placeholder="{% trans %}Naam van de docent{% endtrans %}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{% trans %}Taal{% endtrans %}</label>
+                        <div class="col-sm-10">
+                            <select class="form-control data-value" data-value-name="language">
+                                <option value="-1" selected="selected">{% trans %}Niet van toepassing{% endtrans %}</option>
+                                {% for language in languages %}
+                                    <option value="{{ language.id }}">{{ language.language|trans({},'db') }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{% trans %}Niveau{% endtrans %}</label>
+                        <div class="col-sm-10">
+                            <select class="form-control data-value" data-value-name="level">
+                                <option value="-1" selected="selected">{% trans %}Niet van toepassing{% endtrans %}</option>
+                                {% for level in levels %}
+                                    <option value="{{ level.id }}">{{ level.levelLong|trans({},'db') }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default pull-right complex-search">
+                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                {% trans %}Zoek{% endtrans %}
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

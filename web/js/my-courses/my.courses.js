@@ -29,8 +29,6 @@ function updateReviewModals(caller) {
     var base = $($(caller).parents('.page-controls'));
     var pagination = getPagination(base);
     var sort = getSort(base);
-    var search = getSearch(base);
-    var defaultSearchValues = getSearchValues(base);
 
     var url = base.data('url');
     var context = base.data('context');
@@ -43,12 +41,6 @@ function updateReviewModals(caller) {
     if(sort != null) {
         arguments['sortAttribute'] = sort['sortAttribute'];
         arguments['sortValue'] = sort['sortValue'];
-    }
-    if(search != null) {
-        arguments['searchAttributes'] = search;
-    }
-    if(defaultSearchValues != null) {
-        arguments['defaultValues'] = defaultSearchValues;
     }
 
     arguments['method'] = 'getReviewModals';

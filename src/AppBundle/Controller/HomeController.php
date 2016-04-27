@@ -83,7 +83,10 @@ class HomeController extends Controller {
      */
     public function searchAction(Request $request)
     {
-        return $this->render(':home:search.html.twig');
+        $languages = $this->getDoctrine()->getRepository('AppBundle:Course\CourseLanguages')->findAll();
+        $levels = $this->getDoctrine()->getRepository('AppBundle:Course\CourseLevels')->findAll();
+
+        return $this->render(':home/search:search.html.twig', array('languages' => $languages, 'levels' => $levels));
     }
 
     /**
