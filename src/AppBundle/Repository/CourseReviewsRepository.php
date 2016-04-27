@@ -13,7 +13,7 @@ use AppBundle\Interfaces\PageControlsInterface;
 use AppBundle\Interfaces\PaginationInterface;
 use Doctrine\ORM\EntityRepository;
 
-class CourseReviewsRepository extends EntityRepository implements PaginationInterface, PageControlsInterface
+class CourseReviewsRepository extends EntityRepository implements PageControlsInterface
 {
     public function getCountByCourseId($courseId)
     {
