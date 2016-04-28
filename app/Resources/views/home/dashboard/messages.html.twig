@@ -9,8 +9,7 @@
 
 {% block modals %}
     {% include ':modal/dashboard:messages.remove.modal.html.twig' with{'modalId' : 'removeMessagesModal'} %}
-    {#TODO translate exception message#}
-    {% include ':modal/exception:exception.modal.html.twig' with {'modalId' : 'exceptionNoneSelected', 'exceptionMessage': 'Er moet minimaal 1 item geselecteerd zijn'} %}
+    {% include ':modal/exception:message.exception.modal.html.twig' with {'modalId' : 'exceptionNoneSelected', 'exceptionMessage': 'Er moet minimaal 1 item geselecteerd zijn'} %}
 {% endblock %}
 
 {% block prescripts %}

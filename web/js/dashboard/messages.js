@@ -99,6 +99,7 @@ $(document).ready(function() {
 function updateReviewModals(caller) {
     var base = $($(caller).parents('.page-controls'));
     var pagination = getPagination(base);
+    var sort = getSort(base);
 
     var url = base.data('url');
     var context = base.data('context');
