@@ -8,17 +8,67 @@
     </h4>
 {% endblock %}
 {% block modalBaseContents %}
-    <div class="centrum">
-        <a href="{{ path('hwi_oauth_connect') }}facebook" class="btn btn-default">
-            <img src="{{ asset('images/socialmedia-facebook.png') }}" class="img-rounded" />
-            {% trans %}Login met Facebook{% endtrans %}
-        </a>
-        <p></p>
-        <a href="{{ path('hwi_oauth_connect') }}google" class="btn btn-default">
-            <img src="{{ asset('images/socialmedia-google+.png') }}">
-            {% trans %}Login met Google{% endtrans %}
-        </a>
+    <div class="modal-body">
+        <div class="tab-content">
+            <div class="tab-pane fade active in" id="tabLoginSocial">
+                <div class="centrum">
+                    <a href="{{ path('hwi_oauth_connect') }}facebook" class="btn btn-default">
+                        <img src="{{ asset('images/login-fb.png') }}" class="img-rounded" />
+                        {% trans %}Login met Facebook{% endtrans %}
+                    </a>
+                    <p></p>
+                    <a href="{{ path('hwi_oauth_connect') }}google" class="btn btn-default">
+                        <img src="{{ asset('images/login-g.png') }}">
+                        {% trans %}Login met Google{% endtrans %}
+                    </a>
+                    <hr />
+                    <p>{% trans %}Als je een account aanmaakt, ga je akkoord met de{% endtrans %} <a href="{#TODO Gebruikersvoorwaarden#}#">{% trans %}Gebruikersvoorwaarden{% endtrans %}</a> {% trans %}en het{% endtrans %} <a href="{#TODO Privacybeleid#}#">{% trans %}Privacybeleid{% endtrans %}</a> {% trans %}van StudyLivre{% endtrans %}</p>
+                </div>
+                <hr />
+                <div class="modal-info-background centrum">
+                    <p>
+                        <b>{% trans %}Nog geen account{% endtrans %}?</b>
+                        <br />
+                        {% trans %}Log eenmalig in met Facebook, Google or LinkedIn{% endtrans %}. <a href="#tabLoginInfo" data-toggle="tab" aria-expanded="true">{% trans %}Meer info{% endtrans %}</a>
+                    </p>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="tabLoginInfo">
+                <div class="explanation-background">
+                    <h4 class="centrum">
+                        <span class="glyphicon glyphicon-info-sign text-primary" aria-hidden="true"></span>
+                        {% trans %}Account aanmaken{% endtrans %}
+                    </h4>
+                    <hr />
+                    <h5 class="text-primary">
+                        <b>{% trans %}Stap 1{% endtrans %}:</b>
+                        {% trans %}Login met social media account{% endtrans %}
+                    </h5>
+                    <p>{% trans %}Als je de eerste keer inlogt met een social media account (Facebook, Google of LinkedIn) slaan wij automatisch de volgende gegevens van je op:{% endtrans %}</p>
+                    <ul>
+                        <li>{% trans %}Voornaam en achternaam{% endtrans %}</li>
+                        <li>{% trans %}Email{% endtrans %}</li>
+                        <li>{% trans %}Geboortedatum{% endtrans %}</li>
+                        <li>{% trans %}Social media account waarmee je inlogt{% endtrans %}</li>
+                    </ul>
+                    <h5 class="text-primary">
+                        <b>{% trans %}Stap 2{% endtrans %}:</b>
+                        {% trans %}Klaar{% endtrans %}
+                    </h5>
+                    <p>{% trans %}Meer hoef je niet te doen. Voortaan kun je met het door jouw gekozen social media account inloggen{% endtrans %}</p>
+                    <div class="pull-right">
+                        <button type="button" class="btn btn-default btn-sm" href="#tabLoginSocial" data-toggle="tab" aria-expanded="true">
+                            <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+                            {% trans %}Terug{% endtrans %}
+                        </button>
+                    </div>
+                    <hr />
+                </div>
+            </div>
+        </div>
     </div>
+
+
 {% endblock %}
 
 {% block closeButtonText %}

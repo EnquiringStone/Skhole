@@ -11,14 +11,16 @@
             <li><a href="#{#TODO Statistics link#}">{% trans %}Statestiek{% endtrans %}</a></li>
         </ul>
     </div>
-    <div class="btn-group">
-        <button type="button" class="btn btn-default dropdown-toggle btn-sm" data-toggle="dropdown">
-            {% trans %}Mijn account{% endtrans %}
-            <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-            <li><a href="{{ path('app_home_dashboard_pages_page', {'page': 'profile'}) }}">Profiel</a></li>
-            <li><a href="{{ path('app_home_dashboard_pages_page', {'page': 'messages'}) }}">Berichten</a></li>
-        </ul>
-    </div>
+    {% if app.user %}
+        <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle btn-sm" data-toggle="dropdown">
+                {% trans %}Mijn account{% endtrans %}
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="{{ path('app_home_dashboard_pages_page', {'page': 'profile'}) }}">Profiel</a></li>
+                <li><a href="{{ path('app_home_dashboard_pages_page', {'page': 'messages'}) }}">Berichten</a></li>
+            </ul>
+        </div>
+    {% endif %}
 {% endblock %}

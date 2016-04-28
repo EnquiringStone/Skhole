@@ -3,30 +3,51 @@
     {% trans %}Welkom{% endtrans %} {% if is_granted('ROLE_USER') %}{{ app.user.realName }}{% endif %}
 {% endblock %}
 {% block panelBaseContentTypeLeft %}
-    <h4><samp><b>{% trans %}Snel menu{% endtrans %}</b></samp></h4>
-    <p>{% trans %}Onder kunt u snel en gemakkelijk een cursuscode invoeren, een cursus creëren of een leergroep toevoegen.{% endtrans %}</p>
-    <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#courseCodeModal">
-        <span class="glyphicon glyphicon-grain text-info" aria-hidden="true"></span>
-        <samp><b>{% trans %}Cursuscode invoeren{% endtrans %}</b></samp>
-    </button>
-    <button type="button" class="btn btn-default btn-sm">
+    <h4><b>{% trans %}Introductie{% endtrans %}</b></h4>
+    <p>
+        {% trans %}StudyLivre beidt je de mogelijkheid om cursussen te bekijken, maken en delen. Na afronding van een cursus kun je een cursusrapport (met daarin je resultaten) inzien. Als begeleider of docent is het mogelijk om cursusrapporten in te zien van cursisten die het rapport met jouw hebben gedeeld{% endtrans %}
+    </p>
+    <hr />
+    <h4><b>{% trans %}SnelMenu{% endtrans %}</b></h4>
+    <div class="input-group">
+        <input type="text" class="form-control quick-search-value" placeholder="{% trans %}Cursusnaam{% endtrans %}">
+        <div class="input-group-btn search-panel">
+            <button type="button" class="btn btn-default quick-search" data-url="{{ path('app_search_page') }}">
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            </button>
+        </div>
+    </div>
+    <hr />
+    <a href="{{ path('app_teach_my_courses_page') }}" class="btn btn-default btn-sm create-course">
         <span class="glyphicon glyphicon-plus text-success" aria-hidden="true"></span>
-        {#TODO Button link#}
-        <samp>{% trans %}Cursus creeren{% endtrans %}</samp>
+        {% trans %}Nieuwe cursus{% endtrans %}
+    </a>
+    <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#studyIntroductionModal">
+        <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+        {% trans %}Cursus volgen{% endtrans %}
     </button>
-    <button type="button" class="btn btn-default btn-sm">
-        <span class="glyphicon glyphicon-plus text-success" aria-hidden="true"></span>
-        {#TODO Button link#}
-        <samp>{% trans %}Leergroep creeren{% endtrans %}</samp>
+    <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#teachIntroductionModal">
+        <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+        {% trans %}Cursus maken{% endtrans %}
     </button>
+    <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#courseReportIntroductionModal">
+        <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+        {% trans %}Cursusrapport{% endtrans %}
+    </button>
+    <hr />
+    <div class="centrum">
+        <button type="button" class="btn btn-lg btn-info" data-toggle="modal" data-target="#loginModal">
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+            {% trans %}Account aanmaken{% endtrans %}
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+        </button>
+    </div>
+    <hr />
 {% endblock %}
 {% block panelBaseContentTypeRight %}
-    <div>
-        <h4><samp><b>{#TODO Contents#}{% trans %}Unknown{% endtrans %}</b></samp></h4>
-        <span>
-            {#TODO Contents#}
-            {% trans %}Unknown{% endtrans %}
-        </span>
+    <div class="embed-responsive embed-responsive-4by3">
+        {#TODO Change url#}
+        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/AX7r61fyltc" allowfullscreen></iframe>
     </div>
 {% endblock %}
 

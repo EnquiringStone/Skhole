@@ -10,5 +10,14 @@
     <script src="{{ asset('js/dashboard/search.js') }}"></script>
 {% endblock %}
 
+{% block postscripts %}
+    {% if search is not null and search != '' %}
+        <script>
+            $('.simple-search-value').val('{{ search }}');
+            doSimpleSearch();
+        </script>
+    {% endif %}
+{% endblock %}
+
 {% set menu = 'home' %}
 {% set subMenu = 'search' %}

@@ -121,3 +121,20 @@
 #sortable li {
 	cursor: pointer;
 }
+
+.explanation-background {
+	background-color: #fcfcfc;
+	border-color: #ddd;
+	border-radius: 5px;
+	border-style: solid;
+	min-height: 250px;
+	margin-left: 10px;
+}
+
+.modal-info-background {
+	background-color: #fcfcfc;
+	border-color: #ddd;
+	border-style:  solid;
+	border-radius: 5px;
+	margin-left: 5px;
+}

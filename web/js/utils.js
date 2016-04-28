@@ -16,6 +16,10 @@ function sendAjaxCall(url, contents, successCallBack, errorCallBack) {
     });
 }
 
+function goToUrl(url) {
+    window.location.href = url;
+}
+
 function refreshPage(caller, resetPagination, resetSort, customFunction) {
     var base = $($(caller).parents('.page-controls'));
 

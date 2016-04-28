@@ -85,12 +85,15 @@ class HomeController extends Controller {
      */
     public function searchAction(Request $request)
     {
-        $arguments = array('courses' => array('name' => 'The greatest course', 'description' => 'The greatest course'), 'providers' => array('name' => 'Hanze hogeschool', 'description' => 'Hanze hogeschool'), 'tags' => array('tag' => array('lol', 'asdasd')));
+        $requestParams = $request->query->all();
+        $search = null;
+        if(array_key_exists('search', $requestParams))
+            $search = $requestParams['search'];
 
         $languages = $this->getDoctrine()->getRepository('AppBundle:Course\CourseLanguages')->findAll();
         $levels = $this->getDoctrine()->getRepository('AppBundle:Course\CourseLevels')->findAll();
 
-        return $this->render(':home/search:search.html.twig', array('languages' => $languages, 'levels' => $levels));
+        return $this->render(':home/search:search.html.twig', array('languages' => $languages, 'levels' => $levels, 'search' => $search));
     }
 
     /**

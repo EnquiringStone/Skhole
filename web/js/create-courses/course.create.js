@@ -914,10 +914,6 @@ function saveTeacherModal(context) {
     });
 }
 
-function goToUrl(url) {
-    window.location.href = url;
-}
-
 //Starsss
 var __slice = [].slice;
 

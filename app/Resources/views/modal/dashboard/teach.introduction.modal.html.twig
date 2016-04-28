@@ -2,26 +2,147 @@
 {% block modalBaseHeader %}
     <h4 class="modal-title centrum" id="{{ modalId }}">
         <b>
-            <span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span>
-            {% trans %}Onderwijzen introductie{% endtrans %}
+            <span class="glyphicon glyphicon-info-sign text-primary" aria-hidden="true"></span>
+            {% trans %}Cursus maken{% endtrans %}
         </b>
     </h4>
 {% endblock %}
 {% block modalBaseContents %}
-    <div class="row">
-        <div class="col-md-8">
-            <div class="embed-responsive embed-responsive-4by3">
-                {#TODO youtube url#}
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/AX7r61fyltc" allowfullscreen></iframe>
+    <div class="modal-body">
+        <div class="btn-pref" role="group">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-sm btn-primary" href="#tabIntroduction{{ modalId }}" data-toggle="tab">
+                    <b>{% trans %}Introductie{% endtrans %}</b>
+                </button>
             </div>
-            <hr>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-sm" href="#tabStep1{{ modalId }}" data-toggle="tab">
+                    <b>{% trans %}Stap 1{% endtrans %}</b>
+                </button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-sm" href="#tabStep2{{ modalId }}" data-toggle="tab">
+                    <b>{% trans %}Stap 2{% endtrans %}</b>
+                </button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-sm" href="#tabStep3{{ modalId }}" data-toggle="tab">
+                    <b>{% trans %}Stap 3{% endtrans %}</b>
+                </button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-sm" href="#tabStep4{{ modalId }}" data-toggle="tab">
+                    <b>{% trans %}Stap 4{% endtrans %}</b>
+                </button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-sm" href="#tabStep5{{ modalId }}" data-toggle="tab">
+                    <b>{% trans %}Stap 5{% endtrans %}</b>
+                </button>
+            </div>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane fade active in" id="tabIntroduction{{ modalId }}">
+                <div class="explanation-background">
+                    <br />
+                    <br />
+                    <div class="centrum">
+                        <img src="{{ asset('images/logo-schoolbook.png') }}" class="img-rounded">
+                        <h1 class="text-primary">{% trans %}Cursus maken{% endtrans %}</h1>
+                        <p class="lead text-muted">{% trans %}Maak met gemak je eigen cursussen{% endtrans %}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="tabStep1{{ modalId }}">
+                <div class="explanation-background">
+                    <h4 class="text-primary">
+                        <b>{% trans %}Stap 1{% endtrans %}:</b>
+                        {% trans %}Maak cursus aan{% endtrans %}
+                    </h4>
+                    <p>{% trans %}Om een cursus aan te maken moet je zijn ingelogd. Wanneer ingelogt kun je op deze knop klikken:{% endtrans %}</p>
+                    <button type="button" class="btn btn-default btn-sm unclickable">
+                        <span class="glyphicon glyphicon-plus text-success"></span>
+                        {% trans %}Nieuwe cursus{% endtrans %}
+                    </button>
+                    <p>{% trans %}Deze knop kan worden gevonden onder het teach tabblad in het 'Mijn cursussen' menu. Wanneer een cursus is aangemaakt krijg je het volgende te zien:{% endtrans %}</p>
+                    <div class="centrum">
+                        <img src="{{ asset('images/nl-crea-course-menu-example.png') }}" class="img-rounded">
+                    </div>
+                    <p>{% trans %}In de volgende stappen wordt nader ingegaan op dit menu{% endtrans %}</p>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="tabStep2{{ modalId }}">
+                <div class="explanation-background">
+                    <h4 class="text-primary">
+                        <b>{% trans %}Stap 2{% endtrans %}:</b>
+                        {% trans %}Standaard cursuspagina's bewerken{% endtrans %}
+                    </h4>
+                    <p>{% trans %}Linksboven in het aanmaakmenu kan de standaard pagina's worden gevonden{% endtrans %}</p>
+                    <div class="centrum">
+                        <img src="{{ asset('images/nl-example-teach-menu.png') }}" class="img-rounded">
+                    </div>
+                    <ol>
+                        <li>
+                            <b>{% trans %}Zoekdata{% endtrans %}</b>
+                            {% trans %}De gegevens die te zien zijn bij de zoekresultaten zodra uw cursus is gepuliceerd;{% endtrans %}
+                        </li>
+                        <li>
+                            <b>{% trans %}Cursuskaart{% endtrans %}</b>
+                            {% trans %}Dit is een overzicht met daarin de hoofdlijnen van de cursus. Deze is kaart is zichtbaar bij het zoekresultaat;{% endtrans %}
+                        </li>
+                        <li>
+                            <b>{% trans %}Planning{% endtrans %}</b>
+                        </li>
+                        <li>
+                            <b>{% trans %}Mededelingen{% endtrans %}</b>
+                        </li>
+                        <li>
+                            <b>{% trans %}Cursusmateriaal{% endtrans %}</b>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="tabStep3{{ modalId }}">
+                <div class="explanation-background">
+                    <h4 class="text-primary">
+                        <b>{% trans %}Stap 3{% endtrans %}:</b>
+                        {% trans %}Cursuspagina's toevoegen{% endtrans %}
+                    </h4>
+                    <p>{% trans %}Lokatie waar de uitleg en opdrachtpagina's kunt toevoegen{% endtrans %}</p>
+                    <div class="centrum">
+                        <img src="{{ asset('images/nl-example-add-page.png') }}" class="img-rounded">
+                    </div>
+                    <h5 class="text-primary">
+                        <b>{% trans %}Stap 3.1: Uitleg pagina toevoegen{% endtrans %}</b>
+                    </h5>
+                    <h5 class="text-primary">
+                        <b>{% trans %}Stap 3.2: Opdrachtpagina toevoegen{% endtrans %}</b>
+                    </h5>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="tabStep4{{ modalId }}">
+                <div class="explanation-background">
+                    <h4 class="text-primary">
+                        <b>{% trans %}Stap 4{% endtrans %}:</b>
+                        {% trans %}Publiceer cursus{% endtrans %}
+                    </h4>
+                    <p>{% trans %}Zodra u cursus af is, kunt u deze publiceren - dit houdt in dat deze wordt opgenomen in de zoekresultaten. Nadat uw cursus is gepubliceerd, kunt u deze daarna nog altijd bewerken zodra u het 'Mijn cursussen overzicht' opent (zie ook stap 01){% endtrans %}</p>
+                    <div class="centrum">
+                        <img src="{{ asset('images/nl-example-publicate.png') }}" class="img-rounded">
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="tabStep5{{ modalId }}">
+                <div class="explanation-background">
+                    <h4 class="text-primary">
+                        <b>{% trans %}Stap 5{% endtrans %}:</b>
+                        {% trans %}Cursus bewerken na publicatie{% endtrans %}
+                    </h4>
+                    <p>{% trans %}Nadat de cursus is gepubliceerd, kunt u de cursus updaten, uitbreiden of verwijderen{% endtrans %}</p>
+                </div>
+            </div>
         </div>
     </div>
-    <p>{% trans %}Bekijk alle introductie video's{% endtrans %}</p>
-    {#TODO buttons?#}
-    <button class="btn btn-default btn-sm"><b><samp>{% trans %}Introductie{% endtrans %}</samp></b></button>
-    <button class="btn btn-default btn-sm"><b><samp>{% trans %}Cursus volgen{% endtrans %}</samp></b></button>
-    <button class="btn btn-default btn-sm"><b><samp>{% trans %}Leergroepen & cursuscode{% endtrans %}</samp></b></button>
 {% endblock %}
 {% block closeButtonText %}
     {% trans %}Sluiten{% endtrans %}
