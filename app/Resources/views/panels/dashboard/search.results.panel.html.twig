@@ -3,10 +3,10 @@
     <b>{% trans %}Resultaten{% endtrans %}:</b> <span class="search-result-count">0</span>
 {% endblock %}
 {% block panelBaseContents %}
-    <div class="panel-body page-controls" data-view="search" data-entity="Course\Courses" data-context="PUBLIC" data-url="{{ url('app_home_ajax_page') }}">
+    <div class="panel-body page-controls" data-view="search" data-entity="Course\Courses" data-context="PUBLIC" data-url="{{ url('app_home_ajax_page') }}" data-pagination-name="{% trans %}Resultaat{% endtrans %}">
         <div class="sort-field">
         </div>
-        <br />
+        <hr />
         <div class="content-field">
             <p class="lead centrum">{% trans %}Geen resultaten gevonden{% endtrans %}</p>
         </div>

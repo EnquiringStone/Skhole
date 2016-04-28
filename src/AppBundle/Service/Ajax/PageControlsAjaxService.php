@@ -107,7 +107,7 @@ class PageControlsAjaxService implements AjaxInterface
                             : null;
                     }
                 }
-                return array('entitiesHtml' => $entitiesHtml, 'paginationHtml' => $paginationHtml, 'sortHtml' => $sortHtml);
+                return array('entitiesHtml' => $entitiesHtml, 'paginationHtml' => $paginationHtml, 'sortHtml' => $sortHtml, 'totalFound' => $data['total']);
             }
             throw new \Exception('entity '.$object.' not instance of page controls');
         }

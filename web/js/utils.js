@@ -16,7 +16,7 @@ function sendAjaxCall(url, contents, successCallBack, errorCallBack) {
     });
 }
 
-function refreshPage(caller, resetPagination, resetSort) {
+function refreshPage(caller, resetPagination, resetSort, customFunction) {
     var base = $($(caller).parents('.page-controls'));
 
     var entity = base.data('entity');
@@ -39,7 +39,11 @@ function refreshPage(caller, resetPagination, resetSort) {
         }
         arguments['pageName'] = pagination['pageName'];
     } else {
-        arguments['pageName'] = 'empty';
+        var page = base.data('pagination-name');
+        if(page == undefined || page == '' || page == null)
+            arguments['pageName'] = 'empty';
+        else
+            arguments['pageName'] = page;
     }
     if(sort != null && !resetSort) {
         arguments['sortAttribute'] = sort['sortAttribute'];
@@ -71,6 +75,8 @@ function refreshPage(caller, resetPagination, resetSort) {
 
         $('.content-field', base).empty();
         $('.content-field', base).append(args['entitiesHtml']);
+        if(customFunction != null)
+            customFunction(args);
     }, function(args) {
         //console.log(args);
     });

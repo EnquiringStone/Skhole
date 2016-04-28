@@ -18,6 +18,9 @@
     {% if renderPages > totalPages %}
         {% set renderPages = totalPages %}
     {% endif %}
+    {% if renderPages <= 0 %}
+        {% set renderPages = 1 %}
+    {% endif %}
     {# End of magic #}
 
     <div class="centrum{% if class is defined %} {{ class }}{% endif %}">
