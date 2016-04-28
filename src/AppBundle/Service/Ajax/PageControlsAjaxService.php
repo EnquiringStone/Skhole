@@ -68,11 +68,11 @@ class PageControlsAjaxService implements AjaxInterface
             $entity = $this->manager->getRepository($object);
             if($entity instanceof PageControlsInterface)
             {
-                if(array_key_exists('searchAttributes', $args) && $entity->hasSearch())
+                if(array_key_exists('search', $args) && $entity->hasSearch())
                 {
-                    $search = PageControlHelper::createSearch($args['searchAttributes']);
+                    $searchParams = array('defaultSearch' => $args['searchValues'], 'searchQuery' => $args['search'], 'correlationType' => $args['correlation']);
                     $data = $entity->getRecordsBySearch($args['offset'], $args['limit'], $this->createSort($args),
-                        $search, $args['context'] == 'SELF' ? $this->storage->getToken()->getUser()->getId() : 0);
+                        $searchParams, $args['context'] == 'SELF' ? $this->storage->getToken()->getUser()->getId() : 0);
                 }
                 else
                 {
@@ -94,8 +94,6 @@ class PageControlsAjaxService implements AjaxInterface
                 {
                     $viewObject = ':ajax/'.$args['view'].':';
 
-                    $searchHtml = $entity->hasSearch() ? $this->environment->render($viewObject.'search.html.twig') : null;
-
                     $sort = $this->createSort($args);
                     if($sort == null)
                     {
@@ -109,7 +107,7 @@ class PageControlsAjaxService implements AjaxInterface
                             : null;
                     }
                 }
-                return array('entitiesHtml' => $entitiesHtml, 'paginationHtml' => $paginationHtml, 'searchHtml' => $searchHtml, 'sortHtml' => $sortHtml);
+                return array('entitiesHtml' => $entitiesHtml, 'paginationHtml' => $paginationHtml, 'sortHtml' => $sortHtml);
             }
             throw new \Exception('entity '.$object.' not instance of page controls');
         }

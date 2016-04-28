@@ -10,7 +10,7 @@
                 <label class="control-label col-sm-2">{% trans %}Zoekterm{% endtrans %}</label>
                 <div class="col-sm-10">
                     <div class="input-group">
-                        <input type="text" class="form-control data-value" data-value-name="simpleSearchValue" placeholder="{% trans %}Zoekopdracht{% endtrans %}">
+                        <input type="text" class="form-control simple-search-value" placeholder="{% trans %}Zoekopdracht{% endtrans %}">
                         <span class="input-group-btn">
                             <button class="btn btn-default simple-search" type="button">
                                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -40,19 +40,19 @@
                     <div class="form-group">
                         <label class="control-label col-sm-2">{% trans %}Aanbieder{% endtrans %}</label>
                         <div class="col-sm-10">
-                            <input class="form-control data-value" data-value-name="provider" placeholder="{% trans %}Naam van een aanbieder{% endtrans %}">
+                            <input class="form-control data-value" data-value-name="providers" placeholder="{% trans %}Naam van een aanbieder{% endtrans %}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2">{% trans %}Docent{% endtrans %}</label>
                         <div class="col-sm-10">
-                            <input class="form-control data-value" data-value-name="teacher" placeholder="{% trans %}Naam van de docent{% endtrans %}">
+                            <input class="form-control data-value" data-value-name="teachers" placeholder="{% trans %}Naam van de docent{% endtrans %}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2">{% trans %}Taal{% endtrans %}</label>
                         <div class="col-sm-10">
-                            <select class="form-control data-value" data-value-name="language">
+                            <select class="form-control data-value" data-value-name="languages">
                                 <option value="-1" selected="selected">{% trans %}Niet van toepassing{% endtrans %}</option>
                                 {% for language in languages %}
                                     <option value="{{ language.id }}">{{ language.language|trans({},'db') }}</option>
@@ -63,7 +63,7 @@
                     <div class="form-group">
                         <label class="control-label col-sm-2">{% trans %}Niveau{% endtrans %}</label>
                         <div class="col-sm-10">
-                            <select class="form-control data-value" data-value-name="level">
+                            <select class="form-control data-value" data-value-name="levels">
                                 <option value="-1" selected="selected">{% trans %}Niet van toepassing{% endtrans %}</option>
                                 {% for level in levels %}
                                     <option value="{{ level.id }}">{{ level.levelLong|trans({},'db') }}</option>

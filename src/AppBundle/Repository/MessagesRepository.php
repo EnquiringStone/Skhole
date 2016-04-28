@@ -68,8 +68,8 @@ class MessagesRepository extends EntityRepository implements PageControlsInterfa
         return array('resultSet' => $this->findBy($search, $sort, $limit, $offset), 'total' => $this->getCountByCriteria($search));
     }
 
-    function getRecordsBySearch($offset, $limit, $sort, $searchAttributes, $userId = 0)
+    function getRecordsBySearch($offset, $limit, $sort, $searchParams, $userId = 0)
     {
-        return $this->getRecords(array(), $offset, $limit, $sort, $userId);
+        return $this->getRecords($searchParams['defaultSearch'], $offset, $limit, $sort, $userId);
     }
 }

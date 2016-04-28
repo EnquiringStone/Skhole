@@ -29,6 +29,8 @@ function refreshPage(caller, resetPagination, resetSort) {
     var pagination = getPagination(base);
     var sort = getSort(base);
     var defaultSearchValues = getSearchValues(base);
+    var search = getSearch(base);
+
 
     if(pagination != null) {
         if(!resetPagination) {
@@ -45,6 +47,10 @@ function refreshPage(caller, resetPagination, resetSort) {
     }
     if(defaultSearchValues != null) {
         arguments['searchValues'] = defaultSearchValues;
+    }
+    if(search != null) {
+        arguments['search'] = search['searchParams'];
+        arguments['correlation'] = search['correlation'];
     }
 
     arguments['entity'] = entity;
@@ -66,7 +72,7 @@ function refreshPage(caller, resetPagination, resetSort) {
         $('.content-field', base).empty();
         $('.content-field', base).append(args['entitiesHtml']);
     }, function(args) {
-        console.log(args);
+        //console.log(args);
     });
 }
 
@@ -94,9 +100,42 @@ function getSort(base) {
     return null;
 }
 
+function getSearch(base) {
+    var searchEnabled = $('.search-enabled', base);
+    if(searchEnabled.length <= 0)
+        return null;
+
+    var correlation = searchEnabled.data('correlation');
+
+    var array = {};
+    $('.search-value', base).each(function(index, item) {
+        var obj = $(item);
+        var entity = obj.data('entity');
+        var attributes = obj.data('attributes').split(',');
+        var value = obj.val();
+        var multipleValues = obj.data('has-multiple');
+
+        if(value == null || value == '')
+            return;
+
+        if(multipleValues == '1') {
+            value = value.split(',');
+        }
+
+        if(!(entity in array))
+            array[entity] = {};
+
+        for(var i = 0; i < attributes.length; i++) {
+            array[entity][attributes[i]] = value;
+        }
+    });
+
+    return {'searchParams': array, 'correlation': correlation};
+}
+
 function getSearchValues(base) {
     var input = base.data('default-search-attributes');
-    if(input.length <= 0 || input == '' || input == null)
+    if(input == undefined || input == '' || input == null|| input.length <= 0)
         return null;
     return input;
 }

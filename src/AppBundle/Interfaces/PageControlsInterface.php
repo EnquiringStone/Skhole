@@ -28,5 +28,5 @@ interface PageControlsInterface
 
     function getRecords($searchValues, $offset, $limit, $sort, $userId = 0);
 
-    function getRecordsBySearch($offset, $limit, $sort, $searchAttributes, $userId = 0);
+    function getRecordsBySearch($offset, $limit, $sort, $searchParams, $userId = 0);
 }

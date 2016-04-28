@@ -7,6 +7,8 @@
  */
 namespace AppBundle\Controller;
 
+use AppBundle\Doctrine\SearchQuery;
+use Doctrine\Common\Collections\Criteria;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -83,6 +85,8 @@ class HomeController extends Controller {
      */
     public function searchAction(Request $request)
     {
+        $arguments = array('courses' => array('name' => 'The greatest course', 'description' => 'The greatest course'), 'providers' => array('name' => 'Hanze hogeschool', 'description' => 'Hanze hogeschool'), 'tags' => array('tag' => array('lol', 'asdasd')));
+
         $languages = $this->getDoctrine()->getRepository('AppBundle:Course\CourseLanguages')->findAll();
         $levels = $this->getDoctrine()->getRepository('AppBundle:Course\CourseLevels')->findAll();
 

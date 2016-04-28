@@ -9,12 +9,14 @@
 namespace AppBundle\Repository;
 
 
+use AppBundle\Doctrine\SearchQuery;
 use AppBundle\Interfaces\PageControlsInterface;
 use AppBundle\Interfaces\PaginationInterface;
 use AppBundle\Interfaces\SearchableInterface;
 use AppBundle\Interfaces\SortableInterface;
 use AppBundle\Util\SecurityHelper;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\DBAL\Query\QueryBuilder;
 use Doctrine\ORM\EntityRepository;
 
 class CoursesRepository extends EntityRepository implements PageControlsInterface
@@ -99,9 +101,10 @@ class CoursesRepository extends EntityRepository implements PageControlsInterfac
         return $this->createReturnValues($resultSet, $maxEntities);
     }
 
-    public function getRecordsBySearch($offset, $limit, $sort, $searchAttributes, $userId = 0)
+    public function getRecordsBySearch($offset, $limit, $sort, $searchParams, $userId = 0)
     {
         $sort = $this->replaceSort($sort);
+        $searchQuery = new SearchQuery($searchParams['searchQuery'], $searchParams['correlationType'], $offset, $limit, $sort);
 
         $qb = $this->createQueryBuilder('courses');
         $qb->select('distinct courses');
@@ -109,24 +112,25 @@ class CoursesRepository extends EntityRepository implements PageControlsInterfac
         $qb->leftJoin('courseCard.teachers', 'teachers');
         $qb->leftJoin('courseCard.providers', 'providers');
 
-        $i = 0;
-        foreach($searchAttributes as $entity => $attribute)
-        {
-            foreach($attribute as $attributeName => $attributeValue)
-            {
-                $qb->orWhere($qb->expr()->like($entity.'.'.$attributeName, '?'.$i));
-                $qb->setParameter($i, '%'.$attributeValue.'%');
-            }
-        }
         if($userId > 0)
             $qb->andWhere('courses.userInsertedId = '.$userId);
+        else
+        {
+            $qb->andWhere('courses.stateId = 1');
+            $qb->andWhere('courses.isUndesirable = false');
+        }
+        $qb->andWhere('courses.removed = false');
 
-        $qb->orderBy('courses.'.$sort['sortAttribute'], $sort['sortValue']);
-        $resultSet = $qb->getQuery()->getResult();
-        $total = count($resultSet);
-        $collection = new ArrayCollection($resultSet);
+        $index = 0;
+        foreach($searchParams['defaultSearch'] as $attribute => $value)
+        {
+            $qb->andWhere('courses.'.$attribute, '?'.$index);
+            $qb->setParameter($index, $value);
+            $index ++;
+        }
 
-        return $this->createReturnValues($collection->slice($offset, $limit), $total);
+        $qb = $searchQuery->buildFromQuery($qb);
+        return $searchQuery->getResult($qb, 'courses');
     }
 
     private function replaceSort($sort)

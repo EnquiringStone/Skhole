@@ -13,6 +13,12 @@
         <br />
         <div class="pagination-field">
         </div>
-        <input type="hidden" class="search-parameters" value="">
+        <input type="hidden" class="search-enabled" value="true" data-correlation="AND">
+        <input type="hidden" class="search-value" data-entity="courses" data-attributes="name,description" value="" data-has-multiple="0">
+        <input type="hidden" class="search-value" data-entity="tags" data-attributes="tag" value="" data-has-multiple="1">
+        <input type="hidden" class="search-value" data-entity="providers" data-attributes="name,description" value="" data-has-multiple="0">
+        <input type="hidden" class="search-value" data-entity="teachers" data-attributes="name" value="" data-has-multiple="0">
+        <input type="hidden" class="search-value" data-entity="languages" data-attributes="id" value="" data-has-multiple="0">
+        <input type="hidden" class="search-value" data-entity="levels" data-attributes="id" value="" data-has-multiple="0">
     </div>
 {% endblock %}
