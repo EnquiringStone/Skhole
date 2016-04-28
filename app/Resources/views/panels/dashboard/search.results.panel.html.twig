@@ -3,7 +3,7 @@
     <b>{% trans %}Resultaten{% endtrans %}:</b> <span class="search-result-count">0</span>
 {% endblock %}
 {% block panelBaseContents %}
-    <div class="panel-body page-controls" data-view="search" data-entity="Course\Courses" data-context="PUBLIC" data-url="{{ url('app_home_ajax_page') }}" data-pagination-name="{% trans %}Resultaat{% endtrans %}">
+    <div id="search-results" class="panel-body page-controls" data-view="search" data-entity="Course\Courses" data-context="SEARCH" data-url="{{ url('app_home_ajax_page') }}" data-pagination-name="{% trans %}Resultaat{% endtrans %}">
         <div class="sort-field">
         </div>
         <hr />
@@ -20,5 +20,7 @@
         <input type="hidden" class="search-value" data-entity="teachers" data-attributes="name" value="" data-has-multiple="0">
         <input type="hidden" class="search-value" data-entity="languages" data-attributes="id" value="" data-has-multiple="0">
         <input type="hidden" class="search-value" data-entity="levels" data-attributes="id" value="" data-has-multiple="0">
+    </div>
+    <div class="review-modals-div">
     </div>
 {% endblock %}

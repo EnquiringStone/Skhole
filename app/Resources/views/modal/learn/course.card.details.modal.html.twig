@@ -1,0 +1,170 @@
+{% extends 'modal/modal.base.html.twig' %}
+{% block modalBaseHeader %}
+    <h4 class="modal-title centrum" id="{{ modalId }}">
+        <b>
+            <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+            {% trans %}Cursuskaart{% endtrans %}
+        </b>
+        <br />
+        <span class="text-muted">{{ course.name }}</span>
+    </h4>
+{% endblock %}
+{% block modalBaseContents %}
+    <div class="modal-body">
+        <div class="btn-pref" role="group">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-primary btn-sm" href="#tabCourseCardIntro{{ modalId }}" data-toggle="tab">
+                    <b>{% trans %}Introductie{% endtrans %}</b>
+                </button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default btn-sm" href="#tabCourseCardSummary{{ modalId }}" data-toggle="tab">
+                    <b>{% trans %}Details{% endtrans %}</b>
+                </button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default btn-sm" href="#tabCourseCardPrerequisites{{ modalId }}" data-toggle="tab">
+                    <b>{% trans %}Voorkennis{% endtrans %}</b>
+                </button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default btn-sm" href="#tabCourseCardProviders{{ modalId }}" data-toggle="tab">
+                    <b>{% trans %}Aanbieder{% endtrans %}</b>
+                </button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default btn-sm" href="#tabCourseCardTeachers{{ modalId }}" data-toggle="tab">
+                    <b>{% trans %}Docenten{% endtrans %}</b>
+                </button>
+            </div>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="tabCourseCardIntro{{ modalId }}">
+                <div class="thumbnail">
+                    <h4>{% trans %}Introductie{% endtrans %}</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            {% if course.courseCard.youtubeEmbedUrl is not null %}
+                                <div class="embed-responsive embed-responsive-4by3">
+                                    <iframe class="embed-responsive-item" src="{{ course.courseCard.youtubeEmbedUrl }}" allowfullscreen></iframe>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6">
+                            {% if course.courseCard.pictureUrl is not null %}
+                                <img src="{{ asset(course.courseCard.pictureUrl) }}" class="img-rounded" height="120">
+                            {% endif %}
+                        </div>
+                    </div>
+                    <hr />
+                    <p>{{ course.courseCard.description }}</p>
+                </div>
+            </div>
+            <div class="tab-pane fade in" id="tabCourseCardSummary{{ modalId }}">
+                <div class="thumbnail">
+                    <h4>{% trans %}Cursusinformatie{% endtrans %}</h4>
+                    <button type="button" class="btn btn-default btn-xs unclickable">
+                        <b>{% trans %}Docent{% endtrans %}:</b>
+                        {{ course.insertUser.realName }}
+                    </button>
+                    <button type="button" class="btn btn-default btn-xs unclickable">
+                        <b>{% trans %}Weergaven{% endtrans %}:</b>
+                        {{ course.views }}
+                    </button>
+                    <button type="button" class="btn btn-default btn-xs unclickable">
+                        <b>{% trans %}Rating{% endtrans %}:</b>
+                        {% if course.averageContentRating is not null %}
+                            {% for i in 0..course.averageContentRating|round %}
+                                <img src="{{ asset('images/star_rating.png') }}" class="img-rounded">
+                            {% endfor %}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </button>
+                    <button type="button" class="btn btn-default btn-xs unclickable">
+                        <b>{% trans %}Pagina's{% endtrans %}:</b>
+                        {{ course.coursePages|length }}
+                    </button>
+                    <button type="button" class="unclickable btn btn-default btn-xs">
+                        <b>{% trans %}Cursusduur{% endtrans %}:</b>
+                        {{ (course.estimatedDuration/60)|number_format }}
+                    </button>
+                    <button type="button" class="unclickable btn btn-default btn-xs">
+                        <b>{% trans %}Moeilijkheidsgraad{% endtrans %}:</b>
+                        {% if course.difficulty is not null %}
+                            {% for i in 1..course.difficulty %}
+                                <img src="{{ asset('images/star_rating.png') }}" class="img-rounded">
+                            {% endfor %}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </button>
+                    <button type="button" class="unclickable btn btn-default btn-xs">
+                        <b>{% trans %}Niveau{% endtrans %}:</b>
+                        {{ course.level.levelLong|trans({}, 'db') }}
+                    </button>
+                    <button type="button" class="unclickable btn btn-default btn-xs">
+                        <b>{% trans %}Beschikbaar sinds{% endtrans %}:</b>
+                        {{ course.publishedDateTime|date('d-m-Y') }}
+                    </button>
+                    <button type="button" class="unclickable btn btn-default btn-xs">
+                        <b>{% trans %}Toegevoegd op{% endtrans %}:</b>
+                        {{ course.insertDateTime|date('d-m-Y') }}
+                    </button>
+                    <button type="button" class="unclickable btn btn-default btn-xs">
+                        <b>{% trans %}Laatst aangepast{% endtrans %}:</b>
+                        {{ course.updateDateTime|date('d-m-Y') }}
+                    </button>
+                </div>
+            </div>
+            <div class="tab-pane fade in" id="tabCourseCardPrerequisites{{ modalId }}">
+                <div class="thumbnail">
+                    <h4>{% trans %}Vereiste voorkennis{% endtrans %}</h4>
+                    <p>{{ course.courseCard.priorKnowledge }}</p>
+                </div>
+            </div>
+            <div class="tab-pane fade in" id="tabCourseCardProviders{{ modalId }}">
+                <div class="thumbnail">
+                    <div class="media-list">
+                        {% for provider in course.courseCard.providers %}
+                            <div class="media">
+                                <div class="pull-left">
+                                    <img src="{{ asset('images/logo-skhole.png') }}" class="media-object">
+                                </div>
+                                <div class="media-body">
+                                    <h4>{{ provider.name }}</h4>
+                                    <p>{{ provider.description }}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade in" id="tabCourseCardTeachers{{ modalId }}">
+                <div class="thumbnail">
+                    <h4>{% trans %}Docenten{% endtrans %}</h4>
+                    <div class="media-list">
+                        {% for teacher in course.courseCard.teachers %}
+                            {% if not teacher.isUndesirable %}
+                                <div class="media">
+                                    <div class="pull-left">
+                                        <img src="{{ teacher.pictureUrl is not null ? asset(teacher.pictureUrl) : asset('images/head-wiseguy.png') }}" class="media-object teacher-row-picture">
+                                    </div>
+                                    <div class="media-body">
+                                        <h4>{{ teacher.name }}</h4>
+                                        <p>{{ teacher.description }}</p>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block closeButtonText %}
+    {% trans %}Sluiten{% endtrans %}
+{% endblock %}
+{% set modalBaseType = 'close' %}

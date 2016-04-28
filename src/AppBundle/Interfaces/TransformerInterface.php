@@ -12,11 +12,13 @@ namespace AppBundle\Interfaces;
 interface TransformerInterface
 {
     /**
-     * Flattens the entity object to an array.
+     * Returns html for the given entity. It will use the context to determine
+     * which layout should be used.
      * @param $entities
+     * @param $context
      * @return mixed
      */
-    function transformToAjaxResponse($entities);
+    function transformToAjaxResponse($entities, $context);
 
     /**
      * Returns the name. Should be the same as the class name

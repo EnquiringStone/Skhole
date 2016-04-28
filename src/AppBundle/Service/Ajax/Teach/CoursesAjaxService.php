@@ -75,6 +75,8 @@ class CoursesAjaxService implements AjaxInterface
     public function getReviewModals($args)
     {
         $this->validate($args);
+        if(!array_key_exists('limit', $args)) $args['limit'] = $this->limit;
+        if(!array_key_exists('offset', $args)) $args['offset'] = 0;
 
         if(!array_key_exists('defaultValues', $args)) $args['defaultValues'] = array();
         else $args['defaultValues'] = PageControlHelper::createDefaultSearch($args['defaultValues']);
@@ -83,12 +85,12 @@ class CoursesAjaxService implements AjaxInterface
 
         if(array_key_exists('searchAttributes', $args))
         {
-            $resultSet = $repo->getRecordsBySearch($args['offset'], $args['limit'], array('sortAttribute' => $args['sortAttribute'], 'sortValue' => $args['sortValue']),
+            $resultSet = $repo->getRecordsBySearch($args['offset'], $args['limit'], $this->createSort($args),
                 $args['searchAttributes'],  $args['context'] == 'SELF' ? $this->storage->getToken()->getUser()->getId() : 0);
         }
         else
         {
-            $resultSet = $repo->getRecords($args['defaultValues'], $args['offset'], $args['limit'], array('sortAttribute' => $args['sortAttribute'], 'sortValue' => $args['sortValue']),
+            $resultSet = $repo->getRecords($args['defaultValues'], $args['offset'], $args['limit'], $this->createSort($args),
                 $args['context'] == 'SELF' ? $this->storage->getToken()->getUser()->getId() : 0);
         }
 
@@ -109,9 +111,6 @@ class CoursesAjaxService implements AjaxInterface
 
     private function validate($args)
     {
-        if(!array_key_exists('offset', $args) || !array_key_exists('limit', $args) || !array_key_exists('sortAttribute', $args) || !array_key_exists('sortValue', $args))
-            throw new \Exception('Offset, limit, sort attribute and sort value needs to be specified');
-
         if($args['context'] == 'SELF' && ($this->storage->getToken() == null || $this->storage->getToken()->getUser() == null))
             throw new \Exception('context is self but no user context found');
     }
@@ -137,5 +136,12 @@ class CoursesAjaxService implements AjaxInterface
     public function getSubscribedMethods()
     {
         return array('getReviewModals', 'deleteCourseByIds');
+    }
+
+    private function createSort($args)
+    {
+        if(array_key_exists('sortAttribute',$args) && array_key_exists('sortValue', $args))
+            return array('sortAttribute' => $args['sortAttribute'], 'sortValue' => $args['sortValue']);
+        return null;
     }
 }

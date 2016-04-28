@@ -9,6 +9,7 @@
 namespace AppBundle\Transformer;
 
 
+use AppBundle\Enum\ContextEnum;
 use AppBundle\Interfaces\TransformerInterface;
 
 class CourseTeachersTransformer implements TransformerInterface
@@ -25,19 +26,23 @@ class CourseTeachersTransformer implements TransformerInterface
     }
 
     /**
-     * Flattens the entity object to an array.
-     *
+     * Returns html for the given entity. It will use the context to determine
+     * which layout should be used.
      * @param $entities
+     * @param $context
      * @return mixed
      */
-    function transformToAjaxResponse($entities)
+    function transformToAjaxResponse($entities, $context)
     {
         $html = '';
-        foreach($entities as $entity)
+        if(ContextEnum::matchValueWithGivenEnum(ContextEnum::class, ContextEnum::SELF_CONTEXT, $context))
         {
-            $html .= $this->twig->render(':ajax/create-courses/teacher:card.teacher.row.html.twig', array('teacher' => $entity, 'modalId' => 'addTeacherModal'.$entity->getId(), 'index' => $entity->getId()));
-            $html .= $this->twig->render(':modal/create-course:card.add.teacher.modal.html.twig', array('teacher' => $entity, 'modalId' => 'addTeacherModal'.$entity->getId()));
-            $html .= $this->twig->render(':modal/create-course:card.remove.teacher.modal.html.twig', array('teacher' => $entity, 'modalId' => 'removeTeacherModal'.$entity->getId()));
+            foreach($entities as $entity)
+            {
+                $html .= $this->twig->render(':ajax/create-courses/teacher:card.teacher.row.html.twig', array('teacher' => $entity, 'modalId' => 'addTeacherModal'.$entity->getId(), 'index' => $entity->getId()));
+                $html .= $this->twig->render(':modal/create-course:card.add.teacher.modal.html.twig', array('teacher' => $entity, 'modalId' => 'addTeacherModal'.$entity->getId()));
+                $html .= $this->twig->render(':modal/create-course:card.remove.teacher.modal.html.twig', array('teacher' => $entity, 'modalId' => 'removeTeacherModal'.$entity->getId()));
+            }
         }
         return $html;
     }

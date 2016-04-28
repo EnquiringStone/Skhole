@@ -9,6 +9,7 @@
 namespace AppBundle\Transformer;
 
 
+use AppBundle\Enum\ContextEnum;
 use AppBundle\Interfaces\TransformerInterface;
 
 class CoursesTransformer implements TransformerInterface
@@ -35,21 +36,34 @@ class CoursesTransformer implements TransformerInterface
     }
 
     /**
-     * Flattens the entity object to an array.
-     *
+     * Returns html for the given entity. It will use the context to determine
+     * which layout should be used.
      * @param $entities
+     * @param $context
      * @return mixed
      */
-    function transformToAjaxResponse($entities)
+    function transformToAjaxResponse($entities, $context)
     {
         $html = '';
         $index = 1;
-        foreach($entities as $entity)
+        if(ContextEnum::matchValueWithGivenEnum(ContextEnum::class, ContextEnum::SELF_CONTEXT, $context))
         {
-            $html .= $this->twig->render('ajax/my-courses/course.detail.body.html.twig', array('course' => $entity, 'index' => $index));
-            $html .= $this->twig->render(':modal/my-courses:course.details.modal.html.twig', array('course' => $entity, 'modalId' => 'courseDetailsModal'.$index));
-            $html .= $this->twig->render(':modal/my-courses:course.remove.modal.html.twig', array('course' => $entity, 'modalId' => 'courseRemoveModal'.$index));
-            $index ++;
+            foreach ($entities as $entity)
+            {
+                $html .= $this->twig->render('ajax/my-courses/course.detail.body.html.twig', array('course' => $entity, 'index' => $index));
+                $html .= $this->twig->render(':modal/my-courses:course.details.modal.html.twig', array('course' => $entity, 'modalId' => 'courseDetailsModal' . $index));
+                $html .= $this->twig->render(':modal/my-courses:course.remove.modal.html.twig', array('course' => $entity, 'modalId' => 'courseRemoveModal' . $index));
+                $index++;
+            }
+        }
+        elseif(ContextEnum::matchValueWithGivenEnum(ContextEnum::class, ContextEnum::SEARCH_CONTEXT, $context))
+        {
+            foreach($entities as $entity)
+            {
+                $html .= $this->twig->render(':ajax/search:course.details.row.html.twig', array('course' => $entity, 'index' => $index));
+                $html .= $this->twig->render(':modal/learn:course.card.details.modal.html.twig', array('course' => $entity, 'modalId' => 'courseCardDetailsModal'.$index));
+                $index ++;
+            }
         }
         return $html;
     }

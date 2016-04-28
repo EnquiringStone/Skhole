@@ -11,12 +11,6 @@ namespace AppBundle\Repository;
 
 use AppBundle\Doctrine\SearchQuery;
 use AppBundle\Interfaces\PageControlsInterface;
-use AppBundle\Interfaces\PaginationInterface;
-use AppBundle\Interfaces\SearchableInterface;
-use AppBundle\Interfaces\SortableInterface;
-use AppBundle\Util\SecurityHelper;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\DBAL\Query\QueryBuilder;
 use Doctrine\ORM\EntityRepository;
 
 class CoursesRepository extends EntityRepository implements PageControlsInterface

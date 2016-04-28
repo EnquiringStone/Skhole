@@ -9,6 +9,7 @@
 namespace AppBundle\Transformer;
 
 
+use AppBundle\Enum\ContextEnum;
 use AppBundle\Interfaces\TransformerInterface;
 
 class CourseAnnouncementsTransformer implements TransformerInterface
@@ -25,20 +26,24 @@ class CourseAnnouncementsTransformer implements TransformerInterface
     }
 
     /**
-     * Flattens the entity object to an array.
-     *
+     * Returns html for the given entity. It will use the context to determine
+     * which layout should be used.
      * @param $entities
+     * @param $context
      * @return mixed
      */
-    function transformToAjaxResponse($entities)
+    function transformToAjaxResponse($entities, $context)
     {
         $html = '';
-        foreach($entities as $entity)
+        if(ContextEnum::matchValueWithGivenEnum(ContextEnum::class, ContextEnum::SELF_CONTEXT, $context))
         {
-            $i = $entity->getId();
-            $html .= $this->environment->render(':ajax/create-courses/announcement:announcement.row.html.twig', array('announcement' => $entity, 'modalId' => 'courseAnnouncementModal'.$i, 'index' => $i));
-            $html .= $this->environment->render(':modal/create-course:course.announcement.modal.html.twig', array('announcement' => $entity, 'modalId' => 'courseAnnouncementModal'.$i));
-            $html .= $this->environment->render(':modal/create-course:course.remove.announcement.modal.html.twig', array('announcement' => $entity, 'modalId' => 'removeCourseAnnouncementModal'.$i));
+            foreach($entities as $entity)
+            {
+                $i = $entity->getId();
+                $html .= $this->environment->render(':ajax/create-courses/announcement:announcement.row.html.twig', array('announcement' => $entity, 'modalId' => 'courseAnnouncementModal'.$i, 'index' => $i));
+                $html .= $this->environment->render(':modal/create-course:course.announcement.modal.html.twig', array('announcement' => $entity, 'modalId' => 'courseAnnouncementModal'.$i));
+                $html .= $this->environment->render(':modal/create-course:course.remove.announcement.modal.html.twig', array('announcement' => $entity, 'modalId' => 'removeCourseAnnouncementModal'.$i));
+            }
         }
         return $html;
     }

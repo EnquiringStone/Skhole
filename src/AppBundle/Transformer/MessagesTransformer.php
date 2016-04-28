@@ -26,12 +26,13 @@ class MessagesTransformer implements TransformerInterface
     }
 
     /**
-     * Flattens the entity object to an array.
-     *
+     * Returns html for the given entity. It will use the context to determine
+     * which layout should be used.
      * @param $entities
+     * @param $context
      * @return mixed
      */
-    public function transformToAjaxResponse($entities)
+    public function transformToAjaxResponse($entities, $context)
     {
         return $this->environment->render(':ajax/messages:messages.table.html.twig', array('messages' => $entities));
     }

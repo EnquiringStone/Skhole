@@ -114,6 +114,11 @@ class Courses implements UserStatisticsInterface, UserReportInterface, BasicDeta
     protected $pages;
 
     /**
+     * @ORM\Column(type="datetime", nullable=true, name="published_date_time")
+     */
+    protected $publishedDateTime;
+
+    /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
      * @ORM\JoinColumn(name="user_inserted_id", referencedColumnName="id")
      */
@@ -1015,5 +1020,29 @@ class Courses implements UserStatisticsInterface, UserReportInterface, BasicDeta
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * Set publishedDateTime
+     *
+     * @param \DateTime $publishedDateTime
+     *
+     * @return Courses
+     */
+    public function setPublishedDateTime($publishedDateTime)
+    {
+        $this->publishedDateTime = $publishedDateTime;
+
+        return $this;
+    }
+
+    /**
+     * Get publishedDateTime
+     *
+     * @return \DateTime
+     */
+    public function getPublishedDateTime()
+    {
+        return $this->publishedDateTime;
     }
 }

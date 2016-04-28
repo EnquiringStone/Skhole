@@ -81,7 +81,7 @@ class PageControlsAjaxService implements AjaxInterface
                 }
                 $transformer = $this->getTransformerByEntity($args['entity']);
 
-                $entitiesHtml = $transformer->transformToAjaxResponse($data['resultSet']);
+                $entitiesHtml = $transformer->transformToAjaxResponse($data['resultSet'], $args['context']);
 
                 $paginationHtml = $entity->hasPagination() ? $this->environment->render(':elements:pagination.html.twig', array('maxPages' => $this->defaultPagination,
                     'offset' => $args['offset'], 'limit' => $args['limit'], 'maxEntities' => $data['total'],

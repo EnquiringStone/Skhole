@@ -1,0 +1,95 @@
+{% block courseDetailsRow %}
+    <div class="panel panel-default">
+        <div class="centrum breadcrumb">
+            <a href="{#TODO#}">{{ course.name }}</a>
+        </div>
+        <div class="media-list">
+            <div class="media">
+                <span class="pull-left">
+                    <img src="{{ asset('images/logo-skhole.png') }}" class="media-object">
+                </span>
+                <div class="pull-right">
+                    <div class="btn-group-vertical">
+                        <button type="button" class="btn btn-primary btn-sm"> {#TODO to course link#}
+                            {% trans %}Naar cursus{% endtrans %}
+                        </button>
+                        <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#courseCardDetailsModal{{ index }}">
+                            {% trans %}Cursuskaart{% endtrans %}
+                        </button>
+                        <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#courseReviewsModal{{ index }}">
+                            {% trans %}Reviews{% endtrans %}
+                        </button>
+                        <button type="button" class="btn btn-default btn-sm"> {#TODO course collection link#}
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            {% trans %}In cursusmandje{% endtrans %}
+                        </button>
+                    </div>
+                </div>
+                <div class="media-body">
+                    {% if course.description is not null %}
+                        {{ course.description|length > 250 ? course.description|slice(0, 250) ~ '...' : course.description}}
+                    {% endif %}
+                    <br />
+                    {% set teacherNames = '' %}
+                    {% if course.courseCard.teachers|length > 0 %}
+                        {% for teacher in course.courseCard.teachers %}
+                            {% set teacherNames = loop.last ? teacherNames ~ teacher.name : teacherNames ~ teacher.name ~ ', ' %}
+                        {% endfor %}
+                    {% else %}
+                        {% set teacherNames = course.insertUser.realName %}
+                    {% endif %}
+                    <button type="button" class="unclickable btn btn-default btn-xs">
+                        <b>{% trans %}Docent{% endtrans %}:</b>
+                        {{ teacherNames }}
+                    </button>
+                    <button type="button" class="unclickable btn btn-default btn-xs">
+                        <b>{% trans %}Weergaven{% endtrans %}:</b>
+                        {{ course.views }}
+                    </button>
+                    <button type="button" class="unclickable btn btn-default btn-xs">
+                        <b>{% trans %}Rating{% endtrans %}:</b>
+                        {% if course.averageContentRating is not null %}
+                            {% for i in 0..course.averageContentRating|round %}
+                                <img src="{{ asset('images/star_rating.png') }}" class="img-rounded">
+                            {% endfor %}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </button>
+                    <button type="button" class="unclickable btn btn-default btn-xs">
+                        <b>{% trans %}Pagina's{% endtrans %}:</b>
+                        {{ course.coursePages|length }}
+                    </button>
+                    {% for provider in course.courseCard.providers %}
+                        <button type="button" class="unclickable btn btn-default btn-xs">
+                            <b>{% trans %}Aanbieder{% endtrans %}:</b>
+                            {{ provider.name }}
+                        </button>
+                    {% endfor %}
+                    <button type="button" class="unclickable btn btn-default btn-xs">
+                        <b>{% trans %}Cursusduur{% endtrans %}:</b>
+                        {{ (course.estimatedDuration/60)|number_format }}
+                    </button>
+                    <button type="button" class="unclickable btn btn-default btn-xs">
+                        <b>{% trans %}Moeilijkheidsgraad{% endtrans %}:</b>
+                        {% if course.difficulty is not null %}
+                            {% for i in 1..course.difficulty %}
+                                <img src="{{ asset('images/star_rating.png') }}" class="img-rounded">
+                            {% endfor %}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </button>
+                    <button type="button" class="unclickable btn btn-default btn-xs">
+                        <b>{% trans %}Niveau{% endtrans %}:</b>
+                        {{ course.level.levelLong|trans({}, 'db') }}
+                    </button>
+                    <button type="button" class="unclickable btn btn-default btn-xs">
+                        <b>{% trans %}Beschikbaar sinds{% endtrans %}:</b>
+                        {{ course.publishedDateTime|date('d-m-Y') }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -19,6 +19,7 @@ use AppBundle\Entity\Course\CourseSchedules;
 use AppBundle\Entity\Providers;
 use AppBundle\Entity\Tags;
 use AppBundle\Entity\Teachers;
+use AppBundle\Enum\ContextEnum;
 use AppBundle\Exception\FrontEndException;
 use AppBundle\Interfaces\AjaxInterface;
 use AppBundle\Transformer\TransformManager;
@@ -274,7 +275,7 @@ class CreateCourseAjaxService implements AjaxInterface
         $this->manager->flush();
 
         if($isNew)
-            return array('html' => $this->transformer->getTransformerByName('CourseTeachersTransformer')->transformToAjaxResponse(array($teacher)));
+            return array('html' => $this->transformer->getTransformerByName('CourseTeachersTransformer')->transformToAjaxResponse(array($teacher), ContextEnum::SELF_CONTEXT));
 
         return array('id' => $teacher->getId());
     }
@@ -330,7 +331,7 @@ class CreateCourseAjaxService implements AjaxInterface
         $this->manager->flush();
 
         return array('html' =>
-            $this->transformer->getTransformerByName('CourseAnnouncementsTransformer')->transformToAjaxResponse(array($announcement)));
+            $this->transformer->getTransformerByName('CourseAnnouncementsTransformer')->transformToAjaxResponse(array($announcement), ContextEnum::SELF_CONTEXT));
     }
 
     public function removeCourseAnnouncement($args)
@@ -417,7 +418,7 @@ class CreateCourseAjaxService implements AjaxInterface
         $this->manager->flush();
 
         if($isNew)
-            return array('html' => $this->transformer->getTransformerByName('CourseProvidersTransformer')->transformToAjaxResponse(array($provider)));
+            return array('html' => $this->transformer->getTransformerByName('CourseProvidersTransformer')->transformToAjaxResponse(array($provider), ContextEnum::SELF_CONTEXT));
 
         return array('id' => $provider->getId());
     }
@@ -675,7 +676,7 @@ class CreateCourseAjaxService implements AjaxInterface
 
         $this->manager->flush();
 
-        $html = $this->transformer->getTransformerByName('CourseQuestionsTransformer')->transformToAjaxResponse($page->getQuestions());
+        $html = $this->transformer->getTransformerByName('CourseQuestionsTransformer')->transformToAjaxResponse($page->getQuestions(), ContextEnum::SELF_CONTEXT);
         return array('html' => $html, 'pageId' => $page->getId());
     }
 
@@ -1002,6 +1003,7 @@ class CreateCourseAjaxService implements AjaxInterface
                 }
             }
             $entity->setStateChanged(new \DateTime());
+            $entity->setPublishedDateTime(new \DateTime());
             $entity->setState($this->manager->getRepository('AppBundle:Course\CourseStates')->findOneBy(array('stateCode' => 'OK')));
             $this->manager->flush();
 

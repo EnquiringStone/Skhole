@@ -9,6 +9,12 @@ $(document).ready(function() {
         event.preventDefault();
         doComplexSearch();
     });
+
+    body.on('click', '.btn-pref .btn', function() {
+        var modal = $($(this).parents('.btn-pref'));
+        $(".btn", modal).removeClass("btn-primary").addClass("btn-default");
+        $(this).removeClass("btn-default").addClass("btn-primary");
+    });
 });
 
 function doComplexSearch() {
@@ -23,6 +29,7 @@ function doComplexSearch() {
         setCount(args);
         $('#collapseSearch').collapse('hide');
     });
+    updateReviewModals();
 }
 
 function doSimpleSearch() {
@@ -39,9 +46,43 @@ function doSimpleSearch() {
     refreshPage($('.search-enabled'), true, true, function(args) {
         setCount(args);
     });
+    updateReviewModals();
 }
 
 function setCount(args) {
     var found = args['totalFound'];
     $('.search-result-count').html(found);
+}
+
+function updateReviewModals() {
+    var data = $('#search-results');
+    var args = {};
+
+    var search = getSearch(data);
+    var pagination = getPagination(data);
+    var sort = getSort(data);
+
+    args['method'] = 'getReviewModals';
+    args['context'] = 'SEARCH';
+    args['ajax_key'] = 'CSAS1';
+
+    args['search'] = search;
+    args['correlation'] = data.data('correlation');
+    if(sort != null) {
+        args['sortAttribute'] = sort['sortAttribute'];
+        args['sortValue'] = sort['sortValue'];
+    }
+    if(pagination != null) {
+        args['offset'] = pagination['offset'];
+        args['limit'] = pagination['limit'];
+    }
+    args['entity'] = data.data('entity');
+
+    sendAjaxCall(data.data('url'), args, function(data) {
+        var reviewModalsDiv = $('.review-modals-div');
+        reviewModalsDiv.empty();
+        reviewModalsDiv.append(data['html']);
+    }, function() {
+
+    });
 }

@@ -9,6 +9,7 @@
 namespace AppBundle\Transformer;
 
 
+use AppBundle\Enum\ContextEnum;
 use AppBundle\Interfaces\TransformerInterface;
 
 class CourseReviewsTransformer implements TransformerInterface
@@ -25,17 +26,21 @@ class CourseReviewsTransformer implements TransformerInterface
     }
 
     /**
-     * Flattens the entity object to an array.
-     *
+     * Returns html for the given entity. It will use the context to determine
+     * which layout should be used.
      * @param $entities
+     * @param $context
      * @return mixed
      */
-    function transformToAjaxResponse($entities)
+    function transformToAjaxResponse($entities, $context)
     {
         $html = "";
-        foreach($entities as $entity)
+        if(ContextEnum::matchValueWithGivenEnum(ContextEnum::class, ContextEnum::SELF_CONTEXT, $context))
         {
-            $html .= $this->twig->render(':ajax/my-courses:course.review.body.html.twig', array('review' => $entity));
+            foreach($entities as $entity)
+            {
+                $html .= $this->twig->render(':ajax/my-courses:course.review.body.html.twig', array('review' => $entity));
+            }
         }
         return $html;
     }
