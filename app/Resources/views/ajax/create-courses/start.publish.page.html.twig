@@ -15,7 +15,7 @@
                         </button>
                     {% else %}
                         <p>{% trans %}Deze cursus voldoet nog niet aan alle regels om gepubliceerd te worden. Navigeer naar de startpagina of klik op de onderstaande link om te kijken wat je nog mist.{% endtrans %}</p>
-                        <a href="{{ path('app_teach_edit_course_page_page', {'id': course.id, 'pageType': 'standard', 'name': 'start'}) }}">{% trans %}Startpagina{% endtrans %}</a>
+                        <a href="{{ path('app_teach_edit_course_page', {'id': course.id }) }}">{% trans %}Startpagina{% endtrans %}</a>
                     {% endif %}
                 {% endif %}
             </div>
