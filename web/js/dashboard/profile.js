@@ -77,6 +77,31 @@ $(document).ready(function() {
             showAjaxErrorModal(json['html']);
         });
     });
+
+    body.on('click', '.save-education', function() {
+        var context = $($(this).parents('.modal'));
+        var url = $(this).data('url');
+
+        var args = {};
+        args['method'] = 'updateEducation';
+        args['ajax_key'] = 'PRAS1';
+        $('.data-value', context).each(function() {
+            var obj = $(this);
+            var key = obj.data('value-name');
+            args[key] = obj.val();
+        });
+        args['context'] = 'SELF';
+
+        sendAjaxCall(url, args, function(data) {
+            $('.modal').modal('hide');
+            $('.profile-education-buttons').empty();
+            $('.profile-education-buttons').append(data['html']);
+        }, function(error) {
+            $('.modal').modal('hide');
+            var json = error['responseJSON'];
+            showAjaxErrorModal(json['html']);
+        });
+    });
 });
 
 function setLocale() {

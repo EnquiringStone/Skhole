@@ -44,16 +44,6 @@ class Educations
     protected $level;
 
     /**
-     * @ORM\Column(type="integer", name="followed_courses", nullable=true)
-     */
-    protected $followedCourses;
-
-    /**
-     * @ORM\Column(type="integer", name="followed_learn_groups", nullable=true)
-     */
-    protected $followedLearnGroups;
-
-    /**
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\User")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
@@ -175,54 +165,6 @@ class Educations
     public function getLevel()
     {
         return $this->level;
-    }
-
-    /**
-     * Set followedCourses
-     *
-     * @param integer $followedCourses
-     *
-     * @return Educations
-     */
-    public function setFollowedCourses($followedCourses)
-    {
-        $this->followedCourses = $followedCourses;
-
-        return $this;
-    }
-
-    /**
-     * Get followedCourses
-     *
-     * @return integer
-     */
-    public function getFollowedCourses()
-    {
-        return $this->followedCourses;
-    }
-
-    /**
-     * Set followedLearnGroups
-     *
-     * @param integer $followedLearnGroups
-     *
-     * @return Educations
-     */
-    public function setFollowedLearnGroups($followedLearnGroups)
-    {
-        $this->followedLearnGroups = $followedLearnGroups;
-
-        return $this;
-    }
-
-    /**
-     * Get followedLearnGroups
-     *
-     * @return integer
-     */
-    public function getFollowedLearnGroups()
-    {
-        return $this->followedLearnGroups;
     }
 
     /**

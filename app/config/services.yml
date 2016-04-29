@@ -69,9 +69,12 @@ services:
     app.transformer.profile:
         class: AppBundle\Transformer\ProfileTransformer
         arguments: ["@twig"]
+    app.transformer.profile.education:
+        class: AppBundle\Transformer\ProfileEducationTransformer
+        arguments: ["@twig"]
     app.transform.manager:
         class: AppBundle\Transformer\TransformManager
-        arguments: ["@app.transformer.messages", "@app.transformer.course.reviews", "@app.transformer.courses", "@app.transformer.course.teachers", "@app.transformer.course.announcements", "@app.transformer.course.provider", "@app.transformer.course.questions", "@app.transformer.profile"]
+        arguments: ["@app.transformer.messages", "@app.transformer.course.reviews", "@app.transformer.courses", "@app.transformer.course.teachers", "@app.transformer.course.announcements", "@app.transformer.course.provider", "@app.transformer.course.questions", "@app.transformer.profile", "@app.transformer.profile.education"]
 
     app.validator.validator:
         class: AppBundle\Validator\Validator

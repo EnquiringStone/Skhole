@@ -9,6 +9,7 @@
 namespace AppBundle\Service\Ajax\Home;
 
 
+use AppBundle\Entity\Education\Educations;
 use AppBundle\Exception\FrontEndException;
 use AppBundle\Interfaces\AjaxInterface;
 use AppBundle\Transformer\TransformManager;
@@ -88,7 +89,28 @@ class ProfileAjaxService implements AjaxInterface
 
     public function updateEducation($args)
     {
+        $this->hasUserContext();
 
+        $context = $args['context'];
+        unset($args['context']);
+
+        $this->validator->validate($args, 'EducationProfile');
+
+        $education = $this->manager->getRepository('AppBundle:Education\Educations')->findOneBy(array('userId' => $this->storage->getToken()->getUser()->getId()));
+        if($education == null)
+        {
+            $education = new Educations();
+            $education->setUser($this->storage->getToken()->getUser());
+            $this->manager->persist($education);
+        }
+        $education->setClass($args['class'] == '' ? null : $args['class']);
+        $education->setLevel($args['level'] == '' ? null : $args['level']);
+        $education->setSchoolYear($args['schoolYear'] == '' ? null : intval($args['schoolYear']));
+
+        $this->manager->flush();
+
+        $html = $this->transformer->getTransformerByName('ProfileEducationTransformer')->transformToAjaxResponse(array($education), $context);
+        return array('html' => $html);
     }
 
     /**

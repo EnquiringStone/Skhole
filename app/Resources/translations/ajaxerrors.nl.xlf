@@ -202,6 +202,50 @@
                 <source>profile.edit.date.of.birth.invalid</source>
                 <target>Het opgegeven geboortedatum is niet geldig</target>
             </trans-unit>
+            <trans-unit id="51">
+                <source>profile.education.class.too.long</source>
+                <target>De naam van de klas is te lang. De lengte mag maximaal 50 characters lang zijn</target>
+            </trans-unit>
+            <trans-unit id="52">
+                <source>profile.education.class.illegal.characters</source>
+                <target>De naam van de klas mag alleen nummers en letters bevatten. Tekens als ';`[]{}, etc. zijn verboden</target>
+            </trans-unit>
+            <trans-unit id="53">
+                <source>profile.education.school.year.too.high</source>
+                <target>Het schooljaar mag niet groter zijn dan 20</target>
+            </trans-unit>
+            <trans-unit id="54">
+                <source>profile.education.school.year.too.low</source>
+                <target>Het schooljaar moet een positief getal zijn</target>
+            </trans-unit>
+            <trans-unit id="55">
+                <source>profile.education.school.year.illegal.characters</source>
+                <target>Het schooljaar moet een getal zijn</target>
+            </trans-unit>
+            <trans-unit id="56">
+                <source>profile.education.level.too.long</source>
+                <target>Het niveau is te lang. De maximale grote is 50 characters</target>
+            </trans-unit>
+            <trans-unit id="57">
+                <source>profile.education.level.illegal.character</source>
+                <target>Het niveau mag alleen nummers en letters bevatten. Tekens als ';`[]{}, etc. zijn verboden</target>
+            </trans-unit>
+            <trans-unit id="58">
+                <source>profile.edit.language.too.long</source>
+                <target>De taal mag maximaal 255 characters bevatten</target>
+            </trans-unit>
+            <trans-unit id="59">
+                <source>profile.edit.language.illegal.characters</source>
+                <target>De taal bevat illegale characters en/of cijfers</target>
+            </trans-unit>
+            <trans-unit id="60">
+                <source>profile.edit.country.too.long</source>
+                <target>De naam van het land is te lang. Het land mag maximaal 255 characters bevatten</target>
+            </trans-unit>
+            <trans-unit id="61">
+                <source>profile.edit.country.illegal.characters</source>
+                <target>De naam van het land bevat of cijfers of codeertaal</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

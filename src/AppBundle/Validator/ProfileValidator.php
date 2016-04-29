@@ -58,12 +58,26 @@ class ProfileValidator extends Validator
 
     protected function validateCountry($country)
     {
+        if($country == null || $country == '')
+            return;
 
+        if(strlen($country) > 255)
+            throw new FrontEndException('profile.edit.country.too.long', $this->domain);
+
+        if(ValidatorHelper::containsCodingCharacters($country) || ValidatorHelper::containsOnlyNumbers($country))
+            throw new FrontEndException('profile.edit.country.illegal.characters', $this->domain);
     }
 
     protected function validateLanguage($language)
     {
+        if($language == null || $language == '')
+            return;
 
+        if(strlen($language) > 255)
+            throw new FrontEndException('profile.edit.language.too.long', $this->domain);
+
+        if(ValidatorHelper::containsCodingCharacters($language) || ValidatorHelper::containsOnlyNumbers($language))
+            throw new FrontEndException('profile.edit.language.illegal.characters', $this->domain);
     }
 
     protected function validatePicture($picture)

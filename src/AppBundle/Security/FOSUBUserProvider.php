@@ -77,7 +77,6 @@ class FOSUBUserProvider extends BaseClass
             }
             $user->setNickname($response->getNickname());
             $user->setRealName($response->getRealName());
-            $user->setPicture($response->getProfilePicture());
             $user->setPassword($username);
             $user->setRoles(array('ROLE_USER'));
             $user->setEnabled(true);

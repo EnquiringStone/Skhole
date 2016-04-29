@@ -1,0 +1,13 @@
+{% block profileEducationButtons %}
+    <h4>
+        <img src="{{ asset('images/logo-skhole.png') }}">
+        {% trans %}Educatie{% endtrans %}
+    </h4>
+    {% if education %}
+        <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Klas{% endtrans %}:</b> {{ education.class|default('-') }}</button>
+        <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Leerjaar{% endtrans %}:</b> {{ education.schoolYear|default('-') }}</button>
+        <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Niveau{% endtrans %}:</b> {{ education.level|default('-') }}</button>
+    {% else %}
+        <p class="no-education-data">{% trans %}Geen educatiegegevens beschikbaar. Klik op de knop wijzig om deze toe te voegen{% endtrans %}</p>
+    {% endif %}
+{% endblock %}

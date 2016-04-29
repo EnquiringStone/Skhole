@@ -10,35 +10,17 @@
                 <div class="profile-detail-buttons">
                     {% include ':ajax/profile:profile.details.buttons.html.twig' with {'user': app.user} %}
                 </div>
-
                 <hr/>
                 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#profilePersonalInfoModal">{% trans %}Wijzig{% endtrans %}
                     <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                 </button>
             </div>
             <div class="col-md-6">
-                <h4>
-                    <img src="{{ asset('images/logo-skhole.png') }}">
-                    {% trans %}Educatie{% endtrans %}
-                </h4>
-                {% if education %}
-                    {% if education.organisations %}
-                        {% for organisation in education.getOrganisations %}
-                            <button type="button" class="btn btn-default btn-xs">
-                            <b>{% trans %}Instelling{% endtrans %} {{ loop.index }}:</b> {{ organisation.name }}
-                            </button>
-                        {% endfor %}
-                    {% endif %}
-                    <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Klas{% endtrans %}:</b> {{ education.class|default('-') }}</button>
-                    <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Leerjaar{% endtrans %}:</b> {{ education.schoolYear|default('-') }}</button>
-                    <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Niveau{% endtrans %}:</b> {{ education.level|default('-') }}</button>
-                    <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Curssusen gevolgt{% endtrans %}:</b> {{ education.followedCourses|default('0') }}</button>
-                    <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Lid van leergroepen{% endtrans %}:</b> {{ education.followedLearnGroups|default('0') }}</button>
-                {% else %}
-                    <p class="no-education-data">{% trans %}Geen educatiegegevens beschikbaar. Klik op de knop wijzig om deze toe te voegen{% endtrans %}</p>
-                {% endif %}
+                <div class="profile-education-buttons">
+                    {% include ':ajax/profile:profile.education.buttons.html.twig' with {'education': education} %}
+                </div>
                 <hr />
-                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#educationModal">{% trans %}Wijzig{% endtrans %}
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#profileEducationInfoModal">{% trans %}Wijzig{% endtrans %}
                     <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                 </button>
             </div>

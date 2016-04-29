@@ -1,6 +1,6 @@
 {% block profileDetailsButtons %}
     <h4>
-        <img src="{{ user.picture is not null ? asset(user.picture) :  asset('images/gebruiker.png') }}" class="img-rounded profile-picture"/>
+        <img src="{{ asset('images/gebruiker.png') }}" class="img-rounded profile-picture"/>
         {% trans %}Persoon{% endtrans %}
     </h4>
     <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Naam{% endtrans %}:</b> {{ user.firstName|default('-') }}</button>

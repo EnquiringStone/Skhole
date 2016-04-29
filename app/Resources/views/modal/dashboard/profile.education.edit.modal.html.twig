@@ -1,9 +1,51 @@
 {% extends 'modal/modal.base.html.twig' %}
 {% block modalBaseHeader %}
+    <h4 class="modal-title centrum" id="{{ modalId }}">
+        <img src="{{ asset('images/logo-skhole.png') }}" class="img-rounded">
+        {% trans %}Educatiegegevens{% endtrans %}
+    </h4>
 {% endblock %}
 
 {% block modalBaseContents %}
+    <div class="modal-body">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-sm-2">
+                    {% trans %}Studiejaar{% endtrans %}
+                </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control data-value" data-value-name="schoolYear" placeholder="{% trans %}De leerjaar in nummers{% endtrans %}"
+                        value="{% if education is not null %}{{ education.schoolYear }}{% endif %}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">
+                    {% trans %}Klas{% endtrans %}
+                </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control data-value" data-value-name="class" placeholder="{% trans %}De naam van de klas{% endtrans %}"
+                        value="{% if education is not null %}{{ education.class }}{% endif %}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">
+                    {% trans %}Schoolniveau{% endtrans %}
+                </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control data-value" data-value-name="level" placeholder="{% trans %}HAVO, MBO, Middelbaar Onderwijs, etc.{% endtrans %}"
+                        value="{% if education is not null %}{{ education.level }}{% endif %}">
+                </div>
+            </div>
+        </form>
+    </div>
 {% endblock %}
 
 {% block modalBaseFooter %}
+    <div class="modal-footer">
+        <button class="btn btn-default save-education" type="button" data-url="{{ path('app_home_ajax_page') }}">
+            <span class="glyphicon glyphicon-floppy-disk text-primary" aria-hidden="true"></span>
+            {% trans %}Bewaar & sluiten{% endtrans %}
+        </button>
+        <button class="btn btn-default" data-dismiss="modal" type="button">{% trans %}Annuleren{% endtrans %}</button>
+    </div>
 {% endblock %}

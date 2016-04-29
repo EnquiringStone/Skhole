@@ -1,7 +1,7 @@
 {% extends 'modal/modal.base.html.twig' %}
 {% block modalBaseHeader %}
     <h4 class="modal-title centrum" id="{{ modalId }}">
-        <img src="{{ app.user.picture is not null and app.user.picture != '' ? asset(app.user.picture) : asset('images/gebruiker.png') }}" class="img-rounded profile-picture">
+        <img src="{{ asset('images/gebruiker.png') }}" class="img-rounded profile-picture">
         {% trans %}Persoonlijke gegevens{% endtrans %}
     </h4>
 {% endblock %}
