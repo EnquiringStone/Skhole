@@ -1,9 +1,79 @@
 {% extends 'modal/modal.base.html.twig' %}
 {% block modalBaseHeader %}
+    <h4 class="modal-title centrum" id="{{ modalId }}">
+        <img src="{{ app.user.picture is not null and app.user.picture != '' ? asset(app.user.picture) : asset('images/gebruiker.png') }}" class="img-rounded profile-picture">
+        {% trans %}Persoonlijke gegevens{% endtrans %}
+    </h4>
 {% endblock %}
 
 {% block modalBaseContents %}
+    <div class="modal-body">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{% trans %}Voornaam{% endtrans %}</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control data-value" data-value-name="firstName" placeholder="{% trans %}Voornaam{% endtrans %}" value="{{ app.user.firstName }}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{% trans %}Achternaam{% endtrans %}</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control data-value" data-value-name="surname" placeholder="{% trans %}Achternaam{% endtrans %}" value="{{ app.user.surname }}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{% trans %}Email{% endtrans %}</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control data-value" data-value-name="email" placeholder="{% trans %}Email{% endtrans %}" value="{{ app.user.customEmail }}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{% trans %}Geboortedatum{% endtrans %}</label>
+                <div class="col-sm-10">
+                    <input id="date-picker" type="text" class="form-control data-value" data-value-name="dateOfBirth" placeholder="{% trans %}Geboortedatum{% endtrans %}"
+                           value="{{ app.user.dateOfBirth is not null ? app.user.dateOfBirth|date('d-m-Y') : '' }}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{% trans %}Land{% endtrans %}</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control data-value" data-value-name="country" placeholder="{% trans %}Land{% endtrans %}" value="{{ app.user.country }}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{% trans %}Taal{% endtrans %}</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control data-value" data-value-name="language" placeholder="{% trans %}Taal{% endtrans %}" value="{{ app.user.language }}">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">{% trans %}Selecteer uw profielfoto{% endtrans %}</label>
+                        <input id="profile-picture-upload" type="file">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label class="control-label">{% trans %}Huidige afbeelding{% endtrans %}</label>
+                    <br />
+                    <div class="profile-picture-preview" data-error="{% trans %}Graag een plaatje selecteren (png, jpg of jpeg){% endtrans %}">
+                        <img src="{{ app.user.picture is not null ? asset(app.user.picture) : asset('images/gebruiker.png') }}" class="profile-picture-preview-img">
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" class="uploaded-profile-picture data-value" data-value-name="picture" value="{% if app.user.picture is not null %}{{ app.user.picture }}{% endif %}">
+            <input type="hidden" class="picture-upload-path" value="{{ path('app_secure_ajax_upload_picture') }}">
+        </form>
+    </div>
 {% endblock %}
 
 {% block modalBaseFooter %}
+    <div class="modal-footer">
+        <button class="btn btn-default save-profile" type="button" data-url="{{ path('app_home_ajax_page') }}">
+            <span class="glyphicon glyphicon-floppy-disk text-primary" aria-hidden="true"></span>
+            {% trans %}Bewaar & sluiten{% endtrans %}
+        </button>
+        <button class="btn btn-default" data-dismiss="modal" type="button">{% trans %}Annuleren{% endtrans %}</button>
+    </div>
 {% endblock %}

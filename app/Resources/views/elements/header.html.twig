@@ -17,7 +17,7 @@
                 <div class="btn-group">
                     {% if app.user %}
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="{% trans %}Gebruikersmenu{% endtrans %}">
-                            <img src="{{ asset('images/gebruiker.png') }}" class="img-rounded"> {% trans %}Mijn account{% endtrans %}
+                            <img id="profile-picture-header" src="{{ app.user.picture is not null ? asset(app.user.picture) : asset('images/gebruiker.png') }}" class="img-rounded profile-picture"> {% trans %}Mijn account{% endtrans %}
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" role="menu">

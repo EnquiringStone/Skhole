@@ -90,7 +90,7 @@ class User extends BaseUser
     protected $nickname;
 
     /**
-     * @ORM\Column(type="blob", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     protected $picture;
 
@@ -383,30 +383,6 @@ class User extends BaseUser
     }
 
     /**
-     * Set picture
-     *
-     * @param string $picture
-     *
-     * @return User
-     */
-    public function setPicture($picture)
-    {
-        $this->picture = $picture;
-
-        return $this;
-    }
-
-    /**
-     * Get picture
-     *
-     * @return string
-     */
-    public function getPicture()
-    {
-        return $this->picture;
-    }
-
-    /**
      * Set customEmail
      *
      * @param string $customEmail
@@ -428,5 +404,29 @@ class User extends BaseUser
     public function getCustomEmail()
     {
         return $this->customEmail;
+    }
+
+    /**
+     * Set picture
+     *
+     * @param string $picture
+     *
+     * @return User
+     */
+    public function setPicture($picture)
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    /**
+     * Get picture
+     *
+     * @return string
+     */
+    public function getPicture()
+    {
+        return $this->picture;
     }
 }

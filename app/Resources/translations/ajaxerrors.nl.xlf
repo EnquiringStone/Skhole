@@ -166,6 +166,42 @@
                 <source>course.edit.publish.no.questions</source>
                 <target>De opdrachtpagina %1 bevat geen opdrachten. Verwijder deze pagina of zorg ervoor dat er minstens 1 vraag wordt gesteld</target>
             </trans-unit>
+            <trans-unit id="42">
+                <source>profile.edit.first.name.empty</source>
+                <target>De voornaam moet zijn ingevuld</target>
+            </trans-unit>
+            <trans-unit id="43">
+                <source>profile.edit.first.name.illegal.characters</source>
+                <target>De voornaam bevat illegale characters</target>
+            </trans-unit>
+            <trans-unit id="44">
+                <source>profile.edit.first.name.too.long</source>
+                <target>Onze excuses. De voornaam is te lang en mag maximaal 255 characters bevatten</target>
+            </trans-unit>
+            <trans-unit id="45">
+                <source>profile.edit.surname.empty</source>
+                <target>De achternaam moet zijn ingevuld</target>
+            </trans-unit>
+            <trans-unit id="46">
+                <source>profile.edit.surname.illegal.characters</source>
+                <target>De achternaam bevat illegale characters</target>
+            </trans-unit>
+            <trans-unit id="47">
+                <source>profile.edit.surname.too.long</source>
+                <target>Onze excuses. De achternaam is te lang en mag maximaal 255 characters bevatten</target>
+            </trans-unit>
+            <trans-unit id="48">
+                <source>profile.edit.email.empty</source>
+                <target>De email moet zijn ingevuld</target>
+            </trans-unit>
+            <trans-unit id="49">
+                <source>profile.edit.email.invalid</source>
+                <target>Het opgegeven emailadres is niet geldig</target>
+            </trans-unit>
+            <trans-unit id="50">
+                <source>profile.edit.date.of.birth.invalid</source>
+                <target>Het opgegeven geboortedatum is niet geldig</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

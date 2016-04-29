@@ -20,7 +20,7 @@ services:
             - { name: kernel.event_subscriber }
     app.ajax_listener:
         class: AppBundle\EventListener\AjaxListener
-        arguments: ["%ajax_configuration%", "@app.courses.ajax.service", "@app.home.messages.ajax.service", "@app.page.controls.ajax.service", "@app.create.course.ajax.service"]
+        arguments: ["%ajax_configuration%", "@app.courses.ajax.service", "@app.home.messages.ajax.service", "@app.page.controls.ajax.service", "@app.create.course.ajax.service", "@app.profile.ajax.service"]
         tags:
             - { name: kernel.event_subscriber }
     app.entity.life.cycle.listener:
@@ -41,6 +41,9 @@ services:
     app.create.course.ajax.service:
         class: AppBundle\Service\Ajax\Teach\CreateCourseAjaxService
         arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", "@app.validator.validator", "@app.transform.manager", "@router", "@twig"]
+    app.profile.ajax.service:
+        class: AppBundle\Service\Ajax\Home\ProfileAjaxService
+        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", "@app.validator.validator", "@app.transform.manager"]
 
     app.transformer.messages:
         class: AppBundle\Transformer\MessagesTransformer
@@ -63,9 +66,12 @@ services:
     app.transformer.course.questions:
         class: AppBundle\Transformer\CourseQuestionsTransformer
         arguments: ["@twig"]
+    app.transformer.profile:
+        class: AppBundle\Transformer\ProfileTransformer
+        arguments: ["@twig"]
     app.transform.manager:
         class: AppBundle\Transformer\TransformManager
-        arguments: ["@app.transformer.messages", "@app.transformer.course.reviews", "@app.transformer.courses", "@app.transformer.course.teachers", "@app.transformer.course.announcements", "@app.transformer.course.provider", "@app.transformer.course.questions"]
+        arguments: ["@app.transformer.messages", "@app.transformer.course.reviews", "@app.transformer.courses", "@app.transformer.course.teachers", "@app.transformer.course.announcements", "@app.transformer.course.provider", "@app.transformer.course.questions", "@app.transformer.profile"]
 
     app.validator.validator:
         class: AppBundle\Validator\Validator

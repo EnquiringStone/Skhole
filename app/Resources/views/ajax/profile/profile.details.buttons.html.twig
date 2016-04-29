@@ -1,0 +1,13 @@
+{% block profileDetailsButtons %}
+    <h4>
+        <img src="{{ user.picture is not null ? asset(user.picture) :  asset('images/gebruiker.png') }}" class="img-rounded profile-picture"/>
+        {% trans %}Persoon{% endtrans %}
+    </h4>
+    <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Naam{% endtrans %}:</b> {{ user.firstName|default('-') }}</button>
+    <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Achternaam{% endtrans %}:</b> {{ user.surname|default('-') }}</button>
+    <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Email{% endtrans %}:</b> {{ user.customEmail|default('-') }}</button>
+    <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Geboortedatum{% endtrans %}:</b> {{ user.dateOfBirth is not null ? user.dateOfBirth|date('d-m-Y') : '-' }}</button>
+    <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Land{% endtrans %}:</b> {{ user.country|default('-') }}</button>
+    <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Taal{% endtrans %}:</b> {{ user.language|default('-') }}</button>
+    <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Lid sinds{% endtrans %}:</b> {{ user.insertDateTime|date('d-m-Y') }}</button>
+{% endblock %}

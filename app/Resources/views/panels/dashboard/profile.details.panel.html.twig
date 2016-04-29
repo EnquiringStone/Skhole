@@ -7,23 +7,14 @@
     <div class="panel-body" data-url="{{ url('app_home_ajax_page') }}">
         <div class="row">
             <div class="col-md-6">
-                <h4>
-                    <img src="{{ asset('images/gebruiker.png') }}" class="img-rounded"/>
-                    {% trans %}Persoon{% endtrans %}
-                </h4>
-                <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Naam{% endtrans %}:</b> {{ app.user.firstName|default('-') }}</button>
-                <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Achternaam{% endtrans %}:</b> {{ app.user.surname|default('-') }}</button>
-                <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Email{% endtrans %}:</b> {{ app.user.customEmail|default('-') }}</button>
-                <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Geboortedatum{% endtrans %}:</b> {{ app.user.dateOfBirth|default('-') }}</button>
-                <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Land{% endtrans %}:</b> {{ app.user.country|default('-') }}</button>
-                <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Taal{% endtrans %}:</b> {{ app.user.language|default('-') }}</button>
-                <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Lid sinds{% endtrans %}:</b> {{ app.user.insertDateTime|date }}</button>
+                <div class="profile-detail-buttons">
+                    {% include ':ajax/profile:profile.details.buttons.html.twig' with {'user': app.user} %}
+                </div>
 
                 <hr/>
                 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#profilePersonalInfoModal">{% trans %}Wijzig{% endtrans %}
                     <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                 </button>
-                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#profileRemoveConfirmation">{% trans %}Account opheffen{% endtrans %}</button>
             </div>
             <div class="col-md-6">
                 <h4>
