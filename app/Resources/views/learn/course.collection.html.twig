@@ -1,7 +1,17 @@
 {% extends 'base.html.twig' %}
 {% block title %}{% trans %}Cursusmandje{% endtrans %}{% endblock %}
 {% block body %}
-    <h1>{% trans %}Cursusmandje{% endtrans %}</h1>
+    <hr />
+    {% include 'panels/learn/course.collection.panel.html.twig' %}
+{% endblock %}
+
+{% block modals %}
+    {% include ':modal/dashboard:study.introduction.modal.html.twig' with {'modalId' : 'studyIntroductionModal'} %}
+    {% include ':modal/dashboard:course.report.introduction.modal.html.twig' with {'modalId': 'courseReportIntroductionModal'} %}
+{% endblock %}
+
+{% block prescripts %}
+    <script src="{{ asset('js/course-collection/course.collection.js') }}"></script>
 {% endblock %}
 
 {% set menu = 'learn' %}

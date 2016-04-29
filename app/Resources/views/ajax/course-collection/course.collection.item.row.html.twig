@@ -1,7 +1,11 @@
-{% block courseDetailsRow %}
-    <div class="panel panel-default" data-course-panel-id="{{ course.id }}">
-        <div class="centrum breadcrumb">
-            <a href="{#TODO#}">{{ course.name }}</a>
+{% block courseCollectionItemRow %}
+    <div class="panel panel-default" data-id="{{ course.id }}">
+        <div class="centrum">
+            <ol class="breadcrumb">
+                <li>
+                    <a class="unclickable">{{ course.name }}</a>
+                </li>
+            </ol>
         </div>
         <div class="media-list">
             <div class="media">
@@ -9,22 +13,17 @@
                     <img src="{{ asset('images/logo-skhole.png') }}" class="media-object">
                 </span>
                 <div class="pull-right">
-                    <div class="btn-group-vertical" style="width: 150px;">
+                    <div class="btn-group-vertical">
                         <button type="button" class="btn btn-primary btn-sm"> {#TODO to course link#}
                             {% trans %}Naar cursus{% endtrans %}
                         </button>
                         <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#courseCardDetailsModal{{ index }}">
                             {% trans %}Cursuskaart{% endtrans %}
                         </button>
-                        <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#courseReviewsModal{{ index }}">
-                            {% trans %}Reviews{% endtrans %}
+                        <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#removeCollectionItem{{ index }}">
+                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                            {% trans %}Cursus{% endtrans %}
                         </button>
-                        {% if is_granted('ROLE_USER') and not inCollection %}
-                            <button type="button" class="btn btn-default btn-sm add-to-collection" data-course-id="{{ course.id }}" data-url="{{ path('app_home_ajax_page') }}">
-                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                {% trans %}In cursusmandje{% endtrans %}
-                            </button>
-                        {% endif %}
                     </div>
                 </div>
                 <div class="media-body">

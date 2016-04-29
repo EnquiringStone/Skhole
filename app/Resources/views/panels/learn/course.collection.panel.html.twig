@@ -1,0 +1,57 @@
+{% extends 'panels/panel.base.html.twig' %}
+{% block panelBaseTitle %}
+    <b>{% trans %}Cursusmandje{% endtrans %}: <span class="total-collection-items">{{ totalItems }}</span></b>
+{% endblock %}
+{% block panelBaseContents %}
+    <div id="collection-items" class="panel-body page-controls" data-url="{{ url('app_home_ajax_page') }}" data-context="SELF" data-entity="Course\CourseCollectionItems" data-view="course-collection" data-default-search-attributes="">
+        <div>
+            <div class="pull-left">
+                <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#studyIntroductionModal">
+                    <span class="glyphicon glyphicon-info-sign"></span>
+                    {% trans %}Cursus volgen{% endtrans %}
+                </button>
+                <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#courseReportIntroductionModal">
+                    <span class="glyphicon glyphicon-info-sign"></span>
+                    {% trans %}Cursusrapport{% endtrans %}
+                </button>
+            </div>
+            <div class="sort-field">
+                {% if is_granted('ROLE_USER') and totalItems > 0 %}
+                    {% include ':ajax/course-collection:sort.html.twig' %}
+                {% endif %}
+            </div>
+        </div>
+        <hr />
+        <div class="thumbnail">
+            <div class="content-field">
+                {% if not is_granted('ROLE_USER') %}
+                    <hr />
+                    <div class="centrum">
+                        <p class="lead">{% trans %}Om gebruik te maken van het cursusmandje moet je zijn ingelogd. Om in te loggen klik rechtsboven op de inloggen knop. Of klik op de onderstaande knop{% endtrans %}</p>
+                        <button class="btn btn-default" type="button" data-toggle="modal" data-target="#loginModal">{% trans %}Login{% endtrans %}</button>
+                    </div>
+                {% elseif totalItems <= 0 %}
+                    <hr />
+                    <div class="centrum">
+                        <p class="lead">{% trans %}Je hebt nog geen cursussen in je mandje. Klik op de onderstaande link om een cursus te vinden{% endtrans %}</p>
+                        <a class="btn btn-default" href="{{ path('app_search_page') }}">{% trans %}Cursus Zoeken{% endtrans %}</a>
+                    </div>
+                {% else %}
+                    {% for item in collection %}
+                        {% include ':ajax/course-collection:course.collection.item.row.html.twig' with {'course': item.course, 'index': loop.index} %}
+                        {% include ':modal/course-collection:remove.collection.item.modal.html.twig' with {'collectionItem': item, 'modalId': 'removeCollectionItem'~loop.index } %}
+                        {% include ':modal/learn:course.card.details.modal.html.twig' with {'course': item.course, 'modalId': 'courseCardDetailsModal'~loop.index} %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <hr />
+            <div class="pagination-field">
+                {% if is_granted('ROLE_USER') and totalItems > 0 %}
+                    {% include ':elements:pagination.html.twig' with {'maxEntities' : totalItems, 'limit': limit, 'offset': offset, 'maxPages' : maxPages, 'pageName': 'Pagina\'s'|trans, 'entity': 'Course\\CourseCollectionItems' } %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="review-modals-div">
+    </div>
+{% endblock %}

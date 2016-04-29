@@ -246,6 +246,22 @@
                 <source>profile.edit.country.illegal.characters</source>
                 <target>De naam van het land bevat of cijfers of codeertaal</target>
             </trans-unit>
+            <trans-unit id="62">
+                <source>course.collection.item.already.exists</source>
+                <target>Deze cursus heb je al in je mandje</target>
+            </trans-unit>
+            <trans-unit id="63">
+                <source>course.collection.invalid.course.id</source>
+                <target>De geselecteerde cursus bestaat niet meer</target>
+            </trans-unit>
+            <trans-unit id="64">
+                <source>course.collection.course.removed</source>
+                <target>De geselecteerde cursus is verwijderd en kan niet in de cursusmand worden gezet</target>
+            </trans-unit>
+            <trans-unit id="65">
+                <source>course.collection.course.not.published</source>
+                <target>De geselecteerde cursus is nog niet gepubliceerd</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

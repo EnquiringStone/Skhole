@@ -9,11 +9,16 @@
 namespace AppBundle\Transformer;
 
 
+use AppBundle\Authorization\AuthorizationService;
 use AppBundle\Enum\ContextEnum;
 use AppBundle\Interfaces\TransformerInterface;
+use Doctrine\ORM\EntityManager;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
+use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
 
 class CoursesTransformer implements TransformerInterface
 {
+
 
     /**
      * @var \Twig_Environment
@@ -27,12 +32,23 @@ class CoursesTransformer implements TransformerInterface
      * @var
      */
     private $maxPages;
+    /**
+     * @var AuthorizationService
+     */
+    private $checker;
+    /**
+     * @var EntityManager
+     */
+    private $manager;
 
-    public function __construct(\Twig_Environment $twig, $limit, $maxPages)
+    public function __construct(\Twig_Environment $twig, $limit, $maxPages, AuthorizationService $checker, EntityManager $manager)
     {
+
         $this->twig = $twig;
         $this->limit = $limit;
         $this->maxPages = $maxPages;
+        $this->checker = $checker;
+        $this->manager = $manager;
     }
 
     /**
@@ -58,9 +74,14 @@ class CoursesTransformer implements TransformerInterface
         }
         elseif(ContextEnum::matchValueWithGivenEnum(ContextEnum::class, ContextEnum::SEARCH_CONTEXT, $context))
         {
+            $repo = $this->manager->getRepository('AppBundle:Course\CourseCollectionItems');
+            $userId = -1;
+            if($this->checker->isAuthorized())
+                $userId = $this->checker->getAuthorizedUserOrThrowException()->getId();
+
             foreach($entities as $entity)
             {
-                $html .= $this->twig->render(':ajax/search:course.details.row.html.twig', array('course' => $entity, 'index' => $index));
+                $html .= $this->twig->render(':ajax/search:course.details.row.html.twig', array('course' => $entity, 'index' => $index, 'inCollection' => $repo->courseIsInCollection($userId, $entity->getId())));
                 $html .= $this->twig->render(':modal/learn:course.card.details.modal.html.twig', array('course' => $entity, 'modalId' => 'courseCardDetailsModal'.$index));
                 $index ++;
             }

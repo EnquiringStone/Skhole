@@ -20,7 +20,31 @@ class LearnController extends Controller
      */
     public function courseCollectionAction(Request $request)
     {
-        return $this->render(':learn:course.collection.html.twig');
+        $offset = 0;
+        if(array_key_exists('offset', $request->query->all()))
+            $offset = $request->query->get('offset');
+
+        $limit = $this->getParameter('standard_query_limit');
+        $maxPages = $this->getParameter('standard_pagination_max');
+        $total = 0;
+
+        $collection = array();
+        if($this->isGranted(array('ROLE_USER')))
+        {
+            $userId = $this->getUser()->getId();
+            $criteria = array('userId' => $userId);
+            $sort = array('insertDateTime' => 'DESC');
+            $repo = $this->getDoctrine()->getRepository('AppBundle:Course\CourseCollectionItems');
+
+            $collection = $repo->findBy($criteria, $sort, $limit, $offset);
+            $total = $repo->getCountByCriteria($criteria);
+        }
+        return $this->render(':learn:course.collection.html.twig', array(
+            'collection' => $collection,
+            'totalItems' => $total,
+            'limit' => $limit,
+            'offset' => $offset,
+            'maxPages' => $maxPages));
     }
 
     /**

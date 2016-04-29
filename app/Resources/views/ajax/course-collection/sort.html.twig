@@ -1,0 +1,17 @@
+{% block sort %}
+    {% if not attribute is defined %}{% set attribute = 'insertDateTime' %}{% endif %}
+    {% if not value is defined %}{% set value = 'DESC' %}{% endif %}
+
+    <div class="pull-right">
+        <label>{% trans %}Sorteer op{% endtrans %}:</label>
+        <select class="sortable" name="filterOptions" size="1" aria-controls="example1">
+            <option {% if attribute == 'insertDateTime' and value == 'DESC' %}selected="selected"{% endif %} data-attribute="insertDateTime" data-sorted="ASC">{% trans %}Datum toegevoegd aan mandje{% endtrans %}</option>
+            <option {% if attribute == 'name' and value == 'ASC' %}selected="selected"{% endif %} data-attribute="name" data-sorted="ASC">{% trans %}Titel A - Z{% endtrans %}</option>
+            <option {% if attribute == 'name' and value == 'DESC' %}selected="selected"{% endif %} data-attribute="name" data-sorted="DESC">{% trans %}Titel Z - A{% endtrans %}</option>
+            <option {% if attribute == 'pages' and value == 'ASC' %}selected="selected"{% endif %} data-attribute="pages" data-sorted="ASC">{% trans %}Aantal pagina's oplopend{% endtrans %}</option>
+            <option {% if attribute == 'pages' and value == 'DESC' %}selected="selected"{% endif %} data-attribute="pages" data-sorted="DESC">{% trans %}Aantal pagina's aflopend{% endtrans %}</option>
+            <option {% if attribute == 'estimatedDuration' and value == 'ASC' %}selected="selected"{% endif %} data-attribute="estimatedDuration" data-sorted="ASC">{% trans %}Cursusduur oplopend{% endtrans %}</option>
+            <option {% if attribute == 'estimatedDuration' and value == 'DESC' %}selected="selected"{% endif %} data-attribute="estimatedDuration" data-sorted="DESC">{% trans %}Cursusduur aflopend{% endtrans %}</option>
+        </select>
+    </div>
+{% endblock %}

@@ -15,6 +15,24 @@ $(document).ready(function() {
         $(".btn", modal).removeClass("btn-primary").addClass("btn-default");
         $(this).removeClass("btn-default").addClass("btn-primary");
     });
+
+    body.on('click', '.add-to-collection', function() {
+        var context = $(this);
+        var courseId = context.data('course-id');
+        var url = context.data('url');
+
+        var args = {};
+        args['method'] = 'addToCollection';
+        args['ajax_key'] = 'CCOAS1';
+        args['courseId'] = courseId;
+
+        sendAjaxCall(url, args, function() {
+            context.remove();
+        }, function(error) {
+            var json = error['responseJSON'];
+            showAjaxErrorModal(json['html']);
+        });
+    });
 });
 
 function doComplexSearch() {

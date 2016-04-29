@@ -1,0 +1,20 @@
+{% extends ':modal:modal.base.html.twig' %}
+{% block modalBaseHeader %}
+    <h4 class="modal-title centrum" id="{{ modalId }}">
+        <b>
+            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+            {% trans %}Cursus verwijderen uit cursusmandje{% endtrans %}
+        </b>
+    </h4>
+{% endblock %}
+{% block modalBaseContents %}
+    <div class="modal-body">
+        <hr />
+        <p class="lead centrum">
+            {% trans %}Weet je zeker dat je de cursus wilt verwijderen uit het cursusmandje?{% endtrans %}
+        </p>
+    </div>
+{% endblock %}
+{% set modalBaseType = 'choice' %}
+{% block modalBaseYesId %}{{ collectionItem.id }}{% endblock %}
+{% block modalBaseYesAction %}{{ url('app_home_ajax_page') }}{% endblock %}

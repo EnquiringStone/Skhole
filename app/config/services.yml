@@ -20,7 +20,7 @@ services:
             - { name: kernel.event_subscriber }
     app.ajax_listener:
         class: AppBundle\EventListener\AjaxListener
-        arguments: ["%ajax_configuration%", "@app.courses.ajax.service", "@app.home.messages.ajax.service", "@app.page.controls.ajax.service", "@app.create.course.ajax.service", "@app.profile.ajax.service"]
+        arguments: ["%ajax_configuration%", "@app.courses.ajax.service", "@app.home.messages.ajax.service", "@app.page.controls.ajax.service", "@app.create.course.ajax.service", "@app.profile.ajax.service", "@app.course.collection.ajax.service"]
         tags:
             - { name: kernel.event_subscriber }
     app.entity.life.cycle.listener:
@@ -44,6 +44,9 @@ services:
     app.profile.ajax.service:
         class: AppBundle\Service\Ajax\Home\ProfileAjaxService
         arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", "@app.validator.validator", "@app.transform.manager"]
+    app.course.collection.ajax.service:
+        class: AppBundle\Service\Ajax\Learn\CourseCollectionAjaxService
+        arguments: ["@doctrine.orm.entity_manager", "@app.authorization.service"]
 
     app.transformer.messages:
         class: AppBundle\Transformer\MessagesTransformer
@@ -53,7 +56,7 @@ services:
         arguments: ["@twig"]
     app.transformer.courses:
         class: AppBundle\Transformer\CoursesTransformer
-        arguments: ["@twig", "%standard_query_limit%", "%standard_pagination_max%"]
+        arguments: ["@twig", "%standard_query_limit%", "%standard_pagination_max%", "@app.authorization.service", "@doctrine.orm.entity_manager"]
     app.transformer.course.teachers:
         class: AppBundle\Transformer\CourseTeachersTransformer
         arguments: ["@twig"]
@@ -72,9 +75,12 @@ services:
     app.transformer.profile.education:
         class: AppBundle\Transformer\ProfileEducationTransformer
         arguments: ["@twig"]
+    app.transformer.course.collection.items:
+        class: AppBundle\Transformer\CourseCollectionItemsTransformer
+        arguments: ["@twig"]
     app.transform.manager:
         class: AppBundle\Transformer\TransformManager
-        arguments: ["@app.transformer.messages", "@app.transformer.course.reviews", "@app.transformer.courses", "@app.transformer.course.teachers", "@app.transformer.course.announcements", "@app.transformer.course.provider", "@app.transformer.course.questions", "@app.transformer.profile", "@app.transformer.profile.education"]
+        arguments: ["@app.transformer.messages", "@app.transformer.course.reviews", "@app.transformer.courses", "@app.transformer.course.teachers", "@app.transformer.course.announcements", "@app.transformer.course.provider", "@app.transformer.course.questions", "@app.transformer.profile", "@app.transformer.profile.education", "@app.transformer.course.collection.items"]
 
     app.validator.validator:
         class: AppBundle\Validator\Validator
@@ -91,3 +97,7 @@ services:
         public: false
         tags:
             - {name: "twig.extension"}
+
+    app.authorization.service:
+        class: AppBundle\Authorization\AuthorizationService
+        arguments: ["@security.token_storage", "@security.authorization_checker"]
