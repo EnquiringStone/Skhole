@@ -30,4 +30,12 @@ class LearnController extends Controller
     {
         return $this->render(':learn:study.html.twig');
     }
+
+    /**
+     * @Route("/{_locale}/learn/course-reports/", name="app_learn_course_reports")
+     */
+    public function courseReportsAction(Request $request)
+    {
+        return $this->render(':learn:course.reports.html.twig');
+    }
 }
