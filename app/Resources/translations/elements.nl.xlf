@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.0">
+    <file original="file.ext" source-language="nl" datatype="plaintext">
+        <body>
+            <trans-unit id="1">
+                <source>footer.copyright</source>
+                <target>Auteursrecht</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>footer.guidelines</source>
+                <target>Richtlijnen</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>footer.language</source>
+                <target>Taal</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>footer.conditions</source>
+                <target>Voorwaarden</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>footer.privacy.policy</source>
+                <target>Privacybeleid</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>footer.cookie.policy</source>
+                <target>Cookiebeleid</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>footer.social.media.follow</source>
+                <target>Volg ons</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>footer.social.media</source>
+                <target>Social media</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>about.us</source>
+                <target>Over ons</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>contact</source>
+                <target>Contact</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>frequently.asked.questions</source>
+                <target>Veelgestelde vragen</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

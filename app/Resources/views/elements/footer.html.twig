@@ -1,4 +1,5 @@
 {% block footer %}
+    {% trans_default_domain "elements" %}
     <footer class="navbar navbar-default">
         <div class="container-fluid">
             <div class="centrum">
@@ -8,33 +9,33 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="TODO">{% trans %}Over ons{% endtrans %}</a></li>
-                        <li><a href="TODO">{% trans %}Contact{% endtrans %}</a></li>
-                        <li><a href="TODO">{% trans %}Veel gestelde vragen{% endtrans %}</a></li>
+                        <li><a href="{#TODO#}">{% trans %}about.us{% endtrans %}</a></li>
+                        <li><a href="{#TODO#}">{% trans %}contact{% endtrans %}</a></li>
+                        <li><a href="{#TODO#}">{% trans %}frequently.asked.questions{% endtrans %}</a></li>
                     </ul>
                 </div>
                 <div class="btn-group dropup">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                        {% trans %}Sociale media{% endtrans %}
+                        {% trans %}footer.social.media{% endtrans %}
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" role="menu">
                         <li>
-                            <a href="TODO">
+                            <a href="{#TODO#}">
                                 <img src="{{ asset('images/login-fb.png') }}" class="img-rounded">
-                                {% trans %}Volg ons{% endtrans %}
+                                {% trans %}footer.social.media.follow{% endtrans %}
                             </a>
                         </li>
                         <li>
-                            <a href="TODO">
+                            <a href="{#TODO#}">
                                 <img src="{{ asset('images/login-g.png') }}" class="img-rounded">
-                                {% trans %}Volg ons{% endtrans %}
+                                {% trans %}footer.social.media.follow{% endtrans %}
                             </a>
                         </li>
                         <li>
-                            <a href="TODO">
+                            <a href="{#TODO#}">
                                 <img src="{{ asset('images/login-t.png') }}" class="img-rounded">
-                                {% trans %}Volg ons{% endtrans %}
+                                {% trans %}footer.social.media.follow{% endtrans %}
                             </a>
                         </li>
                     </ul>
@@ -43,21 +44,21 @@
             <div class="centrum">
                 <span class="text-muted">StudyLivre 2016 ©</span>
                 <b><span>|</span></b>
-                <a href="{#TODO#}">{% trans %}Auteursrecht{% endtrans %}</a>
+                <a href="{#TODO#}">{% trans %}footer.copyright{% endtrans %}</a>
                 <b><span>|</span></b>
-                <a href="{#TODO#}">{% trans %}Richtlijnen{% endtrans %}</a>
+                <a href="{#TODO#}">{% trans %}footer.guidelines{% endtrans %}</a>
             </div>
             <div class="centrum">
                 <a class="clickable" data-toggle="modal" data-target="#languagePickerModal">
                     <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
-                    {% trans %}Taal{% endtrans %}
+                    {% trans %}footer.language{% endtrans %}
                 </a>
                 <b><span>|</span></b>
-                <a href="{#TODO#}">{% trans %}Voorwaarden{% endtrans %}</a>
+                <a href="{#TODO#}">{% trans %}footer.conditions{% endtrans %}</a>
                 <b><span>|</span></b>
-                <a href="{#TODO#}">{% trans %}Privacybeleid{% endtrans %}</a>
+                <a href="{#TODO#}">{% trans %}footer.privacy.policy{% endtrans %}</a>
                 <b><span>|</span></b>
-                <a href="{#TODO#}">{% trans %}Cookiebeleid{% endtrans %}</a>
+                <a href="{#TODO#}">{% trans %}footer.cookie.policy{% endtrans %}</a>
             </div>
         </div>
     </footer>

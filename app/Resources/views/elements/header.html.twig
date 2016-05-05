@@ -10,6 +10,12 @@
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="{{ path('app_search_page') }}">{% trans %}Zoeken{% endtrans %}</a></li>
                         <li><a href="#{#TODO #}">{% trans %}Richtlijnen{% endtrans %}</a></li>
+                        <li>
+                            <a class="clickable" data-toggle="modal" data-target="#languagePickerModal">
+                                <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+                                {% trans %}Taal{% endtrans %}
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

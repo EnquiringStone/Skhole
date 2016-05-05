@@ -10,13 +10,13 @@
 {% block modalBaseContents %}
     <div class="modal-body">
         <div class="centrum">
-            <a href="{#TODO#}">
+            <a href="{{ path('app_home_dashboard_page', {'_locale': 'en'}) }}">
                 <img src="{{ asset('images/language-english.JPG') }}" class="img-rounded">
                 {% trans %}English{% endtrans %}
             </a>
             <br />
             <br />
-            <a href="{#TODO#}">
+            <a href="{{ path('app_home_dashboard_page', {'_locale': 'nl'}) }}">
                 <img src="{{ asset('images/language-dutch.JPG') }}" class="img-rounded">
                 {% trans %}Nederlands{% endtrans %}
             </a>
