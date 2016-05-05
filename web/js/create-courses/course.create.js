@@ -130,10 +130,7 @@ $(document).ready(function() {
 
     bindFileUpload();
 
-    $('#sortable').sortable({
-        stop: doSort
-    });
-    $('#sortable').disableSelection();
+    bindSortable();
 
     body.on('click', '.add-more-question-inputs-button', function() {
         addAnswerHtml();
@@ -298,6 +295,7 @@ function saveCustomQuestion(redirectUrl) {
         div.empty();
         div.append(data['html']);
         hasChanged = false;
+        bindSortable();
         if(redirectUrl != null && redirectUrl != '')
             goToUrl(redirectUrl);
     }, function(error) {
@@ -322,10 +320,18 @@ function loadQuestion(type, questionId) {
         var div = $('.load-question-type-div');
         div.empty();
         div.append(data['html']);
+        bindSortable();
     }, function(error) {
         var json = error['responseJSON'];
         showAjaxErrorModal(json['html']);
     });
+}
+
+function bindSortable() {
+    $('#sortable').sortable({
+        stop: doSort
+    });
+    $('#sortable').disableSelection();
 }
 
 function addExercisePage(titleOfPage) {
