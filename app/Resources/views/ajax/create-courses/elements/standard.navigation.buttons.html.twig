@@ -42,5 +42,11 @@
                 {% trans %}Mededelingen{% endtrans %}
             </a>
         </div>
+        <div class="btn-group" role="group">
+            <a class="check-changes btn btn-default btn-sm {% if active == 'resources' %}active{% endif %}" href="{{ path('app_teach_edit_course_page_page', {'id': course.id, 'pageType': 'standard', 'name': 'course-resources'}) }}">
+                5. | <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
+                {% trans %}Documenten{% endtrans %}
+            </a>
+        </div>
     </div>
 {% endblock %}

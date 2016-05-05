@@ -14,6 +14,7 @@ use AppBundle\Entity\Course\CourseAnswers;
 use AppBundle\Entity\Course\CourseCards;
 use AppBundle\Entity\Course\CoursePages;
 use AppBundle\Entity\Course\CourseQuestions;
+use AppBundle\Entity\Course\CourseResources;
 use AppBundle\Entity\Course\Courses;
 use AppBundle\Entity\Course\CourseSchedules;
 use AppBundle\Entity\Providers;
@@ -26,6 +27,7 @@ use AppBundle\Transformer\TransformManager;
 use AppBundle\Util\FileHelper;
 use AppBundle\Util\SecurityHelper;
 use AppBundle\Util\TransformerHelper;
+use AppBundle\Util\ValidatorHelper;
 use AppBundle\Validator\Validator;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityNotFoundException;
@@ -1012,6 +1014,74 @@ class CreateCourseAjaxService implements AjaxInterface
         throw new FrontEndException('course.edit.publish', 'ajaxerrors');
     }
 
+    function saveCourseResources($args)
+    {
+        $this->idSpecified($args);
+        $repo = $this->manager->getRepository('AppBundle:Course\Courses');
+        $entity = $repo->find($args['id']);
+        if($entity == null) throw new EntityNotFoundException();
+        $this->hasEditRights($entity);
+        unset($args['id']);
+
+        $this->validator->validate($args, 'CourseResources');
+
+        $resources = $entity->getCourseResources();
+        if($resources == null)
+        {
+            $resources = new CourseResources();
+            $resources->setCourse($entity);
+            $resources->setIsUndesirable(false);
+            $this->manager->persist($resources);
+        }
+
+        if(array_key_exists('dropboxUrl', $args) && !ValidatorHelper::isStringNullOrEmpty($args['dropboxUrl']))
+            $resources->setDropboxUrl($args['dropboxUrl']);
+
+        if(array_key_exists('googleDriveUrl', $args) && !ValidatorHelper::isStringNullOrEmpty($args['googleDriveUrl']))
+            $resources->setGoogleDriveUrl($args['googleDriveUrl']);
+
+        $this->manager->flush();
+    }
+
+    function removeResourceUrl($args)
+    {
+        $this->idSpecified($args);
+        $repo = $this->manager->getRepository('AppBundle:Course\Courses');
+        $entity = $repo->find($args['id']);
+        if($entity == null) throw new EntityNotFoundException();
+        $this->hasEditRights($entity);
+        unset($args['id']);
+
+        $resource = $entity->getCourseResources();
+
+        if($resource != null)
+        {
+            if($args['type'] == 'dropbox')
+                $resource->setDropboxUrl(null);
+
+            if($args['type'] == 'google')
+                $resource->setGoogleDriveUrl(null);
+
+            $this->manager->flush();
+        }
+    }
+
+    function addResourceLink($args)
+    {
+        $this->idSpecified($args);
+
+        $arguments = array();
+        $arguments['id'] = $args['id'];
+
+        if($args['type'] == 'google')
+            $arguments['googleDriveUrl'] = $args['resourceUrl'];
+
+        if($args['type'] == 'dropbox')
+            $arguments['dropboxUrl'] = $args['resourceUrl'];
+
+        $this->saveCourseResources($arguments);
+    }
+
     /**
      * Returns an unique code that is used to determine which implementation
      * of this interface should be used for the ajax call
@@ -1035,7 +1105,8 @@ class CreateCourseAjaxService implements AjaxInterface
         return array('saveCourseInformationValues', 'saveCardIntroduction', 'saveCardProvider', 'saveSchedule', 'saveTeacher',
             'removeCourseTeachers', 'saveCourseAnnouncement', 'removeCourseAnnouncement', 'removeCourseProviders', 'saveProvider',
             'removeCourses', 'saveCourseInstruction', 'updatePageOrder', 'removePages', 'saveMultipleChoice', 'addCustomExercisePage',
-            'loadQuestion', 'saveCustomQuestion', 'removeCustomQuestions', 'updateQuestionOrder', 'removeExtraAnswer', 'publishCourse');
+            'loadQuestion', 'saveCustomQuestion', 'removeCustomQuestions', 'updateQuestionOrder', 'removeExtraAnswer', 'publishCourse',
+            'saveCourseResources', 'removeResourceUrl', 'addResourceLink');
     }
 
     private function idSpecified($args)

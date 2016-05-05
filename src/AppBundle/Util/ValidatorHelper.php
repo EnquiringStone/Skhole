@@ -63,4 +63,19 @@ abstract class ValidatorHelper
     {
         return preg_match('/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/', $email);
     }
+
+    public static function isGoogleDriveUrl($string)
+    {
+        return self::isValidUrl($string) && strpos($string, 'drive') !== FALSE && strpos($string, 'google') !== FALSE && strpos($string, 'usp=sharing') !== FALSE;
+    }
+
+    public static function isDropboxUrl($string)
+    {
+        return self::isValidUrl($string) && strpos($string, 'dropbox') !== FALSE;
+    }
+
+    public static function isValidUrl($string)
+    {
+        return filter_var($string, FILTER_VALIDATE_URL) !== FALSE;
+    }
 }

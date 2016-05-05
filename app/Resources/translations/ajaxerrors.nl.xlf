@@ -262,6 +262,14 @@
                 <source>course.collection.course.not.published</source>
                 <target>De geselecteerde cursus is nog niet gepubliceerd</target>
             </trans-unit>
+            <trans-unit id="66">
+                <source>course.resources.invalid.google.drive</source>
+                <target>Het ingevulde google drive url is niet geldig</target>
+            </trans-unit>
+            <trans-unit id="67">
+                <source>course.resources.invalid.dropbox</source>
+                <target>Het ingevulde dropbox url is niet geldig</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

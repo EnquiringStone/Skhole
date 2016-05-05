@@ -190,6 +190,13 @@ class TeachController extends Controller
         return $this->render(':teach:course.edit.html.twig', array('course' => $course, 'announcements' => $announcements, 'type' => $type, 'name' => $name));
     }
 
+    protected function createCourseResourcesStandardPage(Courses $course, $type, $name)
+    {
+        $resources = $course->getCourseResources();
+
+        return $this->render('teach/course.edit.html.twig', array('course' => $course, 'resources' => $resources, 'type' => $type, 'name' => $name));
+    }
+
 //    Custom
 
     protected function createStartCustomPage(Courses $course, $type, $name)

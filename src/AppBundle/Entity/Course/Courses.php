@@ -158,7 +158,7 @@ class Courses implements UserStatisticsInterface, UserReportInterface, BasicDeta
     private $courseAnnouncements;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Course\CourseResources", mappedBy="course", fetch="EXTRA_LAZY")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Course\CourseResources", mappedBy="course", fetch="EXTRA_LAZY")
      */
     private $courseResources;
 
@@ -225,7 +225,6 @@ class Courses implements UserStatisticsInterface, UserReportInterface, BasicDeta
     public function __construct()
     {
         $this->courseAnnouncements = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->courseResources = new \Doctrine\Common\Collections\ArrayCollection();
         $this->courseViews = new \Doctrine\Common\Collections\ArrayCollection();
         $this->coursePages = new \Doctrine\Common\Collections\ArrayCollection();
         $this->courseReviews = new \Doctrine\Common\Collections\ArrayCollection();
@@ -829,40 +828,6 @@ class Courses implements UserStatisticsInterface, UserReportInterface, BasicDeta
     }
 
     /**
-     * Add courseResource
-     *
-     * @param \AppBundle\Entity\Course\CourseResources $courseResource
-     *
-     * @return Courses
-     */
-    public function addCourseResource(\AppBundle\Entity\Course\CourseResources $courseResource)
-    {
-        $this->courseResources[] = $courseResource;
-
-        return $this;
-    }
-
-    /**
-     * Remove courseResource
-     *
-     * @param \AppBundle\Entity\Course\CourseResources $courseResource
-     */
-    public function removeCourseResource(\AppBundle\Entity\Course\CourseResources $courseResource)
-    {
-        $this->courseResources->removeElement($courseResource);
-    }
-
-    /**
-     * Get courseResources
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCourseResources()
-    {
-        return $this->courseResources;
-    }
-
-    /**
      * Add courseView
      *
      * @param \AppBundle\Entity\Course\CourseViews $courseView
@@ -1044,5 +1009,29 @@ class Courses implements UserStatisticsInterface, UserReportInterface, BasicDeta
     public function getPublishedDateTime()
     {
         return $this->publishedDateTime;
+    }
+
+    /**
+     * Set courseResources
+     *
+     * @param \AppBundle\Entity\Course\CourseResources $courseResources
+     *
+     * @return Courses
+     */
+    public function setCourseResources(\AppBundle\Entity\Course\CourseResources $courseResources = null)
+    {
+        $this->courseResources = $courseResources;
+
+        return $this;
+    }
+
+    /**
+     * Get courseResources
+     *
+     * @return \AppBundle\Entity\Course\CourseResources
+     */
+    public function getCourseResources()
+    {
+        return $this->courseResources;
     }
 }

@@ -30,14 +30,14 @@ class CourseResources implements UserReportInterface
     protected $courseId;
 
     /**
-     * @ORM\Column(type="string", length=255, name="resource_url")
+     * @ORM\Column(type="text", length=16777215, name="dropbox_url", nullable=true)
      */
-    protected $resourceUrl;
+    protected $dropboxUrl;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="text", length=16777215, name="google_drive_url", nullable=true)
      */
-    protected $extension;
+    protected $googleDriveUrl;
 
     /**
      * @ORM\Column(type="boolean", name="is_undesirable")
@@ -45,10 +45,34 @@ class CourseResources implements UserReportInterface
     protected $isUndesirable;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Course\Courses", inversedBy="courseResources")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Course\Courses", inversedBy="courseResources")
      * @ORM\JoinColumn(name="course_id", referencedColumnName="id")
      */
     private $course;
+
+    /**
+     * Set isUndesirable
+     *
+     * @param boolean $isUndesirable
+     *
+     * @return CourseResources
+     */
+    public function setIsUndesirable($isUndesirable)
+    {
+        $this->isUndesirable = $isUndesirable;
+
+        return $this;
+    }
+
+    /**
+     * Get isUndesirable
+     *
+     * @return boolean
+     */
+    public function getIsUndesirable()
+    {
+        return $this->isUndesirable;
+    }
 
     /**
      * Get id
@@ -85,75 +109,51 @@ class CourseResources implements UserReportInterface
     }
 
     /**
-     * Set resourceUrl
+     * Set dropboxUrl
      *
-     * @param string $resourceUrl
+     * @param string $dropboxUrl
      *
      * @return CourseResources
      */
-    public function setResourceUrl($resourceUrl)
+    public function setDropboxUrl($dropboxUrl)
     {
-        $this->resourceUrl = $resourceUrl;
+        $this->dropboxUrl = $dropboxUrl;
 
         return $this;
     }
 
     /**
-     * Get resourceUrl
+     * Get dropboxUrl
      *
      * @return string
      */
-    public function getResourceUrl()
+    public function getDropboxUrl()
     {
-        return $this->resourceUrl;
+        return $this->dropboxUrl;
     }
 
     /**
-     * Set extension
+     * Set googleDriveUrl
      *
-     * @param string $extension
+     * @param string $googleDriveUrl
      *
      * @return CourseResources
      */
-    public function setExtension($extension)
+    public function setGoogleDriveUrl($googleDriveUrl)
     {
-        $this->extension = $extension;
+        $this->googleDriveUrl = $googleDriveUrl;
 
         return $this;
     }
 
     /**
-     * Get extension
+     * Get googleDriveUrl
      *
      * @return string
      */
-    public function getExtension()
+    public function getGoogleDriveUrl()
     {
-        return $this->extension;
-    }
-
-    /**
-     * Set isUndesirable
-     *
-     * @param boolean $isUndesirable
-     *
-     * @return CourseResources
-     */
-    public function setIsUndesirable($isUndesirable)
-    {
-        $this->isUndesirable = $isUndesirable;
-
-        return $this;
-    }
-
-    /**
-     * Get isUndesirable
-     *
-     * @return boolean
-     */
-    public function getIsUndesirable()
-    {
-        return $this->isUndesirable;
+        return $this->googleDriveUrl;
     }
 
     /**

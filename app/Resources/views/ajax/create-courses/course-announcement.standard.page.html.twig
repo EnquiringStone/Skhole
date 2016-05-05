@@ -31,6 +31,6 @@
                 </button>
             </div>
         </div>
-        {% include ':ajax/create-courses/elements:standard.footer.html.twig' with {'nextView': path('app_teach_edit_course_page', {'id': course.id, 'pageType': 'standard', 'name': 'card-schedule'})}%}
+        {% include ':ajax/create-courses/elements:standard.footer.html.twig' with {'nextView': path('app_teach_edit_course_page_page', {'id': course.id, 'pageType': 'standard', 'name': 'course-resources'})} %}
     </div>
 {% endblock %}

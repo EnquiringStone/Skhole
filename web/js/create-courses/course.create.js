@@ -197,6 +197,20 @@ $(document).ready(function() {
     body.on('click', '.publish-course', function() {
         publishCourse($(this).data('course-overview-url'));
     });
+
+    body.on('click', '.remove-resource', function() {
+        removeResourceUrl($(this));
+    });
+
+    body.on('click', '.add-resource-url', function() {
+        addResourceLink($(this));
+    });
+
+    body.on('click', '.btn-pref .btn', function() {
+        var modal = $($(this).parents('.btn-pref'));
+        $(".btn", modal).removeClass("btn-primary").addClass("btn-default");
+        $(this).removeClass("btn-default").addClass("btn-primary");
+    });
 });
 
 var hasChanged = false;
@@ -642,7 +656,84 @@ function createSaveAjaxCall(url) {
     else if(name == 'questions') {
         saveCustomQuestion(url);
     }
+    else if(name == 'course-resources') {
+        saveResources(url, sendUrl, id);
+    }
+}
 
+function addResourceLink(context) {
+    var parent = $(context.parents('.thumbnail'));
+    var method = 'addResourceLink';
+    var key = 'CCAS1';
+    var url = $('.ajax-body').data('url');
+    var id = $('.ajax-body').data('id');
+    var resourceUrl = $('.data-value', parent).val();
+
+    var args = {};
+    args['method'] = method;
+    args['ajax_key'] = key;
+    args['type'] = context.data('type');
+    args['resourceUrl'] = resourceUrl;
+    args['id'] = id;
+
+    sendAjaxCall(url, args, function() {
+        $('.resource-url', parent).empty();
+        $('.resource-url', parent).append(
+            '<a href="'+resourceUrl+'" class="img-rounded" target="_blank">'+resourceUrl+'</a>'
+        );
+    }, function(error) {
+        var json = error['responseJSON'];
+        showAjaxErrorModal(json['html']);
+    });
+}
+
+function saveResources(url, sendUrl, id) {
+    if(hasChanged) {
+        var method = 'saveCourseResources';
+        var key = 'CCAS1';
+
+        var args = {};
+        $('.data-value').each(function() {
+            var obj = $(this);
+            var attribute = obj.data('value-name');
+            args[attribute] = obj.val();
+        });
+        args['ajax_key'] = key;
+        args['method'] = method;
+        args['id'] = id;
+
+        sendAjaxCall(sendUrl, args, function() {
+            goToUrl(url);
+        }, function(error) {
+            var json = error['responseJSON'];
+            showAjaxErrorModal(json['html']);
+        });
+    }
+    else {
+        goToUrl(url);
+    }
+}
+
+function removeResourceUrl(context) {
+    var method = 'removeResourceUrl';
+    var key = 'CCAS1';
+    var url = $('.ajax-body').data('url');
+    var id = $('.ajax-body').data('id');
+
+    var args = {};
+
+    args['method'] = method;
+    args['ajax_key'] = key;
+    args['type'] = context.data('type');
+    args['id'] = id;
+
+    sendAjaxCall(url, args, function() {
+        var parent = $(context.parents('.thumbnail'));
+        $('.resource-url', parent).empty();
+        $('.data-value', parent).val('');
+    }, function() {
+
+    });
 }
 
 function saveInstruction(url, sendUrl, id) {
