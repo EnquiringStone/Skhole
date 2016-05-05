@@ -35,6 +35,7 @@
         <div class="ajax-error-modal"></div>
         {% block modals %}{% endblock %}
         {% include ':modal/elements:login.modal.html.twig' with {'modalId': 'loginModal'} %}
+        {% include ':modal/elements:login.picker.modal.html.twig' with {'modalId': 'languagePickerModal'} %}
         {% block postscripts %}{% endblock %}
     </body>
     </html>

@@ -1,0 +1,30 @@
+{% extends 'modal/modal.base.html.twig' %}
+{% block modalBaseHeader %}
+    <h4 class="modal-title centrum" id="{{ modalId }}">
+        <b>
+            <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+            {% trans %}Kies je taal{% endtrans %}
+        </b>
+    </h4>
+{% endblock %}
+{% block modalBaseContents %}
+    <div class="modal-body">
+        <div class="centrum">
+            <a href="{#TODO#}">
+                <img src="{{ asset('images/language-english.JPG') }}" class="img-rounded">
+                {% trans %}English{% endtrans %}
+            </a>
+            <br />
+            <br />
+            <a href="{#TODO#}">
+                <img src="{{ asset('images/language-dutch.JPG') }}" class="img-rounded">
+                {% trans %}Nederlands{% endtrans %}
+            </a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block closeButtonText %}
+    {% trans %}Sluiten{% endtrans %}
+{% endblock %}
+{% set modalBaseType = 'close' %}

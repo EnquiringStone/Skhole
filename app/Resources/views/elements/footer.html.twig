@@ -1,1 +1,64 @@
-<!-- The links at the bottom of the page and the buttons (over ons, meer) -->
+{% block footer %}
+    <footer class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="centrum">
+                <div class="btn-group dropup">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <img src="{{ asset('images/logo-skhole.png') }}" class="img-rounded">
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="TODO">{% trans %}Over ons{% endtrans %}</a></li>
+                        <li><a href="TODO">{% trans %}Contact{% endtrans %}</a></li>
+                        <li><a href="TODO">{% trans %}Veel gestelde vragen{% endtrans %}</a></li>
+                    </ul>
+                </div>
+                <div class="btn-group dropup">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        {% trans %}Sociale media{% endtrans %}
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="TODO">
+                                <img src="{{ asset('images/login-fb.png') }}" class="img-rounded">
+                                {% trans %}Volg ons{% endtrans %}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="TODO">
+                                <img src="{{ asset('images/login-g.png') }}" class="img-rounded">
+                                {% trans %}Volg ons{% endtrans %}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="TODO">
+                                <img src="{{ asset('images/login-t.png') }}" class="img-rounded">
+                                {% trans %}Volg ons{% endtrans %}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="centrum">
+                <span class="text-muted">StudyLivre 2016 ©</span>
+                <b><span>|</span></b>
+                <a href="{#TODO#}">{% trans %}Auteursrecht{% endtrans %}</a>
+                <b><span>|</span></b>
+                <a href="{#TODO#}">{% trans %}Richtlijnen{% endtrans %}</a>
+            </div>
+            <div class="centrum">
+                <a class="clickable" data-toggle="modal" data-target="#languagePickerModal">
+                    <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+                    {% trans %}Taal{% endtrans %}
+                </a>
+                <b><span>|</span></b>
+                <a href="{#TODO#}">{% trans %}Voorwaarden{% endtrans %}</a>
+                <b><span>|</span></b>
+                <a href="{#TODO#}">{% trans %}Privacybeleid{% endtrans %}</a>
+                <b><span>|</span></b>
+                <a href="{#TODO#}">{% trans %}Cookiebeleid{% endtrans %}</a>
+            </div>
+        </div>
+    </footer>
+{% endblock %}
