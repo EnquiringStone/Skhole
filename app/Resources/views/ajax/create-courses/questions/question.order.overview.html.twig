@@ -4,7 +4,7 @@
             {% for question in exercise.questions %}
                 <li class="list-group-item" data-question-id="{{ question.id }}" data-original-order="{{ question.questionOrder }}">
                     <a class="load-question" data-question-id="{{ question.id }}" data-type="{{ question.questionType.type }}">
-                        {% trans %}Pagina{% endtrans %} <span class="page-overview-order">{{ question.questionOrder }}</span>
+                        {% trans %}Vraag{% endtrans %} <span class="page-overview-order">{{ question.questionOrder }}</span>
                         {{ question.question|length > 200 ? question.question|slice(0, 200)~'...' : question.question }}
                     </a>
                     <span class="glyphicon glyphicon-trash clickable pull-right remove-custom-question" aria-hidden="true" data-question-id="{{ question.id }}"></span>
