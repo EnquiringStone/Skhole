@@ -35,14 +35,16 @@
         {% trans %}Cursusrapport{% endtrans %}
     </button>
     <hr />
-    <div class="centrum">
-        <button type="button" class="btn btn-lg btn-info" data-toggle="modal" data-target="#loginModal">
-            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-            {% trans %}Account aanmaken{% endtrans %}
-            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-        </button>
-    </div>
-    <hr />
+    {% if not is_granted('ROLE_USER') %}
+        <div class="centrum">
+            <button type="button" class="btn btn-lg btn-info" data-toggle="modal" data-target="#loginModal">
+                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                {% trans %}Account aanmaken{% endtrans %}
+                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+            </button>
+        </div>
+        <hr />
+    {% endif %}
 {% endblock %}
 {% block panelBaseContentTypeRight %}
     <div class="embed-responsive embed-responsive-4by3">
