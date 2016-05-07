@@ -36,4 +36,9 @@ class CourseAnnouncementsValidator extends Validator
         if(strlen($contents) > 15000)
             throw new FrontEndException('course.edit.contents.too.long', $this->domain, array('%size%' => strlen($contents)));
     }
+
+    public function validateTeacherId($teacherId)
+    {
+        //Do nothing
+    }
 }

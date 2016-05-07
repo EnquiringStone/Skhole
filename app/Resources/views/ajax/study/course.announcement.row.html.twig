@@ -3,8 +3,12 @@
         <div class="row">
             <div class="col-md-1">
                 <img src="
-                    {% if announcement.teacher is not null and announcement.teacher.pictureUrl is not empty %}
-                        {{ asset(announcement.teacher.pictureUrl) }}
+                    {% if announcement.teacher is not null %}
+                        {% if announcement.teacher.pictureUrl is not empty %}
+                            {{ asset(announcement.teacher.pictureUrl) }}
+                        {% else %}
+                            {{ asset('images/head-wiseguy.png') }}
+                        {% endif %}
                     {% elseif announcement.insertUser.picture is not empty %}
                         {{ asset(announcement.insertUser.picture) }}
                     {% else %}

@@ -89,7 +89,7 @@ class CourseAnnouncements implements UserStatisticsInterface, UserReportInterfac
     private $updateUser;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Teachers")
      * @ORM\JoinColumn(name="teacher_id", referencedColumnName="id")
      */
     private $teacher;
@@ -222,6 +222,30 @@ class CourseAnnouncements implements UserStatisticsInterface, UserReportInterfac
     public function getUpdateDateTime()
     {
         return $this->updateDateTime;
+    }
+
+    /**
+     * Set teacherId
+     *
+     * @param integer $teacherId
+     *
+     * @return CourseAnnouncements
+     */
+    public function setTeacherId($teacherId)
+    {
+        $this->teacherId = $teacherId;
+
+        return $this;
+    }
+
+    /**
+     * Get teacherId
+     *
+     * @return integer
+     */
+    public function getTeacherId()
+    {
+        return $this->teacherId;
     }
 
     /**
@@ -369,37 +393,13 @@ class CourseAnnouncements implements UserStatisticsInterface, UserReportInterfac
     }
 
     /**
-     * Set teacherId
-     *
-     * @param integer $teacherId
-     *
-     * @return CourseAnnouncements
-     */
-    public function setTeacherId($teacherId)
-    {
-        $this->teacherId = $teacherId;
-
-        return $this;
-    }
-
-    /**
-     * Get teacherId
-     *
-     * @return integer
-     */
-    public function getTeacherId()
-    {
-        return $this->teacherId;
-    }
-
-    /**
      * Set teacher
      *
-     * @param \AppBundle\Entity\User $teacher
+     * @param \AppBundle\Entity\Teachers $teacher
      *
      * @return CourseAnnouncements
      */
-    public function setTeacher(\AppBundle\Entity\User $teacher = null)
+    public function setTeacher(\AppBundle\Entity\Teachers $teacher = null)
     {
         $this->teacher = $teacher;
 
@@ -409,7 +409,7 @@ class CourseAnnouncements implements UserStatisticsInterface, UserReportInterfac
     /**
      * Get teacher
      *
-     * @return \AppBundle\Entity\User
+     * @return \AppBundle\Entity\Teachers
      */
     public function getTeacher()
     {

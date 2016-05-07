@@ -186,8 +186,9 @@ class TeachController extends Controller
     protected function createCourseAnnouncementStandardPage(Courses $course, $type, $name)
     {
         $announcements = $course->getCourseAnnouncements();
+        $teachers = $this->getDoctrine()->getRepository('AppBundle:Teachers')->findBy(array('userInsertedId' => $this->getUser()->getId()));
 
-        return $this->render(':teach:course.edit.html.twig', array('course' => $course, 'announcements' => $announcements, 'type' => $type, 'name' => $name));
+        return $this->render(':teach:course.edit.html.twig', array('course' => $course, 'announcements' => $announcements, 'type' => $type, 'name' => $name, 'teachers' => $teachers));
     }
 
     protected function createCourseResourcesStandardPage(Courses $course, $type, $name)

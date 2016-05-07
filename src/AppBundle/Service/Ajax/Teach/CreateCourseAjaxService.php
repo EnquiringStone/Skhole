@@ -328,6 +328,16 @@ class CreateCourseAjaxService implements AjaxInterface
         $announcement->setTitle($args['title']);
         $announcement->setIsUndesirable(false);
 
+        if($args['teacherId'] > 0)
+        {
+            $teacher = $this->manager->getRepository('AppBundle:Teachers')->find($args['teacherId']);
+            if($teacher == null) throw new EntityNotFoundException();
+            if($teacher->getUserInsertedId() != $this->storage->getToken()->getUser()->getId())
+                throw new AccessDeniedException();
+
+            $announcement->setTeacher($teacher);
+        }
+
         $this->manager->persist($announcement);
         $entity->addCourseAnnouncement($announcement);
         $this->manager->flush();
