@@ -31,7 +31,7 @@ abstract class ValidatorHelper
 
     public static function containsOnlyCharactersAndNumbers($string)
     {
-        return preg_match('/^[a-zA-Z0-9\\s]+$/', $string);
+        return preg_match('/^[\'%-.,a-zA-Z0-9\\s]+$/', $string);
     }
 
     public static function containsWordsInFile($word, $file)
