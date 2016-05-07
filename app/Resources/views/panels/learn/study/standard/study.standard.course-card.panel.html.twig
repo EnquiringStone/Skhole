@@ -1,0 +1,134 @@
+{% extends 'panels/panel.base.html.twig' %}
+{% block panelBaseTitle %}
+    <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+    <b>{% trans %}Cursuskaart{% endtrans %}</b>
+{% endblock %}
+{% block panelBaseContents %}
+    <div class="panel-body">
+        <div class="btn-pref centrum" role="group">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-sm btn-primary" href="#tabIntro" data-toggle="tab">
+                    {% trans %}Introductie{% endtrans %}
+                </button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-sm btn-default" href="#tabDetails" data-toggle="tab">
+                    {% trans %}Details{% endtrans %}
+                </button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-sm btn-default" href="#tabPriorKnowledge" data-toggle="tab">
+                    {% trans %}Voorkennis{% endtrans %}
+                </button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-sm btn-default" href="#tabProviders" data-toggle="tab">
+                    {% trans %}Aanbieders{% endtrans %}
+                </button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-sm btn-default" href="#tabTeachers" data-toggle="tab">
+                    {% trans %}Docenten{% endtrans %}
+                </button>
+            </div>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane fade active in" id="tabIntro">
+                <hr />
+                <h4>{% trans %}Introductie{% endtrans %}</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        {% if course.courseCard.youtubeUrl is not empty %}
+                            <div class="embed-responsive embed-responsive-4by3">
+                                <iframe class="embed-responsive-item" src="{{ course.courseCard.youtubeEmbedUrl }}" allowfullscreen></iframe>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-6">
+                        {% if course.courseCard.pictureUrl is not empty %}
+                            <img src="{{ asset(course.courseCard.pictureUrl) }}" class="img-rounded">
+                        {% endif %}
+                    </div>
+                </div>
+                <hr />
+                <p>{{ course.courseCard.description }}</p>
+                <hr />
+            </div>
+            <div class="tab-pane fade" id="tabDetails">
+                <hr />
+                <h4>{% trans %}Cursus samenvatting{% endtrans %}</h4>
+                {% include ':ajax/components/course-card:course.card.detail.buttons.public.html.twig' %}
+                <hr />
+            </div>
+            <div class="tab-pane fade" id="tabPriorKnowledge">
+                <hr />
+                <h4>{% trans %}Vereiste voorkennis{% endtrans %}</h4>
+                {% if course.courseCard.priorKnowledge is not empty %}
+                    <p>{{ course.courseCard.priorKnowledge|nl2br }}</p>
+                {% else %}
+                    <div class="centrum">
+                        <p class="lead">{% trans %}Geen vereiste voorkennis nodig{% endtrans %}</p>
+                    </div>
+                {% endif %}
+                <hr />
+            </div>
+            <div class="tab-pane fade" id="tabProviders">
+                <hr />
+                {% if course.courseCard.providers|length > 0 %}
+                    <h4>{% trans %}Aanbieders{% endtrans %}</h4>
+                    <div class="media-list">
+                        {% for provider in course.courseCard.providers %}
+                            <div class="media">
+                                <div class="pull-left">
+                                    <img src="{{ asset('images/logo-skhole.png') }}" class="media-object">
+                                </div>
+                                <div class="media-body">
+                                    <h5>{{ provider.name|capitalize }}</h5>
+                                    <p>{{ provider.description }}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="centrum">
+                        <p class="lead">{% trans %}Deze cursus heeft geen aanbieders{% endtrans %}</p>
+                    </div>
+                {% endif %}
+                <hr />
+            </div>
+            <div class="tab-pane fade" id="tabTeachers">
+                <hr />
+                {% if course.courseCard.teachers|length > 0 %}
+                    <h4>{% trans %}Docenten{% endtrans %}</h4>
+                    <div class="media-list">
+                        {% for teacher in course.courseCard.teachers %}
+                            <div class="media">
+                                <div class="pull-left">
+                                    <img src="
+                                        {% if teacher.pictureUrl is not empty %}
+                                            {{ asset(teacher.pictureUrl) }}
+                                        {% else %}
+                                            {{ asset('images/head-wiseguy.png') }}
+                                        {% endif %}
+                                    " class="img-rounded teacher-row-picture">
+                                </div>
+                                <div class="media-body">
+                                    <h5>{{ teacher.name }}</h5>
+                                    <p>{{ teacher.description }}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="centrum">
+                        <p class="lead">{% trans %}Deze cursus heeft geen docenten{% endtrans %}</p>
+                    </div>
+                {% endif %}
+                <hr />
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block panelBaseFooter %}
+    {% include ':panels/learn/study/standard:study.standard.panel.footer.html.twig' %}
+{% endblock %}
