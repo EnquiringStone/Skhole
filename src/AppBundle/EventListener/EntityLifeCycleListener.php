@@ -8,16 +8,14 @@
 
 namespace AppBundle\EventListener;
 
-
+use AppBundle\Entity\User;
 use AppBundle\Interfaces\Entity\UserStatisticsInterface;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
-use Symfony\Component\Validator\Constraints\DateTime;
 
 class EntityLifeCycleListener implements EventSubscriber
 {
-
     /**
      * @var TokenStorage
      */
@@ -25,7 +23,6 @@ class EntityLifeCycleListener implements EventSubscriber
 
     public function __construct(TokenStorage $storage)
     {
-
         $this->storage = $storage;
     }
 
@@ -54,10 +51,7 @@ class EntityLifeCycleListener implements EventSubscriber
 
     private function handleUserStatistics(LifecycleEventArgs $args, $isUpdate)
     {
-        if($this->storage->getToken() == null)
-            return;
-
-        if(!$this->validateUser($this->storage->getToken()->getUser()))
+        if($this->storage->getToken() == null || !($this->storage->getToken()->getUser() instanceof User))
             return;
 
         $entity = $args->getEntity();
@@ -75,10 +69,5 @@ class EntityLifeCycleListener implements EventSubscriber
                 $entity->setInsertUser($this->storage->getToken()->getUser());
             }
         }
-    }
-
-    private function validateUser($user)
-    {
-        return $user != null;
     }
 }

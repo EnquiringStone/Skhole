@@ -63,6 +63,11 @@ class LearnController extends Controller
      */
     public function studyCourseAction($courseId)
     {
+        $course = $this->validateSpecifiedCourseId($courseId);
+
+        $course->setViews($course->getViews() + 1);
+        $this->getDoctrine()->getEntityManager()->flush();
+
         return $this->studyPanelsAction($courseId, 'custom', 'start');
     }
 
