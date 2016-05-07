@@ -13,7 +13,7 @@ use AppBundle\Interfaces\Entity\UserStatisticsInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CourseAnnouncementsRepository")
  * @ORM\Table(name="course_announcements")
  */
 class CourseAnnouncements implements UserStatisticsInterface, UserReportInterface
@@ -51,6 +51,11 @@ class CourseAnnouncements implements UserStatisticsInterface, UserReportInterfac
     protected $updateDateTime;
 
     /**
+     * @ORM\Column(type="integer", name="teacher_id", nullable=true)
+     */
+    protected $teacherId;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     protected $title;
@@ -82,6 +87,12 @@ class CourseAnnouncements implements UserStatisticsInterface, UserReportInterfac
      * @ORM\JoinColumn(name="user_updated_id", referencedColumnName="id")
      */
     private $updateUser;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\JoinColumn(name="teacher_id", referencedColumnName="id")
+     */
+    private $teacher;
 
     /**
      * Get id
@@ -355,5 +366,53 @@ class CourseAnnouncements implements UserStatisticsInterface, UserReportInterfac
     public function getUpdateUser()
     {
         return $this->updateUser;
+    }
+
+    /**
+     * Set teacherId
+     *
+     * @param integer $teacherId
+     *
+     * @return CourseAnnouncements
+     */
+    public function setTeacherId($teacherId)
+    {
+        $this->teacherId = $teacherId;
+
+        return $this;
+    }
+
+    /**
+     * Get teacherId
+     *
+     * @return integer
+     */
+    public function getTeacherId()
+    {
+        return $this->teacherId;
+    }
+
+    /**
+     * Set teacher
+     *
+     * @param \AppBundle\Entity\User $teacher
+     *
+     * @return CourseAnnouncements
+     */
+    public function setTeacher(\AppBundle\Entity\User $teacher = null)
+    {
+        $this->teacher = $teacher;
+
+        return $this;
+    }
+
+    /**
+     * Get teacher
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getTeacher()
+    {
+        return $this->teacher;
     }
 }

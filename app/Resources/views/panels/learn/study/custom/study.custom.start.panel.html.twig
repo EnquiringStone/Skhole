@@ -1,0 +1,41 @@
+{% extends 'panels/panel.base.html.twig' %}
+{% block panelBaseTitle %}
+    <b>{% trans %}Startpagina{% endtrans %}</b>
+{% endblock %}
+{% block panelBaseContents %}
+    <div class="panel-body">
+        <hr />
+        <div class="centrum">
+            <h1>
+                <b>{% trans %}Start van de cursus{% endtrans %}</b>
+            </h1>
+            <p class="text-muted">
+                {% trans %}Cursusnaam{% endtrans %}:
+                {{ course.name|capitalize }}
+            </p>
+            <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#studyIntroductionModal">
+                <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                {% trans %}Cursus volgen{% endtrans %}
+            </button>
+            <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#courseReportIntroductionModal">
+                <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                {% trans %}Cursusrapport{% endtrans %}
+            </button>
+        </div>
+        <hr />
+        <div class="modal-info-background">
+            <h4 class="text-primary">
+                <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                <b>{% trans %}Cursusrapport{% endtrans %}</b>
+            </h4>
+            <p>
+                {% trans %}Na afronding van de cursus wordt een cursusrapport samengesteld met daarin jouw antwoorden op de meerkeuze- en openvragen. Alle rapporten kun je terug vinden bij: Learn → Cursusmandje → Cursusrapporten.{% endtrans %}
+                <b>{% trans %}Let op{% endtrans %}:</b> {% trans %}Indien je niet ingelogd bent dan verlies je al je voortgang zodra je je browser afsluit.{% endtrans %}
+            </p>
+        </div>
+        <hr />
+    </div>
+{% endblock %}
+{% block panelBaseFooter %}
+    {% include ':panels/learn/study/custom:study.custom.panel.footer.html.twig' with {'nextButton': true, 'previousButton': false, 'moreButton': false} %}
+{% endblock %}

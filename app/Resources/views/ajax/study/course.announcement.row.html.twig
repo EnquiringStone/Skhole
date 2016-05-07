@@ -1,0 +1,35 @@
+{% block courseAnnouncementRow %}
+    <div class="thumbnail">
+        <div class="row">
+            <div class="col-md-1">
+                <img src="
+                    {% if announcement.teacher is not null and announcement.teacher.pictureUrl is not empty %}
+                        {{ asset(announcement.teacher.pictureUrl) }}
+                    {% elseif announcement.insertUser.picture is not empty %}
+                        {{ asset(announcement.insertUser.picture) }}
+                    {% else %}
+                        {{ asset('images/head-wiseguy.png') }}
+                    {% endif %}
+                    " class="img-rounded teacher-row-picture">
+            </div>
+            <div class="col-md-11">
+                <h4>{{ announcement.title }}</h4>
+                <p>{{ announcement.contents }}</p>
+                <div class="btn-group-xs">
+                    <button type="button" class="btn btn-default unclickable">
+                        <b>{% trans %}Docent{% endtrans %}:</b>
+                        {% if announcement.teacher is not null %}
+                            {{ announcement.teacher.name }}
+                        {% else %}
+                            {{ announcement.insertUser.realName }}
+                        {% endif %}
+                    </button>
+                    <button type="button" class="btn btn-default unclickable">
+                        <b>{% trans %}Gepost op{% endtrans %}:</b>
+                        {{ announcement.insertDateTime|date('d-m-Y') }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

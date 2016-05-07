@@ -9,9 +9,12 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Enum\CourseStateEnum;
+use AppBundle\Enum\PageTypeEnum;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class LearnController extends Controller
 {
@@ -52,7 +55,30 @@ class LearnController extends Controller
      */
     public function studyAction(Request $request)
     {
-        return $this->render(':learn:study.html.twig');
+        return $this->render(':learn:study.default.html.twig');
+    }
+
+    /**
+     * @Route("/{_locale}/learn/study/{courseId}/", name="app_learn_study_course_page")
+     */
+    public function studyCourseAction($courseId)
+    {
+        return $this->studyPanelsAction($courseId, 'custom', 'start');
+    }
+
+    /**
+     * @Route("/{_locale}/learn/study/{courseId}/{pageType}/{name}/", name="app_learn_study_panels_page")
+     */
+    public function studyPanelsAction($courseId, $pageType, $name)
+    {
+        $course = $this->validateSpecifiedCourseId($courseId);
+
+        if(PageTypeEnum::matchValueWithGivenEnum(PageTypeEnum::class, PageTypeEnum::STANDARD_TYPE, $pageType) ||
+            PageTypeEnum::matchValueWithGivenEnum(PageTypeEnum::class, PageTypeEnum::CUSTOM_TYPE, $pageType))
+        {
+            return $this->render(':learn:study.html.twig', array('name' => $name, 'pageType' => $pageType, 'course' => $course));
+        }
+        throw new AccessDeniedException();
     }
 
     /**
@@ -61,5 +87,19 @@ class LearnController extends Controller
     public function courseReportsAction(Request $request)
     {
         return $this->render(':learn:course.reports.html.twig');
+    }
+
+    /**
+     * @param $courseId
+     * @return \AppBundle\Entity\Course\Courses
+     */
+    private function validateSpecifiedCourseId($courseId)
+    {
+        $course = $this->getDoctrine()->getRepository('AppBundle:Course\Courses')->find($courseId);
+        if($course == null) throw new AccessDeniedException();
+        if($course->getState()->getStateCode() != CourseStateEnum::Finished || $course->getRemoved() || $course->getPublishedDateTime() == null || $course->getPublishedDateTime() > new \DateTime())
+            throw new AccessDeniedException();
+
+        return $course;
     }
 }

@@ -1,0 +1,29 @@
+{% extends 'panels/panel.base.html.twig' %}
+{% block panelBaseTitle %}
+    <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
+    <b>{% trans %}Mededelingen{% endtrans %}</b>
+{% endblock %}
+{% block panelBaseContents %}
+    <div class="panel-body">
+        {% if course.courseAnnouncements|length > 0 %}
+            <div class="page-controls" data-entity="Course\CourseAnnouncements" data-url="{{ path('app_home_ajax_page') }}" data-context="PUBLIC" data-default-search-attributes="courseId,{{ course.id }}">
+                <div class="content-field">
+                    {% for announcement in course.courseAnnouncements|slice(0, standard_query_limit) %}
+                        {% include ':ajax/study:course.announcement.row.html.twig' with {'announcement': announcement} %}
+                    {% endfor %}
+                </div>
+                <div class="pagination-field">
+                    {% include ':elements:pagination.html.twig' with {'maxEntities' : course.courseAnnouncements|length, 'limit': standard_query_limit, 'offset': 0, 'maxPages' : standard_pagination_max, 'pageName': 'Mededelingen'|trans, 'entity': 'Course\CourseAnnouncements' } %}
+                </div>
+            </div>
+        {% else %}
+            <hr />
+            <div class="centrum">
+                <p>{% trans %}Geen mededelingen{% endtrans %}</p>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+{% block panelBaseFooter %}
+    {% include ':panels/learn/study/standard:study.standard.panel.footer.html.twig' %}
+{% endblock %}

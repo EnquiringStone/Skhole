@@ -1,0 +1,33 @@
+<div class="panel-footer">
+    {% if nextButton %}
+        <button type="button" class="btn btn-default btn-sm pull-right">
+            {% trans %}Volgende{% endtrans %}
+            <span class="glyphicon glyphicon-arrow-right"></span>
+        </button>
+        {% if not previousButton and not moreButton  %}
+            <br />
+            <br />
+        {% endif %}
+    {% endif %}
+    {% if previousButton %}
+        <button type="button" class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-arrow-left"></span>
+            {% trans %}Vorige{% endtrans %}
+        </button>
+    {% endif %}
+    {% if moreButton %}
+        <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
+            {% trans %}Meer{% endtrans %}
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a href="{#TODO Reporting#}">
+                    <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+                    {% trans %}Rapporteren{% endtrans %}
+                </a>
+            </li>
+        </ul>
+    {% endif %}
+</div>

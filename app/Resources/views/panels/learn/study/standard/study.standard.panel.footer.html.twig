@@ -1,0 +1,22 @@
+{% block studyStandardPanelFooter %}
+    <div class="panel-footer">
+        <div class="btn-group">
+            <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
+                {% trans %}Meer{% endtrans %}
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li>
+                    <a href="{#TODO reporting#}">
+                        <span class="glyphicon glyphicon-flag"></span>
+                        {% trans %}Rapporteren{% endtrans %}
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <a href="{#TODO back to course pages#}" class="btn btn-default btn-sm pull-right">
+            {% trans %}Terug naar cursuspagina's{% endtrans %}
+        </a>
+    </div>
+{% endblock %}

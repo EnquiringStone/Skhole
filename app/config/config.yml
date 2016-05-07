@@ -49,6 +49,9 @@ twig:
         decimals: 2
         decimal_point: ','
         thousands_separator: '.'
+    globals:
+        standard_query_limit: '%standard_query_limit%'
+        standard_pagination_max: '%standard_pagination_max%'
 
 # Assetic Configuration
 #assetic:

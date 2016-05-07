@@ -1,20 +1,10 @@
 {% block learnNavigationMenu %}
     <ul class="nav nav-pills">
-        <li role="presentation" class="dropdown {% if subMenu == 'courseCollection' or subMenu == 'courseReports' %}active{% endif %}">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">
-                {% if subMenu == 'courseCollection' %}{% trans %}Cursusmandje{% endtrans %}
-                {% elseif subMenu == 'courseReports' %}{% trans %}Cursusrapporten{% endtrans %}
-                {% endif %}
-                <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-                <li>
-                    <a href="{{ path('app_learn_course_collection_page') }}">{% trans %}Cursusmandje{% endtrans %}</a>
-                </li>
-                <li>
-                    <a href="{{ path('app_learn_course_reports') }}">{% trans %}Cursusrapporten{% endtrans %}</a>
-                </li>
-            </ul>
+        <li class="{% if subMenu == 'courseCollection' %}active{% endif %}">
+            <a href="{{ path('app_learn_course_collection_page') }}">{% trans %}Cursusmandje{% endtrans %}</a>
+        </li>
+        <li class="{% if subMenu == 'courseReports' %}active{% endif %}">
+            <a href="{{ path('app_learn_course_reports') }}">{% trans %}Cursusrapporten{% endtrans %}</a>
         </li>
         <li class="{% if subMenu == 'study'%}active{% endif %}"><a href="{{ path('app_learn_study_page') }}">{% trans %}Studeer{% endtrans %}</a></li>
         <li><a href="{{ path('app_search_page') }}">{% trans %}Zoeken{% endtrans %}</a></li>

@@ -1,0 +1,27 @@
+{% extends 'panels/panel.base.html.twig' %}
+{% block panelBaseTitle %}
+    <b>{% trans %}Ter informatie{% endtrans %}</b>
+{% endblock %}
+{% block panelBaseContents %}
+    <div class="panel-body">
+        <hr />
+        <div class="centrum">
+            <h4>
+                <b>{% trans %}Geen cursus geselecteerd{% endtrans %}</b>
+            </h4>
+            <p class="text-muted">
+                {% trans %}Zoek een cursus of selecteer een cursus uit je cursusmandje. Klik op onderstaande button voor meer informatie over het volgen van een cursus{% endtrans %}
+            </p>
+            <hr />
+            <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#studyIntroductionModal">
+                <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                {% trans %}Cursus volgen{% endtrans %}
+            </button>
+            <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#courseReportIntroductionModal">
+                <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                {% trans %}Cursusrapport{% endtrans %}
+            </button>
+            <hr />
+        </div>
+    </div>
+{% endblock %}

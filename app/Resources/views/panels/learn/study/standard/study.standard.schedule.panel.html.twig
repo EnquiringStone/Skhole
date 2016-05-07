@@ -1,0 +1,20 @@
+{% extends 'panels/panel.base.html.twig' %}
+{% block panelBaseTitle %}
+    <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+    <b>{% trans %}Planning{% endtrans %}</b>
+{% endblock %}
+{% block panelBaseContents %}
+    <div class="panel-body">
+        {% if course.courseSchedule is not null and course.courseSchedule.schedule is not empty %}
+            <p>{{ course.courseSchedule.schedule|nl2br }}</p>
+        {% else %}
+            <hr />
+            <div class="centrum">
+                <p>{% trans %}Deze cursus heeft geen bijbehorende planning{% endtrans %}</p>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+{% block panelBaseFooter %}
+    {% include ':panels/learn/study/standard:study.standard.panel.footer.html.twig' %}
+{% endblock %}

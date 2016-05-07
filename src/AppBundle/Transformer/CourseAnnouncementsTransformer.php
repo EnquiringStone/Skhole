@@ -45,6 +45,13 @@ class CourseAnnouncementsTransformer implements TransformerInterface
                 $html .= $this->environment->render(':modal/create-course:course.remove.announcement.modal.html.twig', array('announcement' => $entity, 'modalId' => 'removeCourseAnnouncementModal'.$i));
             }
         }
+        elseif(ContextEnum::matchValueWithGivenEnum(ContextEnum::class, ContextEnum::PUBLIC_CONTEXT, $context))
+        {
+            foreach($entities as $entity)
+            {
+                $html .= $this->environment->render(':ajax/study:course.announcement.row.html.twig', array('announcement' => $entity));
+            }
+        }
         return $html;
     }
 

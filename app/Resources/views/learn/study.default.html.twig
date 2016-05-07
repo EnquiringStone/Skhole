@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}{% trans %}Studeer{% endtrans %}{% endblock %}
+{% block body %}
+    {% include ':panels/learn/study:study.default.panel.html.twig' %}
+{% endblock %}
+
+{% block modals %}
+    {% include ':modal/dashboard:study.introduction.modal.html.twig' with {'modalId': 'studyIntroductionModal'} %}
+    {% include ':modal/dashboard:course.report.introduction.modal.html.twig' with {'modalId': 'courseReportIntroductionModal'} %}
+{% endblock %}
+
+{% block prescripts %}
+    <script src="{{ asset('js/study/study.js') }}"></script>
+{% endblock %}
+
+{% set menu = 'learn' %}
+{% set subMenu = 'study' %}
