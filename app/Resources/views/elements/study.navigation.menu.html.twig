@@ -14,31 +14,31 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" role="menu">
-                        <li>
+                        <li class="{% if name == 'course-card' %}active{% endif %}">
                             <a href="{{ path('app_learn_study_panels_page', {'courseId': course.id, 'name': 'course-card', 'pageType': 'standard'}) }}">
                                 <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
                                 {% trans %}Cursuskaart{% endtrans %}
                             </a>
                         </li>
-                        <li>
-                            <a href="{{ path('app_learn_study_panels_page', {'courseId': course.id, 'name': 'course-reviews', 'pageType': 'standard'}) }}">
+                        <li class="{% if name == 'reviews' %}active{% endif %}">
+                            <a href="{{ path('app_learn_study_panels_page', {'courseId': course.id, 'name': 'reviews', 'pageType': 'standard'}) }}">
                                 <span class="glyphicon glyphicon-magnet" aria-hidden="true"></span>
                                 {% trans %}Cursusreviews{% endtrans %}
                             </a>
                         </li>
-                        <li>
+                        <li class="{% if name == 'announcements' %}active{% endif %}">
                             <a href="{{ path('app_learn_study_panels_page', {'courseId': course.id, 'name': 'announcements', 'pageType': 'standard'}) }}">
                                 <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
                                 {% trans %}Mededelingen{% endtrans %}
                             </a>
                         </li>
-                        <li>
+                        <li class="{% if name == 'schedule' %}active{% endif %}">
                             <a href="{{ path('app_learn_study_panels_page', {'courseId': course.id, 'name': 'schedule', 'pageType': 'standard'}) }}">
                                 <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
                                 {% trans %}Planning{% endtrans %}
                             </a>
                         </li>
-                        <li>
+                        <li class="{% if name == 'documents' %}active{% endif %}">
                             <a href="{{ path('app_learn_study_panels_page', {'courseId': course.id, 'name': 'documents', 'pageType': 'standard'}) }}">
                                 <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
                                 {% trans %}Documenten{% endtrans %}

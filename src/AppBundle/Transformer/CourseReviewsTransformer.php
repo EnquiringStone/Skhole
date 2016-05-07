@@ -42,6 +42,13 @@ class CourseReviewsTransformer implements TransformerInterface
                 $html .= $this->twig->render(':ajax/my-courses:course.review.body.html.twig', array('review' => $entity));
             }
         }
+        elseif(ContextEnum::matchValueWithGivenEnum(ContextEnum::class, ContextEnum::PUBLIC_CONTEXT, $context))
+        {
+            foreach($entities as $entity)
+            {
+                $html .= $this->twig->render(':ajax/study:course.review.row.html.twig', array('review' => $entity));
+            }
+        }
         return $html;
     }
 

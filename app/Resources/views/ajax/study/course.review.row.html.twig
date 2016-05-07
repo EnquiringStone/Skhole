@@ -1,0 +1,41 @@
+{% block courseReviewRow %}
+    <div class="thumbnail">
+        <div class="row">
+            <div class="col-md-1">
+                <img src="
+                    {% if review.insertUser.picture is not empty %}
+                        {{ asset(review.insertUser.picture) }}
+                    {% else %}
+                        {{ asset('images/gebruiker.png') }}
+                    {% endif %}
+                    " class="img-rounded profile-picture-preview-img">
+            </div>
+            <div class="col-md-11">
+                <h4>{{ review.insertUser.realName|capitalize }}</h4>
+                <p>{{ review.remarks }}</p>
+                <div class="btn-group-xs">
+                    <button type="button" class="btn btn-default unclickable">
+                        <b>{% trans %}Cursusbeoordeling{% endtrans %}:</b>
+                        {% if review.contentRating is not null %}
+                            {% for i in 1..review.contentRating %}
+                                <img src="{{ asset('images/star_rating.png') }}" class="img-rounded">
+                            {% endfor %}
+                        {% else %}
+                            {% trans %}Geen beoordeling gegegeven{% endtrans %}
+                        {% endif %}
+                    </button>
+                    <button type="button" class="btn btn-default unclickable">
+                        <b>{% trans %}Gepost op{% endtrans %}:</b>
+                        {{ review.insertDateTime|date('d-m-Y') }}
+                    </button>
+                    {% if review.updateDateTime is not null %}
+                        <button type="button" class="btn btn-default unclickable">
+                            <b>{% trans %}Gewijzigd op{% endtrans %}:</b>
+                            {{ review.updateDateTime|date('d-m-Y') }}
+                        </button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

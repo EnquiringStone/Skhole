@@ -1,0 +1,30 @@
+{% extends 'panels/panel.base.html.twig' %}
+{% block panelBaseTitle %}
+    <span class="glyphicon glyphicon-magnet" aria-hidden="true"></span>
+    <b>{% trans %}Reviews{% endtrans %}</b>
+{% endblock %}
+{% block panelBaseContents %}
+    <div class="panel-body">
+        {% if course.courseReviews|length > 0 %}
+            <div class="page-controls" data-entity="Course\CourseReviews" data-url="{{ path('app_home_ajax_page') }}" data-context="PUBLIC" data-default-search-attributes="courseId,{{ course.id }}">
+                <div class="content-field">
+                    {% for review in course.courseReviews|slice(0, standard_query_limit) %}
+                        {% include ':ajax/study:course.review.row.html.twig' with {'review': review} %}
+                    {% endfor %}
+                </div>
+                <div class="pagination-field">
+                    {% include ':elements:pagination.html.twig' with {'maxEntities' : course.courseReviews|length, 'limit': standard_query_limit, 'offset': 0, 'maxPages' : standard_pagination_max, 'pageName': 'Reviews'|trans, 'entity': 'Course\CourseReviews' } %}
+                </div>
+            </div>
+        {% else %}
+            <hr />
+            <div class="centrum">
+                <p class="lead">{% trans %}Er zijn nog geen reviews voor deze cursus{% endtrans %}</p>
+            </div>
+            <hr />
+        {% endif %}
+    </div>
+{% endblock %}
+{% block panelBaseFooter %}
+    {% include ':panels/learn/study/standard:study.standard.panel.footer.html.twig' %}
+{% endblock %}
