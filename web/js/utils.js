@@ -88,9 +88,10 @@ function refreshPage(caller, resetPagination, resetSort, customFunction) {
 
 function getPagination(base) {
     var pagination = $('.pagination', base);
-    if(pagination.length) {
+    var clicked = $('.clicked', pagination);
+    if(pagination.length && clicked.length) {
         var array = [];
-        array['offset'] = $('.active', pagination).data('offset');
+        array['offset'] = clicked.data('offset');
         array['limit'] = pagination.data('limit');
         array['pageName'] = pagination.data('name');
         return array;

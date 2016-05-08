@@ -35,10 +35,10 @@ $(document).ready(function() {
         event.preventDefault();
         var pagination = $($(this).parents('.pagination'));
         var li = $($(this).parent());
-        if(li.hasClass('active'))
+        if(li.hasClass('active') || li.hasClass('disabled'))
             return;
-        $('.active', pagination).removeClass('active');
-        li.addClass('active');
+
+        li.addClass('clicked');
 
         refreshPage(this, false, false);
     });

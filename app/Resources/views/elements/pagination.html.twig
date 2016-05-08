@@ -1,4 +1,5 @@
 {% block pagination %}
+    {% set hasPageControls = hasPageControls is defined ? hasPageControls : true %}
     {# Do some magic #}
     {% set totalPages = (maxEntities/limit)|round(0, 'ceil') %}
     {% set currentPage = (offset/limit)|round(0, 'floor') + 1 %}
@@ -25,7 +26,7 @@
 
     <div class="centrum{% if class is defined %} {{ class }}{% endif %}">
         <ul
-                class="pagination" data-entity="{{ entity }}"
+                class="{% if hasPageControls == true %}pagination{% endif %}" data-entity="{{ entity }}"
                 data-method="paginate" data-key="PAS1" data-url="{{ path('app_home_ajax_page') }}"
                 data-max-pages="{{ maxPages }}" data-name="{{ pageName }}" data-limit="{{ limit }}"
         >
@@ -38,6 +39,9 @@
                     <li class="clickable" data-offset="{{ offset + (limit * (i - 1)) }}" data-page="{{ i }}"><a>{{ i }} <span class="sr-only"></span></a></li>
                 {% endif %}
             {% endfor %}
+            {% if currentPage < totalPages %}
+                <li class="clickable" data-offset="{{ offset + limit }}" data-page="{{ currentPage + 1 }}"><a>{% trans %}Volgende{% endtrans %}</a></li>
+            {% endif %}
         </ul>
     </div>
 {% endblock %}
