@@ -1,0 +1,54 @@
+{% extends 'panels/panel.base.html.twig' %}
+{% block panelBaseTitle %}
+    <b>{% trans %}Laatste pagina{% endtrans %}</b>
+{% endblock %}
+{% block panelBaseContents %}
+    <div class="panel-body">
+        <hr />
+        <div class="centrum">
+            <h1>
+                <b>{% trans %}Einde van de cursus{% endtrans %}</b>
+            </h1>
+            {% if is_granted('ROLE_USER') %}
+                <p class="lead">{% trans %}Bekijk je resultaten in het cursusrapport{% endtrans %} ( {% trans %}Learn{% endtrans %} → {% trans %}Cursusmandje{% endtrans %} → <a href="{#TODO#}">{% trans %}Cursusrapporten{% endtrans %}</a> )</p>
+            {% endif %}
+            <button type="button" class="btn btn-default btn-sm">{% trans %}Bekijk cursusrapport{% endtrans %}</button>{#TODO course reports#}
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <div class="thumbnail centrum">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <h4>{% trans %}Cursusbeoordeling{% endtrans %}</h4>
+                            <div id="star" class="starrr"></div>
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-default">
+                                <b>{% trans %}Verstuur{% endtrans %}</b>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="thumbnail centrum">
+                    <h4>{% trans %}Review toevoegen{% endtrans %}</h4>
+                    {% if is_granted('ROLE_USER') %}
+                        <p>{% trans %}Deel je ervaring en vul een cursusreview in{% endtrans %}</p>
+                        <hr />
+                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#{#TODO Modal for course review#}">
+                            <span class="glyphicon glyphicon-plus text-success"></span>
+                            {% trans %}Cursusreview{% endtrans %}
+                        </button>
+                    {% else %}
+                        <p class="text-muted">{% trans %}Om een review te kunnen schrijven moet je zijn ingelogd{% endtrans %}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block panelBaseFooter %}
+    {% include ':panels/learn/study/custom:study.custom.panel.footer.html.twig' with {'moreButton': false, 'currentOrder': course.coursePages|length + 1, 'total': course.coursePages|length, 'courseId': course.id} %}
+{% endblock %}

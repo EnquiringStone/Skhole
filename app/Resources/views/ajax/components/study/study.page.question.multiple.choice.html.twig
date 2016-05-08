@@ -1,0 +1,16 @@
+{% block studyPageQuestionMultipleChoice %}
+    <div class="thumbnail">
+        <h5>
+            <b>{% trans %}Vraag{% endtrans %} {{ question.questionOrder }}</b>
+            {{ question.question|capitalize }}
+        </h5>
+        {% for answer in question.courseAnswers %}
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox">
+                    {{ answer.answerOrder|orderToAlphabet(true) }}.) {{ answer.answer|capitalize }}
+                </label>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

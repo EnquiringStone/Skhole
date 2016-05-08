@@ -9,17 +9,22 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Entity\Course\Courses;
+use AppBundle\Enum\CoursePageTypeEnum;
 use AppBundle\Enum\CourseStateEnum;
 use AppBundle\Enum\PageTypeEnum;
+use AppBundle\Util\ValidatorHelper;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Component\Routing\Annotation\Route;
 
 class LearnController extends Controller
 {
     /**
      * @Route("/{_locale}/learn/course-collection/", name="app_learn_course_collection_page")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function courseCollectionAction(Request $request)
     {
@@ -53,13 +58,15 @@ class LearnController extends Controller
     /**
      * @Route("/{_locale}/learn/study/", name="app_learn_study_page")
      */
-    public function studyAction(Request $request)
+    public function studyAction()
     {
         return $this->render(':learn:study.default.html.twig');
     }
 
     /**
      * @Route("/{_locale}/learn/study/{courseId}/", name="app_learn_study_course_page")
+     * @param $courseId
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function studyCourseAction($courseId)
     {
@@ -73,6 +80,11 @@ class LearnController extends Controller
 
     /**
      * @Route("/{_locale}/learn/study/{courseId}/{pageType}/{name}/", name="app_learn_study_panels_page")
+     * @param $courseId
+     * @param $pageType
+     * @param $name
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Exception
      */
     public function studyPanelsAction($courseId, $pageType, $name)
     {
@@ -87,9 +99,56 @@ class LearnController extends Controller
     }
 
     /**
+     * @param $courseId
+     * @param $pageOrder
+     *
+     * @Route("{_locale}/learn/study/{courseId}/{pageOrder}/", name="app_learn_study_pages_page")
+     * @return \Symfony\Component\HttpFoundation\Response|void
+     */
+    public function studyPagesAction($courseId, $pageOrder)
+    {
+        $course = $this->validateSpecifiedCourseId($courseId);
+
+        if($pageOrder == 0)
+        {
+            return $this->redirectToRoute('app_learn_study_panels_page', array('courseId' => $courseId, 'pageType' => strtolower(PageTypeEnum::CUSTOM_TYPE), 'name' => 'start'));
+        }
+
+        $page = $this->getDoctrine()->getRepository('AppBundle:Course\CoursePages')->findOneBy(array('courseId' => $courseId, 'pageOrder' => $pageOrder));
+        if($page == null) throw new AccessDeniedException();
+
+        $criteria = array('page' => $page, 'totalPages' => $course->getCoursePages()->count());
+
+        if(CoursePageTypeEnum::matchValueWithGivenEnum(CoursePageTypeEnum::class, CoursePageTypeEnum::ExerciseType, $page->getPageType()->getType()))
+        {
+            $criteria = array_merge($criteria, array('type' => 'exercise.', 'name' => ''));
+        }
+        elseif(CoursePageTypeEnum::matchValueWithGivenEnum(CoursePageTypeEnum::class, CoursePageTypeEnum::TextType, $page->getPageType()->getType()))
+        {
+            $criteria = array_merge($criteria, array('type' => 'instruction.', 'name' => 'text.'));
+        }
+        else
+        {
+            if(!ValidatorHelper::isStringNullOrEmpty($page->getYoutubeUrl()) && !ValidatorHelper::isStringNullOrEmpty($page->getContents()))
+            {
+                $criteria = array_merge($criteria, array('type' => 'instruction.', 'name' => 'video.text.'));
+            }
+            elseif(!ValidatorHelper::isStringNullOrEmpty($page->getYoutubeUrl()) && ValidatorHelper::isStringNullOrEmpty($page->getContents()))
+            {
+                $criteria = array_merge($criteria, array('type' => 'instruction.', 'name' => 'video.'));
+            }
+            else
+            {
+                $criteria = array_merge($criteria, array('type' => 'instruction.', 'name' => 'text.'));
+            }
+        }
+        return $this->render(':learn:study.pages.html.twig', $criteria);
+    }
+
+    /**
      * @Route("/{_locale}/learn/course-reports/", name="app_learn_course_reports")
      */
-    public function courseReportsAction(Request $request)
+    public function courseReportsAction()
     {
         return $this->render(':learn:course.reports.html.twig');
     }

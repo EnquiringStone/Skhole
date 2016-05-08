@@ -1,0 +1,9 @@
+{% block studyPageQuestionOpen %}
+    <div class="thumbnail">
+        <h5>
+            <b>{% trans %}Vraag{% endtrans %} {{ question.questionOrder }}</b>
+            {{ question.question|capitalize }}
+        </h5>
+        <textarea class="form-control" rows="4" placeholder="{% trans %}Type hier je antwoord{% endtrans %}"></textarea>
+    </div>
+{% endblock %}

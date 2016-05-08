@@ -1,5 +1,4 @@
 {% block pagination %}
-    {% set hasPageControls = hasPageControls is defined ? hasPageControls : true %}
     {# Do some magic #}
     {% set totalPages = (maxEntities/limit)|round(0, 'ceil') %}
     {% set currentPage = (offset/limit)|round(0, 'floor') + 1 %}
@@ -26,7 +25,7 @@
 
     <div class="centrum{% if class is defined %} {{ class }}{% endif %}">
         <ul
-                class="{% if hasPageControls == true %}pagination{% endif %}" data-entity="{{ entity }}"
+                class="pagination" data-entity="{{ entity }}"
                 data-method="paginate" data-key="PAS1" data-url="{{ path('app_home_ajax_page') }}"
                 data-max-pages="{{ maxPages }}" data-name="{{ pageName }}" data-limit="{{ limit }}"
         >

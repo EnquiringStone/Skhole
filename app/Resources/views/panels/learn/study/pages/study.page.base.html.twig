@@ -1,0 +1,18 @@
+{% extends 'panels/panel.base.html.twig' %}
+{% block panelBaseTitle %}
+    <div class="pull-left">
+        <b>{% trans %}Pagina{% endtrans %}:</b>
+        {{ page.pageOrder }}/{{ totalPages }}
+    </div>
+    <b>{{ page.title|capitalize }}</b>
+{% endblock %}
+{% block panelBaseContents %}
+    <div class="panel-body">
+        {% block pageContents %}{% endblock %}
+        <hr />
+        <input type="hidden" id="page-id" value="{{ page.id }}">
+    </div>
+{% endblock %}
+{% block panelBaseFooter %}
+    {% include ':panels/learn/study/custom:study.custom.panel.footer.html.twig' with {'nextButton': true, 'previousButton': true, 'moreButton': true, 'currentOrder': page.pageOrder, 'total': totalPages, 'courseId': page.course.id} %}
+{% endblock %}

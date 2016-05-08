@@ -1,33 +1,31 @@
 <div class="panel-footer">
-    {% if nextButton %}
-        <button type="button" class="btn btn-default btn-sm pull-right">
-            {% trans %}Volgende{% endtrans %}
-            <span class="glyphicon glyphicon-arrow-right"></span>
-        </button>
-        {% if not previousButton and not moreButton  %}
-            <br />
-            <br />
+    {% if currentOrder + 1 <= total + 1 %}
+        {% if currentOrder + 1 > total %}
+            <a href="{{ path('app_learn_study_panels_page', {'courseId': courseId, 'pageType': 'custom', 'name': 'final'}) }}" class="btn btn-default btn-sm pull-right">
+                {% trans %}Volgende{% endtrans %}
+                <span class="glyphicon glyphicon-arrow-right"></span>
+            </a>
+        {% else %}
+            <a href="{{ path('app_learn_study_pages_page', {'courseId': courseId, 'pageOrder': currentOrder + 1}) }}" class="btn btn-default btn-sm pull-right">
+                {% trans %}Volgende{% endtrans %}
+                <span class="glyphicon glyphicon-arrow-right"></span>
+            </a>
+            {% if not moreButton and currentOrder <= 0 %}
+                <br />
+                <br />
+            {% endif %}
         {% endif %}
     {% endif %}
-    {% if previousButton %}
-        <button type="button" class="btn btn-default btn-sm">
+    {% if currentOrder > 0 %}
+        <a href="{{ path('app_learn_study_pages_page', {'courseId': courseId, 'pageOrder': currentOrder - 1}) }}" class="btn btn-default btn-sm">
             <span class="glyphicon glyphicon-arrow-left"></span>
             {% trans %}Vorige{% endtrans %}
-        </button>
+        </a>
     {% endif %}
     {% if moreButton %}
-        <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
-            {% trans %}Meer{% endtrans %}
-            <span class="caret"></span>
+        <button type="button" class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+            {% trans %}Rapporteren{% endtrans %}
         </button>
-        <ul class="dropdown-menu">
-            <li>
-                <a href="{#TODO Reporting#}">
-                    <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
-                    {% trans %}Rapporteren{% endtrans %}
-                </a>
-            </li>
-        </ul>
     {% endif %}
 </div>

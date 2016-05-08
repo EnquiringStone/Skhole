@@ -5,9 +5,9 @@
                 <button type="button" class="btn btn-primary btn-xs unclickable">
                     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                 </button>
-                <button type="button" class="btn btn-default btn-sm">
+                <a href="{{ path('app_learn_study_panels_page', {'courseId': course.id, 'pageType': 'custom', 'name': 'start'}) }}" class="btn btn-default btn-sm">
                     {% trans %}Cursuspagina's{% endtrans %}
-                </button>
+                </a>
                 <div class="btn-group">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                         <samp>«</samp> {% trans %}Cursusmenu{% endtrans %} <samp>»</samp>
