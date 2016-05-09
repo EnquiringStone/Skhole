@@ -13,6 +13,7 @@
             </div>
         </div>
     </div>
+    <hr class="panel-primary" />
     {% if course.coursePages.count > 0 %}
         {% include ':ajax/create-courses/elements:custom.pages.overview.html.twig' with {'pages': course.coursePages} %}
     {% endif %}
