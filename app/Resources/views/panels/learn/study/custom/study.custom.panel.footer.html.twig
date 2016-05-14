@@ -6,7 +6,8 @@
                 <span class="glyphicon glyphicon-arrow-right"></span>
             </a>
         {% else %}
-            <a href="{{ path('app_learn_study_pages_page', {'courseId': courseId, 'pageOrder': currentOrder + 1}) }}" class="btn btn-default btn-sm pull-right">
+            <a href="{{ path('app_learn_study_pages_page', {'courseId': courseId, 'pageOrder': currentOrder + 1}) }}" class="btn btn-default btn-sm pull-right save-statistics"
+                data-course-id="{{ courseId }}" data-order="{{ currentOrder }}">
                 {% trans %}Volgende{% endtrans %}
                 <span class="glyphicon glyphicon-arrow-right"></span>
             </a>
