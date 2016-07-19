@@ -18,7 +18,6 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class CoursesAjaxService implements AjaxInterface
 {
-
     /**
      * @var EntityManager
      */
