@@ -37,7 +37,7 @@ services:
         arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", "@twig"]
     app.page.controls.ajax.service:
         class: AppBundle\Service\Ajax\PageControlsAjaxService
-        arguments: ["@fos_user.entity_manager", "@security.token_storage", "@app.transform.manager", "@twig", "%standard_query_limit%", "%standard_pagination_max%"]
+        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", "@app.transform.manager", "@twig", "%standard_query_limit%", "%standard_pagination_max%"]
     app.create.course.ajax.service:
         class: AppBundle\Service\Ajax\Teach\CreateCourseAjaxService
         arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", "@app.validator.validator", "@app.transform.manager", "@router", "@twig"]

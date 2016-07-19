@@ -105,6 +105,8 @@ fos_user:
 
 # HWI Oauth Bundle
 hwi_oauth:
+    http_client:
+        verify_peer: false
     connect:
         account_connector: my_user_provider
     firewall_name: main

@@ -110,7 +110,7 @@ class CoursesRepository extends EntityRepository implements PageControlsInterfac
             $qb->andWhere('courses.userInsertedId = '.$userId);
         else
         {
-            $qb->andWhere('courses.stateId = 1');
+            $qb->andWhere('courses.stateId = 2');
             $qb->andWhere('courses.isUndesirable = false');
         }
         $qb->andWhere('courses.removed = false');

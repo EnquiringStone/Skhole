@@ -6,55 +6,46 @@
                 {% trans %}Uitleg toevoegen{% endtrans %}
             </b>
         </h4>
-        <hr />
+        <br />
         <form class="form-horizontal" autocomplete="off">
-            <div class="row">
-                <div class="col-md-12">
+            <div class="panel-body">
+                <div class="col-sm-12">
                     <div class="form-group">
                         <label class="control-label">{% trans %}Pagina titel{% endtrans %}</label>
                         <input class="form-control data-value" data-value-name="title" placeholder="{% trans %}De titel van deze pagina{% endtrans %}"
                                value="{% if instruction is defined %}{{ instruction.title }}{% endif %}">
                     </div>
                 </div>
+            <br />
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>{% trans %}Youtube url{% endtrans %}</label>
+                    <input type="text" class="form-control card-introduction-change-youtube-text data-value" data-value-name="youtubeUrl"
+                           placeholder="{% trans %}De youtube url. www.youtube.com/watch?v=ftLIR5AjqMs of https://youtu.be/ftLIR5AjqMs{% endtrans %}"
+                           value="{% if instruction is defined %}{{ instruction.youtubeUrl }}{% endif %}">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default card-introduction-youtube-preview" type="button">
+                            <span class="glyphicon-plus text-success" aria-hidden="true"></span>
+                            {% trans %}Video{% endtrans %}
+                        </button>
+                    </span>
+                    <div class="card-introduction-youtube" data-error-text="{% trans %}Het ingevulde youtube url wordt niet herkend. De url moet er als volgt uitzien: https://www.youtube.com/watch?v=ftLIR5AjqMs, https://youtu.be/ftLIR5AjqMs{% endtrans %}">
+                        {% if instruction is defined %}
+                            <div class="embed-responsive embed-responsive-4by3">
+                                <iframe class="embed-responsive-item" src="{{ instruction.youtubeEmbedUrl }}" allowfullscreen></iframe>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
-            <hr />
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>{% trans %}Youtube url{% endtrans %}</label>
-                        <div class="input-group">
-                            <input type="text" class="form-control card-introduction-change-youtube-text data-value" data-value-name="youtubeUrl"
-                                   placeholder="{% trans %}De youtube url. www.youtube.com/watch?v=ftLIR5AjqMs of https://youtu.be/ftLIR5AjqMs{% endtrans %}"
-                                   value="{% if instruction is defined %}{{ instruction.youtubeUrl }}{% endif %}">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default card-introduction-youtube-preview" type="button">
-                                    <span class="glyphicon-plus text-success" aria-hidden="true"></span>
-                                    {% trans %}Video{% endtrans %}
-                                </button>
-                            </span>
-                            <span class="input-group-btn">
-                                <button type="button" class="btn btn-default" data-toggle="modal" data-target="{#TODO#}">
-                                    <span class="glyphicon glyphicon-info-sign text-primary"></span>
-                                </button>
-                            </span>
-                        </div>
-                        <div class="card-introduction-youtube" data-error-text="{% trans %}Het ingevulde youtube url wordt niet herkend. De url moet er als volgt uitzien: https://www.youtube.com/watch?v=ftLIR5AjqMs, https://youtu.be/ftLIR5AjqMs{% endtrans %}">
-                            {% if instruction is defined %}
-                                <div class="embed-responsive embed-responsive-4by3">
-                                    <iframe class="embed-responsive-item" src="{{ instruction.youtubeEmbedUrl }}" allowfullscreen></iframe>
-                                </div>
-                            {% endif %}
-                        </div>
-                    </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-5">
+                <div class="form-group">
+                    <label class="control-label">{% trans %}Uitleg{% endtrans %}</label>
+                    <textarea class="form-control data-value" data-value-name="contents" rows="8"
+                              placeholder="{% trans %}Geef hier de uitleg over het onderwerp{% endtrans %}">{% if instruction is defined %}{{ instruction.contents }}{% endif %}</textarea>
                 </div>
-                <div class="col-md-1"></div>
-                <div class="col-md-5">
-                    <div class="form-group">
-                        <label class="control-label">{% trans %}Uitleg{% endtrans %}</label>
-                        <textarea class="form-control data-value" data-value-name="contents" rows="8"
-                                  placeholder="{% trans %}Geef hier de uitleg over het onderwerp{% endtrans %}">{% if instruction is defined %}{{ instruction.contents }}{% endif %}</textarea>
-                    </div>
-                </div>
+            </div>
             </div>
             <input class="data-value" data-value-name="type" value="video-text" type="hidden">
             {% if instruction is defined %}
