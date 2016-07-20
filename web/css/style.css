@@ -1,27 +1,51 @@
+/* Non bootstrap css /*/
+
+#logo0bovenaan0pagina{
+	position: absolute;
+	z-index: 12;
+	right: 50%;
+	left: 50%;
+ }
+ 
 .centrum{
 	right: 50%;
 	left: 50%;
 	text-align: center;
+}
+
+.centrumlogo{
+	margin-right: 0 auto;
+	margin-left: 0 auto;
 
 }
-/*==== */
+
+
+
 .min-height-thumbnail{
-	height: 200px;
+   height: 200px; 
+}
+
+.max-height-pictures{
+    max-height:50px;
 }
 .margin-from-top120{
-	margin-top: 100px;
+   margin-top: 120px; 
 }
 
-/*==== */
 .panel-body-pages
 {
-	overflow-y: scroll;
-	height: 300px;
+    overflow-y: scroll;
+    max-height: 300px;
 }
 
-/*==== */
+.legal-max-height
+{
+    overflow-y: scroll;
+    max-height: 300px;
+}
+
 .panel.with-nav-tabs .panel-heading{
-	padding: 5px 5px 0 5px;
+    padding: 5px 5px 0 5px;
 }
 .panel.with-nav-tabs .nav-tabs{
 	border-bottom: none;
@@ -30,12 +54,11 @@
 	margin-bottom: -1px;
 }
 
-/********************************************************************/
 /*** PANEL PRIMARY ***/
 .with-nav-tabs.panel-primary .nav-tabs > li > a,
 .with-nav-tabs.panel-primary .nav-tabs > li > a:hover,
 .with-nav-tabs.panel-primary .nav-tabs > li > a:focus {
-	color: #fff;
+    color: #fff;
 }
 .with-nav-tabs.panel-primary .nav-tabs > .open > a,
 .with-nav-tabs.panel-primary .nav-tabs > .open > a:hover,
@@ -43,7 +66,7 @@
 .with-nav-tabs.panel-primary .nav-tabs > li > a:hover,
 .with-nav-tabs.panel-primary .nav-tabs > li > a:focus {
 	color: #fff;
-	background-color: #3071a9;
+	background-color:  #0079d3;
 	border-color: transparent;
 }
 .with-nav-tabs.panel-primary .nav-tabs > li.active > a,
@@ -54,97 +77,94 @@
 	border-color: #428bca;
 	border-bottom-color: transparent;
 }
-
+ 
 .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu {
-	background-color: #fff;
-	border-color: #3071a9;
+    background-color: #fff;
+    border-color: #3071a9;
 }
 .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > li > a {
-	color: #000000;
+    color: #000000;   
 }
 .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > li > a:hover,
 .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > li > a:focus {
-	background-color: #e5e5e5;
+    background-color: #e5e5e5;
 }
 .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > .active > a,
 .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > .active > a:hover,
 .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > .active > a:focus {
-	background-color: #4a9fe9;
+    background-color: #4a9fe9;
 }
 
-.clickable {
-	cursor: pointer;
-}
-
-.unclickable {
-	cursor: default;
-}
-
-#loading {
-	width: 100%;
-	height: 100%;
-	top: 0;
-	left: 0;
-	display: none;
+/***  ***/
+ .button-middle {
 	position: absolute;
-	opacity: 0.7;
-	background-color: #fff;
-	z-index: 99;
-	text-align: center;
-	overflow: hidden;
-}
+	z-index: 2;
+	right: 52%;
+	left: 48%;
+ }
 
-#loading .loading-image {
-	position: absolute; /* or absolute */
-	top: 50%;
-	left: 50%;
-	z-index: 100;
-}
-
-#logo {
-	position: absolute;
-	z-index: 12;
-	right: 50%;
-	left: 50%;
-}
-
-.teacher-picture-preview-img {
-	width: 100px;
-	height: 100px;
-}
-
-.teacher-row-picture {
-	width: 50px;
-	height: 50px;
-}
-
-.profile-picture {
-	width: 35px;
-	height: 35px;
-}
-
-.profile-picture-preview-img {
-	width: 50px;
-	height: 50px;
-}
-
-#sortable li {
-	cursor: pointer;
-}
-
-.explanation-background {
-	background-color: #fcfcfc;
-	border-color: #ddd;
-	border-radius: 5px;
-	border-style: solid;
-	min-height: 250px;
-	margin-left: 10px;
+.logo-background {
+    background-color: #fcfcfc; 
+    border-color: #ddd;
+    border-style:  solid;
+    border-radius: 5px;
+    max-width: 380px;
 }
 
 .modal-info-background {
-	background-color: #fcfcfc;
-	border-color: #ddd;
-	border-style:  solid;
-	border-radius: 5px;
-	margin-left: 5px;
+    background-color: #fcfcfc; 
+    border-color: #ddd;
+    border-style:  solid;
+    border-radius: 5px;
+}
+
+.explanation-background {
+    background-color: #fcfcfc;
+    border-color: #ddd;
+    border-radius: 5px;
+    border-style: solid;
+    min-height: 500px; 
+}
+
+
+
+/***  ***/
+
+
+
+
+.cover-card {
+    background: url("../images/messages.png");
+    height: 100%;
+    width: 100%;
+}
+.cover-card > p {
+	text-align: center;
+    color: pink;
+}
+
+/*** bootstrap klasse die hier aangevuld wordt 
+.list-group-item {
+    cursor: move;
+}
+***/
+
+.logo-background-video {
+    background-color: #fcfcfc; 
+    border-color: #ddd;
+    border-style:  solid;
+    border-radius: 5px;
+
+}
+
+
+
+
+.message-relative{
+    position: relative; 
+
+}
+
+.message-absolute{
+    position: absolute; 
 }
