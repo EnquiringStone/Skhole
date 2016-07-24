@@ -5,9 +5,16 @@
 {% block panelBaseContentTypeLeft %}
     <h4><b>{% trans %}Introductie{% endtrans %}</b></h4>
     <p>
-        {% trans %}StudyLivre beidt je de mogelijkheid om cursussen te bekijken, maken en delen. Na afronding van een cursus kun je een cursusrapport (met daarin je resultaten) inzien. Als begeleider of docent is het mogelijk om cursusrapporten in te zien van cursisten die het rapport met jouw hebben gedeeld{% endtrans %}
+        {% trans %}StudyLivre beidt je de mogelijkheid om cursussen te bekijken, maken en delen. Na afronding van een cursus kun je een cursusrapport (met daarin je resultaten) inzien. Je kunt ook rapporten inzien van personen die ervoor gekozen hebben om het rapport met je te delen. {% endtrans %}
     </p>
     <hr />
+    <div class="pull-right">
+        <a class="clickable" data-toggle="modal" data-target="#languagePickerModal">
+            <img src="{{ asset('images/language-dutch.JPG') }}"/>
+            <img src="{{ asset('images/language-english.JPG') }}"/>
+            <img src="{{ asset('images/globe-language.png') }}"/>
+        </a>
+    </div>
     <h4><b>{% trans %}Snel Menu{% endtrans %}</b></h4>
     <div class="input-group">
         <input type="text" class="form-control quick-search-value" placeholder="{% trans %}Cursusnaam{% endtrans %}">
