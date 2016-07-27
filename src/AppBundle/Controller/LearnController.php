@@ -90,10 +90,15 @@ class LearnController extends Controller
     {
         $course = $this->validateSpecifiedCourseId($courseId);
 
+        if($this->isGranted('ROLE_USER'))
+            $courseReview = $this->getDoctrine()->getRepository('AppBundle:Course\CourseReviews')->findOneBy(array('userInsertedId' => $this->getUser()->getId(), 'courseId' => $courseId));
+        else
+            $courseReview = $this->getDoctrine()->getRepository('AppBundle:Course\CourseReviews')->findOneBy(array('sessionId' => $this->get('session')->getId(), 'courseId' => $courseId));
+
         if(PageTypeEnum::matchValueWithGivenEnum(PageTypeEnum::class, PageTypeEnum::STANDARD_TYPE, $pageType) ||
             PageTypeEnum::matchValueWithGivenEnum(PageTypeEnum::class, PageTypeEnum::CUSTOM_TYPE, $pageType))
         {
-            return $this->render(':learn:study.html.twig', array('name' => $name, 'pageType' => $pageType, 'course' => $course));
+            return $this->render(':learn:study.html.twig', array('name' => $name, 'pageType' => $pageType, 'course' => $course, 'courseReview' => $courseReview));
         }
         throw new AccessDeniedException();
     }

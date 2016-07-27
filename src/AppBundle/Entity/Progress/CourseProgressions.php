@@ -29,12 +29,12 @@ class CourseProgressions
     protected $courseId;
 
     /**
-     * @ORM\Column(type="integer", name="user_id")
+     * @ORM\Column(type="integer", name="user_id", nullable=true)
      */
     protected $userId;
 
     /**
-     * @ORM\Column(type="string", name="session_id")
+     * @ORM\Column(type="string", name="session_id", nullable=true)
      */
     protected $sessionId;
 

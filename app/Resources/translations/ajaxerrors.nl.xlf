@@ -270,6 +270,14 @@
                 <source>course.resources.invalid.dropbox</source>
                 <target>Het ingevulde dropbox url is niet geldig</target>
             </trans-unit>
+            <trans-unit id="68">
+                <source>course.reviews.one.per.user</source>
+                <target>U heeft deze cursus al een review gegeven</target>
+            </trans-unit>
+            <trans-unit id="69">
+                <source>course.reviews.invalid.rating</source>
+                <target>De beoordeling moet tussen de 0 en 5 sterren liggen</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

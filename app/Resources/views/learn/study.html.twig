@@ -16,6 +16,9 @@
         {% include ':modal/dashboard:study.introduction.modal.html.twig' with {'modalId': 'studyIntroductionModal'} %}
         {% include ':modal/dashboard:course.report.introduction.modal.html.twig' with {'modalId': 'courseReportIntroductionModal'} %}
     {% endif %}
+    {% if pageType == 'custom' and name == 'final' %}
+        {% include ':modal/learn:course.review.add.modal.html.twig' with {'modalId': 'addCourseReviewModal', 'courseId': course.id, 'courseReview': courseReview} %}
+    {% endif %}
 {% endblock %}
 
 {% block prescripts %}

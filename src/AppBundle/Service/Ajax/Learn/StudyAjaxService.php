@@ -11,14 +11,17 @@ namespace AppBundle\Service\Ajax\Learn;
 
 use AppBundle\Authorization\AuthorizationService;
 use AppBundle\Entity\Course\CoursePages;
+use AppBundle\Entity\Course\CourseReviews;
 use AppBundle\Entity\Course\Courses;
 use AppBundle\Entity\Progress\CoursePageProgressions;
 use AppBundle\Entity\Progress\CourseProgressions;
 use AppBundle\Entity\User;
 use AppBundle\Enum\CoursePageTypeEnum;
+use AppBundle\Exception\FrontEndException;
 use AppBundle\Interfaces\AjaxInterface;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityNotFoundException;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class StudyAjaxService implements AjaxInterface
@@ -31,11 +34,16 @@ class StudyAjaxService implements AjaxInterface
      * @var EntityManager
      */
     private $manager;
+    /**
+     * @var Session
+     */
+    private $session;
 
-    public function __construct(AuthorizationService $authorizationService, EntityManager $manager)
+    public function __construct(AuthorizationService $authorizationService, EntityManager $manager, Session $session)
     {
         $this->authorizationService = $authorizationService;
         $this->manager = $manager;
+        $this->session = $session;
     }
 
     public function saveStatistics($args)
@@ -45,7 +53,6 @@ class StudyAjaxService implements AjaxInterface
         $user = $this->authorizationService->getAuthorizedUserOrThrowException();
         $course = $this->manager->getRepository('AppBundle:Course\Courses')->find($args['courseId']);
 
-        if($course == null) throw new EntityNotFoundException();
         $this->isSpecifiedCourseValid($course);
 
         $page = $this->manager->getRepository('AppBundle:Course\CoursePages')->findOneBy(array('pageOrder' => $args['order'], 'courseId' => $args['courseId']));
@@ -69,6 +76,71 @@ class StudyAjaxService implements AjaxInterface
 
     }
 
+    public function addQuickCourseReview($args)
+    {
+        if($this->authorizationService->isAuthorized())
+        {
+            $this->addCourseReview($args);
+            return;
+        }
+        $this->contentRatingIsValid($args);
+
+        $course = $this->manager->getRepository('AppBundle:Course\Courses')->find($args['id']);
+        $this->isSpecifiedCourseValid($course);
+
+        $review = $this->manager->getRepository('AppBundle:Course\CourseReviews')->findOneBy(array('sessionId' => $this->session->getId(), 'courseId' => $args['id']));
+        if($review != null) throw new FrontEndException('course.reviews.one.per.user', 'ajaxerrors');
+
+        $review = new CourseReviews();
+        $review->setSessionId($this->session->getId());
+        $review->setInsertDateTime(new \DateTime());
+        $review->setContentRating($args['rating']);
+        $review->setIsUndesirable(false);
+        $review->setCourse($course);
+
+        $this->manager->persist($review);
+        $this->manager->flush();
+    }
+
+    public function addCourseReview($args)
+    {
+        $this->contentRatingIsValid($args);
+
+        $user = $this->authorizationService->getAuthorizedUserOrThrowException();
+
+        $course = $this->manager->getRepository('AppBundle:Course\Courses')->find($args['id']);
+        $this->isSpecifiedCourseValid($course);
+
+        $review = $this->manager->getRepository('AppBundle:Course\CourseReviews')->findOneBy(array('userInsertedId' => $user->getId(), 'courseId' => $course->getId()));
+        if($review != null) throw new FrontEndException('course.reviews.one.per.user', 'ajaxerrors');
+
+        $review = new CourseReviews();
+        $review->setInsertUser($user);
+        $review->setIsUndesirable(false);
+        $review->setContentRating($args['rating']);
+        $review->setInsertDateTime(new \DateTime());
+        $review->setCourse($course);
+        if(array_key_exists('remarks', $args)) $review->setRemarks($args['remarks']);
+
+        $this->manager->persist($review);
+        $this->manager->flush();
+    }
+
+    public function updateCourseReview($args)
+    {
+        $user = $this->authorizationService->getAuthorizedUserOrThrowException();
+
+        $course = $this->manager->getRepository('AppBundle:Course\Courses')->find($args['id']);
+        $this->isSpecifiedCourseValid($course);
+
+        $review = $this->manager->getRepository('AppBundle:Course\CourseReviews')->findOneBy(array('userInsertedId' => $user->getId(), 'courseId' => $course->getId()));
+        if($review == null) throw new AccessDeniedException();
+
+        $review->setRemarks($args['remarks']);
+
+        $this->manager->flush();
+    }
+
     /**
      * Returns an unique code that is used to determine which implementation
      * of this interface should be used for the ajax call
@@ -89,11 +161,13 @@ class StudyAjaxService implements AjaxInterface
      */
     public function getSubscribedMethods()
     {
-        return array();
+        return array('addQuickCourseReview', 'addCourseReview', 'updateCourseReview');
     }
 
     private function isSpecifiedCourseValid(Courses $course)
     {
+        if($course == null) throw new EntityNotFoundException();
+
         if($course->getState()->getStateCode() == 'OK' && $course->getIsUndesirable() == false && $course->getRemoved() == false)
             return;
 
@@ -164,5 +238,13 @@ class StudyAjaxService implements AjaxInterface
                 $this->manager->flush();
             }
         }
+    }
+
+    private function contentRatingIsValid($args)
+    {
+        $contentRating = '';
+        if(array_key_exists('rating', $args))
+            $contentRating = $args['rating'];
+        if(!is_numeric($contentRating) || $contentRating < 0 || $contentRating > 5) throw new FrontEndException('course.reviews.invalid.rating', 'ajaxerrors');
     }
 }

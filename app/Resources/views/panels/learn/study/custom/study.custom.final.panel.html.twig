@@ -18,29 +18,38 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="thumbnail centrum">
-                    <form class="form-horizontal">
-                        <div class="form-group">
-                            <h4>{% trans %}Cursusbeoordeling{% endtrans %}</h4>
-                            <div id="star" class="starrr"></div>
-                        </div>
-                        <div class="form-group">
-                            <button type="button" class="btn btn-default">
-                                <b>{% trans %}Verstuur{% endtrans %}</b>
-                            </button>
-                        </div>
-                    </form>
+                    <h4>{% trans %}Cursusbeoordeling{% endtrans %}</h4>
+                    {% if courseReview is null %}
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <div id="star" class="starrr clickable"></div>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-default add-quick-course-review" data-course-id="{{ course.id }}" data-url="{{ path('app_home_ajax_page') }}">
+                                    <b>{% trans %}Verstuur{% endtrans %}</b>
+                                </button>
+                            </div>
+                        </form>
+                    {% else %}
+                        <p>{% trans %}Je hebt deze cursus op{% endtrans %} {{ courseReview.insertDateTime|date('d-m-Y') }} {% trans %}als volgt beoordeeld{% endtrans %}: {{ courseReview.contentRating }}/5</p>
+                    {% endif %}
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="thumbnail centrum">
                     <h4>{% trans %}Review toevoegen{% endtrans %}</h4>
                     {% if is_granted('ROLE_USER') %}
-                        <p>{% trans %}Deel je ervaring en vul een cursusreview in{% endtrans %}</p>
-                        <hr />
-                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#{#TODO Modal for course review#}">
-                            <span class="glyphicon glyphicon-plus text-success"></span>
-                            {% trans %}Cursusreview{% endtrans %}
-                        </button>
+                        {% if courseReview is null %}
+                            <p>{% trans %}Deel je ervaring en vul een cursusreview in{% endtrans %}</p>
+                            <button type="button" class="btn btn-default add-normal-review" data-toggle="modal" data-target="#addCourseReviewModal">
+                                <span class="glyphicon glyphicon-plus text-success"></span>
+                                {% trans %}Cursusreview{% endtrans %}
+                            </button>
+                        {% else %}
+                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addCourseReviewModal">
+                                {% trans %}Bekijk review{% endtrans %}
+                            </button>
+                        {% endif %}
                     {% else %}
                         <p class="text-muted">{% trans %}Om een review te kunnen schrijven moet je zijn ingelogd{% endtrans %}</p>
                     {% endif %}
