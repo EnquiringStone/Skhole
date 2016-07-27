@@ -8,12 +8,15 @@
 
 namespace AppBundle\Security;
 
+use AppBundle\Util\RandomStringGenerator;
 use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface;
 use HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider as BaseClass;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 class FOSUBUserProvider extends BaseClass
 {
+    protected $mentorCodeLength = 10;
+
     public function connect(UserInterface $user, UserResponseInterface $response)
     {
         $property = $this->getProperty($response);
@@ -80,6 +83,8 @@ class FOSUBUserProvider extends BaseClass
             $user->setPassword($username);
             $user->setRoles(array('ROLE_USER'));
             $user->setEnabled(true);
+            $generator = new RandomStringGenerator();
+            $user->setMentorCode($generator->generate($this->mentorCodeLength));
             $this->userManager->updateUser($user);
             return $user;
         }

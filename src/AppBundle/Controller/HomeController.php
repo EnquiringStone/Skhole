@@ -52,7 +52,8 @@ class HomeController extends Controller {
     public function createProfilePage(Request $request)
     {
         $education = $this->getDoctrine()->getRepository('AppBundle:Education\Educations')->findOneBy(array('userId' => $this->getUser()->getId()));
-        return $this->render(':home/dashboard:profile.html.twig', array('education' => $education));
+        $createdCourses = $this->getDoctrine()->getRepository('AppBundle:Course\Courses')->getCountByUserId($this->getUser()->getId());
+        return $this->render(':home/dashboard:profile.html.twig', array('education' => $education, 'createdCourses' => $createdCourses));
     }
 
     public function createMessagesPage(Request $request)

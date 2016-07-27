@@ -8,18 +8,7 @@
             <img src="{{ asset('images/denker.png') }}" class="img-rounded">
             {% trans %}Teach gegevens{% endtrans %}
         </h4>
-        <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Instelling{% endtrans %} (1):</b> {#TODO find out??#}</button>
-        <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Leergroepen aangemaakt{% endtrans %}</b> {#TODO find out??#}</button>
-        <button type="button" class="btn btn-default btn-xs"><b>{% trans %}Cursussen aangemaakt{% endtrans %}</b> {#TODO find out??#}</button>
-        <div class="thumbnail">
-            <b>{% trans %}Korte omschrijving{% endtrans %}:</b>
-            <p>
-                {#TODO Description???#}
-            </p>
-        </div>
-        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#profileTeachModal">
-            {% trans %}Wijzig{% endtrans %}
-            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-        </button>
+        <button type="button" class="btn btn-default btn-xs unclickable"><b>{% trans %}Cursussen aangemaakt{% endtrans %}:</b> {{ createdCourses }}</button>
+        <button type="button" class="btn btn-default btn-xs unclickable"><b>{% trans %}Uw begeleidercode{% endtrans %}:</b> {{ app.user.mentorCode }}</button>
     </div>
 {% endblock %}

@@ -95,6 +95,11 @@ class User extends BaseUser
     protected $picture;
 
     /**
+     * @ORM\Column(type="string", length=10, unique=true)
+     */
+    protected $mentorCode;
+
+    /**
      * Set facebookId
      *
      * @param string $facebookId
@@ -428,5 +433,29 @@ class User extends BaseUser
     public function getPicture()
     {
         return $this->picture;
+    }
+
+    /**
+     * Set mentorCode
+     *
+     * @param string $mentorCode
+     *
+     * @return User
+     */
+    public function setMentorCode($mentorCode)
+    {
+        $this->mentorCode = $mentorCode;
+
+        return $this;
+    }
+
+    /**
+     * Get mentorCode
+     *
+     * @return string
+     */
+    public function getMentorCode()
+    {
+        return $this->mentorCode;
     }
 }
