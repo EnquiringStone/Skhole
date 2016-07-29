@@ -12,7 +12,7 @@
             {% if is_granted('ROLE_USER') %}
                 <p class="lead">{% trans %}Bekijk je resultaten in het cursusrapport{% endtrans %} ( {% trans %}Learn{% endtrans %} → {% trans %}Cursusmandje{% endtrans %} → <a href="{#TODO#}">{% trans %}Cursusrapporten{% endtrans %}</a> )</p>
             {% endif %}
-            <button type="button" class="btn btn-default btn-sm">{% trans %}Bekijk cursusrapport{% endtrans %}</button>{#TODO course reports#}
+            <button type="button" class="btn btn-default btn-sm check-report-completion">{% trans %}Bekijk cursusrapport{% endtrans %}</button>{#TODO course reports#}
         </div>
         <hr />
         <div class="row">

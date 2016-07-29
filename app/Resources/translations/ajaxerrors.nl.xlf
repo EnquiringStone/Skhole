@@ -278,6 +278,14 @@
                 <source>course.reviews.invalid.rating</source>
                 <target>De beoordeling moet tussen de 0 en 5 sterren liggen</target>
             </trans-unit>
+            <trans-unit id="70">
+                <source>course.reports.completed.and.shared</source>
+                <target>De cursusrapport is klaar en gedeeld. Gedeelde rapporten kunnen niet worden gewijzigd.</target>
+            </trans-unit>
+            <trans-unit id="71">
+                <source>course.reports.view.not.complete</source>
+                <target>Het rapport van deze cursus kan nog niet worden bekeken. Dit kan komen omdat de cursus geen vragen stelt of omdat nog niet alle vragen zijn beantwoord. %1</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

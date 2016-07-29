@@ -10,7 +10,7 @@ services:
 
     app.locale_listener:
         class: AppBundle\EventListener\LocaleListener
-        arguments: [@router, %app_locales%, %locale%]
+        arguments: [@router, @session, %app_locales%, %locale%]
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
     app.exception_listener:
@@ -49,7 +49,7 @@ services:
         arguments: ["@doctrine.orm.entity_manager", "@app.authorization.service"]
     app.learn.study.ajax.service:
         class: AppBundle\Service\Ajax\Learn\StudyAjaxService
-        arguments: ["@app.authorization.service", "@doctrine.orm.entity_manager", "@session"]
+        arguments: ["@app.authorization.service", "@doctrine.orm.entity_manager", "@session", "@twig"]
 
     app.transformer.messages:
         class: AppBundle\Transformer\MessagesTransformer

@@ -126,7 +126,17 @@ class LearnController extends Controller
 
         if(CoursePageTypeEnum::matchValueWithGivenEnum(CoursePageTypeEnum::class, CoursePageTypeEnum::ExerciseType, $page->getPageType()->getType()))
         {
-            $criteria = array_merge($criteria, array('type' => 'exercise.', 'name' => ''));
+            $answeredQuestions = array();
+
+            if($this->isGranted('ROLE_USER'))
+                $report = $this->getDoctrine()->getRepository('AppBundle:Report\Reports')->findOneBy(array('courseId' => $courseId, 'userId' => $this->getUser()->getId()));
+            else
+                $report = $this->getDoctrine()->getRepository('AppBundle:Report\Reports')->findOneBy(array('courseId' => $courseId, 'sessionId' => $this->get('session')->getId()));
+
+            if($report != null)
+                $answeredQuestions = $this->buildAnsweredQuestionArray($page->getId(), $report->getId());
+
+            $criteria = array_merge($criteria, array('type' => 'exercise.', 'name' => '', 'answeredQuestions' => $answeredQuestions));
         }
         elseif(CoursePageTypeEnum::matchValueWithGivenEnum(CoursePageTypeEnum::class, CoursePageTypeEnum::TextType, $page->getPageType()->getType()))
         {
@@ -170,5 +180,23 @@ class LearnController extends Controller
             throw new AccessDeniedException();
 
         return $course;
+    }
+
+    private function buildAnsweredQuestionArray($pageId, $reportId)
+    {
+        $answeredQuestions = $this->getDoctrine()->getRepository('AppBundle:Report\AnswerResults')->getAllAnsweredQuestionByCoursePage($reportId, $pageId);
+
+        $friendlyArray = array();
+
+        foreach ($answeredQuestions as $question)
+        {
+            $friendlyMultipleChoiceArray = array();
+            foreach ($question->getMultipleChoiceAnswers()->toArray() as $answer)
+                $friendlyMultipleChoiceArray[] = $answer->getAnswerId();
+
+            $friendlyArray[$question->getQuestionId()] = array('answer' => $question->getAnswer(), 'multipleChoiceAnswers' => $friendlyMultipleChoiceArray);
+        }
+
+        return $friendlyArray;
     }
 }

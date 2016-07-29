@@ -1,5 +1,5 @@
 {% block studyPageQuestionMultipleChoice %}
-    <div class="thumbnail">
+    <div class="thumbnail multi-question" data-question-id="{{ question.id }}">
         <h5>
             <b>{% trans %}Vraag{% endtrans %} {{ question.questionOrder }}</b>
             {{ question.question|capitalize }}
@@ -7,7 +7,8 @@
         {% for answer in question.courseAnswers %}
             <div class="checkbox">
                 <label>
-                    <input type="checkbox">
+                    <input class="answer" type="checkbox" data-answer-id="{{ answer.id }}"
+                        {% if question.id in answeredQuestions|keys and answer.id in answeredQuestions[question.id].multipleChoiceAnswers %}checked{% endif %}>
                     {{ answer.answerOrder|orderToAlphabet(true) }}.) {{ answer.answer|capitalize }}
                 </label>
             </div>
