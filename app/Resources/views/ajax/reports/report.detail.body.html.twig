@@ -1,5 +1,5 @@
 {% block reportDetailBody %}
-    <div class="panel panel-default">
+    <div class="panel panel-default" data-report-id="{{ report.id }}">
         <div class="centrum">
             <span class="breadcrumb">
                 <samp class="text-muted">
@@ -36,7 +36,7 @@
                     </button>
                     <button class="btn btn-default btn-xs unclickable" type="button">
                         <b class="text-primary">{% trans %}Aantal juiste meerkeuze antwoorden{% endtrans %}:</b>
-                        {#TODO write logic to calculate correct ratio of multiple choice twig extension?#}
+                        {{ report.getAverageCorrectMultipleChoice|number_format(0) }}%
                     </button>
                     {% for shared in report.sharedReports if shared.hasAccepted %}
                         <button class="btn btn-default btn-xs unclickable" type="button">

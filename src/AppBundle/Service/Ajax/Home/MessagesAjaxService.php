@@ -9,11 +9,11 @@
 namespace AppBundle\Service\Ajax\Home;
 
 
+use AppBundle\Authorization\AuthorizationService;
 use AppBundle\Entity\Messages;
 use AppBundle\Interfaces\AjaxInterface;
 use AppBundle\Util\PageControlHelper;
 use Doctrine\ORM\EntityManager;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class MessagesAjaxService implements AjaxInterface
@@ -23,21 +23,20 @@ class MessagesAjaxService implements AjaxInterface
      * @var EntityManager
      */
     private $manager;
-
-    /**
-     * @var TokenStorage
-     */
-    private $storage;
     /**
      * @var \Twig_Environment
      */
     private $environment;
+    /**
+     * @var AuthorizationService
+     */
+    private $authorizationService;
 
-    public function __construct(EntityManager $manager, TokenStorage $storage, \Twig_Environment $environment)
+    public function __construct(EntityManager $manager, \Twig_Environment $environment, AuthorizationService $authorizationService)
     {
         $this->manager = $manager;
-        $this->storage = $storage;
         $this->environment = $environment;
+        $this->authorizationService = $authorizationService;
     }
 
     /**
@@ -57,7 +56,6 @@ class MessagesAjaxService implements AjaxInterface
         if(!key_exists('ids', $args) || count($args['ids']) <= 0)
             throw new \Exception('Unknown id');
 
-        //TODO uncomment & translations
         foreach($args['ids'] as $id)
         {
             $entity = $this->manager->getRepository('AppBundle:Messages')->find($id);
@@ -98,7 +96,7 @@ class MessagesAjaxService implements AjaxInterface
         $repo = $this->manager->getRepository('AppBundle:Messages');
 
         $resultSet = $repo->getRecords($args['defaultValues'], $args['offset'], $args['limit'], array('sortAttribute' => $args['sortAttribute'], 'sortValue' => $args['sortValue']),
-            $args['context'] == 'SELF' ? $this->storage->getToken()->getUser()->getId() : 0);
+            $args['context'] == 'SELF' ? $this->authorizationService->getAuthorizedUserOrThrowException()->getId() : 0);
 
         $html = '';
         $index = 1;
@@ -113,22 +111,31 @@ class MessagesAjaxService implements AjaxInterface
         return array('html' => $html);
     }
 
+    public function getUnreadMessagesCount()
+    {
+        $user = $this->authorizationService->getAuthorizedUserOrThrowException();
+
+        $messages = $this->manager->getRepository('AppBundle:Messages')->findBy(array('isRead' => false, 'userId' => $user->getId()));
+
+        return array('unreadMessages' => sizeof($messages));
+    }
+
     private function validate($args)
     {
         if(!array_key_exists('offset', $args) || !array_key_exists('limit', $args) || !array_key_exists('sortAttribute', $args) || !array_key_exists('sortValue', $args))
             throw new \Exception('Offset, limit, sort attribute and sort value needs to be specified');
 
-        if($args['context'] == 'SELF' && ($this->storage->getToken() == null || $this->storage->getToken()->getUser() == null))
+        if($args['context'] == 'SELF' && !$this->authorizationService->isAuthorized())
             throw new \Exception('context is self but no user context found');
     }
 
     private function hasRights($entity)
     {
-        if($this->storage->getToken() == null || $this->storage->getToken()->getUser() == null)
+        if(!$this->authorizationService->isAuthorized())
             throw new AccessDeniedException('Nope');
         if($entity instanceof Messages)
         {
-            return $this->storage->getToken()->getUser()->getId() == $entity->getUserId();
+            return $this->authorizationService->getAuthorizedUserOrThrowException()->getId() == $entity->getUserId();
         }
         return false;
     }
@@ -142,6 +149,6 @@ class MessagesAjaxService implements AjaxInterface
     public function getSubscribedMethods()
     {
         return array('deleteById',
-            'readById', 'getMessageModals');
+            'readById', 'getMessageModals', 'getUnreadMessagesCount');
     }
 }

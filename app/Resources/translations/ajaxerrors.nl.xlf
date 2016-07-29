@@ -286,6 +286,22 @@
                 <source>course.reports.view.not.complete</source>
                 <target>Het rapport van deze cursus kan nog niet worden bekeken. Dit kan komen omdat de cursus geen vragen stelt of omdat nog niet alle vragen zijn beantwoord. %1</target>
             </trans-unit>
+            <trans-unit id="72">
+                <source>course.reports.shared.remove</source>
+                <target>Dit rapport wordt gedeeld met %1 begeleiders. Dit zorgt ervoor dat het rapport niet verwijderd kan worden</target>
+            </trans-unit>
+            <trans-unit id="73">
+                <source>course.reports.share.not.logged.in</source>
+                <target>Om een rapport te delen moet je zijn ingelogd</target>
+            </trans-unit>
+            <trans-unit id="74">
+                <source>course.reports.already.shared</source>
+                <target>Dit rapport is al gedeeld met de opgegeven begeleider</target>
+            </trans-unit>
+            <trans-unit id="75">
+                <source>course.reports.share.same</source>
+                <target>De ingevulde mentorcode is van jezelf. Je kunt geen rapporten met jezelf delen</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

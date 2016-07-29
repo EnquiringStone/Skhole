@@ -85,8 +85,10 @@ $(document).ready(function() {
         data['ajax_key'] = 'STAS1';
         data['method'] = 'validateReport';
 
-        sendAjaxCall(study.data('url'), data, function () {
+        var goUrl = $(this).data('url');
 
+        sendAjaxCall(study.data('url'), data, function () {
+            goToUrl(goUrl);
         }, function (error) {
             showAjaxErrorModal(error['responseJSON']['html']);
         });

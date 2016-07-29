@@ -13,6 +13,15 @@ $(document).on('click', '.panel-heading span.clickable', function(e){
 
 $(document).ready(function() {
     var body = $('body');
+    var message = $('#unread-messages-count');
+    if(message.length)
+    {
+        sendAjaxCall(message.data('url'), {'ajax_key': 'MAS1', 'method': 'getUnreadMessagesCount'}, function (data) {
+            message.text(data['unreadMessages']);
+        }, function () {
+            message.text(0);
+        });
+    }
 
     body.on('click', '.search-panel .dropdown-menu a', function(event) {
         event.preventDefault();

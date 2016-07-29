@@ -34,7 +34,7 @@ services:
         arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", "@twig", "%standard_query_limit%", "%standard_pagination_max%"]
     app.home.messages.ajax.service:
         class: AppBundle\Service\Ajax\Home\MessagesAjaxService
-        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", "@twig"]
+        arguments: ["@doctrine.orm.entity_manager", "@twig", "@app.authorization.service"]
     app.page.controls.ajax.service:
         class: AppBundle\Service\Ajax\PageControlsAjaxService
         arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", "@app.transform.manager", "@twig", "@session", "%standard_query_limit%", "%standard_pagination_max%"]

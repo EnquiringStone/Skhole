@@ -15,6 +15,7 @@ use AppBundle\Enum\CourseStateEnum;
 use AppBundle\Enum\PageTypeEnum;
 use AppBundle\Util\ValidatorHelper;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Routing\Annotation\Route;
@@ -60,6 +61,38 @@ class LearnController extends Controller
      */
     public function studyAction()
     {
+        $session = $this->get('session');
+
+        if($session->has('lastCourseId'))
+        {
+            try
+            {
+                $course = $this->validateSpecifiedCourseId($session->get('lastCourseId'));
+
+                if($session->has('lastPageId'))
+                {
+                    $page = $this->getDoctrine()->getRepository('AppBundle:Course\CoursePages')->find($session->get('lastPageId'));
+                    if($page != null && $page->getCourseId() == $course->getId())
+                        return $this->redirectToRoute('app_learn_study_pages_page', array('courseId' => $course->getId(), 'pageOrder' => $page->getPageOrder()));
+                }
+                elseif ($session->has('name'))
+                {
+                    $name = $session->get('name');
+                    if($name == 'start' || $name == 'final')
+                    {
+                        return $this->redirectToRoute('app_learn_study_panels_page', array('courseId' => $course->getId(), 'pageType' => 'custom', 'name' => $name));
+                    }
+                }
+                else
+                {
+                    return $this->redirectToRoute('app_learn_study_course_page', array('courseId' => $course->getId()));
+                }
+            }
+            catch (Exception $e)
+            {
+                //Do nothing
+            }
+        }
         return $this->render(':learn:study.default.html.twig');
     }
 
@@ -71,6 +104,13 @@ class LearnController extends Controller
     public function studyCourseAction($courseId)
     {
         $course = $this->validateSpecifiedCourseId($courseId);
+
+        $session = $this->get('session');
+
+        if($session->has('lastPageId')) $session->remove('lastPageId');
+        if($session->has('name')) $session->remove('name');
+
+        $session->set('lastCourseId', $course->getId());
 
         $course->setViews($course->getViews() + 1);
         $this->getDoctrine()->getEntityManager()->flush();
@@ -89,6 +129,8 @@ class LearnController extends Controller
     public function studyPanelsAction($courseId, $pageType, $name)
     {
         $course = $this->validateSpecifiedCourseId($courseId);
+        $session = $this->get('session');
+        if($session->has('lastPageId')) $session->remove('lastPageId');
 
         if($this->isGranted('ROLE_USER'))
             $courseReview = $this->getDoctrine()->getRepository('AppBundle:Course\CourseReviews')->findOneBy(array('userInsertedId' => $this->getUser()->getId(), 'courseId' => $courseId));
@@ -98,6 +140,8 @@ class LearnController extends Controller
         if(PageTypeEnum::matchValueWithGivenEnum(PageTypeEnum::class, PageTypeEnum::STANDARD_TYPE, $pageType) ||
             PageTypeEnum::matchValueWithGivenEnum(PageTypeEnum::class, PageTypeEnum::CUSTOM_TYPE, $pageType))
         {
+            $session->set('name', $name);
+
             return $this->render(':learn:study.html.twig', array('name' => $name, 'pageType' => $pageType, 'course' => $course, 'courseReview' => $courseReview));
         }
         throw new AccessDeniedException();
@@ -113,6 +157,7 @@ class LearnController extends Controller
     public function studyPagesAction($courseId, $pageOrder)
     {
         $course = $this->validateSpecifiedCourseId($courseId);
+        $session = $this->get('session');
 
         if($pageOrder == 0)
         {
@@ -121,6 +166,9 @@ class LearnController extends Controller
 
         $page = $this->getDoctrine()->getRepository('AppBundle:Course\CoursePages')->findOneBy(array('courseId' => $courseId, 'pageOrder' => $pageOrder));
         if($page == null) throw new AccessDeniedException();
+
+        if($session->has('name')) $session->remove('name');
+        $session->set('lastPageId', $page->getId());
 
         $criteria = array('page' => $page, 'totalPages' => $course->getCoursePages()->count());
 

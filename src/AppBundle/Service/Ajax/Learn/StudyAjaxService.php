@@ -20,6 +20,7 @@ use AppBundle\Entity\Progress\CourseProgressions;
 use AppBundle\Entity\Report\AnswerResults;
 use AppBundle\Entity\Report\MultipleChoiceAnswers;
 use AppBundle\Entity\Report\Reports;
+use AppBundle\Entity\Report\SharedReports;
 use AppBundle\Entity\User;
 use AppBundle\Enum\CoursePageTypeEnum;
 use AppBundle\Enum\PageTypeEnum;
@@ -244,6 +245,48 @@ class StudyAjaxService implements AjaxInterface
 
     }
 
+    public function removeReport($args)
+    {
+        $report = $this->manager->getRepository('AppBundle:Report\Reports')->find($args['reportId']);
+
+        $this->validateSpecifiedReport($report);
+        if($this->authorizationService->isAuthorized())
+            if(!$report->getSharedReports()->isEmpty()) throw new FrontEndException('course.reports.shared.remove', 'ajaxerrors', array('%1' => $report->getSharedReports()->count()));
+
+        $this->manager->remove($report);
+        $this->manager->flush();
+    }
+
+    public function shareReport($args)
+    {
+        if(!$this->authorizationService->isAuthorized()) throw new FrontEndException('course.reports.share.not.logged.in', 'ajaxerrors');
+        $user = $this->authorizationService->getAuthorizedUserOrThrowException();
+
+        $report = $this->manager->getRepository('AppBundle:Report\Reports')->find($args['reportId']);
+        $this->validateSpecifiedReport($report);
+
+        $mentor = $this->manager->getRepository('AppBundle:User')->findOneBy(array('mentorCode' => $args['mentorCode']));
+        if($mentor == null) return; //Silent error. As we do not want the user to map the mentor code to people
+
+        if($mentor->getId() == $user->getId()) throw new FrontEndException('course.reports.share.same', 'ajaxerrors');
+
+        $sharedReport = $this->manager->getRepository('AppBundle:Report\SharedReports')->findOneBy(array('userId' => $user->getId(), 'mentorUserId' => $mentor->getId(), 'reportId' => $report->getId()));
+        if($sharedReport != null) throw new FrontEndException('course.reports.already.shared', 'ajaxerrors');
+
+        $sharedReport = new SharedReports();
+        $sharedReport->setHasAccepted(false);
+        $sharedReport->setHasRevised(false);
+        $sharedReport->setInsertDateTime(new \DateTime());
+        $sharedReport->setMentor($mentor);
+        $sharedReport->setUser($user);
+        $sharedReport->setReport($report);
+
+        $this->manager->persist($sharedReport);
+        $report->addSharedReport($sharedReport);
+
+        $this->manager->flush();
+    }
+
     /**
      * Returns an unique code that is used to determine which implementation
      * of this interface should be used for the ajax call
@@ -264,7 +307,7 @@ class StudyAjaxService implements AjaxInterface
      */
     public function getSubscribedMethods()
     {
-        return array('addQuickCourseReview', 'addCourseReview', 'updateCourseReview', 'saveAnswers', 'validateReport');
+        return array('addQuickCourseReview', 'addCourseReview', 'updateCourseReview', 'saveAnswers', 'validateReport', 'removeReport', 'shareReport');
     }
 
     private function isSpecifiedCourseValid(Courses $course)
@@ -430,6 +473,21 @@ class StudyAjaxService implements AjaxInterface
             $report->setIsComplete(true);
             $report->setFinishedDateTime(new \DateTime());
             $this->manager->flush();
+        }
+    }
+
+    private function validateSpecifiedReport(Reports $report)
+    {
+        if($report == null || !$report->getIsComplete()) throw new AccessDeniedException();
+
+        if($this->authorizationService->isAuthorized())
+        {
+            $user = $this->authorizationService->getAuthorizedUserOrThrowException();
+            if($report->getUserId() != $user->getId()) throw new AccessDeniedException();
+        }
+        else
+        {
+            if($report->getSessionId() != $this->session->getId()) throw new AccessDeniedException();
         }
     }
 }

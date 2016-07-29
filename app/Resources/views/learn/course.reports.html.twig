@@ -4,5 +4,9 @@
     {% include ':panels/learn/report:report.overview.panel.html.twig' %}
 {% endblock %}
 
+{% block prescripts %}
+    <script src="{{ asset('js/study/course-reports.js') }}"></script>
+{% endblock %}
+
 {% set menu = 'learn' %}
 {% set subMenu = 'courseReports' %}

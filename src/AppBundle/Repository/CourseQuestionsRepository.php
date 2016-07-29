@@ -102,4 +102,40 @@ class CourseQuestionsRepository extends EntityRepository
 
         return $unansweredQuestions;
     }
+
+    public function GetAverageCorrectMultipleChoiceAnswers($courseId, $reportId)
+    {
+        $allQuestions = $this->getAllQuestionsByCourse($courseId);
+
+        $multipleChoiceQuestions = array();
+
+        foreach ($allQuestions as $question)
+        {
+            if($question->getQuestionType()->getType() == 'multiple-choice')
+                $multipleChoiceQuestions[] = $question;
+        }
+
+        $correct = 0;
+        foreach ($multipleChoiceQuestions as $question)
+        {
+            $totalCorrect = 0;
+            foreach ($question->getCourseAnswers() as $answer)
+            {
+                if($answer->getIsCorrect())
+                    $totalCorrect++;
+            }
+            $answerResult = $this->getEntityManager()->getRepository('AppBundle:Report\AnswerResults')->findOneBy(array('questionId' => $question->getId(), 'reportId' => $reportId));
+
+            foreach ($answerResult->getMultipleChoiceAnswers() as $answer)
+            {
+                if($answer->getAnswer()->getIsCorrect())
+                    $totalCorrect--;
+            }
+
+            if($totalCorrect == 0)
+                $correct++;
+        }
+
+        return $correct / sizeof($multipleChoiceQuestions) * 100;
+    }
 }

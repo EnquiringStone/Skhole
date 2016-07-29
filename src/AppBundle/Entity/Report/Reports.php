@@ -83,6 +83,38 @@ class Reports
         $this->sharedReports = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+    public function getAverageCorrectMultipleChoice()
+    {
+        if(!$this->isComplete) return -1;
+
+        $totalAmountOfMultipleChoiceQuestions = 0;
+        $totalCorrect = 0;
+        foreach ($this->getAnswerResults() as $answerResult)
+        {
+            if($answerResult->getQuestion()->getQuestionType()->getType() == 'multiple-choice')
+            {
+                $totalAmountOfMultipleChoiceQuestions++;
+                $totalNeededToBeCorrect = 0;
+                foreach ($answerResult->getQuestion()->getCourseAnswers() as $answer)
+                {
+                    if($answer->getIsCorrect()) $totalNeededToBeCorrect++;
+                }
+                foreach ($answerResult->getMultipleChoiceAnswers() as $answer)
+                {
+                    if(!$answer->getAnswer()->getIsCorrect())
+                    {
+                        $totalNeededToBeCorrect = 1;
+                        break;
+                    }
+                    if($answer->getAnswer()->getIsCorrect()) $totalNeededToBeCorrect--;
+                }
+                if($totalNeededToBeCorrect == 0) $totalCorrect++;
+            }
+        }
+        if($totalAmountOfMultipleChoiceQuestions == 0) return -1;
+        return $totalCorrect / $totalAmountOfMultipleChoiceQuestions * 100;
+    }
+
     /**
      * Get id
      *
