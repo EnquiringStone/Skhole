@@ -165,7 +165,27 @@ class LearnController extends Controller
      */
     public function courseReportsAction()
     {
-        return $this->render(':learn:course.reports.html.twig');
+        $order = array('id' => 'DESC');
+        $limit = $this->getParameter('standard_query_limit');
+
+        $repo = $this->getDoctrine()->getRepository('AppBundle:Report\Reports');
+
+        if($this->isGranted('ROLE_USER'))
+        {
+            $courseReports = $repo->findBy(array('userId' => $this->getUser()->getId(), 'isComplete' => true), $order, $limit, 0);
+            $totalPages = $repo->getCountByCriteria(array('userId' => $this->getUser()->getId(), 'isComplete' => true));
+        }
+        else
+        {
+            $courseReports = $repo->findBy(array('sessionId' => $this->get('session')->getId(), 'isComplete' => true), $order, $limit, 0);
+            $totalPages = $repo->getCountByCriteria(array('sessionId' => $this->get('session')->getId(), 'isComplete' => true));
+        }
+
+        return $this->render(':learn:course.reports.html.twig', array(
+            'courseReports' => $courseReports,
+            'limit' => $limit, 'offset' => 0,
+            'maxPages' => $this->getParameter('standard_pagination_max'),
+            'totalReports' => $totalPages));
     }
 
     /**

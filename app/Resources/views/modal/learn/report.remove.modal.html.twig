@@ -1,0 +1,24 @@
+{% extends ':modal:modal.base.html.twig' %}
+{% block modalBaseHeader %}
+    <h4 class="modal-title centrum" id="{{ modalId }}">
+        <b>
+            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+            {% trans %}Rapport verwijderen{% endtrans %}
+        </b>
+    </h4>
+{% endblock %}
+{% block modalBaseContents %}
+    <div class="modal-body">
+        <hr />
+        <p class="lead centrum">
+            {% trans %}Verwijderen kan niet ongedaan worden. Weet je het zeker?{% endtrans %}
+        </p>
+        <br />
+        <p class="centrum">
+            {% trans %}Je staat op het punt om het rapport voor curses{% endtrans %} "<b>{{ report.course.name }}</b>" {% trans %} te verwijderen!{% endtrans %}
+        </p>
+    </div>
+{% endblock %}
+{% set modalBaseType = 'choice' %}
+{% block modalBaseYesId %}{{ report.id }}{% endblock %}
+{% block modalBaseYesAction %}{{ url('app_home_ajax_page') }}{% endblock %}

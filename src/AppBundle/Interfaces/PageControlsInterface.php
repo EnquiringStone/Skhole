@@ -26,7 +26,7 @@ interface PageControlsInterface
      */
     function hasSort();
 
-    function getRecords($searchValues, $offset, $limit, $sort, $userId = 0);
+    function getRecords($searchValues, $offset, $limit, $sort, $userId = 0, $sessionId = '');
 
-    function getRecordsBySearch($offset, $limit, $sort, $searchParams, $userId = 0);
+    function getRecordsBySearch($offset, $limit, $sort, $searchParams, $userId = 0, $sessionId = '');
 }

@@ -58,7 +58,7 @@ class MessagesRepository extends EntityRepository implements PageControlsInterfa
         return true;
     }
 
-    function getRecords($searchValues, $offset, $limit, $sort, $userId = 0)
+    function getRecords($searchValues, $offset, $limit, $sort, $userId = 0, $sessionId = '')
     {
         $sort = array($sort['sortAttribute'] => $sort['sortValue']);
 
@@ -68,7 +68,7 @@ class MessagesRepository extends EntityRepository implements PageControlsInterfa
         return array('resultSet' => $this->findBy($search, $sort, $limit, $offset), 'total' => $this->getCountByCriteria($search));
     }
 
-    function getRecordsBySearch($offset, $limit, $sort, $searchParams, $userId = 0)
+    function getRecordsBySearch($offset, $limit, $sort, $searchParams, $userId = 0, $sessionId = '')
     {
         return $this->getRecords($searchParams['defaultSearch'], $offset, $limit, $sort, $userId);
     }

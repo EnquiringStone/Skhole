@@ -58,7 +58,7 @@ class CourseCollectionItemsRepository extends EntityRepository implements PageCo
         return true;
     }
 
-    function getRecords($searchValues, $offset, $limit, $sort, $userId = 0)
+    function getRecords($searchValues, $offset, $limit, $sort, $userId = 0, $sessionId = '')
     {
         $sort = $this->replaceSort($sort);
         $qb = $this->createQueryBuilder('collection');
@@ -83,9 +83,9 @@ class CourseCollectionItemsRepository extends EntityRepository implements PageCo
         return array('resultSet' => $resultSet->slice($offset, $limit), 'total' => count($result));
     }
 
-    function getRecordsBySearch($offset, $limit, $sort, $searchParams, $userId = 0)
+    function getRecordsBySearch($offset, $limit, $sort, $searchParams, $userId = 0, $sessionId = '')
     {
-        return $this->getRecords($searchParams['defaultSearch'], $offset, $limit, $sort, $userId);
+        return $this->getRecords($searchParams['defaultSearch'], $offset, $limit, $sort, $userId, $sessionId);
     }
 
     private function createReturnValues($entities, $total)

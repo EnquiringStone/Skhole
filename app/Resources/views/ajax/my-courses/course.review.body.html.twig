@@ -5,24 +5,44 @@
                 <img src="{{ asset('images/gebruiker.png') }}" class="img-rounded" />
             </div>
             <div class="col-md-11">
-                <h4>{{ review.insertUser.realName }}</h4>
-                <p>{{ review.remarks }}</p>
-                <div class="btn-group-xs">
-                    <button type="button" class="btn btn-default unclickable">
-                        <b>{% trans %}Cursusbeoordeling{% endtrans %}:</b>
-                        {% if review.contentRating is not null %}
-                            {% for z in 0..review.contentRating %}
-                                <img src="{{ asset('images/star_rating.png') }}" class="img-rounded" />
-                            {% endfor %}
-                        {% else %}
-                            -
-                        {% endif %}
-                    </button>
-                    <button type="button" class="btn btn-default unclickable">
-                        <b>{% trans %}Gepost op{% endtrans %}:</b>
-                        {{ review.insertDateTime|date('d-m-Y') }}
-                    </button>
-                </div>
+                {% if review.insertUser is not null %}
+                    <h4>{{ review.insertUser.realName }}</h4>
+                    <p>{{ review.remarks }}</p>
+                    <div class="btn-group-xs">
+                        <button type="button" class="btn btn-default unclickable">
+                            <b>{% trans %}Cursusbeoordeling{% endtrans %}:</b>
+                            {% if review.contentRating is not null %}
+                                {% for z in 0..review.contentRating %}
+                                    <img src="{{ asset('images/star_rating.png') }}" class="img-rounded" />
+                                {% endfor %}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </button>
+                        <button type="button" class="btn btn-default unclickable">
+                            <b>{% trans %}Gepost op{% endtrans %}:</b>
+                            {{ review.insertDateTime|date('d-m-Y') }}
+                        </button>
+                    </div>
+                {% else %}
+                    <h4>{% trans %}Anoniem{% endtrans %}</h4>
+                    <div class="btn-group-xs">
+                        <button type="button" class="btn btn-default unclickable">
+                            <b>{% trans %}Cursusbeoordeling{% endtrans %}:</b>
+                            {% if review.contentRating is not null %}
+                                {% for z in 1..review.contentRating %}
+                                    <img src="{{ asset('images/star_rating.png') }}" class="img-rounded" />
+                                {% endfor %}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </button>
+                        <button type="button" class="btn btn-default unclickable">
+                            <b>{% trans %}Gepost op{% endtrans %}:</b>
+                            {{ review.insertDateTime|date('d-m-Y') }}
+                        </button>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>

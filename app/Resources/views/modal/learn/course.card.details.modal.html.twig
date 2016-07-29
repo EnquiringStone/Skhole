@@ -126,38 +126,50 @@
             <div class="tab-pane fade in" id="tabCourseCardProviders{{ modalId }}">
                 <div class="thumbnail">
                     <div class="media-list">
-                        {% for provider in course.courseCard.providers %}
-                            <div class="media">
-                                <div class="pull-left">
-                                    <img src="{{ asset('images/logo-skhole.png') }}" class="media-object">
+                        {% if course.courseCard.providers|length > 0 %}
+                            {% for provider in course.courseCard.providers %}
+                                <div class="media">
+                                    <div class="pull-left">
+                                        <img src="{{ asset('images/logo-skhole.png') }}" class="media-object">
+                                    </div>
+                                    <div class="media-body">
+                                        <h4>{{ provider.name }}</h4>
+                                        <p>{{ provider.description }}</p>
+                                    </div>
                                 </div>
-                                <div class="media-body">
-                                    <h4>{{ provider.name }}</h4>
-                                    <p>{{ provider.description }}</p>
-                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="centrum">
+                                <p class="lead">{% trans %}Geen aanbieders gevonden voor deze cursus{% endtrans %}</p>
                             </div>
-                        {% endfor %}
+                        {% endif %}
                     </div>
                 </div>
             </div>
             <div class="tab-pane fade in" id="tabCourseCardTeachers{{ modalId }}">
                 <div class="thumbnail">
-                    <h4>{% trans %}Docenten{% endtrans %}</h4>
-                    <div class="media-list">
-                        {% for teacher in course.courseCard.teachers %}
-                            {% if not teacher.isUndesirable %}
-                                <div class="media">
-                                    <div class="pull-left">
-                                        <img src="{{ teacher.pictureUrl is not null ? asset(teacher.pictureUrl) : asset('images/head-wiseguy.png') }}" class="media-object teacher-row-picture">
+                    {% if course.courseCard.teachers|length > 0 %}
+                        <h4>{% trans %}Docenten{% endtrans %}</h4>
+                        <div class="media-list">
+                            {% for teacher in course.courseCard.teachers %}
+                                {% if not teacher.isUndesirable %}
+                                    <div class="media">
+                                        <div class="pull-left">
+                                            <img src="{{ teacher.pictureUrl is not null ? asset(teacher.pictureUrl) : asset('images/head-wiseguy.png') }}" class="media-object teacher-row-picture">
+                                        </div>
+                                        <div class="media-body">
+                                            <h4>{{ teacher.name }}</h4>
+                                            <p>{{ teacher.description }}</p>
+                                        </div>
                                     </div>
-                                    <div class="media-body">
-                                        <h4>{{ teacher.name }}</h4>
-                                        <p>{{ teacher.description }}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-                        {% endfor %}
-                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="centrum">
+                            <p class="lead">{% trans %}Geen extra docenten gevonden voor deze cursus{% endtrans %}</p>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>

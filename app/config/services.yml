@@ -37,7 +37,7 @@ services:
         arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", "@twig"]
     app.page.controls.ajax.service:
         class: AppBundle\Service\Ajax\PageControlsAjaxService
-        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", "@app.transform.manager", "@twig", "%standard_query_limit%", "%standard_pagination_max%"]
+        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", "@app.transform.manager", "@twig", "@session", "%standard_query_limit%", "%standard_pagination_max%"]
     app.create.course.ajax.service:
         class: AppBundle\Service\Ajax\Teach\CreateCourseAjaxService
         arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", "@app.validator.validator", "@app.transform.manager", "@router", "@twig"]
@@ -81,9 +81,12 @@ services:
     app.transformer.course.collection.items:
         class: AppBundle\Transformer\CourseCollectionItemsTransformer
         arguments: ["@twig"]
+    app.transformer.reports:
+        class: AppBundle\Transformer\ReportsTransformer
+        arguments: ["@twig"]
     app.transform.manager:
         class: AppBundle\Transformer\TransformManager
-        arguments: ["@app.transformer.messages", "@app.transformer.course.reviews", "@app.transformer.courses", "@app.transformer.course.teachers", "@app.transformer.course.announcements", "@app.transformer.course.provider", "@app.transformer.course.questions", "@app.transformer.profile", "@app.transformer.profile.education", "@app.transformer.course.collection.items"]
+        arguments: ["@app.transformer.messages", "@app.transformer.course.reviews", "@app.transformer.courses", "@app.transformer.course.teachers", "@app.transformer.course.announcements", "@app.transformer.course.provider", "@app.transformer.course.questions", "@app.transformer.profile", "@app.transformer.profile.education", "@app.transformer.course.collection.items", "@app.transformer.reports"]
 
     app.validator.validator:
         class: AppBundle\Validator\Validator

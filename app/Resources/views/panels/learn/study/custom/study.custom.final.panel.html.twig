@@ -31,7 +31,12 @@
                             </div>
                         </form>
                     {% else %}
-                        <p>{% trans %}Je hebt deze cursus op{% endtrans %} {{ courseReview.insertDateTime|date('d-m-Y') }} {% trans %}als volgt beoordeeld{% endtrans %}: {{ courseReview.contentRating }}/5</p>
+                        <p>
+                            {% trans %}Je hebt deze cursus op{% endtrans %} {{ courseReview.insertDateTime|date('d-m-Y') }} {% trans %}als volgt beoordeeld{% endtrans %}:
+                            {% for z in 1..courseReview.contentRating %}
+                                <img src="{{ asset('images/star_rating.png') }}" class="img-rounded" />
+                            {% endfor %}
+                        </p>
                     {% endif %}
                 </div>
             </div>

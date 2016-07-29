@@ -15,6 +15,7 @@ use AppBundle\Interfaces\TransformerInterface;
 use AppBundle\Transformer\TransformManager;
 use AppBundle\Util\PageControlHelper;
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
 class PageControlsAjaxService implements AjaxInterface
@@ -43,8 +44,12 @@ class PageControlsAjaxService implements AjaxInterface
      * @var \Twig_Environment
      */
     private $environment;
+    /**
+     * @var Session
+     */
+    private $session;
 
-    public function __construct(EntityManager $manager, TokenStorage $storage, TransformManager $transformer, \Twig_Environment $environment, $defaultLimit, $defaultPagination)
+    public function __construct(EntityManager $manager, TokenStorage $storage, TransformManager $transformer, \Twig_Environment $environment, Session $session, $defaultLimit, $defaultPagination)
     {
         $this->manager = $manager;
         $this->storage = $storage;
@@ -52,6 +57,7 @@ class PageControlsAjaxService implements AjaxInterface
         $this->defaultLimit = $defaultLimit;
         $this->defaultPagination = $defaultPagination;
         $this->environment = $environment;
+        $this->session = $session;
     }
 
     public function update($args)
@@ -72,12 +78,14 @@ class PageControlsAjaxService implements AjaxInterface
                 {
                     $searchParams = array('defaultSearch' => $args['searchValues'], 'searchQuery' => $args['search'], 'correlationType' => $args['correlation']);
                     $data = $entity->getRecordsBySearch($args['offset'], $args['limit'], $this->createSort($args),
-                        $searchParams, $args['context'] == 'SELF' ? $this->storage->getToken()->getUser()->getId() : 0);
+                        $searchParams, $args['context'] == 'SELF' ? $this->storage->getToken()->getUser()->getId() : 0,
+                        $args['context'] == 'ANONYMOUS' ? $this->session->getId() : '');
                 }
                 else
                 {
                     $data = $entity->getRecords($args['searchValues'], $args['offset'], $args['limit'], $this->createSort($args),
-                        $args['context'] == 'SELF' ? $this->storage->getToken()->getUser()->getId() : 0);
+                        $args['context'] == 'SELF' ? $this->storage->getToken()->getUser()->getId() : 0,
+                        $args['context'] == 'ANONYMOUS' ? $this->session->getId() : '');
                 }
                 $transformer = $this->getTransformerByEntity($args['entity']);
 

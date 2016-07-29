@@ -1,0 +1,32 @@
+{% extends 'panels/panel.base.html.twig' %}
+{% block panelBaseTitle %}
+    <span class="glyphicon glyphicon-grain text-info" aria-hidden="true"></span>
+    <b>{% trans %}Cursusrapporten overzicht{% endtrans %}: <span class="total-reports">{{ totalReports }}</span></b>
+{% endblock %}
+{% block panelBaseContents %}
+    <div class="panel-body page-controls" data-url="{{ url('app_home_ajax_page') }}" data-context="{% if is_granted('ROLE_USER') %}SELF{% else %}ANONYMOUS{% endif %}" data-entity="Report\Reports" data-view="reports" data-default-search-attributes="" data-pagination-name="{% trans %}Pagina's{% endtrans %}">
+        <div class="sort-field">
+            {% include ':ajax/reports:sort.html.twig' %}
+        </div>
+        <hr />
+        {% if totalReports <= 0 %}
+            <div class="centrum">
+                <p class="lead">{% trans %}Geen cursusrapporten gevonden{% endtrans %}</p>
+                <p>{% trans %}Zodra je een cursus hebt afgerond kun je hier het bijbehorende cursusrapport terugvinden{% endtrans %}</p>
+            </div>
+        {% else %}
+            <div class="content-field">
+                {% for report in courseReports %}
+                    {% include ':ajax/reports:report.detail.body.html.twig' with {'report': report, 'index': loop.index} %}
+                    {% include ':modal/learn:report.share.modal.html.twig' with {'report': report, 'modalId': 'shareReportModal' ~ loop.index} %}
+                    {% include ':modal/learn:report.remove.modal.html.twig' with {'report': report, 'modalId': 'removeReportModal' ~ loop.index} %}
+                    {% include ':modal/learn:course.card.details.modal.html.twig' with {'course': report.course, 'modalId': 'courseCardModal' ~ loop.index} %}
+                {% endfor %}
+            </div>
+        {% endif %}
+        <br>
+        <div class="pagination-field">
+            {% include ':elements:pagination.html.twig' with {'maxEntities': totalReports, 'limit': limit, 'offset': offset, 'maxPages': maxPages, 'pageName': 'Pagina\'s'|trans, 'entity': 'Report\\Reports', 'class': 'report-details'} %}
+        </div>
+    </div>
+{% endblock %}

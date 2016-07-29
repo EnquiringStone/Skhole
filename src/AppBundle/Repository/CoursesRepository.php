@@ -71,7 +71,7 @@ class CoursesRepository extends EntityRepository implements PageControlsInterfac
         return true;
     }
 
-    public function getRecords($searchValues, $offset, $limit, $sort, $userId = 0)
+    public function getRecords($searchValues, $offset, $limit, $sort, $userId = 0, $sessionId = '')
     {
         $searchValues = $this->replaceSearchValues($searchValues);
         $sort = $this->replaceSort($sort);
@@ -95,7 +95,7 @@ class CoursesRepository extends EntityRepository implements PageControlsInterfac
         return $this->createReturnValues($resultSet, $maxEntities);
     }
 
-    public function getRecordsBySearch($offset, $limit, $sort, $searchParams, $userId = 0)
+    public function getRecordsBySearch($offset, $limit, $sort, $searchParams, $userId = 0, $sessionId = '')
     {
         $sort = $this->replaceSort($sort);
         $searchQuery = new SearchQuery($searchParams['searchQuery'], $searchParams['correlationType'], $offset, $limit, $sort);

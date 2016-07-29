@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block title %}{% trans %}Cursusrapporten{% endtrans %}{% endblock %}
 {% block body %}
-    <h1>{% trans %}Cursusrapporten{% endtrans %}</h1>
+    {% include ':panels/learn/report:report.overview.panel.html.twig' %}
 {% endblock %}
 
 {% set menu = 'learn' %}

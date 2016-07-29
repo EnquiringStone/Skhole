@@ -90,7 +90,7 @@ class CourseReviewsRepository extends EntityRepository implements PageControlsIn
         return false;
     }
 
-    function getRecords($searchValues, $offset, $limit, $sort, $userId = 0)
+    function getRecords($searchValues, $offset, $limit, $sort, $userId = 0, $sessionId = '')
     {
         if($userId > 0) $search = array_merge($searchValues, array('userInsertedId' => $userId));
         else $search = $searchValues;
@@ -99,7 +99,7 @@ class CourseReviewsRepository extends EntityRepository implements PageControlsIn
             'total' => $this->getCountByCriteria($search));
     }
 
-    function getRecordsBySearch($offset, $limit, $sort, $searchParams, $userId = 0)
+    function getRecordsBySearch($offset, $limit, $sort, $searchParams, $userId = 0, $sessionId = '')
     {
         return $this->getRecords($searchParams['defaultSearch'], $offset, $limit, $sort, $userId);
     }

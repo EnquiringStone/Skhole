@@ -53,7 +53,7 @@ class CourseAnnouncementsRepository extends EntityRepository implements PageCont
         return false;
     }
 
-    function getRecords($searchValues, $offset, $limit, $sort, $userId = 0)
+    function getRecords($searchValues, $offset, $limit, $sort, $userId = 0, $sessionId = '')
     {
         $searchValues = $this->replaceSearchValues($searchValues);
 
@@ -63,7 +63,7 @@ class CourseAnnouncementsRepository extends EntityRepository implements PageCont
         return array('resultSet' => $this->findBy($search, null, $limit, $offset), 'total' => $this->getCountByCriteria($search));
     }
 
-    function getRecordsBySearch($offset, $limit, $sort, $searchParams, $userId = 0)
+    function getRecordsBySearch($offset, $limit, $sort, $searchParams, $userId = 0, $sessionId = '')
     {
         return $this->getRecords($searchParams['defaultSearch'], $offset, $limit, $sort, $userId);
     }

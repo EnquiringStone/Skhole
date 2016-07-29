@@ -29,7 +29,11 @@
                 <label class="col-sm-2 control-label">{% trans %}Cursusbeoordeling{% endtrans %}</label>
                 <div class="col-sm-10">
                     {% if courseReview is not null %}
-                        <p>{{ courseReview.contentRating }} / 5</p>
+                        <p>
+                            {% for z in 1..courseReview.contentRating %}
+                                <img src="{{ asset('images/star_rating.png') }}" class="img-rounded" />
+                            {% endfor %}
+                        </p>
                     {% else %}
                         <div id="modal-stars" class="starrr clickable"></div>
                     {% endif %}
