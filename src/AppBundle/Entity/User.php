@@ -100,6 +100,35 @@ class User extends BaseUser
     protected $mentorCode;
 
     /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Education\Educations", mappedBy="user")
+     */
+    private $education;
+
+    /**
+     * Set customEmail
+     *
+     * @param string $customEmail
+     *
+     * @return User
+     */
+    public function setCustomEmail($customEmail)
+    {
+        $this->customEmail = $customEmail;
+
+        return $this;
+    }
+
+    /**
+     * Get customEmail
+     *
+     * @return string
+     */
+    public function getCustomEmail()
+    {
+        return $this->customEmail;
+    }
+
+    /**
      * Set facebookId
      *
      * @param string $facebookId
@@ -388,30 +417,6 @@ class User extends BaseUser
     }
 
     /**
-     * Set customEmail
-     *
-     * @param string $customEmail
-     *
-     * @return User
-     */
-    public function setCustomEmail($customEmail)
-    {
-        $this->customEmail = $customEmail;
-
-        return $this;
-    }
-
-    /**
-     * Get customEmail
-     *
-     * @return string
-     */
-    public function getCustomEmail()
-    {
-        return $this->customEmail;
-    }
-
-    /**
      * Set picture
      *
      * @param string $picture
@@ -457,5 +462,29 @@ class User extends BaseUser
     public function getMentorCode()
     {
         return $this->mentorCode;
+    }
+
+    /**
+     * Set education
+     *
+     * @param \AppBundle\Entity\Education\Educations $education
+     *
+     * @return User
+     */
+    public function setEducation(\AppBundle\Entity\Education\Educations $education = null)
+    {
+        $this->education = $education;
+
+        return $this;
+    }
+
+    /**
+     * Get education
+     *
+     * @return \AppBundle\Entity\Education\Educations
+     */
+    public function getEducation()
+    {
+        return $this->education;
     }
 }

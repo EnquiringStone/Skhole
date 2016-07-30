@@ -11,7 +11,7 @@ namespace AppBundle\Entity\Report;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\SharedReportsRepository")
  * @ORM\Table(name="shared_reports")
  */
 class SharedReports

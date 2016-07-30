@@ -1,7 +1,11 @@
 {% extends 'base.html.twig' %}
 {% block title %}{% trans %}Voortgang cursisten{% endtrans %}{% endblock %}
 {% block body %}
-    <h1>{% trans %}Voortgang cursisten{% endtrans %}</h1>
+    {% include ':panels/teach:mentor.requests.panel.html.twig' %}
+{% endblock %}
+
+{% block prescripts %}
+    <script src="{{ asset('js/teach/shared-reports.js') }}"></script>
 {% endblock %}
 
 {% set menu = 'teach' %}

@@ -128,7 +128,22 @@ class TeachController extends Controller
      */
     public function progressionCourseMembers(Request $request)
     {
-        return $this->render(':teach:progression.course.members.html.twig');
+        $limit = $this->getParameter('standard_query_limit');
+        $maxPages = $this->getParameter('standard_pagination_max');
+        $offset = 0;
+
+        $criteria = array('hasAccepted' => false, 'mentorUserId' => $this->getUser()->getId());
+        $repo = $this->getDoctrine()->getRepository('AppBundle:Report\SharedReports');
+
+        $mentorRequests = $repo->findBy($criteria, array('insertDateTime' => 'ASC'), $limit, $offset);
+        $totalMentorRequests = $repo->getCountByCriteria($criteria);
+
+        return $this->render(':teach:progression.course.members.html.twig', array(
+            'mentorRequests' => $mentorRequests,
+            'totalMentorRequests' => $totalMentorRequests,
+            'limit' => $limit,
+            'maxPages' => $maxPages,
+            'offset' => $offset));
     }
 
     protected function createCourseInformationStandardPage(Courses $course, $type, $name)

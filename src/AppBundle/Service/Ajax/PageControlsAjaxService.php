@@ -78,13 +78,13 @@ class PageControlsAjaxService implements AjaxInterface
                 {
                     $searchParams = array('defaultSearch' => $args['searchValues'], 'searchQuery' => $args['search'], 'correlationType' => $args['correlation']);
                     $data = $entity->getRecordsBySearch($args['offset'], $args['limit'], $this->createSort($args),
-                        $searchParams, $args['context'] == 'SELF' ? $this->storage->getToken()->getUser()->getId() : 0,
+                        $searchParams, $args['context'] == 'SELF' || $args['context'] == 'REQUEST' ? $this->storage->getToken()->getUser()->getId() : 0,
                         $args['context'] == 'ANONYMOUS' ? $this->session->getId() : '');
                 }
                 else
                 {
                     $data = $entity->getRecords($args['searchValues'], $args['offset'], $args['limit'], $this->createSort($args),
-                        $args['context'] == 'SELF' ? $this->storage->getToken()->getUser()->getId() : 0,
+                        $args['context'] == 'SELF' || $args['context'] == 'REQUEST' ? $this->storage->getToken()->getUser()->getId() : 0,
                         $args['context'] == 'ANONYMOUS' ? $this->session->getId() : '');
                 }
                 $transformer = $this->getTransformerByEntity($args['entity']);

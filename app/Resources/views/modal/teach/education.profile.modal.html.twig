@@ -1,0 +1,43 @@
+{% extends 'modal/modal.base.html.twig' %}
+{% block modalBaseHeader %}
+    <h4 class="modal-title centrum" id="{{ modalId }}">
+        <b>
+            {% trans %}Educatieprofiel{% endtrans %}
+        </b>
+        <br>
+        <span class="text-muted">{{ user.firstName|capitalize }} {{ user.surname|capitalize }}</span>
+    </h4>
+{% endblock %}
+{% block modalBaseContents %}
+    <div class="modal-body">
+        <h4>
+            <img src="{{ asset('images/logo-skhole.png') }}" class="img-rounded">
+            {% trans %}Educatie{% endtrans %}
+        </h4>
+        <div class="btn-group-xs">
+            {% if user.education is not null %}
+                <button class="btn btn-default unclickable" type="button">
+                    <b>{% trans %}Klas{% endtrans %}:</b>
+                    {{ user.education.class|default('-') }}
+                </button>
+                <button class="btn btn-default unclickable" type="button">
+                    <b>{% trans %}Leerjaar{% endtrans %}:</b>
+                    {{ user.education.schoolYear|default('-') }}
+                </button>
+                <button class="btn btn-default unclickable" type="button">
+                    <b>{% trans %}Niveau{% endtrans %}:</b>
+                    {{ user.education.level|default('-') }}
+                </button>
+            {% else %}
+                <button class="btn btn-default unclickable" type="button">
+                    <b>{% trans %}Geen educatiegegevens gevonden{% endtrans %}</b>
+                </button>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block closeButtonText %}
+    {% trans %}Sluiten{% endtrans %}
+{% endblock %}
+{% set modalBaseType = 'close' %}

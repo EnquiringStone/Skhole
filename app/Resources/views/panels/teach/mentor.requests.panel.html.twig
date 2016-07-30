@@ -1,0 +1,24 @@
+{% extends 'panels/panel.base.html.twig' %}
+{% block panelBaseTitle %}
+    {% trans %}Begeleidverzoeken{% endtrans %}: <span class="mentor-requests-count">{{ totalMentorRequests }}</span>
+{% endblock %}
+{% block panelBaseContents %}
+    <div id="mentor-requests" class="panel-body page-controls" data-view="{#Not Necessary#}" data-entity="Report\SharedReports" data-context="REQUEST" data-url="{{ url('app_home_ajax_page') }}" data-pagination-name="{% trans %}Verzoeken{% endtrans %}"
+         data-default-search-attributes="hasAccepted,0">
+        <div class="content-field">
+            {% if totalMentorRequests <= 0 %}
+                <div class="centrum">
+                    <p class="lead">{% trans %}Er zijn momenteel geen begeleidersverzoeken{% endtrans %}</p>
+                </div>
+            {% else %}
+                {% for request in mentorRequests %}
+                    {% include ':ajax/teach:mentor.request.row.html.twig' with {'request': request, 'index': loop.index} %}
+                    {% include ':modal/teach:education.profile.modal.html.twig' with {'user': request.user, 'modalId': 'educationProfileModal'~loop.index} %}
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="pagination-field">
+            {% include ':elements:pagination.html.twig' with {'maxEntities': totalMentorRequests, 'limit': limit, 'offset': offset, 'maxPages': maxPages, 'pageName': 'Verzoeken'|trans, 'entity': 'Reports\\SharedReports', class: 'shared-report-details'} %}
+        </div>
+    </div>
+{% endblock %}

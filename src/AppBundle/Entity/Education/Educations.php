@@ -44,7 +44,7 @@ class Educations
     protected $level;
 
     /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\User", inversedBy="education")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;

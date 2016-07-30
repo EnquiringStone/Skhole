@@ -302,6 +302,10 @@
                 <source>course.reports.share.same</source>
                 <target>De ingevulde mentorcode is van jezelf. Je kunt geen rapporten met jezelf delen</target>
             </trans-unit>
+            <trans-unit id="76">
+                <source>course.shared.reports.decline.already.accepted</source>
+                <target>De begeleidverzoek kan niet worden geweigerd omdat deze al geaccepteerd is</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

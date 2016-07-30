@@ -65,7 +65,8 @@ function refreshPage(caller, resetPagination, resetSort, customFunction) {
     arguments['ajax_key'] = 'PCAS1';
     arguments['method'] = 'update';
     arguments['context'] = context;
-    arguments['view'] = view;
+    if(view != null && view != '')
+        arguments['view'] = view;
 
     sendAjaxCall(url, arguments, function(args) {
         if(args['paginationHtml'] != null) {
