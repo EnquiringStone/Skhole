@@ -15,4 +15,26 @@ $(document).ready(function() {
         url += '?search='+value;
         goToUrl(url);
     });
+
+    body.on('click', '.add-to-collection', function() {
+        var context = $(this);
+        var courseId = context.data('course-id');
+        var url = context.data('url');
+
+        var hrefUrl = context.data('href-url');
+        var text = context.data('name');
+
+        var args = {};
+        args['method'] = 'addToCollection';
+        args['ajax_key'] = 'CCOAS1';
+        args['courseId'] = courseId;
+
+        sendAjaxCall(url, args, function() {
+            context.after('<a href="'+hrefUrl+'" class="btn btn-primary btn-sm">'+text+'</a>');
+            context.remove();
+        }, function(error) {
+            var json = error['responseJSON'];
+            showAjaxErrorModal(json['html']);
+        });
+    });
 });

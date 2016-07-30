@@ -26,7 +26,9 @@ class HomeController extends Controller {
             $login = $request->query->get('login');
         }
         return $this->render(':home/dashboard:dashboard.html.twig', array(
-            'login' => $login
+            'login' => $login,
+            'courses' => $this->getRandomCourses(10),
+            'courseCollection' => $this->getCourseCollectionsForUser()
         ));
     }
 
@@ -111,5 +113,35 @@ class HomeController extends Controller {
     public function otherAction(Request $request)
     {
         //Don't do shit
+    }
+
+    private function getRandomCourses($amount)
+    {
+        $criteria = array('removed' => false, 'state' => $this->getDoctrine()->getRepository('AppBundle:Course\CourseStates')->findOneBy(array('stateCode' => 'OK')), 'isUndesirable' => false);
+
+        $repo = $this->getDoctrine()->getRepository('AppBundle:Course\Courses');
+
+        $totalCourses = $repo->getCountByCriteria($criteria);
+
+        if($totalCourses <= $amount)
+            return $repo->findAll();
+
+        $offset = rand(0, $totalCourses - $amount);
+
+        return $repo->findBy($criteria, null, $amount, $offset);
+    }
+
+    private function getCourseCollectionsForUser()
+    {
+        if(!$this->isGranted('ROLE_USER')) return array();
+
+        $collectionItems = $this->getDoctrine()->getRepository('AppBundle:Course\CourseCollectionItems')->findBy(array('userId' => $this->getUser()->getId()));
+
+        $friendlyArray = array();
+        foreach ($collectionItems as $item)
+        {
+            $friendlyArray[] = $item->getCourseId();
+        }
+        return $friendlyArray;
     }
 }
