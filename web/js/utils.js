@@ -80,6 +80,10 @@ function refreshPage(caller, resetPagination, resetSort, customFunction) {
             $('.sort-field', base).empty();
             $('.sort-field', base).append(args['sortHtml']);
         }
+        if(args['modalsHtml'] != null) {
+            $('.modal-field', base).empty();
+            $('.modal-field', base).append(args['modalsHtml']);
+        }
 
         $('.content-field', base).empty();
         $('.content-field', base).append(args['entitiesHtml']);

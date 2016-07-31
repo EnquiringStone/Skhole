@@ -90,6 +90,13 @@ class PageControlsAjaxService implements AjaxInterface
                 $transformer = $this->getTransformerByEntity($args['entity']);
 
                 $entitiesHtml = $transformer->transformToAjaxResponse($data['resultSet'], $args['context']);
+                $modalHtml = null;
+
+                if(is_array($entitiesHtml))
+                {
+                    $modalHtml = $entitiesHtml['modals'];
+                    $entitiesHtml = $entitiesHtml['html'];
+                }
 
                 $paginationHtml = $entity->hasPagination() ? $this->environment->render(':elements:pagination.html.twig', array('maxPages' => $this->defaultPagination,
                     'offset' => $args['offset'], 'limit' => $args['limit'], 'maxEntities' => $data['total'],
@@ -115,7 +122,7 @@ class PageControlsAjaxService implements AjaxInterface
                             : null;
                     }
                 }
-                return array('entitiesHtml' => $entitiesHtml, 'paginationHtml' => $paginationHtml, 'sortHtml' => $sortHtml, 'totalFound' => $data['total']);
+                return array('entitiesHtml' => $entitiesHtml, 'paginationHtml' => $paginationHtml, 'sortHtml' => $sortHtml, 'totalFound' => $data['total'], 'modalsHtml' => $modalHtml);
             }
             throw new \Exception('entity '.$object.' not instance of page controls');
         }

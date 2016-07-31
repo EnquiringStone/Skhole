@@ -13,13 +13,17 @@
             </thead>
             <tbody class="content-field">
                 {% for report in reports %}
-                    {% include ':ajax/teach:shared.reports.table.row.html.twig' with {'report': report, 'index': loop.index} %}
-                    {% include ':modal/teach:remove.report.modal.html.twig' with {'report': report, 'modalId': 'removeReportModal'~loop.index} %}
+                    {% include ':ajax/teach:shared.reports.table.row.html.twig' with {'report': report, 'index': report.id} %}
                 {% endfor %}
             </tbody>
         </table>
         <div class="pagination-field">
             {% include ':elements:pagination.html.twig' with {'maxEntities': totalSharedReports, 'limit': standard_query_limit, 'offset': 0, 'maxPages': standard_pagination_max, 'pageName': 'Rapporten'|trans, 'entity': 'Report\\SharedReports'} %}
+        </div>
+        <div class="modal-field">
+            {% for report in reports %}
+                {% include ':modal/teach:remove.report.modal.html.twig' with {'report': report, 'modalId': 'removeReportModal'~report.id} %}
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
