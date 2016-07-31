@@ -15,6 +15,7 @@ use AppBundle\Entity\Course\Courses;
 use AppBundle\Entity\Course\CourseSchedules;
 use AppBundle\Enum\CourseStateEnum;
 use AppBundle\Util\SecurityHelper;
+use Doctrine\ORM\Query\Expr\Join;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -138,12 +139,17 @@ class TeachController extends Controller
         $mentorRequests = $repo->findBy($criteria, array('insertDateTime' => 'ASC'), $limit, $offset);
         $totalMentorRequests = $repo->getCountByCriteria($criteria);
 
+        $users = $this->getDoctrine()->getRepository('AppBundle:User')->getAllUsersByMentor($this->getUser()->getId(), 0, $limit, 'firstName', 'ASC');
+        $totalUsers = $this->getDoctrine()->getRepository('AppBundle:User')->getUserCountByMentor($this->getUser()->getId());
+
         return $this->render(':teach:progression.course.members.html.twig', array(
             'mentorRequests' => $mentorRequests,
             'totalMentorRequests' => $totalMentorRequests,
             'limit' => $limit,
             'maxPages' => $maxPages,
-            'offset' => $offset));
+            'offset' => $offset,
+            'users' => $users,
+            'totalUsers' => $totalUsers));
     }
 
     protected function createCourseInformationStandardPage(Courses $course, $type, $name)

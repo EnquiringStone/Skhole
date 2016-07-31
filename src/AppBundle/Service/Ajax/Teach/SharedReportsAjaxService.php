@@ -26,11 +26,16 @@ class SharedReportsAjaxService implements AjaxInterface
      * @var AuthorizationService
      */
     private $authorizationService;
+    /**
+     * @var \Twig_Environment
+     */
+    private $environment;
 
-    function __construct(EntityManager $manager, AuthorizationService $authorizationService)
+    function __construct(EntityManager $manager, AuthorizationService $authorizationService, \Twig_Environment $environment)
     {
         $this->manager = $manager;
         $this->authorizationService = $authorizationService;
+        $this->environment = $environment;
     }
 
     public function acceptMentorRequest($args)
@@ -54,6 +59,71 @@ class SharedReportsAjaxService implements AjaxInterface
         $this->manager->flush();
     }
 
+    public function getAllReports($args)
+    {
+        $mentor = $this->authorizationService->getAuthorizedUserOrThrowException();
+        $user = $this->manager->getRepository('AppBundle:User')->find($args['userId']);
+        if($user == null) throw new AccessDeniedException();
+
+        $reports = $this->manager->getRepository('AppBundle:Report\SharedReports')->findBy(array('userId' => $user->getId(), 'mentorUserId' => $mentor->getId(), 'hasAccepted' => true));
+        if(sizeof($reports) <= 0) throw new FrontEndException('course.shared.reports.nothing.found', 'ajaxerrors');
+
+        $html = $this->environment->render(':ajax/teach:shared.reports.table.html.twig', array('reports' => $reports));
+
+        return array('html' => $html);
+    }
+
+    public function saveReportChanges($args)
+    {
+        $report = $this->getValidSharedReportById($args['reportId']);
+
+        if(array_key_exists('rating', $args) && $args['rating'] != '')
+        {
+            if(intval($args['rating']) < 0 || intval($args['rating'] > 5)) throw new FrontEndException('course.reviews.invalid.rating', 'ajaxerrors');
+            $report->setRating($args['rating']);
+        }
+
+        if(array_key_exists('hasRevised', $args))
+        {
+            $report->setHasRevised($args['hasRevised'] == 'true');
+        }
+        $this->manager->flush();
+    }
+
+    public function removeReport($args)
+    {
+        $report = $this->getValidSharedReportById($args['id']);
+        $user = $report->getUser();
+        $mentor = $this->authorizationService->getAuthorizedUserOrThrowException();
+
+        $returnValues = array('lastRow' => 'no');
+
+        if($user->getStatisticsByMentor($mentor->getId())['total'] == 1)
+        {
+            $returnValues['lastRow'] = 'yes';
+            $returnValues['userId'] = $user->getId();
+        }
+
+        $this->manager->remove($report);
+        $this->manager->flush();
+
+        return $returnValues;
+    }
+
+    public function removeAllReports($args)
+    {
+        $mentor = $this->authorizationService->getAuthorizedUserOrThrowException();
+        $user = $this->manager->getRepository('AppBundle:User')->find($args['id']);
+        if($user == null) throw new AccessDeniedException();
+
+        $reports = $this->manager->getRepository('AppBundle:Report\SharedReports')->findBy(array('mentorUserId' => $mentor->getId(), 'userId' => $user->getId(), 'hasAccepted' => true));
+        foreach ($reports as $report)
+        {
+            $this->manager->remove($report);
+        }
+        $this->manager->flush();
+    }
+
     /**
      * Returns an unique code that is used to determine which implementation
      * of this interface should be used for the ajax call
@@ -72,7 +142,7 @@ class SharedReportsAjaxService implements AjaxInterface
      */
     public function getSubscribedMethods()
     {
-        return array('acceptMentorRequest', 'declineMentorRequest');
+        return array('acceptMentorRequest', 'declineMentorRequest', 'getAllReports', 'saveReportChanges', 'removeReport', 'removeAllReports');
     }
 
     private function getValidSharedReportById($id)

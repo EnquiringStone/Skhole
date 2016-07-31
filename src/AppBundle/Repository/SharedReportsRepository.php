@@ -11,6 +11,7 @@ namespace AppBundle\Repository;
 
 use AppBundle\Interfaces\PageControlsInterface;
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Query\Expr\Join;
 
 class SharedReportsRepository extends EntityRepository implements PageControlsInterface
 {
@@ -26,6 +27,19 @@ class SharedReportsRepository extends EntityRepository implements PageControlsIn
             $i++;
         }
         return $query->getQuery()->getSingleScalarResult();
+    }
+
+    public function getAllAcceptedUsersByMentorId($mentorId)
+    {
+        return $this->getEntityManager()->createQueryBuilder()
+            ->from('AppBundle:User', 'u')
+            ->select('u')
+            ->distinct(true)
+            ->innerJoin('AppBundle\Entity\Report\SharedReports', 'sr', Join::WITH, 'sr.userId = u.id')
+            ->where('sr.mentorUserId = :mentorId')
+            ->andWhere('sr.hasAccepted = 1')
+            ->setParameter('mentorId', $mentorId)
+            ->getQuery()->getResult();
     }
 
     /**

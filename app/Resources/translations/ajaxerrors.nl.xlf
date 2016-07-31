@@ -306,6 +306,10 @@
                 <source>course.shared.reports.decline.already.accepted</source>
                 <target>De begeleidverzoek kan niet worden geweigerd omdat deze al geaccepteerd is</target>
             </trans-unit>
+            <trans-unit id="77">
+                <source>course.shared.reports.nothing.found</source>
+                <target>Voor de opgegeven gebruiker kunnen geen rapporten worden gevonden die gedeeld zijn met jou</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

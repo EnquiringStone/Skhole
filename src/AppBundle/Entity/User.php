@@ -12,7 +12,7 @@ use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  * @ORM\Table(name="study_livre_user")
  */
 class User extends BaseUser
@@ -103,6 +103,36 @@ class User extends BaseUser
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Education\Educations", mappedBy="user")
      */
     private $education;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Report\SharedReports", mappedBy="user")
+     */
+    private $sharedReports;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->sharedReports = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function getStatisticsByMentor($mentorId)
+    {
+        $total = 0;
+        $revised = 0;
+        $rated = 0;
+
+        foreach ($this->sharedReports as $report)
+        {
+            if($report->getHasAccepted() && $report->getMentorUserId() == $mentorId)
+            {
+                $total ++;
+                if($report->getHasRevised()) $revised ++;
+                if($report->getRating() != null) $rated ++;
+            }
+        }
+
+        return array('total' => $total, 'revised' => $revised, 'rated' => $rated);
+    }
 
     /**
      * Set customEmail
@@ -486,5 +516,39 @@ class User extends BaseUser
     public function getEducation()
     {
         return $this->education;
+    }
+
+    /**
+     * Add sharedReport
+     *
+     * @param \AppBundle\Entity\Report\SharedReports $sharedReport
+     *
+     * @return User
+     */
+    public function addSharedReport(\AppBundle\Entity\Report\SharedReports $sharedReport)
+    {
+        $this->sharedReports[] = $sharedReport;
+
+        return $this;
+    }
+
+    /**
+     * Remove sharedReport
+     *
+     * @param \AppBundle\Entity\Report\SharedReports $sharedReport
+     */
+    public function removeSharedReport(\AppBundle\Entity\Report\SharedReports $sharedReport)
+    {
+        $this->sharedReports->removeElement($sharedReport);
+    }
+
+    /**
+     * Get sharedReports
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSharedReports()
+    {
+        return $this->sharedReports;
     }
 }

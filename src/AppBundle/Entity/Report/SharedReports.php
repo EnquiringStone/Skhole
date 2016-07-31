@@ -64,7 +64,7 @@ class SharedReports
     protected $rating;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="sharedReports")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
