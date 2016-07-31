@@ -18,6 +18,7 @@ class UserRepository extends EntityRepository implements PageControlsInterface
     {
         return $this->createQueryBuilder('user')
             ->select('user')
+            ->distinct(true)
             ->innerJoin('user.sharedReports', 'report')
             ->where('report.hasAccepted = 1')
             ->andWhere('report.mentorUserId = :mentorId')

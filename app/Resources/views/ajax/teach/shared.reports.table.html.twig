@@ -1,7 +1,8 @@
 {% block sharedReportsTable %}
-    <h4><b>{% trans %}Cursusrapporten lijst{% endtrans %}</b></h4>
-    <table class="table table-hover">
-        <thead>
+    <div class="page-controls" data-default-search-attributes="hasAccepted,1;userId,{{ userId }}" data-view="" data-entity="Report\SharedReports" data-context="SELF" data-url="{{ url('app_home_ajax_page') }}" data-pagination-name="{% trans %}Rapporten{% endtrans %}">
+        <h4><b>{% trans %}Cursusrapporten lijst{% endtrans %}</b></h4>
+        <table class="table table-hover">
+            <thead>
             <tr>
                 <th>{% trans %}Cursusnaam{% endtrans %}</th>
                 <th>{% trans %}PDF{% endtrans %}</th>
@@ -9,32 +10,16 @@
                 <th>{% trans %}Nagekeken{% endtrans %}</th>
                 <th></th>
             </tr>
-        </thead>
-        <tbody>
-            {% for report in reports %}
-                <tr data-report-id="{{ report.id }}">
-                    <td>
-                        <a href="{{ path('app_learn_study_course_page', {'courseId': report.report.course.id}) }}">{{ report.report.course.name }}</a>
-                        <span class="pull-right text-muted small">
-                            <em>{{ report.insertDateTime|time_diff }}</em>
-                        </span>
-                    </td>
-                    <td>
-                        <a href="#{#TODO Pdf generation#}">{% trans %}PDF{% endtrans %}</a>
-                    </td>
-                    <td>
-                        <div class="starrr clickable" data-difficulty="{{ report.rating }}"></div>
-                    </td>
-                    <td>
-                        <input type="checkbox" {% if report.hasRevised %}checked{% endif %}>
-                    </td>
-                    <td>
-                        <span class="glyphicon glyphicon-floppy-disk text-primary clickable save-report-changes" aria-hidden="true"></span>
-                        <span class="glyphicon glyphicon-trash pull-right clickable" data-target="#removeReportModal{{ loop.index }}" data-toggle="modal" aria-hidden="true"></span>
-                    </td>
-                </tr>
-                {% include ':modal/teach:remove.report.modal.html.twig' with {'report': report, 'modalId': 'removeReportModal'~loop.index} %}
-            {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody class="content-field">
+                {% for report in reports %}
+                    {% include ':ajax/teach:shared.reports.table.row.html.twig' with {'report': report, 'index': loop.index} %}
+                    {% include ':modal/teach:remove.report.modal.html.twig' with {'report': report, 'modalId': 'removeReportModal'~loop.index} %}
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="pagination-field">
+            {% include ':elements:pagination.html.twig' with {'maxEntities': totalSharedReports, 'limit': standard_query_limit, 'offset': 0, 'maxPages': standard_pagination_max, 'pageName': 'Rapporten'|trans, 'entity': 'Report\\SharedReports'} %}
+        </div>
+    </div>
 {% endblock %}

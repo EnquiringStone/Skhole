@@ -23,6 +23,9 @@ function goToUrl(url) {
 function refreshPage(caller, resetPagination, resetSort, customFunction) {
     var base = $($(caller).parents('.page-controls'));
 
+    if(base.length > 1)
+        base = $(base[0]); //Always get the nearest one if there are multiple
+
     var entity = base.data('entity');
     var url = base.data('url');
     var context = base.data('context');

@@ -47,7 +47,12 @@ class SharedReportsTransformer implements TransformerInterface
         }
         elseif (ContextEnum::matchValueWithGivenEnum(ContextEnum::class, ContextEnum::SELF_CONTEXT, $context))
         {
-
+            foreach ($entities as $entity)
+            {
+                $html .= $this->environment->render(':ajax/teach:shared.reports.table.row.html.twig', array('report' => $entity, 'index' => $index));
+                $html .= $this->environment->render(':modal/teach:remove.report.modal.html.twig', array('report' => $entity, 'modalId' => 'removeReportModal'.$index));
+                $index ++;
+            }
         }
 
         return $html;

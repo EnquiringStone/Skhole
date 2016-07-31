@@ -310,6 +310,10 @@
                 <source>course.shared.reports.nothing.found</source>
                 <target>Voor de opgegeven gebruiker kunnen geen rapporten worden gevonden die gedeeld zijn met jou</target>
             </trans-unit>
+            <trans-unit id="78">
+                <source>course.shared.reports.not.accepted</source>
+                <target>Het opgegeven rapport is nog niet geaccepteerd door jou. Accepteer deze eerst voordat je veranderingen kunt doorvoeren</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

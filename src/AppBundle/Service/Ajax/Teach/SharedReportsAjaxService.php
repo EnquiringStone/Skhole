@@ -65,10 +65,18 @@ class SharedReportsAjaxService implements AjaxInterface
         $user = $this->manager->getRepository('AppBundle:User')->find($args['userId']);
         if($user == null) throw new AccessDeniedException();
 
-        $reports = $this->manager->getRepository('AppBundle:Report\SharedReports')->findBy(array('userId' => $user->getId(), 'mentorUserId' => $mentor->getId(), 'hasAccepted' => true));
+        $criteria = array('userId' => $user->getId(), 'mentorUserId' => $mentor->getId(), 'hasAccepted' => true);
+        $repo = $this->manager->getRepository('AppBundle:Report\SharedReports');
+
+        $reports = $repo->findBy(
+            $criteria,
+            array('id' => 'DESC'),
+            10,
+            0);
         if(sizeof($reports) <= 0) throw new FrontEndException('course.shared.reports.nothing.found', 'ajaxerrors');
 
-        $html = $this->environment->render(':ajax/teach:shared.reports.table.html.twig', array('reports' => $reports));
+        $html = $this->environment->render(':ajax/teach:shared.reports.table.html.twig',
+            array('reports' => $reports, 'totalSharedReports' => $repo->getCountByCriteria($criteria), 'userId' => $user->getId()));
 
         return array('html' => $html);
     }
@@ -76,6 +84,8 @@ class SharedReportsAjaxService implements AjaxInterface
     public function saveReportChanges($args)
     {
         $report = $this->getValidSharedReportById($args['reportId']);
+
+        if(!$report->getHasAccepted()) throw new FrontEndException('course.shared.reports.not.accepted', 'ajaxerrors');
 
         if(array_key_exists('rating', $args) && $args['rating'] != '')
         {
@@ -93,6 +103,7 @@ class SharedReportsAjaxService implements AjaxInterface
     public function removeReport($args)
     {
         $report = $this->getValidSharedReportById($args['id']);
+        if(!$report->getHasAccepted()) throw new FrontEndException('course.shared.reports.not.accepted', 'ajaxerrors');
         $user = $report->getUser();
         $mentor = $this->authorizationService->getAuthorizedUserOrThrowException();
 
@@ -119,6 +130,7 @@ class SharedReportsAjaxService implements AjaxInterface
         $reports = $this->manager->getRepository('AppBundle:Report\SharedReports')->findBy(array('mentorUserId' => $mentor->getId(), 'userId' => $user->getId(), 'hasAccepted' => true));
         foreach ($reports as $report)
         {
+            if(!$report->getHasAccepted()) throw new FrontEndException('course.shared.reports.not.accepted', 'ajaxerrors');
             $this->manager->remove($report);
         }
         $this->manager->flush();
