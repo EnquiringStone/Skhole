@@ -1,0 +1,46 @@
+{% block reportPagination %}
+    {% set limit = 1 %}
+    {% set maxEntities = pages|length + 3 %}
+    {% set maxPages = 5 %}
+
+    {% set currentOffset = offset %}
+    {% set totalPages = (maxEntities/limit)|round(0, 'ceil') %}
+    {% set currentPage = (offset/limit)|round(0, 'floor') + 1 %}
+    {% set currentLocation = maxPages - 1 %}
+    {% set leftPages = (currentLocation/2)|round(0, 'floor') %}
+    {% set rightPages = (currentLocation/2)|round(0, 'ceil') %}
+    {% set startPage = currentPage - leftPages %}
+
+    {% if currentPage >= totalPages - rightPages %}
+        {% set startPage = totalPages - maxPages %}
+    {% endif %}
+    {% if startPage <= 0 %}
+        {% set startPage = 1 %}
+    {% endif %}
+
+    {% set renderPages = startPage + maxPages - 1%}
+    {% if renderPages > totalPages %}
+        {% set renderPages = totalPages %}
+    {% endif %}
+    {% if renderPages <= 0 %}
+        {% set renderPages = 1 %}
+    {% endif %}
+
+    <div class="centrum">
+        <ul class="pagination">
+            <li class="disabled"><a class="unclickable"><b>{% trans %}Pagina's{% endtrans %}</b></a></li>
+            {% set offset = 0 %}
+            {% for i in startPage..renderPages %}
+                {% if currentPage == i %}
+                    <li class="active clickable" data-offset="{{ offset + (limit * (i - 1)) }}" data-page="{{ i }}"><a>{{ i }} <span class="sr-only"></span></a></li>
+                    {% set currentOffset = offset + (limit * (i - 1)) %}
+                {% else %}
+                    <li class="clickable" data-offset="{{ offset + (limit * (i - 1)) }}" data-page="{{ i }}"><a>{{ i }} <span class="sr-only"></span></a></li>
+                {% endif %}
+            {% endfor %}
+            {% if currentPage < totalPages %}
+                <li class="clickable" data-offset="{{ currentOffset + limit }}" data-page="{{ currentPage + 1 }}"><a>{% trans %}Volgende{% endtrans %}</a></li>
+            {% endif %}
+        </ul>
+    </div>
+{% endblock %}

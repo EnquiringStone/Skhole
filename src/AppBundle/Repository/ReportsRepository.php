@@ -14,6 +14,21 @@ use Doctrine\ORM\EntityRepository;
 class ReportsRepository extends EntityRepository implements PageControlsInterface
 {
 
+    public function getAllPagesByReport($reportId)
+    {
+        return $this->getEntityManager()->createQueryBuilder()
+            ->select('page.title, page.id, page.pageOrder')
+            ->from('AppBundle:Report\Reports', 'report')
+            ->innerJoin('report.answerResults', 'answerResults')
+            ->innerJoin('answerResults.question', 'question')
+            ->innerJoin('question.coursePage', 'page')
+            ->distinct(true)
+            ->where('report.id = :reportId')
+            ->setParameter('reportId', $reportId)
+            ->orderBy('page.pageOrder', 'ASC')
+            ->getQuery()->getResult();
+    }
+
     public function getCountByCriteria($criteria)
     {
         $query = $this->createQueryBuilder('c');

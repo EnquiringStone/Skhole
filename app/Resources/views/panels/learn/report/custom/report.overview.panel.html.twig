@@ -1,0 +1,16 @@
+{% extends 'panels/panel.base.html.twig' %}
+{% block panelBaseTitle %}
+    <b>{% trans %}Bekijk rapport{% endtrans %}</b>
+{% endblock %}
+{% block panelBaseContents %}
+    <div class="panel-body">
+        <h2 class="text-primary">
+            <samp>{% trans %}Inhoudsopgave{% endtrans %}</samp>
+        </h2>
+        {% for page in pages %}
+            <a href="{{ path('app_learn_course_report_details_page', {'id': report.id, 'pageId': page.id}) }}">
+                {% trans %}Pagina{% endtrans %} {{ page.pageOrder }}: {{ page.title }}
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'panels/panel.base.html.twig' %}
+{% block panelBaseTitle %}
+    <b>{% trans %}Bekijk rapport{% endtrans %}</b>
+{% endblock %}
+{% block panelBaseContents %}
+    <div class="panel-body">
+        <div class="centrum">
+            <img src="{{ asset('images/logo-schoolbook.png') }}" class="img-rounded">
+            <h1 class="text-primary">
+                <samp>{% trans %}Cursusrapport{% endtrans %}</samp>
+            </h1>
+            <h4 class="text-muted">{{ report.course.name }}</h4>
+        </div>
+        <hr />
+        <h4>
+            {% if report.user is not null %}
+                <img src="{% if report.user.picture is not null %}{{ report.user.picture }}{% else %}{{ asset('images/gebruiker.png') }}{% endif %}" class="img-rounded teacher-row-picture">
+                {{ report.user.firstName|capitalize }} {{ report.user.surname|capitalize }}
+            {% else %}
+                <img src="{{ asset('images/gebruiker.png') }}" class="img-rounded teacher-row-picture">
+                {% trans %}Anoniem{% endtrans %}
+            {% endif %}
+        </h4>
+        <button class="btn btn-default btn-xs unclickable" type="button">
+            <b>{% trans %}Cursus afgerond{% endtrans %}:</b>
+            {{ report.finishedDateTime|date('d-m-Y') }}
+        </button>
+        <button class="btn btn-default btn-xs unclickable" type="button">
+            <b class="text-primary">{% trans %}Aantal juiste meerkeuze antwoorden{% endtrans %}:</b>
+            {{ report.getAverageCorrectMultipleChoice|number_format(0) }}%
+        </button>
+        {% for shared in report.sharedReports if shared.hasAccepted %}
+            <button class="btn btn-default btn-xs unclickable" type="button">
+                <b>{% trans %}Gedeeld met{% endtrans %}:</b>
+                {{ shared.mentor.realName }}
+            </button>
+        {% endfor %}
+    </div>
+{% endblock %}

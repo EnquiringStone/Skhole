@@ -20,6 +20,7 @@ $(document).ready(function() {
             button.hide();
             $('.add-normal-review').hide();
         }, function (error) {
+            hasChanged = false;
             showAjaxErrorModal(error['responseJSON']['html']);
         });
     });
@@ -32,6 +33,7 @@ $(document).ready(function() {
             $('.add-normal-review').hide();
             $('.add-quick-course-review').hide();
         }, function (error) {
+            hasChanged = false;
             $('.modal').modal('hide');
             showAjaxErrorModal(error['responseJSON']['html']);
         })
@@ -45,6 +47,7 @@ $(document).ready(function() {
             $('.add-normal-review').hide();
             $('.add-quick-course-review').hide();
         }, function (error) {
+            hasChanged = false;
             $('.modal').modal('hide');
             showAjaxErrorModal(error['responseJSON']['html']);
         })
@@ -58,17 +61,17 @@ $(document).ready(function() {
         });
     });
 
-    body.on('click', 'a', function (event) {
-        event.preventDefault();
-        var destinationUrl = $(this).attr('href');
-        if(hasChanged == false) {
-            goToUrl(destinationUrl);
-            return;
-        }
-        saveAnswers(function () {
-            goToUrl(destinationUrl);
-        });
-    });
+    // body.on('click', 'a', function (event) {
+    //     event.preventDefault();
+    //     var destinationUrl = $(this).attr('href');
+    //     if(hasChanged == false) {
+    //         goToUrl(destinationUrl);
+    //         return;
+    //     }
+    //     saveAnswers(function () {
+    //         goToUrl(destinationUrl);
+    //     });
+    // });
 
     body.on('change', 'textarea', function () {
         hasChanged = true;
@@ -90,6 +93,7 @@ $(document).ready(function() {
         sendAjaxCall(study.data('url'), data, function () {
             goToUrl(goUrl);
         }, function (error) {
+            hasChanged = false;
             showAjaxErrorModal(error['responseJSON']['html']);
         });
     });

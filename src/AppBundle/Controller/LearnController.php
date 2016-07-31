@@ -14,6 +14,7 @@ use AppBundle\Enum\CoursePageTypeEnum;
 use AppBundle\Enum\CourseStateEnum;
 use AppBundle\Enum\PageTypeEnum;
 use AppBundle\Util\ValidatorHelper;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Request;
@@ -234,6 +235,74 @@ class LearnController extends Controller
             'limit' => $limit, 'offset' => 0,
             'maxPages' => $this->getParameter('standard_pagination_max'),
             'totalReports' => $totalPages));
+    }
+
+    /**
+     * @Route("/{_locale}/learn/course-reports/{id}/", name="app_learn_course_report_details")
+     */
+    public function courseReportDetailsAction($id)
+    {
+        return $this->courseReportDetailsCustomAction($id, 'front');
+    }
+
+    /**
+     * @Route("/{_locale}/learn/course-reports/{id}/{pageId}", name="app_learn_course_report_details_page")
+     */
+    public function courseReportDetailPageAction($id, $pageId)
+    {
+        $report = $this->validateReportDetails($id);
+        $page = $this->getDoctrine()->getRepository('AppBundle:Course\CoursePages')->find($pageId);
+        if($page == null || $page->getCourseId() != $report->getCourseId() || $page->getPageType()->getType() != 'exercise')
+            throw new AccessDeniedException();
+
+        $questions = $this->getDoctrine()->getRepository('AppBundle:Report\AnswerResults')->getAllAnsweredQuestionByCoursePage($report->getId(), $page->getId());
+
+        print_r($questions[0]->getQuestion()->getQuestionOrder()); exit;
+    }
+
+    /**
+     * @Route("/{_locale}/learn/course-reports/{id}/{name}", name="app_learn_course_report_details_custom")
+     */
+    public function courseReportDetailsCustomAction($id, $name)
+    {
+        $validNames = array('front', 'overview', 'end');
+        if(!in_array($name, $validNames)) throw new AccessDeniedException();
+        $report = $this->validateReportDetails($id);
+
+        $pages = $this->getDoctrine()->getRepository('AppBundle:Report\Reports')->getAllPagesByReport($report->getId());
+
+        $criteria = array('report' => $report, 'pages' => $pages, 'name' => $name);
+        if($name == 'front')
+            $criteria['offset'] = 0;
+        elseif ($name == 'overview')
+            $criteria['offset'] = 1;
+        elseif ($name == 'end')
+            $criteria['offset'] = sizeof($pages) + 2;
+
+        return $this->render(':learn:course.report.details.html.twig', $criteria);
+    }
+
+    /**
+     * @param $id
+     * @return \AppBundle\Entity\Report\Reports
+     */
+    private function validateReportDetails($id)
+    {
+        $courseReport = $this->getDoctrine()->getRepository('AppBundle:Report\Reports')->find($id);
+        if($courseReport != null)
+        {
+            if($this->isGranted('ROLE_USER'))
+            {
+                if($courseReport->getUserId() != $this->getUser()->getId()) throw new AccessDeniedException();
+            }
+            else
+            {
+                if($courseReport->getSessionId() != $this->get('session')->getId()) throw new AccessDeniedException();
+            }
+
+            return $courseReport;
+        }
+        throw new AccessDeniedException();
     }
 
     /**

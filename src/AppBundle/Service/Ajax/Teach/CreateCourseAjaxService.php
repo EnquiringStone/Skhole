@@ -606,6 +606,7 @@ class CreateCourseAjaxService implements AjaxInterface
         if($entity == null) throw new EntityNotFoundException();
         $this->hasEditRights($entity);
         unset($args['id']);
+        if($entity->getState()->getStateCode() == 'OK') throw new FrontEndException('course.create.is.published.create.exercise', 'ajaxerrors');
 
         $pageRepo = $this->manager->getRepository('AppBundle:Course\CoursePages');
         $questionRepo = $this->manager->getRepository('AppBundle:Course\CourseQuestions');
@@ -701,6 +702,8 @@ class CreateCourseAjaxService implements AjaxInterface
         $this->hasEditRights($entity);
         unset($args['id']);
 
+        if($entity->getState()->getStateCode() == 'OK') throw new FrontEndException('course.create.is.published.create.exercise', 'ajaxerrors');
+
         $this->validator->validate($args, 'CourseExercise');
 
         $page = new CoursePages();
@@ -777,6 +780,7 @@ class CreateCourseAjaxService implements AjaxInterface
         if($entity == null) throw new EntityNotFoundException();
         $this->hasEditRights($entity);
         unset($args['id']);
+        if($entity->getState()->getStateCode() == 'OK') throw new FrontEndException('course.create.is.published.create.exercise', 'ajaxerrors');
 
         $pageRepo = $this->manager->getRepository('AppBundle:Course\CoursePages');
         $questionRepo = $this->manager->getRepository('AppBundle:Course\CourseQuestions');

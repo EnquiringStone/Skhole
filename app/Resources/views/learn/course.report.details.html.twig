@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}{% trans %}Cursusrapporten{% endtrans %}{% endblock %}
+{% block body %}
+    {% if name is defined and name != '' %}
+        {{ name }}
+        {% include ':panels/learn/report/custom:report.'~name~'.panel.html.twig' %}
+    {% else %}
+
+    {% endif %}
+    {% include ':panels/learn/report/custom:report.pagination.html.twig' with {'pages': pages, 'offset': offset} %}
+{% endblock %}
+
+{% block prescripts %}
+{% endblock %}
+
+{% set menu = 'learn' %}
+{% set subMenu = 'courseReports' %}

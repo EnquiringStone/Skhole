@@ -24,6 +24,7 @@ class AnswerResultsRepository extends EntityRepository
             ->andWhere('r.id = :reportId')
             ->setParameter('pageId', $pageId)
             ->setParameter('reportId', $reportId)
+            ->orderBy('q.questionOrder', 'ASC')
             ->getQuery()->getResult();
     }
 }

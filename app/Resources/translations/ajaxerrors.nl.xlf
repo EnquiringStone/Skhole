@@ -314,6 +314,10 @@
                 <source>course.shared.reports.not.accepted</source>
                 <target>Het opgegeven rapport is nog niet geaccepteerd door jou. Accepteer deze eerst voordat je veranderingen kunt doorvoeren</target>
             </trans-unit>
+            <trans-unit id="79">
+                <source>course.create.is.published.create.exercise</source>
+                <target>Het toevoegen van opdrachten is niet mogelijk voor een gepubliseerde cursus</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

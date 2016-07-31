@@ -1,0 +1,12 @@
+{% extends 'panels/panel.base.html.twig' %}
+{% block panelBaseTitle %}
+    <b>{% trans %}Bekijk rapport{% endtrans %}</b>
+{% endblock %}
+{% block panelBaseContents %}
+    <div class="panel-body">
+        <h1 class="text-primary">
+            <samp>{% trans %}Eind cursusrapport{% endtrans %}</samp>
+        </h1>
+        <h4>{{ report.course.name }}</h4>
+    </div>
+{% endblock %}

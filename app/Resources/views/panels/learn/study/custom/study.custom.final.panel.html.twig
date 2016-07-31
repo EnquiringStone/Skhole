@@ -9,9 +9,6 @@
             <h1>
                 <b>{% trans %}Einde van de cursus{% endtrans %}</b>
             </h1>
-            {#{% if is_granted('ROLE_USER') %}#}
-                {#<p class="lead">{% trans %}Bekijk je resultaten in het cursusrapport{% endtrans %} ( {% trans %}Learn{% endtrans %} → {% trans %}Cursusmandje{% endtrans %} → <a href="{{ path('app_learn_course_reports') }}">{% trans %}Cursusrapporten{% endtrans %}</a> )</p>#}
-            {#{% endif %}#}
             <button type="button" class="btn btn-default btn-sm check-report-completion" data-url="{{ path('app_learn_course_reports') }}">{% trans %}Bekijk cursusrapport{% endtrans %}</button>{#TODO course reports#}
         </div>
         <hr />
