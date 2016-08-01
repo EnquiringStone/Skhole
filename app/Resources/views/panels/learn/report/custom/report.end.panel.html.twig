@@ -4,9 +4,13 @@
 {% endblock %}
 {% block panelBaseContents %}
     <div class="panel-body">
-        <h1 class="text-primary">
-            <samp>{% trans %}Eind cursusrapport{% endtrans %}</samp>
-        </h1>
-        <h4>{{ report.course.name }}</h4>
+        <div class="centrum">
+            <br>
+            <h1 class="text-primary">
+                <samp>{% trans %}Eind cursusrapport{% endtrans %}</samp>
+            </h1>
+            <h4>{{ report.course.name }}</h4>
+            <hr />
+        </div>
     </div>
 {% endblock %}

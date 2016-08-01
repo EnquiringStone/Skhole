@@ -255,13 +255,16 @@ class LearnController extends Controller
         if($page == null || $page->getCourseId() != $report->getCourseId() || $page->getPageType()->getType() != 'exercise')
             throw new AccessDeniedException();
 
+        $pages = $this->getDoctrine()->getRepository('AppBundle:Report\Reports')->getAllPagesByReport($report->getId());
         $questions = $this->getDoctrine()->getRepository('AppBundle:Report\AnswerResults')->getAllAnsweredQuestionByCoursePage($report->getId(), $page->getId());
 
-        print_r($questions[0]->getQuestion()->getQuestionOrder()); exit;
+        $criteria = array('report' => $report, 'pages' => $pages, 'page' => $page, 'questions' => $questions, 'offset' => $page->getPageOrder() - 1);
+
+        return $this->render(':learn:course.report.details.html.twig', $criteria);
     }
 
     /**
-     * @Route("/{_locale}/learn/course-reports/{id}/{name}", name="app_learn_course_report_details_custom")
+     * @Route("/{_locale}/learn/course-reports/{id}/custom/{name}", name="app_learn_course_report_details_custom")
      */
     public function courseReportDetailsCustomAction($id, $name)
     {
@@ -271,13 +274,8 @@ class LearnController extends Controller
 
         $pages = $this->getDoctrine()->getRepository('AppBundle:Report\Reports')->getAllPagesByReport($report->getId());
 
-        $criteria = array('report' => $report, 'pages' => $pages, 'name' => $name);
-        if($name == 'front')
-            $criteria['offset'] = 0;
-        elseif ($name == 'overview')
-            $criteria['offset'] = 1;
-        elseif ($name == 'end')
-            $criteria['offset'] = sizeof($pages) + 2;
+        $criteria = array('report' => $report, 'pages' => $pages, 'name' => $name, 'offset' => 0);
+        if($name == 'end') $criteria['offset'] = sizeof($pages);
 
         return $this->render(':learn:course.report.details.html.twig', $criteria);
     }

@@ -62,6 +62,29 @@ class AnswerResults
         $this->multipleChoiceAnswers = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+    public function isCorrect()
+    {
+        if($this->question->getQuestionType()->getType() != 'multiple-choice') return false;
+
+        $allAnswers = $this->question->getCourseAnswers();
+        $totalNeededToBeCorrect = 0;
+        foreach ($allAnswers as $answer)
+        {
+            if($answer->getIsCorrect()) $totalNeededToBeCorrect ++;
+        }
+        foreach ($this->multipleChoiceAnswers as $answer)
+        {
+            if(!$answer->getAnswer()->getIsCorrect())
+            {
+                $totalNeededToBeCorrect = -1;
+                break;
+            }
+            if($answer->getAnswer()->getIsCorrect()) $totalNeededToBeCorrect--;
+        }
+
+        return $totalNeededToBeCorrect == 0;
+    }
+
     /**
      * Get id
      *

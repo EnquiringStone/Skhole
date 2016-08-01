@@ -11,6 +11,7 @@
             <a href="{{ path('app_learn_course_report_details_page', {'id': report.id, 'pageId': page.id}) }}">
                 {% trans %}Pagina{% endtrans %} {{ page.pageOrder }}: {{ page.title }}
             </a>
+            <br>
         {% endfor %}
     </div>
 {% endblock %}

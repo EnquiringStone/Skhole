@@ -11,7 +11,7 @@
             <div class="media">
                 <div class="pull-right">
                     <div class="btn-group-vertical">
-                        <button class="btn btn-primary btn-sm" type="button">{% trans %}Bekijk resultaat{% endtrans %}</button>{#TODO course report view#}
+                        <a href="{{ path('app_learn_course_report_details', {'id': report.id}) }}" class="btn btn-primary btn-sm" type="button">{% trans %}Bekijk resultaat{% endtrans %}</a>
                         <button class="btn btn-default btn-sm" data-target="#shareReportModal{{ index }}" data-toggle="modal" type="button">{% trans %}Deel rapport{% endtrans %}</button>
                         <button class="btn btn-default btn-sm" data-target="#removeReportModal{{ index }}" data-toggle="modal" type="button">
                             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
