@@ -29,11 +29,13 @@
             <b class="text-primary">{% trans %}Aantal juiste meerkeuze antwoorden{% endtrans %}:</b>
             {{ report.getAverageCorrectMultipleChoice|number_format(0) }}%
         </button>
-        {% for shared in report.sharedReports if shared.hasAccepted %}
-            <button class="btn btn-default btn-xs unclickable" type="button">
-                <b>{% trans %}Gedeeld met{% endtrans %}:</b>
-                {{ shared.mentor.realName }}
-            </button>
-        {% endfor %}
+        {% if viewType == 'learn' %}
+            {% for shared in report.sharedReports if shared.hasAccepted %}
+                <button class="btn btn-default btn-xs unclickable" type="button">
+                    <b>{% trans %}Gedeeld met{% endtrans %}:</b>
+                    {{ shared.mentor.realName }}
+                </button>
+            {% endfor %}
+        {% endif %}
     </div>
 {% endblock %}

@@ -3,11 +3,11 @@
         <td>
             <a href="{{ path('app_learn_study_course_page', {'courseId': report.report.course.id}) }}">{{ report.report.course.name }}</a>
             <span class="pull-right text-muted small">
-                            <em>{{ report.insertDateTime|time_diff }}</em>
-                        </span>
+                <em>{{ report.insertDateTime|time_diff }}</em>
+            </span>
         </td>
         <td>
-            <a href="#{#TODO Pdf generation#}">{% trans %}PDF{% endtrans %}</a>
+            <a href="{{ path('app_teach_show_report', {'id': report.id}) }}">{% trans %}Rapport{% endtrans %}</a>
         </td>
         <td>
             <div class="starrr clickable" data-difficulty="{{ report.rating }}"></div>
