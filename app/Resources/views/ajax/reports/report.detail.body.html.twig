@@ -26,8 +26,9 @@
                     <span>
                         {% trans %}Dit rapport hoort bij{% endtrans %}:
                         <a href="#" data-target="#courseCardModal{{ index }}" data-toggle="modal">{{ report.course.name }}</a>.
-                        {% trans %}Je kunt alle vragen die bij deze cursus horen inzien, inclusief de door jouw gegeven antwoorden{% endtrans %}
-                        {#TODO download pdf#}
+                        {% trans %}Je kunt alle vragen die bij deze cursus horen inzien, inclusief de door jouw gegeven antwoorden{% endtrans %}.
+                        <br>
+                        {% trans %}Download{% endtrans %} <a target="_blank" href="{{ path('app_generate_report_pdf', {'reportId': report.id}) }}">{% trans %}pdf{% endtrans %}</a>
                     </span>
                     <br>
                     <button class="btn btn-default btn-xs unclickable" type="button">

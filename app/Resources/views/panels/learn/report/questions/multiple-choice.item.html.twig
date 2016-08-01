@@ -4,10 +4,14 @@
     {% set specifiedQuestions = '' %}
     <div class="thumbnail">
         <p>
-            <span class="glyphicon {% if isCorrect %}glyphicon-ok text-success{% else %} glyphicon-remove text-danger{% endif %}"
-                  data-placement="bottom" data-toggle="tooltip" aria-hidden="true"
-                  data-original-title="{% if isCorrect %}{% trans %}Goed beantwoord{% endtrans %}{% else %}{% trans %}Fout beantwoord{% endtrans %}{% endif %}"></span>
-            <b><samp>{% trans %}Vraag{% endtrans %}:</samp></b>
+            {% if pdfLayout %}
+                <img src="{% if isCorrect %}{{ asset('images/correctIcon.png') }}{% else %}{{ asset('images/wrong-answer.png') }}{% endif %}" style="width: 20px;">
+            {% else %}
+                <span class="glyphicon {% if isCorrect %}glyphicon-ok text-success{% else %} glyphicon-remove text-danger{% endif %}"
+                      data-placement="bottom" data-toggle="tooltip" aria-hidden="true"
+                      data-original-title="{% if isCorrect %}{% trans %}Goed beantwoord{% endtrans %}{% else %}{% trans %}Fout beantwoord{% endtrans %}{% endif %}"></span>
+            {% endif %}
+            <b><samp>{% trans %}Vraag{% endtrans %} {% if question.question.questionOrder <= 9 %}0{% endif %}{{ question.question.questionOrder }}:</samp></b>
             {{ question.question.question }}
         </p>
         <p>

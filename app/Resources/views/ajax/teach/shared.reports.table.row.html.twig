@@ -10,6 +10,9 @@
             <a href="{{ path('app_teach_show_report', {'id': report.id}) }}">{% trans %}Rapport{% endtrans %}</a>
         </td>
         <td>
+            <a href="{{ path('app_secure_generate_student_pdf', {'sharedReportId': report.id}) }}" target="_blank">{% trans %}Download{% endtrans %}</a>
+        </td>
+        <td>
             <div class="starrr clickable" data-difficulty="{{ report.rating }}"></div>
         </td>
         <td>
