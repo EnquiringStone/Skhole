@@ -159,7 +159,6 @@ function getSearchValues(base) {
     return input;
 }
 
-//TODO use this to show the error message from the ajax call
 function showAjaxErrorModal(errorModalHtml) {
     $('.modal').modal('hide');
     var modalDiv = $('.ajax-error-modal');
