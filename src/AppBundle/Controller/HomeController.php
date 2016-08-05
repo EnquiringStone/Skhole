@@ -124,7 +124,7 @@ class HomeController extends Controller {
         $totalCourses = $repo->getCountByCriteria($criteria);
 
         if($totalCourses <= $amount)
-            return $repo->findAll();
+            return $repo->findBy($criteria);
 
         $offset = rand(0, $totalCourses - $amount);
 
