@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="skhole_user")
+ * @ORM\Table(name="study_livre_user")
  */
 class User extends BaseUser
 {
@@ -23,6 +23,11 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @ORM\Column(type="string", length=255, name="custom_email", nullable=true)
+     */
+    protected $customEmail;
 
     /**
      * @ORM\Column(name="facebook_id", type="string", length=255, nullable=true)
@@ -43,6 +48,90 @@ class User extends BaseUser
      * @ORM\Column(name="google_access_token", type="string", length=255, nullable=true)
      */
     protected $google_access_token;
+
+    /**
+     * @ORM\Column(name="first_name", type="text", length=16777215, nullable=true)
+     */
+    protected $firstName;
+
+    /**
+     * @ORM\Column(type="text", length=16777215, nullable=true)
+     */
+    protected $surname;
+
+    /**
+     * @ORM\Column(name="insert_date_time", type="datetime")
+     */
+    protected $insertDateTime;
+
+    /**
+     * @ORM\Column(name="date_of_birth", type="datetime", nullable=true)
+     */
+    protected $dateOfBirth;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $language;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $country;
+
+    /**
+     * @ORM\Column(type="string", name="real_name", length=255, nullable=true)
+     */
+    protected $realName;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $nickname;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $picture;
+
+    /**
+     * @ORM\Column(type="string", length=10, unique=true)
+     */
+    protected $mentorCode;
+
+    /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Education\Educations", mappedBy="user")
+     */
+    private $education;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Report\SharedReports", mappedBy="user")
+     */
+    private $sharedReports;
+
+    /**
+     * Set customEmail
+     *
+     * @param string $customEmail
+     *
+     * @return User
+     */
+    public function setCustomEmail($customEmail)
+    {
+        $this->customEmail = $customEmail;
+
+        return $this;
+    }
+
+    /**
+     * Get customEmail
+     *
+     * @return string
+     */
+    public function getCustomEmail()
+    {
+        return $this->customEmail;
+    }
 
     /**
      * Set facebookId
@@ -138,5 +227,269 @@ class User extends BaseUser
     public function getGoogleAccessToken()
     {
         return $this->google_access_token;
+    }
+
+    /**
+     * Set firstName
+     *
+     * @param string $firstName
+     *
+     * @return User
+     */
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    /**
+     * Get firstName
+     *
+     * @return string
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * Set surname
+     *
+     * @param string $surname
+     *
+     * @return User
+     */
+    public function setSurname($surname)
+    {
+        $this->surname = $surname;
+
+        return $this;
+    }
+
+    /**
+     * Get surname
+     *
+     * @return string
+     */
+    public function getSurname()
+    {
+        return $this->surname;
+    }
+
+    /**
+     * Set insertDateTime
+     *
+     * @param \DateTime $insertDateTime
+     *
+     * @return User
+     */
+    public function setInsertDateTime($insertDateTime)
+    {
+        $this->insertDateTime = $insertDateTime;
+
+        return $this;
+    }
+
+    /**
+     * Get insertDateTime
+     *
+     * @return \DateTime
+     */
+    public function getInsertDateTime()
+    {
+        return $this->insertDateTime;
+    }
+
+    /**
+     * Set dateOfBirth
+     *
+     * @param \DateTime $dateOfBirth
+     *
+     * @return User
+     */
+    public function setDateOfBirth($dateOfBirth)
+    {
+        $this->dateOfBirth = $dateOfBirth;
+
+        return $this;
+    }
+
+    /**
+     * Get dateOfBirth
+     *
+     * @return \DateTime
+     */
+    public function getDateOfBirth()
+    {
+        return $this->dateOfBirth;
+    }
+
+    /**
+     * Set language
+     *
+     * @param string $language
+     *
+     * @return User
+     */
+    public function setLanguage($language)
+    {
+        $this->language = $language;
+
+        return $this;
+    }
+
+    /**
+     * Get language
+     *
+     * @return string
+     */
+    public function getLanguage()
+    {
+        return $this->language;
+    }
+
+    /**
+     * Set country
+     *
+     * @param string $country
+     *
+     * @return User
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @return string
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * Set realName
+     *
+     * @param string $realName
+     *
+     * @return User
+     */
+    public function setRealName($realName)
+    {
+        $this->realName = $realName;
+
+        return $this;
+    }
+
+    /**
+     * Get realName
+     *
+     * @return string
+     */
+    public function getRealName()
+    {
+        return $this->realName;
+    }
+
+    /**
+     * Set nickname
+     *
+     * @param string $nickname
+     *
+     * @return User
+     */
+    public function setNickname($nickname)
+    {
+        $this->nickname = $nickname;
+
+        return $this;
+    }
+
+    /**
+     * Get nickname
+     *
+     * @return string
+     */
+    public function getNickname()
+    {
+        return $this->nickname;
+    }
+
+    /**
+     * Set picture
+     *
+     * @param string $picture
+     *
+     * @return User
+     */
+    public function setPicture($picture)
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    /**
+     * Get picture
+     *
+     * @return string
+     */
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+
+    /**
+     * Set mentorCode
+     *
+     * @param string $mentorCode
+     *
+     * @return User
+     */
+    public function setMentorCode($mentorCode)
+    {
+        $this->mentorCode = $mentorCode;
+
+        return $this;
+    }
+
+    /**
+     * Get mentorCode
+     *
+     * @return string
+     */
+    public function getMentorCode()
+    {
+        return $this->mentorCode;
+    }
+
+    /**
+     * Set education
+     *
+     * @param \AppBundle\Entity\Education\Educations $education
+     *
+     * @return User
+     */
+    public function setEducation(\AppBundle\Entity\Education\Educations $education = null)
+    {
+        $this->education = $education;
+
+        return $this;
+    }
+
+    /**
+     * Get education
+     *
+     * @return \AppBundle\Entity\Education\Educations
+     */
+    public function getEducation()
+    {
+        return $this->education;
     }
 }

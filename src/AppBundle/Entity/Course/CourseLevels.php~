@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(readOnly=true)
- * @ORM\Table(name="skhole_course_levels")
+ * @ORM\Table(name="course_levels")
  */
 class CourseLevels
 {
