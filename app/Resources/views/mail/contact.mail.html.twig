@@ -1,0 +1,17 @@
+{% block contactMail %}
+    {% if user is defined and user is not null %}
+        De gebruiker {{ user.realName }} met id {{ user.id }} heeft deze contactemail gestuurd.
+        <br>
+        {% if user.customEmail is not null %}
+            De email van deze gebruiker is: {{ user.customEmail }}
+            <br>
+        {% endif %}
+        <br>
+    {% endif %}
+    Onder de naam van {{ name }} probeert deze gebruiker contact op te nemen. Het bericht is als volgt:
+    <br>
+    <br>
+    {{ message|nl2br }}
+    <br>
+    <br>
+{% endblock %}

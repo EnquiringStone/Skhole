@@ -1,0 +1,32 @@
+{% extends 'panels/panel.base.html.twig' %}
+{% block panelBaseTitle %}
+    {% trans %}Cursus volgen{% endtrans %}
+{% endblock %}
+{% block panelBaseContents %}
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6">
+                <h4><b>{% trans %}Cursus volgen{% endtrans %}</b></h4>
+                <p>{% trans %}StudyLivre is een educatief platform waarop u kunt{% endtrans %}:</p>
+                <ol>
+                    <li>{% trans %}Kiezen hoe en wat u wilt studeren{% endtrans %};</li>
+                    <li>{% trans %}Leren waar en wanneer u dat uitkomt{% endtrans %};</li>
+                    <li>{% trans %}Deelnemen aan een leergroep - zodat een begeleider/docent u kan begeleiden{% endtrans %};</li>
+                </ol>
+                <p>{% trans %}Klik op onderstaande button voor meer informatie over het volgen van een cursus.{% endtrans %}</p>
+                <p>
+                    <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#studyIntroductionModal">
+                        <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                        {% trans %}Cursus volgen{% endtrans %}
+                    </button>
+                </p>
+            </div>
+            <div class="col-md-6">
+                <div class="embed-responsive embed-responsive-4by3">
+                    {#TODO Change url#}
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/AX7r61fyltc" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

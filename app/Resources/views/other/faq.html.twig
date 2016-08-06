@@ -1,8 +1,9 @@
 {% extends 'base.html.twig' %}
 {% block title %}{% trans %}Veel gestelde vragen{% endtrans %}{% endblock %}
 {% block body %}
-    <h1>{% trans %}Veel gestelde vragen{% endtrans %}</h1>
+    {% include ':panels/other:faq.panel.html.twig' %}
+    {% include ':panels/general:commercial.panel.html.twig' %}
 {% endblock %}
 
 {% set menu = 'more' %}
-{% set subMenu = '' %}
+{% set subMenu = 'questions' %}

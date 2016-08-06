@@ -102,9 +102,22 @@ class HomeController extends Controller {
     /**
      * @Route("/{_locale}/home/getting-started/", name="app_home_getting_started_page")
      */
-    public function gettingStartedAction(Request $request)
+    public function gettingStartedAction()
     {
-        return $this->render('getting.started.html.twig');
+        return $this->render(':home/getting-started:getting.started.html.twig');
+    }
+
+    /**
+     * @Route("/{_locale}/home/getting-started/{page}", name="app_home_getting_started_custom_page")
+     */
+    public function gettingStartedCustomAction($page)
+    {
+        $validPages = array('introduction', 'followCourse', 'createCourse', 'courseReport');
+
+        if(!in_array($page, $validPages))
+            throw new \Exception('Page does not exists');
+
+        return $this->render(':home/getting-started:getting.started.html.twig', array('subMenu' => $page));
     }
 
     /**

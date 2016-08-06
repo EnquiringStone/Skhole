@@ -1,8 +1,26 @@
 {% extends 'base.html.twig' %}
 {% block title %}{% trans %}Aan de slag{% endtrans %}{% endblock %}
 {% block body %}
-    <h1>{% trans %}Aan de slag{% endtrans %}</h1>
+    {% if subMenu == 'introduction' %}
+        {% include ':panels/getting-started:introduction.panel.html.twig' %}
+    {% elseif subMenu == 'createCourse' %}
+        {% include ':panels/getting-started:course.create.panel.html.twig' %}
+    {% elseif subMenu == 'followCourse' %}
+        {% include ':panels/getting-started:course.follow.panel.html.twig' %}
+    {% elseif subMenu == 'courseReport' %}
+        {% include ':panels/getting-started:course.report.panel.html.twig' %}
+    {% endif %}
+    {% include ':panels/general:commercial.panel.html.twig' %}
+{% endblock %}
+
+{% block modals %}
+    {% include ':modal/dashboard:study.introduction.modal.html.twig' with {'modalId' : 'studyIntroductionModal'} %}
+    {% include ':modal/dashboard:teach.introduction.modal.html.twig' with {'modalId' : 'teachIntroductionModal'} %}
+    {% include ':modal/dashboard:course.report.introduction.modal.html.twig' with {'modalId': 'courseReportIntroductionModal'} %}
+{% endblock %}
+
+{% block prescripts %}
+    <script src="{{ asset('js/dashboard/getting-started.js') }}"></script>
 {% endblock %}
 
 {% set menu = 'home' %}
-{% set subMenu = 'gettingStarted' %}

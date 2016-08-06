@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block title %}{% trans %}Juridisch{% endtrans %}{% endblock %}
+{% block body %}
+    {% include ':panels/other:contact.panel.html.twig' %}
+    {% include ':panels/general:commercial.panel.html.twig' %}
+{% endblock %}
+
+{% block prescripts %}
+    <script src="{{ asset('js/other/contact.js') }}"></script>
+{% endblock %}
+
+{% set menu = 'more' %}
+{% set subMenu = 'contact' %}

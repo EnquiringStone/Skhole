@@ -1,8 +1,23 @@
 {% extends 'base.html.twig' %}
 {% block title %}{% trans %}Juridisch{% endtrans %}{% endblock %}
 {% block body %}
-    <h1>{% trans %}Juridisch{% endtrans %}</h1>
+    {% include ':panels/other:user.agreement.panel.html.twig' %}
+    {% include 'panels/other/privacy.policy.panel.html.twig' %}
+    {% include ':panels/other:cookie.policy.panel.html.twig' %}
+    {% include ':panels/general:commercial.panel.html.twig' %}
+{% endblock %}
+
+{% block postscripts %}
+    <script>
+        $(document).ready(function() {
+            {% if page is not null %}
+                $('body, html').animate({
+                    scrollTop: $($('#{{ page }}').parents('.panel')).offset().top
+                }, 600);
+            {% endif %}
+        });
+    </script>
 {% endblock %}
 
 {% set menu = 'more' %}
-{% set subMenu = '' %}
+{% set subMenu = 'legal' %}

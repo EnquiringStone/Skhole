@@ -1,8 +1,9 @@
 {% extends 'base.html.twig' %}
 {% block title %}{% trans %}Richtlijnen{% endtrans %}{% endblock %}
 {% block body %}
-    <h1>{% trans %}Richtlijnen{% endtrans %}</h1>
+    {% include ':panels/other:guidelines.panel.html.twig' %}
+    {% include ':panels/general:commercial.panel.html.twig' %}
 {% endblock %}
 
 {% set menu = 'more' %}
-{% set subMenu = '' %}
+{% set subMenu = 'guidelines' %}

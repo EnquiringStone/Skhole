@@ -20,7 +20,7 @@ services:
             - { name: kernel.event_subscriber }
     app.ajax_listener:
         class: AppBundle\EventListener\AjaxListener
-        arguments: ["%ajax_configuration%", "@app.courses.ajax.service", "@app.home.messages.ajax.service", "@app.page.controls.ajax.service", "@app.create.course.ajax.service", "@app.profile.ajax.service", "@app.course.collection.ajax.service", "@app.learn.study.ajax.service", "@app.teach.shared.reports.ajax.service"]
+        arguments: ["%ajax_configuration%", "@app.courses.ajax.service", "@app.home.messages.ajax.service", "@app.page.controls.ajax.service", "@app.create.course.ajax.service", "@app.profile.ajax.service", "@app.course.collection.ajax.service", "@app.learn.study.ajax.service", "@app.teach.shared.reports.ajax.service", "@app.other.ajax.service"]
         tags:
             - { name: kernel.event_subscriber }
     app.entity.life.cycle.listener:
@@ -53,6 +53,9 @@ services:
     app.teach.shared.reports.ajax.service:
         class: AppBundle\Service\Ajax\Teach\SharedReportsAjaxService
         arguments: ["@doctrine.orm.entity_manager", "@app.authorization.service", "@twig"]
+    app.other.ajax.service:
+        class: AppBundle\Service\Ajax\Other\OtherAjaxService
+        arguments: ["@twig", "@app.authorization.service", "@doctrine.orm.entity_manager", "@mailer", "@app.validator.validator", "%email_receiver%"]
 
     app.transformer.messages:
         class: AppBundle\Transformer\MessagesTransformer

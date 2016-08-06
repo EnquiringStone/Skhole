@@ -318,6 +318,42 @@
                 <source>course.create.is.published.create.exercise</source>
                 <target>Het toevoegen van opdrachten is niet mogelijk voor een gepubliseerde cursus</target>
             </trans-unit>
+            <trans-unit id="80">
+                <source>contact.first.name.empty</source>
+                <target>De voornaam is leeg</target>
+            </trans-unit>
+            <trans-unit id="81">
+                <source>contact.first.name.coding.characters</source>
+                <target>De voornaam bevat illegale characters</target>
+            </trans-unit>
+            <trans-unit id="82">
+                <source>contact.surname.empty</source>
+                <target>De achternaam is leeg</target>
+            </trans-unit>
+            <trans-unit id="83">
+                <source>contact.surname.coding.characters</source>
+                <target>De achternaam bevat illegale characters</target>
+            </trans-unit>
+            <trans-unit id="84">
+                <source>contact.subject.invalid</source>
+                <target>Het onderwerp is niet geldig</target>
+            </trans-unit>
+            <trans-unit id="85">
+                <source>contact.email.empty</source>
+                <target>De email is leeg</target>
+            </trans-unit>
+            <trans-unit id="86">
+                <source>contact.email.invalid</source>
+                <target>De email is niet geldig</target>
+            </trans-unit>
+            <trans-unit id="87">
+                <source>contact.message.empty</source>
+                <target>De boodschap is leeg</target>
+            </trans-unit>
+            <trans-unit id="88">
+                <source>contact.message.coding.characters</source>
+                <target>De boodschap bevat illegale characters</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

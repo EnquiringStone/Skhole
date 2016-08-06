@@ -22,6 +22,22 @@
                 <source>db.course.languages.english</source>
                 <target>Engels</target>
             </trans-unit>
+            <trans-unit id="6">
+                <source>db.email.subjects.suggestion</source>
+                <target>Suggestie</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>db.email.subjects.other</source>
+                <target>Anders</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>db.email.subjects.complain</source>
+                <target>Klacht</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>db.email.subjects.bug</source>
+                <target>Fout gevonden</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
