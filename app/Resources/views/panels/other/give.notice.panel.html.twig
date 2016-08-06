@@ -1,0 +1,85 @@
+{% extends 'panels/panel.base.html.twig' %}
+{% block panelBaseTitle %}
+    <span class="glyphicon glyphicon-flag"></span> {% trans %}Rapportage indienen{% endtrans %}
+{% endblock %}
+{% block panelBaseContents %}
+    <div class="panel-body">
+        <form id="sendReport" class="form-horizontal" data-url="{{ path('app_home_ajax_page') }}">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{% trans %}Cursusnaam{% endtrans %}</label>
+                <div class="col-sm-10">
+                    <input class="form-control data-value" data-attribute="name" placeholder="{% trans %}De naam van de cursus{% endtrans %}"
+                        {% if course is not null %}value="{{ course.name }}" disabled data-id="{{ course.id }}" {% else %}data-id="-1"{% endif %}>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{% trans %}Cursuspagina{% endtrans %}</label>
+                <div class="col-sm-10">
+                    <input class="form-control data-value" data-attribute="page" placeholder="{% trans %}De titel van de cursuspagina{% endtrans %}"
+                        {% if page is not null %}value="{{ page.title }}" disabled data-id="{{ page.id }}"{% else %}data-id="-1"{% endif %}>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{% trans %}Onderdeel{% endtrans %}</label>
+                <div class="col-sm-10">
+                    <select class="form-control data-value" data-attribute="coursePart">
+                        <option value="Other" {% if coursePart == 'other' %}selected{% endif %}>{% trans %}Overige{% endtrans %}</option>
+                        <option value="CourseCard" {% if coursePart == 'courseCard' %}selected{% endif %}>{% trans %}Cursuskaart{% endtrans %}</option>
+                        <option value="CourseMaterial" {% if coursePart == 'courseMaterial' %}selected{% endif %}>{% trans %}Cursusmateriaal{% endtrans %}</option>
+                        <option value="CourseReview" {% if coursePart == 'courseReview' %}selected{% endif %}>{% trans %}Review{% endtrans %}</option>
+                        <option value="Announcement" {% if coursePart == 'courseAnnouncement' %}selected{% endif %}>{% trans %}Mededeling{% endtrans %}</option>
+                        <option value="CourseSchedule" {% if coursePart == 'courseSchedule' %}selected{% endif %}>{% trans %}Planning{% endtrans %}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{% trans %}Wat wilt u rapporteren?{% endtrans %}</label>
+                <div class="col-sm-10">
+                    <div class="radio">
+                        <label>
+                            <input class="control-label data-value" data-attribute="subject" data-type="Copyright" type="radio" checked name="subject">
+                            {% trans %}Auteursrechtschending{% endtrans %}
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input class="control-label data-value" data-attribute="subject" data-type="Undesirable" type="radio" name="subject">
+                            {% trans %}Ongepaste inhoud / richtlijnen overschrijding{% endtrans %}
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input class="control-label data-value" data-attribute="subject" data-type="Other" type="radio" name="subject">
+                            {% trans %}Overige{% endtrans %}
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{% trans %}Rapportage{% endtrans %}</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control data-value" data-attribute="message" rows="12"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{% trans %}Email{% endtrans %}</label>
+                <div class="col-sm-10">
+                    <input class="form-control data-value" data-attribute="email" placeholder="{% trans %}Het email adres{% endtrans %}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{% trans %}Telefoon{% endtrans %}</label>
+                <div class="col-sm-10">
+                    <input class="form-control data-value" data-attribute="phone" placeholder="{% trans %}Een optioneel telefoonnummer{% endtrans %}">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="centrum">
+                    <button class="btn btn-default btn-lg" type="submit">
+                        <b>{% trans %}Verstuur{% endtrans %}</b>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block title %}{% trans %}Rapporteren{% endtrans %}{% endblock %}
+{% block body %}
+    {% include ':panels/other:give.notice.panel.html.twig' %}
+    {% include ':panels/general:commercial.panel.html.twig' %}
+{% endblock %}
+
+{% block prescripts %}
+    <script src="{{ asset('js/other/report.js') }}"></script>
+{% endblock %}
+
+{% set menu = 'more' %}
+{% set subMenu = '' %}

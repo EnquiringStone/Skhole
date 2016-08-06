@@ -12,6 +12,7 @@ namespace AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class OtherController extends Controller
 {
@@ -66,5 +67,28 @@ class OtherController extends Controller
         $page = $request->query->has('page') ? $request->query->get('page') : null;
 
         return $this->render(':other:legal.html.twig', array('page' => $page));
+    }
+
+    /**
+     * @Route("/{_locale}/report/", name="app_other_report")
+     */
+    public function giveNoticeAction(Request $request)
+    {
+        $allParams = $request->query->all();
+
+        $course = null;
+        $page = null;
+        $coursePart = 'other';
+
+        if(array_key_exists('course', $allParams)) $course = $this->getDoctrine()->getRepository('AppBundle:Course\Courses')->find($allParams['course']);
+        if(array_key_exists('page', $allParams)) $page = $this->getDoctrine()->getRepository('AppBundle:Course\CoursePages')->find($allParams['page']);
+        if(array_key_exists('coursePart', $allParams)) $coursePart = $allParams['coursePart'];
+
+        if($page != null) $course = $page->getCourse();
+
+        if($course != null && ($course->getIsUndesirable() || $course->getState()->getStateCode() != 'OK' || $course->getRemoved()))
+            throw new AccessDeniedException();
+
+        return $this->render(':other:give.notice.html.twig', array('course' => $course, 'page' => $page, 'coursePart' => $coursePart));
     }
 }

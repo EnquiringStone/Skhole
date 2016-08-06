@@ -32,7 +32,7 @@
             </button>
             <ul class="dropdown-menu">
                 <li>
-                    <a href="{#TODO reporting#}">
+                    <a href="{{ path('app_other_report', {'course': courseId, 'coursePart': 'other', 'page': pageId}) }}">
                         <span class="glyphicon glyphicon-flag"></span>
                         {% trans %}Rapporteren{% endtrans %}
                     </a>

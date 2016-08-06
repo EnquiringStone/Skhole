@@ -78,4 +78,9 @@ abstract class ValidatorHelper
     {
         return filter_var($string, FILTER_VALIDATE_URL) !== FALSE;
     }
+
+    public static function isValidPhoneNumber($phone)
+    {
+        return preg_match('/[\+-0-9]+$/', $phone) && strlen($phone) <= 15;
+    }
 }

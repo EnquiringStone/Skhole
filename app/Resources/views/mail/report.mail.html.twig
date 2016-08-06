@@ -1,0 +1,51 @@
+{% block reportMail %}
+    <html>
+        <head>
+            <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        </head>
+        <body>
+            <div class="container">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h1><b>{% trans %}Rapportage{% endtrans %} {% if user is not null %}{% trans %}gezonden door{% endtrans %}: {{ user.realName }}{% endif %}</b></h1>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h2>{% trans %}Rapportage details{% endtrans %}</h2>
+                                <p>
+                                    <b>{% trans %}Cursusnaam{% endtrans %}:</b> {{ course.name }}
+                                    <br>
+                                    {% if page is not null %}
+                                        <b>{% trans %}Pagina{% endtrans %}:</b> {{ page.title }}
+                                        <br>
+                                    {% endif %}
+                                    <b>{% trans %}Onderdeel{% endtrans %}:</b> {{ pagePart }}
+                                    <br>
+                                    <b>{% trans %}Rapportage onderwerp{% endtrans %}:</b> {{ subject }}
+                                </p>
+                            </div>
+                            <div class="col-md-6">
+                                <h2>{% trans %}Persoonsgegevens{% endtrans %}</h2>
+                                <p>
+                                    {% if user is not null %}
+                                        <b>{% trans %}Gebruiker ID{% endtrans %}:</b> {{ user.id }}
+                                        <br>
+                                        <b>{% trans %}Opgeslagen email{% endtrans %}:</b> {{ user.customEmail|default('-') }}
+                                        <br>
+                                    {% endif %}
+                                    <b>{% trans %}Opgegeven email{% endtrans %}:</b> {{ email }}
+                                    <br>
+                                    <b>{% trans %}Telefoonnummer{% endtrans %}:</b> {{ phone|default('-') }}
+                                </p>
+                            </div>
+                        </div>
+                        <h2>{% trans %}Bericht{% endtrans %}</h2>
+                        <p>{{ message|nl2br }}</p>
+                    </div>
+                </div>
+            </div>
+        </body>
+    </html>
+{% endblock %}

@@ -354,6 +354,38 @@
                 <source>contact.message.coding.characters</source>
                 <target>De boodschap bevat illegale characters</target>
             </trans-unit>
+            <trans-unit id="89">
+                <source>report.course.part.invalid</source>
+                <target>Het onderdeel is niet geldig</target>
+            </trans-unit>
+            <trans-unit id="90">
+                <source>report.phone.invalid</source>
+                <target>De telefoonnummer is ongeldig</target>
+            </trans-unit>
+            <trans-unit id="91">
+                <source>report.message.empty</source>
+                <target>De rapportage is leeg</target>
+            </trans-unit>
+            <trans-unit id="92">
+                <source>report.message.illegal.characters</source>
+                <target>De rapportage bevat illegale characters</target>
+            </trans-unit>
+            <trans-unit id="93">
+                <source>report.name.invalid</source>
+                <target>De opgegeven naam is ongeldig</target>
+            </trans-unit>
+            <trans-unit id="94">
+                <source>report.name.not.found</source>
+                <target>De cursus voor de opgegeven naam kan niet worden gevonden</target>
+            </trans-unit>
+            <trans-unit id="95">
+                <source>report.page.invalid</source>
+                <target>De pagina is ongeldig</target>
+            </trans-unit>
+            <trans-unit id="96">
+                <source>report.subject.invalid</source>
+                <target>De rapportage onderwerp is ongeldig</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

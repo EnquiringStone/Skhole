@@ -79,6 +79,43 @@ class OtherAjaxService implements AjaxInterface
         return array('html' => $this->environment->render(':ajax/other:contact.finish.html.twig'));
     }
 
+    public function sendReport($args)
+    {
+        $this->validator->validate($args, 'Report');
+
+        $course = $this->manager->getRepository('AppBundle:Course\Courses')->find($args['name']);
+        if($course == null || $course->getState()->getStateCode() != 'OK' || $course->getIsUndesirable() || $course->getRemoved())
+            throw new FrontEndException('report.name.not.found', 'ajaxerrors');
+
+        $page = null;
+        if($args['page'] > 0)
+        {
+            $page = $this->manager->getRepository('AppBundle:Course\CoursePages')->find($args['page']);
+            if($page == null || $page->getCourseId() != $course->getId())
+                throw new FrontEndException('report.page.invalid', 'ajaxerrors');
+        }
+
+        $user = null;
+        if($this->authorizationService->isAuthorized())
+            $user = $this->authorizationService->getAuthorizedUserOrThrowException();
+
+        $message = \Swift_Message::newInstance()
+            ->setSubject($args['subject'])
+            ->setFrom($args['email'])
+            ->setTo($this->emailTo)
+            ->setBody(
+                $this->environment->render('mail/report.mail.html.twig',
+                    array('user' => $user, 'course' => $course, 'page' => $page, 'pagePart' => $args['coursePart'],
+                        'subject' => $args['subject'], 'email' => $args['email'], 'phone' => $args['phone'],
+                        'message' => $args['message'])),
+                'text/html'
+            );
+
+        $this->mailer->send($message);
+
+        return array('html' => $this->environment->render(':ajax/other:report.finish.html.twig'));
+    }
+
     /**
      * Returns an unique code that is used to determine which implementation
      * of this interface should be used for the ajax call
@@ -97,6 +134,6 @@ class OtherAjaxService implements AjaxInterface
      */
     public function getSubscribedMethods()
     {
-        return array('sendContactEmail');
+        return array('sendContactEmail', 'sendReport');
     }
 }

@@ -1,9 +1,10 @@
 {% block courseReviewRow %}
+    {% set hasUser = review.insertUser is not null %}
     <div class="thumbnail">
         <div class="row">
             <div class="col-md-1">
                 <img src="
-                    {% if review.insertUser.picture is not empty %}
+                    {% if hasUser and review.insertUser.picture is not empty %}
                         {{ asset(review.insertUser.picture) }}
                     {% else %}
                         {{ asset('images/gebruiker.png') }}
@@ -11,7 +12,7 @@
                     " class="img-rounded profile-picture-preview-img">
             </div>
             <div class="col-md-11">
-                <h4>{{ review.insertUser.realName|capitalize }}</h4>
+                <h4>{% if hasUser %}{{ review.insertUser.realName|capitalize }}{% else %}{% trans %}Anoniem{% endtrans %}{% endif %}</h4>
                 <p>{{ review.remarks }}</p>
                 <div class="btn-group-xs">
                     <button type="button" class="btn btn-default unclickable">

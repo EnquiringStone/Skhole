@@ -79,10 +79,8 @@ class LearnController extends Controller
                 elseif ($session->has('name'))
                 {
                     $name = $session->get('name');
-                    if($name == 'start' || $name == 'final')
-                    {
-                        return $this->redirectToRoute('app_learn_study_panels_page', array('courseId' => $course->getId(), 'pageType' => 'custom', 'name' => $name));
-                    }
+                    $pageType = $session->get('pageType');
+                    return $this->redirectToRoute('app_learn_study_panels_page', array('courseId' => $course->getId(), 'pageType' => $pageType, 'name' => $name));
                 }
                 else
                 {
@@ -142,6 +140,7 @@ class LearnController extends Controller
             PageTypeEnum::matchValueWithGivenEnum(PageTypeEnum::class, PageTypeEnum::CUSTOM_TYPE, $pageType))
         {
             $session->set('name', $name);
+            $session->set('pageType', $pageType);
 
             return $this->render(':learn:study.html.twig', array('name' => $name, 'pageType' => $pageType, 'course' => $course, 'courseReview' => $courseReview));
         }
@@ -169,6 +168,7 @@ class LearnController extends Controller
         if($page == null) throw new AccessDeniedException();
 
         if($session->has('name')) $session->remove('name');
+        if($session->has('pageType')) $session->remove('pageType');
         $session->set('lastPageId', $page->getId());
 
         $criteria = array('page' => $page, 'totalPages' => $course->getCoursePages()->count());
