@@ -14,7 +14,7 @@ $(document).ready(function() {
         sendAjaxCall(getDataUrl(), {'id': id, 'ajax_key': 'SRAS1', 'method': 'acceptMentorRequest'}, function () {
             row.remove();
             substractMentorRequest();
-        //    TODO Update other panel
+            location.reload();
         }, function (error) {
             showAjaxErrorModal(error['responseJSON']['html']);
         });

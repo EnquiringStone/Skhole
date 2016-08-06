@@ -22,7 +22,7 @@
                         {% trans %}Login met Google{% endtrans %}
                     </a>
                     <hr />
-                    <p>{% trans %}Als je een account aanmaakt, ga je akkoord met de{% endtrans %} <a href="{#TODO Gebruikersvoorwaarden#}#">{% trans %}Gebruikersvoorwaarden{% endtrans %}</a> {% trans %}en het{% endtrans %} <a href="{#TODO Privacybeleid#}#">{% trans %}Privacybeleid{% endtrans %}</a> {% trans %}van StudyLivre{% endtrans %}</p>
+                    <p>{% trans %}Als je een account aanmaakt, ga je akkoord met de{% endtrans %} <a href="{{ path('app_other_legal', {'page': 'conditions'}) }}">{% trans %}Gebruikersvoorwaarden{% endtrans %}</a> {% trans %}en het{% endtrans %} <a href="{{ path('app_other_legal', {'page': 'privacy'}) }}">{% trans %}Privacybeleid{% endtrans %}</a> {% trans %}van StudyLivre{% endtrans %}</p>
                 </div>
                 <hr />
                 <div class="modal-info-background centrum">
@@ -67,8 +67,6 @@
             </div>
         </div>
     </div>
-
-
 {% endblock %}
 
 {% block closeButtonText %}
