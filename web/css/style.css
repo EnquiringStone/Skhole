@@ -217,3 +217,14 @@
     top: 25%;
     z-index: 100;
 }
+[class*="col-"] .select2-container {
+    width:100%!important;
+}
+[class*="col-"] .select2-container .select2-search input[type="text"] {
+    padding:2px 4%!important;
+    width:90%!important;
+    margin:5px 2%;
+}
+[class*="col-"] .select2-container .select2-drop {
+    width: 100%!important;
+}

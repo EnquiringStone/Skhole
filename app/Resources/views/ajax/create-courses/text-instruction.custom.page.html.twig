@@ -18,7 +18,7 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">{% trans %}Uitleg{% endtrans %}</label>
                 <div class="col-sm-10">
-                    <textarea class="form-control data-value" data-value-name="contents" placeholder="{% trans %}Geef hier de uitleg over het onderwerp{% endtrans %}">{% if instruction is defined %}{{ instruction.contents }}{% endif %}</textarea>
+                    <textarea class="form-control data-value" data-value-name="contents" placeholder="{% trans %}Geef hier de uitleg over het onderwerp{% endtrans %}" rows="12">{% if instruction is defined %}{{ instruction.contents }}{% endif %}</textarea>
                 </div>
             </div>
             <input class="data-value" data-value-name="type" value="text" type="hidden">

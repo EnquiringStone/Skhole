@@ -8,6 +8,10 @@ $(document).ready(function() {
     $('.starrr').each(function() {
         var element = $(this);
         var rating = element.data('difficulty');
+        if(rating == 0) {
+            element.attr('data-difficulty', 3);
+            rating = 3;
+        }
         element.starrr({
             rating: rating,
             numStars: 5
@@ -952,6 +956,8 @@ function saveCourseProvider(context) {
                 $('.provider-description', contextDiv).append(args['description']);
             }
         }
+        var providerNotFoundText = $('.no-providers-found-text');
+        if(providerNotFoundText.length) providerNotFoundText.remove();
         hasChanged = false;
     }, function(error) {
         modal.modal('hide');
@@ -1003,6 +1009,8 @@ function saveTeacherModal(context) {
                 }
             }
         }
+        var teacherNotFound = $('.no-teacher-found-text');
+        if(teacherNotFound.length) teacherNotFound.remove();
         hasChanged = false;
     }, function(error) {
         modal.modal('hide');

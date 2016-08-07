@@ -6,7 +6,9 @@
                 {% trans %}Opdrachten toevoegen{% endtrans %}
             </b>
         </h4>
-        <p class="lead centrum">{% trans %}Voeg opdrachten toe aan de pagina:{% endtrans %} <b>{{ exercise.title|upper }}</b></p>
+        <br>
+        <p class="centrum"><b>{% trans %}Pagina titel{% endtrans %}:</b> {{ exercise.title|upper }}</p>
+        <br>
         <div class="centrum">
             <button class="btn btn-default btn-lg load-question" data-type="multiple-choice" data-question-id="-1">
                 <span class="glyphicon glyphicon-plus text-success" aria-hidden="true"></span>
@@ -17,11 +19,11 @@
                 {% trans %}Open vraag{% endtrans %}
             </button>
         </div>
-        <hr />
+        <br>
         <div class="load-question-type-div">
             {% include ':ajax/create-courses/questions:question.order.overview.html.twig' with {'exercise': exercise} %}
         </div>
-        <hr />
+        <br>
         <input class="exercise-page-id data-value" data-value-name="pageId" type="hidden" value="{{ exercise.id }}">
     </div>
 {% endblock %}
