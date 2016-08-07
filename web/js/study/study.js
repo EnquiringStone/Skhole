@@ -17,8 +17,7 @@ $(document).ready(function() {
         if(rating == '' || rating == undefined) return;
 
         sendAjaxCall(url, {id: id, ajax_key: 'STAS1', method: 'addQuickCourseReview', rating: rating}, function () {
-            button.hide();
-            $('.add-normal-review').hide();
+            location.reload();
         }, function (error) {
             hasChanged = false;
             showAjaxErrorModal(error['responseJSON']['html']);
@@ -30,8 +29,7 @@ $(document).ready(function() {
 
         sendAjaxCall(data['url'], data, function () {
             $('.modal').modal('hide');
-            $('.add-normal-review').hide();
-            $('.add-quick-course-review').hide();
+            location.reload();
         }, function (error) {
             hasChanged = false;
             $('.modal').modal('hide');
