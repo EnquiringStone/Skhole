@@ -4,11 +4,19 @@
     <b>{% trans %}Zelfgemaakte cursussen{% endtrans %}: <span class="total-courses">{{ totalCourses }}</span></b>
 {% endblock %}
 {% block panelBaseContents %}
+    <br>
+    <div class="centrum">
+        <a href="{{ path('app_teach_create_course_page') }}" class="btn btn-default btn-lg">
+            <span class="glyphicon glyphicon-plus text-success" aria-hidden="true"></span>
+            <samp>{% trans %}Nieuwe cursus{% endtrans %}</samp>
+        </a>
+    </div>
+    <br>
     <div class="panel-body page-controls" data-url="{{ url('app_home_ajax_page') }}" data-context="SELF" data-entity="Course\Courses" data-view="my-courses" data-default-search-attributes="">
         <div class="sort-field">
             {% include ':ajax/my-courses:sort.html.twig' %}
         </div>
-        <hr />
+        <br>
         <div class="thumbnail">
             {% if totalCourses <= 0 %}
                 <div class="centrum">
@@ -20,19 +28,12 @@
                 <div class="content-field">
                     {% for course in courses %}
                         {% include ':ajax/my-courses:course.detail.body.html.twig' with {'course': course, 'index': loop.index } %}
-                        {% include ':modal/my-courses:course.details.modal.html.twig' with {'course': course, 'modalId': 'courseDetailsModal' ~ loop.index } %}
+                        {% include ':modal/learn:course.card.details.modal.html.twig' with {'course': course, 'modalId': 'courseDetailsModal' ~ loop.index } %}
                         {% include ':modal/my-courses:course.remove.modal.html.twig' with {'course': course, 'modalId': 'courseRemoveModal' ~ loop.index } %}
                     {% endfor %}
                 </div>
             {% endif %}
-            <hr />
-            <div class="centrum">
-                <a href="{{ path('app_teach_create_course_page') }}" class="btn btn-default btn-lg">
-                    <span class="glyphicon glyphicon-plus text-success" aria-hidden="true"></span>
-                    <samp>{% trans %}Nieuwe cursus{% endtrans %}</samp>
-                </a>
-            </div>
-            <hr />
+            <br>
             <div class="pagination-field">
                 {% include ':elements:pagination.html.twig' with {'maxEntities' : totalCourses, 'limit': limit, 'offset': offset, 'maxPages' : maxPages, 'pageName': 'Mijn cursussen'|trans, 'entity': 'Course\\Courses', 'class': 'course-details' } %}
             </div>

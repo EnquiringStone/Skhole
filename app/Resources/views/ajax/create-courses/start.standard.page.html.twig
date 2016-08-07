@@ -48,6 +48,14 @@
                         <span class="glyphicon {% if course.hasCustomPages %}glyphicon-ok text-success{% else %}glyphicon-minus text-danger{% endif %}" aria-hidden="true"></span>
                     </p>
                 </div>
+                <div class="thumbnail">
+                    <h4><b>{% trans %}Voldaan aan de minimale eisen{% endtrans %}?</b></h4>
+                    <p>
+                        {% trans %}Zodra je cursus voldoet aan de minimale eisen kun je de cursus laten opnemen in de zoekresultaten. Navigeer naar de tab{% endtrans %}
+                        <a href="{{ path('app_teach_edit_course_page_page', {'pageType': 'publish', 'name': 'start', 'id': course.id}) }}"><i>{% trans %}Publiceren{% endtrans %}</i></a>
+                        {% trans %}om dit te realiseren.{% endtrans %}
+                    </p>
+                </div>
             </div>
             <div class="col-md-6">
                 <div class="embed-responsive embed-responsive-4by3">
