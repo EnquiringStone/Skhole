@@ -15,6 +15,14 @@
             <p class="lead text-exception">{{ errorMessage|raw }}</p>
             <br/>
         </div>
+        {% if app.environment == 'dev' %}
+            <div class="centrum">
+                <h4>{% trans %}Orignele exceptie{% endtrans %}</h4>
+                <p>{{ exception.getMessage }}</p>
+                <h4>{% trans %}Trace{% endtrans %}</h4>
+                <p>{{ exception.getTraceAsString }}</p>
+            </div>
+        {% endif %}
     </div>
 {% endblock %}
 {% set modalBaseType = 'close' %}

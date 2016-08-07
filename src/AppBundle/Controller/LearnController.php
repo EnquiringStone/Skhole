@@ -60,9 +60,17 @@ class LearnController extends Controller
     /**
      * @Route("/{_locale}/learn/study/", name="app_learn_study_page")
      */
-    public function studyAction()
+    public function studyAction(Request $request)
     {
         $session = $this->get('session');
+
+        if($request->query->has(('clear')))
+        {
+            if($session->has('lastCourseId')) $session->remove('lastCourseId');
+            if($session->has('lastPageId')) $session->remove('lastPageId');
+            if($session->has('name')) $session->remove('name');
+            if($session->has('pageType')) $session->remove('pageType');
+        }
 
         if($session->has('lastCourseId'))
         {
@@ -92,7 +100,10 @@ class LearnController extends Controller
                 //Do nothing
             }
         }
-        return $this->render(':learn:study.default.html.twig');
+        return $this->render(':learn:study.default.html.twig', array(
+            'courses' => $this->getRandomCourses(10),
+            'courseCollection' => $this->getCourseCollectionsForUser()
+        ));
     }
 
     /**
@@ -332,6 +343,36 @@ class LearnController extends Controller
             $friendlyArray[$question->getQuestionId()] = array('answer' => $question->getAnswer(), 'multipleChoiceAnswers' => $friendlyMultipleChoiceArray);
         }
 
+        return $friendlyArray;
+    }
+
+    private function getRandomCourses($amount)
+    {
+        $criteria = array('removed' => false, 'state' => $this->getDoctrine()->getRepository('AppBundle:Course\CourseStates')->findOneBy(array('stateCode' => 'OK')), 'isUndesirable' => false);
+
+        $repo = $this->getDoctrine()->getRepository('AppBundle:Course\Courses');
+
+        $totalCourses = $repo->getCountByCriteria($criteria);
+
+        if($totalCourses <= $amount)
+            return $repo->findBy($criteria);
+
+        $offset = rand(0, $totalCourses - $amount);
+
+        return $repo->findBy($criteria, null, $amount, $offset);
+    }
+
+    private function getCourseCollectionsForUser()
+    {
+        if(!$this->isGranted('ROLE_USER')) return array();
+
+        $collectionItems = $this->getDoctrine()->getRepository('AppBundle:Course\CourseCollectionItems')->findBy(array('userId' => $this->getUser()->getId()));
+
+        $friendlyArray = array();
+        foreach ($collectionItems as $item)
+        {
+            $friendlyArray[] = $item->getCourseId();
+        }
         return $friendlyArray;
     }
 }

@@ -386,6 +386,14 @@
                 <source>report.subject.invalid</source>
                 <target>De rapportage onderwerp is ongeldig</target>
             </trans-unit>
+            <trans-unit id="97">
+                <source>general.error</source>
+                <target>Er is iets verkeerd gegaan. Herlaad de pagina en probeer opnieuw. Of neem contact op met ons</target>
+            </trans-unit>
+            <trans-unit id="98">
+                <source>authorization.error</source>
+                <target>Je bent niet bemachtigd om dit in te zien. Is dit onterecht? Neem contact met ons op</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
