@@ -18,7 +18,7 @@
                 {% endfor %}
             </tbody>
         </table>
-        <div class="pagination-field">
+        <div class="pagination-field" data-name="shared-reports-pagination">
             {% include ':elements:pagination.html.twig' with {'maxEntities': totalSharedReports, 'limit': standard_query_limit, 'offset': 0, 'maxPages': standard_pagination_max, 'pageName': 'Rapporten'|trans, 'entity': 'Report\\SharedReports'} %}
         </div>
         <div class="modal-field">

@@ -45,7 +45,6 @@ $(document).ready(function() {
         var pagination = $($(this).parents('.pagination'));
         var li = $($(this).parent());
         if(pagination.data('disable')) {
-            console.log(pagination.data('disable'));
             goToUrl($(this).attr('href'));
             return;
         }

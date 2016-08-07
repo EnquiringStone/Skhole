@@ -66,6 +66,11 @@ $(document).ready(function() {
         });
     });
 
+    $(document).on('refreshPageSucceeded', function (event, args) {
+        var base = $(args['context']);
+        if(args['pagination'] == 'shared-reports-pagination') refreshStarrrs(base);
+    });
+
     body.on('click', '.modal-yes', function () {
         var base = $('#mentor-overview');
         var button = $(this);

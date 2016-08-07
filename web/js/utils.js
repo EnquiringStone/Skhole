@@ -89,6 +89,10 @@ function refreshPage(caller, resetPagination, resetSort, customFunction) {
         $('.content-field', base).append(args['entitiesHtml']);
         if(customFunction != null)
             customFunction(args);
+
+        var paginationName = $('.pagination-field', base).data('name');
+
+        $(document).trigger('refreshPageSucceeded', {'pagination': paginationName, 'context': base});
     }, function(args) {
         //console.log(args);
     });
