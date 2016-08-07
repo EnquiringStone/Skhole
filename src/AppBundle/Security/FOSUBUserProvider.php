@@ -83,6 +83,7 @@ class FOSUBUserProvider extends BaseClass
             $user->setPassword($username);
             $user->setRoles(array('ROLE_USER'));
             $user->setEnabled(true);
+            $user->setAgreedToCookie(false);
             $generator = new RandomStringGenerator();
             $user->setMentorCode($generator->generate($this->mentorCodeLength));
             $this->userManager->updateUser($user);

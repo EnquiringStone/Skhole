@@ -24,6 +24,15 @@
     <body>
         {% include 'elements/header.html.twig' %}
         <div class="container">
+            {% if is_granted('ROLE_USER') %}
+                {% if not app.user.agreedToCookie %}
+                    {% include ':elements:cookie.html.twig' %}
+                {% endif %}
+            {% else %}
+                {% if app.session.get('acceptedCookies') == 0 %}
+                    {% include ':elements:cookie.html.twig' %}
+                {% endif %}
+            {% endif %}
             {% include 'elements/navigation.menu.html.twig' %}
             {% include "elements/#{menu}.navigation.menu.html.twig" %}
             {% block body %}{% endblock %}

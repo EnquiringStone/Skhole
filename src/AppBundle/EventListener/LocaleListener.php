@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
 /**
  * When visiting the homepage, this listener redirects the user to the most
@@ -55,7 +56,7 @@ class LocaleListener
      * @param string $locales Supported locales separated by '|'
      * @param string|null $defaultLocale
      */
-    public function __construct(UrlGeneratorInterface $urlGenerator, Session $session,  $locales, $defaultLocale = null)
+    public function __construct(UrlGeneratorInterface $urlGenerator, Session $session, $locales, $defaultLocale = null)
     {
         $this->urlGenerator = $urlGenerator;
 
@@ -87,6 +88,11 @@ class LocaleListener
         $request = $event->getRequest();
 
         if(!$this->session->isStarted()) $this->session->start();
+
+        if(!$this->session->has('acceptedCookies')) $this->session->set('acceptedCookies', 0);
+
+        $request->setSession($this->session);
+
 
         // Ignore sub-requests and all URLs but the homepage
         if ($request->isXmlHttpRequest() || '/' !== $request->getPathInfo())

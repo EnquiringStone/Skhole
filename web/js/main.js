@@ -14,6 +14,7 @@ $(document).on('click', '.panel-heading span.clickable', function(e){
 $(document).ready(function() {
     var body = $('body');
     var message = $('#unread-messages-count');
+    var cookiePanel = $('#cookie-panel');
     if(message.length)
     {
         sendAjaxCall(message.data('url'), {'ajax_key': 'MAS1', 'method': 'getUnreadMessagesCount'}, function (data) {
@@ -58,6 +59,16 @@ $(document).ready(function() {
 
     body.on('change', '.sortable', function(event) {
         refreshPage(this, true, false);
+    });
+
+    cookiePanel.on('click', '.save-cookie-choice', function () {
+        var url = cookiePanel.data('url');
+
+        sendAjaxCall(url, {'ajax_key': 'cookie', 'method': 'acceptCookies'}, function () {
+
+        }, function (error) {
+            showAjaxErrorModal(error['responseJSON']['html']);
+        });
     });
 });
 

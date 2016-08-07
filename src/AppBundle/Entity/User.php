@@ -100,6 +100,16 @@ class User extends BaseUser
     protected $mentorCode;
 
     /**
+     * @ORM\Column(type="boolean", name="agreed_to_cookie")
+     */
+    protected $agreedToCookie;
+
+    /**
+     * @ORM\Column(type="datetime", name="agreed_to_cookie_date_time", nullable=true)
+     */
+    protected $agreedToCookieDateTime;
+
+    /**
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Education\Educations", mappedBy="user")
      */
     private $education;
@@ -550,5 +560,53 @@ class User extends BaseUser
     public function getSharedReports()
     {
         return $this->sharedReports;
+    }
+
+    /**
+     * Set agreedToCookie
+     *
+     * @param boolean $agreedToCookie
+     *
+     * @return User
+     */
+    public function setAgreedToCookie($agreedToCookie)
+    {
+        $this->agreedToCookie = $agreedToCookie;
+
+        return $this;
+    }
+
+    /**
+     * Get agreedToCookie
+     *
+     * @return boolean
+     */
+    public function getAgreedToCookie()
+    {
+        return $this->agreedToCookie;
+    }
+
+    /**
+     * Set agreedToCookieDateTime
+     *
+     * @param \DateTime $agreedToCookieDateTime
+     *
+     * @return User
+     */
+    public function setAgreedToCookieDateTime($agreedToCookieDateTime)
+    {
+        $this->agreedToCookieDateTime = $agreedToCookieDateTime;
+
+        return $this;
+    }
+
+    /**
+     * Get agreedToCookieDateTime
+     *
+     * @return \DateTime
+     */
+    public function getAgreedToCookieDateTime()
+    {
+        return $this->agreedToCookieDateTime;
     }
 }
