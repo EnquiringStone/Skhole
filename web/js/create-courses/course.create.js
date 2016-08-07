@@ -432,7 +432,7 @@ function addAnswerHtml() {
 
     var html = '<div class="form-group added-answer"><label class="col-sm-2 control-label">'+orderToAlphabet(answers)+'</label><div class="col-sm-9">' +
         '<input type="text" class="form-control data-value" data-value-name="answers" data-answer-id="-1" data-answer-order="'+answers+'">' +
-        '</div><div class="col-sm-1"><a class="remove-extra-answer" href="#" data-answer-id="-1"><span class="glyphicon glyphicon-remove text-danger"></span></a></div></div>';
+        '</div><div class="col-sm-1"><a class="remove-extra-answer" href="#" data-answer-id="-1"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></div></div>';
 
     $('.answers').append(html);
 

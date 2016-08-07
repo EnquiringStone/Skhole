@@ -71,7 +71,9 @@ function refreshPage(caller, resetPagination, resetSort, customFunction) {
     if(view != null && view != '')
         arguments['view'] = view;
 
+    addLoadingScreen(base);
     sendAjaxCall(url, arguments, function(args) {
+        removeLoadingScreen();
         if(args['paginationHtml'] != null) {
             $('.pagination-field', base).empty();
             $('.pagination-field', base).append(args['paginationHtml']);
@@ -94,6 +96,7 @@ function refreshPage(caller, resetPagination, resetSort, customFunction) {
 
         $(document).trigger('refreshPageSucceeded', {'pagination': paginationName, 'context': base});
     }, function(error) {
+        removeLoadingScreen();
         showAjaxErrorModal(error['responseJSON']['html']);
     });
 }

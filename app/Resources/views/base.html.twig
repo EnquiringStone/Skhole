@@ -29,7 +29,7 @@
             {% block body %}{% endblock %}
         </div>
         {% include 'elements/footer.html.twig' %}
-
+        {% include ':elements:loader.html.twig' %}
         <div class="ajax-error-modal"></div>
         {% block modals %}{% endblock %}
         {% include ':modal/elements:login.modal.html.twig' with {'modalId': 'loginModal'} %}

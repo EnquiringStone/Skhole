@@ -1,6 +1,8 @@
 {% block questionOrderOverview %}
     <div class="panel-body-pages">
-        <p class="centrum alert-info">{% trans %}Klik en sleep de pagina's om de volgorde te wijzigen{% endtrans %}</p>
+        {% if exercise.questions|length > 0 %}
+            <p class="centrum alert-info">{% trans %}Klik en sleep de pagina's om de volgorde te wijzigen{% endtrans %}</p>
+        {% endif %}
         <ul id="sortable" class="list-group questions-overview" data-name="questions">
             {% for question in exercise.questions %}
                 <li class="list-group-item" data-question-id="{{ question.id }}" data-original-order="{{ question.questionOrder }}">
