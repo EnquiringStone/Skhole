@@ -5,14 +5,14 @@
 {% block panelBaseContents %}
     <div class="panel-body" data-url="{{ url('app_home_ajax_page') }}">
         <hr />
-        <form class="form-horizontal">
+        <form class="form-horizontal" id="simple-search">
             <div class="form-group">
                 <label class="control-label col-sm-2">{% trans %}Zoekterm{% endtrans %}</label>
                 <div class="col-sm-10">
                     <div class="input-group">
                         <input type="text" class="form-control simple-search-value" placeholder="{% trans %}Zoekopdracht{% endtrans %}">
                         <span class="input-group-btn">
-                            <button class="btn btn-default simple-search" type="button">
+                            <button class="btn btn-default simple-search" type="submit">
                                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                                 {% trans %}Zoek{% endtrans %}
                             </button>
@@ -30,7 +30,7 @@
             </div>
             <br />
             <div id="collapseSearch" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSearch" aria-expanded="true">
-                <form class="form-horizontal">
+                <form id="complex-search" class="form-horizontal">
                     <div class="form-group">
                         <label class="control-label col-sm-2">{% trans %}Trefwoorden{% endtrans %}</label>
                         <div class="col-sm-10">

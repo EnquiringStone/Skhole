@@ -93,8 +93,8 @@ function refreshPage(caller, resetPagination, resetSort, customFunction) {
         var paginationName = $('.pagination-field', base).data('name');
 
         $(document).trigger('refreshPageSucceeded', {'pagination': paginationName, 'context': base});
-    }, function(args) {
-        //console.log(args);
+    }, function(error) {
+        showAjaxErrorModal(error['responseJSON']['html']);
     });
 }
 
@@ -174,12 +174,7 @@ function showAjaxErrorModal(errorModalHtml) {
 function addLoadingScreen(object){
     var loadingScreen = $("#loading");
     loadingScreen.css('top', $(object).position().top);
-    loadingScreen.css('left', $(object).position().left);
     loadingScreen.css('height', $(object).height());
-
-    var loadingScreenLogo = $('.loading-image', loadingScreen);
-    loadingScreenLogo.css('top', '50%');
-    loadingScreenLogo.css('left', '50%');
 
     loadingScreen.css('display', 'block');
 }

@@ -42,11 +42,11 @@ class ExceptionListener implements EventSubscriberInterface
             }
             elseif ($exception instanceof AccessDeniedException)
             {
-                $message = $this->translator->trans('authorization.error', 'ajaxerrors');
+                $message = $this->translator->trans('authorization.error', array(), 'ajaxerrors');
             }
             else
             {
-                $message = $this->translator->trans('general.error', 'ajaxerrors');
+                $message = $this->translator->trans('general.error', array(), 'ajaxerrors');
             }
 
             $html = $this->environment->render(':errors:ajax.error.message.modal.html.twig', array('errorMessage' => $message, 'exception' => $exception));

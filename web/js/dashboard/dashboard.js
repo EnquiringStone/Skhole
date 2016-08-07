@@ -7,7 +7,8 @@ $(document).ready(function() {
         $(this).removeClass("btn-default").addClass("btn-primary");
     });
 
-    body.on('click', '.quick-search', function() {
+    $('#quick-search').on('submit', function (event) {
+        event.preventDefault();
         var value = $('.quick-search-value').val();
         if(value == null || value == '') return;
 

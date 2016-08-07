@@ -105,6 +105,9 @@ class CoursesRepository extends EntityRepository implements PageControlsInterfac
         $qb->leftJoin('courses.courseCard', 'courseCard');
         $qb->leftJoin('courseCard.teachers', 'teachers');
         $qb->leftJoin('courseCard.providers', 'providers');
+        $qb->leftJoin('courses.tags', 'tags');
+        $qb->leftJoin('courses.language', 'languages');
+        $qb->leftJoin('courses.level', 'levels');
 
         if($userId > 0)
             $qb->andWhere('courses.userInsertedId = '.$userId);
