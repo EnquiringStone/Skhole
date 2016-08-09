@@ -45,7 +45,7 @@ assetic:
     use_controller: true
 
 swiftmailer:
-    delivery_address: johan-langes@hotmail.com
+    delivery_address: %send_email_to%
     transport: gmail
-    username: langesjohan@gmail.com
+    username: %email_receiver%
     password: %mailer_dev_password%

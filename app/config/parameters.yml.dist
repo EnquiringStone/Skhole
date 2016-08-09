@@ -17,6 +17,7 @@ parameters:
     mailer_dev_password: ~
 
     email_receiver: ~
+    send_email_to: ~
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
