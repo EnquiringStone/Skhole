@@ -44,20 +44,22 @@
                     <h4>{% trans %}Introductie{% endtrans %}</h4>
                     <div class="row">
                         <div class="col-md-6">
-                            {% if course.courseCard.youtubeEmbedUrl is not null %}
+                            {% if course.courseCard is not null and course.courseCard.youtubeEmbedUrl is not null %}
                                 <div class="embed-responsive embed-responsive-4by3">
                                     <iframe class="embed-responsive-item" src="{{ course.courseCard.youtubeEmbedUrl }}" allowfullscreen></iframe>
                                 </div>
                             {% endif %}
                         </div>
                         <div class="col-md-6">
-                            {% if course.courseCard.pictureUrl is not null %}
+                            {% if course.courseCard is not null and course.courseCard.pictureUrl is not null %}
                                 <img src="{{ asset(course.courseCard.pictureUrl) }}" class="img-rounded" height="120">
                             {% endif %}
                         </div>
                     </div>
                     <hr />
-                    <p>{{ course.courseCard.description }}</p>
+                    {% if course.courseCard is not null %}
+                        <p>{{ course.courseCard.description }}</p>
+                    {% endif %}
                 </div>
             </div>
             <div class="tab-pane fade in" id="tabCourseCardSummary{{ modalId }}">
@@ -146,7 +148,7 @@
             <div class="tab-pane fade in" id="tabCourseCardProviders{{ modalId }}">
                 <div class="thumbnail">
                     <div class="media-list">
-                        {% if course.courseCard.providers|length > 0 %}
+                        {% if course.courseCard is not null and course.courseCard.providers|length > 0 %}
                             {% for provider in course.courseCard.providers %}
                                 <div class="media">
                                     <div class="pull-left">
