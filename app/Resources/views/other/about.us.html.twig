@@ -1,7 +1,8 @@
 {% extends 'base.html.twig' %}
 {% block title %}{% trans %}Over ons{% endtrans %}{% endblock %}
 {% block body %}
-    <h1>{% trans %}Over ons{% endtrans %}</h1>
+    {% include ':panels/other:about.us.panel.html.twig' %}
+    {% include ':panels/general:commercial.panel.html.twig' %}
 {% endblock %}
 
 {% set menu = 'more' %}

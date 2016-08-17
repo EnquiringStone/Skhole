@@ -10,7 +10,7 @@ services:
 
     app.locale_listener:
         class: AppBundle\EventListener\LocaleListener
-        arguments: [@router, %app_locales%, %locale%]
+        arguments: [@router, @session, %app_locales%, %locale%]
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
     app.exception_listener:
@@ -20,7 +20,7 @@ services:
             - { name: kernel.event_subscriber }
     app.ajax_listener:
         class: AppBundle\EventListener\AjaxListener
-        arguments: ["%ajax_configuration%", "@app.courses.ajax.service", "@app.home.messages.ajax.service", "@app.page.controls.ajax.service", "@app.create.course.ajax.service", "@app.profile.ajax.service", "@app.course.collection.ajax.service"]
+        arguments: ["%ajax_configuration%", "@app.courses.ajax.service", "@app.home.messages.ajax.service", "@app.page.controls.ajax.service", "@app.create.course.ajax.service", "@app.profile.ajax.service", "@app.course.collection.ajax.service", "@app.learn.study.ajax.service", "@app.teach.shared.reports.ajax.service", "@app.other.ajax.service", "@app.cookie.ajax.service"]
         tags:
             - { name: kernel.event_subscriber }
     app.entity.life.cycle.listener:
@@ -34,10 +34,10 @@ services:
         arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", "@twig", "%standard_query_limit%", "%standard_pagination_max%"]
     app.home.messages.ajax.service:
         class: AppBundle\Service\Ajax\Home\MessagesAjaxService
-        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", "@twig"]
+        arguments: ["@doctrine.orm.entity_manager", "@twig", "@app.authorization.service"]
     app.page.controls.ajax.service:
         class: AppBundle\Service\Ajax\PageControlsAjaxService
-        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", "@app.transform.manager", "@twig", "%standard_query_limit%", "%standard_pagination_max%"]
+        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", "@app.transform.manager", "@twig", "@session", "%standard_query_limit%", "%standard_pagination_max%"]
     app.create.course.ajax.service:
         class: AppBundle\Service\Ajax\Teach\CreateCourseAjaxService
         arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", "@app.validator.validator", "@app.transform.manager", "@router", "@twig"]
@@ -47,6 +47,18 @@ services:
     app.course.collection.ajax.service:
         class: AppBundle\Service\Ajax\Learn\CourseCollectionAjaxService
         arguments: ["@doctrine.orm.entity_manager", "@app.authorization.service"]
+    app.learn.study.ajax.service:
+        class: AppBundle\Service\Ajax\Learn\StudyAjaxService
+        arguments: ["@app.authorization.service", "@doctrine.orm.entity_manager", "@session", "@twig"]
+    app.teach.shared.reports.ajax.service:
+        class: AppBundle\Service\Ajax\Teach\SharedReportsAjaxService
+        arguments: ["@doctrine.orm.entity_manager", "@app.authorization.service", "@twig"]
+    app.other.ajax.service:
+        class: AppBundle\Service\Ajax\Other\OtherAjaxService
+        arguments: ["@twig", "@app.authorization.service", "@doctrine.orm.entity_manager", "@mailer", "@app.validator.validator", "%email_receiver%"]
+    app.cookie.ajax.service:
+        class: AppBundle\Service\Ajax\Home\CookieAjaxService
+        arguments: ["@session", "@app.authorization.service", "@doctrine.orm.entity_manager"]
 
     app.transformer.messages:
         class: AppBundle\Transformer\MessagesTransformer
@@ -78,9 +90,18 @@ services:
     app.transformer.course.collection.items:
         class: AppBundle\Transformer\CourseCollectionItemsTransformer
         arguments: ["@twig"]
+    app.transformer.reports:
+        class: AppBundle\Transformer\ReportsTransformer
+        arguments: ["@twig"]
+    app.transformer.shared.reports:
+        class: AppBundle\Transformer\SharedReportsTransformer
+        arguments: ["@twig"]
+    app.transformer.user:
+        class: AppBundle\Transformer\UserTransformer
+        arguments: ["@twig", "@app.authorization.service"]
     app.transform.manager:
         class: AppBundle\Transformer\TransformManager
-        arguments: ["@app.transformer.messages", "@app.transformer.course.reviews", "@app.transformer.courses", "@app.transformer.course.teachers", "@app.transformer.course.announcements", "@app.transformer.course.provider", "@app.transformer.course.questions", "@app.transformer.profile", "@app.transformer.profile.education", "@app.transformer.course.collection.items"]
+        arguments: ["@app.transformer.messages", "@app.transformer.course.reviews", "@app.transformer.courses", "@app.transformer.course.teachers", "@app.transformer.course.announcements", "@app.transformer.course.provider", "@app.transformer.course.questions", "@app.transformer.profile", "@app.transformer.profile.education", "@app.transformer.course.collection.items", "@app.transformer.reports", "@app.transformer.shared.reports", "@app.transformer.user"]
 
     app.validator.validator:
         class: AppBundle\Validator\Validator

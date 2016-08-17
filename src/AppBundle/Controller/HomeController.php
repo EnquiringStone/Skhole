@@ -26,7 +26,9 @@ class HomeController extends Controller {
             $login = $request->query->get('login');
         }
         return $this->render(':home/dashboard:dashboard.html.twig', array(
-            'login' => $login
+            'login' => $login,
+            'courses' => $this->getRandomCourses(10),
+            'courseCollection' => $this->getCourseCollectionsForUser()
         ));
     }
 
@@ -52,7 +54,8 @@ class HomeController extends Controller {
     public function createProfilePage(Request $request)
     {
         $education = $this->getDoctrine()->getRepository('AppBundle:Education\Educations')->findOneBy(array('userId' => $this->getUser()->getId()));
-        return $this->render(':home/dashboard:profile.html.twig', array('education' => $education));
+        $createdCourses = $this->getDoctrine()->getRepository('AppBundle:Course\Courses')->getCountByUserId($this->getUser()->getId());
+        return $this->render(':home/dashboard:profile.html.twig', array('education' => $education, 'createdCourses' => $createdCourses));
     }
 
     public function createMessagesPage(Request $request)
@@ -99,9 +102,22 @@ class HomeController extends Controller {
     /**
      * @Route("/{_locale}/home/getting-started/", name="app_home_getting_started_page")
      */
-    public function gettingStartedAction(Request $request)
+    public function gettingStartedAction()
     {
-        return $this->render('getting.started.html.twig');
+        return $this->render(':home/getting-started:getting.started.html.twig');
+    }
+
+    /**
+     * @Route("/{_locale}/home/getting-started/{page}", name="app_home_getting_started_custom_page")
+     */
+    public function gettingStartedCustomAction($page)
+    {
+        $validPages = array('introduction', 'followCourse', 'createCourse', 'courseReport');
+
+        if(!in_array($page, $validPages))
+            throw new \Exception('Page does not exists');
+
+        return $this->render(':home/getting-started:getting.started.html.twig', array('subMenu' => $page));
     }
 
     /**
@@ -110,5 +126,35 @@ class HomeController extends Controller {
     public function otherAction(Request $request)
     {
         //Don't do shit
+    }
+
+    private function getRandomCourses($amount)
+    {
+        $criteria = array('removed' => false, 'state' => $this->getDoctrine()->getRepository('AppBundle:Course\CourseStates')->findOneBy(array('stateCode' => 'OK')), 'isUndesirable' => false);
+
+        $repo = $this->getDoctrine()->getRepository('AppBundle:Course\Courses');
+
+        $totalCourses = $repo->getCountByCriteria($criteria);
+
+        if($totalCourses <= $amount)
+            return $repo->findBy($criteria);
+
+        $offset = rand(0, $totalCourses - $amount);
+
+        return $repo->findBy($criteria, null, $amount, $offset);
+    }
+
+    private function getCourseCollectionsForUser()
+    {
+        if(!$this->isGranted('ROLE_USER')) return array();
+
+        $collectionItems = $this->getDoctrine()->getRepository('AppBundle:Course\CourseCollectionItems')->findBy(array('userId' => $this->getUser()->getId()));
+
+        $friendlyArray = array();
+        foreach ($collectionItems as $item)
+        {
+            $friendlyArray[] = $item->getCourseId();
+        }
+        return $friendlyArray;
     }
 }

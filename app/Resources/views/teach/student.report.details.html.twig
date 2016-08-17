@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block title %}{% trans %}Voortgang cursisten{% endtrans %}{% endblock %}
+{% block body %}
+    {% set report = sharedReport.report %}
+    {% set viewType = 'teach' %}
+    {% if name is defined and name != '' %}
+        {% include ':panels/learn/report/custom:report.'~name~'.panel.html.twig' %}
+    {% else %}
+        {% include ':panels/learn/report:report.questions.page.panel.html.twig' %}
+    {% endif %}
+    {% include ':panels/learn/report/custom:report.pagination.html.twig' with {'pages': pages, 'offset': offset} %}
+{% endblock %}
+
+{% block prescripts %}
+{% endblock %}
+
+{% set menu = 'teach' %}
+{% set subMenu = 'progressionCourseMembers' %}

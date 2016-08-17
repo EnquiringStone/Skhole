@@ -68,7 +68,9 @@ class ProfileAjaxService implements AjaxInterface
         //Not the same remove picture
         if($user->getPicture() != null && $user->getPicture() != '' && $user->getPicture() != $args['picture'])
         {
-            $absolute = FileHelper::$webDir . $user->getPicture();
+            $fileHelper = new FileHelper();
+
+            $absolute =   $fileHelper->getWebDir() . $user->getPicture();
 
             unlink($absolute);
         }

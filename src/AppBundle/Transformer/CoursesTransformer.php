@@ -67,7 +67,7 @@ class CoursesTransformer implements TransformerInterface
             foreach ($entities as $entity)
             {
                 $html .= $this->twig->render('ajax/my-courses/course.detail.body.html.twig', array('course' => $entity, 'index' => $index));
-                $html .= $this->twig->render(':modal/my-courses:course.details.modal.html.twig', array('course' => $entity, 'modalId' => 'courseDetailsModal' . $index));
+                $html .= $this->twig->render(':modal/learn:course.card.details.modal.html.twig', array('course' => $entity, 'modalId' => 'courseDetailsModal' . $index));
                 $html .= $this->twig->render(':modal/my-courses:course.remove.modal.html.twig', array('course' => $entity, 'modalId' => 'courseRemoveModal' . $index));
                 $index++;
             }

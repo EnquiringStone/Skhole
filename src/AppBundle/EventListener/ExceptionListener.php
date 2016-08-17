@@ -14,6 +14,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Translation\Translator;
 
 class ExceptionListener implements EventSubscriberInterface
@@ -32,11 +33,23 @@ class ExceptionListener implements EventSubscriberInterface
 
     public function onKernelException(GetResponseForExceptionEvent $event)
     {
-        $exception = $event->getException();
-        if($exception instanceof FrontEndException)
+        if($event->getRequest()->isXmlHttpRequest())
         {
-            $message = $this->translator->trans($exception->getTranslationCode(), $exception->getParams(), $exception->getTranslationDomain());
-            $html = $this->environment->render(':errors:ajax.error.message.modal.html.twig', array('errorMessage' => $message));
+            $exception = $event->getException();
+            if($exception instanceof FrontEndException)
+            {
+                $message = $this->translator->trans($exception->getTranslationCode(), $exception->getParams(), $exception->getTranslationDomain());
+            }
+            elseif ($exception instanceof AccessDeniedException)
+            {
+                $message = $this->translator->trans('authorization.error', array(), 'ajaxerrors');
+            }
+            else
+            {
+                $message = $this->translator->trans('general.error', array(), 'ajaxerrors');
+            }
+
+            $html = $this->environment->render(':errors:ajax.error.message.modal.html.twig', array('errorMessage' => $message, 'exception' => $exception));
 
             $response = new Response(json_encode(array('html' => $html), 400));
             $response->headers->set('Content-Type', 'application/json');

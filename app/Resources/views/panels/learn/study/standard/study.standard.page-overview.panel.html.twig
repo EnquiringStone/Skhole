@@ -1,0 +1,20 @@
+{% extends 'panels/panel.base.html.twig' %}
+{% block panelBaseTitle %}
+    <b>{% trans %}Pagina overzicht{% endtrans %}</b>
+{% endblock %}
+{% block panelBaseContents %}
+    <div class="panel-body panel-body-pages">
+        <ol>
+            <li><a href="{{ path('app_learn_study_panels_page', {'pageType': 'custom', 'name': 'start', 'courseId': course.id}) }}">{% trans %}Startpagina{% endtrans %}</a></li>
+            {% for page in course.coursePages %}
+                <li>
+                    <a href="{{ path('app_learn_study_pages_page', {'pageOrder': page.pageOrder, 'courseId': course.id}) }}">{{ page.title }}</a>
+                </li>
+            {% endfor %}
+            <li><a href="{{ path('app_learn_study_panels_page', {'pageType': 'custom', 'name': 'final', 'courseId': course.id}) }}">{% trans %}Startpagina{% endtrans %}</a></li>
+        </ol>
+    </div>
+{% endblock %}
+{% block panelBaseFooter %}
+    {% include ':panels/learn/study/standard:study.standard.panel.footer.html.twig' with {'reportPath': path('app_other_report', {'course': course.id, 'coursePart': 'other'})} %}
+{% endblock %}

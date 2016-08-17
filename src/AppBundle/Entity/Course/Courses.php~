@@ -8,14 +8,16 @@
 
 namespace AppBundle\Entity\Course;
 
+use AppBundle\Exception\FrontEndException;
 use AppBundle\Interfaces\Entity\BasicDetailsInterface;
 use AppBundle\Interfaces\Entity\UserReportInterface;
 use AppBundle\Interfaces\Entity\UserStatisticsInterface;
+use AppBundle\Util\ValidatorHelper;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
- * @ORM\Table(name="skhole_courses")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CoursesRepository")
+ * @ORM\Table(name="courses")
  */
 class Courses implements UserStatisticsInterface, UserReportInterface, BasicDetailsInterface
 {
@@ -47,7 +49,7 @@ class Courses implements UserStatisticsInterface, UserReportInterface, BasicDeta
     protected $updateDateTime;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $name;
 
@@ -57,17 +59,17 @@ class Courses implements UserStatisticsInterface, UserReportInterface, BasicDeta
     protected $description;
 
     /**
-     * @ORM\Column(type="integer", name="language_id")
+     * @ORM\Column(type="integer", name="language_id", nullable=true)
      */
     protected $languageId;
 
     /**
-     * @ORM\Column(type="integer", name="level_id")
+     * @ORM\Column(type="integer", name="level_id", nullable=true)
      */
     protected $levelId;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     protected $difficulty;
 
@@ -92,9 +94,29 @@ class Courses implements UserStatisticsInterface, UserReportInterface, BasicDeta
     protected $isUndesirable;
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $removed;
+
+    /**
      * @ORM\Column(type="decimal", precision=9, scale=5, name="average_content_rating", nullable=true)
      */
     protected $averageContentRating;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $views;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $pages;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true, name="published_date_time")
+     */
+    protected $publishedDateTime;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
@@ -136,7 +158,7 @@ class Courses implements UserStatisticsInterface, UserReportInterface, BasicDeta
     private $courseAnnouncements;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Course\CourseResources", mappedBy="course", fetch="EXTRA_LAZY")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Course\CourseResources", mappedBy="course", fetch="EXTRA_LAZY")
      */
     private $courseResources;
 
@@ -146,20 +168,21 @@ class Courses implements UserStatisticsInterface, UserReportInterface, BasicDeta
     private $courseViews;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Course\CourseExercises", mappedBy="course", fetch="EXTRA_LAZY")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Course\CoursePages", mappedBy="course")
+     * @ORM\OrderBy({"pageOrder" = "ASC"})
      */
-    private $courseExercises;
-
-    /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Course\CourseInstructions", mappedBy="course", fetch="EXTRA_LAZY")
-     */
-    private $courseInstructions;
+    private $coursePages;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Course\CourseStates")
      * @ORM\JoinColumn(name="state_id", referencedColumnName="id")
      */
     private $state;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Course\CourseReviews", mappedBy="course")
+     */
+    private $courseReviews;
 
     /**
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Tags")
@@ -177,13 +200,34 @@ class Courses implements UserStatisticsInterface, UserReportInterface, BasicDeta
      * )
      */
     private $tags;
+
+    public function isComplete()
+    {
+        return !ValidatorHelper::isStringNullOrEmpty($this->getName()) && !ValidatorHelper::isStringNullOrEmpty($this->getDescription())
+            && $this->getLanguage() != null && $this->getLevel() != null && $this->getDifficulty() > 0;
+    }
+
+    public function canPublish()
+    {
+        if($this->getCourseCard() != null)
+            return $this->isComplete() && $this->hasCustomPages() && $this->getCourseCard()->isComplete();
+
+        return false;
+    }
+
+    public function hasCustomPages()
+    {
+        return $this->coursePages->count() > 0;
+    }
     /**
      * Constructor
      */
     public function __construct()
     {
         $this->courseAnnouncements = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->courseResources = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->courseViews = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->coursePages = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->courseReviews = new \Doctrine\Common\Collections\ArrayCollection();
         $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -510,6 +554,30 @@ class Courses implements UserStatisticsInterface, UserReportInterface, BasicDeta
     }
 
     /**
+     * Set removed
+     *
+     * @param boolean $removed
+     *
+     * @return Courses
+     */
+    public function setRemoved($removed)
+    {
+        $this->removed = $removed;
+
+        return $this;
+    }
+
+    /**
+     * Get removed
+     *
+     * @return boolean
+     */
+    public function getRemoved()
+    {
+        return $this->removed;
+    }
+
+    /**
      * Set averageContentRating
      *
      * @param string $averageContentRating
@@ -531,6 +599,54 @@ class Courses implements UserStatisticsInterface, UserReportInterface, BasicDeta
     public function getAverageContentRating()
     {
         return $this->averageContentRating;
+    }
+
+    /**
+     * Set views
+     *
+     * @param integer $views
+     *
+     * @return Courses
+     */
+    public function setViews($views)
+    {
+        $this->views = $views;
+
+        return $this;
+    }
+
+    /**
+     * Get views
+     *
+     * @return integer
+     */
+    public function getViews()
+    {
+        return $this->views;
+    }
+
+    /**
+     * Set pages
+     *
+     * @param integer $pages
+     *
+     * @return Courses
+     */
+    public function setPages($pages)
+    {
+        $this->pages = $pages;
+
+        return $this;
+    }
+
+    /**
+     * Get pages
+     *
+     * @return integer
+     */
+    public function getPages()
+    {
+        return $this->pages;
     }
 
     /**
@@ -712,37 +828,71 @@ class Courses implements UserStatisticsInterface, UserReportInterface, BasicDeta
     }
 
     /**
-     * Add courseResource
+     * Add courseView
      *
-     * @param \AppBundle\Entity\Course\CourseResources $courseResource
+     * @param \AppBundle\Entity\Course\CourseViews $courseView
      *
      * @return Courses
      */
-    public function addCourseResource(\AppBundle\Entity\Course\CourseResources $courseResource)
+    public function addCourseView(\AppBundle\Entity\Course\CourseViews $courseView)
     {
-        $this->courseResources[] = $courseResource;
+        $this->courseViews[] = $courseView;
 
         return $this;
     }
 
     /**
-     * Remove courseResource
+     * Remove courseView
      *
-     * @param \AppBundle\Entity\Course\CourseResources $courseResource
+     * @param \AppBundle\Entity\Course\CourseViews $courseView
      */
-    public function removeCourseResource(\AppBundle\Entity\Course\CourseResources $courseResource)
+    public function removeCourseView(\AppBundle\Entity\Course\CourseViews $courseView)
     {
-        $this->courseResources->removeElement($courseResource);
+        $this->courseViews->removeElement($courseView);
     }
 
     /**
-     * Get courseResources
+     * Get courseViews
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getCourseResources()
+    public function getCourseViews()
     {
-        return $this->courseResources;
+        return $this->courseViews;
+    }
+
+    /**
+     * Add coursePage
+     *
+     * @param \AppBundle\Entity\Course\CoursePages $coursePage
+     *
+     * @return Courses
+     */
+    public function addCoursePage(\AppBundle\Entity\Course\CoursePages $coursePage)
+    {
+        $this->coursePages[] = $coursePage;
+
+        return $this;
+    }
+
+    /**
+     * Remove coursePage
+     *
+     * @param \AppBundle\Entity\Course\CoursePages $coursePage
+     */
+    public function removeCoursePage(\AppBundle\Entity\Course\CoursePages $coursePage)
+    {
+        $this->coursePages->removeElement($coursePage);
+    }
+
+    /**
+     * Get coursePages
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCoursePages()
+    {
+        return $this->coursePages;
     }
 
     /**
@@ -767,6 +917,40 @@ class Courses implements UserStatisticsInterface, UserReportInterface, BasicDeta
     public function getState()
     {
         return $this->state;
+    }
+
+    /**
+     * Add courseReview
+     *
+     * @param \AppBundle\Entity\Course\CourseReviews $courseReview
+     *
+     * @return Courses
+     */
+    public function addCourseReview(\AppBundle\Entity\Course\CourseReviews $courseReview)
+    {
+        $this->courseReviews[] = $courseReview;
+
+        return $this;
+    }
+
+    /**
+     * Remove courseReview
+     *
+     * @param \AppBundle\Entity\Course\CourseReviews $courseReview
+     */
+    public function removeCourseReview(\AppBundle\Entity\Course\CourseReviews $courseReview)
+    {
+        $this->courseReviews->removeElement($courseReview);
+    }
+
+    /**
+     * Get courseReviews
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCourseReviews()
+    {
+        return $this->courseReviews;
     }
 
     /**
@@ -801,5 +985,53 @@ class Courses implements UserStatisticsInterface, UserReportInterface, BasicDeta
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * Set publishedDateTime
+     *
+     * @param \DateTime $publishedDateTime
+     *
+     * @return Courses
+     */
+    public function setPublishedDateTime($publishedDateTime)
+    {
+        $this->publishedDateTime = $publishedDateTime;
+
+        return $this;
+    }
+
+    /**
+     * Get publishedDateTime
+     *
+     * @return \DateTime
+     */
+    public function getPublishedDateTime()
+    {
+        return $this->publishedDateTime;
+    }
+
+    /**
+     * Set courseResources
+     *
+     * @param \AppBundle\Entity\Course\CourseResources $courseResources
+     *
+     * @return Courses
+     */
+    public function setCourseResources(\AppBundle\Entity\Course\CourseResources $courseResources = null)
+    {
+        $this->courseResources = $courseResources;
+
+        return $this;
+    }
+
+    /**
+     * Get courseResources
+     *
+     * @return \AppBundle\Entity\Course\CourseResources
+     */
+    public function getCourseResources()
+    {
+        return $this->courseResources;
     }
 }

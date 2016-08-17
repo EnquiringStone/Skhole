@@ -1,0 +1,30 @@
+{% block sharedReportsTable %}
+    <div class="page-controls" data-default-search-attributes="hasAccepted,1;userId,{{ userId }}" data-view="" data-entity="Report\SharedReports" data-context="SELF" data-url="{{ url('app_home_ajax_page') }}" data-pagination-name="{% trans %}Rapporten{% endtrans %}">
+        <h4><b>{% trans %}Cursusrapporten lijst{% endtrans %}</b></h4>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>{% trans %}Cursusnaam{% endtrans %}</th>
+                <th>{% trans %}Rapport{% endtrans %}</th>
+                <th>{% trans %}Pdf{% endtrans %}</th>
+                <th>{% trans %}Beoordeel{% endtrans %}</th>
+                <th>{% trans %}Nagekeken{% endtrans %}</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody class="content-field">
+                {% for report in reports %}
+                    {% include ':ajax/teach:shared.reports.table.row.html.twig' with {'report': report, 'index': report.id} %}
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="pagination-field" data-name="shared-reports-pagination">
+            {% include ':elements:pagination.html.twig' with {'maxEntities': totalSharedReports, 'limit': standard_query_limit, 'offset': 0, 'maxPages': standard_pagination_max, 'pageName': 'Rapporten'|trans, 'entity': 'Report\\SharedReports'} %}
+        </div>
+        <div class="modal-field">
+            {% for report in reports %}
+                {% include ':modal/teach:remove.report.modal.html.twig' with {'report': report, 'modalId': 'removeReportModal'~report.id} %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

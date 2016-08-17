@@ -1,0 +1,26 @@
+{% block reportPdf %}
+    <html>
+        <head>
+            <link rel="icon" type="image/png" href="{{ asset('images/logo-skhole.png') }}">
+
+            <meta charset="UTF-8" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+            <title>StudyLivre {{ report.course.name }} {% trans %}pdf{% endtrans %}</title>
+            <link type="text/css" href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+            <link type="text/css" href="{{ asset('css/style.css') }}" rel="stylesheet">
+        </head>
+        <body>
+            {% include ':ajax/reports:report.front.body.html.twig' with {'usePdfLayout': true} %}
+            <pagebreak />
+            {% include ':ajax/reports:report.overview.body.html.twig' with {'createPdfLinks': true}%}
+            <pagebreak />
+            {% for page in pages %}
+                {% include ':ajax/reports:report.questions.page.body.html.twig' with {'questions': allQuestions[page.id], 'usePdfLayout': true} %}
+                {% if not loop.last %}<pagebreak />{% endif %}
+            {% endfor %}
+            <pagebreak />
+            {% include ':ajax/reports:report.end.body.html.twig' %}
+        </body>
+    </html>
+{% endblock %}

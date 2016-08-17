@@ -1,16 +1,6 @@
 {% extends ':elements:navigation.secondary.menu.html.twig' %}
 {% block navigationSecondaryMenuContents %}
     <a href="{{ path('app_home_dashboard_page') }}" class="btn btn-default btn-sm">{% trans %}Startpagina{% endtrans %}</a>
-    <div class="btn-group">
-        <button type="button" class="btn btn-default dropdown-toggle btn-sm" data-toggle="dropdown">
-            {% trans %}Badges & statestiek{% endtrans %}
-            <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-            <li><a href="#{#TODO Badge link#}">{% trans %}Badges{% endtrans %}</a></li>
-            <li><a href="#{#TODO Statistics link#}">{% trans %}Statestiek{% endtrans %}</a></li>
-        </ul>
-    </div>
     {% if app.user %}
         <div class="btn-group">
             <button type="button" class="btn btn-default dropdown-toggle btn-sm" data-toggle="dropdown">

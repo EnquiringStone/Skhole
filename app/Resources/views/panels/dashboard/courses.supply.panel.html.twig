@@ -1,0 +1,13 @@
+{% extends 'panels/panel.base.html.twig' %}
+{% block panelBaseTitle %}
+    {% trans %}Bekijk cursusaanbod{% endtrans %} <a name="course-collection"></a>
+{% endblock %}
+{% block panelBaseContents %}
+    <div class="panel-body">
+        {% for course in courses %}
+            {% include ':ajax/search:course.details.row.html.twig' with {'course': course, 'index': loop.index, 'inCollection': course.id in courseCollection} %}
+            {% include ':modal/learn:course.card.details.modal.html.twig' with {'course': course, 'modalId': 'courseCardDetailsModal' ~ loop.index} %}
+            {% include ':modal/my-courses:course.reviews.modal.html.twig' with {'course': course, 'modalId': 'courseReviewsModal' ~ loop.index, 'limit': standard_query_limit, 'maxPages': standard_pagination_max} %}
+        {% endfor %}
+    </div>
+{% endblock %}

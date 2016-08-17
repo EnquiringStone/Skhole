@@ -1,0 +1,27 @@
+{% extends 'panels/panel.base.html.twig' %}
+{% block panelBaseTitle %}
+    {% trans %}cursus maken{% endtrans %}
+{% endblock %}
+{% block panelBaseContents %}
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6">
+                <h4><b>{% trans %}Cursusrapport{% endtrans %}</b></h4>
+                <p>{% trans %}Na afronding van een cursus kan een cursist een cursusrapport (met daarin zijn of haar resultaten) inzien en delen. Voor iedere opdrachtpagina (met open- en meerkeuzevragen) van de desbetreffende cursus wordt een pagina in het rapport aangemaakt.{% endtrans %}</p>
+                <h4><b>{% trans %}Cursusrapport delen met begeleider(s){% endtrans %}</b></h4>
+                <p>{% trans %}De cursist kan een cursusrapport delen met een docent of begeleider. Dit kan op twee manieren: I.) mailen (PDF) of delen met een persoon die in het bezit is van een StudyLivre account. Het enige wat de cursist hiervoor hoeft te doen is de unieke begeleidercode in te voeren van de gewenste begeleider.{% endtrans %}</p>
+                <p>{% trans %}Klik op onderstaande button voor meer informatie over cursusrapporten.{% endtrans %}</p>
+                <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#courseReportIntroductionModal">
+                    <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                    {% trans %}Cursusrapport{% endtrans %}
+                </button>
+            </div>
+            <div class="col-md-6">
+                <div class="embed-responsive embed-responsive-4by3">
+                    {#TODO Change url#}
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/AX7r61fyltc" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

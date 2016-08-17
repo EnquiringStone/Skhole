@@ -8,15 +8,15 @@
             </button>
             <ul class="dropdown-menu">
                 <li>
-                    <a href="{#TODO reporting#}">
+                    <a href="{{ reportPath }}">
                         <span class="glyphicon glyphicon-flag"></span>
                         {% trans %}Rapporteren{% endtrans %}
                     </a>
                 </li>
             </ul>
         </div>
-        <a href="{#TODO back to course pages#}" class="btn btn-default btn-sm pull-right">
-            {% trans %}Terug naar cursuspagina's{% endtrans %}
+        <a href="{{ path('app_learn_study_course_page', {'courseId': course.id}) }}" class="btn btn-default btn-sm pull-right">
+            {% trans %}Terug naar startpagina{% endtrans %}
         </a>
     </div>
 {% endblock %}

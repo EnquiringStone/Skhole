@@ -1,12 +1,12 @@
 <div class="panel-footer">
     {% if currentOrder + 1 <= total + 1 %}
         {% if currentOrder + 1 > total %}
-            <a href="{{ path('app_learn_study_panels_page', {'courseId': courseId, 'pageType': 'custom', 'name': 'final'}) }}" class="btn btn-default btn-sm pull-right">
+            <a href="{{ path('app_learn_study_panels_page', {'courseId': courseId, 'pageType': 'custom', 'name': 'final'}) }}" class="btn btn-default btn-sm pull-right next-page">
                 {% trans %}Volgende{% endtrans %}
                 <span class="glyphicon glyphicon-arrow-right"></span>
             </a>
         {% else %}
-            <a href="{{ path('app_learn_study_pages_page', {'courseId': courseId, 'pageOrder': currentOrder + 1}) }}" class="btn btn-default btn-sm pull-right save-statistics"
+            <a href="{{ path('app_learn_study_pages_page', {'courseId': courseId, 'pageOrder': currentOrder + 1}) }}" class="btn btn-default btn-sm pull-right save-statistics next-page"
                 data-course-id="{{ courseId }}" data-order="{{ currentOrder }}">
                 {% trans %}Volgende{% endtrans %}
                 <span class="glyphicon glyphicon-arrow-right"></span>
@@ -24,9 +24,20 @@
         </a>
     {% endif %}
     {% if moreButton %}
-        <button type="button" class="btn btn-default btn-sm">
-            <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
-            {% trans %}Rapporteren{% endtrans %}
-        </button>
+        <div class="btn-group">
+            <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
+                {% trans %}Meer{% endtrans %}
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li>
+                    <a href="{{ path('app_other_report', {'course': courseId, 'coursePart': 'other', 'page': pageId}) }}">
+                        <span class="glyphicon glyphicon-flag"></span>
+                        {% trans %}Rapporteren{% endtrans %}
+                    </a>
+                </li>
+            </ul>
+        </div>
     {% endif %}
 </div>

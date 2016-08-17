@@ -18,7 +18,7 @@
                         {% include ':modal/create-course:card.remove.teacher.modal.html.twig' with {'teacher': teacher, 'modalId': 'removeTeacherModal'~loop.index} %}
                     {% endfor %}
                 {% else %}
-                    <p class="centrum">{% trans %}Geen docenten gevonden voor deze curses{% endtrans %}</p>
+                    <p class="centrum no-teacher-found-text">{% trans %}Geen docenten gevonden voor deze cursus{% endtrans %}</p>
                 {% endif %}
             </div>
             <div class="centrum">

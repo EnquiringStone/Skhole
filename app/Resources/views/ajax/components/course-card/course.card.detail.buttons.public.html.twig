@@ -1,5 +1,6 @@
 {% block courseCardDetailButtonsPublic %}
     {% set teacherNames = '' %}
+    {% set averageScore = course.calculateAverage %}
     {% if course.courseCard.teachers|length > 0 %}
         {% for teacher in course.courseCard.teachers %}
             {% set teacherNames = loop.last ? teacherNames ~ teacher.name : teacherNames ~ teacher.name ~ ', ' %}
@@ -17,8 +18,8 @@
     </button>
     <button type="button" class="unclickable btn btn-default btn-xs">
         <b>{% trans %}Rating{% endtrans %}:</b>
-        {% if course.averageContentRating is not null %}
-            {% for i in 0..course.averageContentRating|round %}
+        {% if averageScore != -1 %}
+            {% for i in 1..averageScore %}
                 <img src="{{ asset('images/star_rating.png') }}" class="img-rounded">
             {% endfor %}
         {% else %}

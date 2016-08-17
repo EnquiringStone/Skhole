@@ -1,0 +1,15 @@
+{% extends 'panels/panel.base.html.twig' %}
+{% block panelBaseTitle %}
+    {% trans %}Veel gestelde vragen{% endtrans %}
+{% endblock %}
+{% block panelBaseContents %}
+    <div class="panel-body">
+        <h4><b>{% trans %}Algemene vragen{% endtrans %}</b></h4>
+        <div id="accordion" class="panel-group" aria-multiselectable="true" role="tablist">
+            <a aria-controls="collapseOne" aria-expanded="true" href="#collapseOne" data-parent="#accordion" data-toggle="collapse" role="button"><h5 class="text-muted">{% trans %}What important truth do few people agree with you about?{% endtrans %}</h5></a>
+            <div id="collapseOne" class="panel-collapse collapse" aria-labelledby="headingOne" role="tabpanel" aria-expanded="true">
+                <div class="thumbnail">{% trans %}Dit moeten we nog maken{% endtrans %}{#TODO all of this#}</div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

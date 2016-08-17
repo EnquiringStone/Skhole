@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="skhole_teachers")
+ * @ORM\Table(name="teachers")
  */
 class Teachers implements BasicDetailsInterface, UserReportInterface
 {

@@ -1,0 +1,46 @@
+{% extends 'panels/panel.base.html.twig' %}
+{% block panelBaseTitle %}
+    {% trans %}Gebruikersrichtlijnen{% endtrans %}
+{% endblock %}
+{% block panelBaseContents %}
+    <div class="panel-body">
+        <div class="thumbnail">
+            <h4><b>{% trans %}Respecteer de StudyLivre gebruiksrichtlijnen{% endtrans %}</b></h4>
+            <p>{% trans %}We vragen je om geen misbruik te maken van de site. Elke nieuw item dat u toevoegd gaat gepaard met een bepaalde mate van vertrouwen. We rekenen erop dat u zich verantwoordelijk gedraagt. Gebruikers respecteren dit vertrouwen. Veel richtlijnen zijn vanzelf sprekend en het uitgangspunt luidt daarom: wees redelijk.{% endtrans %}</p>
+        </div>
+        <div class="thumbnail">
+            <h4><b>{% trans %}Ga niet over de scheef{% endtrans %}</b></h4>
+            <p>{% trans %}Hieronder volgen een aantal logische regels die je zullen helpen uit de problemen te blijven. Neem deze regels serieus. Zorg ervoor dat je ze begrijpt en respecteer waarom ze zijn opgesteld.{% endtrans %}</p>
+            <ol>
+                <li>
+                    <b class="text-muted">{% trans %}Auteursrecht{% endtrans %}:</b>
+                    {% trans %}Respecteer het auteursrecht. Gebruik alleen cursusmateriaal dat je zelf hebt gemaakt of waarvoor je toestemming hebt gekregen dit te doen. Bezoek het Auteursrecht menu voor meer informatie.{% endtrans %}
+                </li>
+                <li>
+                    <b class="text-muted">{% trans %}Geen naaktheid of seksuele inhoud{% endtrans %}:</b>
+                    {% trans %}StudyLivre is niet bedoeld voor pornografie of seksueel expliciet cursusmateriaal. Wanneer deze beschrijving op jouw cursusmateriaal van toepassing is, moet je deze niet op StudyLivre plaatsen.{% endtrans %}
+                </li>
+                <li>
+                    <b class="text-muted">{% trans %}Schadelijke of gevaarlijk materiaal{% endtrans %}:</b>
+                    {% trans %}Plaats geen video's die anderen aanmoedigen om gevaarlijke dingen te doen waardoor ze gewond kunnen raken.{% endtrans %}
+                </li>
+                <li>
+                    <b class="text-muted">{% trans %}Geweldadig materiaal{% endtrans %}:</b>
+                    {% trans %}Het is niet toegestaan om video's te plaatsen die schokkend, sensationeel of respectloos zijn. Als je nieuws- of documentairevideo's plaatst die schokkende beelden bevatten, zorg er dan voor dat je er genoeg informatie bij geeft, zodat mensen begrijpen wat er in de video gebeurt.{% endtrans %}
+                </li>
+                <li>
+                    <b class="text-muted">{% trans %}Haatdragende inhoud of bedreigingen{% endtrans %}:</b>
+                    {% trans %}StudyLirvre ondersteunt geen inhoud die geweld promoot of goedkeurt tegen mensen of groepen op basis van ras of etnische afkomst, handicap, geslacht, leeftijd, religie, nationaliteit of seksuele geaardheid, of waarvan het hoofddoel is aan te zetten tot haat op basis van deze kenmerken. Zaken zoals stalken, bedreigingen, pesten, intimidatie, privacyschending en het aanzetten van anderen tot gewelddadige handelingen of tot het schenden van de gebruiksvoorwaarden worden bijzonder serieus genomen.{% endtrans %}
+                </li>
+                <li>
+                    <b class="text-muted">{% trans %}Spam of misleidende zoekdata{% endtrans %}:</b>
+                    {% trans %}Maak geen misleidende beschrijvingen of titels of om ervoor te zorgen dat je cursussen vaker worden bekeken. Het is niet toegestaan om ongerichte, ongewenste of herhalende inhoud te plaatsen.{% endtrans %}
+                </li>
+            </ol>
+        </div>
+        <div class="thumbnail">
+            <h4><b>{% trans %}We controleren je meldingen zorgvuldig{% endtrans %}</b></h4>
+            <p>{% trans %}Sommige dingen die je op StudyLivre ziet, zullen je wellicht niet bevallen. Waarschijnlijk ervaar je bepaalde cursuspagina's als beledigend. Als je denkt dat de inhoud ongepast is, gebruik dan de rapportage functie die u op iedere cursuspagina kunt vinden. Uw rapportage zal door een van onze medewerkers beoordeeld worden.{% endtrans %}</p>
+        </div>
+    </div>
+{% endblock %}

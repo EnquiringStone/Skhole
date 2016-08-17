@@ -23,6 +23,9 @@ function goToUrl(url) {
 function refreshPage(caller, resetPagination, resetSort, customFunction) {
     var base = $($(caller).parents('.page-controls'));
 
+    if(base.length > 1)
+        base = $(base[0]); //Always get the nearest one if there are multiple
+
     var entity = base.data('entity');
     var url = base.data('url');
     var context = base.data('context');
@@ -65,9 +68,12 @@ function refreshPage(caller, resetPagination, resetSort, customFunction) {
     arguments['ajax_key'] = 'PCAS1';
     arguments['method'] = 'update';
     arguments['context'] = context;
-    arguments['view'] = view;
+    if(view != null && view != '')
+        arguments['view'] = view;
 
+    addLoadingScreen(base);
     sendAjaxCall(url, arguments, function(args) {
+        removeLoadingScreen();
         if(args['paginationHtml'] != null) {
             $('.pagination-field', base).empty();
             $('.pagination-field', base).append(args['paginationHtml']);
@@ -76,13 +82,22 @@ function refreshPage(caller, resetPagination, resetSort, customFunction) {
             $('.sort-field', base).empty();
             $('.sort-field', base).append(args['sortHtml']);
         }
+        if(args['modalsHtml'] != null) {
+            $('.modal-field', base).empty();
+            $('.modal-field', base).append(args['modalsHtml']);
+        }
 
         $('.content-field', base).empty();
         $('.content-field', base).append(args['entitiesHtml']);
         if(customFunction != null)
             customFunction(args);
-    }, function(args) {
-        //console.log(args);
+
+        var paginationName = $('.pagination-field', base).data('name');
+
+        $(document).trigger('refreshPageSucceeded', {'pagination': paginationName, 'context': base});
+    }, function(error) {
+        removeLoadingScreen();
+        showAjaxErrorModal(error['responseJSON']['html']);
     });
 }
 
@@ -151,7 +166,6 @@ function getSearchValues(base) {
     return input;
 }
 
-//TODO use this to show the error message from the ajax call
 function showAjaxErrorModal(errorModalHtml) {
     $('.modal').modal('hide');
     var modalDiv = $('.ajax-error-modal');
@@ -163,12 +177,7 @@ function showAjaxErrorModal(errorModalHtml) {
 function addLoadingScreen(object){
     var loadingScreen = $("#loading");
     loadingScreen.css('top', $(object).position().top);
-    loadingScreen.css('left', $(object).position().left);
     loadingScreen.css('height', $(object).height());
-
-    var loadingScreenLogo = $('.loading-image', loadingScreen);
-    loadingScreenLogo.css('top', '50%');
-    loadingScreenLogo.css('left', '50%');
 
     loadingScreen.css('display', 'block');
 }

@@ -1,0 +1,11 @@
+{% block cookie %}
+    <div id="cookie-panel" class="alert alert-info alert-dismissable" data-url="{{ path('app_home_ajax_page') }}">
+        <button class="close save-cookie-choice" aria-hidden="true" data-dismiss="alert" type="button">x</button>
+        <p>
+            {% trans %}Wij gebruiken cookies om het surfen op StudyLivre voor jou nog makkelijker en persoonlijker te maken. Bekijk ons{% endtrans %}
+            <a href="{{ path('app_other_legal', {'page': 'privacy'}) }}">{% trans %}Privacybeleid{% endtrans %}</a> {% trans %}en{% endtrans %}
+            <a href="{{ path('app_other_legal', {'page': 'cookie'}) }}">{% trans %}Cookiebeleid{% endtrans %}</a> {% trans %}voor meer informatie.{% endtrans %}
+            <button class="btn btn-info btn-xs save-cookie-choice" data-dismiss="alert" type="button">{% trans %}Sluiten{% endtrans %}</button>
+        </p>
+    </div>
+{% endblock %}

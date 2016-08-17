@@ -1,0 +1,14 @@
+{% block sort %}
+    {% if not attribute is defined %}{% set attribute = 'firstName' %}{% endif %}
+    {% if not value is defined %}{% set value = 'ASC' %}{% endif %}
+
+    <div class="pull-right">
+        <label>{% trans %}Sorteer op{% endtrans %}:</label>
+        <select class="sortable" name="filterOptions" size="1" aria-controls="example1">
+            <option {% if attribute == 'firstName' and value == 'ASC' %}selected="selected"{% endif %} data-attribute="firstName" data-sorted="ASC">{% trans %}Voornaam A - Z{% endtrans %}</option>
+            <option {% if attribute == 'firstName' and value == 'DESC' %}selected="selected"{% endif %} data-attribute="firstName" data-sorted="DESC">{% trans %}Voornaam Z - A{% endtrans %}</option>
+            <option {% if attribute == 'surname' and value == 'ASC' %}selected="selected"{% endif %} data-attribute="surname" data-sorted="ASC">{% trans %}Achternaam A - Z{% endtrans %}</option>
+            <option {% if attribute == 'surname' and value == 'DESC' %}selected="selected"{% endif %} data-attribute="surname" data-sorted="DESC">{% trans %}Achternaam Z - A{% endtrans %}</option>
+        </select>
+    </div>
+{% endblock %}

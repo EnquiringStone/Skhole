@@ -1,0 +1,30 @@
+{% extends 'panels/panel.base.html.twig' %}
+{% block panelBaseTitle %}
+    {% trans %}Auteursrecht{% endtrans %}
+{% endblock %}
+{% block panelBaseContents %}
+    <div class="panel-body">
+        <div class="thumbnail">
+            <h4><b>{% trans %}Inleiding{% endtrans %}</b></h4>
+            <p>
+                {% trans %}Auteursrecht is een belangrijk onderwerp voor StudyLivre. In dit menu kunt u meer te weten komen over ons auteursrechtenbeleid. Eveneens vindt u er informatie die u nodig heeft om uw rechten op deze website te beheren. Bekijk ook het{% endtrans %}
+                <a href="{{ path('app_other_guidelines') }}">{% trans %}richtlijnen{% endtrans %}</a>
+                {% trans %}menu om meer te weten te komen over auteursrechtrichtlijnen.{% endtrans %}
+            </p>
+        </div>
+        <div class="thumbnail">
+            <h4>{% trans %}Auteursrechtenbeleid{% endtrans %}</h4>
+            <h5 class="text-muted">{% trans %}Melding auteursrechtschending{% endtrans %}</h5>
+            <p>{% trans %}Als u vermoed dat er sprake is van ongepaste inhoud of een auteursrechtschending, kunt u dit melden door middel van het rapportage formulier{% endtrans %}
+                {% trans %}. Een auteursrechtmelding mag uitsluitend worden ingediend door de auteursrechteigenaar of een vertegenwoordiger die bevoegd is namens de eigenaar te handelen. {% endtrans %}
+            </p>
+            <h5 class="text-muted">{% trans %}Auteursrechtschending claim intrekken{% endtrans %}</h5>
+            <p>{% trans %}Nadat een melding van een auteursrechtschending is ingediend, kan de indiener zijn/haar mening herzien en de claim intrekken. Indien dit gebeurt, vervalt de lopende rapportageprocedure. Een claim intrekken kan door middel van een emailverzoek. {% endtrans %}</p>
+            <h5 class="text-muted">{% trans %}Een verweer indienen{% endtrans %}</h5>
+            <p>{% trans %}Een verweer is een verzoek om een cursusitem terug te zetten die is verwijderd wegens (vermeende) auteursrechtschending. De procedure mag alleen worden gevolgd in gevallen waar de upload is verwijderd of geblokeerd. Een verweer indienen kan door middel van een email verzoek.{% endtrans %}</p>
+            <h5 class="text-muted">{% trans %}Uitgangspunten auteursrechtklachten{% endtrans %}</h5>
+            <p>{% trans %}Als u een waarschuwing vanwege een auteursrechtrapportage krijgt, houdt dit in dat een door u gemaakt cursusitem is verwijderd. Wanneer een auteursrechteigenaar ons officieel meldt dat u hun content niet op StudyLivre mag plaatsen, zijn wij juridisch genoodzaakt om het desbetreffende item te verwijderen.{% endtrans %}</p>
+            <p>{% trans %}Als u meer dan drie auteursrecht waarschuwingen heeft ontvangen, wordt uw StudyLivre-account opgheven. Gebruikers met beëindigde accounts kunnen geen nieuwe accounts maken.{% endtrans %}</p>
+        </div>
+    </div>
+{% endblock %}

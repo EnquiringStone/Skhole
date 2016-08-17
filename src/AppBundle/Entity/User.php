@@ -12,7 +12,7 @@ use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  * @ORM\Table(name="study_livre_user")
  */
 class User extends BaseUser
@@ -93,6 +93,80 @@ class User extends BaseUser
      * @ORM\Column(type="string", nullable=true)
      */
     protected $picture;
+
+    /**
+     * @ORM\Column(type="string", length=10, unique=true)
+     */
+    protected $mentorCode;
+
+    /**
+     * @ORM\Column(type="boolean", name="agreed_to_cookie")
+     */
+    protected $agreedToCookie;
+
+    /**
+     * @ORM\Column(type="datetime", name="agreed_to_cookie_date_time", nullable=true)
+     */
+    protected $agreedToCookieDateTime;
+
+    /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Education\Educations", mappedBy="user")
+     */
+    private $education;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Report\SharedReports", mappedBy="user")
+     */
+    private $sharedReports;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->sharedReports = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function getStatisticsByMentor($mentorId)
+    {
+        $total = 0;
+        $revised = 0;
+        $rated = 0;
+
+        foreach ($this->sharedReports as $report)
+        {
+            if($report->getHasAccepted() && $report->getMentorUserId() == $mentorId)
+            {
+                $total ++;
+                if($report->getHasRevised()) $revised ++;
+                if($report->getRating() != null) $rated ++;
+            }
+        }
+
+        return array('total' => $total, 'revised' => $revised, 'rated' => $rated);
+    }
+
+    /**
+     * Set customEmail
+     *
+     * @param string $customEmail
+     *
+     * @return User
+     */
+    public function setCustomEmail($customEmail)
+    {
+        $this->customEmail = $customEmail;
+
+        return $this;
+    }
+
+    /**
+     * Get customEmail
+     *
+     * @return string
+     */
+    public function getCustomEmail()
+    {
+        return $this->customEmail;
+    }
 
     /**
      * Set facebookId
@@ -383,30 +457,6 @@ class User extends BaseUser
     }
 
     /**
-     * Set customEmail
-     *
-     * @param string $customEmail
-     *
-     * @return User
-     */
-    public function setCustomEmail($customEmail)
-    {
-        $this->customEmail = $customEmail;
-
-        return $this;
-    }
-
-    /**
-     * Get customEmail
-     *
-     * @return string
-     */
-    public function getCustomEmail()
-    {
-        return $this->customEmail;
-    }
-
-    /**
      * Set picture
      *
      * @param string $picture
@@ -428,5 +478,135 @@ class User extends BaseUser
     public function getPicture()
     {
         return $this->picture;
+    }
+
+    /**
+     * Set mentorCode
+     *
+     * @param string $mentorCode
+     *
+     * @return User
+     */
+    public function setMentorCode($mentorCode)
+    {
+        $this->mentorCode = $mentorCode;
+
+        return $this;
+    }
+
+    /**
+     * Get mentorCode
+     *
+     * @return string
+     */
+    public function getMentorCode()
+    {
+        return $this->mentorCode;
+    }
+
+    /**
+     * Set education
+     *
+     * @param \AppBundle\Entity\Education\Educations $education
+     *
+     * @return User
+     */
+    public function setEducation(\AppBundle\Entity\Education\Educations $education = null)
+    {
+        $this->education = $education;
+
+        return $this;
+    }
+
+    /**
+     * Get education
+     *
+     * @return \AppBundle\Entity\Education\Educations
+     */
+    public function getEducation()
+    {
+        return $this->education;
+    }
+
+    /**
+     * Add sharedReport
+     *
+     * @param \AppBundle\Entity\Report\SharedReports $sharedReport
+     *
+     * @return User
+     */
+    public function addSharedReport(\AppBundle\Entity\Report\SharedReports $sharedReport)
+    {
+        $this->sharedReports[] = $sharedReport;
+
+        return $this;
+    }
+
+    /**
+     * Remove sharedReport
+     *
+     * @param \AppBundle\Entity\Report\SharedReports $sharedReport
+     */
+    public function removeSharedReport(\AppBundle\Entity\Report\SharedReports $sharedReport)
+    {
+        $this->sharedReports->removeElement($sharedReport);
+    }
+
+    /**
+     * Get sharedReports
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSharedReports()
+    {
+        return $this->sharedReports;
+    }
+
+    /**
+     * Set agreedToCookie
+     *
+     * @param boolean $agreedToCookie
+     *
+     * @return User
+     */
+    public function setAgreedToCookie($agreedToCookie)
+    {
+        $this->agreedToCookie = $agreedToCookie;
+
+        return $this;
+    }
+
+    /**
+     * Get agreedToCookie
+     *
+     * @return boolean
+     */
+    public function getAgreedToCookie()
+    {
+        return $this->agreedToCookie;
+    }
+
+    /**
+     * Set agreedToCookieDateTime
+     *
+     * @param \DateTime $agreedToCookieDateTime
+     *
+     * @return User
+     */
+    public function setAgreedToCookieDateTime($agreedToCookieDateTime)
+    {
+        $this->agreedToCookieDateTime = $agreedToCookieDateTime;
+
+        return $this;
+    }
+
+    /**
+     * Get agreedToCookieDateTime
+     *
+     * @return \DateTime
+     */
+    public function getAgreedToCookieDateTime()
+    {
+        return $this->agreedToCookieDateTime;
     }
 }

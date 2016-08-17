@@ -15,6 +15,7 @@ use AppBundle\Entity\Course\Courses;
 use AppBundle\Entity\Course\CourseSchedules;
 use AppBundle\Enum\CourseStateEnum;
 use AppBundle\Util\SecurityHelper;
+use Doctrine\ORM\Query\Expr\Join;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -128,7 +129,85 @@ class TeachController extends Controller
      */
     public function progressionCourseMembers(Request $request)
     {
-        return $this->render(':teach:progression.course.members.html.twig');
+        $limit = $this->getParameter('standard_query_limit');
+        $maxPages = $this->getParameter('standard_pagination_max');
+        $offset = 0;
+
+        $criteria = array('hasAccepted' => false, 'mentorUserId' => $this->getUser()->getId());
+        $repo = $this->getDoctrine()->getRepository('AppBundle:Report\SharedReports');
+
+        $mentorRequests = $repo->findBy($criteria, array('insertDateTime' => 'ASC'), $limit, $offset);
+        $totalMentorRequests = $repo->getCountByCriteria($criteria);
+
+        $users = $this->getDoctrine()->getRepository('AppBundle:User')->getAllUsersByMentor($this->getUser()->getId(), 0, $limit, 'firstName', 'ASC');
+        $totalUsers = $this->getDoctrine()->getRepository('AppBundle:User')->getUserCountByMentor($this->getUser()->getId());
+
+        return $this->render(':teach:progression.course.members.html.twig', array(
+            'mentorRequests' => $mentorRequests,
+            'totalMentorRequests' => $totalMentorRequests,
+            'limit' => $limit,
+            'maxPages' => $maxPages,
+            'offset' => $offset,
+            'users' => $users,
+            'totalUsers' => $totalUsers));
+    }
+
+    /**
+     * @Route("/{_locale}/teach/show/report/{id}/", name="app_teach_show_report")
+     */
+    public function showReportAction($id)
+    {
+        return $this->showReportCustomAction($id, 'front');
+    }
+
+    /**
+     * @Route("/{_locale}/teach/show/report/{id}/custom/{name}/", name="app_teach_show_report_custom")
+     */
+    public function showReportCustomAction($id, $name)
+    {
+        $validNames = array('front', 'overview', 'end');
+        if(!in_array($name, $validNames)) throw new AccessDeniedException();
+
+        $sharedReport = $this->validateSharedReport($id);
+
+        $pages = $this->getDoctrine()->getRepository('AppBundle:Report\Reports')->getAllPagesByReport($sharedReport->getReport()->getId());
+
+        $criteria = array('sharedReport' => $sharedReport, 'pages' => $pages, 'name' => $name, 'offset' => 0);
+        if($name == 'end') $criteria['offset'] = sizeof($pages);
+
+        return $this->render(':teach:student.report.details.html.twig', $criteria);
+    }
+
+    /**
+     * @Route("/{_locale}/teach/show/report/{id}/{pageId}", name="app_teach_show_report_page")
+     */
+    public function showReportPageAction($id, $pageId)
+    {
+        $sharedReport = $this->validateSharedReport($id);
+
+        $page = $this->getDoctrine()->getRepository('AppBundle:Course\CoursePages')->find($pageId);
+        if($page == null || $page->getCourseId() != $sharedReport->getReport()->getCourseId() || $page->getPageType()->getType() != 'exercise')
+            throw new AccessDeniedException();
+
+        $pages = $this->getDoctrine()->getRepository('AppBundle:Report\Reports')->getAllPagesByReport($sharedReport->getReport()->getId());
+        $questions = $this->getDoctrine()->getRepository('AppBundle:Report\AnswerResults')->getAllAnsweredQuestionByCoursePage($sharedReport->getReport()->getId(), $page->getId());
+
+        $criteria = array('sharedReport' => $sharedReport, 'pages' => $pages, 'page' => $page, 'questions' => $questions, 'offset' => $page->getPageOrder() - 1);
+
+        return $this->render(':teach:student.report.details.html.twig', $criteria);
+    }
+
+    /**
+     * @param $id
+     * @return \AppBundle\Entity\Report\SharedReports
+     */
+    private function validateSharedReport($id)
+    {
+        $sharedReport = $this->getDoctrine()->getRepository('AppBundle:Report\SharedReports')->find($id);
+        if($sharedReport == null || $sharedReport->getMentorUserId() != $this->getUser()->getId() || !$sharedReport->getHasAccepted())
+            throw new AccessDeniedException();
+
+        return $sharedReport;
     }
 
     protected function createCourseInformationStandardPage(Courses $course, $type, $name)

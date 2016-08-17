@@ -270,6 +270,130 @@
                 <source>course.resources.invalid.dropbox</source>
                 <target>Het ingevulde dropbox url is niet geldig</target>
             </trans-unit>
+            <trans-unit id="68">
+                <source>course.reviews.one.per.user</source>
+                <target>U heeft deze cursus al een review gegeven</target>
+            </trans-unit>
+            <trans-unit id="69">
+                <source>course.reviews.invalid.rating</source>
+                <target>De beoordeling moet tussen de 0 en 5 sterren liggen</target>
+            </trans-unit>
+            <trans-unit id="70">
+                <source>course.reports.completed.and.shared</source>
+                <target>De cursusrapport is klaar en gedeeld. Gedeelde rapporten kunnen niet worden gewijzigd.</target>
+            </trans-unit>
+            <trans-unit id="71">
+                <source>course.reports.view.not.complete</source>
+                <target>Het rapport van deze cursus kan nog niet worden bekeken. Dit kan komen omdat de cursus geen vragen stelt of omdat nog niet alle vragen zijn beantwoord. %1</target>
+            </trans-unit>
+            <trans-unit id="72">
+                <source>course.reports.shared.remove</source>
+                <target>Dit rapport wordt gedeeld met %1 begeleiders. Dit zorgt ervoor dat het rapport niet verwijderd kan worden</target>
+            </trans-unit>
+            <trans-unit id="73">
+                <source>course.reports.share.not.logged.in</source>
+                <target>Om een rapport te delen moet je zijn ingelogd</target>
+            </trans-unit>
+            <trans-unit id="74">
+                <source>course.reports.already.shared</source>
+                <target>Dit rapport is al gedeeld met de opgegeven begeleider</target>
+            </trans-unit>
+            <trans-unit id="75">
+                <source>course.reports.share.same</source>
+                <target>De ingevulde mentorcode is van jezelf. Je kunt geen rapporten met jezelf delen</target>
+            </trans-unit>
+            <trans-unit id="76">
+                <source>course.shared.reports.decline.already.accepted</source>
+                <target>De begeleidverzoek kan niet worden geweigerd omdat deze al geaccepteerd is</target>
+            </trans-unit>
+            <trans-unit id="77">
+                <source>course.shared.reports.nothing.found</source>
+                <target>Voor de opgegeven gebruiker kunnen geen rapporten worden gevonden die gedeeld zijn met jou</target>
+            </trans-unit>
+            <trans-unit id="78">
+                <source>course.shared.reports.not.accepted</source>
+                <target>Het opgegeven rapport is nog niet geaccepteerd door jou. Accepteer deze eerst voordat je veranderingen kunt doorvoeren</target>
+            </trans-unit>
+            <trans-unit id="79">
+                <source>course.create.is.published.create.exercise</source>
+                <target>Het toevoegen van opdrachten is niet mogelijk voor een gepubliseerde cursus</target>
+            </trans-unit>
+            <trans-unit id="80">
+                <source>contact.first.name.empty</source>
+                <target>De voornaam is leeg</target>
+            </trans-unit>
+            <trans-unit id="81">
+                <source>contact.first.name.coding.characters</source>
+                <target>De voornaam bevat illegale characters</target>
+            </trans-unit>
+            <trans-unit id="82">
+                <source>contact.surname.empty</source>
+                <target>De achternaam is leeg</target>
+            </trans-unit>
+            <trans-unit id="83">
+                <source>contact.surname.coding.characters</source>
+                <target>De achternaam bevat illegale characters</target>
+            </trans-unit>
+            <trans-unit id="84">
+                <source>contact.subject.invalid</source>
+                <target>Het onderwerp is niet geldig</target>
+            </trans-unit>
+            <trans-unit id="85">
+                <source>contact.email.empty</source>
+                <target>De email is leeg</target>
+            </trans-unit>
+            <trans-unit id="86">
+                <source>contact.email.invalid</source>
+                <target>De email is niet geldig</target>
+            </trans-unit>
+            <trans-unit id="87">
+                <source>contact.message.empty</source>
+                <target>De boodschap is leeg</target>
+            </trans-unit>
+            <trans-unit id="88">
+                <source>contact.message.coding.characters</source>
+                <target>De boodschap bevat illegale characters</target>
+            </trans-unit>
+            <trans-unit id="89">
+                <source>report.course.part.invalid</source>
+                <target>Het onderdeel is niet geldig</target>
+            </trans-unit>
+            <trans-unit id="90">
+                <source>report.phone.invalid</source>
+                <target>De telefoonnummer is ongeldig</target>
+            </trans-unit>
+            <trans-unit id="91">
+                <source>report.message.empty</source>
+                <target>De rapportage is leeg</target>
+            </trans-unit>
+            <trans-unit id="92">
+                <source>report.message.illegal.characters</source>
+                <target>De rapportage bevat illegale characters</target>
+            </trans-unit>
+            <trans-unit id="93">
+                <source>report.name.invalid</source>
+                <target>De opgegeven naam is ongeldig</target>
+            </trans-unit>
+            <trans-unit id="94">
+                <source>report.name.not.found</source>
+                <target>De cursus voor de opgegeven naam kan niet worden gevonden</target>
+            </trans-unit>
+            <trans-unit id="95">
+                <source>report.page.invalid</source>
+                <target>De pagina is ongeldig</target>
+            </trans-unit>
+            <trans-unit id="96">
+                <source>report.subject.invalid</source>
+                <target>De rapportage onderwerp is ongeldig</target>
+            </trans-unit>
+            <trans-unit id="97">
+                <source>general.error</source>
+                <target>Er is iets verkeerd gegaan. Herlaad de pagina en probeer opnieuw. Of neem contact op met ons</target>
+            </trans-unit>
+            <trans-unit id="98">
+                <source>authorization.error</source>
+                <target>Je bent niet bemachtigd om dit in te zien. Is dit onterecht? Neem contact met ons op</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

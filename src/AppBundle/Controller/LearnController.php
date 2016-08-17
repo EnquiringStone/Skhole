@@ -14,7 +14,9 @@ use AppBundle\Enum\CoursePageTypeEnum;
 use AppBundle\Enum\CourseStateEnum;
 use AppBundle\Enum\PageTypeEnum;
 use AppBundle\Util\ValidatorHelper;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Routing\Annotation\Route;
@@ -58,9 +60,50 @@ class LearnController extends Controller
     /**
      * @Route("/{_locale}/learn/study/", name="app_learn_study_page")
      */
-    public function studyAction()
+    public function studyAction(Request $request)
     {
-        return $this->render(':learn:study.default.html.twig');
+        $session = $this->get('session');
+
+        if($request->query->has(('clear')))
+        {
+            if($session->has('lastCourseId')) $session->remove('lastCourseId');
+            if($session->has('lastPageId')) $session->remove('lastPageId');
+            if($session->has('name')) $session->remove('name');
+            if($session->has('pageType')) $session->remove('pageType');
+        }
+
+        if($session->has('lastCourseId'))
+        {
+            try
+            {
+                $course = $this->validateSpecifiedCourseId($session->get('lastCourseId'));
+
+                if($session->has('lastPageId'))
+                {
+                    $page = $this->getDoctrine()->getRepository('AppBundle:Course\CoursePages')->find($session->get('lastPageId'));
+                    if($page != null && $page->getCourseId() == $course->getId())
+                        return $this->redirectToRoute('app_learn_study_pages_page', array('courseId' => $course->getId(), 'pageOrder' => $page->getPageOrder()));
+                }
+                elseif ($session->has('name'))
+                {
+                    $name = $session->get('name');
+                    $pageType = $session->get('pageType');
+                    return $this->redirectToRoute('app_learn_study_panels_page', array('courseId' => $course->getId(), 'pageType' => $pageType, 'name' => $name));
+                }
+                else
+                {
+                    return $this->redirectToRoute('app_learn_study_course_page', array('courseId' => $course->getId()));
+                }
+            }
+            catch (Exception $e)
+            {
+                //Do nothing
+            }
+        }
+        return $this->render(':learn:study.default.html.twig', array(
+            'courses' => $this->getRandomCourses(10),
+            'courseCollection' => $this->getCourseCollectionsForUser()
+        ));
     }
 
     /**
@@ -71,6 +114,13 @@ class LearnController extends Controller
     public function studyCourseAction($courseId)
     {
         $course = $this->validateSpecifiedCourseId($courseId);
+
+        $session = $this->get('session');
+
+        if($session->has('lastPageId')) $session->remove('lastPageId');
+        if($session->has('name')) $session->remove('name');
+
+        $session->set('lastCourseId', $course->getId());
 
         $course->setViews($course->getViews() + 1);
         $this->getDoctrine()->getEntityManager()->flush();
@@ -89,11 +139,21 @@ class LearnController extends Controller
     public function studyPanelsAction($courseId, $pageType, $name)
     {
         $course = $this->validateSpecifiedCourseId($courseId);
+        $session = $this->get('session');
+        if($session->has('lastPageId')) $session->remove('lastPageId');
+
+        if($this->isGranted('ROLE_USER'))
+            $courseReview = $this->getDoctrine()->getRepository('AppBundle:Course\CourseReviews')->findOneBy(array('userInsertedId' => $this->getUser()->getId(), 'courseId' => $courseId));
+        else
+            $courseReview = $this->getDoctrine()->getRepository('AppBundle:Course\CourseReviews')->findOneBy(array('sessionId' => $this->get('session')->getId(), 'courseId' => $courseId));
 
         if(PageTypeEnum::matchValueWithGivenEnum(PageTypeEnum::class, PageTypeEnum::STANDARD_TYPE, $pageType) ||
             PageTypeEnum::matchValueWithGivenEnum(PageTypeEnum::class, PageTypeEnum::CUSTOM_TYPE, $pageType))
         {
-            return $this->render(':learn:study.html.twig', array('name' => $name, 'pageType' => $pageType, 'course' => $course));
+            $session->set('name', $name);
+            $session->set('pageType', $pageType);
+
+            return $this->render(':learn:study.html.twig', array('name' => $name, 'pageType' => $pageType, 'course' => $course, 'courseReview' => $courseReview));
         }
         throw new AccessDeniedException();
     }
@@ -108,6 +168,7 @@ class LearnController extends Controller
     public function studyPagesAction($courseId, $pageOrder)
     {
         $course = $this->validateSpecifiedCourseId($courseId);
+        $session = $this->get('session');
 
         if($pageOrder == 0)
         {
@@ -117,11 +178,25 @@ class LearnController extends Controller
         $page = $this->getDoctrine()->getRepository('AppBundle:Course\CoursePages')->findOneBy(array('courseId' => $courseId, 'pageOrder' => $pageOrder));
         if($page == null) throw new AccessDeniedException();
 
+        if($session->has('name')) $session->remove('name');
+        if($session->has('pageType')) $session->remove('pageType');
+        $session->set('lastPageId', $page->getId());
+
         $criteria = array('page' => $page, 'totalPages' => $course->getCoursePages()->count());
 
         if(CoursePageTypeEnum::matchValueWithGivenEnum(CoursePageTypeEnum::class, CoursePageTypeEnum::ExerciseType, $page->getPageType()->getType()))
         {
-            $criteria = array_merge($criteria, array('type' => 'exercise.', 'name' => ''));
+            $answeredQuestions = array();
+
+            if($this->isGranted('ROLE_USER'))
+                $report = $this->getDoctrine()->getRepository('AppBundle:Report\Reports')->findOneBy(array('courseId' => $courseId, 'userId' => $this->getUser()->getId()));
+            else
+                $report = $this->getDoctrine()->getRepository('AppBundle:Report\Reports')->findOneBy(array('courseId' => $courseId, 'sessionId' => $this->get('session')->getId()));
+
+            if($report != null)
+                $answeredQuestions = $this->buildAnsweredQuestionArray($page->getId(), $report->getId());
+
+            $criteria = array_merge($criteria, array('type' => 'exercise.', 'name' => '', 'answeredQuestions' => $answeredQuestions));
         }
         elseif(CoursePageTypeEnum::matchValueWithGivenEnum(CoursePageTypeEnum::class, CoursePageTypeEnum::TextType, $page->getPageType()->getType()))
         {
@@ -150,7 +225,93 @@ class LearnController extends Controller
      */
     public function courseReportsAction()
     {
-        return $this->render(':learn:course.reports.html.twig');
+        $order = array('id' => 'DESC');
+        $limit = $this->getParameter('standard_query_limit');
+
+        $repo = $this->getDoctrine()->getRepository('AppBundle:Report\Reports');
+
+        if($this->isGranted('ROLE_USER'))
+        {
+            $courseReports = $repo->findBy(array('userId' => $this->getUser()->getId(), 'isComplete' => true), $order, $limit, 0);
+            $totalPages = $repo->getCountByCriteria(array('userId' => $this->getUser()->getId(), 'isComplete' => true));
+        }
+        else
+        {
+            $courseReports = $repo->findBy(array('sessionId' => $this->get('session')->getId(), 'isComplete' => true), $order, $limit, 0);
+            $totalPages = $repo->getCountByCriteria(array('sessionId' => $this->get('session')->getId(), 'isComplete' => true));
+        }
+
+        return $this->render(':learn:course.reports.html.twig', array(
+            'courseReports' => $courseReports,
+            'limit' => $limit, 'offset' => 0,
+            'maxPages' => $this->getParameter('standard_pagination_max'),
+            'totalReports' => $totalPages));
+    }
+
+    /**
+     * @Route("/{_locale}/learn/course-reports/{id}/", name="app_learn_course_report_details")
+     */
+    public function courseReportDetailsAction($id)
+    {
+        return $this->courseReportDetailsCustomAction($id, 'front');
+    }
+
+    /**
+     * @Route("/{_locale}/learn/course-reports/{id}/{pageId}", name="app_learn_course_report_details_page")
+     */
+    public function courseReportDetailPageAction($id, $pageId)
+    {
+        $report = $this->validateReportDetails($id);
+        $page = $this->getDoctrine()->getRepository('AppBundle:Course\CoursePages')->find($pageId);
+        if($page == null || $page->getCourseId() != $report->getCourseId() || $page->getPageType()->getType() != 'exercise')
+            throw new AccessDeniedException();
+
+        $pages = $this->getDoctrine()->getRepository('AppBundle:Report\Reports')->getAllPagesByReport($report->getId());
+        $questions = $this->getDoctrine()->getRepository('AppBundle:Report\AnswerResults')->getAllAnsweredQuestionByCoursePage($report->getId(), $page->getId());
+
+        $criteria = array('report' => $report, 'pages' => $pages, 'page' => $page, 'questions' => $questions, 'offset' => $page->getPageOrder() - 1);
+
+        return $this->render(':learn:course.report.details.html.twig', $criteria);
+    }
+
+    /**
+     * @Route("/{_locale}/learn/course-reports/{id}/custom/{name}", name="app_learn_course_report_details_custom")
+     */
+    public function courseReportDetailsCustomAction($id, $name)
+    {
+        $validNames = array('front', 'overview', 'end');
+        if(!in_array($name, $validNames)) throw new AccessDeniedException();
+        $report = $this->validateReportDetails($id);
+
+        $pages = $this->getDoctrine()->getRepository('AppBundle:Report\Reports')->getAllPagesByReport($report->getId());
+
+        $criteria = array('report' => $report, 'pages' => $pages, 'name' => $name, 'offset' => 0);
+        if($name == 'end') $criteria['offset'] = sizeof($pages);
+
+        return $this->render(':learn:course.report.details.html.twig', $criteria);
+    }
+
+    /**
+     * @param $id
+     * @return \AppBundle\Entity\Report\Reports
+     */
+    private function validateReportDetails($id)
+    {
+        $courseReport = $this->getDoctrine()->getRepository('AppBundle:Report\Reports')->find($id);
+        if($courseReport != null)
+        {
+            if($this->isGranted('ROLE_USER'))
+            {
+                if($courseReport->getUserId() != $this->getUser()->getId()) throw new AccessDeniedException();
+            }
+            else
+            {
+                if($courseReport->getSessionId() != $this->get('session')->getId()) throw new AccessDeniedException();
+            }
+
+            return $courseReport;
+        }
+        throw new AccessDeniedException();
     }
 
     /**
@@ -165,5 +326,53 @@ class LearnController extends Controller
             throw new AccessDeniedException();
 
         return $course;
+    }
+
+    private function buildAnsweredQuestionArray($pageId, $reportId)
+    {
+        $answeredQuestions = $this->getDoctrine()->getRepository('AppBundle:Report\AnswerResults')->getAllAnsweredQuestionByCoursePage($reportId, $pageId);
+
+        $friendlyArray = array();
+
+        foreach ($answeredQuestions as $question)
+        {
+            $friendlyMultipleChoiceArray = array();
+            foreach ($question->getMultipleChoiceAnswers()->toArray() as $answer)
+                $friendlyMultipleChoiceArray[] = $answer->getAnswerId();
+
+            $friendlyArray[$question->getQuestionId()] = array('answer' => $question->getAnswer(), 'multipleChoiceAnswers' => $friendlyMultipleChoiceArray);
+        }
+
+        return $friendlyArray;
+    }
+
+    private function getRandomCourses($amount)
+    {
+        $criteria = array('removed' => false, 'state' => $this->getDoctrine()->getRepository('AppBundle:Course\CourseStates')->findOneBy(array('stateCode' => 'OK')), 'isUndesirable' => false);
+
+        $repo = $this->getDoctrine()->getRepository('AppBundle:Course\Courses');
+
+        $totalCourses = $repo->getCountByCriteria($criteria);
+
+        if($totalCourses <= $amount)
+            return $repo->findBy($criteria);
+
+        $offset = rand(0, $totalCourses - $amount);
+
+        return $repo->findBy($criteria, null, $amount, $offset);
+    }
+
+    private function getCourseCollectionsForUser()
+    {
+        if(!$this->isGranted('ROLE_USER')) return array();
+
+        $collectionItems = $this->getDoctrine()->getRepository('AppBundle:Course\CourseCollectionItems')->findBy(array('userId' => $this->getUser()->getId()));
+
+        $friendlyArray = array();
+        foreach ($collectionItems as $item)
+        {
+            $friendlyArray[] = $item->getCourseId();
+        }
+        return $friendlyArray;
     }
 }

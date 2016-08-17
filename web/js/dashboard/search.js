@@ -1,11 +1,12 @@
 $(document).ready(function() {
     var body = $('body');
 
-    body.on('click', '.simple-search', function() {
+    $('#simple-search').on('submit', function (event) {
+        event.preventDefault();
         doSimpleSearch();
     });
 
-    body.on('click', '.complex-search', function(event) {
+    $('#complex-search').on('submit', function (event) {
         event.preventDefault();
         doComplexSearch();
     });
@@ -21,12 +22,16 @@ $(document).ready(function() {
         var courseId = context.data('course-id');
         var url = context.data('url');
 
+        var hrefUrl = context.data('href-url');
+        var text = context.data('name');
+
         var args = {};
         args['method'] = 'addToCollection';
         args['ajax_key'] = 'CCOAS1';
         args['courseId'] = courseId;
 
         sendAjaxCall(url, args, function() {
+            context.after('<a href="'+hrefUrl+'" class="btn btn-primary btn-sm">'+text+'</a>');
             context.remove();
         }, function(error) {
             var json = error['responseJSON'];
@@ -43,9 +48,11 @@ function doComplexSearch() {
         var search = $($('.search-value').filterByData('entity', name));
         search.val(obj.val() == -1 ? '' : obj.val());
     });
+    addLoadingScreen($('#search-results'));
     refreshPage($('.search-enabled'), true, true, function(args) {
         setCount(args);
         $('#collapseSearch').collapse('hide');
+        removeLoadingScreen();
     });
     updateReviewModals();
 }
@@ -61,8 +68,11 @@ function doSimpleSearch() {
     var search = $($('.search-value').filterByData('entity', 'courses'));
     search.val(searchValue);
 
+    addLoadingScreen($('#search-results'));
+
     refreshPage($('.search-enabled'), true, true, function(args) {
         setCount(args);
+        removeLoadingScreen();
     });
     updateReviewModals();
 }

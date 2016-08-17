@@ -3,13 +3,12 @@
 {% block body %}
     {% include ':elements:dashboard.navigation.menu.html.twig' %}
     {% include ':panels/dashboard:profile.details.panel.html.twig' %}
-    {#{% include ':panels/dashboard:profile.teach.panel.html.twig' %}#} {#TODO Teach edit#}
+    {% include ':panels/dashboard:profile.teach.panel.html.twig' %}
     {% include ':panels/general:commercial.panel.html.twig' %}
 {% endblock %}
 
 {% block modals %}
     {% include ':modal/dashboard:profile.details.edit.modal.html.twig' with {'modalId': 'profilePersonalInfoModal'} %}
-    {#{% include ':modal/dashboard:profile.teach.edit.modal.html.twig' with {'modalId': ''} %}#} {#TODO Teach edit modal#}
     {% include ':modal/dashboard:profile.education.edit.modal.html.twig' with {'modalId': 'profileEducationInfoModal'} %}
 {% endblock %}
 

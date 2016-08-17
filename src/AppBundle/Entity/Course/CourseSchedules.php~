@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="skhole_course_schedules")
+ * @ORM\Table(name="course_schedules")
  */
 class CourseSchedules implements UserReportInterface
 {

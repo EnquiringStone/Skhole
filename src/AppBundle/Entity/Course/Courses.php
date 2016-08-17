@@ -219,6 +219,23 @@ class Courses implements UserStatisticsInterface, UserReportInterface, BasicDeta
     {
         return $this->coursePages->count() > 0;
     }
+
+    public function calculateAverage()
+    {
+        if($this->courseReviews->isEmpty() || $this->courseReviews->count() < 5) return -1;
+
+        $total = $this->courseReviews->count();
+        $score = 0;
+        foreach ($this->courseReviews as $review)
+        {
+            $score += $review->getContentRating();
+        }
+
+        $average = $score / $total;
+
+        return round($average);
+    }
+
     /**
      * Constructor
      */

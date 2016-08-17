@@ -1,5 +1,6 @@
 {% block pagination %}
     {# Do some magic #}
+    {% set currentOffset = offset %}
     {% set totalPages = (maxEntities/limit)|round(0, 'ceil') %}
     {% set currentPage = (offset/limit)|round(0, 'floor') + 1 %}
     {% set currentLocation = maxPages - 1 %}
@@ -23,7 +24,7 @@
     {% endif %}
     {# End of magic #}
 
-    <div class="centrum{% if class is defined %} {{ class }}{% endif %}">
+    <div class="centrum{% if class is defined %} {{ class }}{% endif %}" {% if maxEntities <= limit %}style="display: none;"{% endif %}>
         <ul
                 class="pagination" data-entity="{{ entity }}"
                 data-method="paginate" data-key="PAS1" data-url="{{ path('app_home_ajax_page') }}"
@@ -34,12 +35,13 @@
             {% for i in startPage..renderPages %}
                 {% if currentPage == i %}
                     <li class="active clickable" data-offset="{{ offset + (limit * (i - 1)) }}" data-page="{{ i }}"><a>{{ i }} <span class="sr-only"></span></a></li>
+                    {% set currentOffset = offset + (limit * (i - 1)) %}
                 {% else %}
                     <li class="clickable" data-offset="{{ offset + (limit * (i - 1)) }}" data-page="{{ i }}"><a>{{ i }} <span class="sr-only"></span></a></li>
                 {% endif %}
             {% endfor %}
             {% if currentPage < totalPages %}
-                <li class="clickable" data-offset="{{ offset + limit }}" data-page="{{ currentPage + 1 }}"><a>{% trans %}Volgende{% endtrans %}</a></li>
+                <li class="clickable" data-offset="{{ currentOffset + limit }}" data-page="{{ currentPage + 1 }}"><a>{% trans %}Volgende{% endtrans %}</a></li>
             {% endif %}
         </ul>
     </div>

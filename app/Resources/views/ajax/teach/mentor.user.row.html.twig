@@ -1,0 +1,35 @@
+{% block mentorUserRow %}
+    <div class="user-row" data-user-id="{{ user.id }}">
+        <div class="pull-right">
+            <div class="btn-group-vertical">
+                <button class="btn btn-sm btn-primary get-all-reports" type="button">{% trans %}Bekijk rapporten{% endtrans %}</button>
+                <button class="btn btn-sm btn-default" data-target="#removeAllReportsModal{{ index }}" data-toggle="modal" type="button">
+                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                    {% trans %}Deelnemer{% endtrans %}
+                </button>
+            </div>
+        </div>
+        <h4>
+            <img src="{{ asset('images/gebruiker.png') }}" class="img-rounded teacher-row-picture">
+            <a class="clickable" data-target="#educationProfileModal{{ index }}" data-toggle="modal">
+                {{ user.firstName|capitalize }} {{ user.surname|capitalize }}
+            </a>
+        </h4>
+        {% set statistics = user.getStatisticsByMentor(mentorId) %}
+        <button class="btn btn-default btn-xs unclickable" type="button">
+            <b>{% trans %}Aantal cursusrapporten{% endtrans %}:</b>
+            <span class="total-reports">{{ statistics['total'] }}</span>
+        </button>
+        <button class="btn btn-default btn-xs unclickable" type="button">
+            <b>{% trans %}Rapporten nagekeken{% endtrans %}:</b>
+            <span class="total-revised">{{ statistics['revised'] }}</span>
+        </button>
+        <button class="btn btn-default btn-xs unclickable" type="button">
+            <b>{% trans %}Rapporten beoordeeld{% endtrans %}:</b>
+            <span class="total-rated">{{ statistics['rated'] }}</span>
+        </button>
+        <br />
+        <div class="table-contents"></div>
+    </div>
+    <hr />
+{% endblock %}

@@ -17,7 +17,7 @@ class FileHelper
 {
     public static $maxSize = 3000000;
 
-    public static $webDir = __DIR__ . '/../../../web/';
+    public $webDir = __DIR__;
 
     public static $acceptedPictureExtensions = array('jpeg', 'jpg', 'png');
 
@@ -29,6 +29,7 @@ class FileHelper
 
     public function __construct(File $file = null, User $user = null, $prefix = '')
     {
+        $this->webDir .= '/../../../web/';
         $this->user = $user;
         if($file != null)
         {
@@ -54,7 +55,7 @@ class FileHelper
 
     public function setAbsolutePath()
     {
-        $this->absolutePath = FileHelper::$webDir . $this->relativePath;
+        $this->absolutePath = $this->getWebDir() . $this->relativePath;
     }
 
     public function getTotalPath()
@@ -103,5 +104,10 @@ class FileHelper
     public function getName()
     {
         return $this->name;
+    }
+
+    public function getWebDir()
+    {
+        return $this->webDir;
     }
 }

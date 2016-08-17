@@ -1,0 +1,28 @@
+{% extends 'panels/panel.base.html.twig' %}
+{% block panelBaseTitle %}
+    {% trans %}Bekijk rapporten{% endtrans %}: <span class="total-users-count">{{ totalUsers }}</span>
+{% endblock %}
+{% block panelBaseContents %}
+    <div id="mentor-overview" class="panel-body page-controls" data-view="teach" data-entity="User" data-context="SELF" data-url="{{ url('app_home_ajax_page') }}" data-pagination-name="{% trans %}Cursisten{% endtrans %}">
+        <div class="sort-field">
+            {% include ':ajax/teach:sort.html.twig' %}
+        </div>
+        <hr />
+        <div class="content-field">
+            {% if totalUsers <= 0 %}
+                <div class="centrum">
+                    <p class="lead">{% trans %}Er zijn geen cursisten waarvan je de voortgang volgt{% endtrans %}</p>
+                </div>
+            {% else %}
+                {% for user in users %}
+                    {% include ':ajax/teach:mentor.user.row.html.twig' with {'mentorId': app.user.id, 'user': user, 'index': loop.index} %}
+                    {% include ':modal/teach:education.profile.modal.html.twig' with {'user': user, 'modalId': 'educationProfileModal'~loop.index} %}
+                    {% include ':modal/teach:remove.all.reports.modal.html.twig' with {'user': user, 'modalId': 'removeAllReportsModal'~loop.index} %}
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="pagination-field">
+            {% include ':elements:pagination.html.twig' with {'maxEntities': totalUsers, 'limit': limit, 'offset': offset, 'maxPages': maxPages, 'pageName': 'Cursisten'|trans, 'entity': 'User', class: 'view-reports-pagination'} %}
+        </div>
+    </div>
+{% endblock %}

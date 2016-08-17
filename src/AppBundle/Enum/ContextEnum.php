@@ -25,4 +25,14 @@ class ContextEnum extends EnumBase
      * Used for search related business
      */
     const SEARCH_CONTEXT = 'SEARCH';
+
+    /**
+     * Used for getting the session id
+     */
+    const ANONYMOUS_CONTEXT = 'ANONYMOUS';
+
+    /**
+     * Used for an alternate view for the self context
+     */
+    const REQUEST_CONTEXT = 'REQUEST';
 }

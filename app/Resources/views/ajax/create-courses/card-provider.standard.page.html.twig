@@ -27,7 +27,7 @@
                         {% include ':modal/create-course:card.add.provider.modal.html.twig' with {'provider': provider, 'modalId': 'addProviderModal'~loop.index } %}
                     {% endfor %}
                 {% else %}
-                    <p class="centrum">{% trans %}Geen aanbieders gevonden voor deze cursus{% endtrans %}</p>
+                    <p class="centrum no-providers-found-text">{% trans %}Geen aanbieders gevonden voor deze cursus{% endtrans %}</p>
                 {% endif %}
             </div>
             <div class="centrum">

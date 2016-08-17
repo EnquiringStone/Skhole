@@ -71,7 +71,7 @@ class CoursesRepository extends EntityRepository implements PageControlsInterfac
         return true;
     }
 
-    public function getRecords($searchValues, $offset, $limit, $sort, $userId = 0)
+    public function getRecords($searchValues, $offset, $limit, $sort, $userId = 0, $sessionId = '')
     {
         $searchValues = $this->replaceSearchValues($searchValues);
         $sort = $this->replaceSort($sort);
@@ -95,7 +95,7 @@ class CoursesRepository extends EntityRepository implements PageControlsInterfac
         return $this->createReturnValues($resultSet, $maxEntities);
     }
 
-    public function getRecordsBySearch($offset, $limit, $sort, $searchParams, $userId = 0)
+    public function getRecordsBySearch($offset, $limit, $sort, $searchParams, $userId = 0, $sessionId = '')
     {
         $sort = $this->replaceSort($sort);
         $searchQuery = new SearchQuery($searchParams['searchQuery'], $searchParams['correlationType'], $offset, $limit, $sort);
@@ -105,6 +105,9 @@ class CoursesRepository extends EntityRepository implements PageControlsInterfac
         $qb->leftJoin('courses.courseCard', 'courseCard');
         $qb->leftJoin('courseCard.teachers', 'teachers');
         $qb->leftJoin('courseCard.providers', 'providers');
+        $qb->leftJoin('courses.tags', 'tags');
+        $qb->leftJoin('courses.language', 'languages');
+        $qb->leftJoin('courses.level', 'levels');
 
         if($userId > 0)
             $qb->andWhere('courses.userInsertedId = '.$userId);

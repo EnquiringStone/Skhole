@@ -44,20 +44,22 @@
                     <h4>{% trans %}Introductie{% endtrans %}</h4>
                     <div class="row">
                         <div class="col-md-6">
-                            {% if course.courseCard.youtubeEmbedUrl is not null %}
+                            {% if course.courseCard is not null and course.courseCard.youtubeEmbedUrl is not null %}
                                 <div class="embed-responsive embed-responsive-4by3">
                                     <iframe class="embed-responsive-item" src="{{ course.courseCard.youtubeEmbedUrl }}" allowfullscreen></iframe>
                                 </div>
                             {% endif %}
                         </div>
                         <div class="col-md-6">
-                            {% if course.courseCard.pictureUrl is not null %}
+                            {% if course.courseCard is not null and course.courseCard.pictureUrl is not null %}
                                 <img src="{{ asset(course.courseCard.pictureUrl) }}" class="img-rounded" height="120">
                             {% endif %}
                         </div>
                     </div>
                     <hr />
-                    <p>{{ course.courseCard.description }}</p>
+                    {% if course.courseCard is not null %}
+                        <p>{{ course.courseCard.description }}</p>
+                    {% endif %}
                 </div>
             </div>
             <div class="tab-pane fade in" id="tabCourseCardSummary{{ modalId }}">
@@ -69,7 +71,7 @@
                     </button>
                     <button type="button" class="btn btn-default btn-xs unclickable">
                         <b>{% trans %}Weergaven{% endtrans %}:</b>
-                        {{ course.views }}
+                        {{ course.views|default(0) }}
                     </button>
                     <button type="button" class="btn btn-default btn-xs unclickable">
                         <b>{% trans %}Rating{% endtrans %}:</b>
@@ -87,7 +89,11 @@
                     </button>
                     <button type="button" class="unclickable btn btn-default btn-xs">
                         <b>{% trans %}Cursusduur{% endtrans %}:</b>
-                        {{ (course.estimatedDuration/60)|number_format }}
+                        {% if course.estimatedDuration is not null %}
+                            {{ (course.estimatedDuration/60)|number_format }}
+                        {% else %}
+                            -
+                        {% endif %}
                     </button>
                     <button type="button" class="unclickable btn btn-default btn-xs">
                         <b>{% trans %}Moeilijkheidsgraad{% endtrans %}:</b>
@@ -101,11 +107,19 @@
                     </button>
                     <button type="button" class="unclickable btn btn-default btn-xs">
                         <b>{% trans %}Niveau{% endtrans %}:</b>
-                        {{ course.level.levelLong|trans({}, 'db') }}
+                        {% if course.level is not null and course.level.levelLong is not null %}
+                            {{ course.level.levelLong|trans({}, 'db') }}
+                        {% else %}
+                            -
+                        {% endif %}
                     </button>
                     <button type="button" class="unclickable btn btn-default btn-xs">
                         <b>{% trans %}Beschikbaar sinds{% endtrans %}:</b>
-                        {{ course.publishedDateTime|date('d-m-Y') }}
+                        {% if course.publishedDateTime is not null %}
+                            {{ course.publishedDateTime|date('d-m-Y') }}
+                        {% else %}
+                            -
+                        {% endif %}
                     </button>
                     <button type="button" class="unclickable btn btn-default btn-xs">
                         <b>{% trans %}Toegevoegd op{% endtrans %}:</b>
@@ -113,51 +127,71 @@
                     </button>
                     <button type="button" class="unclickable btn btn-default btn-xs">
                         <b>{% trans %}Laatst aangepast{% endtrans %}:</b>
-                        {{ course.updateDateTime|date('d-m-Y') }}
+                        {% if course.updateDateTime is not null %}
+                            {{ course.updateDateTime|date('d-m-Y') }}
+                        {% else %}
+                            -
+                        {% endif %}
                     </button>
                 </div>
             </div>
             <div class="tab-pane fade in" id="tabCourseCardPrerequisites{{ modalId }}">
                 <div class="thumbnail">
                     <h4>{% trans %}Vereiste voorkennis{% endtrans %}</h4>
-                    <p>{{ course.courseCard.priorKnowledge }}</p>
+                    <p>
+                        {% if course.courseCard is not null %}
+                            {{ course.courseCard.priorKnowledge|default('-') }}
+                        {% endif %}
+                    </p>
                 </div>
             </div>
             <div class="tab-pane fade in" id="tabCourseCardProviders{{ modalId }}">
                 <div class="thumbnail">
                     <div class="media-list">
-                        {% for provider in course.courseCard.providers %}
-                            <div class="media">
-                                <div class="pull-left">
-                                    <img src="{{ asset('images/logo-skhole.png') }}" class="media-object">
+                        {% if course.courseCard is not null and course.courseCard.providers|length > 0 %}
+                            {% for provider in course.courseCard.providers %}
+                                <div class="media">
+                                    <div class="pull-left">
+                                        <img src="{{ asset('images/logo-skhole.png') }}" class="media-object">
+                                    </div>
+                                    <div class="media-body">
+                                        <h4>{{ provider.name }}</h4>
+                                        <p>{{ provider.description }}</p>
+                                    </div>
                                 </div>
-                                <div class="media-body">
-                                    <h4>{{ provider.name }}</h4>
-                                    <p>{{ provider.description }}</p>
-                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="centrum">
+                                <p class="lead">{% trans %}Geen aanbieders gevonden voor deze cursus{% endtrans %}</p>
                             </div>
-                        {% endfor %}
+                        {% endif %}
                     </div>
                 </div>
             </div>
             <div class="tab-pane fade in" id="tabCourseCardTeachers{{ modalId }}">
                 <div class="thumbnail">
-                    <h4>{% trans %}Docenten{% endtrans %}</h4>
-                    <div class="media-list">
-                        {% for teacher in course.courseCard.teachers %}
-                            {% if not teacher.isUndesirable %}
-                                <div class="media">
-                                    <div class="pull-left">
-                                        <img src="{{ teacher.pictureUrl is not null ? asset(teacher.pictureUrl) : asset('images/head-wiseguy.png') }}" class="media-object teacher-row-picture">
+                    {% if course.courseCard is not null and course.courseCard.teachers|length > 0 %}
+                        <h4>{% trans %}Docenten{% endtrans %}</h4>
+                        <div class="media-list">
+                            {% for teacher in course.courseCard.teachers %}
+                                {% if not teacher.isUndesirable %}
+                                    <div class="media">
+                                        <div class="pull-left">
+                                            <img src="{{ teacher.pictureUrl is not null ? asset(teacher.pictureUrl) : asset('images/head-wiseguy.png') }}" class="media-object teacher-row-picture">
+                                        </div>
+                                        <div class="media-body">
+                                            <h4>{{ teacher.name }}</h4>
+                                            <p>{{ teacher.description }}</p>
+                                        </div>
                                     </div>
-                                    <div class="media-body">
-                                        <h4>{{ teacher.name }}</h4>
-                                        <p>{{ teacher.description }}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-                        {% endfor %}
-                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="centrum">
+                            <p class="lead">{% trans %}Geen extra docenten gevonden voor deze cursus{% endtrans %}</p>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>

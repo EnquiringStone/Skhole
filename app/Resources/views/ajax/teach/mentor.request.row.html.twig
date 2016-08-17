@@ -1,0 +1,23 @@
+{% block mentorRequestRow %}
+    <div class="row" data-id="{{ request.id }}" data-user-id="{{ request.user.id }}">
+        <div class="col-sm-10">
+            <img class="img-rounded teacher-row-picture" src="{% if request.user.picture is not null %}{{ request.user.picture }}{% else %}{{ asset('images/gebruiker.png') }}{% endif %}">
+            <a class="clickable" data-target="#educationProfileModal{{ index }}" data-toggle="modal">{{ request.user.firstName|capitalize }} {{ request.user.surname|capitalize }}</a>
+            <br>
+            <span class="text-muted">{% trans %}Cursusnaam{% endtrans %}: {{ request.report.course.name }}</span>
+        </div>
+        <div class="col-sm-2">
+            <div style="text-align: right">
+                <button class="btn btn-sm btn-default accept-mentor-request" type="button">
+                    <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+                </button>
+                <button class="btn btn-sm btn-default decline-mentor-request" type="button">
+                    <span class="glyphicon glyphicon-remove text-warning" aria-hidden="true"></span>
+                </button>
+                <br>
+                <span class="text-muted small"><em>{{ request.insertDateTime|time_diff }}</em></span>
+            </div>
+        </div>
+    </div>
+    <hr />
+{% endblock %}

@@ -1,0 +1,36 @@
+{% block multipleChoiceItem %}
+    {% set isCorrect = question.isCorrect %}
+    {% set correctQuestions = '' %}
+    {% set specifiedQuestions = '' %}
+    <div class="thumbnail">
+        <p>
+            {% if pdfLayout %}
+                <img src="{% if isCorrect %}{{ asset('images/correctIcon.png') }}{% else %}{{ asset('images/wrong-answer.png') }}{% endif %}" style="width: 20px;">
+            {% else %}
+                <span class="glyphicon {% if isCorrect %}glyphicon-ok text-success{% else %} glyphicon-remove text-danger{% endif %}"
+                      data-placement="bottom" data-toggle="tooltip" aria-hidden="true"
+                      data-original-title="{% if isCorrect %}{% trans %}Goed beantwoord{% endtrans %}{% else %}{% trans %}Fout beantwoord{% endtrans %}{% endif %}"></span>
+            {% endif %}
+            <b><samp>{% trans %}Vraag{% endtrans %} {% if question.question.questionOrder <= 9 %}0{% endif %}{{ question.question.questionOrder }}:</samp></b>
+            {{ question.question.question }}
+        </p>
+        <p>
+            {% for answer in question.question.courseAnswers %}
+                {{ answer.answerOrder|orderToAlphabet(true) }}. ) {{ answer.answer }}
+                <br>
+                {% if answer.isCorrect %}{% set correctQuestions = correctQuestions ~ answer.answerOrder|orderToAlphabet(true) ~ ', ' %}{% endif %}
+            {% endfor %}
+            <button class="btn btn-default btn-xs unclickable" type="button">
+                <b>{% trans %}Gegeven antwoord(en){% endtrans %}:</b>
+                {% for answer in question.multipleChoiceAnswers %}
+                    {% set specifiedQuestions = specifiedQuestions ~ answer.answer.answerOrder|orderToAlphabet(true) ~ ', ' %}
+                {% endfor %}
+                {{ specifiedQuestions|trim(', ') }}
+            </button>
+            <button class="btn btn-default btn-xs unclickable" type="button">
+                <b>{% trans %}Correcte antwoord(en){% endtrans %}:</b>
+                {{ correctQuestions|trim(', ') }}
+            </button>
+        </p>
+    </div>
+{% endblock %}

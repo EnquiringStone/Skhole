@@ -1,0 +1,26 @@
+{% block sharedReportsTableRow %}
+    <tr data-report-id="{{ report.id }}">
+        <td>
+            <a href="{{ path('app_learn_study_panels_page', {'pageType': 'standard', 'name': 'course-card', 'courseId': report.report.course.id}) }}">{{ report.report.course.name }}</a>
+            <span class="pull-right text-muted small">
+                <em>{{ report.insertDateTime|time_diff }}</em>
+            </span>
+        </td>
+        <td>
+            <a href="{{ path('app_teach_show_report', {'id': report.id}) }}">{% trans %}Rapport{% endtrans %}</a>
+        </td>
+        <td>
+            <a href="{{ path('app_secure_generate_student_pdf', {'sharedReportId': report.id}) }}" target="_blank">{% trans %}Download{% endtrans %}</a>
+        </td>
+        <td>
+            <div class="starrr clickable" data-difficulty="{{ report.rating }}"></div>
+        </td>
+        <td>
+            <input type="checkbox" {% if report.hasRevised %}checked{% endif %}>
+        </td>
+        <td>
+            <span class="glyphicon glyphicon-floppy-disk text-primary clickable save-report-changes" aria-hidden="true"></span>
+            <span class="glyphicon glyphicon-trash pull-right clickable" data-target="#removeReportModal{{ index }}" data-toggle="modal" aria-hidden="true"></span>
+        </td>
+    </tr>
+{% endblock %}

@@ -31,9 +31,14 @@ class CourseReviews implements UserReportInterface, UserStatisticsInterface
     protected $courseId;
 
     /**
-     * @ORM\Column(type="integer", name="user_inserted_id")
+     * @ORM\Column(type="integer", name="user_inserted_id", nullable=true)
      */
     protected $userInsertedId;
+
+    /**
+     * @ORM\Column(type="string", name="session_id", nullable=true)
+     */
+    protected $sessionId;
 
     /**
      * @ORM\Column(type="datetime", name="insert_date_time")
@@ -355,5 +360,29 @@ class CourseReviews implements UserReportInterface, UserStatisticsInterface
     public function getCourse()
     {
         return $this->course;
+    }
+
+    /**
+     * Set sessionId
+     *
+     * @param string $sessionId
+     *
+     * @return CourseReviews
+     */
+    public function setSessionId($sessionId)
+    {
+        $this->sessionId = $sessionId;
+
+        return $this;
+    }
+
+    /**
+     * Get sessionId
+     *
+     * @return string
+     */
+    public function getSessionId()
+    {
+        return $this->sessionId;
     }
 }

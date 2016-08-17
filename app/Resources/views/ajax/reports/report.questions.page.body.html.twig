@@ -1,0 +1,23 @@
+{% block reportQuestionsPageBody %}
+    {% set pdfLayout = usePdfLayout is defined ? usePdfLayout : false %}
+
+    {% if pdfLayout %}
+        <a name="{{ page.id }}" style="display: none;"></a>
+        <h4 class="text-primary">{{ page.title }}</h4>
+    {% else %}
+        <div class="well well-sm">
+            <div class="centrum">
+                <b>{{ page.title }}</b>
+                <div class="btn-group-vertical pull-right">
+                    <button class="btn btn-default btn-xs unclickable" type="button">
+                        <b>{% trans %}Pagina{% endtrans %}:</b>
+                        {% if page.pageOrder <= 9 %}0{% endif %}{{ page.pageOrder }} / {% if pages|length <= 9 %}0{% endif %}{{ pages|length }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    {% for question in questions %}
+        {% include ':panels/learn/report/questions:'~question.question.questionType.type~'.item.html.twig' %}
+    {% endfor %}
+{% endblock %}

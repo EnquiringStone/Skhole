@@ -9,9 +9,9 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="{#TODO#}">{% trans %}about.us{% endtrans %}</a></li>
-                        <li><a href="{#TODO#}">{% trans %}contact{% endtrans %}</a></li>
-                        <li><a href="{#TODO#}">{% trans %}frequently.asked.questions{% endtrans %}</a></li>
+                        <li><a href="{{ path('app_other_about_us') }}">{% trans %}about.us{% endtrans %}</a></li>
+                        <li><a href="{{ path('app_other_contact') }}">{% trans %}contact{% endtrans %}</a></li>
+                        <li><a href="{{ path('app_other_frequently_asked_questions_page') }}">{% trans %}frequently.asked.questions{% endtrans %}</a></li>
                     </ul>
                 </div>
                 <div class="btn-group dropup">
@@ -44,9 +44,9 @@
             <div class="centrum">
                 <span class="text-muted">StudyLivre 2016 ©</span>
                 <b><span>|</span></b>
-                <a href="{#TODO#}">{% trans %}footer.copyright{% endtrans %}</a>
+                <a href="{{ path('app_other_copyright_page') }}">{% trans %}footer.copyright{% endtrans %}</a>
                 <b><span>|</span></b>
-                <a href="{#TODO#}">{% trans %}footer.guidelines{% endtrans %}</a>
+                <a href="{{ path('app_other_guidelines') }}">{% trans %}footer.guidelines{% endtrans %}</a>
             </div>
             <div class="centrum">
                 <a class="clickable" data-toggle="modal" data-target="#languagePickerModal">
@@ -54,11 +54,11 @@
                     {% trans %}footer.language{% endtrans %}
                 </a>
                 <b><span>|</span></b>
-                <a href="{#TODO#}">{% trans %}footer.conditions{% endtrans %}</a>
+                <a href="{{ path('app_other_legal', {'page': 'conditions'}) }}">{% trans %}footer.conditions{% endtrans %}</a>
                 <b><span>|</span></b>
-                <a href="{#TODO#}">{% trans %}footer.privacy.policy{% endtrans %}</a>
+                <a href="{{ path('app_other_legal', {'page': 'privacy'}) }}">{% trans %}footer.privacy.policy{% endtrans %}</a>
                 <b><span>|</span></b>
-                <a href="{#TODO#}">{% trans %}footer.cookie.policy{% endtrans %}</a>
+                <a href="{{ path('app_other_legal', {'page': 'cookie'}) }}">{% trans %}footer.cookie.policy{% endtrans %}</a>
             </div>
      
     </footer>

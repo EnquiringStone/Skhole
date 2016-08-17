@@ -5,7 +5,7 @@
     <div class="pull-right">
         <label>{% trans %}Sorteer op{% endtrans %}:</label>
         <select class="sortable" name="filterOptions" size="1" aria-controls="example1">
-            <option {% if attribute == 'insertDateTime' and value == 'DESC' %}selected="selected"{% endif %} data-attribute="insertDateTime" data-sorted="ASC">{% trans %}Datum toegevoegd aan mandje{% endtrans %}</option>
+            <option {% if attribute == 'insertDateTime' and value == 'DESC' %}selected="selected"{% endif %} data-attribute="insertDateTime" data-sorted="ASC">{% trans %}Datum toegevoegd{% endtrans %}</option>
             <option {% if attribute == 'name' and value == 'ASC' %}selected="selected"{% endif %} data-attribute="name" data-sorted="ASC">{% trans %}Titel A - Z{% endtrans %}</option>
             <option {% if attribute == 'name' and value == 'DESC' %}selected="selected"{% endif %} data-attribute="name" data-sorted="DESC">{% trans %}Titel Z - A{% endtrans %}</option>
             <option {% if attribute == 'pages' and value == 'ASC' %}selected="selected"{% endif %} data-attribute="pages" data-sorted="ASC">{% trans %}Aantal pagina's oplopend{% endtrans %}</option>

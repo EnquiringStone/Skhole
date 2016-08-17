@@ -1,7 +1,8 @@
 {% extends 'base.html.twig' %}
 {% block title %}{% trans %}Auteursrecht{% endtrans %}{% endblock %}
 {% block body %}
-    <h1>{% trans %}Auteursrecht{% endtrans %}</h1>
+    {% include ':panels/other:copyright.panel.html.twig' %}
+    {% include ':panels/general:commercial.panel.html.twig' %}
 {% endblock %}
 
 {% set menu = 'more' %}

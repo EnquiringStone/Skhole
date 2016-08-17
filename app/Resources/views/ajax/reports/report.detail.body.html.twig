@@ -1,0 +1,52 @@
+{% block reportDetailBody %}
+    <div class="panel panel-default" data-report-id="{{ report.id }}">
+        <div class="centrum">
+            <span class="breadcrumb">
+                <samp class="text-muted">
+                    <b>{% trans %}Cursusrapport{% endtrans %}</b>
+                </samp>
+            </span>
+        </div>
+        <div class="media-list">
+            <div class="media">
+                <div class="pull-right">
+                    <div class="btn-group-vertical">
+                        <a href="{{ path('app_learn_course_report_details', {'id': report.id}) }}" class="btn btn-primary btn-sm" type="button">{% trans %}Bekijk resultaat{% endtrans %}</a>
+                        <button class="btn btn-default btn-sm" data-target="#shareReportModal{{ index }}" data-toggle="modal" type="button">{% trans %}Deel rapport{% endtrans %}</button>
+                        <button class="btn btn-default btn-sm" data-target="#removeReportModal{{ index }}" data-toggle="modal" type="button">
+                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                            {% trans %}Rapport{% endtrans %}
+                        </button>
+                    </div>
+                </div>
+                <div class="pull-left">
+                    <img src="{{ asset('images/denker.png') }}" class="media-object">
+                </div>
+                <div class="media-body">
+                    <span>
+                        {% trans %}Dit rapport hoort bij{% endtrans %}:
+                        <a href="#" data-target="#courseCardModal{{ index }}" data-toggle="modal">{{ report.course.name }}</a>.
+                        {% trans %}Je kunt alle vragen die bij deze cursus horen inzien, inclusief de door jouw gegeven antwoorden{% endtrans %}.
+                        <br>
+                        {% trans %}Download{% endtrans %} <a target="_blank" href="{{ path('app_generate_report_pdf', {'reportId': report.id}) }}">{% trans %}pdf{% endtrans %}</a>
+                    </span>
+                    <br>
+                    <button class="btn btn-default btn-xs unclickable" type="button">
+                        <b>{% trans %}Cursus afgerond{% endtrans %}:</b>
+                        {{ report.finishedDateTime|date('d-m-Y') }}
+                    </button>
+                    <button class="btn btn-default btn-xs unclickable" type="button">
+                        <b class="text-primary">{% trans %}Aantal juiste meerkeuze antwoorden{% endtrans %}:</b>
+                        {{ report.getAverageCorrectMultipleChoice|number_format(0) }}%
+                    </button>
+                    {% for shared in report.sharedReports if shared.hasAccepted %}
+                        <button class="btn btn-default btn-xs unclickable" type="button">
+                            <b>{% trans %}Gedeeld met{% endtrans %}:</b>
+                            {{ shared.mentor.realName }}
+                        </button>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

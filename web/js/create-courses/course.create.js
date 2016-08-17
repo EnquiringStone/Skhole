@@ -8,6 +8,10 @@ $(document).ready(function() {
     $('.starrr').each(function() {
         var element = $(this);
         var rating = element.data('difficulty');
+        if(rating == 0) {
+            element.attr('data-difficulty', 3);
+            rating = 3;
+        }
         element.starrr({
             rating: rating,
             numStars: 5
@@ -428,7 +432,7 @@ function addAnswerHtml() {
 
     var html = '<div class="form-group added-answer"><label class="col-sm-2 control-label">'+orderToAlphabet(answers)+'</label><div class="col-sm-9">' +
         '<input type="text" class="form-control data-value" data-value-name="answers" data-answer-id="-1" data-answer-order="'+answers+'">' +
-        '</div><div class="col-sm-1"><a class="remove-extra-answer" href="#" data-answer-id="-1"><span class="glyphicon glyphicon-remove text-danger"></span></a></div></div>';
+        '</div><div class="col-sm-1"><a class="remove-extra-answer" href="#" data-answer-id="-1"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></div></div>';
 
     $('.answers').append(html);
 
@@ -952,6 +956,8 @@ function saveCourseProvider(context) {
                 $('.provider-description', contextDiv).append(args['description']);
             }
         }
+        var providerNotFoundText = $('.no-providers-found-text');
+        if(providerNotFoundText.length) providerNotFoundText.remove();
         hasChanged = false;
     }, function(error) {
         modal.modal('hide');
@@ -1003,6 +1009,8 @@ function saveTeacherModal(context) {
                 }
             }
         }
+        var teacherNotFound = $('.no-teacher-found-text');
+        if(teacherNotFound.length) teacherNotFound.remove();
         hasChanged = false;
     }, function(error) {
         modal.modal('hide');
@@ -1010,107 +1018,3 @@ function saveTeacherModal(context) {
         showAjaxErrorModal(json['html']);
     });
 }
-
-//Starsss
-var __slice = [].slice;
-
-(function($, window) {
-    var Starrr;
-
-    Starrr = (function() {
-        Starrr.prototype.defaults = {
-            rating: void 0,
-            numStars: 5,
-            change: function(e, value) {}
-        };
-
-        function Starrr($el, options) {
-            var i, _, _ref,
-                _this = this;
-
-            this.options = $.extend({}, this.defaults, options);
-            this.$el = $el;
-            _ref = this.defaults;
-            for (i in _ref) {
-                _ = _ref[i];
-                if (this.$el.data(i) != null) {
-                    this.options[i] = this.$el.data(i);
-                }
-            }
-            this.createStars();
-            this.syncRating();
-            this.$el.on('mouseover.starrr', 'span', function(e) {
-                return _this.syncRating(_this.$el.find('span').index(e.currentTarget) + 1);
-            });
-            this.$el.on('mouseout.starrr', function() {
-                return _this.syncRating();
-            });
-            this.$el.on('click.starrr', 'span', function(e) {
-                hasChanged = true;
-                var number = _this.$el.find('span').index(e.currentTarget) + 1;
-                $($(this).parents('.starrr')).attr('data-difficulty', number);
-                return _this.setRating(_this.$el.find('span').index(e.currentTarget) + 1);
-            });
-            this.$el.on('starrr:change', this.options.change);
-        }
-
-        Starrr.prototype.createStars = function() {
-            var _i, _ref, _results;
-
-            _results = [];
-            for (_i = 1, _ref = this.options.numStars; 1 <= _ref ? _i <= _ref : _i >= _ref; 1 <= _ref ? _i++ : _i--) {
-                _results.push(this.$el.append("<span class='glyphicon .glyphicon-star-empty'></span>"));
-            }
-            return _results;
-        };
-
-        Starrr.prototype.setRating = function(rating) {
-            if (this.options.rating === rating) {
-                rating = void 0;
-            }
-            this.options.rating = rating;
-            this.syncRating();
-            return this.$el.trigger('starrr:change', rating);
-        };
-
-        Starrr.prototype.syncRating = function(rating) {
-            var i, _i, _j, _ref;
-
-            rating || (rating = this.options.rating);
-            if (rating) {
-                for (i = _i = 0, _ref = rating - 1; 0 <= _ref ? _i <= _ref : _i >= _ref; i = 0 <= _ref ? ++_i : --_i) {
-                    this.$el.find('span').eq(i).removeClass('glyphicon-star-empty').addClass('glyphicon-star');
-                }
-            }
-            if (rating && rating < 5) {
-                for (i = _j = rating; rating <= 4 ? _j <= 4 : _j >= 4; i = rating <= 4 ? ++_j : --_j) {
-                    this.$el.find('span').eq(i).removeClass('glyphicon-star').addClass('glyphicon-star-empty');
-                }
-            }
-            if (!rating) {
-                return this.$el.find('span').removeClass('glyphicon-star').addClass('glyphicon-star-empty');
-            }
-        };
-
-        return Starrr;
-
-    })();
-    return $.fn.extend({
-        starrr: function() {
-            var args, option;
-
-            option = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
-            return this.each(function() {
-                var data;
-
-                data = $(this).data('star-rating');
-                if (!data) {
-                    $(this).data('star-rating', (data = new Starrr($(this), option)));
-                }
-                if (typeof option === 'string') {
-                    return data[option].apply(data, args);
-                }
-            });
-        }
-    });
-})(window.jQuery, window);
