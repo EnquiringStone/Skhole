@@ -2,6 +2,7 @@
 {% block title %}{% trans %}o.frequently_used.course_reports{% endtrans %}{% endblock %}
 {% block body %}
     {% set viewType = 'learn' %}
+    {% include ':elements:report.navigation.menu.html.twig' %}
     {% if name is defined and name != '' %}
         {% include ':panels/learn/report/custom:report.'~name~'.panel.html.twig' %}
     {% else %}

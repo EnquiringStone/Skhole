@@ -13,9 +13,13 @@
         <div class="thumbnail">
             <h4>{% trans %}m.author.t_header.author_right_policy{% endtrans %}</h4>
             <h5 class="text-muted">{% trans %}m.author.t.notify_copy_right{% endtrans %}</h5>
-            <p>{% trans %}m.author.t_long.author_right_policy.text{% endtrans %}
+            <p>{% trans %}m.author.t_long.author_right_policy.text{% endtrans %}</p>
+            <p>
+                <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#reportInstructionsModal">
+                    <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                    {% trans %}o.b.report_content{% endtrans %}
+                </button>
             </p>
-            <p class="text-danger">TODO MELD ONGEWENSTE CONTENT knop naar modal neerzetten</p>
             <h5 class="text-muted">{% trans %}m.author.t.widraw_claim{% endtrans %}</h5>
             <p>{% trans %}m.author.t_long.widraw_claim {% endtrans %}</p>
             <h5 class="text-muted">{% trans %}m.author.t.submit_defense{% endtrans %}</h5>

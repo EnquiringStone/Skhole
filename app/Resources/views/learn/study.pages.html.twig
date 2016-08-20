@@ -8,6 +8,9 @@
         <div id="study-contents">
             {% include ':panels/learn/study/pages:study.'~type~name~'panel.html.twig' with {'page': page, 'totalPages': totalPages} %}
         </div>
+        <div class="pagination-field">
+            {% include ':panels/learn/study/custom:study.pagination.html.twig' with {'offset': page.pageOrder} %}
+        </div>
         {% include ':panels/general:commercial.panel.html.twig' %}
     </div>
 {% endblock %}

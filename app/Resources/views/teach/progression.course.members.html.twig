@@ -5,6 +5,10 @@
     {% include ':panels/teach:mentor.overview.panel.html.twig' %}
 {% endblock %}
 
+{% block modals %}
+    {% include ':modal/dashboard:course.report.introduction.modal.html.twig' with {'modalId': 'courseReportIntroductionModal'} %}
+{% endblock %}
+
 {% block prescripts %}
     <script src="{{ asset('js/teach/shared-reports.js') }}"></script>
 {% endblock %}

@@ -33,6 +33,8 @@
         {% include ':modal/create-course/custom:course.add.exercise.modal.html.twig' %}
     {% elseif name == 'course-resources' %}
         {% include ':modal/create-course:course.resources.instruction.modal.html.twig' with {'modalId': 'resourceInstructionModal'} %}
+    {% elseif name == 'start' %}
+        {% include ':modal/dashboard:teach.introduction.modal.html.twig' with {'modalId': 'instructionsCreateCourseModal'} %}
     {% endif %}
     {% include ':modal/create-course/confirmations:not.saved.confirmation.modal.html.twig' with {'modalId': 'notSaveConfirmationModal'} %}
     {% include ':modal/create-course:course.remove.modal.html.twig' with {'modalId': 'removeCourseModal'} %}

@@ -5,6 +5,10 @@
     {% include ':panels/general:commercial.panel.html.twig' %}
 {% endblock %}
 
+{% block modals %}
+    {% include ':modal/other:report.instructions.modal.html.twig' %}
+{% endblock %}
+
 {% block prescripts %}
     <script src="{{ asset('js/other/contact.js') }}"></script>
 {% endblock %}

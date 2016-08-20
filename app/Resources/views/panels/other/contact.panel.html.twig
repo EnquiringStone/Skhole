@@ -8,7 +8,12 @@
             <h4><b>{% trans %}m.contact.t_header.for.information{% endtrans %}</b></h4>
             <p>{% trans %}m.contact.t_long.for.information{% endtrans %}
              </p>
-            <p class="text-danger">TODO MELD ONGEWENSTE CONTENT knop naar modal neerzetten</p>
+            <p>
+                <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#reportInstructionsModal">
+                    <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                    {% trans %}o.b.report_content{% endtrans %}
+                </button>
+            </p>
         </div>
         <div class="thumbnail">
             <h4 class="centrum"><b>{% trans %}m.contact.t_header.contact_form{% endtrans %}</b></h4>

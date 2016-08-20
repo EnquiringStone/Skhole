@@ -1,0 +1,47 @@
+{% extends 'modal/modal.base.html.twig' %}
+{% set modalId = 'reportInstructionsModal' %}
+{% block modalBaseHeader %}
+    <h4 class="modal-title centrum" id="reportInstructionsModal">
+        <b>
+            {% trans %}imo.report_content.step_01.notify_content{% endtrans %}
+        </b>
+    </h4>
+{% endblock %}
+{% block modalBaseContents %}
+    <div class="modal-body">
+        <div class="thumbnail">
+            <h4 class="text-primary">
+                <samp>
+                    <b>{% trans %}imo.frequently_used.step_01{% endtrans %}</b>:
+                    {% trans %} imo.report_content.step_01.notify_content{% endtrans %}
+                </samp>
+            </h4>
+            <p>
+                {% trans %}imo.report_content.step_01.notify_content.t_long_01{% endtrans %}.
+            </p>
+            <ol type="I">
+                <li>{% trans %}imo.report_content.step_01.notify_content.li_01{% endtrans %}.</li>
+                <li>{% trans %}imo.report_content.step_01.notify_content.li_02{% endtrans %}.</li>
+            </ol>
+        </div>
+        <div class="thumbnail">
+            <h4 class="text-primary">
+                <samp>
+                    <b>{% trans %}imo.frequently_used.step_02{% endtrans %}</b>:
+                    {% trans %}imo.report_content.step_02.notify_investigation{% endtrans %}
+                </samp>
+            </h4>
+            <p>{% trans %}imo.report_content.step_02.notify_investigation.t_long_01{% endtrans %}. </p>
+        </div>
+        <div class="thumbnail">
+            <h4 class="text-primary"><samp><b>{% trans %}imo.frequently_used.step_03{% endtrans %}</b>:{% trans %}imo.report_content.step_03.feedback{% endtrans %}</samp></h4>
+            <p>{% trans %}imo.report_content.step_03.feedback.result_positive{% endtrans %}.</p>
+            <p>{% trans %}imo.report_content.step_03.feedback.result_negative{% endtrans %}.</p>
+        </div>
+    </div>
+{% endblock %}
+
+{% block closeButtonText %}
+    {% trans %}o.frequently_used.close{% endtrans %}
+{% endblock %}
+{% set modalBaseType = 'close' %}

@@ -13,7 +13,7 @@
             <div class="form-group">
                 <div class="centrum">
                     <h4>
-                        <img src="{{ app.user.picture is null ? asset('images/gebruiker.png') : app.user.picture }}" class="img-rounded">
+                        <img src="{{ app.user.picture is null ? asset('images/gebruiker.png') : asset(app.user.picture) }}" class="img-rounded teacher-row-picture">
                         {{ app.user.firstName }} {{ app.user.surname }}
                     </h4>
                 </div>

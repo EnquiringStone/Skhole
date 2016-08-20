@@ -23,6 +23,11 @@
             {% trans %}o.frequently_used.previous{% endtrans %}
         </a>
     {% endif %}
+    {% if name == 'final' %}
+        <a href="{{ path('app_learn_study_page', {'clear': 'all'}) }}" class="btn btn-default btn-sm pull-right">
+            {% trans %}o.frequently_used.close{% endtrans %}
+        </a>
+    {% endif %}
     {% if moreButton %}
         <div class="btn-group">
             <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

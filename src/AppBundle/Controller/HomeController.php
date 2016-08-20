@@ -104,7 +104,7 @@ class HomeController extends Controller {
      */
     public function gettingStartedAction()
     {
-        return $this->render(':home/getting-started:getting.started.html.twig');
+        return $this->render(':home/getting-started:getting.started.html.twig', array('subMenu' => 'introduction'));
     }
 
     /**

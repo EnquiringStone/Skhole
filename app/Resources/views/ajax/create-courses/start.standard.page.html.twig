@@ -15,15 +15,15 @@
                 <p>
                     {% trans %}t.create_course.t.advice_before_starting{% endtrans %}
                 </p>
-                <button class="btn btn-default btn-sm" type="button">
-                    {% trans %}t.create_course.b.author_right{% endtrans %}{#TODO auteursrecht link to more menu#}
-                </button>
-                <button class="btn btn-default btn-sm" type="button" data-target="#guidelinesModal" data-toggle="modal">
-                    {% trans %}t.create_course.b.guidelines{% endtrans %}{#TODO richtlijnen link to more menu#}
-                </button>
+                <a class="btn btn-default btn-sm" type="button" href="{{ path('app_other_copyright_page') }}">
+                    {% trans %}t.create_course.b.author_right{% endtrans %}
+                </a>
+                <a class="btn btn-default btn-sm" type="button" href="{{ path('app_other_guidelines') }}">
+                    {% trans %}t.create_course.b.guidelines{% endtrans %}
+                </a>
                 <button class="btn btn-default btn-sm" type="button" data-target="#instructionsCreateCourseModal" data-toggle="modal">
                     <span class="glyphicon glyphicon-info-sign text-primary" aria-hidden="true"></span>
-                    {% trans %}t.create_course.b.info_create_course{% endtrans %} {#TODO aan de slag extensive link to more menu#}
+                    {% trans %}t.create_course.b.info_create_course{% endtrans %}
                 </button>
                 <hr />
                  <div class="thumbnail">
