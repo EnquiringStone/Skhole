@@ -1,18 +1,18 @@
 {% extends 'panels/panel.base.html.twig' %}
 {% block panelBaseTitle %}
     <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
-    <b>{% trans %}Documenten{% endtrans %}</b>
+    <b>{% trans %}o.documents{% endtrans %}</b>
 {% endblock %}
 {% block panelBaseContents %}
     <div class="panel-body">
         {% if course.courseResources is not null %}
-            <h4>{% trans %}Link naar cursusmateriaal{% endtrans %}</h4>
-            <p>{% trans %}Het cursusmateriaal is beschikbaar via de onderstaande links{% endtrans %}</p>
+            <h4>{% trans %}t.documents.link_to_documents{% endtrans %}</h4>
+            <p>{% trans %}t.documents.acces_material_link{% endtrans %}</p>
             <hr />
             {% if course.courseResources.dropboxUrl is not empty %}
                 <h4>
                     <img src="{{ asset('images/resource-dropbox.png') }}" class="img-rounded">
-                    {% trans %}Dropbox url{% endtrans %}:
+                    {% trans %}t.documents.dropbox_url{% endtrans %}:
                 </h4>
                 <a target="_blank" href="{{ course.courseResources.dropboxUrl }}">{{ course.courseResources.dropboxUrl }}</a>
             {% endif %}
@@ -20,14 +20,14 @@
             {% if course.courseResources.googleDriveUrl is not empty %}
                 <h4>
                     <img src="{{ asset('images/resource-g.png') }}" class="img-rounded">
-                    {% trans %}Google Drive url{% endtrans %}:
+                    {% trans %}t.documents.google_url{% endtrans %}:
                 </h4>
                 <a target="_blank" href="{{ course.courseResources.googleDriveUrl }}">{{ course.courseResources.googleDriveUrl }}</a>
             {% endif %}
         {% else %}
             <hr />
             <div class="centrum">
-                <p class="lead">{% trans %}Deze cursus heeft geen additionele cursusmateriaal{% endtrans %}</p>
+                <p class="lead">{% trans %}t.documents.course_no_material{% endtrans %}</p>
             </div>
             <hr />
         {% endif %}

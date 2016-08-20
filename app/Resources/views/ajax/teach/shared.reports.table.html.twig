@@ -1,14 +1,14 @@
 {% block sharedReportsTable %}
     <div class="page-controls" data-default-search-attributes="hasAccepted,1;userId,{{ userId }}" data-view="" data-entity="Report\SharedReports" data-context="SELF" data-url="{{ url('app_home_ajax_page') }}" data-pagination-name="{% trans %}Rapporten{% endtrans %}">
-        <h4><b>{% trans %}Cursusrapporten lijst{% endtrans %}</b></h4>
+        <h4><b>{% trans %}t.course_report.report_list{% endtrans %}</b></h4>
         <table class="table table-hover">
             <thead>
             <tr>
-                <th>{% trans %}Cursusnaam{% endtrans %}</th>
-                <th>{% trans %}Rapport{% endtrans %}</th>
-                <th>{% trans %}Pdf{% endtrans %}</th>
-                <th>{% trans %}Beoordeel{% endtrans %}</th>
-                <th>{% trans %}Nagekeken{% endtrans %}</th>
+                <th>{% trans %}t.course_report.course_name{% endtrans %}</th>
+                <th>{% trans %}t.course_report.report{% endtrans %}</th>
+                <th>{% trans %}t.course_report.pdf{% endtrans %}</th>
+                <th>{% trans %}t.course_report.grade{% endtrans %}</th>
+                <th>{% trans %}t.course_report.graded{% endtrans %}</th>
                 <th></th>
             </tr>
             </thead>

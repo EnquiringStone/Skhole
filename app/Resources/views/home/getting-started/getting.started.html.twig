@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block title %}{% trans %}Aan de slag{% endtrans %}{% endblock %}
+{% block title %}{% trans %}o.nav.getting_started{% endtrans %}{% endblock %}
 {% block body %}
     {% if subMenu == 'introduction' %}
         {% include ':panels/getting-started:introduction.panel.html.twig' %}
@@ -10,6 +10,7 @@
     {% elseif subMenu == 'courseReport' %}
         {% include ':panels/getting-started:course.report.panel.html.twig' %}
     {% endif %}
+    {% include ':panels/getting-started:extensive.information.panel.html.twig' %}
     {% include ':panels/general:commercial.panel.html.twig' %}
 {% endblock %}
 

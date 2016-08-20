@@ -4,17 +4,17 @@
         <hr />
         <h4 class="centrum">
             <span class="glyphicon glyphicon-list-alt"></span>
-            <samp>3. | {% trans %}Planning{% endtrans %}</samp>
+            <samp>3. | {% trans %}t.create_course.t.planning{% endtrans %}</samp>
         </h4>
         <hr />
         <form class="form-horizontal">
             <div class="form-group">
-                <label class="col-sm-2 control-label">{% trans %}Planning{% endtrans %}</label>
+                <label class="col-sm-2 control-label">{% trans %}t.create_course.f_label.planning{% endtrans %}</label>
                 <div class="col-sm-10">
                     {% if schedule is not null %}
-                        <textarea class="form-control data-value" data-value-name="schedule" rows="20" placeholder="{% trans %}Hier kan je een planning maken voor de cursus{% endtrans %}">{% if schedule.schedule is not null %}{{ schedule.schedule }}{% endif %}</textarea>
+                        <textarea class="form-control data-value" data-value-name="schedule" rows="20" placeholder="{% trans %}t.create_course.f_placeholder.planning{% endtrans %}">{% if schedule.schedule is not null %}{{ schedule.schedule }}{% endif %}</textarea>
                     {% else %}
-                        <textarea class="form-control data-value" data-value-name="schedule" rows="20" placeholder="{% trans %}Hier kan je een planning maken voor de cursus{% endtrans %}"></textarea>
+                        <textarea class="form-control data-value" data-value-name="schedule" rows="20" placeholder="{% trans %}t.create_course.f_placeholder.planning{% endtrans %}"></textarea>
                     {% endif %}
                 </div>
             </div>

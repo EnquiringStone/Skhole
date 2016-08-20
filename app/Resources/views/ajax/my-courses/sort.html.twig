@@ -3,18 +3,18 @@
     {% if not value is defined %}{% set value = 'ASC' %}{% endif %}
 
     <div class="pull-right">
-        <label>{% trans %}Sorteer op{% endtrans %}:</label>
+        <label>{% trans %}o.frequently_used.sorting{% endtrans %}:</label>
         <select class="sortable" name="filterOptions" size="1" aria-controls="example1">
-            <option {% if attribute == 'id' and value == 'ASC' %}selected="selected"{% endif %} data-attribute="id" data-sorted="ASC">{% trans %}Geen{% endtrans %}</option>
-            <option {% if attribute == 'views' and value == 'DESC' %}selected="selected"{% endif %} data-attribute="views" data-sorted="DESC">{% trans %}Weergaven{% endtrans %}</option>
-            <option {% if attribute == 'averageContentRating' and value == 'DESC' %}selected="selected"{% endif %} data-attribute="averageContentRating" data-sorted="DESC">{% trans %}Beoordeling{% endtrans %}</option>
-            <option {% if attribute == 'difficulty' and value == 'DESC' %}selected="selected"{% endif %} data-attribute="difficulty" data-sorted="DESC">{% trans %}Niveau{% endtrans %}</option>
-            <option {% if attribute == 'name' and value == 'ASC' %}selected="selected"{% endif %} data-attribute="name" data-sorted="ASC">{% trans %}Titel A - Z{% endtrans %}</option>
-            <option {% if attribute == 'name' and value == 'DESC' %}selected="selected"{% endif %} data-attribute="name" data-sorted="DESC">{% trans %}Titel Z - A{% endtrans %}</option>
-            <option {% if attribute == 'pages' and value == 'ASC' %}selected="selected"{% endif %} data-attribute="pages" data-sorted="ASC">{% trans %}Aantal pagina's oplopend{% endtrans %}</option>
-            <option {% if attribute == 'pages' and value == 'DESC' %}selected="selected"{% endif %} data-attribute="pages" data-sorted="DESC">{% trans %}Aantal pagina's aflopend{% endtrans %}</option>
-            <option {% if attribute == 'estimatedDuration' and value == 'ASC' %}selected="selected"{% endif %} data-attribute="estimatedDuration" data-sorted="ASC">{% trans %}Cursusduur oplopend{% endtrans %}</option>
-            <option {% if attribute == 'estimatedDuration' and value == 'DESC' %}selected="selected"{% endif %} data-attribute="estimatedDuration" data-sorted="DESC">{% trans %}Cursusduur aflopend{% endtrans %}</option>
+            <option {% if attribute == 'id' and value == 'ASC' %}selected="selected"{% endif %} data-attribute="id" data-sorted="ASC">{% trans %}o.frequently_used.sort.none{% endtrans %}</option>
+            <option {% if attribute == 'views' and value == 'DESC' %}selected="selected"{% endif %} data-attribute="views" data-sorted="DESC">{% trans %}o.frequently_used.views{% endtrans %}</option>
+            <option {% if attribute == 'averageContentRating' and value == 'DESC' %}selected="selected"{% endif %} data-attribute="averageContentRating" data-sorted="DESC">{% trans %}o.frequently_used.sort_option.rating_desc{% endtrans %}</option>
+            <option {% if attribute == 'difficulty' and value == 'DESC' %}selected="selected"{% endif %} data-attribute="difficulty" data-sorted="DESC">{% trans %}o.frequently_used.sort_option.level_desc{% endtrans %}</option>
+            <option {% if attribute == 'name' and value == 'ASC' %}selected="selected"{% endif %} data-attribute="name" data-sorted="ASC">{% trans %}o.frequently_used.sort.titel-a-z{% endtrans %}</option>
+            <option {% if attribute == 'name' and value == 'DESC' %}selected="selected"{% endif %} data-attribute="name" data-sorted="DESC">{% trans %}o.frequently_used.sort.titel-z-a{% endtrans %}</option>
+            <option {% if attribute == 'pages' and value == 'ASC' %}selected="selected"{% endif %} data-attribute="pages" data-sorted="ASC">{% trans %}o.frequently_used.sort.number_of_pages_asc{% endtrans %}</option>
+            <option {% if attribute == 'pages' and value == 'DESC' %}selected="selected"{% endif %} data-attribute="pages" data-sorted="DESC">{% trans %}o.frequently_used.sort.number_of_pages_desc{% endtrans %}</option>
+            <option {% if attribute == 'estimatedDuration' and value == 'ASC' %}selected="selected"{% endif %} data-attribute="estimatedDuration" data-sorted="ASC">{% trans %}o.frequently_used.sort.course_duration_asc{% endtrans %}</option>
+            <option {% if attribute == 'estimatedDuration' and value == 'DESC' %}selected="selected"{% endif %} data-attribute="estimatedDuration" data-sorted="DESC">{% trans %}o.frequently_used.sort.course_duration_desc{% endtrans %}</option>
         </select>
     </div>
 {% endblock %}

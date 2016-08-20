@@ -4,7 +4,7 @@
     <h4 class="modal-title centrum" id="{{ modalId }}">
         <b class="text-danger">
             <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>
-            {% trans %}Foutmelding!{% endtrans %}
+            {% trans %}o.frequently_used.error_message{% endtrans %}
         </b>
     </h4>
 {% endblock %}
@@ -17,13 +17,13 @@
         </div>
         {% if app.environment == 'dev' %}
             <div class="centrum">
-                <h4>{% trans %}Orignele exceptie{% endtrans %}</h4>
+                 <h4>{% trans %}o.frequently_used.original_exeception{% endtrans %}</h4>
                 <p>{{ exception.getMessage }}</p>
-                <h4>{% trans %}Trace{% endtrans %}</h4>
+                <h4>{% trans %}o.frequently_used.trace{% endtrans %}</h4>
                 <p>{{ exception.getTraceAsString }}</p>
             </div>
         {% endif %}
     </div>
 {% endblock %}
 {% set modalBaseType = 'close' %}
-{% block closeButtonText %}{% trans %}Sluiten{% endtrans %}{% endblock %}
+{% block closeButtonText %}{% trans %}o.frequently_used.close{% endtrans %}{% endblock %}

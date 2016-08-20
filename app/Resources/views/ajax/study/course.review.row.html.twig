@@ -12,26 +12,26 @@
                     " class="img-rounded profile-picture-preview-img">
             </div>
             <div class="col-md-11">
-                <h4>{% if hasUser %}{{ review.insertUser.realName|capitalize }}{% else %}{% trans %}Anoniem{% endtrans %}{% endif %}</h4>
+                <h4>{% if hasUser %}{{ review.insertUser.realName|capitalize }}{% else %}{% trans %}o.course_rating.anonymous{% endtrans %}{% endif %}</h4>
                 <p>{{ review.remarks }}</p>
                 <div class="btn-group-xs">
                     <button type="button" class="btn btn-default unclickable">
-                        <b>{% trans %}Cursusbeoordeling{% endtrans %}:</b>
+                        <b>{% trans %}o.course_rating.t.course_rating{% endtrans %}:</b>
                         {% if review.contentRating is not null %}
                             {% for i in 1..review.contentRating %}
                                 <img src="{{ asset('images/star_rating.png') }}" class="img-rounded">
                             {% endfor %}
                         {% else %}
-                            {% trans %}Geen beoordeling gegegeven{% endtrans %}
+                            {% trans %}o.frequently_used.no_rating_yet{% endtrans %}
                         {% endif %}
                     </button>
                     <button type="button" class="btn btn-default unclickable">
-                        <b>{% trans %}Gepost op{% endtrans %}:</b>
+                        <b>{% trans %}o.course_rating.t.when_posted{% endtrans %}:</b>
                         {{ review.insertDateTime|date('d-m-Y') }}
                     </button>
                     {% if review.updateDateTime is not null %}
                         <button type="button" class="btn btn-default unclickable">
-                            <b>{% trans %}Gewijzigd op{% endtrans %}:</b>
+                            <b>{% trans %}o.frequently_used.edited_on{% endtrans %}:</b>
                             {{ review.updateDateTime|date('d-m-Y') }}
                         </button>
                     {% endif %}

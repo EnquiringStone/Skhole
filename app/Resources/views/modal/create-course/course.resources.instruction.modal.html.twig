@@ -2,46 +2,46 @@
 {% block modalBaseHeader %}
     <h4 class="modal-title centrum" id="{{ modalId }}">
         <b>
-            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-            {% trans %}Cursus verwijderen{% endtrans %}
+            <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
+            {% trans %}imo.add_documents{% endtrans %}
         </b>
     </h4>
 {% endblock %}
 {% block modalBaseContents %}
-    <div class="modal-body">
+     <div class="modal-body">
         <div class="btn-pref" role="group">
             <div class="btn-group">
-                <button type="button" class="btn btn-primary btn-default" href="#tabIntro" data-toggle="tab">
-                    {% trans %}Introductie{% endtrans %}
+                <button type="button" class="btn btn-primary btn-sm btn-default" href="#tabIntro" data-toggle="tab">
+                    {% trans %}imo.frequently_used.introduction{% endtrans %}
                 </button>
             </div>
             <div class="btn-group">
                 <button type="button" class="btn btn-default btn-sm" href="#tabInfo" data-toggle="tab">
-                    {% trans %}Informatie{% endtrans %}
+                    {% trans %}imo.add_documents.info{% endtrans %}
                 </button>
             </div>
             <div class="btn-group">
                 <button type="button" class="btn btn-default btn-sm" href="#tabGoogleDrive" data-toggle="tab">
-                    {% trans %}Google Drive{% endtrans %}
+                    {% trans %}imo.add_documents.google{% endtrans %}
                 </button>
             </div>
             <div class="btn-group">
                 <button type="button" class="btn btn-default btn-sm" href="#tabDropbox" data-toggle="tab">
-                    {% trans %}Dropbox{% endtrans %}
+                    {% trans %}imo.add_documents.dropbox{% endtrans %}
                 </button>
             </div>
         </div>
         <div class="tab-content">
             <div class="tab-pane fade active in" id="tabIntro">
                 <div class="explanation-background">
-                    <hr />
+                    <br />
                     <div class="centrum">
                         <h1 class="text-primary">
-                            {% trans %}Documenten toevoegen{% endtrans %}
+                            {% trans %}imo.add_documents{% endtrans %}
                         </h1>
-                        <hr />
+                        <br />
                         <p class="lead text-muted">
-                            {% trans %}Link cursusmateriaal vanuit een publieke Google Drive en/of Dropbox map{% endtrans %}
+                            {% trans %}imo.add_documents.sub_title{% endtrans %}
                         </p>
                     </div>
                     <br/>
@@ -50,40 +50,38 @@
             <div class="tab-pane fade" id="tabInfo">
                 <div class="explanation-background">
                     <h4 class="text-primary">
-                        {% trans %}Ter informatie{% endtrans %}
+                        {% trans %}imo.frequently_used.ter_info{% endtrans %}
                     </h4>
-                    <p>{% trans %}Als je cursusmateriaal wilt uploaden heb je een Google Drive of Dropbox account nodig. Zet het cursusmateriaal in een publieke map op Google Drive en/of Dropbox. Op StudyLivre hoef je vervolgens alleen maar de link naar de map op te slaan{% endtrans %}</p>
-                    <p>{% trans %}Vergeet niet de folder die je aanmaakt openbaar te maken, zodat iedereen erbij kan. Indien je map niet publiek is, kunnen cursisten niet bij het cursusmateriaal{% endtrans %}</p>
+                    <p>{% trans %}imo.frequently_used.ter_info.t_01{% endtrans %}.</p>
+                    <p>{% trans %}imo.frequently_used.ter_info.t_02{% endtrans %}.</p>
                 </div>
             </div>
             <div class="tab-pane fade" id="tabGoogleDrive">
                 <div class="explanation-background">
-                    <br/>
-                    <div class="row">
-                        <div class="col-md-1"></div>
-                        <div class="col-md-10">
-                            <div class="embed-responsive embed-responsive-4by3">
-                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/CO_aJBbykM0" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                        <div class="col-md-1"></div>
-                    </div>
-                    <br/>
+                    <h4 class="text-primary">
+                        {% trans %}imo.add_documents.option_google{% endtrans %}
+                    </h4>
+                    <ol>
+                        <li>{% trans %}imo.add_documents.google.li.step_01{% endtrans %}.</li>
+                        <li>{% trans %}imo.add_documents.google.li.step_02{% endtrans %}.</li>
+                        <li>{% trans %}imo.add_documents.google.li.step_03{% endtrans %}.</li>
+                        <li>{% trans %}imo.add_documents.google.li.step_04{% endtrans %}.</li>
+                    </ol>      
+                    <p class="text-danger">TODO IMG TOEVOEGEN </p>         
                 </div>
             </div>
             <div class="tab-pane fade" id="tabDropbox">
                 <div class="explanation-background">
-                    <br/>
-                    <div class="row">
-                        <div class="col-md-1"></div>
-                        <div class="col-md-10">
-                            <div class="embed-responsive embed-responsive-4by3">
-                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Xl4AHWhP7wQ" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                        <div class="col-md-1"></div>
-                    </div>
-                    <br/>
+                    <h4 class="text-primary">
+                        {% trans %}imo.add_documents.option_dropbox{% endtrans %}
+                    </h4>
+                        <ol>
+                            <li>{% trans %}imo.add_documents.dropbox_01{% endtrans %}.</li>
+                            <li>{% trans %}imo.add_documents.dropbox_02{% endtrans %}.</li>
+                            <li>{% trans %}imo.add_documents.dropbox_03{% endtrans %}.</li>
+                            <li>{% trans %}imo.add_documents.dropbox_04{% endtrans %}.</li>
+                        </ol>  
+                        <p class="text-danger">TODO IMG TOEVOEGEN </p>                  
                 </div>
             </div>
         </div>

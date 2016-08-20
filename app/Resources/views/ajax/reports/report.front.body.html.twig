@@ -3,9 +3,10 @@
     <div class="centrum">
         <img src="{{ asset('images/logo-schoolbook.png') }}" class="img-rounded">
         <h1 class="text-primary">
-            <samp>{% trans %}Cursusrapport{% endtrans %}</samp>
+            <samp>{% trans %}o.course_report.t.course_report{% endtrans %}</samp>
         </h1>
         <h4 class="text-muted">{{ report.course.name }}</h4>
+        <span><samp>{% trans %}t.link.studylivre{% endtrans %}</samp></span>
     </div>
     <hr />
     <h4>
@@ -14,21 +15,23 @@
             {{ report.user.firstName|capitalize }} {{ report.user.surname|capitalize }}
         {% else %}
             <img src="{{ asset('images/gebruiker.png') }}" class="img-rounded teacher-row-picture">
-            {% trans %}Anoniem{% endtrans %}
+            {% trans %}o.course_rating.anonymous{% endtrans %}
         {% endif %}
     </h4>
     <button class="btn btn-default btn-xs unclickable" type="button">
-        <b>{% trans %}Cursus afgerond{% endtrans %}:</b>
+        <b>{% trans %}o.course_report.finished{% endtrans %}:</b>
         {{ report.finishedDateTime|date('d-m-Y') }}
     </button>
+    <br/>
     <button class="btn btn-default btn-xs unclickable" type="button">
-        <b class="text-primary">{% trans %}Aantal juiste meerkeuze antwoorden{% endtrans %}:</b>
+        <b class="text-primary">{% trans %}o.course_report.percentage_right_questions{% endtrans %}:</b>
         {{ report.getAverageCorrectMultipleChoice|number_format(0) }}%
     </button>
+    
     {% if viewType == 'learn' %}
         {% if pdfLayout %}
             <br>
-            {% trans %}Gedeeld met{% endtrans %}:
+            {% trans %}o.course_report.shared_with{% endtrans %}:
             <br>
             {% for shared in report.sharedReports if shared.hasAccepted %}
                 {{ shared.mentor.realName }}
@@ -37,7 +40,7 @@
         {% else %}
             {% for shared in report.sharedReports if shared.hasAccepted %}
                 <button class="btn btn-default btn-xs unclickable" type="button">
-                    <b>{% trans %}Gedeeld met{% endtrans %}:</b>
+                    <b>{% trans %}o.course_report.shared_with{% endtrans %}:</b>
                     {{ shared.mentor.realName }}
                 </button>
             {% endfor %}

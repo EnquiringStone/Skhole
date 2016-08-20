@@ -1,27 +1,27 @@
 {% block moreNavigationMenu %}
     <ul class="nav nav-pills">
         <li class="{% if subMenu == 'aboutUs' %}active{% endif %}">
-            <a href="{{ path('app_other_about_us') }}">{% trans %}Over ons{% endtrans %}</a>
+            <a href="{{ path('app_other_about_us') }}">{% trans %}m.about.about_us{% endtrans %}</a>
         </li>
         <li class="{% if subMenu == 'copyright' %}active{% endif %}">
-            <a href="{{ path('app_other_copyright_page') }}">{% trans %}Auteursrecht{% endtrans %}</a>
+            <a href="{{ path('app_other_copyright_page') }}">{% trans %}m.author_rights.author_rights{% endtrans %}</a>
         </li>
         <li role="presentation" class="dropdown {% if subMenu == 'contact' or subMenu == 'questions' or subMenu == 'guidelines' or subMenu == 'legal' %}active{% endif %}">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                {% trans %}Overige{% endtrans %} <span class="caret"></span>
+                {% trans %}m.other.other{% endtrans %} <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
                 <li class="{% if subMenu == 'contact' %}active{% endif %}">
-                    <a href="{{ url('app_other_contact') }}">{% trans %}Contact{% endtrans %}</a>
+                    <a href="{{ url('app_other_contact') }}">{% trans %}m.other.li.contact{% endtrans %}</a>
                 </li>
                 <li class="{% if subMenu == 'questions' %}active{% endif %}">
-                    <a href="{{ url('app_other_frequently_asked_questions_page') }}">{% trans %}Vragen{% endtrans %}</a>
+                    <a href="{{ url('app_other_frequently_asked_questions_page') }}">{% trans %}m.other.li.questions{% endtrans %}</a>
                 </li>
                 <li class="{% if subMenu == 'guidelines' %}active{% endif %}">
-                    <a href="{{ url('app_other_guidelines') }}">{% trans %}Richtlijnen{% endtrans %}</a>
+                    <a href="{{ url('app_other_guidelines') }}">{% trans %}m.other.li.guidelines{% endtrans %}</a>
                 </li>
                 <li class="{% if subMenu == 'legal' %}active{% endif %}">
-                    <a href="{{ url('app_other_legal') }}">{% trans %}Juridisch{% endtrans %}</a>
+                    <a href="{{ url('app_other_legal') }}">{% trans %}m.other.li.juridical{% endtrans %}</a>
                 </li>
             </ul>
         </li>

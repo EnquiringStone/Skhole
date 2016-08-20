@@ -1,7 +1,7 @@
 {% extends 'panels/panel.base.html.twig' %}
 {% block panelBaseTitle %}
     <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
-    <b>{% trans %}Mededelingen{% endtrans %}</b>
+    <b>{% trans %}o.frequently_used.annoucements{% endtrans %}</b>
 {% endblock %}
 {% block panelBaseContents %}
     <div class="panel-body">
@@ -19,7 +19,7 @@
         {% else %}
             <hr />
             <div class="centrum">
-                <p class="lead">{% trans %}Geen mededelingen{% endtrans %}</p>
+                <p class="lead">{% trans %}t.no_announcements{% endtrans %}</p>
             </div>
             <hr />
         {% endif %}

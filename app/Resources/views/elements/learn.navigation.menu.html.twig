@@ -1,11 +1,11 @@
 {% block learnNavigationMenu %}
     <ul class="nav nav-pills">
-        <li class="{% if subMenu == 'study'%}active{% endif %}"><a href="{{ path('app_learn_study_page') }}">{% trans %}Studeer{% endtrans %}</a></li>
+        <li class="{% if subMenu == 'study'%}active{% endif %}"><a href="{{ path('app_learn_study_page') }}">{% trans %}o.frequently_used.study{% endtrans %}</a></li>
         <li class="{% if subMenu == 'courseCollection' %}active{% endif %}">
-            <a href="{{ path('app_learn_course_collection_page') }}">{% trans %}Cursusmandje{% endtrans %}</a>
+            <a href="{{ path('app_learn_course_collection_page') }}">{% trans %}l.nav.course.basket{% endtrans %}</a>
         </li>
         <li class="{% if subMenu == 'courseReports' %}active{% endif %}">
-            <a href="{{ path('app_learn_course_reports') }}">{% trans %}Cursusrapporten{% endtrans %}</a>
+            <a href="{{ path('app_learn_course_reports') }}">{% trans %}l.nav.course_reports{% endtrans %}</a>
         </li>
         {% include ':elements:mail.item.html.twig' %}
     </ul>

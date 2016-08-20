@@ -1,16 +1,16 @@
 {% block courseResourcesStandardPage %}
     <div class="tab-pane fade in active">
         {% include 'ajax/create-courses/elements/standard.navigation.buttons.html.twig' with {'active': 'resources'} %}
-        <br>
+        <hr>
         <h4 class="centrum">
             <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
-            <b>5 | {% trans %}Documenten{% endtrans %}</b>
+            <b>5 | {% trans %}t.create_course.documents{% endtrans %}</b>
         </h4>
-        <br>
+        <hr>
         <div class="pull-right">
             <button class="btn btn-default btn-sm" type="button" data-toggle="modal" data-target="#resourceInstructionModal">
                 <span class="glyphicon glyphicon-info-sign text-primary" aria-hidden="true"></span>
-                {% trans %}Het toevoegen van documenten{% endtrans %}
+                {% trans %}t.create_course.add_documents{% endtrans %}
             </button>
         </div>
         <br>
@@ -21,12 +21,12 @@
                     <div class="pull-right">
                         <button type="button" class="btn btn-default btn-sm remove-resource" data-type="google">
                             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                            {% trans %}Link{% endtrans %}
+                            {% trans %}t.create_course.hyperlink{% endtrans %}
                         </button>
                     </div>
                     <h4>
                         <img src="{{ asset('images/resource-g.png') }}" class="img-rounded">
-                        {% trans %}Google Drive{% endtrans %}
+                        {% trans %}t.create_course.google_drive{% endtrans %}
                     </h4>
                     <p class="resource-url">
                         {% if resources is not null and resources.googleDriveUrl is not null %}
@@ -36,14 +36,14 @@
                     <div class="well well-sm">
                         <form>
                             <div class="form-group">
-                                <label>{% trans %}Google Drive Url{% endtrans %}</label>
+                                <label>{% trans %}t.create_course.f_label.google_drive_url{% endtrans %}</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control data-value" placeholder="{% trans %}De url van de google drive documenten{% endtrans %}" data-value-name="googleDriveUrl"
+                                    <input type="text" class="form-control data-value" placeholder="{% trans %}t.documents.f_placeholder.google_drive_url{% endtrans %}" data-value-name="googleDriveUrl"
                                            value="{% if resources is not null and resources.googleDriveUrl is not null %}{{ resources.googleDriveUrl }}{% endif %}">
                                     <span class="input-group-btn">
                                         <button class="btn btn-default add-resource-url" type="button" data-type="google">
                                             <span class="glyphicon glyphicon-plus text-success" aria-hidden="true"></span>
-                                            {% trans %}url{% endtrans %}
+                                            {% trans %}t.create_course.url{% endtrans %}
                                         </button>
                                     </span>
                                 </div>
@@ -57,12 +57,12 @@
                     <div class="pull-right">
                         <button type="button" class="btn btn-default btn-sm remove-resource" data-type="dropbox">
                             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                            {% trans %}Link{% endtrans %}
+                            {% trans %}t.create_course.hyperlink{% endtrans %}
                         </button>
                     </div>
                     <h4>
                         <img src="{{ asset('images/resource-dropbox.png') }}" class="img-rounded">
-                        {% trans %}Dropbox{% endtrans %}
+                         {% trans %}t.create_course.dropbox{% endtrans %}
                     </h4>
                     <p class="resource-url">
                         {% if resources is not null and resources.dropboxUrl is not null %}
@@ -72,14 +72,14 @@
                     <div class="well well-sm">
                         <form>
                             <div class="form-group">
-                                <label>{% trans %}Dropbox Url{% endtrans %}</label>
+                                <label>{% trans %}t.create_course.f_label.dropbox.url{% endtrans %}</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control data-value" placeholder="{% trans %}De url van de dropbox documenten{% endtrans %}" data-value-name="dropboxUrl"
+                                    <input type="text" class="form-control data-value" placeholder="{% trans %}t.create_course.f_placeholder.dropbox.url{% endtrans %}" data-value-name="dropboxUrl"
                                         value="{% if resources is not null and resources.dropboxUrl is not null %}{{ resources.dropboxUrl }}{% endif %}">
                                     <span class="input-group-btn">
                                         <button class="btn btn-default add-resource-url" type="button" data-type="dropbox">
                                             <span class="glyphicon glyphicon-plus text-success" aria-hidden="true"></span>
-                                            {% trans %}url{% endtrans %}
+                                            {% trans %}t.create_course.hyperlink{% endtrans %}
                                         </button>
                                     </span>
                                 </div>

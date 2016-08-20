@@ -21,7 +21,7 @@
                 <p>{{ announcement.contents }}</p>
                 <div class="btn-group-xs">
                     <button type="button" class="btn btn-default unclickable">
-                        <b>{% trans %}Docent{% endtrans %}:</b>
+                        <b>{% trans %}o.frequently_used.instructor{% endtrans %}:</b>
                         {% if announcement.teacher is not null %}
                             {{ announcement.teacher.name }}
                         {% else %}
@@ -29,7 +29,7 @@
                         {% endif %}
                     </button>
                     <button type="button" class="btn btn-default unclickable">
-                        <b>{% trans %}Gepost op{% endtrans %}:</b>
+                        <b>{% trans %}o.course_rating.t.when_posted{% endtrans %}:</b>
                         {{ announcement.insertDateTime|date('d-m-Y') }}
                     </button>
                 </div>

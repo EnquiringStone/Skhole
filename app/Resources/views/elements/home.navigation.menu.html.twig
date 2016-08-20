@@ -1,16 +1,16 @@
 {% block homeNavigationMenu %}
     <ul class="nav nav-pills">
-        <li class="{% if subMenu == 'dashboard'%}active{% endif %}"><a href="{{ path('app_home_dashboard_page') }}">{% trans %}Dashboard{% endtrans %}</a></li>
-        <li class="{% if subMenu == 'search'%}active{% endif %}"><a href="{{ path('app_search_page') }}">{% trans %}Zoeken{% endtrans %}</a></li>
+        <li class="{% if subMenu == 'dashboard'%}active{% endif %}"><a href="{{ path('app_home_dashboard_page') }}">{% trans %}o.frequently_used.dashboard{% endtrans %}</a></li>
+        <li class="{% if subMenu == 'search'%}active{% endif %}"><a href="{{ path('app_search_page') }}">{% trans %}o.frequently_used.search{% endtrans %}</a></li>
         <li role="presentation" class="dropdown {% if subMenu == 'introduction' or subMenu == 'followCourse' or subMenu == 'createCourse' or subMenu == 'courseReport'%}active{% endif %}">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                {% trans %}Aan de slag{% endtrans %} <span class="caret"></span>
+                  {% trans %}h.nav.getting_started{% endtrans %} <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-                <li class="{% if subMenu == 'introduction'%}active{% endif %}"><a href="{{ path('app_home_getting_started_custom_page', {'page': 'introduction'}) }}">{% trans %}Introductie{% endtrans %}</a></li>
-                <li class="{% if subMenu == 'followCourse'%}active{% endif %}"><a href="{{ path('app_home_getting_started_custom_page', {'page': 'followCourse'}) }}">{% trans %}Cursus volgen{% endtrans %}</a></li>
-                <li class="{% if subMenu == 'createCourse'%}active{% endif %}"><a href="{{ path('app_home_getting_started_custom_page', {'page': 'createCourse'}) }}">{% trans %}Cursus aanmaken{% endtrans %}</a></li>
-                <li class="{% if subMenu == 'courseReport'%}active{% endif %}"><a href="{{ path('app_home_getting_started_custom_page', {'page': 'courseReport'}) }}">{% trans %}Cursusrapport{% endtrans %}</a></li>
+                <li class="{% if subMenu == 'introduction'%}active{% endif %}"><a href="{{ path('app_home_getting_started_custom_page', {'page': 'introduction'}) }}">{% trans %}h.nav.getting_started.intro{% endtrans %}</a></li>
+                <li class="{% if subMenu == 'followCourse'%}active{% endif %}"><a href="{{ path('app_home_getting_started_custom_page', {'page': 'followCourse'}) }}">{% trans %}h.nav.getting_started.follow_course{% endtrans %}</a></li>
+                <li class="{% if subMenu == 'createCourse'%}active{% endif %}"><a href="{{ path('app_home_getting_started_custom_page', {'page': 'createCourse'}) }}">{% trans %}h.nav.getting_started.create_course{% endtrans %}</a></li>
+                <li class="{% if subMenu == 'courseReport'%}active{% endif %}"><a href="{{ path('app_home_getting_started_custom_page', {'page': 'courseReport'}) }}">{% trans %}h.nav.getting_started.course_report{% endtrans %}</a></li>
             </ul>
         </li>
         {% include ':elements:mail.item.html.twig' %}

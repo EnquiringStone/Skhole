@@ -3,20 +3,20 @@
         <h4 class="centrum">
             <b>
                 <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
-                {% trans %}Opdrachten toevoegen{% endtrans %}
+                {% trans %}t.create_course.b.add_assignment{% endtrans %}
             </b>
         </h4>
         <br>
-        <p class="centrum"><b>{% trans %}Pagina titel{% endtrans %}:</b> {{ exercise.title|upper }}</p>
+        <p class="centrum"><b>{% trans %}t.create_course.page_titel{% endtrans %}:</b> {{ exercise.title|upper }}</p>
         <br>
         <div class="centrum">
             <button class="btn btn-default btn-lg load-question" data-type="multiple-choice" data-question-id="-1">
                 <span class="glyphicon glyphicon-plus text-success" aria-hidden="true"></span>
-                {% trans %}Meerkeuze vraag{% endtrans %}
+                {% trans %}t.create_course.b.multiple_choice_question{% endtrans %}
             </button>
             <button class="btn btn-default btn-lg load-question" data-type="open-question" data-question-id="-1">
                 <span class="glyphicon glyphicon-plus text-success" aria-hidden="true"></span>
-                {% trans %}Open vraag{% endtrans %}
+                {% trans %}t.create_course.b.open_question{% endtrans %}
             </button>
         </div>
         <br>

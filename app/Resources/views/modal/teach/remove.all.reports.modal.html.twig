@@ -3,19 +3,19 @@
     <h4 class="modal-title centrum" id="{{ modalId }}">
         <b>
             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-            {% trans %}Verwijder cursist{% endtrans %}
+            {% trans %}mo.remove_student{% endtrans %}
         </b>
     </h4>
 {% endblock %}
 {% block modalBaseContents %}
     <div class="modal-body">
-        <hr />
+         <hr />
         <p class="lead centrum">
-            {% trans %}Verwijderen kan niet ongedaan worden. Weet je het zeker?{% endtrans %}
+            {% trans %}mo.deleltion_cannot_be_undone{% endtrans %}
         </p>
         <br />
         <p class="centrum">
-            {% trans %}Je staat op het punt om de cursist{% endtrans %} {{ user.firstName|capitalize }} {{ user.surname|capitalize }} {% trans %}te verwijderen. De gedeelde rapporten voor deze cursist zullen ook automatisch worden verwijdered{% endtrans %}
+            {% trans %}mo.remove_studen.t_long_01{% endtrans %} {{ user.firstName|capitalize }} {{ user.surname|capitalize }} {% trans %}mo.remove_studen.t_long_02{% endtrans %}
         </p>
     </div>
 {% endblock %}

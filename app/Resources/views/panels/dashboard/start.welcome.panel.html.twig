@@ -1,11 +1,11 @@
 {% extends 'panels/panel.base.html.twig' %}
 {% block panelBaseTitle %}
-    {% trans %}Welkom{% endtrans %} {% if is_granted('ROLE_USER') %}{{ app.user.realName }}{% endif %}
+    {% trans %}h.welcome{% endtrans %} {% if is_granted('ROLE_USER') %}{{ app.user.realName }}{% endif %}
 {% endblock %}
 {% block panelBaseContentTypeLeft %}
-    <h4><b>{% trans %}Introductie{% endtrans %}</b></h4>
+    <h4><b>{% trans %}h.welcome.intro{% endtrans %}</b></h4>
     <p>
-        {% trans %}StudyLivre beidt je de mogelijkheid om cursussen te bekijken, maken en delen. Na afronding van een cursus kun je een cursusrapport (met daarin je resultaten) inzien. Je kunt ook rapporten inzien van personen die ervoor gekozen hebben om het rapport met je te delen. {% endtrans %}
+        {% trans %}h.welcome.intro.text{% endtrans %}
     </p>
     <hr />
     <div class="pull-right">
@@ -15,10 +15,10 @@
             <img src="{{ asset('images/globe-language.png') }}"/>
         </a>
     </div>
-    <h4><b>{% trans %}Snel Menu{% endtrans %}</b></h4>
+    <h4><b>{% trans %}h.welcom.quick_menu{% endtrans %}</b></h4>
     <form id="quick-search" class="form-horizontal" data-url="{{ path('app_search_page') }}">
         <div class="input-group">
-            <input type="text" class="form-control quick-search-value" placeholder="{% trans %}Cursusnaam{% endtrans %}">
+            <input type="text" class="form-control quick-search-value" placeholder="{% trans %}h.welcom.quick_menu.f_placeholder.course_name{% endtrans %}">
             <div class="input-group-btn search-panel">
                 <button type="submit" class="btn btn-default">
                     <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -26,29 +26,30 @@
             </div>
         </div>
     </form>
-    <hr />
+    <hr/>
+    <p>{% trans %}h.welcom.quick_menu.t_long{% endtrans %}</p>
     <a href="{{ path('app_teach_my_courses_page') }}" class="btn btn-default btn-sm create-course">
         <span class="glyphicon glyphicon-plus text-success" aria-hidden="true"></span>
-        {% trans %}Nieuwe cursus{% endtrans %}
+        {% trans %}o.button.new_course{% endtrans %}
     </a>
     <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#studyIntroductionModal">
         <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-        {% trans %}Cursus volgen{% endtrans %}
+        {% trans %}o.button.follow_course{% endtrans %}
     </button>
     <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#teachIntroductionModal">
         <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-        {% trans %}Cursus maken{% endtrans %}
+        {% trans %}o.button.create_course{% endtrans %}
     </button>
     <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#courseReportIntroductionModal">
         <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-        {% trans %}Cursusrapport{% endtrans %}
+        {% trans %}o.button.course_report{% endtrans %}
     </button>
     <hr />
     {% if not is_granted('ROLE_USER') %}
         <div class="centrum">
             <button type="button" class="btn btn-lg btn-info" data-toggle="modal" data-target="#loginModal">
                 <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                {% trans %}Account aanmaken{% endtrans %}
+                {% trans %}o.create_account{% endtrans %}
                 <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
             </button>
         </div>

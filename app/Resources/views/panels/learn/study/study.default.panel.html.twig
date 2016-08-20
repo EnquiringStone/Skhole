@@ -1,28 +1,28 @@
 {% extends 'panels/panel.base.html.twig' %}
 {% block panelBaseTitle %}
-    <b>{% trans %}Ter informatie{% endtrans %}</b>
+    <b>{% trans %}o.ter_information{% endtrans %}</b>
 {% endblock %}
 {% block panelBaseContents %}
     <div class="panel-body">
         <hr />
         <div class="centrum">
             <h4>
-                <b>{% trans %}Geen cursus geselecteerd{% endtrans %}</b>
+                <b>{% trans %}t.no_course_selected{% endtrans %}</b>
             </h4>
             <p class="text-muted">
-                {% trans %}Zoek een cursus of selecteer een cursus uit je cursusmandje. Klik op onderstaande button voor meer informatie over het volgen van een cursus{% endtrans %}
+                {% trans %}t.t_long.no_course_selected{% endtrans %}
             </p>
             <hr />
             <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#studyIntroductionModal">
                 <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-                {% trans %}Cursus volgen{% endtrans %}
+                {% trans %}o.button.follow_course{% endtrans %}
             </button>
             <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#courseReportIntroductionModal">
                 <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-                {% trans %}Cursusrapport{% endtrans %}
+                {% trans %}o.course_report.t.course_report{% endtrans %}
             </button>
             <hr />
-            <a href="#course-collection">{% trans %}Bekijk cursusaanbod{% endtrans %}</a>
+            <a href="#course-collection">{% trans %}h.view_course_collection{% endtrans %}</a>
         </div>
     </div>
 {% endblock %}

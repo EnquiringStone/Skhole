@@ -1,17 +1,18 @@
 {% extends 'panels/panel.base.html.twig' %}
 {% block panelBaseTitle %}
-    <b>{% trans %}Pagina overzicht{% endtrans %}</b>
+    <b><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> {% trans %}o.frequently_used.page_overview{% endtrans %}</b>
 {% endblock %}
+
 {% block panelBaseContents %}
     <div class="panel-body panel-body-pages">
         <ol>
-            <li><a href="{{ path('app_learn_study_panels_page', {'pageType': 'custom', 'name': 'start', 'courseId': course.id}) }}">{% trans %}Startpagina{% endtrans %}</a></li>
+            <li><a href="{{ path('app_learn_study_panels_page', {'pageType': 'custom', 'name': 'start', 'courseId': course.id}) }}">{% trans %}l.start_page.start_page{% endtrans %}</a></li>
             {% for page in course.coursePages %}
                 <li>
                     <a href="{{ path('app_learn_study_pages_page', {'pageOrder': page.pageOrder, 'courseId': course.id}) }}">{{ page.title }}</a>
                 </li>
             {% endfor %}
-            <li><a href="{{ path('app_learn_study_panels_page', {'pageType': 'custom', 'name': 'final', 'courseId': course.id}) }}">{% trans %}Startpagina{% endtrans %}</a></li>
+            <li><a href="{{ path('app_learn_study_panels_page', {'pageType': 'custom', 'name': 'final', 'courseId': course.id}) }}">{% trans %}l.start_page.last_page{% endtrans %}</a></li>
         </ol>
     </div>
 {% endblock %}

@@ -1,59 +1,60 @@
 {% extends 'panels/panel.base.html.twig' %}
 {% block panelBaseTitle %}
-    {% trans %}Zoeken{% endtrans %}
+     {% trans %}o.frequently_used.search{% endtrans %}
 {% endblock %}
 {% block panelBaseContents %}
     <div class="panel-body" data-url="{{ url('app_home_ajax_page') }}">
-        <hr />
+        <br />
+        <br />
         <form class="form-horizontal" id="simple-search">
             <div class="form-group">
-                <label class="control-label col-sm-2">{% trans %}Zoekterm{% endtrans %}</label>
+                <label class="control-label col-sm-2">{% trans %}h.search.search_term{% endtrans %}</label>
                 <div class="col-sm-10">
                     <div class="input-group">
-                        <input type="text" class="form-control simple-search-value" placeholder="{% trans %}Zoekopdracht{% endtrans %}">
+                        <input type="text" class="form-control simple-search-value" placeholder="{% trans %}h.search.f_placeholder.search_query{% endtrans %}">
                         <span class="input-group-btn">
                             <button class="btn btn-default simple-search" type="submit">
                                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                                {% trans %}Zoek{% endtrans %}
+                                {% trans %}h.search.search{% endtrans %}
                             </button>
                         </span>
                     </div>
                 </div>
             </div>
         </form>
-        <hr />
+        <br />
         <div class="panel-group" id="accordion" role="tablist">
             <div class="centrum">
                 <button type="submit" class="btn btn-primary btn-lg" data-toggle="collapse" data-parent="#accordion" href="#collapseSearch" aria-expanded="true" aria-controls="collapseSearch">
-                    {% trans %}Geadvanceerd zoeken{% endtrans %}
+                    {% trans %}h.search.advanced_search{% endtrans %}
                 </button>
             </div>
             <br />
             <div id="collapseSearch" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSearch" aria-expanded="true">
                 <form id="complex-search" class="form-horizontal">
                     <div class="form-group">
-                        <label class="control-label col-sm-2">{% trans %}Trefwoorden{% endtrans %}</label>
+                        <label class="control-label col-sm-2">{% trans %}h.search.advanced_search.keywords{% endtrans %}</label>
                         <div class="col-sm-10">
-                            <input class="form-control data-value" data-value-name="tags" placeholder="{% trans %}Trefwoorden / Tags{% endtrans %}">
+                            <input class="form-control data-value" data-value-name="tags" placeholder="{% trans %}h.search.advanced_search.f_placeholder.keywords{% endtrans %}">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-2">{% trans %}Aanbieder{% endtrans %}</label>
+                        <label class="control-label col-sm-2">{% trans %}h.search.advanced_search.provider{% endtrans %}</label>
                         <div class="col-sm-10">
-                            <input class="form-control data-value" data-value-name="providers" placeholder="{% trans %}Naam van een aanbieder{% endtrans %}">
+                            <input class="form-control data-value" data-value-name="providers" placeholder="{% trans %}h.search.advanced_search.f_placeholder.provider{% endtrans %}">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-2">{% trans %}Docent{% endtrans %}</label>
+                        <label class="control-label col-sm-2">{% trans %}h.search.advanced_search.instructor{% endtrans %}</label>
                         <div class="col-sm-10">
-                            <input class="form-control data-value" data-value-name="teachers" placeholder="{% trans %}Naam van de docent{% endtrans %}">
+                            <input class="form-control data-value" data-value-name="teachers" placeholder="{% trans %}h.search.advanced_search.f_placeholder.instructor{% endtrans %}">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-2">{% trans %}Taal{% endtrans %}</label>
+                        <label class="control-label col-sm-2">{% trans %}h.search.advanced_search.language{% endtrans %}</label>
                         <div class="col-sm-10">
                             <select class="form-control data-value" data-value-name="languages">
-                                <option value="-1" selected="selected">{% trans %}Niet van toepassing{% endtrans %}</option>
+                                <option value="-1" selected="selected">{% trans %}h.search.advanced_search.not_applicable{% endtrans %}</option>
                                 {% for language in languages %}
                                     <option value="{{ language.id }}">{{ language.language|trans({},'db') }}</option>
                                 {% endfor %}
@@ -61,10 +62,10 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-2">{% trans %}Niveau{% endtrans %}</label>
+                        <label class="control-label col-sm-2">{% trans %}h.search.advanced_search.level{% endtrans %}</label>
                         <div class="col-sm-10">
                             <select class="form-control data-value" data-value-name="levels">
-                                <option value="-1" selected="selected">{% trans %}Niet van toepassing{% endtrans %}</option>
+                                <option value="-1" selected="selected">{% trans %}h.search.advanced_search.not_applicable{% endtrans %}</option>
                                 {% for level in levels %}
                                     <option value="{{ level.id }}">{{ level.levelLong|trans({},'db') }}</option>
                                 {% endfor %}
@@ -75,7 +76,7 @@
                         <div class="col-sm-offset-2 col-sm-10">
                             <button type="submit" class="btn btn-default pull-right complex-search">
                                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                                {% trans %}Zoek{% endtrans %}
+                                {% trans %}h.search.search{% endtrans %}
                             </button>
                         </div>
                     </div>

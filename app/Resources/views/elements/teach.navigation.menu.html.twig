@@ -1,7 +1,7 @@
 {% block teachNavigationMenu %}
     <ul class="nav nav-pills">
-        <li class="{% if subMenu == 'myCourses'%}active{% endif %}"><a href="{{ path('app_teach_my_courses_page') }}">{% trans %}Mijn cursussen{% endtrans %}</a></li>
-        <li class="{% if subMenu == 'progressionCourseMembers'%}active{% endif %}"><a href="{{ path('app_teach_progression_course_members') }}">{% trans %}Voortgang cursisten{% endtrans %}</a></li>
+        <li class="{% if subMenu == 'myCourses'%}active{% endif %}"><a href="{{ path('app_teach_my_courses_page') }}">{% trans %}o.nav.my_courses{% endtrans %}</a></li>
+        <li class="{% if subMenu == 'progressionCourseMembers'%}active{% endif %}"><a href="{{ path('app_teach_progression_course_members') }}">{% trans %}o.nav.progress_students{% endtrans %}</a></li>
         {% include ':elements:mail.item.html.twig' %}
     </ul>
 {% endblock %}

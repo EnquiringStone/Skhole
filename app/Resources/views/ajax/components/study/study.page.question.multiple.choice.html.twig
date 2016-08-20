@@ -1,7 +1,7 @@
 {% block studyPageQuestionMultipleChoice %}
     <div class="thumbnail multi-question" data-question-id="{{ question.id }}">
         <h5>
-            <b>{% trans %}Vraag{% endtrans %} {{ question.questionOrder }}</b>
+            <b>{% trans %}o.frequently_used.question{% endtrans %} {{ question.questionOrder }}</b>
             {{ question.question|capitalize }}
         </h5>
         {% for answer in question.courseAnswers %}

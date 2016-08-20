@@ -6,20 +6,20 @@
             <b>
                 1. |
                 <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
-                {% trans %}Zoekdata{% endtrans %}
+                {% trans %}t.create_course.t.search_data{% endtrans %}
             </b>
         </h4>
         <hr />
         <form autocomplete="off" class="form-horizontal">
             <div class="form-group">
-                <label class="col-sm-2 control-label">{% trans %}Cursusnaam{% endtrans %}</label>
+                <label class="col-sm-2 control-label">{% trans %}t.create_course.f_label.course_name{% endtrans %}</label>
                 <div class="col-sm-10">
                     <input class="form-control data-value" data-entity="Courses" data-attribute="name" data-value-name="name" data-item="input"
-                           placeholder="{% trans %}Naam van de cursus{% endtrans %}" value="{% if course.name is not null %}{{ course.name }}{% endif %}">
+                           placeholder="{% trans %}t.create_course.f_placeholder.course_name{% endtrans %}" value="{% if course.name is not null %}{{ course.name }}{% endif %}">
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-2 control-label">{% trans %}Trefwoorden{% endtrans %}</label>
+                <label class="col-sm-2 control-label">{% trans %}t.create_course.f_label.keywords{% endtrans %}</label>
                 <div class="col-sm-10">
                     <select id="select2-tags" data-entity="Courses" data-attribute="tags" data-value-name="tags" class="form-control data-value" data-item="select" multiple="" aria-hidden="true">
                         {% for tag in tags %}
@@ -31,17 +31,17 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-2 control-label">{% trans %}Omschrijving{% endtrans %}</label>
+                <label class="col-sm-2 control-label">{% trans %}t.create_course.f_label.description{% endtrans %}</label>
                 <div class="col-sm-10">
                     <textarea class="form-control data-value" data-entity="Courses" data-attribute="description" data-value-name="description" data-item="input"
-                              placeholder="{% trans %}Cursusomschrijving van maximaal 250 woorden{% endtrans %}">{% if course.description is not null %}{{ course.description }}{% endif %}</textarea>
+                              placeholder="{% trans %}t.create_course.f_placeholder.description{% endtrans %}">{% if course.description is not null %}{{ course.description }}{% endif %}</textarea>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-2 control-label">{% trans %}Taal{% endtrans %}</label>
+                <label class="col-sm-2 control-label">{% trans %}t.create_course.language{% endtrans %}</label>
                 <div class="col-sm-10">
                     <select class="form-control data-value" data-item="select" data-value-name="language" data-entity="Courses" data-attribute="language">
-                        <option {% if course.language is null %}selected="selected"{% endif %} value="">{% trans %}Niet van toepassing{% endtrans %}</option>
+                        <option {% if course.language is null %}selected="selected"{% endif %} value="">{% trans %}t.create_course.language.option_not_relevant{% endtrans %}</option>
                         {% for language in languages %}
                             <option value="{{ language.languageCode }}" {% if course.language is not null and course.language == language %}selected="selected"{% endif %}>{{ language.language|trans({}, 'db') }}</option>
                         {% endfor %}
@@ -49,10 +49,10 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-2 control-label">{% trans %}Niveau{% endtrans %}</label>
+                <label class="col-sm-2 control-label">{% trans %}t.create_course.f_label.level{% endtrans %}</label>
                 <div class="col-sm-10">
                     <select class="form-control data-value" data-item="select" data-value-name="level">
-                        <option {% if course.level is null %}selected="selected"{% endif %} value="">{% trans %}Niet van toepassing{% endtrans %}</option>
+                        <option {% if course.level is null %}selected="selected"{% endif %} value="">{% trans %}t.create_course.level.option_not_relevant{% endtrans %}</option>
                         {% for level in levels %}
                             <option value="{{ level.levelShort }}" {% if course.level is not null and course.level.id == level.id %}selected="selected"{% endif %}>{{ level.levelLong|trans({}, 'db') }}</option>
                         {% endfor %}
@@ -60,15 +60,15 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-2 control-label">{% trans %}Moeilijkheid{% endtrans %}</label>
+                <label class="col-sm-2 control-label">{% trans %}t.create_course.f_label.difficulty{% endtrans %}</label>
                 <div class="col-sm-10">
                     <div class="starrr clickable data-value" data-value-name="difficulty" data-item="starrr" data-difficulty="{% if course.difficulty is not null %}{{ course.difficulty }}{% else %}0{% endif %}"></div>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-2 control-label">{% trans %}Geschatte cursusduur{% endtrans %}</label>
+                <label class="col-sm-2 control-label">{% trans %}t.create_course.f_label.course_duration{% endtrans %}</label>
                 <div class="col-sm-10">
-                    <input class="form-control data-value" data-value-name="estimatedDuration" data-item="input" placeholder="{% trans %}Schatting in minuten{% endtrans %}" {% if course.estimatedDuration is not null %}value="{{ course.estimatedDuration }}"{% endif %} type="number">
+                    <input class="form-control data-value" data-value-name="estimatedDuration" data-item="input" placeholder="{% trans %}t.create_course.f_placeholder.course_duration{% endtrans %}" {% if course.estimatedDuration is not null %}value="{{ course.estimatedDuration }}"{% endif %} type="number">
                 </div>
             </div>
         </form>

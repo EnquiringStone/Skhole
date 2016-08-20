@@ -2,19 +2,19 @@
     <h5 class="centrum">
         <b>
             <span class="glyphicon glyphicon-pencil"></span>
-            {% trans %}Meerkeuzevraag toevoegen{% endtrans %}
+            {% trans %}t.create_course.add_multiple_choice_question{% endtrans %}
         </b>
     </h5>
     <br>
     <form class="form-horizontal">
         <div class="form-group">
-            <label class="col-sm-2 control-label">{% trans %}Vraag{% endtrans %}</label>
+            <label class="col-sm-2 control-label">{% trans %}t.create_course.f_label.question{% endtrans %}</label>
             <div class="col-sm-10">
-                <textarea class="form-control data-value" data-value-name="question" rows="3" placeholder="{% trans %}De vraag die je wilt gaan stellen. Bijv. Hoeveel is 1+1{% endtrans %}"
+                <textarea class="form-control data-value" data-value-name="question" rows="3" placeholder="{% trans %}t.create_course.f_input.type_question{% endtrans %}"
                           >{% if question is defined %}{{ question.question }}{% endif %}</textarea>
             </div>
         </div>
-        <h6 class="centrum">{% trans %}Antwoorden{% endtrans %}</h6>
+        <h6 class="centrum">{% trans %}t.create_course.anwsers{% endtrans %}</h6>
         <div class="answers">
             {% if question is defined %}
                 {% for answer in question.courseAnswers %}
@@ -28,12 +28,12 @@
         <div class="centrum add-more-question-inputs-button-div">
             <button class="btn btn-default add-more-question-inputs-button" type="button">
                 <span class="glyphicon glyphicon-plus text-success"></span>
-                {% trans %}Antwoorden toevoegen{% endtrans %}
+                {% trans %}t.create_course.b.add_anwsers{% endtrans %}
             </button>
         </div>
         <br>
         <div class="centrum correct-answers">
-            <b>{% trans %}Correcte antwoorden{% endtrans %}</b>
+            <b>{% trans %}t.create_course.correct_anwsers{% endtrans %}</b>
             <br />
             {% if question is defined %}
                 {% for answer in question.courseAnswers %}
@@ -50,19 +50,19 @@
     </form>
     <div class="panel-footer panel-default">
         <div class="pull-right">
-            <button class="btn btn-default save-custom-question" type="button">
+             <button class="btn btn-default save-custom-question" type="button">
                 <span class="glyphicon glyphicon-ok text-success"></span>
-                {% trans %}Opslaan{% endtrans %}
+                {% trans %}t.create_course.b.save{% endtrans %}
             </button>
             <button class="btn btn-default remove-custom-question" type="button" data-question-id="{% if question is defined %}{{ question.id }}{% else %}-1{% endif %}">
                 <span class="glyphicon glyphicon-remove text-danger"></span>
-                {% trans %}Verwijder{% endtrans %}
+                {% trans %}t.create_course.b.delete{% endtrans %}
             </button>
         </div>
         <div class="pull-left">
             <button class="btn btn-default select-questions-overview" type="button">
                 <span class="glyphicon glyphicon-arrow-left"></span>
-                {% trans %}Terug{% endtrans %}
+                {% trans %}t.create_course.go_back{% endtrans %}
             </button>
         </div>
         <br>

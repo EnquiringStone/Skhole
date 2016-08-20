@@ -11,24 +11,24 @@
                 <div class="pull-right">
                     <div class="btn-group-vertical" style="width: 150px;">
                         <a href="{{ path('app_learn_study_course_page', {'courseId': course.id}) }}" class="btn btn-primary btn-sm">
-                            {% trans %}Naar cursus{% endtrans %}
+                              {% trans %}o.frequently_used.to_course{% endtrans %}
                         </a>
                         <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#courseCardDetailsModal{{ index }}">
-                            {% trans %}Cursuskaart{% endtrans %}
+                             {% trans %}o.frequently_used.course_card{% endtrans %}
                         </button>
                         <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#courseReviewsModal{{ index }}">
-                            {% trans %}Reviews{% endtrans %}
+                            {% trans %}o.frequently_used.reviews{% endtrans %}
                         </button>
                         {% if is_granted('ROLE_USER') %}
                             {% if  not inCollection %}
                                 <button type="button" class="btn btn-default btn-sm add-to-collection" data-course-id="{{ course.id }}" data-url="{{ path('app_home_ajax_page') }}"
-                                        data-name="{% trans %}Naar cususmand{% endtrans %}" data-href-url="{{ path('app_learn_course_collection_page') }}">
+                                        data-name="{% trans %}o.frequently_used.to_course_basket{% endtrans %}" data-href-url="{{ path('app_learn_course_collection_page') }}">
                                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                    {% trans %}In cursusmandje{% endtrans %}
+                                     {% trans %}o.frequently_used.add_to_course_basket{% endtrans %}
                                 </button>
                             {% else %}
                                 <a href="{{ path('app_learn_course_collection_page') }}" class="btn btn-default btn-sm">
-                                    <b>{% trans %}Naar cursusmand{% endtrans %}</b>
+                                     <b>{% trans %}o.frequently_used.to_course_basket{% endtrans %}</b>
                                 </a>
                             {% endif %}
                         {% endif %}

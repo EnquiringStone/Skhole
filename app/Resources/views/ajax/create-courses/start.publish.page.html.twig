@@ -3,19 +3,19 @@
         <div class="min-height-thumbnail">
             <div class="centrum margin-from-top120">
                 {% if course.state.stateCode == 'OK' %}
-                    <p>{% trans %}Deze cursus is al gepubliceerd. Denk hieraan wanneer je de cursus gaat bewerken.{% endtrans %}</p>
+                    <p>{% trans %}t.create_course.t_long.course_already_published{% endtrans %}.</p>
                 {% else %}
                     {% if course.canPublish %}
                         <p>
-                            {% trans %}Wanneer gepubliceerd wordt jou cursus getoond in de zoekresultaten. Een publicatie kan niet worden teruggedraaid! Je mag nog wel de cursus bewerken wanneer gepubliceerd. Klik op de grote knop om jou cursus beschikbaar te maken voor publiekelijk gebruik.{% endtrans %}
+                            {% trans %}t.create_course.t_long.before_you_publish_course{% endtrans %}.
                         </p>
                         <button class="btn btn-default btn-lg publish-course" type="button" data-course-overview-url="{{ path('app_teach_my_courses_page') }}">
                             <span class="glyphicon glyphicon-star text-success" aria-hidden="true"></span>
-                            <b>{% trans %}Publiceer Cursus{% endtrans %}</b>
+                            <b>{% trans %}t.create_course.b.publish_course{% endtrans %}</b>
                         </button>
                     {% else %}
-                        <p>{% trans %}Deze cursus voldoet nog niet aan alle regels om gepubliceerd te worden. Navigeer naar de startpagina of klik op de onderstaande link om te kijken wat je nog mist.{% endtrans %}</p>
-                        <a href="{{ path('app_teach_edit_course_page', {'id': course.id }) }}">{% trans %}Startpagina{% endtrans %}</a>
+                        <p>{% trans %}t.create_course.t_long.not_yet_ready_to_publish{% endtrans %}.</p>
+                        <a href="{{ path('app_teach_edit_course_page', {'id': course.id }) }}">{% trans %}t.create_course.a.to_start{% endtrans %}</a>
                     {% endif %}
                 {% endif %}
             </div>

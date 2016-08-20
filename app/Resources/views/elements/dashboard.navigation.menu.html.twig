@@ -1,10 +1,10 @@
 {% extends ':elements:navigation.secondary.menu.html.twig' %}
 {% block navigationSecondaryMenuContents %}
-    <a href="{{ path('app_home_dashboard_page') }}" class="btn btn-default btn-sm">{% trans %}Startpagina{% endtrans %}</a>
+    <a href="{{ path('app_home_dashboard_page') }}" class="btn btn-default btn-sm">{% trans %}o.frequently_used.start_page{% endtrans %}</a>
     {% if app.user %}
         <div class="btn-group">
             <button type="button" class="btn btn-default dropdown-toggle btn-sm" data-toggle="dropdown">
-                {% trans %}Mijn account{% endtrans %}
+                 {% trans %}o.my_account{% endtrans %}
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu">

@@ -3,20 +3,20 @@
         <div class="btn-group">
             <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
-                {% trans %}Meer{% endtrans %}
+                {% trans %}o.more{% endtrans %}
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
                 <li>
                     <a href="{{ reportPath }}">
                         <span class="glyphicon glyphicon-flag"></span>
-                        {% trans %}Rapporteren{% endtrans %}
+                        {% trans %}o.notify{% endtrans %}
                     </a>
                 </li>
             </ul>
         </div>
         <a href="{{ path('app_learn_study_course_page', {'courseId': course.id}) }}" class="btn btn-default btn-sm pull-right">
-            {% trans %}Terug naar startpagina{% endtrans %}
+            {% trans %}t.button.back_to_start_page{% endtrans %}
         </a>
     </div>
 {% endblock %}

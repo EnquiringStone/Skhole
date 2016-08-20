@@ -3,7 +3,7 @@
     <h4 class="modal-title centrum" id="{{ modalId }}">
         <b>
             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-            {% trans %}Verwijder rapport{% endtrans %}
+            {% trans %}mo.remove_student_report{% endtrans %}
         </b>
     </h4>
 {% endblock %}
@@ -11,11 +11,12 @@
     <div class="modal-body">
         <hr />
         <p class="lead centrum">
-            {% trans %}Verwijderen kan niet ongedaan worden. Weet je het zeker?{% endtrans %}
+            {% trans %}mo.deleltion_cannot_be_undone{% endtrans %}
         </p>
         <br />
+          <br />
         <p class="centrum">
-            {% trans %}Je staat op het punt om het rapport{% endtrans %} {{ report.report.course.name }} {% trans %}van de cursist{% endtrans %} {{ report.user.firstName|capitalize }} {{ report.user.surname|capitalize }} {% trans %}te verwijderen{% endtrans %}
+            {% trans %}mo.remove_student_report.t_long_01{% endtrans %} {{ report.report.course.name }} {% trans %}mo.remove_student_report.t_long_02{% endtrans %} {{ report.user.firstName|capitalize }} {{ report.user.surname|capitalize }} {% trans %}mo.remove_details_02{% endtrans %}
         </p>
     </div>
 {% endblock %}

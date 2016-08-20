@@ -1,21 +1,24 @@
 {% extends 'panels/panel.base.html.twig' %}
 {% block panelBaseTitle %}
-    <b>{% trans %}Laatste pagina{% endtrans %}</b>
+    <b>{% trans %}l.last_page.last_page{% endtrans %}</b>
 {% endblock %}
 {% block panelBaseContents %}
     <div class="panel-body">
-        <hr />
         <div class="centrum">
-            <h1>
-                <b>{% trans %}Einde van de cursus{% endtrans %}</b>
-            </h1>
-            <button type="button" class="btn btn-default btn-sm check-report-completion" data-url="{{ path('app_learn_course_reports') }}">{% trans %}Bekijk cursusrapport{% endtrans %}</button>
+            <h2>
+                <b>{% trans %}l.last_page.end_of_course{% endtrans %}</b>
+            </h2>
+            <button type="button" class="btn btn-info btn-sm check-report-completion" data-url="{{ path('app_learn_course_reports') }}">{% trans %}l.last_page.view_course_report{% endtrans %}</button>
+            <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#courseReportIntroductionModal">
+                <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                {% trans %}o.button.course_report{% endtrans %}
+            </button>
         </div>
-        <hr />
+        <br/>
         <div class="row">
             <div class="col-md-6">
                 <div class="thumbnail centrum">
-                    <h4>{% trans %}Cursusbeoordeling{% endtrans %}</h4>
+                    <h4>{% trans %}l.last_page.grade_course{% endtrans %}</h4>
                     {% if courseReview is null %}
                         <form class="form-horizontal">
                             <div class="form-group">
@@ -23,13 +26,13 @@
                             </div>
                             <div class="form-group">
                                 <button type="button" class="btn btn-default add-quick-course-review" data-course-id="{{ course.id }}" data-url="{{ path('app_home_ajax_page') }}">
-                                    <b>{% trans %}Verstuur{% endtrans %}</b>
+                                    <b>{% trans %}l.last_page.send{% endtrans %}</b>
                                 </button>
                             </div>
                         </form>
                     {% else %}
                         <p>
-                            {% trans %}Je hebt deze cursus op{% endtrans %} {{ courseReview.insertDateTime|date('d-m-Y') }} {% trans %}als volgt beoordeeld{% endtrans %}:
+                            {% trans %}l.last_page.you_graded_01{% endtrans %} {{ courseReview.insertDateTime|date('d-m-Y') }} {% trans %}l.last_page.you_graded_02{% endtrans %}:
                             {% for z in 1..courseReview.contentRating %}
                                 <img src="{{ asset('images/star_rating.png') }}" class="img-rounded" />
                             {% endfor %}
@@ -39,25 +42,31 @@
             </div>
             <div class="col-md-6">
                 <div class="thumbnail centrum">
-                    <h4>{% trans %}Review toevoegen{% endtrans %}</h4>
+                    <h4>{% trans %}l.last_page.add_review{% endtrans %}</h4>
                     {% if is_granted('ROLE_USER') %}
                         {% if courseReview is null %}
-                            <p>{% trans %}Deel je ervaring en vul een cursusreview in{% endtrans %}</p>
+                            <p>{% trans %}l.last_page.submit_review_based_on_experience{% endtrans %}</p>
                             <button type="button" class="btn btn-default add-normal-review" data-toggle="modal" data-target="#addCourseReviewModal">
                                 <span class="glyphicon glyphicon-plus text-success"></span>
-                                {% trans %}Cursusreview{% endtrans %}
+                                {% trans %}o.frequently_used.course_reviews{% endtrans %}
                             </button>
                         {% else %}
                             <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addCourseReviewModal">
-                                {% trans %}Bekijk review{% endtrans %}
+                                {% trans %}l.last_page.view_review{% endtrans %}
                             </button>
                         {% endif %}
                     {% else %}
-                        <p class="text-muted">{% trans %}Om een review te kunnen schrijven moet je zijn ingelogd{% endtrans %}</p>
+                        <p class="text-muted">{% trans %}l.last_page.review_requires_login{% endtrans %}</p>
                     {% endif %}
                 </div>
             </div>
         </div>
+        <div class="modal-info-background"> 
+            <h4 class="text-primary"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> <samp><b>{% trans %}o.course_report.t.course_report{% endtrans %}</b></samp></h4>
+            <p>
+                {% trans %}l.last_page.text_info_course_report{% endtrans %}.       
+            </p>
+        </div>  
     </div>
 {% endblock %}
 {% block panelBaseFooter %}

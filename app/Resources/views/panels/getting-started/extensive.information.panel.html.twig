@@ -1,0 +1,378 @@
+{% extends 'panels/panel.base.html.twig' %}
+{% block panelBaseTitle %}
+    <span class="glyphicon glyphicon-info-sign text-primary" aria-hidden="true"></span> 
+    {% trans %}ext_info.ext_info{% endtrans %}
+{% endblock %}
+{% block panelBaseContents %}
+    <div class="panel-body"> 
+        <div class="btn-pref" role="group" aria-label="...">  
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-primary btn-sm" href="#tabInfoIntro" data-toggle="tab">
+                    <samp>{% trans %}o.frequently_used.introduction{% endtrans %}</samp>
+                </button>
+            </div> 
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default btn-sm" href="#tabInfoSearchData" data-toggle="tab">
+                    <samp>{% trans %}ext_info.search_data{% endtrans %}</samp>
+                </button>
+            </div>  
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default btn-sm" href="#tabInfoCourseCard" data-toggle="tab">
+                    <samp>{% trans %}o.frequently_used.course_card{% endtrans %}</samp>
+                </button>
+            </div>  
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default btn-sm" href="#tabInfoPlanning" data-toggle="tab">
+                    <samp>{% trans %}o.frequently_used.planning{% endtrans %}</samp>
+                </button>
+            </div>  
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default btn-sm" href="#tabInfoAnnouncement" data-toggle="tab">
+                    <samp>{% trans %}o.frequently_used.annoucements{% endtrans %}</samp>
+                </button>
+            </div>  
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default btn-sm" href="#tabInfoDocuments" data-toggle="tab">
+                    <samp>{% trans %}o.documents{% endtrans %}</samp>
+                </button>
+            </div>  
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default btn-sm" href="#tabInfoExplantionPage" data-toggle="tab">
+                    <samp>{% trans %}ext_info.explain_page{% endtrans %}</samp>
+                </button>
+            </div> 
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default btn-sm" href="#tabInfoAssignmentPage" data-toggle="tab">
+                    <samp>{% trans %}ext_info.assignment_page{% endtrans %}</samp>
+                </button>
+            </div>   
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default btn-sm" href="#tabInfoAddVideo" data-toggle="tab">
+                    <samp>{% trans %}ext_info.add_video{% endtrans %}</samp>
+                </button>
+            </div> 
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default btn-sm" href="#tabInfoPageOverview" data-toggle="tab">
+                    <samp>{% trans %}o.frequently_used.page_overview{% endtrans %}</samp>
+                </button>
+            </div>            
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default btn-sm" href="#tabInfoPubliceCourse" data-toggle="tab">
+                    <samp>{% trans %}ext_info.plublish_course{% endtrans %}</samp>
+                </button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default btn-sm" href="#tabInfoRemoveCourse" data-toggle="tab">
+                    <samp>{% trans %}ext_info.remove_course{% endtrans %}</samp>
+                </button>
+            </div>  		
+        </div>  
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="tabInfoIntro">   
+                <!-- -->                
+                <h5 class="text-primary"><samp>{% trans %}ext_info.course_structure{% endtrans %}</samp></h5>   
+                <p>{% trans %}
+                    ext_info.course_structure.t_01
+                {% endtrans %}</p>
+                <ol start="1" type="1">
+                    <li>
+                        <strong>{% trans %}o.frequently_used.req_pages{% endtrans %}</strong>:{% trans %}
+                         ext_info.search_date_course_card
+                    {% endtrans %};</li>
+                    <li>
+                        <strong>{% trans %}o.frequently_used.standard_optional_pages{% endtrans %}</strong>:{% trans %}
+                         ext_info.li.planning_etc
+                    {% endtrans %};</li>
+                    <li>
+                        <strong>{% trans %}o.frequently_used.explantion_pages{% endtrans %}</strong>:{% trans %}
+                         ext_info.li.videos_and_texts
+                    {% endtrans %};</li>
+                    <li>
+                        <strong>{% trans %}o.frequently_used.assignment_pages{% endtrans %}</strong>:{% trans %}
+                         ext_info.li.kind_of_questions
+                    {% endtrans %}.</li>
+                </ol>
+                <p>{% trans %} ext_info.course_structure.t_02{% endtrans %}.</p>
+                <h5 class="text-primary"><samp>{% trans %}ext_info.explain_structure{% endtrans %}</samp></h5> 
+                <p>{% trans %}
+                    ext_info.t_long.explain_structure
+                {% endtrans %}.</p>
+            </div>  
+            <div class="tab-pane fade in" id="tabInfoSearchData">  
+                <h5 class="text-primary"><samp>{% trans %}info.ter_info{% endtrans %}</samp></h5> 
+                <p>{% trans %} ext_info.t_long.search_data{% endtrans %}.</p>
+                <h5 class="text-primary"><samp>{% trans %}imo.where_edit_this_part{% endtrans %}</samp>?</h5> 
+
+                <p>{% trans %}
+                    xxxTODO-img
+                {% endtrans %}</p>
+                <h5 class="text-primary"><samp>{% trans %}info.end_result_for_student{% endtrans %}</samp></h5> 
+
+                <p>{% trans %}
+                    xxxTODO-imgx
+                {% endtrans %}</p>                        
+            </div>                      
+            <div class="tab-pane fade in" id="tabInfoCourseCard">     
+                <h5 class="text-primary"><samp>{% trans %}info.ter_info{% endtrans %}</samp></h5> 
+                <p>{% trans %}ext_info.t_long.course_card_01{% endtrans %}.</p>
+                <p>{% trans %}ext_info.t_long.course_card_02{% endtrans %}:</p>
+                <ol start="1" type="1">
+                    <li>
+                        <strong>{% trans %}imo.frequently_used.introduction{% endtrans %}</strong>:{% trans %}
+                         introductievideo en/of tekst over de cursus (vereist onderdeel)
+                    {% endtrans %};</li>
+                    <li>
+                        <strong>{% trans %}o.course_card.details{% endtrans %}</strong>:{% trans %}
+                        ext_info.course_card.li.details
+                    {% endtrans %};</li>
+                    <li>
+                        <strong>{% trans %}o.course_card.prereq{% endtrans %}</strong>{% trans %}
+                         ext_info.course_card.li.prereq
+                    {% endtrans %};</li>
+                    <li>
+                        <strong>{% trans %}o.frequently_used.provider{% endtrans %}</strong>:{% trans %}
+                        ext_info.course_card.li.provider
+                    {% endtrans %};</li>
+                    <li>
+                        <strong>{% trans %}o.course_card.instructors{% endtrans %}</strong>:{% trans %}
+                         ext_info.course_card.li.instructeurs
+                    {% endtrans %}.</li>
+                </ol>
+                 <h5 class="text-primary"><samp>{% trans %}imo.where_edit_this_part{% endtrans %}</samp>?</h5>  
+                <p>{% trans %}
+                    xxxTODO-img
+                {% endtrans %}</p>
+                <h5 class="text-primary"><samp>{% trans %}info.end_result_for_student{% endtrans %}</samp></h5> 
+                <p>{% trans %}
+                    xxxTODO-imgx
+                {% endtrans %}</p>            
+            </div>   
+            <div class="tab-pane fade in" id="tabInfoPlanning">         
+                <h5 class="text-primary"><samp>{% trans %}info.ter_info{% endtrans %}</samp></h5> 
+                <p>{% trans %}
+                    ext_info.t_long.planning
+                {% endtrans %}.</p>
+                 <h5 class="text-primary"><samp>{% trans %}imo.where_edit_this_part{% endtrans %}</samp>?</h5> 
+                <p>{% trans %}
+                    xxxTODO-img
+                {% endtrans %}</p>
+                <h5 class="text-primary"><samp>{% trans %}info.end_result_for_student{% endtrans %}</samp></h5> 
+                <p>{% trans %}
+                    xxxTODO-imgx
+                {% endtrans %}</p>         
+            </div>
+            <div class="tab-pane fade in" id="tabInfoAnnouncement">   
+                <h5 class="text-primary"><samp>{% trans %}info.ter_info{% endtrans %}</samp></h5> 
+                <p>{% trans %}
+                    ext_info.annoucenments
+                {% endtrans %}.</p>
+                <h5 class="text-primary"><samp>{% trans %}imo.where_edit_this_part{% endtrans %}</samp>?</h5> 
+                <p>{% trans %}
+                    xxxTODO-img
+                {% endtrans %}</p>
+                <h5 class="text-primary"><samp>{% trans %}info.end_result_for_student{% endtrans %}</samp></h5> 
+                <p>{% trans %}
+                    xxxTODO-imgx
+                {% endtrans %}</p>                                        
+            </div>
+            <div class="tab-pane fade in" id="tabInfoDocuments">         
+                <h5 class="text-primary"><samp>{% trans %}info.ter_info{% endtrans %}</samp></h5> 
+                <p>{% trans %}imo.frequently_used.ter_info.t_01{% endtrans %}.</p>
+                <p>{% trans %}imo.frequently_used.ter_info.t_02{% endtrans %}.</p>
+                <h5 class="text-primary"><samp>{% trans %}ext_info.documents.edit_and_add{% endtrans %}</samp></h5> 
+                <p class="text-primary"> {% trans %}imo.add_documents.option_google{% endtrans %}</p>
+                 <ol>
+                    <li>{% trans %}imo.add_documents.google.li.step_01{% endtrans %}.</li>
+                    <li>{% trans %}imo.add_documents.google.li.step_02{% endtrans %}.</li>
+                    <li>{% trans %}imo.add_documents.google.li.step_03{% endtrans %}.</li>
+                    <li>{% trans %}imo.add_documents.google.li.step_04{% endtrans %}.</li>
+                </ol>   
+                <p class="text-primary">{% trans %}imo.add_documents.option_dropbox{% endtrans %}</p>
+                 <ol>
+                    <li>{% trans %}imo.add_documents.dropbox_01{% endtrans %}.</li>
+                    <li>{% trans %}imo.add_documents.dropbox_02{% endtrans %}.</li>
+                    <li>{% trans %}imo.add_documents.dropbox_03{% endtrans %}.</li>
+                    <li>{% trans %}imo.add_documents.dropbox_04{% endtrans %}.</li>
+                </ol>  
+                <p>{% trans %}
+                    xxxTODO-imgx
+                {% endtrans %}</p>                         
+            </div>   
+            <div class="tab-pane fade in" id="tabInfoExplantionPage">
+                            <!-- -->  
+                <h5 class="text-primary"><samp>{% trans %}info.ter_info{% endtrans %}</samp></h5> 
+                <p>{% trans %} ext_info.add_expl_page.t_long_01{% endtrans %}.</p>
+                <h5 class="text-primary"><samp>{% trans %}ext_info.add_expl_page.edit_expl_page{% endtrans %}</samp></h5> 
+                <p class="text-primary">{% trans %}ext_info.add_expl_page.edit_expl_page.option_i{% endtrans %}</p>
+                <ol start="1" type="1">
+                    <li>{% trans %}
+                    ext_info.add_expl_page.edit_expl_page.option_i.li.step_01
+                    {% endtrans %}.</li>
+                    <li>{% trans %}
+                    ext_info.add_expl_page.edit_expl_page.option_i.li.step_02
+                    {% endtrans %}.</li>
+                    <li>{% trans %}
+                    ext_info.add_expl_page.edit_expl_page.option_i.li.step_03
+                    {% endtrans %}.</li>
+                    <li>{% trans %}
+                    ext_info.add_expl_page.edit_expl_page.option_i.li.step_04
+                    {% endtrans %}.</li>
+                </ol>
+
+                <p class="text-primary">{% trans %}ext_info.add_expl_page.edit_expl_page.option_ii{% endtrans %}</p>
+                <p>{% trans %}
+                xxxTODO-imgx
+                {% endtrans %}</p>
+                <ol start="1" type="1">
+                    <li>{% trans %}
+                    ext_info.add_expl_page.edit_expl_page.option_ii.li.step_01
+                    {% endtrans %}.</li>
+                    <li>{% trans %}
+                    ext_info.add_expl_page.edit_expl_page.option_ii.li.step_02
+                    {% endtrans %}.</li>
+                    <li>{% trans %}
+                    ext_info.add_expl_page.edit_expl_page.option_ii.li.step_03
+                    {% endtrans %}.</li>
+                    <li>{% trans %}
+                    ext_info.add_expl_page.edit_expl_page.option_ii.li.step_04
+                    {% endtrans %}.</li>
+                </ol>             
+                <h5 class="text-primary"><samp>{% trans %}info.end_result_for_student{% endtrans %}</samp></h5> 
+                <p class="text-primary">{% trans %}
+                    ext_info.add_expl_page.result_video_and_text
+                {% endtrans %}</p>
+                <p>{% trans %}
+                    xxxTODO-imgx
+                {% endtrans %}</p>
+                <p class="text-primary">{% trans %}
+                    ext_info.add_expl_page.result_text
+                {% endtrans %}</p>
+                <p>{% trans %}
+                    xxxTODO-imgx
+                {% endtrans %}</p>                  
+            </div>
+            <div class="tab-pane fade in" id="tabInfoAssignmentPage">      
+                <h5 class="text-primary"><samp>{% trans %}info.ter_info{% endtrans %}</samp></h5>    
+                <p>{% trans %}
+                  ext_info.add_asign_page.t_long_01           
+                {% endtrans %}.</p>
+                <h5 class="text-primary"><samp>{% trans %}ext_info.add_asign_page.edit_page{% endtrans %}</samp></h5> 
+                <p class="text-primary">{% trans %}
+                    ext_info.add_asign_page.add_question
+                {% endtrans %}</p>
+                <ol start="1" type="1">
+                    <li>{% trans %}
+                    ext_info.add_asign_page.li.step_01
+                    {% endtrans %}.</li>
+                    <li>{% trans %}
+                    ext_info.add_asign_page.li.step_02
+                    {% endtrans %}.</li>
+                    <li>
+                    {% trans %}ext_info.add_asign_page.add_questions_to_page{% endtrans %}.
+                    <br/>
+                    <span class="text-primary">
+                     {% trans %}ext_info.add_asign_page.add_questions_to_page.multi_quest{% endtrans %}.
+                    </span>
+                    <ol start="a" type="a">           
+                        <li>{% trans %}
+                        ext_info.add_asign_page.add_questions_to_page.multi_quest.li.step_a
+                        {% endtrans %}.</li>
+                        <li>{% trans %}
+                        ext_info.add_asign_page.add_questions_to_page.multi_quest.li.step_b
+                        {% endtrans %}.</li>
+                    </ol>  
+                    <span class="text-primary">
+                     {% trans %}ext_info.add_asign_page.add_questions_to_page.open_quest{% endtrans %}.
+                    </span>
+                    <ol start="a" type="a">           
+                        <li>{% trans %}
+                        ext_info.add_asign_page.add_questions_to_page.open_quest.li.step_a
+                        {% endtrans %}.</li>
+                        <li>{% trans %}
+                        ext_info.add_asign_page.add_questions_to_page.open_quest.li.step_b {% endtrans %}.</li>
+                        <li>{% trans %}
+                        ext_info.add_asign_page.add_questions_to_page.open_quest.li.step_c
+                        {% endtrans %}.</li>
+                        <li>{% trans %}
+                         ext_info.add_asign_page.add_questions_to_page.open_quest.li.step_d
+                        {% endtrans %}.</li>            
+                    </ol>
+                    </li>  
+                </ol> 
+                <h5 class="text-primary"><samp>{% trans %}info.end_result_for_student{% endtrans %}</samp></h5> 
+                <p>{% trans %}
+                    xxxTODO-imgx
+                {% endtrans %}</p>
+            </div> 
+            <div class="tab-pane fade in" id="tabInfoAddVideo">     
+                <h5 class="text-primary"><samp>{% trans %}info.ter_info{% endtrans %}</samp></h5> 
+                <p>{% trans %}
+                    ext_info.add_youtube.t_long_01
+                {% endtrans %}.</p>
+                <h5 class="text-primary"><samp>{% trans %}ext_info.add_youtube.add_video{% endtrans %}</samp></h5>              
+                <p class="text-primary">{% trans %}
+                    ext_info.add_youtube.add_video.option_i
+                {% endtrans %}</p>
+                <p>{% trans %}
+                    ext_info.add_youtube.add_video.option_i.step_i
+                {% endtrans %}.</p>
+                <p>{% trans %}
+                    ext_info.add_youtube.add_video.option_i.step_ii
+                {% endtrans %}.</p>
+                <p>{% trans %}
+                    xxxTODO-imgx
+                {% endtrans %}</p>
+                <p class="text-primary">{% trans %}
+                    ext_info.add_youtube.add_video.option_ii
+                {% endtrans %}</p>
+                <p>{% trans %}
+                    ext_info.add_youtube.add_video.option_ii.li.step_a
+                {% endtrans %}.</p>
+                <p>{% trans %}
+                   ext_info.add_youtube.add_video.option_ii.li.step_b
+                {% endtrans %}.</p>
+                <p>{% trans %}
+                    xxxTODO-imgx
+                {% endtrans %}</p>              
+            </div> 
+            <div class="tab-pane fade in" id="tabInfoPubliceCourse">     
+                <h5 class="text-primary"><samp>{% trans %}info.ter_info{% endtrans %}</samp></h5> 
+                <p>{% trans %}
+                    ext_info.publish.t_long.min_req
+                {% endtrans %}</p>
+                <ul>
+                    <li>{% trans %}
+                    ext_info.publish.t_long.min_req_i
+                    {% endtrans %};</li>
+                    <li>{% trans %}
+                    ext_info.publish.t_long.min_req_ii
+                    {% endtrans %};</li>
+                    <li>{% trans %}
+                    ext_info.publish.t_long.min_req_iii
+                    {% endtrans %}.</li>
+                </ul>
+                <p>{% trans %}
+                    ext_info.publish.t_long.min_req_02
+                {% endtrans %}.</p>
+                <h5 class="text-primary"><samp>{% trans %}ext_info.publish.edit_after_publication{% endtrans %}</samp></h5> 
+                <p>{% trans %}ext_info.publish.edit_after_publication.t_long_01{% endtrans %}.</p>
+            </div>     
+            <div class="tab-pane fade in" id="tabInfoPageOverview">     
+                <h5 class="text-primary"><samp>{% trans %}info.ter_info{% endtrans %}</samp></h5> 
+                <p>{% trans %}ext_info.page_overview.t_long_01{% endtrans %}.</p>
+                <h5 class="text-primary"><samp>{% trans %}ext_info.page_overview.where_page_overview {% endtrans %}</samp></h5> 
+                <p>{% trans %}
+                    xxxTODO-imgx
+                {% endtrans %}</p>
+            </div>   
+            <div class="tab-pane fade in" id="tabInfoRemoveCourse">   
+                <h5 class="text-primary"><samp>{% trans %}info.ter_info{% endtrans %}</samp></h5>          
+                <p>{% trans %}ext_info.remove_course.t_long_01{% endtrans %}.</p>
+                <h5 class="text-primary"><samp>{% trans %}ext_info.where_remove_course{% endtrans %}</samp></h5> 
+                <p>{% trans %}
+                            xxxTODO-imgxxxTODO-imgxxxTODO-img
+                {% endtrans %}</p>
+            </div>  
+        </div>          
+    </div>
+{% endblock %}

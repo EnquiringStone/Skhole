@@ -1,10 +1,50 @@
 {% extends 'panels/panel.base.html.twig' %}
 {% block panelBaseTitle %}
-    {% trans %}Privacybeleid{% endtrans %}
+    {% trans %}privacy.policy{% endtrans %}
 {% endblock %}
 {% block panelBaseContents %}
     <div id="privacy" class="panel-body">
-        <h4><b>{% trans %}Privacybeleid{% endtrans %}</b></h4>
-        <p>{% trans %}Inleiding In deze privacyverklaring wordt uitgelegd welke persoonsgegevens wij van je verzamelen en hoe we die gebruiken. Wij moedigen je aan om de samenvattingen te lezen. Vanzelfsprekend respecteren en waarborgen we hierbij je privacy door naleving van de Wet bescherming persoonsgegevens. Je persoonsgegevens zullen niet worden verstrekt aan derden die niet gelieerd zijn aan StudyLivre, behalve als hiervoor expliciete toestemming is gegeven of als dit noodzakelijk is in verband met wettelijke eisen. Wat verzamelen we We verzamelen de inhoud en andere gegevens die je levert wanneer je onze website gebruikt, waaronder wanneer je je aanmeldt voor een account en wanneer je een cursusitems maakt. Je geeft een aantal gegevens rechtstreeks aan ons door, bijvoorbeeld wanneer je een account aanmaakt of contact met ons opneemt voor ondersteuning. Een deel van de gegevens verkrijgen we door vast te leggen hoe je met onze website omgaat, bijvoorbeeld door het gebruik van technologieën zoals cookies. We krijgen ook gegevens van derde partijen. KOPJE Privacybeleid van derde partijen moet hierna komen!!!! Privacybeleid van derde partijen We werken samen met externe bedrijven die ons helpen onze services aan te bieden en te verbeteren, of die advertenties of gerelateerde producten gebruiken. Voor het privacybeleid van derde partijen, verwijzen wij naar de verklaringen die deze partijen op hun eigen websites daarover geven. Het zelfde geldt voor onze advertentiepartners. Deze verklaringen kunnen regelmatig wijzigen. StudyLivre heeft hier geen invloed op. De derde partijen die mogelijk gegevens over je verzamelen zijn: Facebook, Google,YouTube, LinkedIn, Twitter, Disqus en Dropbox. Welke gegevens worden opgeslagen? Wij gebruiken je gegevens voor verschillende doelen. Hieronder kun je zien welke doelen dat zijn. Je account In je account op StudyLivre slaan we onder andere de volgende informatie op: je naam, e-mailadres, geboortedatum, land, taal en het socialmedia account waarmee je inlogt. Eveneens slaan wij educatie- en onderwijsgegevens op, zoals schoolniveau, studiejaar, educatieve instelling, door jouw gemaakte cursussen en beheerde leergroepen. Gegevens die zijn gekoppeld aan je account, worden bewaard tot je account wordt verwijderd. Social media Als je social media gebruikt, bijvoorbeeld Facebook of Google, dan kun je met je social media-account op onze website inloggen. Wanneer je, als je bent ingelogd, aangeeft een cursusitem leuk te vinden, dan verschijnt dat item op je social media-account. StudyLivre krijgt geen toegang tot je social media-account, maar cursusitems kun je wel met je vrienden delen. Reviews Wij houden bij wie welke review schrijft en je reviews zijn gekoppeld aan je account. Fraude Wij gebruiken accountgegevens om fraude te onderzoeken, te voorkomen en tegen te gaan. Als dat moet, geven wij accountgegevens aan de overheid. Cookies Vaak gebruiken wij je gegevens om je een zo persoonlijk mogelijke ervaring te bieden. We passen wat jij op StudyLivre ziet aan op jouw interesses. Voor het verzamelen van persoonlijke informatie gebruiken wij cookies.{% endtrans %}</p>
+        <h4><b>{% trans %}privacy.policy{% endtrans %}</b></h4>
+
+        <h4>{% trans %}privacy.t.personal_details_which_we_save{% endtrans %}</h4>
+        <p>{% trans %}privacy.t.personal_details_which_we_save.t_long_01{% endtrans %}</p>
+        <ul>
+            <li>{% trans %}privacy.t.personal_details_which_we_save.li.li_01{% endtrans %} </li>
+            <li>{% trans %}privacy.t.personal_details_which_we_save.li.li_02{% endtrans %} </li>
+            <li>{% trans %}privacy.t.personal_details_which_we_save.li.li_03{% endtrans %} </li>
+            <li>{% trans %}privacy.t.personal_details_which_we_save.li.li_04{% endtrans %} </li>
+            <li>{% trans %}privacy.t.personal_details_which_we_save.li.li_05{% endtrans %} </li>
+        </ul>
+
+        <h4>{% trans %}privay.why_proces{% endtrans %}</h4>
+        <p>{% trans %}privay.why_proces.t_long.part_01{% endtrans %}:</p>
+        <p>{% trans %}privay.why_proces.t_long.part_02{% endtrans %}.</p>
+
+        <h4>{% trans %}privacy.why_need_details{% endtrans %}</h4>
+        <p>{% trans %}privacy.why_need_details.t_long.part_01{% endtrans %}:</p>
+        <ul>
+            <li>{% trans %}privacy.why_need_details.li.li_01{% endtrans %} </li>
+            <li>{% trans %}privacy.why_need_details.li.li_02{% endtrans %} </li>
+        </ul>
+
+        <h4>{% trans %}privacy.how_long_save_data{% endtrans %}</h4>
+        <p>{% trans %}privacy.how_long_save_data.t_long_01{% endtrans %}</p>
+
+        <h4>{% trans %}privacy.share_with_others{% endtrans %}</h4>
+        <p>{% trans %}privacy.share_with_others.t_long_01{% endtrans %}</p>
+
+
+        <h4>{% trans %}privacy.privacy_policy.third_parties{% endtrans %}</h4>
+        <p>{% trans %}privacy.privacy_policy.third_parties.t_long_01{% endtrans %}</p>
+
+        <h4>{% trans %}privacy.map_website_visits{% endtrans %}</h4>
+        <p>{% trans %}privacy.map_website_visits.t_long_01{% endtrans %}</p>
+
+
+        <h4>{% trans %}privacy.view_own_data_and_edit{% endtrans %}</h4>
+        <p>{% trans %}privacy.view_own_data_and_edit.t_long_01{% endtrans %}</p>
+
+        <h4>{% trans %}privacy.security{% endtrans %}</h4>
+        <p>{% trans %}privacy.security.t_long_01{% endtrans %}</p>
     </div>
 {% endblock %}

@@ -1,9 +1,9 @@
 {% extends 'panels/panel.base.html.twig' %}
 {% block panelBaseTitle %}
-    {% trans %}Bekijk rapporten{% endtrans %}: <span class="total-users-count">{{ totalUsers }}</span>
+    {% trans %}t.mentor_reports.view_reports{% endtrans %}: <span class="total-users-count">{{ totalUsers }}</span>
 {% endblock %}
 {% block panelBaseContents %}
-    <div id="mentor-overview" class="panel-body page-controls" data-view="teach" data-entity="User" data-context="SELF" data-url="{{ url('app_home_ajax_page') }}" data-pagination-name="{% trans %}Cursisten{% endtrans %}">
+    <div id="mentor-overview" class="panel-body page-controls" data-view="teach" data-entity="User" data-context="SELF" data-url="{{ url('app_home_ajax_page') }}" data-pagination-name="{% trans %}t.mentor_reports.students{% endtrans %}">
         <div class="sort-field">
             {% include ':ajax/teach:sort.html.twig' %}
         </div>
@@ -11,7 +11,7 @@
         <div class="content-field">
             {% if totalUsers <= 0 %}
                 <div class="centrum">
-                    <p class="lead">{% trans %}Er zijn geen cursisten waarvan je de voortgang volgt{% endtrans %}</p>
+                    <p class="lead">{% trans %}t.mentor_reports.not_monitoring_students{% endtrans %}</p>
                 </div>
             {% else %}
                 {% for user in users %}

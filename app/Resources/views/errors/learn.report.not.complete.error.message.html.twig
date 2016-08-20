@@ -1,13 +1,13 @@
 {% block learnReportNotCompleteErrorMessage %}
     <div style="text-align: left; font-size: 16px;" class="text-exception">
         <br>
-        <p>{% trans %}De volgende opgaven missen{% endtrans %}:</p>
+        <p>{% trans %}l.missing_questions{% endtrans %}:</p>
         {% for pageId, questions in unansweredQuestions %}
-            <a href="{{ path('app_learn_study_pages_page', {'courseId': course.id, 'pageOrder': questions[0].coursePage.pageOrder}) }}">{% trans %}Pagina{% endtrans %} {{ questions[0].coursePage.pageOrder }}</a>
+            <a href="{{ path('app_learn_study_pages_page', {'courseId': course.id, 'pageOrder': questions[0].coursePage.pageOrder}) }}">{% trans %}o.frequently_used.page{% endtrans %} {{ questions[0].coursePage.pageOrder }}</a>
             <br>
             {% for question in questions %}
-                &emsp; {% trans %}Vraag{% endtrans %} {{ question.questionOrder|orderToAlphabet(true) }}: {{ question.question }}
-                <br>
+                &emsp; {% trans %}o.frequently_used.question{% endtrans %} {{ question.questionOrder|orderToAlphabet(true) }}: {{ question.question }}
+                <hr/>
             {% endfor %}
         {% endfor %}
     </div>

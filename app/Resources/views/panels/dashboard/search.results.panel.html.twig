@@ -1,14 +1,14 @@
 {% extends 'panels/panel.base.html.twig' %}
 {% block panelBaseTitle %}
-    <b>{% trans %}Resultaten{% endtrans %}:</b> <span class="search-result-count">0</span>
+    <b>{% trans %}o.frequently_used.results{% endtrans %}:</b> <span class="search-result-count">0</span>
 {% endblock %}
 {% block panelBaseContents %}
-    <div id="search-results" class="panel-body page-controls" data-view="search" data-entity="Course\Courses" data-context="SEARCH" data-url="{{ url('app_home_ajax_page') }}" data-pagination-name="{% trans %}Resultaat{% endtrans %}">
+    <div id="search-results" class="panel-body page-controls" data-view="search" data-entity="Course\Courses" data-context="SEARCH" data-url="{{ url('app_home_ajax_page') }}" data-pagination-name="{% trans %}h.search.pagination.result{% endtrans %}">
         <div class="sort-field">
         </div>
         <hr />
         <div class="content-field">
-            <p class="lead centrum">{% trans %}Geen resultaten gevonden{% endtrans %}</p>
+            <p class="lead centrum">{% trans %}h.search.no_results_found{% endtrans %}</p>
         </div>
         <br />
         <div class="pagination-field">

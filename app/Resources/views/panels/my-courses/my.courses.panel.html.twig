@@ -1,14 +1,14 @@
 {% extends 'panels/panel.base.html.twig' %}
 {% block panelBaseTitle %}
     <span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span>
-    <b>{% trans %}Zelfgemaakte cursussen{% endtrans %}: <span class="total-courses">{{ totalCourses }}</span></b>
+    <b>{% trans %}t.own_created_courses.t.own_created_courses{% endtrans %}: <span class="total-courses">{{ totalCourses }}</span></b>
 {% endblock %}
 {% block panelBaseContents %}
     <br>
     <div class="centrum">
         <a href="{{ path('app_teach_create_course_page') }}" class="btn btn-default btn-lg">
             <span class="glyphicon glyphicon-plus text-success" aria-hidden="true"></span>
-            <samp>{% trans %}Nieuwe cursus{% endtrans %}</samp>
+            <samp>{% trans %}t.own_created_courses{% endtrans %}</samp>
         </a>
     </div>
     <br>
@@ -21,7 +21,7 @@
             {% if totalCourses <= 0 %}
                 <div class="centrum">
                     <p class="lead">
-                        {% trans %}U heeft nog geen cursussen aangemaakt. Bezoek het aan de slag menu voor meer info{% endtrans %}
+                        {% trans %}t.own_created_courses.t_long.no_courses_yet{% endtrans %}
                     </p>
                 </div>
             {% else %}

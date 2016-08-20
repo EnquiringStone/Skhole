@@ -7,7 +7,7 @@
                         {% if course.name is not null %}
                             {{ course.name }}
                         {% else %}
-                            {% trans %}Deze cursus heeft nog geen naam{% endtrans %}
+                            {% trans %}t.create_course.no_name_yet{% endtrans %}
                         {% endif %}
                     </a>
                 </li>
@@ -19,16 +19,16 @@
                 <div class="pull-right">
                     <div class="btn-group-vertical">
                         <a href="{{ path('app_teach_edit_course_page', {'id': course.id}) }}" class="btn btn-primary btn-sm">
-                            {% trans %}Bewerk cursus{% endtrans %}<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            {% trans %}t.create_course.b.edit_course{% endtrans %}<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                         </a>
                         <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#courseDetailsModal{{ index }}">
-                            {% trans %}Cursuskaart{% endtrans %}
+                            {% trans %}o.frequently_used.course_card{% endtrans %}
                         </button>
                         <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#courseReviewsModal{{ index }}">
-                            {% trans %}Bekijk reviews{% endtrans %}
+                            {% trans %}t.create_course.b.view_reviews{% endtrans %}
                         </button>
                         <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#courseRemoveModal{{ index }}">
-                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> {% trans %}Cursus{% endtrans %}
+                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> {% trans %}t.create_course.b.course{% endtrans %}
                         </button>
                     </div>
                 </div>
@@ -36,28 +36,28 @@
                     {% if course.description is not null %}
                         {{ course.description|length > 250 ? course.description|slice(0, 250) ~ '...' : course.description}}
                     {% else %}
-                        {% trans %}Geen omschrijving gevonden{% endtrans %}
+                        {% trans %}t.create_course.no_description_found{% endtrans %}
                     {% endif %}
                     <br />
                     <button type="button" class="btn btn-default btn-xs unclickable">
                         <b class="text-primary">
-                            {% trans %}Is gepubliceerd{% endtrans %}?
+                            {% trans %}t.create_course.b.course_published{% endtrans %}?
                             <span class="glyphicon
                                 {% if course.state.stateCode == 'OK' %} glyphicon-ok text-success
                                 {% else %} glyphicon-minus text-danger{% endif %}" aria-hidden="true">
                             </span>
                         </b>
                         <button type="button" class="btn btn-default btn-xs unclickable" data-toggle="tooltip" data-placement="top"
-                                title="{% trans %}Gebruiker die de cursus heeft aangemaakt{% endtrans %}">
-                            <b>{% trans %}Docent{% endtrans %}:</b> {{ course.insertUser.realName }}
+                                title="{% trans %}t.create_course.b.tooltip.user_which_created{% endtrans %}">
+                            <b>{% trans %}o.frequently_used.instructor{% endtrans %}:</b> {{ course.insertUser.realName }}
                         </button>
                         <button type="button" class="btn btn-default btn-xs unclickable" data-toggle="tooltip" data-placement="top"
-                                title="{% trans %}Aantal weergaven{% endtrans %}">
-                            <b>{% trans %}Weergaven{% endtrans %}:</b> {{ course.views }}
+                                title="{% trans %}t.create_course.b.tooltip.number_of_views{% endtrans %}">
+                            <b>{% trans %}t.create_course.b.view_number{% endtrans %}:</b> {{ course.views }}
                         </button>
                         <button type="button" class="btn btn-default btn-xs unclickable" data-toggle="tooltip" data-placement="top"
-                                title="{% trans %}Totaal ratings {% endtrans %}:{{ course.courseViews|length }}">
-                            <b>{% trans %}Rating{% endtrans %}:</b>
+                                title="{% trans %}t.create_course.b.tooltip.rating_total{% endtrans %}:{{ course.courseViews|length }}">
+                            <b>{% trans %}t.create_course.b.rating{% endtrans %}:</b>
                             {% if course.averageContentRating is not null %}
                                 {% for i in 0..course.averageContentRating|round %}
                                     <img src="{{ asset('images/star_rating.png') }}" class="img-rounded">
@@ -67,19 +67,19 @@
                             {% endif %}
                         </button>
                         <button type="button" class="btn btn-default btn-xs unclickable" data-toggle="tooltip" data-placement="top">
-                            <b>{% trans %}Pagina's{% endtrans %}:</b> {{ course.coursePages|length }}
+                            <b>{% trans %}t.create_course.b.pages{% endtrans %}:</b> {{ course.coursePages|length }}
                         </button>
                         <button type="button" class="btn btn-default btn-xs unclickable" data-toggle="tooltip" data-placement="top"
-                                title="{% trans %}Educatieve instelling{% endtrans %}">
-                            <b>{% trans %}Aanbieder{% endtrans %}:</b> {{ course.courseCard is not null ? (course.courseCard.providers|length > 0 ? course.courseCard.providers[0].name : '-') : '-' }}
+                                title="{% trans %}t.create_course.b.tooltip.education_instution{% endtrans %}">
+                            <b>{% trans %}t.create_course.b.education_instution{% endtrans %}:</b> {{ course.courseCard is not null ? (course.courseCard.providers|length > 0 ? course.courseCard.providers[0].name : '-') : '-' }}
                         </button>
                         <button type="button" class="btn btn-default btn-xs unclickable" data-toggle="tooltip" data-placement="top"
-                                title="{% trans %}Schatting{% endtrans %}">
-                            <b>{% trans %}Cursusduur{% endtrans %}:</b> {{ course.estimatedDuration is not null ? (course.estimatedDuration/60)|number_format : '-' }} {% trans %}uur{% endtrans %}
+                                title="{% trans %}t.create_course.b.tooltip.estimation{% endtrans %}">
+                            <b>{% trans %}t.create_course.b.course_duration{% endtrans %}:</b> {{ course.estimatedDuration is not null ? (course.estimatedDuration/60)|number_format : '-' }} {% trans %}o.frequently_used.hour{% endtrans %}
                         </button>
                         <button type="button" class="btn btn-default btn-xs unclickable" data-toggle="tooltip" data-placement="top"
-                                title="{% trans %}Schatting{% endtrans %}">
-                            <b>{% trans %}Moeilijkheidsgraad{% endtrans %}:</b>
+                                title="{% trans %}t.create_course.b.tooltip.estimation{% endtrans %}">
+                            <b>{% trans %}t.create_course.b.difficulty{% endtrans %}:</b>
                             {% if course.difficulty is not null %}
                                 {% for i in 1..course.difficulty %}
                                     <img src="{{ asset('images/star_rating.png') }}" class="img-rounded">
@@ -89,8 +89,8 @@
                             {% endif %}
                         </button>
                         <button type="button" class="btn btn-default btn-xs unclickable" data-toggle="tooltip" data-placement="top"
-                                title="{% trans %}Educatie Niveau{% endtrans %}">
-                            <b>{% trans %}Niveau{% endtrans %}:</b> {{ course.level is not null ? course.level.levelLong|trans({}, 'db') : '-' }}
+                                title="{% trans %}t.create_course.b.tooltip.education_level{% endtrans %}">
+                            <b>{% trans %}t.create_course.b.education_level{% endtrans %}:</b> {{ course.level is not null ? course.level.levelLong|trans({}, 'db') : '-' }}
                         </button>
                     </button>
                 </div>

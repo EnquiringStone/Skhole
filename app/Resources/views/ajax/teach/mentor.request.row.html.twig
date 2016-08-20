@@ -4,7 +4,7 @@
             <img class="img-rounded teacher-row-picture" src="{% if request.user.picture is not null %}{{ request.user.picture }}{% else %}{{ asset('images/gebruiker.png') }}{% endif %}">
             <a class="clickable" data-target="#educationProfileModal{{ index }}" data-toggle="modal">{{ request.user.firstName|capitalize }} {{ request.user.surname|capitalize }}</a>
             <br>
-            <span class="text-muted">{% trans %}Cursusnaam{% endtrans %}: {{ request.report.course.name }}</span>
+            <span class="text-muted">{% trans %}o.frequently_used.course_name{% endtrans %}: {{ request.report.course.name }}</span>
         </div>
         <div class="col-sm-2">
             <div style="text-align: right">

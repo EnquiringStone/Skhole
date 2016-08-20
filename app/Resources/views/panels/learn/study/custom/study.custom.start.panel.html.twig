@@ -1,39 +1,42 @@
 {% extends 'panels/panel.base.html.twig' %}
 {% block panelBaseTitle %}
-    <b>{% trans %}Startpagina{% endtrans %}</b>
+    <b>{% trans %}l.start_page.start_page{% endtrans %}</b>
 {% endblock %}
 {% block panelBaseContents %}
     <div class="panel-body">
-        <hr />
+     
         <div class="centrum">
-            <h1>
-                <b>{% trans %}Start van de cursus{% endtrans %}</b>
-            </h1>
-            <p class="text-muted">
-                {% trans %}Cursusnaam{% endtrans %}:
+            <h2>
+                <b>{% trans %}l.start_page.start_of_course{% endtrans %}</b>
+            </h2>
+            <h4 class="text-muted">
+                {% trans %}o.frequently_used.course_name{% endtrans %}:
                 {{ course.name|capitalize }}
-            </p>
+            </h4>
             <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#studyIntroductionModal">
                 <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-                {% trans %}Cursus volgen{% endtrans %}
+                {% trans %}o.button.follow_course{% endtrans %}
             </button>
             <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#courseReportIntroductionModal">
                 <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-                {% trans %}Cursusrapport{% endtrans %}
+                {% trans %}o.course_report.t.course_report{% endtrans %}
             </button>
         </div>
-        <hr />
+        <br/>
         <div class="modal-info-background">
-            <h4 class="text-primary">
-                <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-                <b>{% trans %}Cursusrapport{% endtrans %}</b>
-            </h4>
-            <p>
-                {% trans %}Na afronding van de cursus wordt een cursusrapport samengesteld met daarin jouw antwoorden op de meerkeuze- en openvragen. Alle rapporten kun je terug vinden bij: Learn → Cursusmandje → Cursusrapporten.{% endtrans %}
-                <b>{% trans %}Let op{% endtrans %}:</b> {% trans %}Indien je niet ingelogd bent dan verlies je al je voortgang zodra je je browser afsluit.{% endtrans %}
+             <h4 class="text-primary">
+                        <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                        {% trans %}o.ter_information{% endtrans %}
+             </h4>
+             <p>
+                {% trans %}l.start_page.t_instruction_01{% endtrans %}
+                <b>{% trans %} l.start_page.t_instruction_02{% endtrans %} </b> 
+                {% trans %}l.start_page.t_instruction_03{% endtrans %}  
+            </p>
+             <p>
+                {% trans %}t.start_page.report_info{% endtrans %}
             </p>
         </div>
-        <hr />
     </div>
 {% endblock %}
 {% block panelBaseFooter %}

@@ -1,15 +1,43 @@
 {% extends 'panels/panel.base.html.twig' %}
 {% block panelBaseTitle %}
-    {% trans %}Veel gestelde vragen{% endtrans %}
+    {% trans %}m.faq.t_header.faq{% endtrans %}
 {% endblock %}
 {% block panelBaseContents %}
     <div class="panel-body">
-        <h4><b>{% trans %}Algemene vragen{% endtrans %}</b></h4>
+        <h4><b>{% trans %}m.faq.t.general_questions{% endtrans %}</b></h4>
         <div id="accordion" class="panel-group" aria-multiselectable="true" role="tablist">
-            <a aria-controls="collapseOne" aria-expanded="true" href="#collapseOne" data-parent="#accordion" data-toggle="collapse" role="button"><h5 class="text-muted">{% trans %}What important truth do few people agree with you about?{% endtrans %}</h5></a>
+            <a aria-controls="collapseOne" aria-expanded="true" href="#collapseOne" data-parent="#accordion" data-toggle="collapse" role="button"><h5 class="text-muted">{% trans %}m.questions.question.study_livre_free{% endtrans %}</h5></a>
             <div id="collapseOne" class="panel-collapse collapse" aria-labelledby="headingOne" role="tabpanel" aria-expanded="true">
-                <div class="thumbnail">{% trans %}Dit moeten we nog maken{% endtrans %}{#TODO all of this#}</div>
+                <div class="thumbnail">{% trans %}m.questions.anwser.study_livre_free{% endtrans %}</div>
             </div>
         </div>
+        <div id="accordion" class="panel-group" aria-multiselectable="true" role="tablist">
+            <a aria-controls="collapseOne" aria-expanded="true" href="#collapseTwo" data-parent="#accordion" data-toggle="collapse" role="button"><h5 class="text-muted">{% trans %}m.questions.question.report_content{% endtrans %}</h5></a>
+            <div id="collapseTwo" class="panel-collapse collapse" aria-labelledby="headingOne" role="tabpanel" aria-expanded="true">
+                <div class="thumbnail">
+                    {% trans %}m.questions.anwser.report_content{% endtrans %}
+                </div>
+            </div>
+        </div>
+        <div id="accordion" class="panel-group" aria-multiselectable="true" role="tablist">
+            <a aria-controls="collapseOne" aria-expanded="true" href="#collapseThree" data-parent="#accordion" data-toggle="collapse" role="button"><h5 class="text-muted">{% trans %}m.questions.question.create_acount_fb_and_google{% endtrans %}</h5></a>
+            <div id="collapseThree" class="panel-collapse collapse" aria-labelledby="headingOne" role="tabpanel" aria-expanded="true">
+                <div class="thumbnail">{% trans %}m.questions.anwser.create_acount_fb_and_google{% endtrans %}</div>
+            </div>
+        </div>
+        <div id="accordion" class="panel-group" aria-multiselectable="true" role="tablist">
+            <a aria-controls="collapseOne" aria-expanded="true" href="#collapseFour" data-parent="#accordion" data-toggle="collapse" role="button"><h5 class="text-muted">{% trans %}m.questions.question.who_can_create_course{% endtrans %}</h5></a>
+            <div id="collapseFour" class="panel-collapse collapse" aria-labelledby="headingOne" role="tabpanel" aria-expanded="true">
+                <div class="thumbnail">{% trans %}m.questions.anwser.who_can_create_course{% endtrans %}</div>
+            </div>
+        </div>
+        <div id="accordion" class="panel-group" aria-multiselectable="true" role="tablist">
+            <a aria-controls="collapseOne" aria-expanded="true" href="#collapseFive" data-parent="#accordion" data-toggle="collapse" role="button"><h5 class="text-muted">{% trans %}m.questions.question.which_personal_data_saved{% endtrans %}</h5></a>
+            <div id="collapseFive" class="panel-collapse collapse" aria-labelledby="headingOne" role="tabpanel" aria-expanded="true">
+                <div class="thumbnail">{% trans %}m.questions.anwser.which_personal_data_saved{% endtrans %}</div>
+            </div>
+        </div>
+        
+        
     </div>
 {% endblock %}

@@ -34,7 +34,7 @@
     {% if viewType == 'learn' %}
         <div class="centrum">
             <ul class="pagination" data-disable="true">
-                <li class="disabled"><a class="unclickable"><b>{% trans %}Pagina's{% endtrans %}</b></a></li>
+                <li class="disabled"><a class="unclickable"><b>{% trans %}o.frequently_used.pages{% endtrans %}</b></a></li>
                 <li class="clickable {% if name is defined and name == 'front' %}active{% endif %}"><a href="{{ path('app_learn_course_report_details_custom', {'name': 'front', 'id': report.id}) }}">I</a></li>
                 <li class="clickable {% if name is defined and name == 'overview' %}active{% endif %}"><a href="{{ path('app_learn_course_report_details_custom', {'name': 'overview', 'id': report.id}) }}">II</a></li>
 
@@ -46,20 +46,20 @@
                 {% if name is defined and name != 'end' %}
                     <li class="clickable">
                         <a href="{% if name == 'front' %}{{ path('app_learn_course_report_details_custom', {'name': 'overview', 'id': report.id}) }}{% elseif name == 'overview' and pages|length > 0 %}{{ path('app_learn_course_report_details_page', {'id': report.id, 'pageId': pages[0].id}) }}{% endif %}">
-                            {% trans %}Volgende{% endtrans %}
+                            {% trans %}o.frequently_used.next{% endtrans %}
                         </a>
                     </li>
                 {% elseif offset < pages|length - 1 %}
-                    <li class="clickable"><a href="{{ path('app_learn_course_report_details_page', {'id': report.id, 'pageId': pages[offset + 1].id}) }}">{% trans %}Volgende{% endtrans %}</a></li>
+                    <li class="clickable"><a href="{{ path('app_learn_course_report_details_page', {'id': report.id, 'pageId': pages[offset + 1].id}) }}">{% trans %}o.frequently_used.next{% endtrans %}</a></li>
                 {% elseif offset == pages|length - 1 %}
-                    <li class="clickable"><a href="{{ path('app_learn_course_report_details_custom', {'name': 'end', 'id': report.id}) }}">{% trans %}Volgende{% endtrans %}</a></li>
+                    <li class="clickable"><a href="{{ path('app_learn_course_report_details_custom', {'name': 'end', 'id': report.id}) }}">{% trans %}o.frequently_used.next{% endtrans %}</a></li>
                 {% endif %}
             </ul>
         </div>
     {% elseif viewType == 'teach' %}
         <div class="centrum">
             <ul class="pagination" data-disable="true">
-                <li class="disabled"><a class="unclickable"><b>{% trans %}Pagina's{% endtrans %}</b></a></li>
+                <li class="disabled"><a class="unclickable"><b>{% trans %}o.frequently_used.pages{% endtrans %}</b></a></li>
                 <li class="clickable {% if name is defined and name == 'front' %}active{% endif %}"><a href="{{ path('app_teach_show_report_custom', {'name': 'front', 'id': sharedReport.id}) }}">I</a></li>
                 <li class="clickable {% if name is defined and name == 'overview' %}active{% endif %}"><a href="{{ path('app_teach_show_report_custom', {'name': 'overview', 'id': sharedReport.id}) }}">II</a></li>
 
@@ -71,13 +71,13 @@
                 {% if name is defined and name != 'end' %}
                     <li class="clickable">
                         <a href="{% if name == 'front' %}{{ path('app_teach_show_report_custom', {'name': 'overview', 'id': sharedReport.id}) }}{% elseif name == 'overview' and pages|length > 0 %}{{ path('app_teach_show_report_page', {'id': sharedReport.id, 'pageId': pages[0].id}) }}{% endif %}">
-                            {% trans %}Volgende{% endtrans %}
+                            {% trans %}o.frequently_used.next{% endtrans %}
                         </a>
                     </li>
                 {% elseif offset < pages|length - 1 %}
-                    <li class="clickable"><a href="{{ path('app_teach_show_report_page', {'id': sharedReport.id, 'pageId': pages[offset + 1].id}) }}">{% trans %}Volgende{% endtrans %}</a></li>
+                    <li class="clickable"><a href="{{ path('app_teach_show_report_page', {'id': sharedReport.id, 'pageId': pages[offset + 1].id}) }}">{% trans %}o.frequently_used.next{% endtrans %}</a></li>
                 {% elseif offset == pages|length - 1 %}
-                    <li class="clickable"><a href="{{ path('app_teach_show_report_custom', {'name': 'end', 'id': sharedReport.id}) }}">{% trans %}Volgende{% endtrans %}</a></li>
+                    <li class="clickable"><a href="{{ path('app_teach_show_report_custom', {'name': 'end', 'id': sharedReport.id}) }}">{% trans %}o.frequently_used.next{% endtrans %}</a></li>
                 {% endif %}
             </ul>
         </div>

@@ -3,11 +3,11 @@
     {% if not value is defined %}{% set value = 'DESC' %}{% endif %}
 
     <div class="pull-right">
-        <label>{% trans %}Sorteer op{% endtrans %}:</label>
+        <label>{% trans %}o.frequently_used.sorting{% endtrans %}:</label>
         <select class="sortable" name="filterOptions" size="1" aria-controls="example1">
-            <option {% if attribute == 'id' and value == 'DESC' %}selected="selected"{% endif %} data-attribute="id" data-sorted="DESC">{% trans %}Relevantie{% endtrans %}</option>
-            <option {% if attribute == 'finishedDateTime' and value == 'ASC' %}selected="selected"{% endif %} data-attribute="finishedDateTime" data-sorted="ASC">{% trans %}Cursus afgerond oplopend{% endtrans %}</option>
-            <option {% if attribute == 'finishedDateTime' and value == 'DESC' %}selected="selected"{% endif %} data-attribute="finishedDateTime" data-sorted="DESC">{% trans %}Cursus afgerond aflopend{% endtrans %}</option>
+            <option {% if attribute == 'id' and value == 'DESC' %}selected="selected"{% endif %} data-attribute="id" data-sorted="DESC">{% trans %}o.frequently_used.sort_option.relevance{% endtrans %}</option>
+            <option {% if attribute == 'finishedDateTime' and value == 'ASC' %}selected="selected"{% endif %} data-attribute="finishedDateTime" data-sorted="ASC">{% trans %}o.frequently_used.sort_option.finished_course_asc{% endtrans %}</option>
+            <option {% if attribute == 'finishedDateTime' and value == 'DESC' %}selected="selected"{% endif %} data-attribute="finishedDateTime" data-sorted="DESC">{% trans %}o.frequently_used.sort_option.finished_course_desc{% endtrans %}</option>
         </select>
     </div>
 {% endblock %}

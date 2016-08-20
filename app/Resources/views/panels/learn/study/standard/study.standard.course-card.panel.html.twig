@@ -1,41 +1,41 @@
 {% extends 'panels/panel.base.html.twig' %}
 {% block panelBaseTitle %}
     <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
-    <b>{% trans %}Cursuskaart{% endtrans %}</b>
+    <b>{% trans %}o.frequently_used.course_card{% endtrans %}</b>
 {% endblock %}
 {% block panelBaseContents %}
     <div class="panel-body">
         <div class="btn-pref centrum" role="group">
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-sm btn-primary" href="#tabIntro" data-toggle="tab">
-                    {% trans %}Introductie{% endtrans %}
+                    {% trans %}o.frequently_used.introduction{% endtrans %}
                 </button>
             </div>
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-sm btn-default" href="#tabDetails" data-toggle="tab">
-                    {% trans %}Details{% endtrans %}
+                    {% trans %}o.course_card.details{% endtrans %}
                 </button>
             </div>
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-sm btn-default" href="#tabPriorKnowledge" data-toggle="tab">
-                    {% trans %}Voorkennis{% endtrans %}
+                    {% trans %}o.course_card.prereq{% endtrans %}
                 </button>
             </div>
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-sm btn-default" href="#tabProviders" data-toggle="tab">
-                    {% trans %}Aanbieders{% endtrans %}
+                    {% trans %}o.course_card.providers{% endtrans %}
                 </button>
             </div>
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-sm btn-default" href="#tabTeachers" data-toggle="tab">
-                    {% trans %}Docenten{% endtrans %}
+                    {% trans %}o.course_card.instructors{% endtrans %}
                 </button>
             </div>
         </div>
         <div class="tab-content">
             <div class="tab-pane fade active in" id="tabIntro">
                 <hr />
-                <h4>{% trans %}Introductie{% endtrans %}</h4>
+                <h4>{% trans %}o.frequently_used.introduction{% endtrans %}</h4>
                 <div class="row">
                     <div class="col-md-6">
                         {% if course.courseCard.youtubeEmbedUrl is not empty %}
@@ -56,18 +56,18 @@
             </div>
             <div class="tab-pane fade" id="tabDetails">
                 <hr />
-                <h4>{% trans %}Cursus samenvatting{% endtrans %}</h4>
+                <h4>{% trans %}o.course_card.summary{% endtrans %}</h4>
                 {% include ':ajax/components/course-card:course.card.detail.buttons.public.html.twig' %}
                 <hr />
             </div>
             <div class="tab-pane fade" id="tabPriorKnowledge">
                 <hr />
-                <h4>{% trans %}Vereiste voorkennis{% endtrans %}</h4>
+                <h4>{% trans %}o.course_card.required_prereq{% endtrans %}</h4>
                 {% if course.courseCard.priorKnowledge is not empty %}
                     <p>{{ course.courseCard.priorKnowledge|nl2br }}</p>
                 {% else %}
                     <div class="centrum">
-                        <p class="lead">{% trans %}Geen vereiste voorkennis nodig{% endtrans %}</p>
+                        <p class="lead">{% trans %}o.course_card.t.no_required_prereq{% endtrans %}</p>
                     </div>
                 {% endif %}
                 <hr />
@@ -75,7 +75,7 @@
             <div class="tab-pane fade" id="tabProviders">
                 <hr />
                 {% if course.courseCard.providers|length > 0 %}
-                    <h4>{% trans %}Aanbieders{% endtrans %}</h4>
+                    <h4>{% trans %}o.course_card.providers{% endtrans %}</h4>
                     <div class="media-list">
                         {% for provider in course.courseCard.providers %}
                             <div class="media">
@@ -91,7 +91,7 @@
                     </div>
                 {% else %}
                     <div class="centrum">
-                        <p class="lead">{% trans %}Deze cursus heeft geen aanbieders{% endtrans %}</p>
+                        <p class="lead">{% trans %}o.course_card.t.no_provider{% endtrans %}</p>
                     </div>
                 {% endif %}
                 <hr />
@@ -99,7 +99,7 @@
             <div class="tab-pane fade" id="tabTeachers">
                 <hr />
                 {% if course.courseCard.teachers|length > 0 %}
-                    <h4>{% trans %}Docenten{% endtrans %}</h4>
+                    <h4>{% trans %}o.course_card.instructors{% endtrans %}</h4>
                     <div class="media-list">
                         {% for teacher in course.courseCard.teachers %}
                             <div class="media">
@@ -121,7 +121,7 @@
                     </div>
                 {% else %}
                     <div class="centrum">
-                        <p class="lead">{% trans %}Deze cursus heeft geen docenten{% endtrans %}</p>
+                        <p class="lead">{% trans %}o.course_card.t.no_instructors{% endtrans %}</p>
                     </div>
                 {% endif %}
                 <hr />

@@ -3,7 +3,7 @@
     <h4 class="modal-title centrum" id="{{ modalId }}">
         <b>
             <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
-            {% trans %}Cursuskaart{% endtrans %}
+             {% trans %}o.frequently_used.course_card{% endtrans %}
         </b>
         <br />
         <span class="text-muted">{{ course.name }}</span>
@@ -14,34 +14,34 @@
         <div class="btn-pref" role="group">
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-primary btn-sm" href="#tabCourseCardIntro{{ modalId }}" data-toggle="tab">
-                    <b>{% trans %}Introductie{% endtrans %}</b>
+                    <b>{% trans %}o.frequently_used.introduction{% endtrans %}</b>
                 </button>
             </div>
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-default btn-sm" href="#tabCourseCardSummary{{ modalId }}" data-toggle="tab">
-                    <b>{% trans %}Details{% endtrans %}</b>
+                    <b>{% trans %}o.course_card.details{% endtrans %}</b>
                 </button>
             </div>
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-default btn-sm" href="#tabCourseCardPrerequisites{{ modalId }}" data-toggle="tab">
-                    <b>{% trans %}Voorkennis{% endtrans %}</b>
+                    <b>{% trans %}o.frequently_used.course_card.prereq{% endtrans %}</b>
                 </button>
             </div>
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-default btn-sm" href="#tabCourseCardProviders{{ modalId }}" data-toggle="tab">
-                    <b>{% trans %}Aanbieder{% endtrans %}</b>
+                    <b>{% trans %}o.frequently_used.provider{% endtrans %}</b>
                 </button>
             </div>
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-default btn-sm" href="#tabCourseCardTeachers{{ modalId }}" data-toggle="tab">
-                    <b>{% trans %}Docenten{% endtrans %}</b>
+                    <b>{% trans %}o.course_card.instructors{% endtrans %}</b>
                 </button>
             </div>
         </div>
         <div class="tab-content">
             <div class="tab-pane fade in active" id="tabCourseCardIntro{{ modalId }}">
                 <div class="thumbnail">
-                    <h4>{% trans %}Introductie{% endtrans %}</h4>
+                    <h4>{% trans %}o.frequently_used.introduction{% endtrans %}</h4>
                     <div class="row">
                         <div class="col-md-6">
                             {% if course.courseCard is not null and course.courseCard.youtubeEmbedUrl is not null %}
@@ -64,17 +64,17 @@
             </div>
             <div class="tab-pane fade in" id="tabCourseCardSummary{{ modalId }}">
                 <div class="thumbnail">
-                    <h4>{% trans %}Cursusinformatie{% endtrans %}</h4>
+                    <h4>{% trans %}o.frequently_used.course_info{% endtrans %}</h4>
                     <button type="button" class="btn btn-default btn-xs unclickable">
-                        <b>{% trans %}Docent{% endtrans %}:</b>
+                        <b>{% trans %}o.frequently_used.instructor{% endtrans %}:</b>
                         {{ course.insertUser.realName }}
                     </button>
                     <button type="button" class="btn btn-default btn-xs unclickable">
-                        <b>{% trans %}Weergaven{% endtrans %}:</b>
+                        <b>{% trans %}o.frequently_used.views{% endtrans %}:</b>
                         {{ course.views|default(0) }}
                     </button>
                     <button type="button" class="btn btn-default btn-xs unclickable">
-                        <b>{% trans %}Rating{% endtrans %}:</b>
+                        <b>{% trans %}o.frequently_used.rating{% endtrans %}:</b>
                         {% if course.averageContentRating is not null %}
                             {% for i in 0..course.averageContentRating|round %}
                                 <img src="{{ asset('images/star_rating.png') }}" class="img-rounded">
@@ -84,11 +84,11 @@
                         {% endif %}
                     </button>
                     <button type="button" class="btn btn-default btn-xs unclickable">
-                        <b>{% trans %}Pagina's{% endtrans %}:</b>
+                        <b>{% trans %}o.frequently_used.pages{% endtrans %}:</b>
                         {{ course.coursePages|length }}
                     </button>
                     <button type="button" class="unclickable btn btn-default btn-xs">
-                        <b>{% trans %}Cursusduur{% endtrans %}:</b>
+                        <b>{% trans %}o.frequently_used.course_duration{% endtrans %}:</b>
                         {% if course.estimatedDuration is not null %}
                             {{ (course.estimatedDuration/60)|number_format }}
                         {% else %}
@@ -96,7 +96,7 @@
                         {% endif %}
                     </button>
                     <button type="button" class="unclickable btn btn-default btn-xs">
-                        <b>{% trans %}Moeilijkheidsgraad{% endtrans %}:</b>
+                        <b>{% trans %}o.frequently_used.difficulty{% endtrans %}:</b>
                         {% if course.difficulty is not null %}
                             {% for i in 1..course.difficulty %}
                                 <img src="{{ asset('images/star_rating.png') }}" class="img-rounded">
@@ -106,7 +106,7 @@
                         {% endif %}
                     </button>
                     <button type="button" class="unclickable btn btn-default btn-xs">
-                        <b>{% trans %}Niveau{% endtrans %}:</b>
+                        <b>{% trans %}o.frequently_used.level{% endtrans %}:</b>
                         {% if course.level is not null and course.level.levelLong is not null %}
                             {{ course.level.levelLong|trans({}, 'db') }}
                         {% else %}
@@ -114,7 +114,7 @@
                         {% endif %}
                     </button>
                     <button type="button" class="unclickable btn btn-default btn-xs">
-                        <b>{% trans %}Beschikbaar sinds{% endtrans %}:</b>
+                        <b>{% trans %}o.frequently_used.avaliable_since{% endtrans %}:</b>
                         {% if course.publishedDateTime is not null %}
                             {{ course.publishedDateTime|date('d-m-Y') }}
                         {% else %}
@@ -122,11 +122,11 @@
                         {% endif %}
                     </button>
                     <button type="button" class="unclickable btn btn-default btn-xs">
-                        <b>{% trans %}Toegevoegd op{% endtrans %}:</b>
+                        <b>{% trans %}mo.added_on{% endtrans %}:</b>
                         {{ course.insertDateTime|date('d-m-Y') }}
                     </button>
                     <button type="button" class="unclickable btn btn-default btn-xs">
-                        <b>{% trans %}Laatst aangepast{% endtrans %}:</b>
+                        <b>{% trans %}mo.last_edited{% endtrans %}:</b>
                         {% if course.updateDateTime is not null %}
                             {{ course.updateDateTime|date('d-m-Y') }}
                         {% else %}
@@ -137,7 +137,7 @@
             </div>
             <div class="tab-pane fade in" id="tabCourseCardPrerequisites{{ modalId }}">
                 <div class="thumbnail">
-                    <h4>{% trans %}Vereiste voorkennis{% endtrans %}</h4>
+                    <h4>{% trans %}o.course_card.required_prereq{% endtrans %}</h4>
                     <p>
                         {% if course.courseCard is not null %}
                             {{ course.courseCard.priorKnowledge|default('-') }}
@@ -162,7 +162,7 @@
                             {% endfor %}
                         {% else %}
                             <div class="centrum">
-                                <p class="lead">{% trans %}Geen aanbieders gevonden voor deze cursus{% endtrans %}</p>
+                                <p class="lead">{% trans %}mo.no_providers_for_this_course{% endtrans %}</p>
                             </div>
                         {% endif %}
                     </div>
@@ -171,7 +171,7 @@
             <div class="tab-pane fade in" id="tabCourseCardTeachers{{ modalId }}">
                 <div class="thumbnail">
                     {% if course.courseCard is not null and course.courseCard.teachers|length > 0 %}
-                        <h4>{% trans %}Docenten{% endtrans %}</h4>
+                        <h4>{% trans %}o.course_card.instructors{% endtrans %}</h4>
                         <div class="media-list">
                             {% for teacher in course.courseCard.teachers %}
                                 {% if not teacher.isUndesirable %}
@@ -189,7 +189,7 @@
                         </div>
                     {% else %}
                         <div class="centrum">
-                            <p class="lead">{% trans %}Geen extra docenten gevonden voor deze cursus{% endtrans %}</p>
+                            <p class="lead">{% trans %}mo.no_instructors_for_this_course{% endtrans %}</p>
                         </div>
                     {% endif %}
                 </div>
@@ -199,6 +199,6 @@
 {% endblock %}
 
 {% block closeButtonText %}
-    {% trans %}Sluiten{% endtrans %}
+    {% trans %}o.frequently_used.close{% endtrans %}
 {% endblock %}
 {% set modalBaseType = 'close' %}

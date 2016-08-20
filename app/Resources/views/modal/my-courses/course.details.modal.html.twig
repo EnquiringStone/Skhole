@@ -3,7 +3,7 @@
     <h4 class="modal-title centrum" id="{{ modalId }}">
         <b>
             <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
-            {% trans %}Cursuskaart{% endtrans %}
+            {% trans %}o.frequently_used.course_card{% endtrans %}
         </b>
         <br />
         <span class="text-muted">{{ course.name }}</span>
@@ -28,23 +28,23 @@
                             <iframe class="embed-responsive-item" allowfullscreen="" src="{{ course.courseCard.youtubeEmbedUrl }}"></iframe>
                         </div>
                     {% else %}
-                        <p>{% trans %}Geen video gevonden{% endtrans %}</p>
+                        <p>{% trans %}mo.course.details.no_video_found{% endtrans %}</p>
                     {% endif %}
                 </div>
                 <div class="col-md-6">
-                    <h4>{% trans %}Inhoud{% endtrans %}</h4>
+                    <h4>{% trans %}o.frequently_used.content{% endtrans %}</h4>
                     <p>
                         {% if course.courseCard.description is not null %}
                             {{ course.courseCard.description }}
                         {% else %}
-                            {% trans %}Geen omschrijving gevonden{% endtrans %}
+                            {% trans %}mo.course.details.no_description_found{% endtrans %}
                         {% endif %}
                     </p>
                 </div>
             </div>
         </div>
         <div class="thumbnail">
-            <h4>{% trans %}Aanbieder{% endtrans %}</h4>
+            <h4>{% trans %}o.frequently_used.provider{% endtrans %}</h4>
             {% for provider in course.courseCard.providers %}
                 <div class="row">
                     <div class="col-md-1">
@@ -58,7 +58,7 @@
             {% endfor %}
         </div>
         <div class="thumbnail">
-            <h4>{% trans %}Docenten{% endtrans %}</h4>
+            <h4>{% trans %}o.course_card.instructors{% endtrans %}</h4>
             {% for teacher in course.courseCard.teachers %}
                 <div class="row">
                     <div class="col-md-1">
@@ -74,13 +74,13 @@
     {% else %}
         <div class="thumbnail">
             <div class="centrum">
-                <p>{% trans %}Deze cursus heeft nog geen cursuskaart{% endtrans %}</p>
+                <p>{% trans %}mo.course.details.no_cours_card_yet{% endtrans %}</p>
             </div>
         </div>
     {% endif %}
 {% endblock %}
 
 {% block closeButtonText %}
-    {% trans %}Sluiten{% endtrans %}
+    {% trans %}o.frequently_used.close{% endtrans %}
 {% endblock %}
 {% set modalBaseType = 'close' %}

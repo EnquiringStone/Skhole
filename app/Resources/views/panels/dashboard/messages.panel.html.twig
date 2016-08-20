@@ -1,13 +1,13 @@
 {% extends 'panels/panel.base.html.twig' %}
 {% block panelBaseTitle %}
-    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>{% trans %}Berichten{% endtrans %}
+    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>{% trans %}o.inbox.messages{% endtrans %}
 {% endblock %}
 {% block panelBaseContents %}
     {% set dataEntity = "Messages" %}
     <div class="panel-body page-controls" data-url="{{ url('app_home_ajax_page') }}" data-context="SELF" data-entity="Messages" data-view="messages" data-default-search-attributes="">
         {% if messages|length == 0 %}
             <div class="thumbnail">
-                <p class="lead centrum">{% trans %}Uw inbox bevat geen berichten{% endtrans %}</p>
+                <p class="lead centrum">{% trans %}o.inbox.no_messages{% endtrans %}</p>
             </div>
             <hr>
         {% else %}
@@ -18,9 +18,9 @@
             <hr />
             <button class="btn btn-default btn-sm remove-selected-messages">
                 <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                {% trans %}Verwijder{% endtrans %}
+                {% trans %}o.inbox.remove{% endtrans %}
             </button>
-            <button class="btn btn-default btn-sm read-selected-messages">{% trans %}Markeer als ongelezen{% endtrans %}</button>
+            <button class="btn btn-default btn-sm read-selected-messages">{% trans %}o.inbox.mark_as_unread{% endtrans %}</button>
             <hr />
             <div class="content-field">
                 {% include ':ajax/messages:messages.table.html.twig' %}

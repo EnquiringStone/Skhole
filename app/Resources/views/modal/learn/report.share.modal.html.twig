@@ -2,24 +2,24 @@
 {% block modalBaseHeader %}
     <h4 class="modal-title centrum" id="{{ modalId }}">
         <b>
-            {% trans %}Deel rapport{% endtrans %}
+            {% trans %}mo.share_report.share_report{% endtrans %}
         </b>
     </h4>
 {% endblock %}
 {% block modalBaseContents %}
     <div class="modal-body">
-        <h4>{% trans %}Deel met begeleider{% endtrans %}</h4>
+        <h4>{% trans %}mo.share_report.share_with_mentor{% endtrans %}</h4>
         <form class="form-horizontal">
             <div class="form-group">
-                <label class="col-sm-2 control-label">{% trans %}Begeleidercode{% endtrans %}:</label>
+                <label class="col-sm-2 control-label">{% trans %}mo.share_report.f_label.mentor_code{% endtrans %}:</label>
                 <div class="col-sm-10">
-                    <input class="form-control input-mentor-code" placeholder="{% trans %}De begeleidercode van jou begeleider{% endtrans %}">
+                    <input class="form-control input-mentor-code" placeholder="{% trans %}mo.share_report.f_placeholder.mentor_code{% endtrans %}">
                 </div>
             </div>
             <br>
             <div class="centrum">
                 <button class="btn btn-default btn-lg send-mentor-request" type="button" data-report-id="{{ report.id }}">
-                    <b>{% trans %}Versturen{% endtrans %}</b>
+                    <b>{% trans %}o.frequently_used.send{% endtrans %}</b>
                 </button>
             </div>
         </form>
@@ -28,16 +28,17 @@
             <p>
                 <b>
                     <span class="glyphicon glyphicon-info-sign text-info" aria-hidden="true"></span>
-                    {% trans %}Ter informatie{% endtrans %}
+                    {% trans %}o.ter_information{% endtrans %}
                 </b>
                 <br>
-                {% trans %}Als je de begeleidercode invult geef je jou voortgang, in de vorm van de antwoorden die je geeft, door aan de docent die aan de begeleiderscode is gekoppeld{% endtrans %}.
+                {% trans %}mo.share_report.t_long.info{% endtrans %}
             </p>
+            <img src="{{ asset('images/nl/nl_example_shared_report_with.png') }}" class="img-thumbnail">
         </div>
     </div>
 {% endblock %}
 
 {% block closeButtonText %}
-    {% trans %}Sluiten{% endtrans %}
+    {% trans %}o.frequently_used.close{% endtrans %}
 {% endblock %}
 {% set modalBaseType = 'close' %}

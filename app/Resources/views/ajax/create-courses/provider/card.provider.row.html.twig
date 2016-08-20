@@ -5,11 +5,11 @@
                 <div class="btn-group-vertical pull-right">
                     <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addProviderModal{{ index }}">
                         <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                        {% trans %}Bewerk{% endtrans %}
+                        {% trans %}t.create_course.edit{% endtrans %}
                     </button>
                     <button type="button" class="btn btn-default" data-toggle="modal" data-target="#removeProviderModal{{ index }}">
                         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                        {% trans %}Aanbieder{% endtrans %}
+                        {% trans %}t.create_course.provider{% endtrans %}
                     </button>
                 </div>
                 <h4 class="provider-name">{{ provider.name|default('-') }}</h4>

@@ -8,11 +8,11 @@
                 <div class="btn-group-vertical pull-right">
                     <button type="button" class="btn btn-default" data-toggle="modal" data-target="#{{ modalId }}">
                         <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                        {% trans %}Bewerk{% endtrans %}
+                        {% trans %}t.create_course.edit{% endtrans %}
                     </button>
                     <button type="button" class="btn btn-default" data-toggle="modal" data-target="#removeTeacherModal{{ index }}">
                         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                        {% trans %}Docent{% endtrans %}
+                        {% trans %}t.create_course.instructor{% endtrans %}
                     </button>
                 </div>
                 <h4 class="teacher-name">{{ teacher.name|default('-') }}</h4>

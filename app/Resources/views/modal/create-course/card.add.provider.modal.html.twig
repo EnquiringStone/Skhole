@@ -2,7 +2,7 @@
 {% block modalBaseHeader %}
     <h4 class="modal-title centrum" id="{{ modalId }}">
         <b>
-            {% trans %}Aanbieder toevoegen{% endtrans %}
+             {% trans %}mo.add_provider{% endtrans %}
         </b>
     </h4>
 {% endblock %}
@@ -13,12 +13,12 @@
                 <div class="media-body">
                     <form class="add-provider-form">
                         <div class="form-group">
-                            <label class="control-label">{% trans %}Aanbieder{% endtrans %}</label>
-                            <input required="required" type="text" class="form-control data-value" data-value-name="name" placeholder="{% trans %}Naam van de aanbieder{% endtrans %}" {% if provider is defined and provider.name is not null %}value="{{ provider.name }}"{% endif %}>
+                            <label class="control-label">{% trans %}o.frequently_used.provider{% endtrans %}</label>
+                            <input required="required" type="text" class="form-control data-value" data-value-name="name" placeholder="{% trans %}mo.provider.f_placeholder.name_provider{% endtrans %}" {% if provider is defined and provider.name is not null %}value="{{ provider.name }}"{% endif %}>
                         </div>
                         <div class="form-group">
-                            <label class="control-label">{% trans %}Omschrijving{% endtrans %}</label>
-                            <textarea class="form-control data-value" data-value-name="description" placeholder="{% trans %}Schrijf iets korts over deze aanbieder{% endtrans %}" rows="5">{% if provider is defined and provider.description is not null %}{{ provider.description }}{% endif %}</textarea>
+                            <label class="control-label">{% trans %}mo.description{% endtrans %}</label>
+                            <textarea class="form-control data-value" data-value-name="description" placeholder="{% trans %}mo.provider.f_placeholder.provider_description{% endtrans %}" rows="5">{% if provider is defined and provider.description is not null %}{{ provider.description }}{% endif %}</textarea>
                         </div>
                     </form>
                 </div>
@@ -31,8 +31,8 @@
     <div class="modal-footer">
         <button class="btn btn-default save-provider" type="button">
             <span class="glyphicon glyphicon-floppy-disk text-primary" aria-hidden="true"></span>
-            {% trans %}Bewaar & sluiten{% endtrans %}
+            {% trans %}o.frequently_used.save_and_close{% endtrans %}
         </button>
-        <button class="btn btn-default" data-dismiss="modal" type="button">{% trans %}Annuleren{% endtrans %}</button>
+        <button class="btn btn-default" data-dismiss="modal" type="button">{% trans %}o.frequently_used.cancel{% endtrans %}</button>
     </div>
 {% endblock %}

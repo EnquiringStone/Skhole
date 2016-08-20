@@ -9,9 +9,9 @@
             {% else %}
                 <span class="glyphicon {% if isCorrect %}glyphicon-ok text-success{% else %} glyphicon-remove text-danger{% endif %}"
                       data-placement="bottom" data-toggle="tooltip" aria-hidden="true"
-                      data-original-title="{% if isCorrect %}{% trans %}Goed beantwoord{% endtrans %}{% else %}{% trans %}Fout beantwoord{% endtrans %}{% endif %}"></span>
+                      data-original-title="{% if isCorrect %}{% trans %}o.frequently_used.correct_anwser{% endtrans %}{% else %}{% trans %}o.frequently_used.incorrect_anwser{% endtrans %}{% endif %}"></span>
             {% endif %}
-            <b><samp>{% trans %}Vraag{% endtrans %} {% if question.question.questionOrder <= 9 %}0{% endif %}{{ question.question.questionOrder }}:</samp></b>
+            <b><samp>{% trans %}o.frequently_used.question{% endtrans %} {% if question.question.questionOrder <= 9 %}0{% endif %}{{ question.question.questionOrder }}:</samp></b>
             {{ question.question.question }}
         </p>
         <p>
@@ -21,14 +21,14 @@
                 {% if answer.isCorrect %}{% set correctQuestions = correctQuestions ~ answer.answerOrder|orderToAlphabet(true) ~ ', ' %}{% endif %}
             {% endfor %}
             <button class="btn btn-default btn-xs unclickable" type="button">
-                <b>{% trans %}Gegeven antwoord(en){% endtrans %}:</b>
+                <b>{% trans %}o.given_anwser{% endtrans %}:</b>
                 {% for answer in question.multipleChoiceAnswers %}
                     {% set specifiedQuestions = specifiedQuestions ~ answer.answer.answerOrder|orderToAlphabet(true) ~ ', ' %}
                 {% endfor %}
                 {{ specifiedQuestions|trim(', ') }}
             </button>
             <button class="btn btn-default btn-xs unclickable" type="button">
-                <b>{% trans %}Correcte antwoord(en){% endtrans %}:</b>
+                <b>{% trans %}o.correct_anwser{% endtrans %}:</b>
                 {{ correctQuestions|trim(', ') }}
             </button>
         </p>

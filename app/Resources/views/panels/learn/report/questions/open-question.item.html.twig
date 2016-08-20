@@ -1,17 +1,17 @@
 {% block openQuestionItem %}
     <div class="thumbnail">
         <p>
-            <b><samp>{% trans %}Vraag{% endtrans %}</samp> {% if question.question.questionOrder <= 9 %}0{% endif %}{{ question.question.questionOrder }}:</b>
+            <b><samp>{% trans %}o.frequently_used.question{% endtrans %}</samp> {% if question.question.questionOrder <= 9 %}0{% endif %}{{ question.question.questionOrder }}:</b>
             {{ question.question.question }}
         </p>
         <hr />
         <p>
-            <u>{% trans %}Gegeven antwoord{% endtrans %}:</u>
+            <u>{% trans %}o.given_anwser{% endtrans %}:</u>
             {{ question.answer }}
         </p>
         <br>
         <p>
-            <u>{% trans %}Antwoordindicatie{% endtrans %}:</u>
+            <u>{% trans %}o.anwser_indication{% endtrans %}:</u>
             {{ question.question.answerIndication }}
         </p>
     </div>

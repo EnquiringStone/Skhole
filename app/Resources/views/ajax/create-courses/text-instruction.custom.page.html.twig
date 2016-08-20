@@ -3,22 +3,22 @@
         <h4 class="centrum">
             <b>
                 <span class="glyphicon glyphicon-education" aria-hidden="true"></span>
-                {% trans %}Uitleg toevoegen{% endtrans %}
+                 {% trans %}t.create_course.t.add_explanation{% endtrans %}
             </b>
         </h4>
         <hr />
         <form class="form-horizontal" autocomplete="off">
             <div class="form-group">
-                <label class="col-sm-2 control-label">{% trans %}Pagina titel{% endtrans %}</label>
+                <label class="col-sm-2 control-label">{% trans %}t.create_course.f_label.page_title{% endtrans %}</label>
                 <div class="col-sm-10">
-                    <input class="form-control data-value" data-value-name="title" placeholder="{% trans %}De titel van deze pagina{% endtrans %}"
+                    <input class="form-control data-value" data-value-name="title" placeholder="{% trans %}t.create_course.f_placeholder.page_title{% endtrans %}"
                            value="{% if instruction is defined %}{{ instruction.title }}{% endif %}">
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-2 control-label">{% trans %}Uitleg{% endtrans %}</label>
+                <label class="col-sm-2 control-label">{% trans %}t.create_course.f_label.explantion{% endtrans %}</label>
                 <div class="col-sm-10">
-                    <textarea class="form-control data-value" data-value-name="contents" placeholder="{% trans %}Geef hier de uitleg over het onderwerp{% endtrans %}" rows="12">{% if instruction is defined %}{{ instruction.contents }}{% endif %}</textarea>
+                    <textarea class="form-control data-value" data-value-name="contents" placeholder="{% trans %}t.create_course.f_placeholder.explantion{% endtrans %}" rows="12">{% if instruction is defined %}{{ instruction.contents }}{% endif %}</textarea>
                 </div>
             </div>
             <input class="data-value" data-value-name="type" value="text" type="hidden">

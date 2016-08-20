@@ -1,7 +1,7 @@
 {% extends 'panels/panel.base.html.twig' %}
 {% block panelBaseTitle %}
     <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
-    <b>{% trans %}Planning{% endtrans %}</b>
+    <b>{% trans %}o.frequently_used.planning{% endtrans %}</b>
 {% endblock %}
 {% block panelBaseContents %}
     <div class="panel-body">
@@ -10,7 +10,7 @@
         {% else %}
             <hr />
             <div class="centrum">
-                <p class="lead">{% trans %}Deze cursus heeft geen bijbehorende planning{% endtrans %}</p>
+                <p class="lead">{% trans %}t.planning.course_has_none{% endtrans %}</p>
             </div>
             <hr />
         {% endif %}

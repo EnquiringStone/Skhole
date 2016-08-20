@@ -1,37 +1,24 @@
 {% extends 'panels/panel.base.html.twig' %}
 {% block panelBaseTitle %}
-    {% trans %}Over ons{% endtrans %}
+    {% trans %}m.about.head_title.about_us{% endtrans %}
 {% endblock %}
 {% block panelBaseContents %}
     <div class="panel-body">
-        <h4><b>{% trans %}Algemeen{% endtrans %}</b></h4>
-        <p>{% trans %}StudyLivre is begonnen in 2016. StudyLivre is begonnen in 2016. StudyLivre beidt je de mogelijkheid om cursussen te bekijken, maken en delen. Na afronding van een cursus kun je een cursusrapport (met daarin je resultaten) inzien. Als begeleider of docent is het mogelijk om cursusrapporten in te zien van cursisten die het rapport met jouw hebben gedeeld.{% endtrans %}</p>
+        <h4><b>{% trans %}m.about.t_header.general{% endtrans %}</b></h4>
+        <p>{% trans %}m.about.t_long.general_information{% endtrans %}</p>
         <div class="logo-background">
             <h4>
                 <img src="{{ asset('images/logo-skhole.png') }}" class="img-rounded" height="28px">
                 <b>
-                    <span class="text-muted">{% trans %}Study{% endtrans %}</span>
-                    <span class="text-primary">{% trans %}Livre{% endtrans %}</span>
+                    <span class="text-muted">{% trans %}o.logo.t.study{% endtrans %}</span>
+                    <span class="text-primary">{% trans %}o.logo.t.livre{% endtrans %}</span>
                 </b>
-                <small>{% trans %}empowering education{% endtrans %}</small>
+                <small>{% trans %}o.logo.t.empowering_education{% endtrans %}</small>
             </h4>
         </div>
-        <br>
-        <p>
-            {% trans %}Volg ons{% endtrans %}
-            <a href="#{#TODO#}">
-                <img src="{{ asset('images/login-fb.png') }}" class="img-rounded" title="{% trans %}Volg ons op facebook{% endtrans %}">
-            </a>
-            <a href="#{#TODO#}">
-                <img src="{{ asset('images/login-t.png') }}" class="img-rounded" title="{% trans %}Volg ons op twitter{% endtrans %}">
-            </a>
-            <a href="#{#TODO#}">
-                <img src="{{ asset('images/login-g.png') }}" class="img-rounded" title="{% trans %}Volg ons op google{% endtrans %}">
-            </a>
-        </p>
         <hr />
         <h4>
-            <b>{% trans %}Adres{% endtrans %}</b>
+            <b>{% trans %}m.about.t_header.adress{% endtrans %}</b>
         </h4>
         <div class="row">
             <div class="col-md-6">
@@ -40,9 +27,9 @@
             </div>
             <div class="col-md-6">
                 {#TODO company#}
-                <h2>{% trans %}Bedrijfsnaam{% endtrans %}</h2>
+                <h2>{% trans %}m.about.t_header.company_name{% endtrans %}</h2>
                 <p>
-                    <b>{% trans %}De bedrijfsnaam{% endtrans %}</b>
+                    <b>{% trans %}m.about.t.email{% endtrans %}</b>: {% trans %}m.about.t.emailadres{% endtrans %}
                 </p>
             </div>
         </div>

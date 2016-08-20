@@ -4,22 +4,22 @@
         <hr />
         <h4 class="centrum">
             <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
-            <b>{% trans %}Cursuskaart{% endtrans %}</b>
-            <span>2.1 | {% trans %}Introductie{% endtrans %}</span>
+            <b>{% trans %}o.frequently_used.course_card{% endtrans %}</b>
+            <span>2.1 | {% trans %}t.create_course.introduction{% endtrans %}</span>
         </h4>
         <hr />
         <div class="row">
             <div class="col-md-6">
                 <form>
                     <div class="form-group">
-                        <label>{% trans %}Youtube url{% endtrans %}</label>
+                        <label>{% trans %}t.create_course.f_label.youtube_url{% endtrans %}</label>
                         <div class="input-group">
                             <input type="text" class="form-control card-introduction-change-youtube-text data-value" data-value-name="youtubeUrl"
-                                   placeholder="{% trans %}De youtube url. www.youtube.com/watch?v=ftLIR5AjqMs of https://youtu.be/ftLIR5AjqMs{% endtrans %}" value="{% if courseCard.youtubeUrl is not null %}{{ courseCard.youtubeUrl }}{% endif %}">
+                                   placeholder="{% trans %}t.create_course.f_placeholder.youtube_url{% endtrans %}" value="{% if courseCard.youtubeUrl is not null %}{{ courseCard.youtubeUrl }}{% endif %}">
                             <span class="input-group-btn">
                                 <button class="btn btn-default card-introduction-youtube-preview" type="button">
                                     <span class="glyphicon glyphicon-plus text-success" aria-hidden="true"></span>
-                                    {% trans %}Video{% endtrans %}
+                                    {% trans %}t.create_course.b.video{% endtrans %}
                                 </button>
                             </span>
                             <span class="input-group-btn">
@@ -30,7 +30,7 @@
                         </div>
                     </div>
                 </form>
-                <div class="card-introduction-youtube" data-error-text="{% trans %}Het ingevulde youtube url wordt niet herkend. De url moet er als volgt uitzien: https://www.youtube.com/watch?v=ftLIR5AjqMs, https://youtu.be/ftLIR5AjqMs{% endtrans %}">
+                <div class="card-introduction-youtube" data-error-text="{% trans %}t.create_course.youtube_url_not_recognized{% endtrans %}">
                     {% if courseCard.youtubeEmbedUrl is not null %}
                         <div class="embed-responsive embed-responsive-4by3">
                             <iframe class="embed-responsive-item" src="{{ courseCard.youtubeEmbedUrl }}" allowfullscreen></iframe>
@@ -42,12 +42,12 @@
             <div class="col-md-6">
                 <form>
                     <div class="form-group">
-                        <label>{% trans %}Titel{% endtrans %}</label>
-                        <input data-value-name="name" type="text" class="form-control data-value" placeholder="{% trans %}De titel van de introductie{% endtrans %}" value="{% if courseCard.name is not null %}{{ courseCard.name }}{% endif %}">
+                        <label>{% trans %}t.create_course.f_label.title{% endtrans %}</label>
+                        <input data-value-name="name" type="text" class="form-control data-value" placeholder="{% trans %}t.create_course.f_placeholder.title{% endtrans %}" value="{% if courseCard.name is not null %}{{ courseCard.name }}{% endif %}">
                     </div>
                     <div class="form-group">
-                        <label>{% trans %}Tekstuele inhoud{% endtrans %}</label>
-                        <textarea class="form-control data-value" data-value-name="description" rows="8" placeholder="{% trans %}Typ hier de introductie tekst{% endtrans %}">{% if courseCard.description is not null %}{{ courseCard.description }}{% endif %}</textarea>
+                        <label>{% trans %}t.create_course.f_label.textual_content{% endtrans %}</label>
+                        <textarea class="form-control data-value" data-value-name="description" rows="8" placeholder="{% trans %}t.create_course.f_placeholder.textual_content{% endtrans %}">{% if courseCard.description is not null %}{{ courseCard.description }}{% endif %}</textarea>
                     </div>
                 </form>
             </div>

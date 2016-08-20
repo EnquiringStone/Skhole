@@ -1,14 +1,14 @@
 {% extends 'panels/panel.base.html.twig' %}
 {% block panelBaseTitle %}
-    {% trans %}Aan de slag{% endtrans %}
+    {% trans %}o.nav.getting_started{% endtrans %}
 {% endblock %}
 {% block panelBaseContents %}
     <div class="panel-body">
         <div class="row">
             <div class="col-md-6">
-                <h4><b>{% trans %}Introductie{% endtrans %}</b></h4>
-                <p>{% trans %}StudyLivre beidt je de mogelijkheid om cursussen te bekijken, maken en delen. Na afronding van een cursus kun je een cursusrapport (met daarin je resultaten) inzien. Als begeleider of docent is het mogelijk om cursusrapporten in te zien van cursisten die het rapport met jouw hebben gedeeld.{% endtrans %}</p>
-                <p>{% trans %}Het Aan de slag menu beidt een overzicht over wat je allemaal kunt op het StudyLivre platform. Selecteer een onderwerp waarover u meer te weten wilt komen.{% endtrans %}</p>
+                <h4><b>{% trans %}o.frequently_used.introduction{% endtrans %}</b></h4>
+                <p>{% trans %} h.getting_started.intro_part_01{% endtrans %}.</p>
+                <p>{% trans %}h.getting_started.intro_part_02{% endtrans %}.</p>
                 <div class="logo-background">
                     <h4>
                         <img src="{{ asset('images/logo-skhole.png') }}" class="img-rounded" height="28px">
@@ -26,7 +26,7 @@
                     <div class="centrum">
                         <button type="button" class="btn btn-lg btn-info" data-toggle="modal" data-target="#loginModal">
                             <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                            {% trans %}Account aanmaken{% endtrans %}
+                            {% trans %}o.create_account{% endtrans %}
                             <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                         </button>
                     </div>

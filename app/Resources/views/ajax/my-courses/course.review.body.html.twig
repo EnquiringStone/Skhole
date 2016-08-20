@@ -10,7 +10,7 @@
                     <p>{{ review.remarks }}</p>
                     <div class="btn-group-xs">
                         <button type="button" class="btn btn-default unclickable">
-                            <b>{% trans %}Cursusbeoordeling{% endtrans %}:</b>
+                            <b>{% trans %}o.course_rating.t.course_rating{% endtrans %}:</b>
                             {% if review.contentRating is not null %}
                                 {% for z in 0..review.contentRating %}
                                     <img src="{{ asset('images/star_rating.png') }}" class="img-rounded" />
@@ -20,15 +20,15 @@
                             {% endif %}
                         </button>
                         <button type="button" class="btn btn-default unclickable">
-                            <b>{% trans %}Gepost op{% endtrans %}:</b>
+                            <b>{% trans %}o.course_rating.t.when_posted{% endtrans %}:</b>
                             {{ review.insertDateTime|date('d-m-Y') }}
                         </button>
                     </div>
                 {% else %}
-                    <h4>{% trans %}Anoniem{% endtrans %}</h4>
+                    <h4>{% trans %}o.course_rating.anonymous{% endtrans %}</h4>
                     <div class="btn-group-xs">
                         <button type="button" class="btn btn-default unclickable">
-                            <b>{% trans %}Cursusbeoordeling{% endtrans %}:</b>
+                            <b>{% trans %}l.last_page.grade_course{% endtrans %}:</b>
                             {% if review.contentRating is not null %}
                                 {% for z in 1..review.contentRating %}
                                     <img src="{{ asset('images/star_rating.png') }}" class="img-rounded" />
@@ -38,7 +38,7 @@
                             {% endif %}
                         </button>
                         <button type="button" class="btn btn-default unclickable">
-                            <b>{% trans %}Gepost op{% endtrans %}:</b>
+                            <b>{% trans %}o.course_rating.t.when_posted{% endtrans %}:</b>
                             {{ review.insertDateTime|date('d-m-Y') }}
                         </button>
                     </div>

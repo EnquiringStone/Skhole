@@ -1,8 +1,8 @@
 {% block messagesTable %}
     <table class="table table-hover messages">
         <tr>
-            <th>{% trans %}Bewerk{% endtrans %}</th>
-            <th>{% trans %}Bericht{% endtrans %}</th>
+            <th>{% trans %}t.create_course.edit{% endtrans %}</th>
+            <th>{% trans %}t.create_course.message{% endtrans %}</th>
         </tr>
         {% for message in messages %}
             <tr data-message-id="{{ message.id }}">

@@ -3,7 +3,7 @@
         <h4 class="centrum">
             <b>
                 <span class="glyphicon glyphicon-education" aria-hidden="true"></span>
-                {% trans %}Uitleg toevoegen{% endtrans %}
+                {% trans %}t.create_course.add_explanation{% endtrans %}
             </b>
         </h4>
         <br />
@@ -11,25 +11,25 @@
             <div class="panel-body">
                 <div class="col-sm-12">
                     <div class="form-group">
-                        <label class="control-label">{% trans %}Pagina titel{% endtrans %}</label>
-                        <input class="form-control data-value" data-value-name="title" placeholder="{% trans %}De titel van deze pagina{% endtrans %}"
+                        <label class="control-label">{% trans %}t.create_course.f_label.page_title{% endtrans %}</label>
+                        <input class="form-control data-value" data-value-name="title" placeholder="{% trans %}t.create_course.f_placeholder.page_title{% endtrans %}"
                                value="{% if instruction is defined %}{{ instruction.title }}{% endif %}">
                     </div>
                 </div>
             <br />
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label>{% trans %}Youtube url{% endtrans %}</label>
+                    <label>{% trans %}t.create_course.f_label.youtube_urll{% endtrans %}</label>
                     <input type="text" class="form-control card-introduction-change-youtube-text data-value" data-value-name="youtubeUrl"
-                           placeholder="{% trans %}De youtube url. www.youtube.com/watch?v=ftLIR5AjqMs of https://youtu.be/ftLIR5AjqMs{% endtrans %}"
+                           placeholder="{% trans %}t.create_course.f_placeholder.youtube_url{% endtrans %}"
                            value="{% if instruction is defined %}{{ instruction.youtubeUrl }}{% endif %}">
                     <span class="input-group-btn">
                         <button class="btn btn-default card-introduction-youtube-preview" type="button">
                             <span class="glyphicon glyphicon-plus text-success" aria-hidden="true"></span>
-                            {% trans %}Video{% endtrans %}
+                            {% trans %}t.create_course.b.video{% endtrans %}
                         </button>
                     </span>
-                    <div class="card-introduction-youtube" data-error-text="{% trans %}Het ingevulde youtube url wordt niet herkend. De url moet er als volgt uitzien: https://www.youtube.com/watch?v=ftLIR5AjqMs, https://youtu.be/ftLIR5AjqMs{% endtrans %}">
+                    <div class="card-introduction-youtube" data-error-text="{% trans %}t.create_course.youtube_url_not_recognized{% endtrans %}">
                         {% if instruction is defined %}
                             <div class="embed-responsive embed-responsive-4by3">
                                 <iframe class="embed-responsive-item" src="{{ instruction.youtubeEmbedUrl }}" allowfullscreen></iframe>
@@ -41,9 +41,9 @@
             <div class="col-sm-1"></div>
             <div class="col-sm-5">
                 <div class="form-group">
-                    <label class="control-label">{% trans %}Uitleg{% endtrans %}</label>
+                    <label class="control-label">{% trans %}t.create_course.f_label.explantion{% endtrans %}</label>
                     <textarea class="form-control data-value" data-value-name="contents" rows="8"
-                              placeholder="{% trans %}Geef hier de uitleg over het onderwerp{% endtrans %}">{% if instruction is defined %}{{ instruction.contents }}{% endif %}</textarea>
+                              placeholder="{% trans %}t.create_course.f_placeholder.explantion{% endtrans %}">{% if instruction is defined %}{{ instruction.contents }}{% endif %}</textarea>
                 </div>
             </div>
             </div>

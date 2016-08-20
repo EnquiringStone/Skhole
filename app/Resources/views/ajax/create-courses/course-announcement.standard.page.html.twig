@@ -5,7 +5,7 @@
         <h4 class="centrum">
             <b>4. |
                 <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
-                {% trans %}Mededelingen{% endtrans %}
+                {% trans %}t.create_course.t.annoucements{% endtrans %}
             </b>
         </h4>
         <hr />
@@ -19,7 +19,7 @@
                             {% include ':modal/create-course:course.remove.announcement.modal.html.twig' with{'announcement': announcement, 'modalId': 'removeCourseAnnouncementModal'~loop.index} %}
                         {% endfor %}
                     {% else %}
-                        <p class="no-announcements">{% trans %}Er zijn nog geen mededelingen voor deze cursus{% endtrans %}</p>
+                        <p class="no-announcements">{% trans %}t.create_course.t.no_annoucements_found{% endtrans %}</p>
                     {% endif %}
                 </div>
             </div>
@@ -27,7 +27,7 @@
             <div class="centrum">
                 <button class="btn btn-default btn-lg" data-target="#addCourseAnnouncementModal" data-toggle="modal" type="button">
                     <span class="glyphicon glyphicon-plus text-success" aria-hidden="true"></span>
-                    <b>{% trans %}Nieuwe Mededeling{% endtrans %}</b>
+                    <b>{% trans %}t.create_course.new_annoucement{% endtrans %}</b>
                 </button>
             </div>
         </div>

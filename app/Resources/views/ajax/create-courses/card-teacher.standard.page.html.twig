@@ -4,8 +4,8 @@
         <hr />
         <h4 class="centrum">
             <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
-            <b>{% trans %}Cursuskaart{% endtrans %}</b>
-            <samp>2.3 | {% trans %}Docenten{% endtrans %}</samp>
+            <b>{% trans %}o.frequently_used.course_card{% endtrans %}</b>
+            <samp>2.3 | {% trans %}t.create_course.instructors{% endtrans %}</samp>
         </h4>
         <hr />
         <div class="panel-body-pages">
@@ -18,13 +18,13 @@
                         {% include ':modal/create-course:card.remove.teacher.modal.html.twig' with {'teacher': teacher, 'modalId': 'removeTeacherModal'~loop.index} %}
                     {% endfor %}
                 {% else %}
-                    <p class="centrum no-teacher-found-text">{% trans %}Geen docenten gevonden voor deze cursus{% endtrans %}</p>
+                    <p class="centrum no-teacher-found-text">{% trans %}t.create_course.t.no_instructors_found{% endtrans %}</p>
                 {% endif %}
             </div>
             <div class="centrum">
                 <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#addTeacherModal">
                     <span class="glyphicon glyphicon-plus text-success" aria-hidden="true"></span>
-                    <samp><b>{% trans %}Nieuwe docent{% endtrans %}</b></samp>
+                    <samp><b>{% trans %}t.create_course.b.add_instructor{% endtrans %}</b></samp>
                 </button>
             </div>
         </div>

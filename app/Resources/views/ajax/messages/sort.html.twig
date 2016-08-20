@@ -2,12 +2,12 @@
     {% if not attribute is defined %}{% set attribute = 'sendDateTime' %}{% endif %}
     {% if not value is defined %}{% set value = 'DESC' %}{% endif %}
     <div class="pull-right">
-        <label>{% trans %}Sorteer op{% endtrans %}:</label>
+        <label>{% trans %}o.frequently_used.sorting{% endtrans %}:</label>
         <select class="sortable" name="filterOptions" size="1" aria-controls="example1">
-            <option {% if attribute == 'sendDateTime' and value == 'DESC' %}selected="selected"{% endif %} data-attribute="sendDateTime" data-sorted="DESC">{% trans %}Datum (nieuw){% endtrans %}</option>
-            <option {% if attribute == 'sendDateTime' and value == 'ASC' %}selected="selected"{% endif %} data-attribute="sendDateTime" data-sorted="ASC">{% trans %}Datum (oud){% endtrans %}</option>
-            <option {% if attribute == 'isRead' and value == 'ASC' %}selected="selected"{% endif %} data-attribute="isRead" data-sorted="ASC">{% trans %}Ongelezen{% endtrans %}</option>
-            <option {% if attribute == 'isRead' and value == 'DESC' %}selected="selected"{% endif %} data-attribute="isRead" data-sorted="DESC">{% trans %}Gelezen{% endtrans %}</option>
+            <option {% if attribute == 'sendDateTime' and value == 'DESC' %}selected="selected"{% endif %} data-attribute="sendDateTime" data-sorted="DESC">{% trans %}o.frequently_used.sort_option.date_new{% endtrans %}</option>
+            <option {% if attribute == 'sendDateTime' and value == 'ASC' %}selected="selected"{% endif %} data-attribute="sendDateTime" data-sorted="ASC">{% trans %}o.frequently_used.sort_option.date_old{% endtrans %}</option>
+            <option {% if attribute == 'isRead' and value == 'ASC' %}selected="selected"{% endif %} data-attribute="isRead" data-sorted="ASC">{% trans %}o.frequently_used.sort_option.unread{% endtrans %}</option>
+            <option {% if attribute == 'isRead' and value == 'DESC' %}selected="selected"{% endif %} data-attribute="isRead" data-sorted="DESC">{% trans %}o.frequently_used.sort_option.read{% endtrans %}</option>
         </select>
     </div>
 {% endblock %}

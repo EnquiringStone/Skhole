@@ -3,17 +3,17 @@
         <div class="container-fluid">
             <div id="logo">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="{% trans %}Snelmenu{% endtrans %}">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="{% trans %}h.quickmenu{% endtrans %}">
                         <img src="{{ asset('images/logo-skhole.png') }}" class="img-rounded" />
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="{{ path('app_search_page') }}">{% trans %}Zoeken{% endtrans %}</a></li>
-                        <li><a href="{{ path('app_other_guidelines') }}">{% trans %}Richtlijnen{% endtrans %}</a></li>
+                        <li><a href="{{ path('app_search_page') }}">{% trans %}o.frequently_used.search{% endtrans %}</a></li>
+                        <li><a href="{{ path('app_other_guidelines') }}">{% trans %}o.nav.guidlines{% endtrans %}</a></li>
                         <li>
                             <a class="clickable" data-toggle="modal" data-target="#languagePickerModal">
                                 <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
-                                {% trans %}Taal{% endtrans %}
+                                {% trans %}o.nav.language{% endtrans %}
                             </a>
                         </li>
                     </ul>
@@ -22,23 +22,23 @@
             <div class="navbar-header">
                 <div class="btn-group">
                     {% if app.user %}
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="{% trans %}Gebruikersmenu{% endtrans %}">
-                            <img id="profile-picture-header" src="{{ app.user.picture is not null ? asset(app.user.picture) : asset('images/gebruiker.png') }}" class="img-rounded profile-picture"> {% trans %}Mijn account{% endtrans %}
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="{% trans %}o.nav.my_account{% endtrans %}">
+                            <img id="profile-picture-header" src="{{ app.user.picture is not null ? asset(app.user.picture) : asset('images/gebruiker.png') }}" class="img-rounded profile-picture"> {% trans %}o.my_account{% endtrans %}
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{ path('app_home_dashboard_pages_page', {'page': 'profile'}) }}">{% trans %}Profiel{% endtrans %}</a></li>
-                            <li><a href="{{ path('app_learn_course_collection_page') }}">{% trans %}Cursusmandje{% endtrans %}</a></li>
-                            <li><a href="{{ path('app_teach_my_courses_page') }}">{% trans %}Mijn cursussen{% endtrans %}</a></li>
-                            <li><a href="{{ path('app_teach_progression_course_members') }}">{% trans %}Voortgang cursisten{% endtrans %}</a></li>
-                            <li><a href="{{ path('app_home_getting_started_page') }}">{% trans %}Aan de slag{% endtrans %}</a></li>
+                            <li><a href="{{ path('app_home_dashboard_pages_page', {'page': 'profile'}) }}">{% trans %}o.nav.profile{% endtrans %}</a></li>
+                            <li><a href="{{ path('app_learn_course_collection_page') }}">{% trans %}o.nav.course_basket{% endtrans %}</a></li>
+                            <li><a href="{{ path('app_teach_my_courses_page') }}">{% trans %}o.nav.my_courses{% endtrans %}</a></li>
+                            <li><a href="{{ path('app_teach_progression_course_members') }}">{% trans %}o.nav.progress_students{% endtrans %}</a></li>
+                            <li><a href="{{ path('app_home_getting_started_page') }}">{% trans %}o.nav.getting_started{% endtrans %}</a></li>
                             <li class="divider"></li>
-                            <li><a href="{{ url('logout') }}">{% trans %}Uitloggen{% endtrans %}</a></li>
+                            <li><a href="{{ url('logout') }}">{% trans %}o.nav.log_out{% endtrans %}</a></li>
                         </ul>
                     {% else %}
                         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#loginModal">
                             <img src="{{ asset('images/gebruiker.png') }}" class="img-rounded profile-picture" />
-                            {% trans %}Inloggen{% endtrans %}
+                            {% trans %}o.nav.login{% endtrans %}
                         </button>
                     {% endif %}
                 </div>

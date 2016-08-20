@@ -8,40 +8,40 @@
             <div class="container">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h1><b>{% trans %}Rapportage{% endtrans %} {% if user is not null %}{% trans %}gezonden door{% endtrans %}: {{ user.realName }}{% endif %}</b></h1>
+                        <h1><b>{% trans %}o.report_process.reporting{% endtrans %} {% if user is not null %}{% trans %}o.report_process.send_by{% endtrans %}: {{ user.realName }}{% endif %}</b></h1>
                     </div>
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-6">
-                                <h2>{% trans %}Rapportage details{% endtrans %}</h2>
+                                <h2>{% trans %}o.report_process.report_detailss{% endtrans %}</h2>
                                 <p>
-                                    <b>{% trans %}Cursusnaam{% endtrans %}:</b> {{ course.name }}
+                                    <b>{% trans %}o.frequently_used.course_name{% endtrans %}:</b> {{ course.name }}
                                     <br>
                                     {% if page is not null %}
-                                        <b>{% trans %}Pagina{% endtrans %}:</b> {{ page.title }}
+                                        <b>{% trans %}o.frequently_used.page{% endtrans %}:</b> {{ page.title }}
                                         <br>
                                     {% endif %}
-                                    <b>{% trans %}Onderdeel{% endtrans %}:</b> {{ pagePart }}
+                                    <b>{% trans %}o.report_process.part{% endtrans %}:</b> {{ pagePart }}
                                     <br>
-                                    <b>{% trans %}Rapportage onderwerp{% endtrans %}:</b> {{ subject }}
+                                    <b>{% trans %}o.report_process.subject{% endtrans %}:</b> {{ subject }}
                                 </p>
                             </div>
                             <div class="col-md-6">
-                                <h2>{% trans %}Persoonsgegevens{% endtrans %}</h2>
+                                <h2>{% trans %}personal_details{% endtrans %}</h2>
                                 <p>
                                     {% if user is not null %}
-                                        <b>{% trans %}Gebruiker ID{% endtrans %}:</b> {{ user.id }}
+                                        <b>{% trans %}o.report_process.user_id{% endtrans %}:</b> {{ user.id }}
                                         <br>
-                                        <b>{% trans %}Opgeslagen email{% endtrans %}:</b> {{ user.customEmail|default('-') }}
+                                        <b>{% trans %}o.report_process.saved_email{% endtrans %}:</b> {{ user.customEmail|default('-') }}
                                         <br>
                                     {% endif %}
-                                    <b>{% trans %}Opgegeven email{% endtrans %}:</b> {{ email }}
+                                    <b>{% trans %}o.report_process.submited_email{% endtrans %}:</b> {{ email }}
                                     <br>
-                                    <b>{% trans %}Telefoonnummer{% endtrans %}:</b> {{ phone|default('-') }}
+                                    <b>{% trans %}o.report_process.phone_number{% endtrans %}:</b> {{ phone|default('-') }}
                                 </p>
                             </div>
                         </div>
-                        <h2>{% trans %}Bericht{% endtrans %}</h2>
+                        <h2>{% trans %}o.report_process.message{% endtrans %}</h2>
                         <p>{{ message|nl2br }}</p>
                     </div>
                 </div>

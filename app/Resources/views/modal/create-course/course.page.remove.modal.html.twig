@@ -3,7 +3,7 @@
     <h4 class="modal-title centrum" id="{{ modalId }}">
         <b>
             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-            {% trans %}Pagina verwijderen{% endtrans %}
+            {% trans %}mo.remove_page{% endtrans %}
         </b>
     </h4>
 {% endblock %}
@@ -11,11 +11,11 @@
     <div class="modal-body">
         <hr />
         <p class="lead centrum">
-            {% trans %}Verwijderen kan niet ongedaan worden. Weet je het zeker?{% endtrans %}
+            {% trans %}mo.deleltion_cannot_be_undone{% endtrans %}?
         </p>
         <br />
         <p class="centrum">
-            {% trans %}Je staat op het punt om de pagina{% endtrans %} "<b>{{ page.title }}</b>" {% trans %}te verwijderen!{% endtrans %}
+            {% trans %}mo.remove_page.details_01{% endtrans %} "<b>{{ page.title }}</b>" {% trans %}mo.remove_details_02{% endtrans %}!
         </p>
     </div>
 {% endblock %}

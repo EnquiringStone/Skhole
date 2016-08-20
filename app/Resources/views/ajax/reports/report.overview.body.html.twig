@@ -1,13 +1,13 @@
 {% block reportOverviewBody %}
     <h2 class="text-primary">
-        <samp>{% trans %}Inhoudsopgave{% endtrans %}</samp>
+        <samp>{% trans %}0.frequently_used.index{% endtrans %}</samp>
     </h2>
     {% for page in pages %}
         {% if createPdfLinks is defined and createPdfLinks %}
-            <a href="#{{ page.id }}">{% trans %}Pagina{% endtrans %} {{ page.pageOrder }}: {{ page.title }}</a>
+            <a href="#{{ page.id }}">{% trans %}0.frequently_used.page{% endtrans %} {{ page.pageOrder }}: {{ page.title }}</a>
         {% else %}
             <a href="{{ path('app_learn_course_report_details_page', {'id': report.id, 'pageId': page.id}) }}">
-                {% trans %}Pagina{% endtrans %} {{ page.pageOrder }}: {{ page.title }}
+                {% trans %}0.frequently_used.page{% endtrans %} {{ page.pageOrder }}: {{ page.title }}
             </a>
         {% endif %}
         <br>

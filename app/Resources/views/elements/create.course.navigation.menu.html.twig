@@ -2,15 +2,15 @@
 {% block navigationSecondaryMenuContents %}
     <button type="button" class="btn btn-default btn-sm"  data-toggle="modal" data-target="#removeCourseModal">
         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-        {% trans %}Cursus{% endtrans %}
+        {% trans %}o.frequently_used.course{% endtrans %}
     </button>
 
     <button type="button" class="btn btn-default">
-        <samp>&#171; {% trans %}Cursus creatiemenu{% endtrans %} &#187;</samp>
+        <samp>&#171; {% trans %}t.course_creation.creation_menu{% endtrans %} &#187;</samp>
     </button>
 
     <a type="button" class="btn btn-default dropdown-toggle btn-sm check-changes" href="{{ path('app_teach_my_courses_page') }}">
         <span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span>
-        {% trans %}Cursus sluiten{% endtrans %}
+        {% trans %}t.course_creation.close_course{% endtrans %}
     </a>
 {% endblock %}

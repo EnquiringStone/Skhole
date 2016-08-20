@@ -2,17 +2,17 @@
     <div class="panel-heading">
         <ul class="nav nav-tabs">
             <li {% if active == 'standard' %}class="active"{% endif %}>
-                <a aria-expanded="true" class="check-changes clickable" href="{{ path('app_teach_edit_course_page', {'id': course.id}) }}">{% trans %}Standaard pagina's{% endtrans %}</a>
+                <a aria-expanded="true" class="check-changes clickable" href="{{ path('app_teach_edit_course_page', {'id': course.id}) }}">{% trans %}o.frequently_used.standard_pages{% endtrans %}</a>
             </li>
             <li {% if active == 'custom' %}class="active"{% endif %}>
                 <a aria-expanded="false" class="check-changes clickable" href="{{ path('app_teach_edit_course_page_page', {'id': course.id, 'pageType': 'custom', 'name': 'start'}) }}">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                    {% trans %}Voeg pagina toe{% endtrans %}
+                    {% trans %}t.create_course.add_page{% endtrans %}
                 </a>
             </li>
             <li {% if active == 'publish' %}class="active"{% endif %}>
                 <a aria-expanded="false" class="check-changes clickable" href="{{ path('app_teach_edit_course_page_page', {'id': course.id, 'pageType': 'publish', 'name': 'start'}) }}">
-                    {% trans %}Publiceer{% endtrans %}
+                    {% trans %}t.create_course.publication{% endtrans %}
                 </a>
             </li>
         </ul>

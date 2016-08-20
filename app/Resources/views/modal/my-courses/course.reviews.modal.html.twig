@@ -3,7 +3,7 @@
     <h4 class="modal-title centrum" id="{{ modalId }}">
         <b>
             <span class="glyphicon glyphicon-magnet" aria-hidden="true"></span>
-            {% trans %}Reviews{% endtrans %}
+            {% trans %}o.frequently_used.reviews{% endtrans %}
         </b>
     </h4>
 {% endblock %}
@@ -21,13 +21,13 @@
         {% else %}
             <div class="thumbnail">
                 <div class="centrum">
-                    <p>{% trans %}Deze cursus heeft nog geen reviews{% endtrans %}</p>
+                    <p>{% trans %}mo.course_has_no_reviews{% endtrans %}</p>
                 </div>
             </div>
         {% endif %}
     </div>
 {% endblock %}
 {% block closeButtonText %}
-    {% trans %}Sluiten{% endtrans %}
+    {% trans %}o.frequently_used.close{% endtrans %}
 {% endblock %}
 {% set modalBaseType = 'close' %}

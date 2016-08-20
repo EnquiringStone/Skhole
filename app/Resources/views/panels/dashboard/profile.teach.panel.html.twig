@@ -1,14 +1,14 @@
 {% extends 'panels/panel.base.html.twig' %}
 {% block panelBaseTitle %}
-    <b>{% trans %}Onderwijzersprofiel{% endtrans %}</b>
+    <b>{% trans %}h.educator_profile{% endtrans %}</b>
 {% endblock %}
 {% block panelBaseContents %}
     <div class="panel-body">
         <h4>
             <img src="{{ asset('images/denker.png') }}" class="img-rounded">
-            {% trans %}Teach gegevens{% endtrans %}
+            {% trans %}h.teach_data{% endtrans %}
         </h4>
-        <button type="button" class="btn btn-default btn-xs unclickable"><b>{% trans %}Cursussen aangemaakt{% endtrans %}:</b> {{ createdCourses }}</button>
-        <button type="button" class="btn btn-default btn-xs unclickable"><b>{% trans %}Uw begeleidercode{% endtrans %}:</b> {{ app.user.mentorCode }}</button>
+        <button type="button" class="btn btn-default btn-xs unclickable"><b>{% trans %}h.teach_data.number_of_courses_created{% endtrans %}:</b> {{ createdCourses }}</button>
+        <button type="button" class="btn btn-default btn-xs unclickable"><b class="text-primary">{% trans %}h.teach_data.mentor_code{% endtrans %}:</b> {{ app.user.mentorCode }}</button>
     </div>
 {% endblock %}

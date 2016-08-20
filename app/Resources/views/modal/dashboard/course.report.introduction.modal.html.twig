@@ -3,7 +3,7 @@
     <h4 class="modal-title centrum" id="{{ modalId }}">
         <b>
             <span class="glyphicon glyphicon-info-sign text-primary" aria-hidden="true"></span>
-            {% trans %}Cursusrapport{% endtrans %}
+            {% trans %}o.course_report.t.course_report{% endtrans %}
         </b>
     </h4>
 {% endblock %}
@@ -12,37 +12,37 @@
         <div class="btn-pref" role="group">
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-sm btn-primary" href="#tabIntroduction{{ modalId }}" data-toggle="tab">
-                    <b>{% trans %}Introductie{% endtrans %}</b>
+                    <b>{% trans %}o.frequently_used.introduction{% endtrans %}</b>
                 </button>
             </div>
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-sm" href="#tabInfo{{ modalId }}" data-toggle="tab">
-                    <b>{% trans %}Info{% endtrans %}</b>
+                    <b>{% trans %}imo.frequently_used.info{% endtrans %}</b>
                 </button>
             </div>
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-sm" href="#tabStep1{{ modalId }}" data-toggle="tab">
-                    <b>{% trans %}Stap 1{% endtrans %}</b>
+                    <b>{% trans %}imo.frequently_used.step_01{% endtrans %}</b>
                 </button>
             </div>
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-sm" href="#tabStep2{{ modalId }}" data-toggle="tab">
-                    <b>{% trans %}Stap 2{% endtrans %}</b>
+                    <b>{% trans %}imo.frequently_used.step_02{% endtrans %}</b>
                 </button>
             </div>
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-sm" href="#tabStep3{{ modalId }}" data-toggle="tab">
-                    <b>{% trans %}Stap 3{% endtrans %}</b>
+                    <b>{% trans %}imo.frequently_used.step_03{% endtrans %}</b>
                 </button>
             </div>
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-sm" href="#tabStep4{{ modalId }}" data-toggle="tab">
-                    <b>{% trans %}Stap 4{% endtrans %}</b>
+                    <b>{% trans %}imo.frequently_used.step_04{% endtrans %}</b>
                 </button>
             </div>
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-sm" href="#tabStep5{{ modalId }}" data-toggle="tab">
-                    <b>{% trans %}Stap 5{% endtrans %}</b>
+                    <b>{% trans %}imo.frequently_used.step_05{% endtrans %}</b>
                 </button>
             </div>
         </div>
@@ -54,14 +54,14 @@
                     <div class="centrum">
                         <img src="{{ asset('images/logo-schoolbook.png') }}" class="img-rounded">
                         <h1 class="text-primary">
-                            <b>{% trans %}Cursusrapport{% endtrans %}</b>
+                            <b>{% trans %}o.course_report.t.course_report{% endtrans %}</b>
                         </h1>
                         <p class="lead text-muted">
-                            <b>{% trans %}Cursist{% endtrans %}:</b>
-                            {% trans %}Krijg inzicht in je cursusresultaten{% endtrans %}
+                            <b>{% trans %}imo.course_report.student{% endtrans %}:</b>
+                            {% trans %}imo.course_report.student.sub_title{% endtrans %}
                             <br />
-                            <b>{% trans %}Begeleider{% endtrans %}</b>
-                            {% trans %}Bekijk cursusrapporten van cursisten{% endtrans %}
+                            <b>{% trans %}imo.course_report.mentor{% endtrans %}:</b>
+                            {% trans %}imo.course_report.teacher.sub_title{% endtrans %}
                         </p>
                     </div>
                 </div>
@@ -69,65 +69,87 @@
             <div class="tab-pane fade" id="tabInfo{{ modalId }}">
                 <div class="explanation-background">
                     <h4 class="text-primary">
-                        {% trans %}Inleiding cursusrapport{% endtrans %}
+                        {% trans %}imo.course_report.intro{% endtrans %}
                     </h4>
-                    <p>{% trans %}Na afronding van een cursus kan een cursist een cursusrapport - met daarin zijn of haar resultaten - inzien en delen. Voor iedere opdrachtpagina (met open- en meerkeuzevragen) van de desbetreffende cursus wordt een pagina in het rapport aangemaakt. Het rapport is online in te zien. Eveneens is het mogelijk om een PDF versie van het rapport te downloaden.{%endtrans%}
+                    <p>{% trans %}imo.course_report.t_long.intro_part_01{% endtrans %}.</p>
                     <hr />
                     <h4 class="text-primary">
-                        {% trans %}Cursusrapport delen met begeleider(s){% endtrans %}
+                        {% trans %}imo.course_report.share_with_mentor{% endtrans %}
                     </h4>
-                    <p>{% trans %}De cursist kan een cursusrapport delen met een docent of begeleider (die ook in het bezit is van een StudyLivre account). Het enige wat de cursist hiervoor hoeft te doen, is de unieke begeleidercode in te voeren van de gewenste begeleider{% endtrans %}</p>
+                    <p>{% trans %}imo.course_report.share_with_mentor.t_long_01{% endtrans %}.</p>
                     <hr />
                     <h4 class="text-primary">
-                        {% trans %}Cursusrapport opbouw{% endtrans %}
+                        {% trans %}imo.course_report.structure{% endtrans %}
                     </h4>
-                    <p>{% trans %}Het voorblad toont algemene informatie zoals: de cursusnaam, naam van de cursist en het percentage correct beantwoorde meerkeuzevragen. De pagina-indeling is chronologisch opgebouwd en is gebaseerd op de titel die bovenaan de desbetreffende cursuspagina staat. In de rest van het rapport kun je de vragen inzien. Bij iedere meerkeuze vraag zie je het antwoord dat de cursist gaf en het juiste antwoord (volgens de cursusmaker). Bij iedere openvraag zie je het antwoord dat de cursist gaf en een antwoordindicatie. Onder iedere openvraag staan vijf lege sterren. Deze sterren kunnen gebruikt worden om het antwoord dat de cursist heeft gegeven te beoordelen{% endtrans %}</p>
+                    <p>{% trans %}imo.course_report.structure.t_long_01{% endtrans %}.</p>
                 </div>
             </div>
             <div class="tab-pane fade" id="tabStep1{{ modalId }}">
                 <div class="explanation-background">
                     <h4 class="text-primary">
-                        <b>{% trans %}Stap 1{% endtrans %}</b>
-                        {% trans %}subtitel{% endtrans %}
+                        <b>{% trans %}imo.frequently_used.step_01{% endtrans %}</b>
+                        {% trans %}imo.course_report.step_01.search_course{% endtrans %}
                     </h4>
+                     <p>{% trans %}imo.course_report.step_01.search_course.t_long_01{% endtrans %}.</p>
                 </div>
             </div>
             <div class="tab-pane fade" id="tabStep2{{ modalId }}">
                 <div class="explanation-background">
                     <h4 class="text-primary">
-                        <b>{% trans %}Stap 2{% endtrans %}</b>
-                        {% trans %}subtitel{% endtrans %}
+                        <b>{% trans %}imo.frequently_used.step_02{% endtrans %}</b>
+                        {% trans %}imo.course_report.step_02.mentor_provides_mentor_code{% endtrans %}
                     </h4>
+                    <p>{% trans %}imo.course_report.step_02.mentor_provides_mentor_code.t_long_01{% endtrans %}:</p>
+                    <ul>
+                        <li>
+                            {% trans %}
+                                imo.course_report.step_02.li.location_i  
+                            {% endtrans %}
+                        </li>
+                        <li>
+                            {% trans %}
+                                imo.course_report.step_02.li.location_ii
+                            {% endtrans %}
+                        </li>
+                    </ul>    
+                
                 </div>
             </div>
             <div class="tab-pane fade" id="tabStep3{{ modalId }}">
                 <div class="explanation-background">
                     <h4 class="text-primary">
-                        <b>{% trans %}Stap 3{% endtrans %}</b>
-                        {% trans %}subtitel{% endtrans %}
+                        <b>{% trans %}imo.frequently_used.step_03{% endtrans %}</b>
+                        {% trans %}imo.course_report.step_03.students_enter_mentor_code{% endtrans %}
                     </h4>
+                    <p>{% trans %}imo.course_report.step_03.students_enter_mentor_code.t_long_01{% endtrans %}</p>     
                 </div>
             </div>
             <div class="tab-pane fade" id="tabStep4{{ modalId }}">
                 <div class="explanation-background">
                     <h4 class="text-primary">
-                        <b>{% trans %}Stap 4{% endtrans %}</b>
-                        {% trans %}subtitel{% endtrans %}
+                        <b>{% trans %}imo.frequently_used.step_04{% endtrans %}</b>
+                        {% trans %}imo.course_report.step_04.student_accepts{% endtrans %}
                     </h4>
+                    <p>{% trans %}imo.course_report.step_04.mentor_accepts{% endtrans %}.</p>
+                    <p>{% trans %}imo.course_report.step_04.mentor_declines{% endtrans %}.</p>
                 </div>
             </div>
             <div class="tab-pane fade" id="tabStep5{{ modalId }}">
                 <div class="explanation-background">
                     <h4 class="text-primary">
-                        <b>{% trans %}Stap 5{% endtrans %}</b>
-                        {% trans %}subtitel{% endtrans %}
+                        <b>{% trans %}imo.frequently_used.step_05{% endtrans %}</b>
+                        {% trans %}imo.course_report.step_05.view_report{% endtrans %}
                     </h4>
+                    <p>{% trans %}imo.course_report.step_05.view_report.when_mentor_accepted{% endtrans %}.</p>
+                    <p>{% trans %}
+                        imo.course_report.step_05.t_long_01
+                     {% endtrans %}.</p>   
                 </div>
             </div>
         </div>
     </div>
 {% endblock %}
 {% block closeButtonText %}
-    {% trans %}Sluiten{% endtrans %}
+    {% trans %}o.frequently_used.close{% endtrans %}
 {% endblock %}
 {% set modalBaseType = 'close' %}

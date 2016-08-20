@@ -1,11 +1,11 @@
 {% block studyPageQuestionOpen %}
     <div class="thumbnail open-question" data-question-id="{{ question.id }}">
         <h5>
-            <b>{% trans %}Vraag{% endtrans %} {{ question.questionOrder }}</b>
+            <b>{% trans %}o.frequently_used.question{% endtrans %} {{ question.questionOrder }}</b>
             {{ question.question|capitalize }}
         </h5>
         <textarea class="form-control answer" rows="4"
-                  placeholder="{% trans %}Type hier je antwoord{% endtrans %}"
+                  placeholder="{% trans %}t.create_course.f_placeholder.type_your_answer{% endtrans %}"
                   >{% if question.id in answeredQuestions|keys %}{{ answeredQuestions[question.id].answer }}{% endif %}</textarea>
     </div>
 {% endblock %}

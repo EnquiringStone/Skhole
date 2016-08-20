@@ -1,6 +1,6 @@
 {% extends 'panels/panel.base.html.twig' %}
 {% block panelBaseTitle %}
-    <b>{% trans %}Gebruikersprofiel{% endtrans %}</b>
+    <b>{% trans %}h.user_profile{% endtrans %}</b>
 {% endblock %}
 {% block panelBaseContents %}
     {% set dataEntity = "Profile" %}
@@ -11,7 +11,7 @@
                     {% include ':ajax/profile:profile.details.buttons.html.twig' with {'user': app.user} %}
                 </div>
                 <hr/>
-                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#profilePersonalInfoModal">{% trans %}Wijzig{% endtrans %}
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#profilePersonalInfoModal">{% trans %}o.frequently_used.edit{% endtrans %}
                     <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                 </button>
             </div>
@@ -20,7 +20,7 @@
                     {% include ':ajax/profile:profile.education.buttons.html.twig' with {'education': education} %}
                 </div>
                 <hr />
-                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#profileEducationInfoModal">{% trans %}Wijzig{% endtrans %}
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#profileEducationInfoModal">{% trans %}o.frequently_used.edit{% endtrans %}
                     <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                 </button>
             </div>

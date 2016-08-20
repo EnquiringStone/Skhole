@@ -1,7 +1,7 @@
 {% extends 'panels/panel.base.html.twig' %}
 {% block panelBaseTitle %}
     <span class="glyphicon glyphicon-magnet" aria-hidden="true"></span>
-    <b>{% trans %}Reviews{% endtrans %}</b>
+    <b>{% trans %}o.frequently_used.reviews{% endtrans %}</b>
 {% endblock %}
 {% block panelBaseContents %}
     <div class="panel-body">
@@ -19,7 +19,7 @@
         {% else %}
             <hr />
             <div class="centrum">
-                <p class="lead">{% trans %}Er zijn nog geen reviews voor deze cursus{% endtrans %}</p>
+                <p class="lead">{% trans %}t.reviews.no_reviews_yet{% endtrans %}</p>
             </div>
             <hr />
         {% endif %}

@@ -3,7 +3,7 @@
     <h4 class="modal-title centrum" id="{{ modalId }}">
         <b>
             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-            {% trans %}Cursus verwijderen{% endtrans %}
+            {% trans %}mo.remove_course{% endtrans %}
         </b>
     </h4>
 {% endblock %}
@@ -11,18 +11,18 @@
     <div class="modal-body">
         <hr />
         <p class="lead centrum">
-            {% trans %}Verwijderen kan niet ongedaan worden. Weet je het zeker?{% endtrans %}
+            {% trans %}mo.deleltion_cannot_be_undone{% endtrans %}
         </p>
         <br />
         <p class="centrum">
             <span class="text-muted">
                 {% if course.state.stateCode == 'OK' %}
-                    {% trans %}Deze cursus is gepubliceerd. De personen die deze cursus aan het volgen zijn zullen een bericht krijgen. Deze personen kunnen gewoon de cursus afmaken. De cursus zal niet meer opzoekbaar zijn en zal niet meer te volgen zijn{% endtrans %}
+                   {% trans %}mo.remove_own_course.message_when_removing{% endtrans %}
                 {% endif %}
             </span>
         </p>
-        <p class="centrum">
-            {% trans %}Je staat op het punt om de curses{% endtrans %} "<b>{{ course.name }}</b>" {% trans %} te verwijderen!{% endtrans %}
+         <p class="centrum">
+            {% trans %}mo.remove_own_course.ready_to_remove_course{% endtrans %} "<b>{{ course.name }}</b>" {% trans %} mo.remove_details_02{% endtrans %}!
         </p>
     </div>
 {% endblock %}

@@ -2,10 +2,10 @@
     <div id="cookie-panel" class="alert alert-info alert-dismissable" data-url="{{ path('app_home_ajax_page') }}">
         <button class="close save-cookie-choice" aria-hidden="true" data-dismiss="alert" type="button">x</button>
         <p>
-            {% trans %}Wij gebruiken cookies om het surfen op StudyLivre voor jou nog makkelijker en persoonlijker te maken. Bekijk ons{% endtrans %}
-            <a href="{{ path('app_other_legal', {'page': 'privacy'}) }}">{% trans %}Privacybeleid{% endtrans %}</a> {% trans %}en{% endtrans %}
-            <a href="{{ path('app_other_legal', {'page': 'cookie'}) }}">{% trans %}Cookiebeleid{% endtrans %}</a> {% trans %}voor meer informatie.{% endtrans %}
-            <button class="btn btn-info btn-xs save-cookie-choice" data-dismiss="alert" type="button">{% trans %}Sluiten{% endtrans %}</button>
+            {% trans %}o.cookies.t_long_part_01{% endtrans %}
+            <a href="{{ path('app_other_legal', {'page': 'privacy'}) }}">{% trans %}o.cookies.a.privacy{% endtrans %}</a> {% trans %}o.cookies.t_long_part_02{% endtrans %}
+            <a href="{{ path('app_other_legal', {'page': 'cookie'}) }}">{% trans %}o.cookies.a.cookie_policy{% endtrans %}</a> {% trans %}o.cookies.t_long_part_03{% endtrans %}
+            <button class="btn btn-info btn-xs save-cookie-choice" data-dismiss="alert" type="button">{% trans %}o.frequently_used.close{% endtrans %}</button>
         </p>
     </div>
 {% endblock %}

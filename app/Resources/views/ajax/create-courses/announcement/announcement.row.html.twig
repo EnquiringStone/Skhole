@@ -1,6 +1,6 @@
 {% block announcementRow %}
     <ul class="media-list announcement-row" data-announcement-id="{{ announcement.id }}">
-        <li class="media">
+         <li class="media">
             <div class="media-body row">
                 <div class="col-md-9">
                     <h4>{{ announcement.title }}</h4>
@@ -9,11 +9,11 @@
                 <div class="btn-group-vertical col-md-3">
                     <button type="button" class="btn btn-default" data-toggle="modal" data-target="#{{ modalId }}">
                         <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
-                        {% trans %}Bekijk{% endtrans %}
+                        {% trans %}o.frequently_used.view{% endtrans %}
                     </button>
                     <button type="button" class="btn btn-default" data-toggle="modal" data-target="#removeCourseAnnouncementModal{{ index }}">
                         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                        {% trans %}Mededeling{% endtrans %}
+                        {% trans %}o.frequently_used.annoucement{% endtrans %}
                     </button>
                 </div>
                 <br />
