@@ -82,6 +82,44 @@
                         {% trans %}imo.course_report.structure{% endtrans %}
                     </h4>
                     <p>{% trans %}imo.course_report.structure.t_long_01{% endtrans %}.</p>
+                    <div class="thumbnail">     
+                        <div class="btn-pref" role="group">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary btn-sm btn-default" href="#imageTab_I" data-toggle="tab">
+                                    {% trans %}I{% endtrans %}
+                                </button>
+                            </div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default btn-sm" href="#imageTab_II" data-toggle="tab">
+                                    {% trans %}II{% endtrans %}
+                                </button>
+                            </div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default btn-sm" href="#imageTab_III" data-toggle="tab">
+                                    {% trans %}III{% endtrans %}
+                                </button>
+                            </div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default btn-sm" href="#imageTab_IV" data-toggle="tab">
+                                    {% trans %}IV{% endtrans %}
+                                </button>
+                            </div>
+                        </div>     
+                        <div class="tab-content">
+                            <div class="tab-pane fade active in" id="imageTab_I">
+                                <img src="{{ asset('images/nl/nl_example_report_01.png') }}" class="img-thumbnail">
+                            </div>
+                            <div class="tab-pane fade in" id="imageTab_II">
+                                <img src="{{ asset('images/nl/nl_example_report_02.png') }}" class="img-thumbnail">
+                            </div>
+                            <div class="tab-pane fade in" id="imageTab_III">
+                                <img src="{{ asset('images/nl/nl_example_report_03.png') }}" class="img-thumbnail">
+                            </div>
+                            <div class="tab-pane fade in" id="imageTab_IV">
+                                <img src="{{ asset('images/nl/nl_example_report_04.png') }}" class="img-thumbnail">
+                            </div>
+                        </div>  
+                    </div>  
                 </div>
             </div>
             <div class="tab-pane fade" id="tabStep1{{ modalId }}">
@@ -91,6 +129,7 @@
                         {% trans %}imo.course_report.step_01.search_course{% endtrans %}
                     </h4>
                      <p>{% trans %}imo.course_report.step_01.search_course.t_long_01{% endtrans %}.</p>
+                     <img src="{{ asset('images/nl/nl_example_search_result.png') }}" class="img-thumbnail"><!-- verwerkt = N -->
                 </div>
             </div>
             <div class="tab-pane fade" id="tabStep2{{ modalId }}">
@@ -100,7 +139,7 @@
                         {% trans %}imo.course_report.step_02.mentor_provides_mentor_code{% endtrans %}
                     </h4>
                     <p>{% trans %}imo.course_report.step_02.mentor_provides_mentor_code.t_long_01{% endtrans %}:</p>
-                    <ul>
+                    <ol>
                         <li>
                             {% trans %}
                                 imo.course_report.step_02.li.location_i  
@@ -111,8 +150,8 @@
                                 imo.course_report.step_02.li.location_ii
                             {% endtrans %}
                         </li>
-                    </ul>    
-                
+                    </ol>    
+                    <img src="{{ asset('images/nl/nl_location_mentor_code.png') }}" class="img-thumbnail">
                 </div>
             </div>
             <div class="tab-pane fade" id="tabStep3{{ modalId }}">
@@ -122,6 +161,7 @@
                         {% trans %}imo.course_report.step_03.students_enter_mentor_code{% endtrans %}
                     </h4>
                     <p>{% trans %}imo.course_report.step_03.students_enter_mentor_code.t_long_01{% endtrans %}</p>     
+                    <img src="{{ asset('images/nl/nl_example_course_report_in_basket.png') }}" class="img-thumbnail">
                 </div>
             </div>
             <div class="tab-pane fade" id="tabStep4{{ modalId }}">
@@ -132,6 +172,7 @@
                     </h4>
                     <p>{% trans %}imo.course_report.step_04.mentor_accepts{% endtrans %}.</p>
                     <p>{% trans %}imo.course_report.step_04.mentor_declines{% endtrans %}.</p>
+                    <img src="{{ asset('images/nl/nl_mentor_accepts_request.png') }}" class="img-thumbnail">
                 </div>
             </div>
             <div class="tab-pane fade" id="tabStep5{{ modalId }}">

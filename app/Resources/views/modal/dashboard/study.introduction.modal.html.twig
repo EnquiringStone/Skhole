@@ -81,11 +81,8 @@
                             {% trans %}imo.follow_course.step_01.li.add_to_basket{% endtrans %}.
                         </li>
                     </ol>
-                    <div class="centrum">
-                        <img src="{{ asset('images/nl-search-result.png') }}" class="img-rounded">
-                    </div>
                     <hr />
-                    <h5 class="text-primary">{% trans %}o.frequently_used.course_card{% endtrans %}</h5>
+                    <h5 class="text-primary"><samp><b>{% trans %}o.frequently_used.course_card{% endtrans %}</b></samp></h5>
                     <p>{% trans %}imo.follow_course.step_01.t_long.course_card{% endtrans %}:
                     </p>
                     <ol>
@@ -112,6 +109,7 @@
                             {% trans %}imo.follow_course.step_01.course_card.li.li_05{% endtrans %}.
                         </li>
                     </ol>
+                    <img src="{{ asset('images/nl/nl_example_course_card_and_search.png') }}" class="img-thumbnail">
                 </div>
             </div>
             <div class="tab-pane fade" id="tabStep2{{ modalId }}">
@@ -121,6 +119,7 @@
                         {% trans %}imo.follow_course.step_02.first_course_part{% endtrans %}
                     </h4>
                     <p>{% trans %}imo.follow_course.step_02.first_course_part.t_long{% endtrans %}. </p>
+                    <img src="{{ asset('images/nl/nl_example_start_page.png') }}" class="img-thumbnail">
                 </div>
             </div>
             <div class="tab-pane fade" id="tabStep3{{ modalId }}">
@@ -132,6 +131,8 @@
                     <p>
                         {% trans %}imo.follow_course.step_03.middle_part.t_long{% endtrans %}.
                     </p>
+                    <img src="{{ asset('images/nl/nl_example_video_and_text.png') }}" class="img-thumbnail">
+                    <img src="{{ asset('images/nl/nl_example_text.png') }}" class="img-thumbnail">    
                 </div>
             </div>
             <div class="tab-pane fade" id="tabStep4{{ modalId }}">
@@ -183,7 +184,7 @@
                     <p>
                         {% trans %}imo.follow_course.step_04.close_course.t_long{% endtrans %}.
                     </p>
-
+                    <img src="{{ asset('images/nl/nl_example_course_menu.png') }}" class="img-thumbnail">    
                     <hr />
                 </div>
             </div>
@@ -193,9 +194,8 @@
                     {% trans %}imo.follow_course.step_05.closing_part{% endtrans %}
                 </h4>
                 <p>{% trans %}imo.follow_course.step_05.closing_part.t_long{% endtrans %}.</p>
-                <div class="centrum">
-                    <img src="{{ asset('images/nl-end-course-example.png') }}" class="img-rounded">
-                </div>
+                <img src="{{ asset('images/nl/nl_example_start_page.png') }}" class="img-thumbnail">
+
             </div>
         </div>
     </div>

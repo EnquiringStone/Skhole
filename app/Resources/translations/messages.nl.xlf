@@ -115,7 +115,7 @@
             </trans-unit>
             <trans-unit id="0017">
                 <source>l.last_page.text_info_course_report</source>
-                <target>Na afronding van de cursus wordt een cursusrapport samengesteld met daarin jouw antwoorden op de meerkeuze- en open vragen. Alle rapporten kun je terug vinden bij: Learn →  Cursusmandje →  Cursusrapporten. LET OP: Indien je niet ingelogd bent dan verlies je al je voortgang zodra je je browser afsluit</target>
+                <target>Na afronding van de cursus wordt een cursusrapport samengesteld met daarin jouw antwoorden op de meerkeuze- en open vragen. Alle rapporten kun je terug vinden bij: Learn →  Rapporten. LET OP: Indien je niet ingelogd bent dan verlies je al je voortgang zodra je je browser afsluit</target>
             </trans-unit>
             <trans-unit id="0018">
                 <source>o.notify</source>
@@ -302,7 +302,7 @@
             </trans-unit>
             <trans-unit id="1023">
                 <source>t.create_course.f_input.type_question</source>
-                <target>Type je vraag</target>
+                <target>Type hier je vraag (verplicht veld). Voeg daarna antwoorden toe. Vink daarna de correcte antwoord(en) aan.</target>
             </trans-unit>
             <trans-unit id="1024">
                 <source>t.create_course.anwsers</source>
@@ -338,7 +338,7 @@
             </trans-unit>
             <trans-unit id="1031">
                 <source>t.create_course.f_placeholder.open_question</source>
-                <target>Type hier je vraag</target>
+                <target>Type hier je vraag (verplicht veld)</target>
             </trans-unit>
             <trans-unit id="1032">
                 <source>t.create_course.f_label.answer_indication</source>
@@ -346,7 +346,7 @@
             </trans-unit>
             <trans-unit id="1033">
                 <source>t.create_course.f_placeholder.type_anwser_indication</source>
-                <target>Type hier een antwoordindicatie</target>
+                <target>Type hier een antwoordindicatie (verplicht veld)</target>
             </trans-unit>
             <trans-unit id="1034">
                 <source>t.create_course.instructor</source>
@@ -378,7 +378,7 @@
             </trans-unit>
             <trans-unit id="1041">
                 <source>t.create_course.f_placeholder.title</source>
-                <target>De titel van de introductie</target>
+                <target>De titel van de introductie (verplicht veld)</target>
             </trans-unit>
             <trans-unit id="1042">
                 <source>t.create_course.f_label.textual_content</source>
@@ -386,7 +386,7 @@
             </trans-unit>
             <trans-unit id="1043">
                 <source>t.create_course.f_placeholder.textual_content</source>
-                <target>Type hier de introductie tekst</target>
+                <target>Type hier de introductie tekst (optioneel veld)</target>
             </trans-unit>
             <trans-unit id="1044">
                 <source>t.create_course.f_label.prereq</source>
@@ -394,11 +394,11 @@
             </trans-unit>
             <trans-unit id="1045">
                 <source>t.create_course.f_placeholder.prereq</source>
-                <target>Vereiste Voorkennis</target>
+                <target>Vereiste voorkennis (optioneel veld)</target>
             </trans-unit>
             <trans-unit id="1046">
                 <source>t.create_course.no_providers_found</source>
-                <target>Geen aanbieders gevonden voor deze cursus</target>
+                <target>Geen aanbieders gevonden voor deze cursus. Dit is een optioneel onderdeel.</target>
             </trans-unit>
             <trans-unit id="1047">
                 <source>t.create_course.b.new_provider</source>
@@ -414,7 +414,7 @@
             </trans-unit>
             <trans-unit id="1050">
                 <source>t.create_course.f_placeholder.planning</source>
-                <target>Type hier je planning</target>
+                <target>Type hier je planning (optioneel veld)</target>
             </trans-unit>
             <trans-unit id="1051">
                 <source>t.create_course.instructors</source>
@@ -422,7 +422,7 @@
             </trans-unit>
             <trans-unit id="1052">
                 <source>t.create_course.t.no_instructors_found</source>
-                <target>Geen instructeurs gevonden voor deze cursus</target>
+                <target>Geen instructeurs gevonden voor deze cursus. Dit is een optioneel onderdeel.</target>
             </trans-unit>
             <trans-unit id="1053">
                 <source>t.create_course.b.add_instructor</source>
@@ -434,7 +434,7 @@
             </trans-unit>
             <trans-unit id="1055">
                 <source>t.create_course.t.no_annoucements_found</source>
-                <target>Er zijn nog geen mededelingen voor deze cursus</target>
+                <target>Er zijn nog geen mededelingen voor deze cursus. Dit is een optioneel onderdeel.</target>
             </trans-unit>
             <trans-unit id="1056">
                 <source>t.create_course.new_annoucement</source>
@@ -450,7 +450,7 @@
             </trans-unit>
             <trans-unit id="1059">
                 <source>t.create_course.f_placeholder.course_name</source>
-                <target>Type hier de naam van de cursus</target>
+                <target>Type hier de naam van de cursus (verplicht veld)</target>
             </trans-unit>
             <trans-unit id="10146">
                 <source>t.create_course.f_label.keywords</source>
@@ -462,7 +462,7 @@
             </trans-unit>
             <trans-unit id="1061">
                 <source>t.create_course.f_placeholder.description</source>
-                <target>Cursusomschrijving van maximaal 250 woorden</target>
+                <target>Cursusomschrijving van maximaal 250 woorden (verplicht veld)</target>
             </trans-unit>
             <trans-unit id="1062">
                 <source>t.create_course.language</source>
@@ -490,7 +490,7 @@
             </trans-unit>
             <trans-unit id="1068">
                 <source>t.create_course.f_placeholder.course_duration</source>
-                <target>Schatting in minuten</target>
+                <target>Schatting in minuten (verplicht veld)</target>
             </trans-unit>
             <trans-unit id="1069">
                 <source>t.create_course.documents</source>
@@ -514,7 +514,7 @@
             </trans-unit>
             <trans-unit id="1074">
                 <source>t.create_course.f_placeholder.google_drive_url</source> 
-                <target>De url van de google drive documenten</target>
+                <target>De url van de google drive documenten (optioneel veld)</target>
             </trans-unit>
             <trans-unit id="1075">
                 <source>t.create_course.url</source>
@@ -530,7 +530,7 @@
             </trans-unit>
             <trans-unit id="1078">
                 <source>t.create_course.f_placeholder.dropbox.url</source>
-                <target>De url van de dropbox documenten</target>
+                <target>De url van de dropbox documenten (optioneel veld)</target>
             </trans-unit>
             <trans-unit id="1079">
                 <source>t.create_course.b.add_assignment</source>
@@ -570,7 +570,7 @@
             </trans-unit>
             <trans-unit id="1088">
                 <source>t.create_course.t_long.not_yet_ready_to_publish</source>
-                <target>Deze cursus voldoet nog niet aan alle regels om gepubliceerd te worden. Navigeer naar de startpagina of klik op de onderstaande link om te kijken wat je nog mist.</target>
+                <target>Deze cursus voldoet nog niet aan alle regels om gepubliceerd te worden. Navigeer naar de startpagina of klik op de onderstaande link om te kijken wat je nog mist</target>
             </trans-unit>
             <trans-unit id="1089">
                 <source>t.create_course.a.to_start</source>
@@ -642,7 +642,7 @@
             </trans-unit>
             <trans-unit id="10106">
                 <source>t.create_course.f_placeholder.page_title</source>
-                <target>De titel van deze pagina</target>
+                <target>De titel van deze pagina (verplicht veld)</target>
             </trans-unit>
             <trans-unit id="10107">
                 <source>t.create_course.f_label.explantion</source>
@@ -650,7 +650,7 @@
             </trans-unit>
             <trans-unit id="10108">
                 <source>t.create_course.f_placeholder.explantion</source>
-                <target>Type hier je uitleg</target>
+                <target>Type hier je uitleg (verplicht veld)</target>
             </trans-unit>
             <trans-unit id="10109">
                 <source>t.create_course.add_explanation</source>
@@ -662,7 +662,7 @@
             </trans-unit>
              <trans-unit id="10111">
                 <source>t.create_course.f_placeholder.page_title</source>
-                <target>De titel van deze pagina</target>
+                <target>De titel van deze pagina (verplicht veld)</target>
             </trans-unit>
             <trans-unit id="10112">
                 <source>t.create_course.edit</source>
@@ -838,7 +838,7 @@
             </trans-unit>
             <trans-unit id="10157">
                 <source>t.documents.f_placeholder.google_drive_url</source>
-                <target>De url van de google drive documenten</target>
+                <target>De url van de google drive documenten (optioneel veld) </target>
             </trans-unit>
             <trans-unit id="10158">
                 <source>t.mentor_requests.requests</source>
@@ -855,6 +855,10 @@
             <trans-unit id="10161">
                 <source>t.link.studylivre</source>
                 <target>www.studylivre.com</target>
+            </trans-unit>
+             <trans-unit id="10162">
+                <source>t.create_course.f_placeholder.explantion_when_optional</source>
+                <target>Type hier je uitleg (optioneel veld)</target>
             </trans-unit>
   
 
@@ -1022,11 +1026,11 @@
             </trans-unit>
             <trans-unit id="2041">
                 <source>h.welcome.intro.text</source>
-                <target>Studylivre biedt je de mogelijkheid om cursussen te bekijken, creëren en onderling te delen. Na afronding van een cursus is het mogelijk je cursusrapport, met daarin je behaalde resultaten, in te zien. Je kunt ook rapporten inzien van personen die ervoor gekozen hebben om het rapport met je te delen.</target>
+                <target>Studylivre biedt je de mogelijkheid om cursussen te bekijken, creëren en onderling te delen. Na afronding van een cursus is het mogelijk je cursusrapport, met daarin je behaalde resultaten, in te zien. Je kunt ook rapporten inzien van personen die ervoor gekozen hebben om het rapport met je te delen. Klik op een van onderstaande buttons voor meer informatie.</target>
             </trans-unit>
             <trans-unit id="2042">
-                <source>h.welcom.quick_menu</source>
-                <target>Snel Menu</target>
+                <source>h.welcom.search_course</source>
+                <target>Zoeken</target>
             </trans-unit>            
             <trans-unit id="2043">
                 <source>h.welcom.quick_menu.f_placeholder.course_name</source>
@@ -1409,7 +1413,7 @@
             </trans-unit>
             <trans-unit id="3065">
                 <source>o.frequently_used.add_to_course_basket</source>
-                <target>In cursusmandje</target>
+                <target>Cursusmandje</target>
             </trans-unit>
             <trans-unit id="3066">
                 <source>o.frequently_used.to_course_basket</source>
@@ -1681,7 +1685,7 @@
             </trans-unit>
             <trans-unit id="30135">
                 <source>h.getting.started.create_course.text_02</source>
-                <target>Klik op een van onderstaande buttons voor meer informatie over hoe je een cursus maakt.</target>
+                <target>Klik op onderstaande button voor meer informatie over hoe je een cursus maakt.</target>
             </trans-unit>
             <trans-unit id="30136">
                 <source>h.getting.started.create_course.li.course_card_overview</source>
@@ -1947,6 +1951,10 @@
                 <source>o.frequently_used.hour</source>
                 <target>uur</target>
             </trans-unit>
+            <trans-unit id="30202">
+                <source>h.getting.started.create_course.text_03</source>
+                <target>Klik op de onderstaande button voor meer informatie over de werking van het cursusrapport.</target>
+            </trans-unit>
 
 
 
@@ -1983,7 +1991,7 @@
             </trans-unit>
             <trans-unit id="4008">
                 <source>mo.f_placeholder.what_name_assignment_page</source>
-                <target>Titel van de pagina</target>
+                <target>Titel van de pagina (verplicht veld)</target>
             </trans-unit>
             <trans-unit id="4009">
                 <source>mo.assignment_page</source>
@@ -2307,7 +2315,7 @@
             </trans-unit>
             <trans-unit id="4089">
                 <source>mo.login.info_account.03</source>
-                <target>Meer hoef je niet te doen. Voortaan kun je met het door jouw gekozen social media account inloggen</target>
+                <target>Meer hoef je niet te doen. Voortaan kun je met het door jouw gekozen social media account inloggen.</target>
             </trans-unit>
             <trans-unit id="4090">
                 <source>mo.login.info_account.back</source>
@@ -2450,6 +2458,43 @@
                 <source>mo.personal_details</source>
                 <target>Persoonlijke gegevens</target>
             </trans-unit>
+            <trans-unit id="40125">
+                <source>mo.login.info_account.step_i</source>
+                <target>Stap I</target>
+            </trans-unit>
+            <trans-unit id="40130">
+                <source>mo.login.info_account.step_ii</source>
+                <target>Stap II</target>
+            </trans-unit>
+            <trans-unit id="40126">
+                <source>mo.login.info_account.step_iii</source>
+                <target>Stap III</target>
+            </trans-unit>
+            <trans-unit id="40127">
+                <source>mo.login.info_account.step_iv</source>
+                <target>Stap IV</target>
+            </trans-unit>
+            <trans-unit id="40128">
+                <source>mo.login.info_account.step_v</source>
+                <target>Stap V</target>
+            </trans-unit>
+            <trans-unit id="40129">
+                <source>mo.login.info_account.step_vi</source>
+                <target>Stap VI</target>
+            </trans-unit>
+            <trans-unit id="40131">
+                <source>mo.login.info_account.step_vii</source>
+                <target>Stap VII</target>
+            </trans-unit>
+            <trans-unit id="40132">
+                <source>mo.login.info_account.step_viii</source>
+                <target>Stap VIII</target>
+            </trans-unit>
+            <trans-unit id="40133">
+                <source>mo.login.info_account.step_i_and_ii</source>
+                <target>Stap I en II</target>
+            </trans-unit>
+
 <!-- Einde modals -->
 <!-- Start infomodals 5000 tot 5999  -->	
             <trans-unit id="5001">
@@ -2678,15 +2723,15 @@
             </trans-unit>
             <trans-unit id="5056">
                 <source>ext_info.course_card.li.prereq</source>
-                <target>uiteenzetting over de vereiste voorkennis (optioneel onderdeel)</target>
+                <target>uiteenzetting over de vereiste voorkennis (optioneel veld)</target>
             </trans-unit>
             <trans-unit id="5057">
                 <source>ext_info.course_card.li.provider</source>
-                <target>instelling/organisatie die de cursus aanbied (optioneel onderdeel)</target>
+                <target>instelling/organisatie die de cursus aanbied (optioneel veld)</target>
             </trans-unit>
             <trans-unit id="5058">
                 <source>ext_info.course_card.li.instructeurs</source>
-                <target>informatie over de instructeur(s) (verplicht onderdeel)</target>
+                <target>informatie over de instructeur(s) (verplicht veld)</target>
             </trans-unit>
             <trans-unit id="5059">
                 <source>ext_info.t_long.planning</source>
@@ -2972,7 +3017,7 @@
             </trans-unit>
             <trans-unit id="50126">
                 <source>imo.course_report.step_03.students_enter_mentor_code.t_long_01</source>
-                <target>Nadat de cursist de cursus heeft afgerond wordt er een Cursusrapport aangemaakt. Dit rapport wordt automatisch opgeslagen en kun je terugvinden op de volgende locatie: Learn → Cursusmandje → Rapporten. De cursist zoekt het rapport dat hij/zij wilt delen en klikt op de button Deel rapport. In de modal die vervolgens verschijnt kan hij/zij de begeleiderscode invullen.  Het is mogelijk om het rapport met meerdere begeleiders te delen
+                <target>Nadat de cursist de cursus heeft afgerond wordt er een Cursusrapport aangemaakt. Dit rapport wordt automatisch opgeslagen en kun je terugvinden op de volgende locatie: Learn → Rapporten. De cursist zoekt het rapport dat hij/zij wilt delen en klikt op de button Deel rapport. In de modal die vervolgens verschijnt kan hij/zij de begeleiderscode invullen.  Het is mogelijk om het rapport met meerdere begeleiders te delen
           </target>
             </trans-unit>
             <trans-unit id="50127">
@@ -2985,7 +3030,7 @@
             </trans-unit>
             <trans-unit id="50129">
                 <source>imo.course_report.step_04.mentor_declines</source>
-                <target>Als de begeleider het verzoek heeft geacepteerd, ziet de cursist de naam van de begeleider(s) bij het desbetreffende cursus rapport verschijnen ( Learn → Cursusmandje → Rapporten)</target>
+                <target>Als de begeleider het verzoek heeft geacepteerd, ziet de cursist de naam van de begeleider(s) bij het desbetreffende cursus rapport verschijnen ( Learn → Rapporten)</target>
             </trans-unit>
             <trans-unit id="50130">
                 <source>imo.course_report.step_05.view_report</source>
@@ -3034,7 +3079,7 @@
             </trans-unit>
             <trans-unit id="50141">
                 <source>imo.follow_course.step_01.course_card.li.li_03</source>
-                <target>uiteenzetting over de vereiste voorkennis (optioneel onderdeel)</target>
+                <target>uiteenzetting over de vereiste voorkennis (optioneel veld)</target>
             </trans-unit>
             <trans-unit id="50142">
                 <source>imo.follow_course.step_01.course_card.li.li_02</source>
@@ -3042,11 +3087,11 @@
             </trans-unit>
             <trans-unit id="50143">
                 <source>imo.follow_course.step_01.course_card.li.li_04</source>
-                <target>instelling/organisatie die de cursus aanbiedt (optioneel onderdeel)</target>
+                <target>instelling/organisatie die de cursus aanbiedt (optioneel veld)</target>
             </trans-unit>
             <trans-unit id="50144">
                 <source>imo.follow_course.step_01.course_card.li.li_05</source>
-                <target>informatie over de instructeur(s) (verplicht onderdeel)</target>
+                <target>informatie over de instructeur(s) (verplicht veld)</target>
             </trans-unit>
             <trans-unit id="50145">
                 <source>imo.follow_course.step_02.first_course_part</source>
@@ -3225,12 +3270,12 @@
                 <target>Indien de melding als ongegrond wordt beoordeeld wordt de indiener van de rapportage hiervan op de hoogte gesteld</target>
             </trans-unit>
             <trans-unit id="50189">
-                <source></source>
-                <target></target>
+                <source>imo.frequently_used.ter_info.t_03</source>
+                <target>Klik op onderstaande button voor meer informatie over het toevoegen van documenten.</target>
             </trans-unit>
             <trans-unit id="50190">
-                <source></source>
-                <target></target>
+                <source>imo.frequently_used.step_01_and_02</source>
+                <target>Stap 1 en 2</target>
             </trans-unit>
             <trans-unit id="50191">
                 <source></source>
