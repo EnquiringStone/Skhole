@@ -6,9 +6,15 @@
         {% if createPdfLinks is defined and createPdfLinks %}
             <a href="#{{ page.id }}">{% trans %}0.frequently_used.page{% endtrans %} {{ page.pageOrder }}: {{ page.title }}</a>
         {% else %}
-            <a href="{{ path('app_learn_course_report_details_page', {'id': report.id, 'pageId': page.id}) }}">
-                {% trans %}0.frequently_used.page{% endtrans %} {{ page.pageOrder }}: {{ page.title }}
-            </a>
+            {% if viewType == 'learn' %}
+                <a href="{{ path('app_learn_course_report_details_page', {'id': report.id, 'pageId': page.id}) }}">
+                    {% trans %}0.frequently_used.page{% endtrans %} {{ loop.index }}: {{ page.title }}
+                </a>
+            {% elseif viewType == 'teach' %}
+                <a href="{{ path('app_teach_show_report_page', {'id': sharedReport.id, 'pageId': page.id}) }}">
+                    {% trans %}0.frequently_used.page{% endtrans %} {{ loop.index }}: {{ page.title }}
+                </a>
+            {% endif %}
         {% endif %}
         <br>
     {% endfor %}

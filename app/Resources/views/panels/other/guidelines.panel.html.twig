@@ -42,7 +42,12 @@
             <h4><b>{% trans %}m.guidelines.t.how_to_report{% endtrans %}</b></h4>
             <p>{% trans %}m.guidelines.t_long.how_to_report{% endtrans %}</p>
 
-            <p class="text-danger">TODO MELD ONGEWENSTE CONTENT knop naar modal neerzetten</p>
+            <p>
+                <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#reportInstructionsModal">
+                    <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                    {% trans %}o.b.report_content{% endtrans %}
+                </button>
+            </p>
         </div>
     </div>
 {% endblock %}

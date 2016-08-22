@@ -3,6 +3,7 @@
 {% block body %}
     {% set report = sharedReport.report %}
     {% set viewType = 'teach' %}
+    {% include ':elements:report.navigation.menu.html.twig' %}
     {% if name is defined and name != '' %}
         {% include ':panels/learn/report/custom:report.'~name~'.panel.html.twig' %}
     {% else %}

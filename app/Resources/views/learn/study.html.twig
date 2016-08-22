@@ -8,12 +8,21 @@
         <div id="study-contents">
             {% include ':panels/learn/study/'~pageType~':study.'~pageType~'.'~name~'.panel.html.twig' %}
         </div>
+        {% if pageType != 'standard' %}
+            <div class="pagination-field">
+                {% include ':panels/learn/study/custom:study.pagination.html.twig' with {'offset': 0} %}
+            </div>
+        {% endif %}
+        {% include ':panels/general:commercial.panel.html.twig' %}
     </div>
 {% endblock %}
 
 {% block modals %}
     {% if pageType == 'custom' and name == 'start' %}
         {% include ':modal/dashboard:study.introduction.modal.html.twig' with {'modalId': 'studyIntroductionModal'} %}
+        {% include ':modal/dashboard:course.report.introduction.modal.html.twig' with {'modalId': 'courseReportIntroductionModal'} %}
+    {% endif %}
+    {% if pageType == 'custom' and name == 'final' %}
         {% include ':modal/dashboard:course.report.introduction.modal.html.twig' with {'modalId': 'courseReportIntroductionModal'} %}
     {% endif %}
     {% if pageType == 'custom' and name == 'final' and is_granted('ROLE_USER') %}

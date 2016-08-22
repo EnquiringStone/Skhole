@@ -11,7 +11,7 @@
     <hr />
     <h4>
         {% if report.user is not null %}
-            <img src="{% if report.user.picture is not null %}{{ report.user.picture }}{% else %}{{ asset('images/gebruiker.png') }}{% endif %}" class="img-rounded teacher-row-picture">
+            <img src="{% if report.user.picture is not null %}{{ asset(report.user.picture) }}{% else %}{{ asset('images/gebruiker.png') }}{% endif %}" class="img-rounded teacher-row-picture">
             {{ report.user.firstName|capitalize }} {{ report.user.surname|capitalize }}
         {% else %}
             <img src="{{ asset('images/gebruiker.png') }}" class="img-rounded teacher-row-picture">

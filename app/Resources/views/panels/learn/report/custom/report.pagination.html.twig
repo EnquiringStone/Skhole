@@ -40,7 +40,7 @@
 
                 {% set totalPagesProcessed = 0 %}
                 {% for page in pages|slice(startPage - 1, renderPages) %}
-                    <li class="clickable {% if name is not defined and currentPage == page.pageOrder %}active{% endif %}"><a href="{{ path('app_learn_course_report_details_page', {'id': report.id, 'pageId': page.id}) }}">{{ page.pageOrder }}</a></li>
+                    <li class="clickable {% if name is not defined and currentPage == page.pageOrder %}active{% endif %}"><a href="{{ path('app_learn_course_report_details_page', {'id': report.id, 'pageId': page.id}) }}">{{ startPage + (1 * (loop.index - 1)) }}</a></li>
                 {% endfor %}
                 <li class="clickable {% if name is defined and name == 'end' %}active{% endif %}"><a href="{{ path('app_learn_course_report_details_custom', {'name': 'end', 'id': report.id}) }}">III</a></li>
                 {% if name is defined and name != 'end' %}
@@ -64,7 +64,7 @@
                 <li class="clickable {% if name is defined and name == 'overview' %}active{% endif %}"><a href="{{ path('app_teach_show_report_custom', {'name': 'overview', 'id': sharedReport.id}) }}">II</a></li>
 
                 {% for page in pages|slice(startPage - 1, renderPages) %}
-                    <li class="clickable {% if name is not defined and currentPage == page.pageOrder %}active{% endif %}"><a href="{{ path('app_teach_show_report_page', {'id': sharedReport.id, 'pageId': page.id}) }}">{{ page.pageOrder }}</a></li>
+                    <li class="clickable {% if name is not defined and currentPage == page.pageOrder %}active{% endif %}"><a href="{{ path('app_teach_show_report_page', {'id': sharedReport.id, 'pageId': page.id}) }}">{{ startPage + (1 * (loop.index - 1)) }}</a></li>
                 {% endfor %}
 
                 <li class="clickable {% if name is defined and name == 'end' %}active{% endif %}"><a href="{{ path('app_teach_show_report_custom', {'name': 'end', 'id': sharedReport.id}) }}">III</a></li>

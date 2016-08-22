@@ -153,7 +153,8 @@ class LearnController extends Controller
             $session->set('name', $name);
             $session->set('pageType', $pageType);
 
-            return $this->render(':learn:study.html.twig', array('name' => $name, 'pageType' => $pageType, 'course' => $course, 'courseReview' => $courseReview));
+            return $this->render(':learn:study.html.twig', array('name' => $name, 'pageType' => $pageType, 'course' => $course, 'courseReview' => $courseReview,
+                'coursePages' => $this->getStudyPaginationInformation($course)));
         }
         throw new AccessDeniedException();
     }
@@ -182,7 +183,7 @@ class LearnController extends Controller
         if($session->has('pageType')) $session->remove('pageType');
         $session->set('lastPageId', $page->getId());
 
-        $criteria = array('page' => $page, 'totalPages' => $course->getCoursePages()->count());
+        $criteria = array('page' => $page, 'totalPages' => $course->getCoursePages()->count(), 'coursePages' => $this->getStudyPaginationInformation($course));
 
         if(CoursePageTypeEnum::matchValueWithGivenEnum(CoursePageTypeEnum::class, CoursePageTypeEnum::ExerciseType, $page->getPageType()->getType()))
         {
@@ -374,5 +375,16 @@ class LearnController extends Controller
             $friendlyArray[] = $item->getCourseId();
         }
         return $friendlyArray;
+    }
+
+    private function getStudyPaginationInformation(Courses $course)
+    {
+        $pages = array();
+        foreach ($course->getCoursePages() as $page)
+        {
+            $pages[$page->getPageOrder()] = array('order' => $page->getPageOrder());
+        }
+
+        return $pages;
     }
 }

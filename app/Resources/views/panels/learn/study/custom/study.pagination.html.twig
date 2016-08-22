@@ -1,0 +1,48 @@
+{% block reportPagination %}
+    {% set limit = 1 %}
+    {% set maxEntities = coursePages|length %}
+    {% set maxPages = 10 %}
+
+    {% set currentOffset = offset - 1 %}
+    {% set totalPages = (maxEntities/limit)|round(0, 'ceil') %}
+    {% set currentPage = ((offset-1)/limit)|round(0, 'floor') + 1 %}
+    {% set currentLocation = maxPages - 1 %}
+    {% set leftPages = (currentLocation/2)|round(0, 'floor') %}
+    {% set rightPages = (currentLocation/2)|round(0, 'ceil') %}
+    {% set startPage = currentPage - leftPages %}
+
+    {% if startPage <= 0 %}
+        {% set startPage = 1 %}
+    {% endif %}
+
+    {% if maxEntities > maxPages and startPage > (maxEntities - maxPages) %}
+        {% set startPage = maxEntities - maxPages + 1 %}
+    {% endif %}
+
+    {% set renderPages = startPage + maxPages - 1%}
+    {% if renderPages > totalPages %}
+        {% set renderPages = totalPages %}
+    {% endif %}
+    {% if renderPages <= 0 %}
+        {% set renderPages = 1 %}
+    {% endif %}
+
+    {% if renderPages > maxPages %}
+        {% set renderPages = maxPages %}
+    {% endif %}
+
+    <div class="centrum">
+        <ul class="pagination" data-disable="true">
+            <li class="disabled"><a class="unclickable"><b>{% trans %}o.frequently_used.pages{% endtrans %}</b></a></li>
+            <li class="clickable {% if name is defined and name == 'start' %}active{% endif %}"><a href="{{ path('app_learn_study_panels_page', {'pageType': 'custom', 'name': 'start', 'courseId': course is defined ? course.id : page.course.id}) }}">I</a></li>
+
+            {% for coursePage in coursePages|slice(startPage - 1, renderPages) %}
+                <li class="clickable {% if currentPage == coursePage.order %}active{% endif %}"><a href="{{ path('app_learn_study_pages_page', {'pageOrder': coursePage.order, 'courseId': course is defined ? course.id : page.course.id}) }}">{{ coursePage.order }}</a></li>
+            {% endfor %}
+
+            <li class="clickable {% if name is defined and name == 'final' %}active{% endif %}">
+                <a href="{{ path('app_learn_study_panels_page', {'pageType': 'custom', 'name': 'final', 'courseId': course is defined ? course.id : page.course.id}) }}">II</a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

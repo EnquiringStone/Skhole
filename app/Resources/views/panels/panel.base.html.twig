@@ -3,7 +3,9 @@
         <div class="panel-heading">
             <h4 class="panel-title centrum">
                 <b>{% block panelBaseTitle %}{% endblock %}</b>
-                <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+                {% if removeHideButton is not defined or not removeHideButton %}
+                    <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+                {% endif %}
             </h4>
         </div>
         {% block panelBaseContents %}

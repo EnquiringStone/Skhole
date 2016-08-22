@@ -1,0 +1,21 @@
+{% extends 'modal/modal.base.html.twig' %}
+{% block modalBaseHeader %}
+    <h4 class="modal-title centrum" id="{{ modalId }}">
+        <b>
+            {% trans %}mo.remove_account.remove_account{% endtrans %}
+        </b>
+    </h4>
+{% endblock %}
+{% block modalBaseContents %}
+    <div class="modal-body">
+        <div class="centrum">
+            <p>
+                {% trans %}mo.remove_account.email_for_acount_removal{% endtrans %}
+            </p>
+        </div>
+    </div>
+{% endblock %}
+{% block closeButtonText %}
+    {% trans %}o.frequently_used.close{% endtrans %}
+{% endblock %}
+{% set modalBaseType = 'close' %}
