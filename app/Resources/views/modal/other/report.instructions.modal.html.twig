@@ -3,6 +3,7 @@
 {% block modalBaseHeader %}
     <h4 class="modal-title centrum" id="reportInstructionsModal">
         <b>
+            <span class="glyphicon glyphicon-info-sign text-primary" aria-hidden="true"></span>
             {% trans %}imo.report_content.step_01.notify_content{% endtrans %}
         </b>
     </h4>
@@ -23,6 +24,8 @@
                 <li>{% trans %}imo.report_content.step_01.notify_content.li_01{% endtrans %}.</li>
                 <li>{% trans %}imo.report_content.step_01.notify_content.li_02{% endtrans %}.</li>
             </ol>
+            <img src="{{ asset('images/'~app.request.locale~'/report_step_01.png') }}" class="img-thumbnail">
+            <img src="{{ asset('images/'~app.request.locale~'/report_step_02.png') }}" class="img-thumbnail"> 
         </div>
         <div class="thumbnail">
             <h4 class="text-primary">

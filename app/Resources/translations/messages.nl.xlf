@@ -46,7 +46,24 @@
             <trans-unit id="11">
                 <source>frequently.asked.questions</source>
                 <target>Veelgestelde vragen</target>
+            </trans-unit>   
+            <trans-unit id="12">
+                <source>nav.home</source>
+                <target>Home</target>
             </trans-unit>
+            <trans-unit id="13">
+                <source>nav.create_course</source>
+                <target>Maak cursus</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>nav.basket</source>
+                <target>Mandje</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>nav.more</source>
+                <target>Meer</target>
+            </trans-unit>
+
 <!-- Einde messages -->
 <!-- Tab learn: 0000 tot 0999 -->
 			<trans-unit id="0001">
@@ -1955,6 +1972,10 @@
                 <source>h.getting.started.create_course.text_03</source>
                 <target>Klik op de onderstaande button voor meer informatie over de werking van het cursusrapport.</target>
             </trans-unit>
+            <trans-unit id="30203">
+                <source>o.close_report</source>
+                <target>Rapport sluiten</target>
+            </trans-unit>
 
 
 
@@ -3243,7 +3264,7 @@
             </trans-unit>
             <trans-unit id="50182">
                 <source>imo.report_content.step_01.notify_content.li_01</source>
-                <target>Navigeer naar de cursuspagina waarvoor je een melding wilt indienen. Selecteer daarna de optie  rapporteren</target>
+                <target>Navigeer naar de cursuspagina waarvoor je een melding wilt indienen. Klik op de dropdown **meer. Selecteer daarna de optie  rapporteren</target>
             </trans-unit>
             <trans-unit id="50183">
                 <source>imo.report_content.step_01.notify_content.li_02</source>
@@ -4039,7 +4060,7 @@ klantenservice of via info@studylivre.com.</target>
                 <target></target>
             </trans-unit>
 
- <!-- Einide Legal stuff-->   
+ <!-- Einde Legal stuff-->   
              
         </body>  
     </file>
