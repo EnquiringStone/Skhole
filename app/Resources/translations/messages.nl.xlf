@@ -132,7 +132,7 @@
             </trans-unit>
             <trans-unit id="0017">
                 <source>l.last_page.text_info_course_report</source>
-                <target>Na afronding van de cursus wordt een cursusrapport samengesteld met daarin jouw antwoorden op de meerkeuze- en open vragen. Alle rapporten kun je terug vinden bij: Learn →  Rapporten. LET OP: Indien je niet ingelogd bent dan verlies je al je voortgang zodra je je browser afsluit</target>
+                <target>Na afronding van de cursus wordt een cursusrapport samengesteld met daarin jouw antwoorden op de meerkeuze- en open vragen. Alle rapporten kun je terug vinden bij: Mandje →  Mijn rapporten. LET OP: Indien je niet ingelogd bent dan verlies je al je voortgang zodra je je internet browser afsluit</target>
             </trans-unit>
             <trans-unit id="0018">
                 <source>o.notify</source>
@@ -168,7 +168,7 @@
                 <target>Het cursusmateriaal is beschikbaar via de onderstaande link(s)</target>
             </trans-unit>
             <trans-unit id="0026">
-                <source>t.documents.dropbox_url</source>
+                <source>t.documentsdropbox_url</source>
                 <target>Dropbox url</target>
             </trans-unit>
             <trans-unit id="0027">
@@ -201,11 +201,11 @@
             </trans-unit>
             <trans-unit id="0034">
                 <source>t.course_basket.login_is_required_for_usage</source>
-                <target>Om gebruik te maken van het cursusmandje moet je zijn ingelogd. Om in te loggen klik rechtsboven op de inloggen knop. Of klik op de onderstaande knop</target>
+                <target>Om gebruik te maken van het cursusmandje moet je zijn ingelogd.</target>
             </trans-unit>
             <trans-unit id="0035">
                 <source>t.course_basket.no_courses_in_basket</source>
-                <target>Je hebt nog geen cursussen in je mandje. Klik op de onderstaande link om een cursus te vinden</target>
+                <target>Je hebt nog geen cursussen in je mandje.</target>
             </trans-unit>
             <trans-unit id="0036">
                 <source>t.course.a.search.courses</source>
@@ -225,7 +225,7 @@
             </trans-unit>
             <trans-unit id="0040">
                 <source>l.start_page.t_instruction_03</source>
-                <target> die je rechts onder kunt vinden om de cursus te starten.</target>
+                <target>die je rechts onder kunt vinden om de cursus te starten.</target>
             </trans-unit>    
 <!-- Einde tab learn-->		
 <!-- Tab teach: 1000 tot 1999 -->
@@ -319,7 +319,7 @@
             </trans-unit>
             <trans-unit id="1023">
                 <source>t.create_course.f_input.type_question</source>
-                <target>Type hier je vraag (verplicht veld). Voeg daarna antwoorden toe. Vink daarna de correcte antwoord(en) aan.</target>
+                <target>Type hier je vraag. Voeg daarna antwoorden toe. Vink daarna de correcte antwoord(en) aan.</target>
             </trans-unit>
             <trans-unit id="1024">
                 <source>t.create_course.anwsers</source>
@@ -331,7 +331,7 @@
             </trans-unit>
             <trans-unit id="1026">
                 <source>t.create_course.correct_anwsers</source>
-                <target>Correcte antwoorden</target>
+                <target>Correcte antwoord(en)</target>
             </trans-unit>
             <trans-unit id="1027">
                 <source>t.create_course.b.save</source>
@@ -375,11 +375,11 @@
             </trans-unit>
             <trans-unit id="1036">
                 <source>t.create_course.f_label.youtube_url</source>
-                <target>Youtube url</target>
+                <target>YouTube url</target>
             </trans-unit>
             <trans-unit id="1037">
                 <source>t.create_course.f_placeholder.youtube_url</source>
-                <target>De youtube url. www.youtube.com/watch?...</target>
+                <target>De YouTube url. www.youtube.com/watch?...</target>
             </trans-unit>
             <trans-unit id="1038">
                 <source>t.create_course.b.video</source>
@@ -387,7 +387,7 @@
             </trans-unit>
             <trans-unit id="1039">
                 <source>t.create_course.youtube_url_not_recognized</source>
-                <target>De ingevulde youtube url wordt niet herkend. De url moet er als volgt uitzien: https://www.youtube.com/watch?v=ftLIR5AjqMs, https://youtu.be/ftLIR5AjqMs</target>
+                <target>De ingevulde YouTube url wordt niet herkend. De url moet er als volgt uitzien: https://www.youtube.com/watch?v=ftLIR5AjqMs, https://youtu.be/ftLIR5AjqMs</target>
             </trans-unit>
             <trans-unit id="1040">
                 <source>t.create_course.f_label.title</source>
@@ -415,7 +415,7 @@
             </trans-unit>
             <trans-unit id="1046">
                 <source>t.create_course.no_providers_found</source>
-                <target>Geen aanbieders gevonden voor deze cursus. Dit is een optioneel onderdeel.</target>
+                <target>Geen aanbieders (instelling of organisatie) gevonden voor deze cursus. Dit is een optioneel onderdeel.</target>
             </trans-unit>
             <trans-unit id="1047">
                 <source>t.create_course.b.new_provider</source>
@@ -515,7 +515,7 @@
             </trans-unit>
             <trans-unit id="1070">
                 <source>t.create_course.add_documents</source>
-                <target>Het toevoegen van documenten</target>
+                <target>Hoe voeg ik documenten toe?</target>
             </trans-unit>
             <trans-unit id="1071">
                 <source>t.create_course.hyperlink</source>
@@ -531,7 +531,7 @@
             </trans-unit>
             <trans-unit id="1074">
                 <source>t.create_course.f_placeholder.google_drive_url</source> 
-                <target>De url van de google drive documenten (optioneel veld)</target>
+                <target>De url van de Google Drive documenten (optioneel veld)</target>
             </trans-unit>
             <trans-unit id="1075">
                 <source>t.create_course.url</source>
@@ -547,7 +547,7 @@
             </trans-unit>
             <trans-unit id="1078">
                 <source>t.create_course.f_placeholder.dropbox.url</source>
-                <target>De url van de dropbox documenten (optioneel veld)</target>
+                <target>De url van de Dropbox documenten (optioneel veld)</target>
             </trans-unit>
             <trans-unit id="1079">
                 <source>t.create_course.b.add_assignment</source>
@@ -579,7 +579,7 @@
             </trans-unit>
             <trans-unit id="1086">
                 <source>t.create_course.t_long.before_you_publish_course</source>
-                <target>Wanneer gepubliceerd wordt jou cursus getoond in de zoekresultaten. Een publicatie kan niet worden teruggedraaid! Je mag nog wel de cursus bewerken wanneer gepubliceerd. Klik op de grote knop om jou cursus beschikbaar te maken voor publiekelijk gebruik</target>
+                <target>Zodra je deze cursus publiceert verschijnt deze bij de zoekresultaten. Een publicatie kan niet worden teruggedraaid! Je mag nog wel de cursus bewerken wanneer gepubliceerd. De opdrachtpagina's zijn hierop een uitzondering. Klik op de knop hieronder om jou cursus te publiseren. </target>
             </trans-unit>
             <trans-unit id="1087">
                 <source>t.create_course.b.publish_course</source>
@@ -603,7 +603,7 @@
             </trans-unit>
             <trans-unit id="1092">
                 <source>t.create_course.t.advice_before_starting</source>
-                <target>In dit menu kunt een cursus maken. Bezoek het aan de slag menu indien je meer wilt weten over het aanmaken van cursussen. Voordat je begint, raden we je aan om onze richtlijnen en auteursbeleid door te nemen.</target>
+                <target>In dit menu kunt een cursus maken. Voordat je begint, raden we je aan om onze richtlijnen en auteursbeleid door te nemen.</target>
             </trans-unit>
             <trans-unit id="1093">
                 <source>t.create_course.b.author_right</source>
@@ -615,7 +615,7 @@
             </trans-unit>
             <trans-unit id="1095">
                 <source>t.create_course.b.info_create_course</source>
-                <target>Cursus maken</target>
+                <target>Maak cursus</target>
             </trans-unit>
             <trans-unit id="1096">
                 <source>t.create_course.t.met_minimum_req</source>
@@ -631,7 +631,7 @@
             </trans-unit>
             <trans-unit id="1099">
                 <source>t.create_course.t.met_minimum_req_added_one_item</source>
-                <target>Tenminste 1 cursusitem toegevoegd</target>
+                <target>Tenminste 1 cursuspagina toegevoegd</target>
             </trans-unit>
             <trans-unit id="10100">
                 <source>t.create_course.met_al_req_question</source>
@@ -739,7 +739,7 @@
             </trans-unit>
             <trans-unit id="10126">
                 <source>t.create_course.b.tooltip.education_instution</source>
-                <target>Educatieve instelling</target>
+                <target>Organisatie of instelling</target>
             </trans-unit>
             <trans-unit id="10127">
                 <source>t.create_course.b.education_instution</source>
@@ -819,7 +819,7 @@
             </trans-unit>
             <trans-unit id="10148">
                 <source>t.own_created_courses.t_long.no_courses_yet</source>
-                <target>Je hebt nog geen cursussen aangemaakt. Bezoek het aan de slag menu voor meer info</target>
+                <target>Je hebt nog geen cursussen aangemaakt. Bezoek het Ontdek menu voor meer info</target>
             </trans-unit>
             <trans-unit id="10149">
                 <source>t.mentor_reports.view_reports</source>
@@ -831,15 +831,15 @@
             </trans-unit>
             <trans-unit id="10151">
                 <source>t.mentor_reports.not_monitoring_students</source>
-                <target>Er zijn geen cursisten waarvan je de voortgang volgt</target>
+                <target>Er zijn nog geen rapporten met jou gedeeld</target>
             </trans-unit>
             <trans-unit id="10152">
                 <source>t.mentor_reports.mentor_requests</source>
-                <target>Begeleidverzoeken</target>
+                <target>Deel verzoeken</target>
             </trans-unit>
             <trans-unit id="10153">
                 <source>t.mentor_reports.t_long.no_mentor_requests</source>
-                <target>Er zijn momenteel geen begeleidersverzoeken</target>
+                <target>Er zijn momenteel geen deel verzoeken</target>
             </trans-unit>
             <trans-unit id="10154">
                 <source>t.create_course</source>
@@ -851,11 +851,11 @@
             </trans-unit>
             <trans-unit id="10156">
                 <source>t.progress_students</source>
-                <target>Rapporten cursisten</target>
+                <target>Gedeelde rapporten</target>
             </trans-unit>
             <trans-unit id="10157">
                 <source>t.documents.f_placeholder.google_drive_url</source>
-                <target>De url van de google drive documenten (optioneel veld) </target>
+                <target>De url van de Google Drive documenten (optioneel veld) </target>
             </trans-unit>
             <trans-unit id="10158">
                 <source>t.mentor_requests.requests</source>
@@ -870,13 +870,26 @@
                 <target>Moeilijkheidsgraad</target>
             </trans-unit>
             <trans-unit id="10161">
-                <source>t.link.studylivre</source>
+                <source>t.link.StudyLivre</source>
                 <target>www.studylivre.com</target>
             </trans-unit>
              <trans-unit id="10162">
                 <source>t.create_course.f_placeholder.explantion_when_optional</source>
                 <target>Type hier je uitleg (optioneel veld)</target>
             </trans-unit>
+            <trans-unit id="10163">
+                <source>t.create_course.b.info_create_course</source>
+                <target>Cursus maken</target>
+            </trans-unit>
+            <trans-unit id="10164">
+                <source>o.frequently_used.extended_info</source>
+                <target>Uitgebreide informatie</target>
+            </trans-unit>
+            <trans-unit id="10165">
+                <source>o.frequently_used.course_report</source>
+                <target>Cursusrapport</target>
+            </trans-unit>
+
   
 
 <!-- einde tab teach -->
@@ -931,7 +944,7 @@
             </trans-unit>
             <trans-unit id="2013">
                 <source>h.nav.getting_started</source>
-                <target>Aan de slag</target>
+                <target>Ontdek</target>
             </trans-unit>
             <trans-unit id="2014">
                 <source>h.nav.getting_started.intro</source>
@@ -943,7 +956,7 @@
             </trans-unit>
             <trans-unit id="2016">
                 <source>h.nav.getting_started.create_course</source>
-                <target>Cursus aanmaken</target>
+                <target>Cursus maken</target>
             </trans-unit>
             <trans-unit id="2017">
                 <source>h.nav.getting_started.course_report</source>
@@ -959,7 +972,7 @@
             </trans-unit>
             <trans-unit id="2020">
                 <source>h.teach_data</source>
-                <target>Teach gegevens</target>
+                <target>Onderwijs gegevens</target>
             </trans-unit>
             <trans-unit id="2021">
                 <source>h.educator_profile</source>
@@ -971,7 +984,7 @@
             </trans-unit>
             <trans-unit id="2023">
                 <source>h.teach_data.mentor_code</source>
-                <target>Uw begeleidercode</target>
+                <target>Uw deelcode</target>
             </trans-unit>
             <trans-unit id="2024">
                 <source>h.search.search_term</source>
@@ -1043,7 +1056,7 @@
             </trans-unit>
             <trans-unit id="2041">
                 <source>h.welcome.intro.text</source>
-                <target>Studylivre biedt je de mogelijkheid om cursussen te bekijken, creëren en onderling te delen. Na afronding van een cursus is het mogelijk je cursusrapport, met daarin je behaalde resultaten, in te zien. Je kunt ook rapporten inzien van personen die ervoor gekozen hebben om het rapport met je te delen. Klik op een van onderstaande buttons voor meer informatie.</target>
+                <target>StudyLivre biedt je de mogelijkheid om cursussen te bekijken, creëren en onderling te delen. Na afronding van een cursus is het mogelijk je cursusrapport, met daarin je behaalde resultaten, in te zien. Je kunt ook rapporten delen. Klik op een van onderstaande buttons voor meer informatie.</target>
             </trans-unit>
             <trans-unit id="2042">
                 <source>h.welcom.search_course</source>
@@ -1059,7 +1072,7 @@
             </trans-unit>
             <trans-unit id="2045">
                 <source>h.getting.started.create_course.text_01</source>
-                <target>Studylivre biedt je de mogelijkheid om cursussen te bekijken, creëren en onderling te delen. Na afronding van een cursus is het mogelijk je cursusrapport, met daarin je behaalde resultaten, in te zien. Je kunt ook rapporten inzien van personen die ervoor gekozen hebben om het rapport met je te delen</target>
+                <target>StudyLivre biedt je de mogelijkheid om cursussen te bekijken, creëren en onderling te delen. Na afronding van een cursus is het mogelijk je cursusrapport, met daarin je behaalde resultaten, in te zien. Je kunt ook rapporten delen</target>
             </trans-unit>
             <trans-unit id="2046">
                 <source>h.getting.started.create_course.text_02</source>
@@ -1075,7 +1088,7 @@
             </trans-unit>          
             <trans-unit id="2051">
                 <source>h.getting.started.follow_course.text_02</source>
-                <target>Klik op onderstaande button voor meer informatie over het volgen van een cursus.</target>
+                <target>Klik op onderstaande button voor meer informatie over het volgen van een cursus</target>
             </trans-unit>
             <trans-unit id="2052">
                 <source>h.getting.started.follow_course.li.choose_what_and_where</source>
@@ -1096,18 +1109,18 @@
             <trans-unit id="2054">
                 <source>h.getting.started.report.the_report.text</source>
                 <target>
-                Na afronding van een cursus kan een cursist een cursusrapport - met daarin zijn of haar resultaten - inzien en delen. Voor iedere
+                Na afronding van een cursus kan je een cursusrapport - met daarin je resultaten - inzien en delen. Voor iedere
                 opdrachtpagina (met open- en meerkeuzevragen) van de desbetreffende cursus wordt een pagina in het rapport aangemaakt. Het rapport is online in te zien.
                 Eveneens is het mogelijk om een PDF-versie van het rapport te downloaden.
                 </target>
             </trans-unit>
             <trans-unit id="2055">
                 <source>h.getting.started.report.share_with</source>
-                <target>Cursusrapport delen met begeleider(s)</target>
+                <target>Cursusrapport delen</target>
             </trans-unit>
             <trans-unit id="2056">
                 <source>h.getting.started.report.share_with.text_01</source>
-                <target>De cursist kan een cursusrapport delen met bijvoorbeeld een instructeur of begeleider (die ook in het bezit is van een StudyLivre account). Het enige wat de cursist hiervoor hoeft te doen is de unieke BEGELEIDERCODE in te voeren van de gewenste begeleider</target>
+                <target>Je kan een cursusrapport delen met bijvoorbeeld een instructeur, begeleider of vriend (die ook in het bezit is van een StudyLivre account). Het enige wat je hiervoor hoeft te doen is de unieke DEELCODE in te voeren van de persoon waarmee je wilt delen</target>
             </trans-unit>
             <trans-unit id="2057">
                 <source>h.quickmenu</source>
@@ -1115,12 +1128,12 @@
             </trans-unit>
             <trans-unit id="2058">
                 <source>h.getting_started.intro_part_01</source>
-                <target>Studylivre biedt je de mogelijkheid om cursussen te bekijken, creëren en onderling te delen. Na afronding van een cursus is het mogelijk je cursusrapport, met daarin je behaalde resultaten, in te zien. Je kunt ook rapporten inzien van personen die ervoor gekozen hebben om het rapport met je te delen.
+                <target>StudyLivre biedt je de mogelijkheid om cursussen te bekijken, creëren en onderling te delen. Na afronding van een cursus is het mogelijk je cursusrapport, met daarin je behaalde resultaten, in te zien. Je kunt ook rapporten inzien van personen die ervoor gekozen hebben om het rapport met je te delen
             </target>
             </trans-unit>
             <trans-unit id="2059">
                 <source>h.getting_started.intro_part_02</source>
-                <target>Het Aan de slag-menu beidt een overzicht van het StudyLivre platform. Selecteer een onderwerp waarover je meer te weten wilt komen</target>
+                <target>Het Ontdek menu beidt een overzicht van het StudyLivre platform. Selecteer een onderwerp waarover je meer te weten wilt komen</target>
             </trans-unit>
             <trans-unit id="2060">
                 <source>h.person</source>
@@ -1148,8 +1161,8 @@
                 <target>Klik op een van onderstaande buttons voor meer informatie.</target>
             </trans-unit>
             <trans-unit id="2066">
-                <source></source>
-                <target></target>
+                 <source>h.find_out_what_you_can_do</source>
+                <target>Ontdek wat je kunt doen</target>
             </trans-unit>
             <trans-unit id="2067">
                 <source></source>
@@ -1178,7 +1191,7 @@
             </trans-unit>
             <trans-unit id="3004">
                 <source>o.cookies.t_long_part_01</source>
-                <target>Wij gebruiken cookies om het surfen op StudyLivre voor jou nog makkelijker en persoonlijker te maken. Bekijk ons</target>
+                <target>Door het bezoek en gebruik van deze site gaat u akkoord met ons </target>
             </trans-unit>
             <trans-unit id="3005">
                 <source>o.cookies.a.privacy</source>
@@ -1498,11 +1511,11 @@
             </trans-unit>
             <trans-unit id="3082">
                 <source>o.nav.progress_students</source>
-                <target>Rapporten cursisten</target>
+                <target>Gedeelde rapporten</target>
             </trans-unit>
             <trans-unit id="3083">
                 <source>o.nav.getting_started</source>
-                <target>Aan de slag</target>
+                <target>Ontdek</target>
             </trans-unit>
             <trans-unit id="3084">
                 <source>o.nav.log_out</source>
@@ -1930,7 +1943,7 @@
             </trans-unit>
             <trans-unit id="30192">
                 <source>o.give_notice.f_placeholder.phone</source>
-                <target>Je telefoonnummer (optioneel)</target>
+                <target>Je telefoonnummer (optioneel veld)</target>
             </trans-unit>
             <trans-unit id="30193">
                 <source>o.end_course_report</source>
@@ -1958,7 +1971,7 @@
             </trans-unit>
             <trans-unit id="30199">
                 <source>o.loading</source>
-                <target>Loading</target>
+                <target>Laden</target>
             </trans-unit>
 			<trans-unit id="30200">
                 <source>o.frequently_used.standard_pages</source>
@@ -1983,7 +1996,7 @@
 <!-- Einde non tab related -->
 <!-- Start Modals 4000 tot 4999  -->	
             <trans-unit id="4001">
-                <source>mo.remove_cours_from_basket</source>
+                <source>m.remove_cours_from_basket</source>
                 <target>Cursus verwijderen uit cursusmandje</target>
             </trans-unit>
             <trans-unit id="4002">
@@ -2381,23 +2394,23 @@
              
             <trans-unit id="40100">
                 <source>mo.share_report.share_report</source>
-                <target>Deel rapport</target>
+                <target>Deel rapport verzoek</target>
             </trans-unit>
             <trans-unit id="40101">
                 <source>mo.share_report.share_with_mentor</source>
-                <target>Deel met begeleider</target>
+                <target>Deel met iemand anders</target>
             </trans-unit>
             <trans-unit id="40102">
                 <source>mo.share_report.f_label.mentor_code</source>
-                <target>Begeleidercode</target>
+                <target>Deelcode</target>
             </trans-unit>
             <trans-unit id="40103">
                 <source>mo.share_report.f_placeholder.mentor_code</source>
-                <target>De begeleidercode van de door jouw gewenste begeleider</target>
+                <target>De deelcode van diegene waarmee je wilt delen</target>
             </trans-unit>
             <trans-unit id="40104">
                 <source>mo.share_report.t_long.info</source>
-                <target>Als je de begeleidercode invult, kan de ontvanger die aan de begeleidercode is gekoppeld jouw cursusrapport inzien. Het kan een tijdje duren voordat je verzoek word geaccepteerd. Zodra het verzoek geaccepteerd is, zie je de naam van de acceptant in het blokje ‘Gedeelt met:’ (zie afbeelding) . LET OP: je kunt een rapport dat je gedeeld hebt niet verwijderen.</target>
+                <target>Als je de deelcode invult, kan de ontvanger die aan de deelcode is gekoppeld jouw cursusrapport inzien. Het kan een tijdje duren voordat je verzoek word geaccepteerd. Pas als het verzoek GEACEPTEERD is, zie je de naam van de acceptant in het blokje ‘Gedeelt met:’ (zie afbeelding). Let op: je kunt een rapport dat je gedeeld hebt niet verwijderen.</target>
             </trans-unit>
             <trans-unit id="40105">
                 <source>mo.added_on</source>
@@ -2433,7 +2446,7 @@
             </trans-unit>
             <trans-unit id="40113">
                 <source>mo.course_has_no_reviews</source>
-                <target>Deze cursus heeft nog geen reviews</target>
+                <target>Deze cursus heeft nog geen reviews.</target>
             </trans-unit>
             <trans-unit id="40114">
                 <source>mo.education_profile</source>
@@ -2449,7 +2462,7 @@
             </trans-unit>
             <trans-unit id="40117">
                 <source>mo.remove_student</source>
-                <target>Verwijder cursist</target>
+                <target>Verwijder persoon</target>
             </trans-unit>
             <trans-unit id="40118">
                 <source>mo.remove_studen.t_long_01</source>
@@ -2457,7 +2470,7 @@
             </trans-unit>
             <trans-unit id="40119">
                 <source>mo.remove_studen.t_long_02</source>
-                <target>te verwijderen. De gedeelde rapporten voor deze cursist zullen ook automatisch worden verwijdered</target>
+                <target>te verwijderen. De gedeelde rapporten voor deze persoon zullen ook automatisch worden verwijdered</target>
             </trans-unit>
             <trans-unit id="40120">
                 <source>mo.remove_student_report</source>
@@ -2469,7 +2482,7 @@
             </trans-unit>
             <trans-unit id="40122">
                 <source>mo.remove_student_report.t_long_02</source>
-                <target>van de cursist</target>
+                <target>van de persoon</target>
             </trans-unit>
             <trans-unit id="40123">
                 <source>mo.last_edited</source>
@@ -2535,7 +2548,7 @@
                 <target>Google Drive</target>
             </trans-unit>
             <trans-unit id="5005">
-                <source>imo.add_documents.dropbox</source>
+                <source>imo.add_documentsdropbox</source>
                 <target>Dropbox</target>
             </trans-unit>
             <trans-unit id="5006">
@@ -2575,23 +2588,23 @@
                 <target>Optie 1: Google Drive</target>
             </trans-unit>
             <trans-unit id="5015">
-                <source>imo.add_documents.option_dropbox</source>
+                <source>imo.add_documents.option_Dropbox</source>
                 <target>Optie 2: Dropbox</target>
             </trans-unit>    
             <trans-unit id="5016">
-                <source>imo.add_documents.dropbox_01</source>
+                <source>imo.add_documentsdropbox_01</source>
                 <target>Plak de link op de StudyLivre pagina Documenten en druk op de button + url</target>
             </trans-unit>
             <trans-unit id="5017">
-                <source>imo.add_documents.dropbox_02</source>
+                <source>imo.add_documentsdropbox_02</source>
                 <target>Selecteer de hyperlink ‘link kopiëren’ die in de modal verschijnt</target>
             </trans-unit>
             <trans-unit id="5018">
-                <source>imo.add_documents.dropbox_03</source>
+                <source>imo.add_documentsdropbox_03</source>
                 <target>Kopieer de link</target>
             </trans-unit>
             <trans-unit id="5019">
-                <source>imo.add_documents.dropbox_04</source>
+                <source>imo.add_documentsdropbox_04</source>
                 <target>Plak de link op de StudyLivre pagina Documenten. Klik daarna op de button + url</target>
             </trans-unit>
             <trans-unit id="5020">
@@ -2720,7 +2733,7 @@
             </trans-unit>
             <trans-unit id="5051">
                 <source>ext_info.t_long.explain_structure</source>
-                <target> De uitleg start met een Ter informatie-paragraaf met daarin een algemene toelichting. Daarna volgt een paragraaf waarin staat waar en hoe je het
+                <target>De uitleg van een onderwep start met een Ter informatie-paragraaf met daarin een algemene toelichting. Daarna volgt een paragraaf waarin staat waar en hoe je het
                     onderdeel kunt bewerken. Tot slot volgt een voorbeeld van het desbetreffende onderwerp zoals de cursist te zien zal krijgen tijdens het volgen van een
                     cursus</target>
             </trans-unit>
@@ -2731,7 +2744,7 @@
             </trans-unit>
             <trans-unit id="5053">
                 <source>ext_info.t_long.course_card_01</source>
-                <target> Aan iedere cursus is een cursuskaart gekoppeld met daarin een beknopt cursusoverzicht. Dit cursusonderdeel is vereist. Een cursus zonder dit onderdeel kan
+                <target>Aan iedere cursus is een cursuskaart gekoppeld met daarin een beknopt cursusoverzicht. Dit cursusonderdeel is vereist. Een cursus zonder dit onderdeel kan
                     niet gepubliceerd worden.</target>
             </trans-unit>
             <trans-unit id="5054">
@@ -2740,15 +2753,15 @@
             </trans-unit>
             <trans-unit id="5055">
                 <source>ext_info.course_card.li.details</source>
-                <target> een beknopt overzicht met daarin de belangrijkste cursuskenmerken zoals de instructeur, het niveau, cursusduur etc. (automatisch gegenereerd)</target>
+                <target>een beknopt overzicht met daarin de belangrijkste cursuskenmerken zoals de instructeur, het niveau, cursusduur etc. (automatisch gegenereerd)</target>
             </trans-unit>
             <trans-unit id="5056">
                 <source>ext_info.course_card.li.prereq</source>
-                <target>uiteenzetting over de vereiste voorkennis (optioneel veld)</target>
+                <target>: uiteenzetting over de vereiste voorkennis (optioneel onderdeel)</target>
             </trans-unit>
             <trans-unit id="5057">
                 <source>ext_info.course_card.li.provider</source>
-                <target>instelling/organisatie die de cursus aanbied (optioneel veld)</target>
+                <target>instelling/organisatie die de cursus aanbied (optioneel onderdeel)</target>
             </trans-unit>
             <trans-unit id="5058">
                 <source>ext_info.course_card.li.instructeurs</source>
@@ -2770,7 +2783,7 @@
             </trans-unit>
             <trans-unit id="5062">
                 <source>ext_info.add_expl_page.t_long_01</source>
-                <target> Een uitlegpagina is opgebouwd uit video en/of tekst. Je kunt zoveel pagina’s toevoegen als je zelf wilt. Zodra een pagina is aangemaakt verschijnt deze in
+                <target>Een uitlegpagina is opgebouwd uit video en/of tekst. Je kunt zoveel pagina’s toevoegen als je zelf wilt. Zodra een pagina is aangemaakt verschijnt deze in
                     het Pagina overzicht. Een cursus moet minimaal één pagina hebben om gepubliceerd te kunnen worden
            </target>
             </trans-unit>
@@ -2886,35 +2899,35 @@
                 <target>Nadat de pagina is opgeslagen verschijnt deze in het Pagina overzicht</target>
             </trans-unit>
             <trans-unit id="5090">
-                <source>ext_info.add_youtube.t_long_01</source>
+                <source>ext_info.add_video.t_long_01</source>
                 <target>Er zijn twee manieren om een YouTube video toe te voegen aan een cursuspagina</target>
             </trans-unit>
             <trans-unit id="5091">
-                <source>ext_info.add_youtube.add_video</source>
+                <source>ext_info.add_video.add_video</source>
                 <target>YouTube video toevoegen</target>
             </trans-unit>
             <trans-unit id="5092">
-                <source>ext_info.add_youtube.add_video.option_i.step_i</source>
+                <source>ext_info.add_video.add_video.option_i.step_i</source>
                 <target>I. Ga naar YouTube en selecteer een video. Kopieer de link uit de adresbalk van de browser</target>
             </trans-unit>
             <trans-unit id="5093">
-                <source>ext_info.add_youtube.add_video.option_i.step_ii</source>
+                <source>ext_info.add_video.add_video.option_i.step_ii</source>
                 <target>II. Plak de link in het invoerveld. Klik daarna op de button + Video</target>
             </trans-unit>
             <trans-unit id="5094">
-                <source>ext_info.add_youtube.add_video.option_i</source>
+                <source>ext_info.add_video.add_video.option_i</source>
                 <target>Optie I</target>
             </trans-unit>
             <trans-unit id="5095">
-                <source>ext_info.add_youtube.add_video.option_ii</source>
+                <source>ext_info.add_video.add_video.option_ii</source>
                 <target>Optie II</target>
             </trans-unit>
             <trans-unit id="5096">
-                <source>ext_info.add_youtube.add_video.option_ii.li.step_a</source>
+                <source>ext_info.add_video.add_video.option_ii.li.step_a</source>
                 <target>A. Ga naar YouTube en selecteer een video. Rechtermuisklik op de video. Selecteer de optie: Video-url kopiëren</target>
             </trans-unit>
             <trans-unit id="5097">
-                <source>ext_info.add_youtube.add_video.option_ii.li.step_b</source>
+                <source>ext_info.add_video.add_video.option_ii.li.step_b</source>
                 <target>B.) Plak de link in het invoerveld. Klik daarna op de button + Video</target>
             </trans-unit>
             <trans-unit id="5098">
@@ -2949,8 +2962,7 @@
             <trans-unit id="50105">
                 <source>ext_info.page_overview.t_long_01</source>
                 <target>Zodra een pagina is aangemaakt verschijnt deze in het Pagina overzicht. In dit overzicht kun je cursuspagina’s selecteren om te bewerken of om te
-                    verwijderen. Eveneens is het mogelijk om door middel van drag and drop de paginavolgorde te wijzigen
-                </target>
+                    verwijderen. Eveneens is het mogelijk om door middel van drag and drop de paginavolgorde te wijzigen</target>
             </trans-unit>
             <trans-unit id="50106">
                 <source>ext_info.page_overview.where_page_overview</source>
@@ -2958,7 +2970,7 @@
             </trans-unit>
             <trans-unit id="50107">
                 <source>ext_info.remove_course.t_long_01</source>
-                <target>Navigeer naar: Teach → Mijn cursussen. Selecteer de cursus die je wilt verwijderen en klik op de button verwijder cursus. Indien je een cursus
+                <target>Navigeer naar: Cursus aanmaken → Mijn cursussen. Selecteer de cursus die je wilt verwijderen en klik op de button verwijder cursus. Indien je een cursus
                     verwijderd is de cursus is niet langer beschikbaar in de zoekresultaten. De cursus blijft echter wel beschikbaar voor alle cursisten die de cursus in hun
                     cursusmandje hadden voordat deze werd verwijderd. Zodra één van deze personen de cursus uit het cursusmandje verwijderd kan hij/zij de cursus niet langer
                     terugvinden bij de zoekresultaten. Kortom, pas als niemand meer de cursus in zijn of haar cursusmandje heeft is de cursus definitief verwijderd
@@ -2968,21 +2980,9 @@
                 <source>ext_info.where_remove_course</source>
                 <target>Waar kun je de cursus verwijderen?</target>
             </trans-unit>
-            <trans-unit id="50109">
-                <source>imo.course_report.student</source>
-                <target>Cursist</target>
-            </trans-unit>
-            <trans-unit id="50110">
-                <source>imo.course_report.mentor</source>
-                <target>Begeleider</target>
-            </trans-unit>
             <trans-unit id="50111">
-                <source>imo.course_report.student.sub_title</source>
-                <target>Krijg inzicht in je cursusresultaten</target>
-            </trans-unit>
-            <trans-unit id="50112">
-                <source>imo.course_report.teacher.sub_title</source>
-                <target>Bekijk cursusrapporten van cursisten</target>
+                <source>imo.course_report.sub_title</source>
+                <target>Krijg inzicht in je cursusresultaten of bekijk andermans rapporten</target>
             </trans-unit>
             <trans-unit id="50113">
                 <source>imo.course_report.intro</source>
@@ -2990,15 +2990,15 @@
             </trans-unit>
             <trans-unit id="50114">
                 <source>imo.course_report.t_long.intro_part_01</source>
-                <target>Na afronding van een cursus  kan een cursist een cursusrapport - met daarin zijn of haar resultaten - inzien en delen. Voor iedere opdrachtpagina (met open- en meerkeuzevragen) in de cursus wordt een pagina in het rapport aangemaakt. Het rapport is online in te zien. Eveneens is het mogelijk om het rapport te downloaden in PDF</target>
+                <target>Na afronding van een cursus je een cursusrapport - met daarin je resultaten - inzien en delen. Voor iedere opdrachtpagina (met open- en meerkeuzevragen) in de cursus wordt een pagina in het rapport aangemaakt. Het rapport is online in te zien. Eveneens is het mogelijk om het rapport te downloaden als PDF</target>
             </trans-unit>
             <trans-unit id="50115">
                 <source>imo.course_report.share_with_mentor</source>
-                <target>Cursusrapport delen met begeleider(s</target>
+                <target>Cursusrapport delen</target>
             </trans-unit>
             <trans-unit id="50116">
                 <source>imo.course_report.share_with_mentor.t_long_01</source>
-                <target>De cursist kan een cursusrapport delen met bijvoorbeeld een instructeur of begeleider (die ook in het bezit is van een StudyLivre account). Het enige wat de cursist hiervoor hoeft te doen is de unieke BEGELEIDERCODE in te voeren van de gewenste begeleider</target>
+                <target>De cursist kan een cursusrapport delen met bijvoorbeeld een vriend, instructeur of begeleider (die ook in het bezit is van een StudyLivre account). Het enige wat de cursist hiervoor hoeft te doen is de unieke DEELCODE in te voeren van de persoon waarmee hij of zij het rapport wilt delen </target>
             </trans-unit>
             <trans-unit id="50117">
                 <source>imo.course_report.structure</source>
@@ -3010,64 +3010,65 @@
             </trans-unit>
             <trans-unit id="50119">
                 <source>imo.course_report.step_01.search_course</source>
-                <target>Zoek een geschikte cursus</target>
+                <target>Volg een  cursus</target>
             </trans-unit>
             <trans-unit id="50120">
                 <source>imo.course_report.step_01.search_course.t_long_01</source>
-                <target>De cursist en/of begeleider kiest een geschikte cursus</target>
+                <target>De cursist volgt een cursus waarvan hij of zij het rapport later wilt gaan delen</target>
             </trans-unit>
             <trans-unit id="50121">
                 <source>imo.course_report.step_02.mentor_provides_mentor_code</source>
-                <target>Begeleider geeft zijn of haar begeleidercode door aan de cursist(en)</target>
+                <target>Zoek uit wat de deelcode is van de persoon waarmee je wilt delen</target>
             </trans-unit>
             <trans-unit id="50122">
                 <source>imo.course_report.step_02.mentor_provides_mentor_code.t_long_01</source>
-                <target>Ieder StudyLivre account  heeft een begeleidercode. Deze code kun je vinden op onderstaande locaties</target>
+                <target>Ieder StudyLivre account  heeft een deelcode. Deze code kun je vinden op onderstaande locaties</target>
             </trans-unit>
             <trans-unit id="50123">
                 <source>imo.course_report.step_02.li.location_i</source>
-                <target>Teach → Rapporten cursisten  </target>
+                <target>Home → Profiel</target>
             </trans-unit>
             <trans-unit id="50124">
                 <source>imo.course_report.step_02.li.location_ii</source>
-                <target>Home → Dashboard → Profiel</target>
+                <target>Mandje → Gedeelde rapporten</target>
             </trans-unit>
             <trans-unit id="50125">
                 <source>imo.course_report.step_03.students_enter_mentor_code</source>
-                <target>Cursist volgt de cursus en vult daarna de begeleidercode in</target>
+                <target>Vult daarna de deelcode in</target>
             </trans-unit>
             <trans-unit id="50126">
                 <source>imo.course_report.step_03.students_enter_mentor_code.t_long_01</source>
-                <target>Nadat de cursist de cursus heeft afgerond wordt er een Cursusrapport aangemaakt. Dit rapport wordt automatisch opgeslagen en kun je terugvinden op de volgende locatie: Learn → Rapporten. De cursist zoekt het rapport dat hij/zij wilt delen en klikt op de button Deel rapport. In de modal die vervolgens verschijnt kan hij/zij de begeleiderscode invullen.  Het is mogelijk om het rapport met meerdere begeleiders te delen
+                <target>Nadat de cursist de cursus heeft afgerond wordt er een cursusrapport aangemaakt. Dit rapport wordt automatisch opgeslagen en kun je terugvinden op de volgende locatie: Mandje → Mijn rapporten. De cursist zoekt het rapport dat hij/zij wilt delen en klikt op de button Deel rapport. In de modal die vervolgens verschijnt kan hij/zij een deelcode invullen.  Het is mogelijk om het rapport met meerdere personen te delen.
           </target>
             </trans-unit>
             <trans-unit id="50127">
                 <source>imo.course_report.step_04.student_accepts</source>
-                <target>Begeleider accepteert het deelverzoek</target>
+                <target>Persoon waarmee gedeeld gaat worden accepteert het deelverzoek</target>
             </trans-unit>
             <trans-unit id="50128">
                 <source>imo.course_report.step_04.mentor_accepts</source>
-                <target>De begeleider ontvangt, nadat zijn/haar begeleiderscode is ingevuld door een cursist, een begeleidverzoek (Teach → Rapporten cursisten ). De begeleider kan het desbetreffende verzoek afwijzen of accepteren</target>
+                <target>De persoon ontvangt, nadat zijn/haar deelcode is ingevuld door een cursist, een deelverzoek (Mandje → Gedeelde rapporten ). De desbetreffende persoon kan het verzoek afwijzen of accepteren</target>
             </trans-unit>
-            <trans-unit id="50129">
+                        <trans-unit id="50129">
                 <source>imo.course_report.step_04.mentor_declines</source>
-                <target>Als de begeleider het verzoek heeft geacepteerd, ziet de cursist de naam van de begeleider(s) bij het desbetreffende cursus rapport verschijnen ( Learn → Rapporten)</target>
+                <target>Als een persoon het verzoek heeft geaccepteerd, ziet de cursist de naam van deze persoon bij het desbetreffende cursus rapport verschijnen ( Mandje → Mijn rapporten)</target>
             </trans-unit>
             <trans-unit id="50130">
                 <source>imo.course_report.step_05.view_report</source>
-                <target>Begeleider bekijkt het cursusrapport</target>
+                <target>De persoon waarmee gedeeld is bekijkt het cursusrapport</target>
             </trans-unit>
+
             <trans-unit id="50131">
                 <source>imo.course_report.step_05.view_report.when_mentor_accepted</source>
-                <target>Als de begeleider het verzoek heeft geaccepteerd dan verschijnt het rapport van de cursist in de Bekijk rapporten-lijst (Teach → Rapporten cursisten  → Bekijk rapporten)</target>
+                <target>Als de persoon waarmee gedeeld is het verzoek heeft geaccepteerd dan verschijnt het rapport van de cursist in de Bekijk rapporten lijst (Mandje → Gedeelde rapporten  → Bekijk rapporten)</target>
             </trans-unit>
             <trans-unit id="50132">
                 <source>imo.course_report.step_05.view_report.when_mentor_declined</source>
-                <target>Per cursist kan de begeleider een of meerdere cursusrapporten inzien (mits de cursist zijn of haar begeleidercode heeft ingevuld)</target>
+                <target>Per cursist kan de persoon waarmee gedeeld word een of meerdere cursusrapporten inzien (mits de cursist zijn of haar deelcode heeft ingevuld)</target>
             </trans-unit>
             <trans-unit id="50133">
                 <source>imo.course_report.step_05.t_long_01</source>
-                <target>Per cursist kan de begeleider een of meerdere cursusrapporten inzien (mits de cursist zijn of haar begeleidercode heeft ingevuld)</target>
+                <target>Per cursist kan de persoon waarmee gedeeld word een of meerdere cursusrapporten inzien (mits de cursist zijn of haar deelcode heeft ingevuld)</target>
             </trans-unit>
             <trans-unit id="50134">
                 <source>imo.follow_course.step_01.li.to_course</source>
@@ -3083,7 +3084,7 @@
             </trans-unit>
             <trans-unit id="50137">
                 <source>imo.follow_course.step_01.li.plus_baket</source>
-                <target>+ In cursusmandje</target>
+                <target>+ Cursusmandje</target>
             </trans-unit>
             <trans-unit id="50138">
                 <source>imo.follow_course.step_01.li.add_to_basket</source>
@@ -3091,12 +3092,12 @@
             </trans-unit>
             <trans-unit id="50139">
                 <source>imo.follow_course.step_01.t_long.course_card</source>
-                <target> Aan iedere zoekresultaat is een cursuskaart gekoppeld met daarin een beknopt cursusoverzicht.De cursuskaart is als volgt opgebouwd
+                <target>Aan iedere zoekresultaat is een cursuskaart gekoppeld met daarin een beknopt cursusoverzicht.De cursuskaart is als volgt opgebouwd
                </target>
             </trans-unit>
             <trans-unit id="50140">
                 <source>imo.follow_course.step_01.course_card.li.li_01</source>
-                <target>Een beknopt overzicht met daarin de belangrijkste cursuskenmerken, zoals de instructeur, het niveau, cursusduur etc</target>
+                <target>introductievideo en/of -tekst over de cursus (vereist onderdeel)</target>
             </trans-unit>
             <trans-unit id="50141">
                 <source>imo.follow_course.step_01.course_card.li.li_03</source>
@@ -3232,7 +3233,7 @@
             </trans-unit>
             <trans-unit id="50174">
                 <source>imo.create_course.step_02.add_pages.t_long_01</source>
-                <target> Je kunt zoveel pagina’s toevoegen als je zelf wilt. Zodra een pagina is aangemaakt, verschijnt deze in het Pagina overzicht </target>
+                <target>Je kunt zoveel pagina’s toevoegen als je zelf wilt. Zodra een pagina is aangemaakt, verschijnt deze in het Pagina overzicht </target>
             </trans-unit>
             <trans-unit id="50175">
                 <source>imo.create_course.step_03.publish.t_long_01</source>
@@ -3244,7 +3245,7 @@
             </trans-unit>
             <trans-unit id="50177">
                 <source>imo.create_course.step_more.a.getting_started</source>
-                <target>Aan de slag menu</target>
+                <target>Ontdek menu</target>
             </trans-unit>
             <trans-unit id="50178">
                 <source>imo.create_course.step_more.t_long_02</source>
@@ -3292,35 +3293,35 @@
             </trans-unit>
             <trans-unit id="50189">
                 <source>imo.frequently_used.ter_info.t_03</source>
-                <target>Klik op onderstaande button voor meer informatie over het toevoegen van documenten.</target>
+                <target>Klik op onderstaande button voor meer informatie over het toevoegen van documenten</target>
             </trans-unit>
             <trans-unit id="50190">
                 <source>imo.frequently_used.step_01_and_02</source>
                 <target>Stap 1 en 2</target>
             </trans-unit>
             <trans-unit id="50191">
-                <source></source>
-                <target></target>
+                <source>imo.add_documents.dropbox</source>
+                <target>Dropbox</target>
             </trans-unit>
             <trans-unit id="50192">
-                <source></source>
-                <target></target>
+                <source>imo.add_documents.dropbox_01</source>
+                <target>Meld je aan bij  Dropbox en selecteer de map die je wilt delen. Klik vervolgens op de button: delen</target>
             </trans-unit>
             <trans-unit id="50193">
-                <source></source>
-                <target></target>
+                <source>imo.add_documents.dropbox_02</source>
+                <target>Selecteer de hyperlink ‘link kopiëren’ die in de modal verschijnt</target>
             </trans-unit>
             <trans-unit id="50194">
-                <source></source>
-                <target></target>
+                <source>imo.add_documents.dropbox_03</source>
+                <target>Kopieer de link</target>
             </trans-unit>
             <trans-unit id="50195">
-                <source></source>
-                <target></target>
+                <source>imo.add_documents.dropbox_04</source>
+                <target>Plak de link op de StudyLivre pagina Documenten. Klik daarna op de button + url </target>
             </trans-unit>
             <trans-unit id="50196">
-                <source></source>
-                <target></target>
+                <source>imo.li.introduction_video_and_text</source>
+                <target>introductievideo en/of tekst over de cursus (vereist onderdeel)</target>
             </trans-unit>
             <trans-unit id="50197">
                 <source></source>
@@ -3380,7 +3381,7 @@
             <trans-unit id="6010">
                 <source>m.about.t_long.general_information</source>
                 <target>
-                StudyLivre is opgezet in 2016. Studylivre biedt je de mogelijkheid om cursussen te bekijken, creëren en onderling te delen. Na afronding van een cursus is het mogelijk je cursusrapport, met daarin je behaalde resultaten, in te zien. Je kunt ook rapporten inzien van personen die ervoor gekozen hebben om het rapport met je te delen
+                StudyLivre is opgezet in 2016. StudyLivre biedt je de mogelijkheid om cursussen te bekijken, creëren en onderling te delen. Na afronding van een cursus is het mogelijk je cursusrapport, met daarin je behaalde resultaten, in te zien. Je kunt ook rapporten inzien van personen die ervoor gekozen hebben om het rapport met je te delen
                 </target>
             </trans-unit>
             <trans-unit id="6011">
@@ -3444,7 +3445,7 @@
             </trans-unit>
             <trans-unit id="6025">
                 <source>m.author.t_long.author_right_policy.text</source>
-                <target>StudyLivre respecteert de intellectuele eigendomsrechten van anderen en wil een platform bieden waarop deze rechten niet worden geschonden. In dit menu kun je meer te weten komen over ons auteursrechtbeleid. Eveneens vindt je er informatie die je nodig hebt om je rechten op deze website te beheren.</target>
+                <target>Als je vermoedt dat er sprake is van een ongepaste inhoud of auteursrechtschending dan kan je dit melden door middel van het rapportageformulier. Een auteursrechtmelding mag uitsluitend worden ingediend door de auteursrechteigenaar of een vertegenwoordiger die bevoegd is namens de eigenaar te handelen.</target>
             </trans-unit>
         
             <trans-unit id="6030">
@@ -3556,7 +3557,7 @@
             </trans-unit>
             <trans-unit id="6054">
                 <source>m.guidelines.t.copy_rights</source>
-                <target>Auteursrech</target>
+                <target>Auteursrecht</target>
             </trans-unit>
             <trans-unit id="6055">
                 <source>m.guidelines.t_long.copy_rights</source>
@@ -3621,11 +3622,12 @@
             </trans-unit>
             <trans-unit id="6070">
                 <source>m.questions.question.report_content</source>
-                <target>Waar kan ik ongepaste content melden?</target>
+                <target>Hoe kan ik ongepaste content melden?</target>
             </trans-unit>
             <trans-unit id="6071">
                 <source>m.questions.anwser.report_content</source>
-                <target>Als je vermoedt dat bepaalde cursusinhoud ongepast is gebruik dan het rapportageformulier om hier melding van te maken. </target>
+                <target>Ga naar de pagina met de ongewenst inhoud. Onderaan de pagina staat een dropdown genaamd meer. Selecteer deze en kies de optie rapportage indienen. 
+</target>
             </trans-unit>
             <trans-unit id="6072">
                 <source>m.questions.question.create_acount_fb_and_google</source>
@@ -3649,7 +3651,7 @@
             </trans-unit>
             <trans-unit id="6077">
                 <source>m.questions.anwser.which_personal_data_saved</source>
-                <target>Als je een account aanmaakt slaan we je e-mail, voor- en achternaam en het social medium waarmee je inlogt op. Indien je je profiel aanvult dan worden eveneens educatieve- en onderwijsgegevens opgeslagen. Je kunt je gegevens inzien via: Home → Dashboard → Mijn account.</target>
+                <target>Als je een account aanmaakt slaan we je e-mail, voor- en achternaam en het social medium waarmee je inlogt op. Indien je je profiel aanvult dan worden eveneens educatieve- en onderwijsgegevens opgeslagen.</target>
             </trans-unit>   
             <trans-unit id="6078">
                 <source>m.contact.t.email_message</source>
@@ -3657,7 +3659,7 @@
             </trans-unit>
             <trans-unit id="6079">
                 <source>m.contact.t_long.email_message</source>
-                <target>De email is succesvol gestuurd. Wij van studylivre zullen er zo snel mogelijk naar kijken. En indien nodig een reactie geven.</target>
+                <target>De email is succesvol gestuurd. Wij van StudyLivre zullen er zo snel mogelijk naar kijken. En indien nodig een reactie geven.</target>
             </trans-unit>
             <trans-unit id="6080">
                 <source>m.contact.t.report_send</source>
@@ -3665,7 +3667,7 @@
             </trans-unit>
             <trans-unit id="6081">
                 <source>m.contact.t_long.report_send</source>
-                <target>De rapportage is succesvol gestuurd. Wij van studylivre zullen er zo snel mogelijk naar kijken. En indien nodig een reactie geven.</target>
+                <target>De rapportage is succesvol gestuurd. Wij van StudyLivre zullen er zo snel mogelijk naar kijken. En indien nodig een reactie geven.</target>
             </trans-unit>
             <trans-unit id="6084">
                 <source>m.about_us</source>
@@ -3705,7 +3707,7 @@
             </trans-unit> 
             <trans-unit id="6093">
                 <source>m.guidelines.t_long.volicence_content</source>
-                <target>Gewelddadig materiaal: Het is niet toegestaan om cursusmateriaal te plaatsen dat als schokkend, sensationeel of respectloos beschouwd kan worden. Als je nieuws- of documentairevideo's plaatst die schokkende beelden bevatten zorg er dan voor dat je (vooraf) duidelijke?? informatie hierbij weergeeft zodat kijkers begrijpen wat er gebeurt.</target>
+                <target> Het is niet toegestaan om cursusmateriaal te plaatsen dat als schokkend, sensationeel of respectloos beschouwd kan worden. Als je nieuws- of documentairevideo's plaatst die schokkende beelden bevatten zorg er dan voor dat je (vooraf) duidelijke?? informatie hierbij weergeeft zodat kijkers begrijpen wat er gebeurt.</target>
             </trans-unit> 
 
 <!-- Einde more tab-->  
@@ -3753,7 +3755,7 @@
             </trans-unit>
             <trans-unit id="7011">
                 <source>cookie.policy_third_parties.t_long.part_01</source>
-                <target>Voor de cookies die derde partijen voor social media-toepassingen op Studylivre plaatsen, verwijzen wij naar de verklaringen die deze partijen op hun eigen websites daarover geven. Hetzelfde geldt voor onze advertentiepartners. Deze verklaringen kunnen regelmatig wijzigen. StudyLivre heeft hier geen invloed op. Alleen StudyLivre en onze geautoriseerde derde partijen hebben toegang tot de cookiegegevens.</target>
+                <target>Voor de cookies die derde partijen voor social media-toepassingen op StudyLivre plaatsen, verwijzen wij naar de verklaringen die deze partijen op hun eigen websites daarover geven. Hetzelfde geldt voor onze advertentiepartners. Deze verklaringen kunnen regelmatig wijzigen. StudyLivre heeft hier geen invloed op. Alleen StudyLivre en onze geautoriseerde derde partijen hebben toegang tot de cookiegegevens.</target>
             </trans-unit>
             <trans-unit id="7012">
                 <source>cookie.policy_third_parties.t_long.part_02</source>
@@ -3874,7 +3876,7 @@ informatie die eerder is opgeslagen via de instellingen van uw browser verwijder
 deze instellingen of heeft u andere vragen/opmerkingen over de gegevensverwerking, stuur dan een gespecificeerd verzoek naar info@studylivre.com. Om uw identiteit te
 kunnen verifiëren, vragen wij u een kopie van uw identiteitsbewijs mee te sturen. Maak in deze kopie het burgerservicenummer (BSN), MRZ (machine readable zone, de
 strook met nummers onderaan het paspoort), paspoortnummer en uw pasfoto zwart. Dit ter bescherming van uw privacy. StudyLivre zal zo snel mogelijk, maar in ieder
-geval binnen vier weken, op uw verzoek reageren. U kunt ons ook bereiken via: Website: www.StudyLivre.com. Mail: info@studylivre.com</target>
+geval binnen vier weken, op uw verzoek reageren. U kunt ons ook bereiken via: Website: www.studylivre.com. Mail: info@studylivre.com</target>
             </trans-unit>
             <trans-unit id="7038">
                 <source>privacy.security</source>
@@ -3896,7 +3898,7 @@ klantenservice of via info@studylivre.com.</target>
             </trans-unit>
             <trans-unit id="7042">
                 <source>user.agree_user.general.t_long_01</source>
-                <target>Door de internetsite studylivre.com, hierna te noemen ‘website’, te benaderen en/of de op deze website aangeboden informatie te gebruiken, verklaart u zich akkoord met de toepasselijkheid van de hieronder vermelde voorwaarden. Het is u niet toegestaan om van de website gebruik te maken, indien u de voorwaarden niet aanvaardt. StudyLivre kan de voorwaarden te allen tijde wijzigen. Wij moedigen u aan om alles goed door te lezen. Eveneens is het raadzaam ten behoeve van uw administratie uw eigen exemplaar van de Algemene Voorwaarden uit te printen of te bewaren. 
+                <target>Door de internetsite StudyLivre.com, hierna te noemen ‘website’, te benaderen en/of de op deze website aangeboden informatie te gebruiken, verklaart u zich akkoord met de toepasselijkheid van de hieronder vermelde voorwaarden. Het is u niet toegestaan om van de website gebruik te maken, indien u de voorwaarden niet aanvaardt. StudyLivre kan de voorwaarden te allen tijde wijzigen. Wij moedigen u aan om alles goed door te lezen. Eveneens is het raadzaam ten behoeve van uw administratie uw eigen exemplaar van de Algemene Voorwaarden uit te printen of te bewaren. 
 </target>
             </trans-unit>
             <trans-unit id="7043">

@@ -27,8 +27,7 @@
                        {% trans %}o.course_report.t_long.report_belongs_to_part_01{% endtrans %}:
                         <a href="#" data-target="#courseCardModal{{ index }}" data-toggle="modal">{{ report.course.name }}</a>.
                        {% trans %}o.course_report.t_long.report_belongs_to_part_02{% endtrans %}.
-                        <br>
-                       {% trans %}o.course_report.t_long.report_belongs_to_part_03{% endtrans %} <a target="_blank" href="{{ path('app_generate_report_pdf', {'reportId': report.id}) }}">{% trans %}o.course_report.pdf{% endtrans %}</a>
+                       {% trans %}o.course_report.t_long.report_belongs_to_part_03{% endtrans %} <a target="_blank" href="{{ path('app_generate_report_pdf', {'reportId': report.id}) }}"><b><samp>{% trans %}o.course_report.pdf{% endtrans %}</samp></b></a>
                     </span>
                     <br>
                     <button class="btn btn-default btn-xs unclickable" type="button">

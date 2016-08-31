@@ -3,8 +3,7 @@
         <button class="close save-cookie-choice" aria-hidden="true" data-dismiss="alert" type="button">x</button>
         <p>
             {% trans %}o.cookies.t_long_part_01{% endtrans %}
-            <a href="{{ path('app_other_legal', {'page': 'privacy'}) }}">{% trans %}o.cookies.a.privacy{% endtrans %}</a> {% trans %}o.cookies.t_long_part_02{% endtrans %}
-            <a href="{{ path('app_other_legal', {'page': 'cookie'}) }}">{% trans %}o.cookies.a.cookie_policy{% endtrans %}</a> {% trans %}o.cookies.t_long_part_03{% endtrans %}
+            <a href="{{ path('app_other_legal', {'page': 'cookie'}) }}">{% trans %}o.cookies.a.cookie_policy{% endtrans %}</a>. 
             <button class="btn btn-info btn-xs save-cookie-choice" data-dismiss="alert" type="button">{% trans %}o.frequently_used.close{% endtrans %}</button>
         </p>
     </div>

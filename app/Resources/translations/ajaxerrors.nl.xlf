@@ -16,7 +16,7 @@
             </trans-unit>
             <trans-unit id="4">
                 <source>course.edit.name.illegal.characters</source>
-                <target>De naam bevat illegale characters. Je mag alleen characters van het alfabet of nummers gebruiken</target>
+                <target>De naam bevat illegale characters. Je mag alleen characters van het alfabet of nummers gebruiken.</target>
             </trans-unit>
             <trans-unit id="5">
                 <source>course.edit.name.too.long</source>
@@ -80,7 +80,7 @@
             </trans-unit>
             <trans-unit id="20">
                 <source>course.edit.card.illegal.characters</source>
-                <target>De titel bevat illegale characters. Je mag alleen letters van het alfabet en nummers gebruiken</target>
+                <target>De titel bevat illegale characters. Je mag alleen letters van het alfabet en nummers gebruiken, met uitzondering van : ',', ",", !, ? ( en )</target>
             </trans-unit>
             <trans-unit id="21">
                 <source>course.edit.card.too.long</source>
@@ -264,11 +264,11 @@
             </trans-unit>
             <trans-unit id="66">
                 <source>course.resources.invalid.google.drive</source>
-                <target>Het ingevulde google drive url is niet geldig</target>
+                <target>Het ingevulde Google Drive url is niet geldig</target>
             </trans-unit>
             <trans-unit id="67">
                 <source>course.resources.invalid.dropbox</source>
-                <target>Het ingevulde dropbox url is niet geldig</target>
+                <target>Het ingevulde DropBox url is niet geldig</target>
             </trans-unit>
             <trans-unit id="68">
                 <source>course.reviews.one.per.user</source>
@@ -288,7 +288,7 @@
             </trans-unit>
             <trans-unit id="72">
                 <source>course.reports.shared.remove</source>
-                <target>Dit rapport wordt gedeeld met %1 begeleiders. Dit zorgt ervoor dat het rapport niet verwijderd kan worden</target>
+                <target>Dit rapport wordt gedeeld met %1 personen. Dit zorgt ervoor dat het rapport niet verwijderd kan worden</target>
             </trans-unit>
             <trans-unit id="73">
                 <source>course.reports.share.not.logged.in</source>
@@ -296,15 +296,15 @@
             </trans-unit>
             <trans-unit id="74">
                 <source>course.reports.already.shared</source>
-                <target>Dit rapport is al gedeeld met de opgegeven begeleider</target>
+                <target>Dit rapport is al gedeeld met de opgegeven persoon</target>
             </trans-unit>
             <trans-unit id="75">
                 <source>course.reports.share.same</source>
-                <target>De ingevulde mentorcode is van jezelf. Je kunt geen rapporten met jezelf delen</target>
+                <target>De ingevulde deelcode is van jezelf. Je kunt geen rapporten met jezelf delen</target>
             </trans-unit>
             <trans-unit id="76">
                 <source>course.shared.reports.decline.already.accepted</source>
-                <target>De begeleidverzoek kan niet worden geweigerd omdat deze al geaccepteerd is</target>
+                <target>Het deelverzoek kan niet worden geweigerd omdat deze al geaccepteerd is</target>
             </trans-unit>
             <trans-unit id="77">
                 <source>course.shared.reports.nothing.found</source>

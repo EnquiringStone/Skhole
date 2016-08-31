@@ -8,7 +8,6 @@
 {% endblock %}
 {% block modalBaseContents %}
     <div class="modal-body">
-        <h4>{% trans %}mo.share_report.share_with_mentor{% endtrans %}</h4>
         <form class="form-horizontal">
             <div class="form-group">
                 <label class="col-sm-2 control-label">{% trans %}mo.share_report.f_label.mentor_code{% endtrans %}:</label>
@@ -33,7 +32,7 @@
                 <br>
                 {% trans %}mo.share_report.t_long.info{% endtrans %}
             </p>
-            <img src="{{ asset('images/nl/nl_example_shared_report_with.png') }}" class="img-thumbnail">
+           <img src="{{ asset('images/'~app.request.locale~'/example_shared_report_with.png') }}" class="img-thumbnail">
         </div>
     </div>
 {% endblock %}

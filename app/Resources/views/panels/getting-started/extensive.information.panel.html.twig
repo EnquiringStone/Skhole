@@ -92,7 +92,7 @@
                          ext_info.li.kind_of_questions
                     {% endtrans %}.</li>
                 </ol>
-                <p>{% trans %} ext_info.course_structure.t_02{% endtrans %}.</p>
+                <p>{% trans %}ext_info.course_structure.t_02{% endtrans %}.</p>
                 <h5 class="text-primary"><samp><b>{% trans %}ext_info.explain_structure{% endtrans %}</b></samp></h5> 
                 <p>{% trans %}
                     ext_info.t_long.explain_structure
@@ -100,7 +100,7 @@
             </div>  
             <div class="tab-pane fade in" id="tabInfoSearchData">  
                 <h5 class="text-primary"><samp><b>{% trans %}info.ter_info{% endtrans %}</b></samp></h5> 
-                <p>{% trans %} ext_info.t_long.search_data{% endtrans %}.</p>
+                <p>{% trans %}ext_info.t_long.search_data{% endtrans %}.</p>
                   <div class="row">
                     <div class="col-md-6">   
                         <h5 class="text-primary"><samp><b>{% trans %}imo.where_edit_this_part{% endtrans %}</b></samp>?</h5> 
@@ -119,7 +119,7 @@
                 <ol start="1" type="1">
                     <li>
                         <strong>{% trans %}imo.frequently_used.introduction{% endtrans %}</strong>:{% trans %}
-                         introductievideo en/of tekst over de cursus (vereist onderdeel)
+                         imo.li.introduction_video_and_text
                     {% endtrans %};</li>
                     <li>
                         <strong>{% trans %}o.course_card.details{% endtrans %}</strong>:{% trans %}
@@ -194,7 +194,7 @@
                 <div class="row">
                     <div class="col-md-6">   
                         <h5 class="text-primary"><samp><b>{% trans %}imo.where_edit_this_part{% endtrans %}</b></samp>?</h5> 
-                        <img src="{{ asset('images/'~app.request.locale~'/edit_annoucement.png') }}" class="img-thumbnail">
+                        <img src="{{ asset('images/'~app.request.locale~'/edit_documents.png') }}" class="img-thumbnail">
                      </div>    
                     <div class="col-md-6">
                         <h5 class="text-primary"><samp><b>{% trans %}info.end_result_for_student{% endtrans %}</b></samp></h5> 
@@ -205,7 +205,7 @@
             <div class="tab-pane fade in" id="tabInfoExplantionPage">
                             <!-- -->  
                 <h5 class="text-primary"><samp><b>{% trans %}info.ter_info{% endtrans %}</b></samp></h5> 
-                <p>{% trans %} ext_info.add_expl_page.t_long_01{% endtrans %}.</p>
+                <p>{% trans %}ext_info.add_expl_page.t_long_01{% endtrans %}.</p>
                 <h5 class="text-primary"><samp><b>{% trans %}ext_info.add_expl_page.edit_expl_page{% endtrans %}</b></samp></h5> 
                 <div class="row">
                     <div class="col-md-6">   
@@ -249,7 +249,7 @@
                                 <p class="text-primary">{% trans %}
                             ext_info.add_expl_page.result_video_and_text
                         {% endtrans %}</p>
-                       <img src="{{ asset('images/'~app.request.locale~'/example_video_and_text.png') }}" class="img-thumbnail">
+                       <img src="{{ asset('images/'~app.request.locale~'/edit_text_and_video.png') }}" class="img-thumbnail">
                       </div>
                      <div class="col-md-6">   
                         <p class="text-primary">{% trans %}
@@ -321,41 +321,38 @@
                         {% endtrans %}.</li>            
                     </ol>
                     </li>  
-                </ol> 
-                 <h5 class="text-primary"><samp><b>{% trans %}imo.where_edit_this_part{% endtrans %}</b></samp>?</h5> 
-                <img src="{{ asset('images/'~app.request.locale~'/edit_quiz.png') }}" class="img-thumbnail">
-                <h5 class="text-primary"><samp><b>{% trans %}info.end_result_for_student{% endtrans %}</b></samp></h5> 
-                <img src="{{ asset('images/'~app.request.locale~'/example_quiz.png') }}" class="img-thumbnail">
-                
+                </ol>
+                <div class="row">
+                    <div class="col-md-6">    
+                        <h5 class="text-primary"><samp><b>{% trans %}imo.where_edit_this_part{% endtrans %}</b></samp>?</h5> 
+                        <img src="{{ asset('images/'~app.request.locale~'/edit_quiz.png') }}" class="img-thumbnail">
+                     </div>
+                     <div class="col-md-6">     
+                        <h5 class="text-primary"><samp><b>{% trans %}info.end_result_for_student{% endtrans %}</b></samp></h5> 
+                        <img src="{{ asset('images/'~app.request.locale~'/example_quiz.png') }}" class="img-thumbnail">
+                     </div>
+                 </div>       
             </div> 
             <div class="tab-pane fade in" id="tabInfoAddVideo">  
                 <h5 class="text-primary"><samp><b>{% trans %}info.ter_info{% endtrans %}</b></samp></h5> 
-                <p>{% trans %}
-                    ext_info.add_youtube.t_long_01
-                {% endtrans %}.</p>
-                 <h5 class="text-primary"><samp><b>{% trans %}ext_info.add_youtube.add_video{% endtrans %}</b></samp></h5>  
+                <p>{% trans %}ext_info.add_video.t_long_01{% endtrans %}.</p>
+                 <h5 class="text-primary"><samp><b>{% trans %}ext_info.add_video.add_video{% endtrans %}</b></samp></h5>  
                 <div class="row">
                     <div class="col-md-6">                      
-                        <p class="text-primary">{% trans %}
-                            ext_info.add_youtube.add_video.option_i
-                        {% endtrans %}</p>
-                        <p>{% trans %}
-                            ext_info.add_youtube.add_video.option_i.step_i
-                        {% endtrans %}.</p>
-                        <p>{% trans %}
-                            ext_info.add_youtube.add_video.option_i.step_ii
-                        {% endtrans %}.</p>
+                        <p class="text-primary">{% trans %}ext_info.add_video.add_video.option_i{% endtrans %}</p>
+                        <p>{% trans %}ext_info.add_video.add_video.option_i.step_i{% endtrans %}.</p>
+                        <p>{% trans %}ext_info.add_video.add_video.option_i.step_ii{% endtrans %}.</p>
                         <img src="{{ asset('images/'~app.request.locale~'/example_add_Youtube_option_01.png') }}" class="img-thumbnail">
                    </div>
                    <div class="col-md-6">       
                         <p class="text-primary">{% trans %}
-                                ext_info.add_youtube.add_video.option_ii
+                                ext_info.add_video.add_video.option_ii
                             {% endtrans %}</p>
                             <p>{% trans %}
-                                ext_info.add_youtube.add_video.option_ii.li.step_a
+                                ext_info.add_video.add_video.option_ii.li.step_a
                             {% endtrans %}.</p>
                             <p>{% trans %}
-                            ext_info.add_youtube.add_video.option_ii.li.step_b
+                            ext_info.add_video.add_video.option_ii.li.step_b
                             {% endtrans %}.</p>
                             <img src="{{ asset('images/'~app.request.locale~'/example_add_Youtube_option_02.png') }}" class="img-thumbnail">
                     </div>

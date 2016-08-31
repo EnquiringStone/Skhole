@@ -189,13 +189,14 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="tabStep5{{ modalId }}">
-                <h4 class="text-primary">
-                    <b>{% trans %}imo.frequently_used.step_05{% endtrans %}:</b>
-                    {% trans %}imo.follow_course.step_05.closing_part{% endtrans %}
-                </h4>
-                <p>{% trans %}imo.follow_course.step_05.closing_part.t_long{% endtrans %}.</p>
-                <img src="{{ asset('images/'~app.request.locale~'/example_start_page.png') }}" class="img-thumbnail">
-
+                <div class="explanation-background">
+                    <h4 class="text-primary">
+                        <b>{% trans %}imo.frequently_used.step_05{% endtrans %}:</b>
+                        {% trans %}imo.follow_course.step_05.closing_part{% endtrans %}
+                    </h4>
+                    <p>{% trans %}imo.follow_course.step_05.closing_part.t_long{% endtrans %}.</p>
+                    <img src="{{ asset('images/'~app.request.locale~'/example_start_page.png') }}" class="img-thumbnail">
+                 </div>   
             </div>
         </div>
     </div>

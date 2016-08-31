@@ -12,7 +12,7 @@
             </trans-unit>
             <trans-unit id="3">
                 <source>db.course.levels.long.high.school</source>
-                <target>Tertair onderwijs</target>
+                <target>Tertiair onderwijs</target>
             </trans-unit>
             <trans-unit id="4">
                 <source>db.course.languages.dutch</source>

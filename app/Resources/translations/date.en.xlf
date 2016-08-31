@@ -1,0 +1,54 @@
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.0">
+    <file original="file.ext" source-language="en" datatype="plaintext">
+        <body>
+            <trans-unit id="1">
+                <source>diff.ago.hour</source>
+                <target>%count% hours ago</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>diff.ago.second</source>
+                <target>%count% seconds ago</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>diff.ago.minute</source>
+                <target>%count% minutes ago</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>diff.ago.day</source>
+                <target>%count% days ago</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>diff.ago.month</source>
+                <target>%count% month ago</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>diff.ago.year</source>
+                <target>%count% years ago</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>diff.in.second</source>
+                <target>in %count% seconds</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>diff.in.minute</source>
+                <target>in %count% minutes</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>diff.in.hour</source>
+                <target>in %count% hours</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>diff.in.day</source>
+                <target>in %count% days</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>diff.in.month</source>
+                <target>in %count% months</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>diff.in.year</source>
+                <target>in %count% years</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
