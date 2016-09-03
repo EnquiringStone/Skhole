@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.0">
+    <file original="file.ext" source-language="nl" datatype="plaintext">
+        <body>
+            <trans-unit id="1">
+                <source>db.course.levels.long.hbo</source>
+                <target>Primary education</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>db.course.levels.long.mbo</source>
+                <target>Secondary education </target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>db.course.levels.long.high.school</source>
+                <target>Tertiary education </target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>db.course.languages.dutch</source>
+                <target>Dutch</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>db.course.languages.english</source>
+                <target>English</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>db.email.subjects.suggestion</source>
+                <target>Suggestion</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>db.email.subjects.other</source>
+                <target>Other</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>db.email.subjects.complain</source>
+                <target>Complaint</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>db.email.subjects.bug</source>
+                <target>Error found</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

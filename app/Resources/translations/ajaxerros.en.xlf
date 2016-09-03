@@ -1,0 +1,400 @@
+<?xml version="1.0"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.0">
+    <file original="file.ext" source-language="en" datatype="plaintext">
+        <body>
+            <trans-unit id="1">
+                <source>course.edit.language.required</source>
+                <target>No language found. This is a required field. </target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>course.edit.language.not.found</source>
+                <target>This language %value% doesn’t exist. Select another language</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>course.edit.name.required</source>
+                <target>No name found. This is a required field. </target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>course.edit.name.illegal.characters</source>
+                <target>The name contains characters which are not allowed. You can only use letters from the alphabet or numbers.</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>course.edit.name.too.long</source>
+                <target>The name is longer than allowed.</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>course.edit.level.not.found</source>
+                <target>The level %level% cannot be found. Select another level. </target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>course.edit.tag.unacceptable.word</source>
+                <target>A keyword you used %tag% is not allowed. Please remove it.</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>course.edit.tag.too.long</source>
+                <target>A keyword you used contains more characters than allowed. A keyword cannot be longer than 100 characters</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>course.edit.estimated.duration.contains.characters</source>
+                <target>The course duration should contain only number. Comma’s or points are not allowed </target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>course.edit.estimated.duration.too.long</source>
+                <target>The course duration is not allowed to exceed 10.000 minutes. </target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>course.edit.difficulty.contains.characters</source>
+                <target>The difficulty can only contain numbers. </target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>course.edit.difficulty.too.long</source>
+                <target>The difficulty should be less than 5 stars.</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>course.edit.description.too.long</source>
+                <target>The description should contain no more tha 15.000 characters. You use now %size% characters</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>course.edit.tag.empty</source>
+                <target>Fill in at least one keyword </target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>course.edit.estimated.duration.minus</source>
+                <target>The estimated course duration should be greater than zero</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>course.edit.difficulty.minus</source>
+                <target>The difficulty is not allowed to have zero stars. </target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>course.edit.card.youtube.url.or.description</source>
+                <target>At least a video or introduction text should be added. </target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source>course.edit.card.youtube.url</source>
+                <target>The link which you provided is not allowed. Make sure a link looks something like this: https://www.youtube.com/watch?v=ftLIR5AjqMs of https://youtu.be/ftLIR5AjqMs. The "http(s)" en "www" are optional.</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>course.edit.card.title.empty</source>
+                <target>An empty title is not allowed</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>course.edit.card.illegal.characters</source>
+                <target>The title contains characters which are not allowed. You may only use: numbers, letters and  : ',', ",", !, ? ( and </target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>course.edit.card.too.long</source>
+                <target>The title is no longer then allowed.</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>course.edit.description.contains.coding</source>
+                <target>The characters &lt; en &gt; are not allowed</target>
+            </trans-unit>
+            <trans-unit id="23">
+                <source>course.edit.picture.size</source>
+                <target>The file is greater than 3 MB</target>
+            </trans-unit>
+            <trans-unit id="24">
+                <source>course.edit.picture.invalid.extension</source>
+                <target>This file is not allowed. You can only use files which have the extention: %extensions% </target>
+            </trans-unit>
+            <trans-unit id="25">
+                <source>course.edit.picture.unrecognized</source>
+                <target>This image is not recognized. Try another image. </target>
+            </trans-unit>
+            <trans-unit id="26">
+                <source>course.edit.contents.empty</source>
+                <target>The content is not allowed to be empty </target>
+            </trans-unit>
+            <trans-unit id="27">
+                <source>course.edit.contents.too.long</source>
+                <target>The content is not allowed to exceed more than 15000 characters. You entered %size% characters</target>
+            </trans-unit>
+            <trans-unit id="28">
+                <source>course.edit.question.empty</source>
+                <target>An empty question is not allowed</target>
+            </trans-unit>
+            <trans-unit id="29">
+                <source>course.edit.question.too.long</source>
+                <target>A question which is larger than 2500 characters is not allowed</target>
+            </trans-unit>
+            <trans-unit id="30">
+                <source>course.edit.question.contains.coding</source>
+                <target>The question contains the characters &lt; en &gt;. These characters are not allowed</target>
+            </trans-unit>
+            <trans-unit id="31">
+                <source>course.edit.question.answer.indication.empty</source>
+                <target>An empty answer indication is not allowed </target>
+            </trans-unit>
+            <trans-unit id="32">
+                <source>course.edit.question.answer.indication.too.long</source>
+                <target>The answer indication contains more than 15000 characters. You entered %size% characters</target>
+            </trans-unit>
+            <trans-unit id="33">
+                <source>course.edit.question.answer.indication.contains.coding</source>
+                <target>The characters &lt; en &gt; are not allowed</target>
+            </trans-unit>
+            <trans-unit id="34">
+                <source>course.edit.answer.empty</source>
+                <target>An empty answer option is not allowed</target>
+            </trans-unit>
+            <trans-unit id="35">
+                <source>course.edit.answer.too.long</source>
+                <target>The answer is longer than 250 characters</target>
+            </trans-unit>
+            <trans-unit id="36">
+                <source>course.edit.answer.contains.coding</source>
+                <target>The answer is not allowed to contain  the de characters &lt; en &gt; </target>
+            </trans-unit>
+            <trans-unit id="37">
+                <source>course.edit.answer.too.few</source>
+                <target>At least to answers should be present</target>
+            </trans-unit>
+            <trans-unit id="38">
+                <source>course.edit.exercise.too.many</source>
+                <target>An assignment page is not allowed to contain more than 10 questions. If you want to add more questions you can add another assignment page </target>
+            </trans-unit>
+            <trans-unit id="39">
+                <source>course.edit.answer.no.correct</source>
+                <target>Ate least one correct answer should be present </target>
+            </trans-unit>
+            <trans-unit id="40">
+                <source>course.edit.publish</source>
+                <target>This course cannot be published (yet) </target>
+            </trans-unit>
+            <trans-unit id="41">
+                <source>course.edit.publish.no.questions</source>
+                <target>The assignment page %1 contains no assignments.  Add at least one question ore remove the page </target>
+            </trans-unit>
+            <trans-unit id="42">
+                <source>profile.edit.first.name.empty</source>
+                <target>The first name is empty</target>
+            </trans-unit>
+            <trans-unit id="43">
+                <source>profile.edit.first.name.illegal.characters</source>
+                <target>The first name contains characters which are not allowed</target>
+            </trans-unit>
+            <trans-unit id="44">
+                <source>profile.edit.first.name.too.long</source>
+                <target>The first name cannot contain more than 255 characters </target>
+            </trans-unit>
+            <trans-unit id="45">
+                <source>profile.edit.surname.empty</source>
+                <target>The last name is empty</target>
+            </trans-unit>
+            <trans-unit id="46">
+                <source>profile.edit.surname.illegal.characters</source>
+                <target> The last name contains illegal characters</target>
+            </trans-unit>
+            <trans-unit id="47">
+                <source>profile.edit.surname.too.long</source>
+                <target> The last name cannot contain more than 255 characters </target>
+            </trans-unit>
+            <trans-unit id="48">
+                <source>profile.edit.email.empty</source>
+                <target>Email is not correct</target>
+            </trans-unit>
+            <trans-unit id="49">
+                <source>profile.edit.email.invalid</source>
+                <target>Please enter a valid email adress</target>
+            </trans-unit>
+            <trans-unit id="50">
+                <source>profile.edit.date.of.birth.invalid</source>
+                <target>The date of birth is invallid</target>
+            </trans-unit>
+            <trans-unit id="51">
+                <source>profile.education.class.too.long</source>
+                <target>The class name is too long. The name should contain less then 55 characters</target>
+            </trans-unit>
+            <trans-unit id="52">
+                <source>profile.education.class.illegal.characters</source>
+                <target> The class name may only contain numbers and letters. Characters like '; `[] {}, etc. are not allowed</target>
+            </trans-unit>
+            <trans-unit id="53">
+                <source>profile.education.school.year.too.high</source>
+                <target>The school year cannot be larger than 20</target>
+            </trans-unit>
+            <trans-unit id="54">
+                <source>profile.education.school.year.too.low</source>
+                <target>The school year can only be a positive number</target>
+            </trans-unit>
+            <trans-unit id="55">
+                <source>profile.education.school.year.illegal.characters</source>
+                <target>The school year should be a number</target>
+            </trans-unit>
+            <trans-unit id="56">
+                <source>profile.education.level.too.long</source>
+                <target>The level is too long. It cannot contain more than 50</target>
+            </trans-unit>
+            <trans-unit id="57">
+                <source>profile.education.level.illegal.character</source>
+                <target> The level may only contain numbers and letters. Characters like '; `[] {}, etc. are not allowed </target>
+            </trans-unit>
+            <trans-unit id="58">
+                <source>profile.edit.language.too.long</source>
+                <target>The language characters is limited to 255 characters. </target>
+            </trans-unit>
+            <trans-unit id="59">
+                <source>profile.edit.language.illegal.characters</source>
+                <target>The language contains illegal characters/numbers </target>
+            </trans-unit>
+            <trans-unit id="60">
+                <source>profile.edit.country.too.long</source>
+                <target>The country name cannot contain more than 255 characters</target>
+            </trans-unit>
+            <trans-unit id="61">
+                <source>profile.edit.country.illegal.characters</source>
+                <target>The country nam cannot contain numbers or programming code </target>
+            </trans-unit>
+            <trans-unit id="62">
+                <source>course.collection.item.already.exists</source>
+                <target>This course is already in your basket</target>
+            </trans-unit>
+            <trans-unit id="63">
+                <source>course.collection.invalid.course.id</source>
+                <target>The selected course does not longer exist</target>
+            </trans-unit>
+            <trans-unit id="64">
+                <source>course.collection.course.removed</source>
+                <target>The selected course is removed and cannot be added to the course bakset</target>
+            </trans-unit>
+            <trans-unit id="65">
+                <source>course.collection.course.not.published</source>
+                <target>The selected course is not yet published </target>
+            </trans-unit>
+            <trans-unit id="66">
+                <source>course.resources.invalid.google.drive</source>
+                <target>The Google Drive link you provided is invalid</target>
+            </trans-unit>
+            <trans-unit id="67">
+                <source>course.resources.invalid.dropbox</source>
+                <target>The DropBox link you provided is invalid </target>
+            </trans-unit>
+            <trans-unit id="68">
+                <source>course.reviews.one.per.user</source>
+                <target>You already reviewed this course</target>
+            </trans-unit>
+            <trans-unit id="69">
+                <source>course.reviews.invalid.rating</source>
+                <target>The rating should be between 0 and 5 stars</target>
+            </trans-unit>
+            <trans-unit id="70">
+                <source>course.reports.completed.and.shared</source>
+                <target>The course report has been shared. Shared reports cannot be edited.</target>
+            </trans-unit>
+            <trans-unit id="71">
+                <source>course.reports.view.not.complete</source>
+                <target>This course report cannot be viewed yet. There can be two reasons: I.) there are no questions for this course. II.) Not all questions are answered. %1</target>
+            </trans-unit>
+            <trans-unit id="72">
+                <source>course.reports.shared.remove</source>
+                <target>This report is shared with %1 individuals. Shared reports cannot be removed</target>
+            </trans-unit>
+            <trans-unit id="73">
+                <source>course.reports.share.not.logged.in</source>
+                <target>In order to view a report you should be signed in </target>
+            </trans-unit>
+            <trans-unit id="74">
+                <source>course.reports.already.shared</source>
+                <target>The report is already shared with the person you entered</target>
+            </trans-unit>
+            <trans-unit id="75">
+                <source>course.reports.share.same</source>
+                <target>The entered share code belongs to you. You cannot share reports with yourself</target>
+            </trans-unit>
+            <trans-unit id="76">
+                <source>course.shared.reports.decline.already.accepted</source>
+                <target>The share request cannot be declined, because it has already been accepted</target>
+            </trans-unit>
+            <trans-unit id="77">
+                <source>course.shared.reports.nothing.found</source>
+                <target> For the specified user there are no reports to be found reports which have been shared with you</target>
+            </trans-unit>
+            <trans-unit id="78">
+                <source>course.shared.reports.not.accepted</source>
+                <target> The specified report has not been accepted yet. Accept it before you can make changes </target>
+            </trans-unit>
+            <trans-unit id="79">
+                <source>course.create.is.published.create.exercise</source>
+                <target>You are not allowed to add assignments for a course which is already been published</target>
+            </trans-unit>
+            <trans-unit id="80">
+                <source>contact.first.name.empty</source>
+                <target>The first name is empty</target>
+            </trans-unit>
+            <trans-unit id="81">
+                <source>contact.first.name.coding.characters</source>
+                <target>The first name contains illegal characters</target>
+            </trans-unit>
+            <trans-unit id="82">
+                <source>contact.surname.empty</source>
+                <target>The last name is empty</target>
+            </trans-unit>
+            <trans-unit id="83">
+                <source>contact.surname.coding.characters</source>
+                <target>The last name contains illegal characters</target>
+            </trans-unit>
+            <trans-unit id="84">
+                <source>contact.subject.invalid</source>
+                <target>The subject is not valid</target>
+            </trans-unit>
+            <trans-unit id="85">
+                <source>contact.email.empty</source>
+                <target>The email cannot be empty</target>
+            </trans-unit>
+            <trans-unit id="86">
+                <source>contact.email.invalid</source>
+                <target>This email is invalid </target>
+            </trans-unit>
+            <trans-unit id="87">
+                <source>contact.message.empty</source>
+                <target>There is no message present</target>
+            </trans-unit>
+            <trans-unit id="88">
+                <source>contact.message.coding.characters</source>
+                <target>The message contains illegal characters</target>
+            </trans-unit>
+            <trans-unit id="89">
+                <source>report.course.part.invalid</source>
+                <target>This component is invalid</target>
+            </trans-unit>
+            <trans-unit id="90">
+                <source>report.phone.invalid</source>
+                <target>The phone number is invalid</target>
+            </trans-unit>
+            <trans-unit id="91">
+                <source>report.message.empty</source>
+                <target>The notification is empty</target>
+            </trans-unit>
+            <trans-unit id="92">
+                <source>report.message.illegal.characters</source>
+                <target>The report contains illegal characters</target>
+            </trans-unit>
+            <trans-unit id="93">
+                <source>report.name.invalid</source>
+                <target>The specified name is invali</target>
+            </trans-unit>
+            <trans-unit id="94">
+                <source>report.name.not.found</source>
+                <target> The course for the provided name cannot be found </target>
+            </trans-unit>
+            <trans-unit id="95">
+                <source>report.page.invalid</source>
+                <target>This page is invalid</target>
+            </trans-unit>
+            <trans-unit id="96">
+                <source>report.subject.invalid</source>
+                <target>The notification subject is invalid</target>
+            </trans-unit>
+            <trans-unit id="97">
+                <source>general.error</source>
+                <target> Something went wrong. Reload the page and try again. Or contact us </target>
+            </trans-unit>
+            <trans-unit id="98">
+                <source>authorization.error</source>
+                <target>You are not allowed to view this page. If you think that this error is should not be here, please contact us </target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
+

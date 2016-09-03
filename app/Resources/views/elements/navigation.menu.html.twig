@@ -1,8 +1,17 @@
 {% block navigationMenu %}
     <ul class="nav nav-tabs" role="tablist">
-        <li class="{% if menu == 'home' %}active{% endif %}"><a href="{{ path('app_home_dashboard_page') }}">{% trans %}o.tab.home{% endtrans %}</a></li>
-        <li class="{% if menu == 'learn' %}active{% endif %}"><a href="{{ path('app_learn_study_page') }}">{% trans %}o.tab.learn{% endtrans %}</a></li>
-        <li class="{% if menu == 'teach' %}active{% endif %}"><a href="{{ path('app_teach_my_courses_page') }}">{% trans %}o.tab.teach{% endtrans %}</a></li>
-        <li class="{% if menu == 'more' %}active{% endif %}"><a href="{{ path('app_other_about_us') }}">{% trans %}o.tab.more{% endtrans %}</a></li>
+        <li class="{% if menu == 'home' %}active{% endif %}" title="{% trans %}nav.home{% endtrans %} ">
+            <a href="{{ path('app_home_dashboard_page') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>
+        </li>
+        <li class="{% if menu == 'learn' %}active{% endif %}" title="{% trans %}nav.basket{% endtrans %} "><a href="{{ path('app_learn_study_page') }}">
+            <img src="{{ asset('images/basket_blue.png') }}">
+            <!--TODO, als basket niet actief is basket_black.png neerzetten -->
+        </a></li>
+        <li class="{% if menu == 'teach' %}active{% endif %}" title="{% trans %}nav.create_course{% endtrans %}"><a href="{{ path('app_teach_my_courses_page') }}">
+            <span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span>
+        </a></li>
+        <li class="{% if menu == 'more' %}active{% endif %}" title="{% trans %}nav.more{% endtrans %} "><a href="{{ path('app_other_about_us') }}">
+            <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
+        </a></li>
     </ul>
 {% endblock %}

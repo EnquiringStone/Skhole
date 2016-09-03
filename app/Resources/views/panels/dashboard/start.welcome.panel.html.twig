@@ -3,11 +3,6 @@
     {% trans %}h.welcome{% endtrans %} {% if is_granted('ROLE_USER') %}{{ app.user.realName }}{% endif %}
 {% endblock %}
 {% block panelBaseContentTypeLeft %}
-    <h4><b>{% trans %}h.welcome.intro{% endtrans %}</b></h4>
-    <p>
-        {% trans %}h.welcome.intro.text{% endtrans %}
-    </p>
-    <hr />
     <div class="pull-right">
         <a class="clickable" data-toggle="modal" data-target="#languagePickerModal">
             <img src="{{ asset('images/language-dutch.JPG') }}"/>
@@ -15,7 +10,7 @@
             <img src="{{ asset('images/globe-language.png') }}"/>
         </a>
     </div>
-    <h4><b>{% trans %}h.welcom.quick_menu{% endtrans %}</b></h4>
+    <h4><b>{% trans %}h.welcom.search_course{% endtrans %}</b></h4>
     <form id="quick-search" class="form-horizontal" data-url="{{ path('app_search_page') }}">
         <div class="input-group">
             <input type="text" class="form-control quick-search-value" placeholder="{% trans %}h.welcom.quick_menu.f_placeholder.course_name{% endtrans %}">
@@ -26,12 +21,11 @@
             </div>
         </div>
     </form>
-    <hr/>
-    <p>{% trans %}h.welcom.quick_menu.t_long{% endtrans %}</p>
-    <a href="{{ path('app_teach_my_courses_page') }}" class="btn btn-default btn-sm create-course">
-        <span class="glyphicon glyphicon-plus text-success" aria-hidden="true"></span>
-        {% trans %}o.button.new_course{% endtrans %}
-    </a>
+    <br/>
+ 
+    <p> 
+        {% trans %}h.welcome.intro.text{% endtrans %}
+    </p>
     <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#studyIntroductionModal">
         <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
         {% trans %}o.button.follow_course{% endtrans %}

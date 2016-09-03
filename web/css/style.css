@@ -186,6 +186,14 @@
     cursor: default;
 }
 
+.unclickable:active {
+    background-color: white;
+}
+
+.unclickable:hover {
+    background-color: white;
+}
+
 .message-relative{
     position: relative; 
 
