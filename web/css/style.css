@@ -235,3 +235,70 @@
 [class*="col-"] .select2-container .select2-drop {
     width: 100%!important;
 }
+
+@media screen and (max-width: 800px) {
+    .remove-responsive-800 {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .remove-responsive-750 {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .remove-responsive-700 {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .remove-responsive-650 {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .remove-responsive-600 {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .remove-responsive-550 {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .remove-responsive-500 {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .remove-responsive-450 {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .remove-responsive-400 {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .remove-responsive-350 {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 300px ){
+    .remove-responsive-300 {
+        display: none;
+    }
+}
+

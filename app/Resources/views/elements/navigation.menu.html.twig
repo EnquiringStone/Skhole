@@ -3,15 +3,22 @@
         <li class="{% if menu == 'home' %}active{% endif %}" title="{% trans %}nav.home{% endtrans %} ">
             <a href="{{ path('app_home_dashboard_page') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>
         </li>
-        <li class="{% if menu == 'learn' %}active{% endif %}" title="{% trans %}nav.basket{% endtrans %} "><a href="{{ path('app_learn_study_page') }}">
-            <img src="{{ asset('images/basket_blue.png') }}">
-            <!--TODO, als basket niet actief is basket_black.png neerzetten -->
-        </a></li>
-        <li class="{% if menu == 'teach' %}active{% endif %}" title="{% trans %}nav.create_course{% endtrans %}"><a href="{{ path('app_teach_my_courses_page') }}">
-            <span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span>
-        </a></li>
-        <li class="{% if menu == 'more' %}active{% endif %}" title="{% trans %}nav.more{% endtrans %} "><a href="{{ path('app_other_about_us') }}">
-            <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
-        </a></li>
+        <li class="{% if menu == 'learn' %}active{% endif %}" title="{% trans %}nav.basket{% endtrans %} ">
+            <a href="{{ path('app_learn_study_page') }}">
+                <img src="{% if menu == 'learn' %}{{ asset('images/basket_black.png') }}{% else %}{{ asset('images/basket_blue.png') }}{% endif %}">
+                <span class="remove-responsive-400">{% trans %}nav.basket{% endtrans %}</span>
+            </a>
+        </li>
+        <li class="{% if menu == 'teach' %}active{% endif %}" title="{% trans %}nav.create_course{% endtrans %}">
+            <a href="{{ path('app_teach_my_courses_page') }}">
+                <span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span>
+                <span class="remove-responsive-400">{% trans %}nav.create_course{% endtrans %}</span>
+            </a>
+        </li>
+        <li class="{% if menu == 'more' %}active{% endif %}" title="{% trans %}nav.more{% endtrans %} ">
+            <a href="{{ path('app_other_about_us') }}">
+                <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
+            </a>
+        </li>
     </ul>
 {% endblock %}
