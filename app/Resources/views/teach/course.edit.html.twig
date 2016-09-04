@@ -20,6 +20,9 @@
             {% include ':ajax/create-courses:'~name~'.'~type~'.page.html.twig' %}
         </div>
     </div>
+    {% if name == 'start' and type == 'standard' %}
+        {% include ':panels/getting-started:extensive.information.panel.html.twig' %}
+    {% endif %}
 {% endblock %}
 {% block modals %}
     {% if name == 'card-teacher' %}
