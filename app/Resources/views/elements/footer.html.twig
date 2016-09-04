@@ -9,33 +9,35 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="{{ path('app_other_about_us') }}">{% trans %}about.us{% endtrans %}</a></li>
-                        <li><a href="{{ path('app_other_contact') }}">{% trans %}contact{% endtrans %}</a></li>
-                        <li><a href="{{ path('app_other_frequently_asked_questions_page') }}">{% trans %}frequently.asked.questions{% endtrans %}</a></li>
+                        <li><a href="{{ path('app_other_about_us', {'_locale': app.request.locale}) }}">{% trans %}about.us{% endtrans %}</a></li>
+                        <li><a href="{{ path('app_other_contact', {'_locale': app.request.locale}) }}">{% trans %}contact{% endtrans %}</a></li>
+                        <li><a href="{{ path('app_other_frequently_asked_questions_page', {'_locale': app.request.locale}) }}">{% trans %}frequently.asked.questions{% endtrans %}</a></li>
                     </ul>
                 </div>
                 <div class="btn-group dropup">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                        {% trans %}footer.social.media{% endtrans %}
+                        {{ 'h.nav.getting_started'|trans({}, 'messages') }}
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" role="menu">
                         <li>
-                            <a href="{#TODO#}">
-                                <img src="{{ asset('images/login-fb.png') }}" class="img-rounded">
-                                {% trans %}footer.social.media.follow{% endtrans %}
+                            <a href="{{ path('app_home_getting_started_custom_page', {'page': 'introduction', '_locale': app.request.locale}) }}">
+                                {{ 'h.nav.getting_started.intro'|trans({}, 'messages') }}
                             </a>
                         </li>
                         <li>
-                            <a href="{#TODO#}">
-                                <img src="{{ asset('images/login-g.png') }}" class="img-rounded">
-                                {% trans %}footer.social.media.follow{% endtrans %}
+                            <a href="{{ path('app_home_getting_started_custom_page', {'page': 'followCourse', '_locale': app.request.locale}) }}">
+                                {{ 'h.nav.getting_started.follow_course'|trans({}, 'messages') }}
                             </a>
                         </li>
                         <li>
-                            <a href="{#TODO#}">
-                                <img src="{{ asset('images/login-t.png') }}" class="img-rounded">
-                                {% trans %}footer.social.media.follow{% endtrans %}
+                            <a href="{{ path('app_home_getting_started_custom_page', {'page': 'createCourse', '_locale': app.request.locale}) }}">
+                                {{ 'h.nav.getting_started.create_course'|trans({}, 'messages') }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('app_home_getting_started_custom_page', {'page': 'courseReport', '_locale': app.request.locale}) }}">
+                                {{ 'h.nav.getting_started.course_report'|trans({}, 'messages') }}
                             </a>
                         </li>
                     </ul>
@@ -44,9 +46,9 @@
             <div class="centrum">
                 <span class="text-muted">StudyLivre 2016 ©</span>
                 <b><span>|</span></b>
-                <a href="{{ path('app_other_copyright_page') }}">{% trans %}footer.copyright{% endtrans %}</a>
+                <a href="{{ path('app_other_copyright_page', {'_locale': app.request.locale}) }}">{% trans %}footer.copyright{% endtrans %}</a>
                 <b><span>|</span></b>
-                <a href="{{ path('app_other_guidelines') }}">{% trans %}footer.guidelines{% endtrans %}</a>
+                <a href="{{ path('app_other_guidelines', {'_locale': app.request.locale}) }}">{% trans %}footer.guidelines{% endtrans %}</a>
             </div>
             <div class="centrum">
                 <a class="clickable" data-toggle="modal" data-target="#languagePickerModal">
@@ -54,11 +56,11 @@
                     {% trans %}footer.language{% endtrans %}
                 </a>
                 <b><span>|</span></b>
-                <a href="{{ path('app_other_legal', {'page': 'conditions'}) }}">{% trans %}footer.conditions{% endtrans %}</a>
+                <a href="{{ path('app_other_legal', {'_locale': app.request.locale, 'page': 'conditions'}) }}">{% trans %}footer.conditions{% endtrans %}</a>
                 <b><span>|</span></b>
-                <a href="{{ path('app_other_legal', {'page': 'privacy'}) }}">{% trans %}footer.privacy.policy{% endtrans %}</a>
+                <a href="{{ path('app_other_legal', {'_locale': app.request.locale, 'page': 'privacy'}) }}">{% trans %}footer.privacy.policy{% endtrans %}</a>
                 <b><span>|</span></b>
-                <a href="{{ path('app_other_legal', {'page': 'cookie'}) }}">{% trans %}footer.cookie.policy{% endtrans %}</a>
+                <a href="{{ path('app_other_legal', {'_locale': app.request.locale, 'page': 'cookie'}) }}">{% trans %}footer.cookie.policy{% endtrans %}</a>
             </div>
      
     </footer>

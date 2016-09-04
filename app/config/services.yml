@@ -40,10 +40,10 @@ services:
         arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", "@app.transform.manager", "@twig", "@session", "%standard_query_limit%", "%standard_pagination_max%"]
     app.create.course.ajax.service:
         class: AppBundle\Service\Ajax\Teach\CreateCourseAjaxService
-        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", "@app.validator.validator", "@app.transform.manager", "@router", "@twig"]
+        arguments: ["@doctrine.orm.entity_manager", "@app.validator.validator", "@app.transform.manager", "@router", "@twig", "@app.authorization.service"]
     app.profile.ajax.service:
         class: AppBundle\Service\Ajax\Home\ProfileAjaxService
-        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", "@app.validator.validator", "@app.transform.manager"]
+        arguments: ["@doctrine.orm.entity_manager", "@app.validator.validator", "@app.transform.manager", "@app.authorization.service"]
     app.course.collection.ajax.service:
         class: AppBundle\Service\Ajax\Learn\CourseCollectionAjaxService
         arguments: ["@doctrine.orm.entity_manager", "@app.authorization.service"]

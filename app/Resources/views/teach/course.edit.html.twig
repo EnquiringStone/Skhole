@@ -41,6 +41,7 @@
     {% endif %}
     {% include ':modal/create-course/confirmations:not.saved.confirmation.modal.html.twig' with {'modalId': 'notSaveConfirmationModal'} %}
     {% include ':modal/create-course:course.remove.modal.html.twig' with {'modalId': 'removeCourseModal'} %}
+    {% include ':modal/create-course:add.video.tutorial.modal.html.twig' %}
 {% endblock %}
 {% block postscripts %}
     {% if name == 'course-information' %}

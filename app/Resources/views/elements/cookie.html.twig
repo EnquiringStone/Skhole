@@ -1,9 +1,9 @@
 {% block cookie %}
-    <div id="cookie-panel" class="alert alert-info alert-dismissable" data-url="{{ path('app_home_ajax_page') }}">
+    <div id="cookie-panel" class="alert alert-info alert-dismissable" data-url="{{ path('app_home_ajax_page', {'_locale': app.request.locale}) }}">
         <button class="close save-cookie-choice" aria-hidden="true" data-dismiss="alert" type="button">x</button>
         <p>
             {% trans %}o.cookies.t_long_part_01{% endtrans %}
-            <a href="{{ path('app_other_legal', {'page': 'cookie'}) }}">{% trans %}o.cookies.a.cookie_policy{% endtrans %}</a>. 
+            <a href="{{ path('app_other_legal', {'_locale': app.request.locale, 'page': 'cookie'}) }}">{% trans %}o.cookies.a.cookie_policy{% endtrans %}</a>.
             <button class="btn btn-info btn-xs save-cookie-choice" data-dismiss="alert" type="button">{% trans %}o.frequently_used.close{% endtrans %}</button>
         </p>
     </div>

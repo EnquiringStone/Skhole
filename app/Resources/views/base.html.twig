@@ -24,7 +24,7 @@
     <body>
         {% include 'elements/header.html.twig' %}
         <div class="container">
-            {% if is_granted('ROLE_USER') %}
+            {% if app.user is not null and is_granted('ROLE_USER') %}
                 {% if not app.user.agreedToCookie %}
                     {% include ':elements:cookie.html.twig' %}
                 {% endif %}
@@ -34,7 +34,9 @@
                 {% endif %}
             {% endif %}
             {% include 'elements/navigation.menu.html.twig' %}
-            {% include "elements/#{menu}.navigation.menu.html.twig" %}
+            {% if menu != '' %}
+                {% include "elements/#{menu}.navigation.menu.html.twig" %}
+            {% endif %}
             {% block body %}{% endblock %}
         </div>
         {% include 'elements/footer.html.twig' %}

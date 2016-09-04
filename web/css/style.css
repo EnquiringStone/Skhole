@@ -186,6 +186,10 @@
     cursor: default;
 }
 
+.unclickable-default {
+    cursor: default;
+}
+
 .unclickable:active {
     background-color: white;
 }

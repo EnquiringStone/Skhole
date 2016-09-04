@@ -1,0 +1,12 @@
+{% extends ':exceptions:exception.base.html.twig' %}
+{% block title %}{% trans %}exception.access.denied.page.title{% endtrans %}{% endblock %}
+{% block exceptionTitle %}{% trans %}exception.access.denied.title{% endtrans %}{% endblock %}
+{% block exceptionExplain %}
+    <p>{% trans %}exception.access.denied.explanation.one{% endtrans %}</p>
+    <ul>
+        <li>{% trans %}exception.access.denied.explanation.two{% endtrans %}</li>
+        <li>{% trans %}exception.access.denied.explanation.three{% endtrans %}</li>
+        <li>{% trans %}exception.access.denied.explanation.four{% endtrans %}</li>
+    </ul>
+    <p>{% trans %}exception.access.denied.explanation.five{% endtrans %} <a href="{{ path('app_other_contact', {'_locale': locale}) }}">{% trans %}exception.base.explanation.link.text{% endtrans %}</a></p>
+{% endblock %}

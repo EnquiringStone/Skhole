@@ -36,10 +36,12 @@
                                     {% else %}
                                         <img src="{{ asset('images/head-wiseguy.png') }}" class="teacher-picture-preview-img">
                                     {% endif %}
+                                    <span class="glyphicon glyphicon-trash clickable remove-teacher-picture-preview" data-standard-picture="{{ asset('images/head-wiseguy.png') }}"
+                                        data-url="{{ path('app_home_ajax_page') }}"></span>
                                 </div>
                             </div>
                             <input class="uploaded-teacher-picture data-value" data-value-name="pictureUrl" type="hidden" value="{% if teacher is defined and teacher.pictureUrl is not null %}{{ teacher.pictureUrl }}{% endif %}">
-                            <input class="data-value" data-value-name="teacherId" type="hidden" value="{% if teacher is defined %}{{ teacher.id }}{% else %}0{% endif %}">
+                            <input id="teacher-id-modal" class="data-value" data-value-name="teacherId" type="hidden" value="{% if teacher is defined %}{{ teacher.id }}{% else %}0{% endif %}">
                         </div>
                     </form>
                 </div>

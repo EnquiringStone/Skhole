@@ -20,15 +20,20 @@
             <div class="col-sm-6">
                 <div class="form-group">
                     <label>{% trans %}t.create_course.f_label.youtube_url{% endtrans %}</label>
-                    <input type="text" class="form-control card-introduction-change-youtube-text data-value" data-value-name="youtubeUrl"
-                           placeholder="{% trans %}t.create_course.f_placeholder.youtube_url{% endtrans %}"
-                           value="{% if instruction is defined %}{{ instruction.youtubeUrl }}{% endif %}">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default card-introduction-youtube-preview" type="button">
-                            <span class="glyphicon glyphicon-plus text-success" aria-hidden="true"></span>
-                            {% trans %}t.create_course.b.video{% endtrans %}
-                        </button>
-                    </span>
+                    <div class="input-group">
+                        <input type="text" class="form-control card-introduction-change-youtube-text data-value" data-value-name="youtubeUrl"
+                               placeholder="{% trans %}t.create_course.f_placeholder.youtube_url{% endtrans %}"
+                               value="{% if instruction is defined %}{{ instruction.youtubeUrl }}{% endif %}">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default card-introduction-youtube-preview" type="button">
+                                <span class="glyphicon glyphicon-plus text-success" aria-hidden="true"></span>
+                                {% trans %}t.create_course.b.video{% endtrans %}
+                            </button>
+                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addVideoTutorialModal">
+                                <span class="glyphicon glyphicon-info-sign text-primary"></span>
+                            </button>
+                        </span>
+                    </div>
                     <div class="card-introduction-youtube" data-error-text="{% trans %}t.create_course.youtube_url_not_recognized{% endtrans %}">
                         {% if instruction is defined %}
                             <div class="embed-responsive embed-responsive-4by3">

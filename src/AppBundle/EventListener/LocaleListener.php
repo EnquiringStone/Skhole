@@ -107,6 +107,8 @@ class LocaleListener
         {
             $login = $request->query->get('login');
         }
+        $this->session->set('locale', $preferredLanguage);
+        $request->setSession($this->session);
 
         $response = new RedirectResponse($this->urlGenerator->generate('app_home_dashboard_page', array('_locale' => $preferredLanguage, 'login' => $login)));
         $event->setResponse($response);

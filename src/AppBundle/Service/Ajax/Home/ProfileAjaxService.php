@@ -9,16 +9,15 @@
 namespace AppBundle\Service\Ajax\Home;
 
 
+use AppBundle\Authorization\AuthorizationService;
 use AppBundle\Entity\Education\Educations;
 use AppBundle\Exception\FrontEndException;
 use AppBundle\Interfaces\AjaxInterface;
 use AppBundle\Transformer\TransformManager;
 use AppBundle\Util\FileHelper;
+use AppBundle\Util\ValidatorHelper;
 use AppBundle\Validator\Validator;
 use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\EntityNotFoundException;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class ProfileAjaxService implements AjaxInterface
 {
@@ -28,10 +27,6 @@ class ProfileAjaxService implements AjaxInterface
      */
     private $manager;
     /**
-     * @var TokenStorage
-     */
-    private $storage;
-    /**
      * @var Validator
      */
     private $validator;
@@ -39,27 +34,28 @@ class ProfileAjaxService implements AjaxInterface
      * @var TransformManager
      */
     private $transformer;
+    /**
+     * @var AuthorizationService
+     */
+    private $authorizationService;
 
-    function __construct(EntityManager $manager, TokenStorage $storage, Validator $validator, TransformManager $transformer)
+    function __construct(EntityManager $manager, Validator $validator, TransformManager $transformer, AuthorizationService $authorizationService)
     {
         $this->manager = $manager;
-        $this->storage = $storage;
         $this->validator = $validator;
         $this->transformer = $transformer;
+        $this->authorizationService = $authorizationService;
     }
 
     public function updatePerson($args)
     {
-        $this->hasUserContext();
+        $user = $this->hasUserContext();
 
         $context = $args['context'];
         unset($args['context']);
 
         if($args['picture'] == '')
             $args['picture'] = null;
-
-        $user = $this->manager->getRepository('AppBundle:User')->find($this->storage->getToken()->getUser()->getId());
-        if($user == null) throw new EntityNotFoundException();
 
         $args['dateOfBirth'] = $this->tryCreateDate($args['dateOfBirth']);
 
@@ -70,7 +66,7 @@ class ProfileAjaxService implements AjaxInterface
         {
             $fileHelper = new FileHelper();
 
-            $absolute =   $fileHelper->getWebDir() . $user->getPicture();
+            $absolute = $fileHelper->getWebDir() . $user->getPicture();
 
             unlink($absolute);
         }
@@ -91,18 +87,18 @@ class ProfileAjaxService implements AjaxInterface
 
     public function updateEducation($args)
     {
-        $this->hasUserContext();
+        $user = $this->hasUserContext();
 
         $context = $args['context'];
         unset($args['context']);
 
         $this->validator->validate($args, 'EducationProfile');
 
-        $education = $this->manager->getRepository('AppBundle:Education\Educations')->findOneBy(array('userId' => $this->storage->getToken()->getUser()->getId()));
+        $education = $this->manager->getRepository('AppBundle:Education\Educations')->findOneBy(array('userId' => $user->getId()));
         if($education == null)
         {
             $education = new Educations();
-            $education->setUser($this->storage->getToken()->getUser());
+            $education->setUser($user);
             $this->manager->persist($education);
         }
         $education->setClass($args['class'] == '' ? null : $args['class']);
@@ -113,6 +109,22 @@ class ProfileAjaxService implements AjaxInterface
 
         $html = $this->transformer->getTransformerByName('ProfileEducationTransformer')->transformToAjaxResponse(array($education), $context);
         return array('html' => $html);
+    }
+
+    public function removeProfilePicture()
+    {
+        $user = $this->hasUserContext();
+        $picture = $user->getPicture();
+
+        if (ValidatorHelper::isStringNullOrEmpty($picture)) return;
+
+        $user->setPicture(null);
+        $this->manager->flush();
+
+        $fileHelper = new FileHelper();
+        $absolute = $fileHelper->getWebDir() . $picture;
+        if (is_file($absolute))
+            unlink($absolute);
     }
 
     /**
@@ -135,14 +147,15 @@ class ProfileAjaxService implements AjaxInterface
      */
     public function getSubscribedMethods()
     {
-        return array('updatePerson', 'updateEducation');
+        return array('updatePerson', 'updateEducation', 'removeProfilePicture');
     }
 
+    /**
+     * @return \AppBundle\Entity\User
+     */
     private function hasUserContext()
     {
-        if($this->storage->getToken() != null && $this->storage->getToken()->getUser() != null)
-            return;
-        throw new AccessDeniedException('No user context found');
+        return $this->authorizationService->getAuthorizedUserOrThrowException();
     }
 
     private function tryCreateDate($date)

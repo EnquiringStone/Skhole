@@ -215,6 +215,27 @@ $(document).ready(function() {
         $(".btn", modal).removeClass("btn-primary").addClass("btn-default");
         $(this).removeClass("btn-default").addClass("btn-primary");
     });
+
+    body.on('click', '.remove-teacher-picture-preview', function () {
+        var context = $(this);
+        var modal = $(context.parents('.modal'));
+        var standardPicture = context.data('standard-picture');
+        var previewImage = $('.teacher-picture-preview-img', modal);
+
+        if (standardPicture == previewImage.attr('src')) return;
+        var teacherId = $('#teacher-id-modal', modal);
+        var url = context.data('url');
+
+        sendAjaxCall(url, {'ajax_key': 'CCAS1', 'method': 'removeTeacherPicture', 'teacherId': teacherId.val()}, function () {
+            previewImage.attr('src', standardPicture);
+            var contextDiv = $($('li').filterByData('teacher-id', teacherId.val()));
+            $('.teacher-row-picture', contextDiv).attr('src', standardPicture);
+            $('.uploaded-teacher-picture', modal).val('');
+        }, function (error) {
+            modal.modal('hide');
+            showAjaxErrorModal(error['responseJSON']['html']);
+        });
+    });
 });
 
 var hasChanged = false;
@@ -614,14 +635,12 @@ function bindFileUpload() {
         acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
         maxFileSize: 999000,
         done: function(e, data) {
-            var picture = $('.uploaded-teacher-picture');
+            var modal = $($(this).parents('.modal'));
+            var picture = $('.uploaded-teacher-picture', modal);
             picture.val(data['_response']['result'][0]);
 
-            var preview = $('.teacher-picture-preview');
-
-            var html = '<img src="/'+window.location.pathname.split('/')[1]+'/web/'+ picture.val()+'" class="teacher-picture-preview-img">';
-            preview.empty();
-            preview.append(html);
+            var preview = $('.teacher-picture-preview-img', modal);
+            preview.attr('src', '/'+window.location.pathname.split('/')[1]+'/web/'+ picture.val());
         }
     });
 
@@ -972,7 +991,7 @@ function saveTeacherModal(context) {
     var url = ajaxBody.data('url');
     var id = ajaxBody.data('id');
 
-    args = {};
+    var args = {};
 
     args['id'] = id;
     args['ajax_key'] = 'CCAS1';
@@ -1003,9 +1022,8 @@ function saveTeacherModal(context) {
                 $('.teacher-description', contextDiv).empty();
                 $('.teacher-description', contextDiv).append(args['description']);
 
-                if(args['pictureUrl'] != null || args['pictureUrl'] != '') {
-                    $('.teacher-picture-row-image', contextDiv).empty();
-                    $('.teacher-picture-row-image', contextDiv).append('<img src="/'+window.location.pathname.split('/')[1]+'/web/'+args["pictureUrl"]+'" class="media-object teacher-row-picture">');
+                if(args['pictureUrl'] != null && args['pictureUrl'] != '') {
+                    $('.teacher-row-picture', contextDiv).attr('src', '/'+window.location.pathname.split('/')[1]+'/web/'+args["pictureUrl"]);
                 }
             }
         }

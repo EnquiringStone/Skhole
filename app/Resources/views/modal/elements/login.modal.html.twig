@@ -22,7 +22,7 @@
                         {% trans %}mo.login.google{% endtrans %}
                     </a>
                     <hr/>
-                     <p>{% trans %}mo.login.t_long_01{% endtrans %} <a href="{{ path('app_other_legal', {'page': 'conditions'}) }}">{% trans %}mo.login.a.user_terms{% endtrans %}</a> {% trans %}mo.login.t_long_02{% endtrans %} <a href="{{ path('app_other_legal', {'page': 'privacy'}) }}">{% trans %}mo.login.a.privacy_policy{% endtrans %}</a> {% trans %}mo.login.t_long_03{% endtrans %}.</p>
+                     <p>{% trans %}mo.login.t_long_01{% endtrans %} <a href="{{ path('app_other_legal', {'_locale': app.request.locale, 'page': 'conditions'}) }}">{% trans %}mo.login.a.user_terms{% endtrans %}</a> {% trans %}mo.login.t_long_02{% endtrans %} <a href="{{ path('app_other_legal', {'_locale': app.request.locale, 'page': 'privacy'}) }}">{% trans %}mo.login.a.privacy_policy{% endtrans %}</a> {% trans %}mo.login.t_long_03{% endtrans %}.</p>
                 </div>
                 <hr />
                 <div class="modal-info-background centrum">
