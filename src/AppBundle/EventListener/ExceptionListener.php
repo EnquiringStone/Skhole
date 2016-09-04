@@ -65,10 +65,15 @@ class ExceptionListener implements EventSubscriberInterface
             $response->headers->set('Content-Type', 'application/json');
             $event->setResponse($response);
         }
-        elseif($event->getRequest()->getPathInfo() != '/') //ignore all exceptions on the base
+        else //ignore all exceptions on the base
         {
             $session = $event->getRequest()->getSession();
-            if($session != null && $session->has('locale')) $event->getRequest()->setLocale($session->get('locale'));
+
+            if($session != null && $session->has('locale'))
+            {
+                $event->getRequest()->setLocale($session->get('locale'));
+                $this->translator->setLocale($session->get('locale'));
+            }
             $params = array('exception' => $exception, 'locale' => $event->getRequest()->getLocale(), 'menu' => '', 'subMenu' => '', 'context' => 'exception');
             if ($exception instanceof AccessDeniedException || $exception instanceof \Symfony\Component\HttpFoundation\File\Exception\AccessDeniedException || $exception instanceof \Symfony\Component\HttpFoundation\File\Exception\AccessDeniedException || $exception instanceof \Symfony\Component\Finder\Exception\AccessDeniedException)
             {

@@ -17,6 +17,14 @@ class HomeController extends Controller {
     private $acceptedHomePages = array('dashboard', 'badges', 'statistics', 'profile', 'settings', 'messages');
 
     /**
+     * @Route("/", name="app_home_main")
+     */
+    public  function mainAction()
+    {
+        //Don't do shit
+    }
+
+    /**
      * @Route("/{_locale}/home/", name="app_home_dashboard_page")
      */
     public function dashboardAction(Request $request)
