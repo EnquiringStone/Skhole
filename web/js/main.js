@@ -70,6 +70,12 @@ $(document).ready(function() {
             showAjaxErrorModal(error['responseJSON']['html']);
         });
     });
+
+    body.on('click', '.load-login-spinner', function () {
+        var modal = $($(this).parents('.modal'));
+        addLoadingScreen(modal);
+        modal.modal('hide');
+    });
 });
 
 //Starsss
