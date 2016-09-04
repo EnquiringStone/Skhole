@@ -12,6 +12,7 @@ namespace AppBundle\EventListener;
 use AppBundle\Exception\CourseRemovedException;
 use AppBundle\Exception\DelayException;
 use AppBundle\Exception\FrontEndException;
+use Monolog\Logger;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
@@ -27,16 +28,22 @@ class ExceptionListener implements EventSubscriberInterface
      * @var \Twig_Environment
      */
     private $environment;
+    /**
+     * @var Logger
+     */
+    private $logger;
 
-    public function __construct(Translator $translator, \Twig_Environment $environment)
+    public function __construct(Translator $translator, \Twig_Environment $environment, Logger $logger)
     {
         $this->translator = $translator;
         $this->environment = $environment;
+        $this->logger = $logger;
     }
 
     public function onKernelException(GetResponseForExceptionEvent $event)
     {
         $exception = $event->getException();
+        $this->logger->error('error occurred', array('message' => $exception->getMessage(), 'trace' => $exception->getTraceAsString()));
         if($event->getRequest()->isXmlHttpRequest())
         {
             if($exception instanceof FrontEndException)

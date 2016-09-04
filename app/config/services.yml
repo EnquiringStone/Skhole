@@ -15,7 +15,7 @@ services:
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
     app.exception_listener:
         class: AppBundle\EventListener\ExceptionListener
-        arguments: ["@translator.default", "@twig"]
+        arguments: ["@translator.default", "@twig", "@logger"]
         tags:
             - { name: kernel.event_subscriber }
     app.ajax_listener:
