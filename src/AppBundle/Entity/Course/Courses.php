@@ -204,7 +204,7 @@ class Courses implements UserStatisticsInterface, UserReportInterface, BasicDeta
     public function isComplete()
     {
         return !ValidatorHelper::isStringNullOrEmpty($this->getName()) && !ValidatorHelper::isStringNullOrEmpty($this->getDescription())
-            && $this->getLanguage() != null && $this->getLevel() != null && $this->getDifficulty() > 0;
+            && $this->getLanguage() != null && $this->getDifficulty() > 0;
     }
 
     public function canPublish()

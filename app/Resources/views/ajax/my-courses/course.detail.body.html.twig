@@ -3,7 +3,7 @@
         <div class="centrum">
             <ol class="breadcrumb">
                 <li>
-                    <a class="unclickable">
+                    <a href="{{ path('app_teach_edit_course_page', {'id': course.id}) }}">
                         {% if course.name is not null %}
                             {{ course.name }}
                         {% else %}
