@@ -65,7 +65,9 @@ $(document).ready(function() {
             $('.profile-detail-buttons').empty();
             $('.profile-detail-buttons').append(data['html']);
             if(picture != null && picture != '') {
-                var imagePath = '/' + window.location.pathname.split('/')[1] + '/web/' + picture;
+                var imagePath = '/';
+                if(ENVIRONMENT == 'dev') imagePath += window.location.pathname.split('/')[1] + '/web/' + picture;
+                else imagePath += picture;
                 $('#profile-picture-header').attr('src', imagePath);
             }
 
