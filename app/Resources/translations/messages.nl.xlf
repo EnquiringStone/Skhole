@@ -4144,6 +4144,10 @@ klantenservice of via info@studylivre.com.</target>
                 <source>exception.access.denied.page.title</source>
                 <target>Toegang geweigerd</target>
             </trans-unit>
+            <trans-unit id="8020">
+                <source>exception.access.denied.explanation.six</source>
+                <target>Je bent niet ingelogd. Voor sommige pagina's dien je te zijn ingelogd. Bijvoorbeeld voor het aanmaken van een cursus. Om in te loggen klik</target>
+            </trans-unit>
             <!--End exception screens-->
         </body>  
     </file>

@@ -4081,7 +4081,92 @@ data;</target>
             </trans-unit>
 
  <!-- Einde Legal stuff-->   
-             
+             <!--Start exception pages-->
+            <trans-unit id="8000">
+                <source>exception.base.title</source>
+                <target>Oops something went wrong!</target>
+            </trans-unit>
+            <trans-unit id="8001">
+                <source>exception.base.explanation.one</source>
+                <target>An error occurred while processing the page. We apologize for any inconveniences this might have caused.</target>
+            </trans-unit>
+            <trans-unit id="8002">
+                <source>exception.base.explanation.two</source>
+                <target>Bekijk het cursusaanbod</target>
+            </trans-unit>
+            <trans-unit id="8003">
+                <source>exception.base.explanation.link.text</source>
+                <target>here</target>
+            </trans-unit>
+            <trans-unit id="8004">
+                <source>exception.base.explanation.three</source>
+                <target>Or search a course to your liking</target>
+            </trans-unit>
+            <trans-unit id="8005">
+                <source>exception.base.explanation.four</source>
+                <target>Do you have the feeling this page should exist? You can contact us</target>
+            </trans-unit>
+            <trans-unit id="8006">
+                <source>exception.access.denied.title</source>
+                <target>You have insufficient rights to access this page!</target>
+            </trans-unit>
+            <trans-unit id="8007">
+                <source>exception.access.denied.explanation.one</source>
+                <target>There are multiple reasons why you're seeing this page. For more details read the section below.</target>
+            </trans-unit>
+            <trans-unit id="8008">
+                <source>exception.access.denied.explanation.two</source>
+                <target>The page has recently been removed</target>
+            </trans-unit>
+            <trans-unit id="8009">
+                <source>exception.access.denied.explanation.three</source>
+                <target>An attempt has been made to change certain data (for example changing the url)</target>
+            </trans-unit>
+            <trans-unit id="8010">
+                <source>exception.access.denied.explanation.four</source>
+                <target>The browser session has become corrupt. To fix this, you'll need to restart your browser</target>
+            </trans-unit>
+            <trans-unit id="8011">
+                <source>exception.access.denied.explanation.five</source>
+                <target>Are you feeling this error is unwarrented? You can contact us</target>
+            </trans-unit>
+            <trans-unit id="8012">
+                <source>exception.course.removed.title</source>
+                <target>The selected course has been removed!</target>
+            </trans-unit>
+            <trans-unit id="8013">
+                <source>exception.course.removed.explanation.one</source>
+                <target>The creator of the course has removed the course. Meaning that you can't access it. Until this remains unchanged, you'll keep seeing this error page.</target>
+            </trans-unit>
+            <trans-unit id="8014">
+                <source>exception.delay.title</source>
+                <target>You have to wait for at least %1 minutes</target>
+            </trans-unit>
+            <trans-unit id="8015">
+                <source>exception.delay.explanation</source>
+                <target>We do this kind of thing to make sure a bot doesn't create endless courses. We apologize for any inconvenience this might have caused.</target>
+            </trans-unit>
+            <trans-unit id="8016">
+                <source>exception.page.not.found.title</source>
+                <target>Page not found!</target>
+            </trans-unit>
+            <trans-unit id="8017">
+                <source>exception.base.page.title</source>
+                <target>An error has occurred</target>
+            </trans-unit>
+            <trans-unit id="8018">
+                <source>exception.page.not.found.page.title</source>
+                <target>Page not found</target>
+            </trans-unit>
+            <trans-unit id="8019">
+                <source>exception.access.denied.page.title</source>
+                <target>Access denied</target>
+            </trans-unit>
+            <trans-unit id="8020">
+                <source>exception.access.denied.explanation.six</source>
+                <target>You're currently not logged in. For some pages you'll need to login before you can view them. To login click</target>
+            </trans-unit>
+            <!--End exception pages-->
         </body>  
     </file>
 </xliff>
