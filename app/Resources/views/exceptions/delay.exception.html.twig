@@ -1,0 +1,5 @@
+{% extends ':exceptions:exception.base.html.twig' %}
+{% block exceptionTitle %}{{ 'exception.delay.title'|trans({'%1': exception.getDelayCount}) }}{% endblock %}
+{% block exceptionExplain %}
+    <p>{% trans %}exception.delay.explanation{% endtrans %}</p>
+{% endblock %}

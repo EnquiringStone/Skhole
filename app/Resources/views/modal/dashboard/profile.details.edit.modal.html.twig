@@ -59,6 +59,8 @@
                     <br />
                     <div class="profile-picture-preview" data-error="{% trans %}mo.personal_details.select_img_right_extention{% endtrans %}">
                         <img src="{{ app.user.picture is not null ? asset(app.user.picture) : asset('images/gebruiker.png') }}" class="profile-picture-preview-img">
+                        <span class="glyphicon glyphicon-trash clickable remove-user-picture" data-standard-picture="{{ asset('images/gebruiker.png') }}"
+                              data-url="{{ path('app_home_ajax_page') }}"></span>
                     </div>
                 </div>
             </div>

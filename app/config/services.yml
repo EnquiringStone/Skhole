@@ -15,7 +15,7 @@ services:
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
     app.exception_listener:
         class: AppBundle\EventListener\ExceptionListener
-        arguments: ["@translator.default", "@twig"]
+        arguments: ["@translator.default", "@twig", "@logger"]
         tags:
             - { name: kernel.event_subscriber }
     app.ajax_listener:
@@ -40,10 +40,10 @@ services:
         arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", "@app.transform.manager", "@twig", "@session", "%standard_query_limit%", "%standard_pagination_max%"]
     app.create.course.ajax.service:
         class: AppBundle\Service\Ajax\Teach\CreateCourseAjaxService
-        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", "@app.validator.validator", "@app.transform.manager", "@router", "@twig"]
+        arguments: ["@doctrine.orm.entity_manager", "@app.validator.validator", "@app.transform.manager", "@router", "@twig", "@app.authorization.service"]
     app.profile.ajax.service:
         class: AppBundle\Service\Ajax\Home\ProfileAjaxService
-        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", "@app.validator.validator", "@app.transform.manager"]
+        arguments: ["@doctrine.orm.entity_manager", "@app.validator.validator", "@app.transform.manager", "@app.authorization.service"]
     app.course.collection.ajax.service:
         class: AppBundle\Service\Ajax\Learn\CourseCollectionAjaxService
         arguments: ["@doctrine.orm.entity_manager", "@app.authorization.service"]

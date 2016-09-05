@@ -14,6 +14,7 @@ use AppBundle\Entity\Course\CoursePages;
 use AppBundle\Entity\Course\Courses;
 use AppBundle\Entity\Course\CourseSchedules;
 use AppBundle\Enum\CourseStateEnum;
+use AppBundle\Exception\DelayException;
 use AppBundle\Util\SecurityHelper;
 use Doctrine\ORM\Query\Expr\Join;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -62,8 +63,9 @@ class TeachController extends Controller
             $entity = $entities['resultSet'][0];
             if(!SecurityHelper::dateTimeDiff($entity->getInsertDateTime(), 5))
             {
-                //TODO Create page (or redirect to existing page) and explain that you need 5 minutes between creating courses
-                throw new \Exception('Need at least 5 minutes between creating courses');
+                $exception = new DelayException('Need at least 5 minutes between creating courses');
+                $exception->setDelayCount(5);
+                throw $exception;
             }
         }
 
@@ -192,7 +194,14 @@ class TeachController extends Controller
         $pages = $this->getDoctrine()->getRepository('AppBundle:Report\Reports')->getAllPagesByReport($sharedReport->getReport()->getId());
         $questions = $this->getDoctrine()->getRepository('AppBundle:Report\AnswerResults')->getAllAnsweredQuestionByCoursePage($sharedReport->getReport()->getId(), $page->getId());
 
-        $criteria = array('sharedReport' => $sharedReport, 'pages' => $pages, 'page' => $page, 'questions' => $questions, 'offset' => $page->getPageOrder() - 1);
+        $index = 0;
+        foreach ($pages as $aPage) {
+            if ($aPage['id'] == $page->getId())
+                break;
+            $index ++;
+        }
+
+        $criteria = array('sharedReport' => $sharedReport, 'pages' => $pages, 'page' => $page, 'questions' => $questions, 'offset' => $pages[$index]['realOffset'] - 1);
 
         return $this->render(':teach:student.report.details.html.twig', $criteria);
     }

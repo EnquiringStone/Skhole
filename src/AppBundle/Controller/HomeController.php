@@ -17,6 +17,14 @@ class HomeController extends Controller {
     private $acceptedHomePages = array('dashboard', 'badges', 'statistics', 'profile', 'settings', 'messages');
 
     /**
+     * @Route("/", name="app_home_main")
+     */
+    public  function mainAction()
+    {
+        //Don't do shit
+    }
+
+    /**
      * @Route("/{_locale}/home/", name="app_home_dashboard_page")
      */
     public function dashboardAction(Request $request)
@@ -25,6 +33,8 @@ class HomeController extends Controller {
         if(array_key_exists('login', $request->query->all())) {
             $login = $request->query->get('login');
         }
+        $request->getSession()->set('locale', $request->getLocale());
+
         return $this->render(':home/dashboard:dashboard.html.twig', array(
             'login' => $login,
             'courses' => $this->getRandomCourses(10),

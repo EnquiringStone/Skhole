@@ -4063,7 +4063,92 @@ klantenservice of via info@studylivre.com.</target>
             </trans-unit>
 
  <!-- Einde Legal stuff-->   
-             
+             <!--Start exception screens-->
+            <trans-unit id="8000">
+                <source>exception.base.title</source>
+                <target>Oeps er is iets misgegaan!</target>
+            </trans-unit>
+            <trans-unit id="8001">
+                <source>exception.base.explanation.one</source>
+                <target>Er is iets misgegaan met het verwerken van de pagina. Onze excuses voor het ongemak</target>
+            </trans-unit>
+            <trans-unit id="8002">
+                <source>exception.base.explanation.two</source>
+                <target>Bekijk het cursusaanbod</target>
+            </trans-unit>
+            <trans-unit id="8003">
+                <source>exception.base.explanation.link.text</source>
+                <target>hier</target>
+            </trans-unit>
+            <trans-unit id="8004">
+                <source>exception.base.explanation.three</source>
+                <target>Of zoek naar een cursus</target>
+            </trans-unit>
+            <trans-unit id="8005">
+                <source>exception.base.explanation.four</source>
+                <target>Moet deze pagina echt bestaan? Neem dan contact met ons op, klik</target>
+            </trans-unit>
+            <trans-unit id="8006">
+                <source>exception.access.denied.title</source>
+                <target>Je hebt niet genoeg rechten om deze pagina te bezoeken!</target>
+            </trans-unit>
+            <trans-unit id="8007">
+                <source>exception.access.denied.explanation.one</source>
+                <target>Er zijn meerdere redenen waarom je deze pagina krijgt te zien. Lees de onderstaande punten om een beeld te krijgen.</target>
+            </trans-unit>
+            <trans-unit id="8008">
+                <source>exception.access.denied.explanation.two</source>
+                <target>De pagina is reeds verwijderd</target>
+            </trans-unit>
+            <trans-unit id="8009">
+                <source>exception.access.denied.explanation.three</source>
+                <target>Er is een poging gedaan om bepaalde gegevens te veranderen (bijvoorbeeld de url)</target>
+            </trans-unit>
+            <trans-unit id="8010">
+                <source>exception.access.denied.explanation.four</source>
+                <target>De cookie van de browser is corrupt. Sluit de browser om dit te herstellen</target>
+            </trans-unit>
+            <trans-unit id="8011">
+                <source>exception.access.denied.explanation.five</source>
+                <target>Moet deze pagina echt inzichtelijk zijn? Neem contact met ons, klik</target>
+            </trans-unit>
+            <trans-unit id="8012">
+                <source>exception.course.removed.title</source>
+                <target>De geselecteerde cursus is verwijderd!</target>
+            </trans-unit>
+            <trans-unit id="8013">
+                <source>exception.course.removed.explanation.one</source>
+                <target>De cursusmaker heeft deze cursus verwijderd. Dit betekent dat niemand er bij mag.</target>
+            </trans-unit>
+            <trans-unit id="8014">
+                <source>exception.delay.title</source>
+                <target>Er moet minimaal %1 minuten gewacht worden</target>
+            </trans-unit>
+            <trans-unit id="8015">
+                <source>exception.delay.explanation</source>
+                <target>Dit doen we om ervoor te zorgen dat er niet teveel cursussen tegelijk worden aangemaakt door een persoon. Onze excuses voor het ongemak.</target>
+            </trans-unit>
+            <trans-unit id="8016">
+                <source>exception.page.not.found.title</source>
+                <target>Pagina niet gevonden!</target>
+            </trans-unit>
+            <trans-unit id="8017">
+                <source>exception.base.page.title</source>
+                <target>Foutmelding</target>
+            </trans-unit>
+            <trans-unit id="8018">
+                <source>exception.page.not.found.page.title</source>
+                <target>Pagina niet gevonden</target>
+            </trans-unit>
+            <trans-unit id="8019">
+                <source>exception.access.denied.page.title</source>
+                <target>Toegang geweigerd</target>
+            </trans-unit>
+            <trans-unit id="8020">
+                <source>exception.access.denied.explanation.six</source>
+                <target>Je bent niet ingelogd. Voor sommige pagina's dien je te zijn ingelogd. Bijvoorbeeld voor het aanmaken van een cursus. Om in te loggen klik</target>
+            </trans-unit>
+            <!--End exception screens-->
         </body>  
     </file>
 </xliff>

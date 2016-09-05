@@ -52,7 +52,11 @@
     </button>
     <button type="button" class="unclickable btn btn-default btn-xs">
         <b>{% trans %}o.frequently_used.level{% endtrans %}:</b>
-        {{ course.level.levelLong|trans({}, 'db') }}
+        {% if course.level is not null %}
+            {{ course.level.levelLong|trans({}, 'db') }}
+        {% else %}
+            -
+        {% endif %}
     </button>
     <button type="button" class="unclickable btn btn-default btn-xs">
         <b>{% trans %}o.frequently_used.avaliable_since{% endtrans %}:</b>

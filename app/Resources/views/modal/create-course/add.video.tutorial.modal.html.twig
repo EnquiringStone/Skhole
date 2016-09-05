@@ -1,0 +1,28 @@
+{% extends 'modal/modal.base.html.twig' %}
+{% set modalId = 'addVideoTutorialModal' %}
+{% block modalBaseHeader %}
+    <h4 class="modal-title centrum" id="{{ modalId }}">
+        <b>
+            {% trans %}ext_info.add_video{% endtrans %}
+        </b>
+    </h4>
+{% endblock %}
+{% block modalBaseContents %}
+    <div class="modal-body">
+        <br />
+        <div class="explanation-background">
+            <div class="centrum">
+                <div class="embed-responsive embed-responsive-4by3">
+                    {#TODO change video#}
+                    <iframe class="embed-responsive-item" allowfullscreen="allowfullscreen" src="https://www.youtube.com/embed/AX7r61fyltc"></iframe>
+                </div>
+            </div>
+        </div>
+        <br />
+    </div>
+{% endblock %}
+
+{% block closeButtonText %}
+    {% trans %}o.frequently_used.close{% endtrans %}
+{% endblock %}
+{% set modalBaseType = 'close' %}

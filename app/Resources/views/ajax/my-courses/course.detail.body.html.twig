@@ -3,7 +3,7 @@
         <div class="centrum">
             <ol class="breadcrumb">
                 <li>
-                    <a class="unclickable">
+                    <a href="{{ path('app_teach_edit_course_page', {'id': course.id}) }}">
                         {% if course.name is not null %}
                             {{ course.name }}
                         {% else %}
@@ -15,7 +15,7 @@
         </div>
         <div class="media-list">
             <div class="media">
-                <img class="media-object img-rounded pull-left" src="{{ asset('images/logo-skhole.png') }}"/>
+                <img class="media-object img-rounded pull-left remove-responsive-800" src="{{ asset('images/logo-skhole.png') }}"/>
                 <div class="pull-right">
                     <div class="btn-group-vertical">
                         <a href="{{ path('app_teach_edit_course_page', {'id': course.id}) }}" class="btn btn-primary btn-sm">

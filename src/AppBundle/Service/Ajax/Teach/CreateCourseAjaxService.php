@@ -9,6 +9,7 @@
 namespace AppBundle\Service\Ajax\Teach;
 
 
+use AppBundle\Authorization\AuthorizationService;
 use AppBundle\Entity\Course\CourseAnnouncements;
 use AppBundle\Entity\Course\CourseAnswers;
 use AppBundle\Entity\Course\CourseCards;
@@ -32,7 +33,6 @@ use AppBundle\Validator\Validator;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityNotFoundException;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class CreateCourseAjaxService implements AjaxInterface
@@ -41,10 +41,6 @@ class CreateCourseAjaxService implements AjaxInterface
      * @var EntityManager
      */
     private $manager;
-    /**
-     * @var TokenStorage
-     */
-    private $storage;
     /**
      * @var Validator
      */
@@ -61,16 +57,20 @@ class CreateCourseAjaxService implements AjaxInterface
      * @var \Twig_Environment
      */
     private $environment;
+    /**
+     * @var AuthorizationService
+     */
+    private $authorizationService;
 
-    public function __construct(EntityManager $manager, TokenStorage $storage, Validator $validator,
-                                TransformManager $transformer, Router $router, \Twig_Environment $environment)
+    public function __construct(EntityManager $manager, Validator $validator, TransformManager $transformer,
+                                Router $router, \Twig_Environment $environment, AuthorizationService $authorizationService)
     {
         $this->manager = $manager;
-        $this->storage = $storage;
         $this->validator = $validator;
         $this->transformer = $transformer;
         $this->router = $router;
         $this->environment = $environment;
+        $this->authorizationService = $authorizationService;
     }
 
     public function saveCourseInformationValues($args)
@@ -237,7 +237,7 @@ class CreateCourseAjaxService implements AjaxInterface
         $this->idSpecified($args);
         $entity = $this->manager->getRepository('AppBundle:Course\Courses')->find($args['id']);
         if($entity == null) throw new EntityNotFoundException();
-        $this->hasEditRights($entity);
+        $user = $this->hasEditRights($entity);
         unset($args['id']);
 
         $this->validator->validate($args, 'CourseTeachers');
@@ -261,7 +261,7 @@ class CreateCourseAjaxService implements AjaxInterface
         {
             $teacher = new Teachers();
             $teacher->setIsUndesirable(false);
-            $teacher->setInsertUser($this->storage->getToken()->getUser());
+            $teacher->setInsertUser($user);
             $entity->getCourseCard()->addTeacher($teacher);
             $isNew = true;
         }
@@ -301,8 +301,8 @@ class CreateCourseAjaxService implements AjaxInterface
 
                 $picture = $teacher->getPictureUrl();
 
-                $absolute = FileHelper::$webDir . $picture;
-
+                $fileHelper = new FileHelper();
+                $absolute = $fileHelper->getWebDir() . $picture;
                 unlink($absolute);
 
                 $entity->getCourseCard()->removeTeacher($teacher);
@@ -317,7 +317,7 @@ class CreateCourseAjaxService implements AjaxInterface
         $this->idSpecified($args);
         $entity = $this->manager->getRepository('AppBundle:Course\Courses')->find($args['id']);
         if($entity == null) throw new EntityNotFoundException();
-        $this->hasEditRights($entity);
+        $user = $this->hasEditRights($entity);
         unset($args['id']);
 
         $this->validator->validate($args, 'CourseAnnouncements');
@@ -332,7 +332,7 @@ class CreateCourseAjaxService implements AjaxInterface
         {
             $teacher = $this->manager->getRepository('AppBundle:Teachers')->find($args['teacherId']);
             if($teacher == null) throw new EntityNotFoundException();
-            if($teacher->getUserInsertedId() != $this->storage->getToken()->getUser()->getId())
+            if($teacher->getUserInsertedId() != $user->getId())
                 throw new AccessDeniedException();
 
             $announcement->setTeacher($teacher);
@@ -396,7 +396,7 @@ class CreateCourseAjaxService implements AjaxInterface
         $this->idSpecified($args);
         $entity = $this->manager->getRepository('AppBundle:Course\Courses')->find($args['id']);
         if($entity == null) throw new EntityNotFoundException();
-        $this->hasEditRights($entity);
+        $user = $this->hasEditRights($entity);
         unset($args['id']);
 
         $this->validator->validate($args, 'CourseProviders');
@@ -417,7 +417,7 @@ class CreateCourseAjaxService implements AjaxInterface
             $this->hasEditRights($provider);
         } else {
             $provider = new Providers();
-            $provider->setInsertUser($this->storage->getToken()->getUser());
+            $provider->setInsertUser($user);
             $entity->getCourseCard()->addProvider($provider);
             $isNew = true;
         }
@@ -1096,6 +1096,27 @@ class CreateCourseAjaxService implements AjaxInterface
         $this->saveCourseResources($arguments);
     }
 
+    function removeTeacherPicture($args)
+    {
+        if (!array_key_exists('teacherId', $args)) return;
+
+        $teacher = $this->manager->getRepository('AppBundle:Teachers')->find($args['teacherId']);
+        if ($teacher == null) return;
+
+        $this->hasEditRights($teacher);
+        $picture = $teacher->getPictureUrl();
+
+        if (ValidatorHelper::isStringNullOrEmpty($picture)) return;
+
+        $teacher->setPictureUrl(null);
+        $this->manager->flush();
+
+        $fileHelper = new FileHelper();
+        $absoluteUrl = $fileHelper->getWebDir() . $picture;
+        if (is_file($absoluteUrl))
+            unlink($absoluteUrl);
+    }
+
     /**
      * Returns an unique code that is used to determine which implementation
      * of this interface should be used for the ajax call
@@ -1120,7 +1141,7 @@ class CreateCourseAjaxService implements AjaxInterface
             'removeCourseTeachers', 'saveCourseAnnouncement', 'removeCourseAnnouncement', 'removeCourseProviders', 'saveProvider',
             'removeCourses', 'saveCourseInstruction', 'updatePageOrder', 'removePages', 'saveMultipleChoice', 'addCustomExercisePage',
             'loadQuestion', 'saveCustomQuestion', 'removeCustomQuestions', 'updateQuestionOrder', 'removeExtraAnswer', 'publishCourse',
-            'saveCourseResources', 'removeResourceUrl', 'addResourceLink');
+            'saveCourseResources', 'removeResourceUrl', 'addResourceLink', 'removeTeacherPicture');
     }
 
     private function idSpecified($args)
@@ -1129,10 +1150,15 @@ class CreateCourseAjaxService implements AjaxInterface
             throw new \Exception('Id should be specified');
     }
 
+    /**
+     * @param $entity
+     * @return \AppBundle\Entity\User
+     */
     private function hasEditRights($entity)
     {
-        if(SecurityHelper::hasUserContext($this->storage) && SecurityHelper::hasEditRights($entity, 'userInsertedId', $this->storage->getToken()->getUser()->getId()))
-            return;
+        $user = $this->authorizationService->getAuthorizedUserOrThrowException();
+        if(SecurityHelper::hasEditRights($entity, 'userInsertedId', $user->getId()))
+            return $user;
 
         throw new AccessDeniedException();
     }

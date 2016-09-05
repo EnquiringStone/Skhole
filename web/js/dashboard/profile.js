@@ -31,11 +31,9 @@ $(document).ready(function() {
             var picture = $('.uploaded-profile-picture');
             picture.val(data['_response']['result'][0]);
 
-            var preview = $('.profile-picture-preview');
-
-            var html = '<img src="/'+window.location.pathname.split('/')[1]+'/web/'+ picture.val()+'" class="profile-picture-preview-img">';
-            preview.empty();
-            preview.append(html);
+            var preview = $('.profile-picture-preview-img');
+            if (ENVIRONMENT == 'dev') preview.attr('src', '/'+window.location.pathname.split('/')[1]+'/web/'+ picture.val());
+            else preview.attr('src', '/'+picture.val());
         }
     });
 
@@ -98,6 +96,28 @@ $(document).ready(function() {
             $('.profile-education-buttons').append(data['html']);
         }, function(error) {
             $('.modal').modal('hide');
+            var json = error['responseJSON'];
+            showAjaxErrorModal(json['html']);
+        });
+    });
+
+    body.on('click', '.remove-user-picture', function () {
+        var click = $(this);
+        var context = $(click.parents('.modal'));
+        var standardPictureUrl = click.data('standard-picture');
+        var profilePicture = $('.profile-picture-preview-img', context);
+
+        if (standardPictureUrl == profilePicture.attr('src')) return;
+
+        var url = click.data('url');
+
+        sendAjaxCall(url, {'ajax_key': 'PRAS1', 'method': 'removeProfilePicture'}, function () {
+            profilePicture.attr('src', standardPictureUrl);
+            $('#profile-picture-header').attr('src', standardPictureUrl);
+            var picture = $('.uploaded-profile-picture');
+            picture.val('');
+        }, function (error) {
+            context.modal('hide');
             var json = error['responseJSON'];
             showAjaxErrorModal(json['html']);
         });

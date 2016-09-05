@@ -7,7 +7,7 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: nl
-    app_locales: nl|it
+    app_locales: nl|en
     ajax_configuration:
         method: "method"
         identifier: "ajax_key"

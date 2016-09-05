@@ -9,7 +9,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="keywords" content="{% block keywords %}{% endblock %}" >
         <meta name="description" content="{% block description %}{% endblock %}">
-        <meta name="author" content="Skhole Programmers">
+        <meta name="author" content="StudyLivre Programmers">
+        <meta name="google-site-verification" content="V2IZ6kkgMLxDIF9eR9Wj5t9i_aOvu8NDOXSgoX3OhzE" />
 
         <title>StudyLivre {% block title %}{% endblock %}</title>
         <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
@@ -17,6 +18,9 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="{{ asset('js/jquery.query-object.js') }}"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <script>
+            var ENVIRONMENT = '{{ app.environment }}';
+        </script>
         <script src="{{ asset('js/utils.js') }}"></script>
         <script src="{{ asset('js/main.js') }}"></script>
         {% block prescripts %}{% endblock %}
@@ -24,7 +28,7 @@
     <body>
         {% include 'elements/header.html.twig' %}
         <div class="container">
-            {% if is_granted('ROLE_USER') %}
+            {% if app.user is not null and is_granted('ROLE_USER') %}
                 {% if not app.user.agreedToCookie %}
                     {% include ':elements:cookie.html.twig' %}
                 {% endif %}
@@ -34,7 +38,9 @@
                 {% endif %}
             {% endif %}
             {% include 'elements/navigation.menu.html.twig' %}
-            {% include "elements/#{menu}.navigation.menu.html.twig" %}
+            {% if menu != '' %}
+                {% include "elements/#{menu}.navigation.menu.html.twig" %}
+            {% endif %}
             {% block body %}{% endblock %}
         </div>
         {% include 'elements/footer.html.twig' %}
