@@ -194,7 +194,14 @@ class TeachController extends Controller
         $pages = $this->getDoctrine()->getRepository('AppBundle:Report\Reports')->getAllPagesByReport($sharedReport->getReport()->getId());
         $questions = $this->getDoctrine()->getRepository('AppBundle:Report\AnswerResults')->getAllAnsweredQuestionByCoursePage($sharedReport->getReport()->getId(), $page->getId());
 
-        $criteria = array('sharedReport' => $sharedReport, 'pages' => $pages, 'page' => $page, 'questions' => $questions, 'offset' => $page->getPageOrder() - 1);
+        $index = 0;
+        foreach ($pages as $aPage) {
+            if ($aPage['id'] == $page->getId())
+                break;
+            $index ++;
+        }
+
+        $criteria = array('sharedReport' => $sharedReport, 'pages' => $pages, 'page' => $page, 'questions' => $questions, 'offset' => $pages[$index]['realOffset'] - 1);
 
         return $this->render(':teach:student.report.details.html.twig', $criteria);
     }

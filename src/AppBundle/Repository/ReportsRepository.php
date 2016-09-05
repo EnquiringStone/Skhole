@@ -16,7 +16,7 @@ class ReportsRepository extends EntityRepository implements PageControlsInterfac
 
     public function getAllPagesByReport($reportId)
     {
-        return $this->getEntityManager()->createQueryBuilder()
+        return $this->correctPageOrder($this->getEntityManager()->createQueryBuilder()
             ->select('page.title, page.id, page.pageOrder')
             ->from('AppBundle:Report\Reports', 'report')
             ->innerJoin('report.answerResults', 'answerResults')
@@ -26,7 +26,7 @@ class ReportsRepository extends EntityRepository implements PageControlsInterfac
             ->where('report.id = :reportId')
             ->setParameter('reportId', $reportId)
             ->orderBy('page.pageOrder', 'ASC')
-            ->getQuery()->getResult();
+            ->getQuery()->getResult());
     }
 
     public function getCountByCriteria($criteria)
@@ -110,5 +110,18 @@ class ReportsRepository extends EntityRepository implements PageControlsInterfac
     private function createReturnValues($entities, $total)
     {
         return array('resultSet' => $entities, 'total' => $total);
+    }
+
+    private function correctPageOrder($pages)
+    {
+        $sortedPages = array();
+
+        for ($i=0; $i < sizeof($pages); $i++)
+        {
+            $sortedPages[] = $pages[$i];
+            $sortedPages[$i]['realOffset'] = $i + 1;
+        }
+
+        return $sortedPages;
     }
 }

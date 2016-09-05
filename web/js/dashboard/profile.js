@@ -32,7 +32,8 @@ $(document).ready(function() {
             picture.val(data['_response']['result'][0]);
 
             var preview = $('.profile-picture-preview-img');
-            preview.attr('src', '/'+window.location.pathname.split('/')[1]+'/web/'+ picture.val());
+            if (ENVIRONMENT == 'dev') preview.attr('src', '/'+window.location.pathname.split('/')[1]+'/web/'+ picture.val());
+            else preview.attr('src', '/'+picture.val());
         }
     });
 
