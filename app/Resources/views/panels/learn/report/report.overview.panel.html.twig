@@ -8,9 +8,9 @@
         <div class="sort-field">
             {% include ':ajax/reports:sort.html.twig' %}
         </div>
-        <hr />
+        <br />
         {% if totalReports <= 0 %}
-            <div class="centrum">
+            <div class="centrum thumbnail">
                 <p class="lead">{% trans %}o.report.no_reports_found{% endtrans %}</p>
                 <p>{% trans %}o.report.no_reports_found_advice{% endtrans %}</p>
             </div>

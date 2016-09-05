@@ -1,7 +1,7 @@
 {% block learnReportNotCompleteErrorMessage %}
     <div style="text-align: left; font-size: 16px;" class="text-exception">
         <br>
-        <p>{% trans %}l.missing_questions{% endtrans %}:</p>
+        <h4><samp><b>{% trans %}l.missing_questions{% endtrans %}:</b></samp></h4>
         {% for pageId, questions in unansweredQuestions %}
             <a href="{{ path('app_learn_study_pages_page', {'courseId': course.id, 'pageOrder': questions[0].coursePage.pageOrder}) }}">{% trans %}o.frequently_used.page{% endtrans %} {{ questions[0].coursePage.pageOrder }}</a>
             <br>

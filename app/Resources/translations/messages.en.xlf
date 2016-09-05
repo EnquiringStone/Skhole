@@ -80,7 +80,7 @@
             </trans-unit>
             <trans-unit id="0004">
                 <source>l.missing_questions</source>
-                <target>The answers to the following questions are missing</target>
+                <target>The answers of the following questions are missing</target>
             </trans-unit>
             <trans-unit id="0005">
                 <source>l.last_page.last_page</source>
@@ -148,8 +148,7 @@
             </trans-unit>
             <trans-unit id="0021">
                 <source>t.start_page.report_info</source>
-  <target>A course report will be generated once you finish a course. The report is based on your answers. The report will be automatically saved at: Basket → My reports. When you are not signed in all your progress will be lost once you close your internet browser.
-</target>
+            <target>A course report will be generated once you finish a course. The report is based on your answers. The report will be automatically saved at: Basket → My reports. NoTE: when you are not signed in all your progress will be lost once you close your internet browser.</target>
             </trans-unit>
             <trans-unit id="0022">
                 <source>t.save_anwsers</source>
@@ -197,8 +196,7 @@
             </trans-unit>
             <trans-unit id="0033">
                 <source>t.t_long.no_course_selected</source>
-                <target>Search a course or select one from the course basket. Click on the button below in order to learn more about following a course or course reports. 
-</target>
+                <target>Search a course or select one from the course basket (Basket → Course basket). Click on the buttons below to learn more about following a course and the course report. </target>
             </trans-unit>
             <trans-unit id="0034">
                 <source>t.course_basket.login_is_required_for_usage</source>
@@ -229,7 +227,8 @@
                 <source>l.start_page.t_instruction_03</source>
                 <target>,which is situated below in the right corner, in order to start the course.
 </target>
-            </trans-unit>    
+            </trans-unit>  
+             
 <!-- Einde tab learn-->		
 <!-- Tab teach: 1000 tot 1999 -->
 			<trans-unit id="1001">
@@ -844,7 +843,7 @@
             </trans-unit>
             <trans-unit id="10153">
                 <source>t.mentor_reports.t_long.no_mentor_requests</source>
-                <target>There are currently no share requests</target>
+                <target>There are currently no share requests.</target>
             </trans-unit>
             <trans-unit id="10154">
                 <source>t.create_course</source>
@@ -875,7 +874,7 @@
                 <target>Difficulty</target>
             </trans-unit>
             <trans-unit id="10161">
-                <source>t.link.studylivre</source>
+                <source>t.link.study.livre</source>
                 <target>www.studylivre.com</target>
             </trans-unit>
              <trans-unit id="10162">
@@ -1772,7 +1771,7 @@ StudyLivre offers you the possibility to view, create and share courses. A cours
             </trans-unit>
             <trans-unit id="30149">
                 <source>o.report.no_reports_found_advice</source>
-                <target>You can find here the course reports from the courses which you completed</target>
+                <target>Once you finish a course the course report which belongs to it will be saved here automatically.</target>
             </trans-unit>
             <trans-unit id="30150">
                 <source>o.frequently_used.previous</source>
@@ -2322,7 +2321,7 @@ StudyLivre offers you the possibility to view, create and share courses. A cours
             </trans-unit>
             <trans-unit id="4082">
                 <source>mo.login.info_account.01</source>
-                <target>sign in with a social media account</target>
+                <target>Sign in with a social media account</target>
             </trans-unit>
             <trans-unit id="4083">
                 <source>mo.login.info_account.02</source>
@@ -2342,7 +2341,7 @@ StudyLivre offers you the possibility to view, create and share courses. A cours
             </trans-unit>
             <trans-unit id="4087">
                 <source>mo.login.info_account.li.your_social_account</source>
-                <target>Social media account you used to create an account</target>
+                <target>Social media account you used during the first login</target>
             </trans-unit>
             <trans-unit id="4088">
                 <source>mo.login.info_account.done</source>
@@ -2971,7 +2970,7 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
 <trans-unit id="50111">
                 <source>imo.course_report.sub_title</source>
-                <target>View your own course or those of others</target>
+                <target>View your course result in a report and share it with others</target>
             </trans-unit>
             <trans-unit id="50113">
                 <source>imo.course_report.intro</source>
@@ -3004,8 +3003,7 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="50120">
                 <source>imo.course_report.step_01.search_course.t_long_01</source>
-                <target>The student follows a course. Once the course is finished a course report will be generated. 
-</target>
+                <target>The student follows a course. Once the course is finished a course report will be generated</target>
             </trans-unit>
             <trans-unit id="50121">
                 <source>imo.course_report.step_02.mentor_provides_mentor_code</source>
@@ -3025,7 +3023,7 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="50125">
                 <source>imo.course_report.step_03.students_enter_mentor_code</source>
-                <target>Enter the share code</target>
+                <target>Enter the share code of the person you want to share the report with</target>
             </trans-unit>
             <trans-unit id="50126">
                 <source>imo.course_report.step_03.students_enter_mentor_code.t_long_01</source>
@@ -3710,11 +3708,11 @@ We ask you to not abuse this site. Each course item which is added involves a ce
             </trans-unit>
             <trans-unit id="7002">
                 <source>cookie.last_updated</source>
-                <target>Laatst bijgewerkt: augustus 2016</target>
+                <target>Last updated: August 2016</target>
             </trans-unit>
             <trans-unit id="7003">
                 <source>cookie.policy.t_long.part_01</source>
-                <target>Cookies are small text files that are useful for remembering settings and preferences. Because we use cookies, we make StudyLivre more  personal and relevant. Cookies are saved on your computer and can be removed at any time. StudyLivre uses functional and analytical cookies to gain insight into the functioning and effectiveness of its website. Most cookies StudyLivre uses disappear when you close your browser. Ads and social media from third-party may use cookies in order to collect information.</target>
+                <target>Cookies are small text files that are useful for remembering settings and preferences. Because we use cookies, we make StudyLivre more  personal and relevant. Cookies are saved on your computer and can be removed at any time. StudyLivre uses functional and analytical cookies to gain insight into the functioning and effectiveness of its website. Most cookies StudyLivre uses disappear when you close your browser. Ads and social media from third-parties may use cookies in order to collect information.</target>
             </trans-unit>
             <trans-unit id="7004">
                 <source>cookie.policy.t_long.part_02</source>
@@ -3722,11 +3720,11 @@ We ask you to not abuse this site. Each course item which is added involves a ce
             </trans-unit>
             <trans-unit id="7005">
                 <source>cookie.policy.li.li_01</source>
-                <target>you stay singed in and that you can use our website continuously; </target>
+                <target>you stay singed in and that you can use our website continuously </target>
             </trans-unit>
             <trans-unit id="7006">
                 <source>cookie.policy.li.li_02</source>
-                <target>you can read read or write reviews and that you can view courses</target>
+                <target>you can read or write reviews and that you can view courses</target>
             </trans-unit>
             <trans-unit id="7007">
                 <source>cookie.policy.li.li_03</source>
@@ -3734,11 +3732,11 @@ We ask you to not abuse this site. Each course item which is added involves a ce
             </trans-unit>
             <trans-unit id="7008">
                 <source>cookie.policy.li.li_04</source>
-                <target>you can share courses on social media;</target>
+                <target>you can share courses on social media</target>
             </trans-unit>
             <trans-unit id="7009">
                 <source>cookie.policy.li.li_05</source>
-                <target>advertisers can measure how often an ad is shown or clicked; </target>
+                <target>advertisers can measure how often an ad is shown or clicked </target>
             </trans-unit>
             <trans-unit id="7010">
                 <source>cookie.policy_third_parties.t</source>
@@ -3752,44 +3750,41 @@ With regard to the placement of cookies from third parties we advise you to read
             <trans-unit id="7012">
                 <source>cookie.policy_third_parties.t_long.part_02</source>
                 <target>
-Third parties may use third-party cookies or similar technologies to collect information to provide services. They can also identify your device, or your IP address or identifier for advertising (IDFA) 'collection, which can be used to deliver tailored ads on our website or elsewhere on the Internet.</target>
+Third parties may use third-party cookies or similar technologies in order to collect information or provide services. They can also identify your device, or your IP address or identifier for advertising (IDFA) 'collection, which can be used to deliver tailored ads on our website or elsewhere on the Internet.</target>
             </trans-unit>
             <trans-unit id="7013">
                 <source>privacy.policy</source>
                 <target>Privacy Policy </target>
             </trans-unit>
-            <trans-unit id="7014"> 
+                     <trans-unit id="7014"> 
                 <source>privacy.t.personal_details_which_we_save</source>
-                <target> HIER GEBLEVEN (KIJKEN OF DIT PRIVACY BELEID OOK IN HET ENGELS GENEREERD KAN WORDEN (ZO JA KNIPPEN EN PLAKKEN) Persoonsgegevens die wij verwerken</target>
+                <target>Personal data that we process</target>
             </trans-unit>
             <trans-unit id="7015">
                 <source>privacy.t.personal_details_which_we_save.t_long_01</source>
                 <target>
-StudyLivre processes personal information about you before you make use of our services and / or because you it gives to us. Below an overview of the
-personal data that we process:
-
-StudyLivre verwerkt persoonsgegevens over u doordat u gebruik maakt van onze diensten en/of omdat u deze zelf aan ons verstrekt. Hieronder een overzicht van de
-persoonsgegevens die wij verwerken:</target>
+StudyLivre processes personal information when you use our services and /or because you provide it to us. Below an overview of the personal data that we process:
+:</target>
             </trans-unit>
             <trans-unit id="7016">
                 <source>privacy.t.personal_details_which_we_save.li.li_01</source>
-                <target>Voor- en achternaam</target>
+                <target>First and last name</target>
             </trans-unit>
             <trans-unit id="7017">
                 <source>privacy.t.personal_details_which_we_save.li.li_02</source>
-                <target>Geboortedatum</target>
+                <target>Date of birth</target>
             </trans-unit>
             <trans-unit id="7018">
                 <source>privacy.t.personal_details_which_we_save.li.li_03</source>
-                <target>E-mailadres</target>
+                <target>Email address</target>
             </trans-unit>
             <trans-unit id="7019">
                 <source>privacy.t.personal_details_which_we_save.li.li_04</source>
-                <target>IP-adres</target>
+                <target>IP-address</target>
             </trans-unit>
             <trans-unit id="7020">
                 <source>privacy.t.personal_details_which_we_save.li.li_05</source>
-                <target>Social media account waarmee je inlogt</target>
+                <target>Social media account which you use to sign in</target>
             </trans-unit>
             <trans-unit id="7021">
                 <source>privay.why_proces</source>
@@ -3801,100 +3796,75 @@ persoonsgegevens die wij verwerken:</target>
             </trans-unit>
             <trans-unit id="7023">
                 <source>privay.why_proces.t_long.part_02</source>
-                <target>
-Data of persons under 16 years of our website and / or service does not collect data on the intention of website visitors who are under 16 years old.
-Unless they have permission from a parent or guardian. However, we can not check if a visitor is older than 16. We advise parents also to be involved at
-the online activities of their children, to prevent that data on children are collected without parental consent. If you're convinced
-that we have collected personal information without the consent of a minor, please contact us via info@StudyLivre.com, we will
-remove this information
-
-Gegevens van personen jonger dan 16 jaar Onze website en/of dienst heeft niet de intentie gegevens te verzamelen over websitebezoekers die jonger zijn dan 16 jaar.
-Tenzij ze toestemming hebben van ouders of voogd. We kunnen echter niet controleren of een bezoeker ouder dan 16 is. Wij raden ouders dan ook aan betrokken te zijn bij
-de online activiteiten van hun kinderen, om zo te voorkomen dat er gegevens over kinderen verzameld worden zonder ouderlijke toestemming. Als je er van overtuigd bent
-dat wij zonder die toestemming persoonlijke gegevens hebben verzameld over een minderjarige, neem dan contact met ons op via info@StudyLivre.com, dan zullen wij
-deze informatie verwijderen</target>
+                <target>We aim not to collect data about persons younger than 16 years old. Unless they have permission from a parent or guardian. However, we cannot check if a visitor is older than 16. We advise parents to keep an eye at the online activities of their children in order to prevent that data about their children is being collected without parental consent. If you're convinced
+that we have collected personal information without the consent of a minor, please contact us via info@StudyLivre.com, we will remove this information as soon as possible. 
+            </target>
             </trans-unit>
             <trans-unit id="7024">
                 <source>privacy.why_need_details</source>
-                <target>Waarom we gegevens nodig hebben</target>
+                <target>Why we need your data</target>
             </trans-unit>
             <trans-unit id="7025">
                 <source>privacy.why_need_details.t_long.part_01</source>
-                <target>StudyLivre verwerkt uw persoonsgegevens, voor de volgende doelen</target>
+                <target>StudyLivre processes data for the following purposes</target>
             </trans-unit>
             <trans-unit id="7026">
                 <source>privacy.why_need_details.li.li_01</source>
-                <target>Om goederen en diensten bij u af te leveren</target>
+                <target>To provide services</target>
             </trans-unit>
             <trans-unit id="7027">
                 <source>privacy.why_need_details.li.li_02</source>
-                <target>
-StudyLivre analyze your behavior on the website in order to improve our website and to align our range of products and services to your preferences
-
-StudyLivre analyseert jouw gedrag op de website om daarmee onze website te verbeteren en ons aanbod van producten en diensten af te stemmen op uw voorkeuren</target>
+                <target>StudyLivre analyze your behavior on its website in order to improve our website and to align our range of products and services to your preferences</target>
             </trans-unit>
             <trans-unit id="7028">
                 <source>privacy.how_long_save_data</source>
-                <target>Hoe lang we gegevens bewaren</target>
+                <target>How long will your data be stored</target>
             </trans-unit>
             <trans-unit id="7029">
                 <source>privacy.how_long_save_data.t_long_01</source>
-                <target>
-StudyLivre will retain your personal information for longer than is strictly necessary to achieve the purposes for which your data is collected. Our retention period starts from the moment you create an account and ends when you cancel your account.
-
-StudyLivre zal uw persoonsgegevens niet langer bewaren dan strikt nodig is om de doelen te realiseren waarvoor uw gegevens worden verzameld. Onze bewaartermijn start vanaf het moment dat u een account aanmaakt en eindigt op het moment dat u uw account opheft.
-</target>
+                <target>StudyLivre will retain your personal information no longer than is strictly necessary in order to achieve the purposes for which your data is collected. Our retention period starts from the moment you create an account and ends when you delete your account.</target>
             </trans-unit>
             <trans-unit id="7030">
                 <source>privacy.share_with_others</source>
-                <target>Delen met anderen</target>
+                <target>Share with other parties</target>
             </trans-unit>
             <trans-unit id="7031">
                 <source>privacy.share_with_others.t_long_01</source>
                 <target>
-StudyLivre sell your information to third parties and will provide it only if necessary for the implementation of our agreement with you or meet
-a legal obligation. With companies that process your data on our behalf, we close a processing agreement to provide the same level
-security and confidentiality of your information. StudyLivre remains responsible for the processing
-
-StudyLivre verkoopt uw gegevens niet aan derden en zal deze uitsluitend verstrekken indien dit nodig is voor de uitvoering van onze overeenkomst met u of om te voldoen
-aan een wettelijke verplichting. Met bedrijven die uw gegevens verwerken in onze opdracht, sluiten wij een bewerkersovereenkomst om te zorgen voor eenzelfde niveau
-van beveiliging en vertrouwelijkheid van uw gegevens. StudyLivre blijft verantwoordelijk voor deze verwerkingen.</target>
+                StudyLivre does not sell your personal information to third parties and will provide it only if that is necessary with regard to the implementation of our agreement with you or meet a legal obligation. 
+                With regard to companies that process your data on our behalf, we close a processing agreement to provide the same level security and confidentiality of your information. StudyLivre remains responsible for the processing.</target>
             </trans-unit>
             <trans-unit id="7032">
                 <source>privacy.privacy_policy.third_parties</source>
-                <target>Privacybeleid van derde partijen</target>
+                <target>Private policy from third parties</target>
             </trans-unit>
             <trans-unit id="7033">
                 <source>privacy.privacy_policy.third_parties.t_long_01</source>
                 <target>
-We work with outside companies that help us provide our services and to improve, or use those ads or related products. For the privacy of third parties, we refer to the statements that these parties on their own websites about it. The same goes for our advertising partners. These statements may change regularly. StudyLivre has no influence.
-
-We werken samen met externe bedrijven die ons helpen onze services aan te bieden en te verbeteren, of die advertenties of gerelateerde producten gebruiken. Voor het privacybeleid van derde partijen, verwijzen wij naar de verklaringen die deze partijen op hun eigen websites daarover geven. Het zelfde geldt voor onze advertentiepartners. Deze verklaringen kunnen regelmatig wijzigen. StudyLivre heeft hier geen invloed op. 
-</target>
+            We work with other companies that help us provide/improve our services, or place adds. With regard to the privacy policy of third parties we refer to the statements that these parties show on their own websites. The same applies to our advertising partners. These statements may change regularly. StudyLivre has no influence on those policies.
+            </target>
             </trans-unit>
             <trans-unit id="7034">
                 <source>privacy.map_website_visits</source>
-                <target>In kaart brengen websitebezoek</target>
+                <target>Map website usage</target>
             </trans-unit>
-            <trans-unit id="7035">
+	    <trans-unit id="7035">
                 <source>privacy.map_website_visits.t_long_01</source>
-                <target>StudyLivre gebruikt alleen technische en functionele cookies. En analytische cookies die geen inbreuk maken op uw privacy. Een cookie is een klein tekstbestand dat bij het
-eerste bezoek aan deze website wordt opgeslagen op uw computer, tablet of smartphone. De cookies die wij gebruiken zijn noodzakelijk voor de technische werking van de
-website en uw gebruiksgemak. Ze zorgen ervoor dat de website naar behoren werkt en onthouden bijvoorbeeld uw voorkeursinstellingen. Ook kunnen wij hiermee onze
-website optimaliseren. U kunt zich afmelden voor cookies door uw internetbrowser zo in te stellen dat deze geen cookies meer opslaat. Daarnaast kunt u ook alle
-informatie die eerder is opgeslagen via de instellingen van uw browser verwijderen.</target>
+             <target>
+            StudyLivre uses only technical and functional cookies. And analytical cookies that do not infringe your privacy. A cookie is a small text file at that will be stored on your computer, tablet or smartphone. Cookies we use are necessary for the technical operation of the
+            website and ease of use. Cookies ensure that the website is working properly and, for example remember your preferences. We can use this to optimize our website. You can opt out of cookies through your web browser to settings. In addition, you can delete all cookie
+            information in the menu of your browser.
+            </target>
             </trans-unit>
             <trans-unit id="7036">
                 <source>privacy.view_own_data_and_edit</source>
-                <target>Gegevens inzien, aanpassen of verwijderen</target>
+                <target>View, modify or remove personal data</target>
             </trans-unit>
             <trans-unit id="7037">
                 <source>privacy.view_own_data_and_edit.t_long_01</source>
-                <target>U heeft het recht om uw persoonsgegevens in te zien, te corrigeren of te verwijderen. Dit kan u zelf doen via de persoonlijke instellingen van uw account. Lukt het niet via
-deze instellingen of heeft u andere vragen/opmerkingen over de gegevensverwerking, stuur dan een gespecificeerd verzoek naar info@StudyLivre.com. Om uw identiteit te
-kunnen verifiëren, vragen wij u een kopie van uw identiteitsbewijs mee te sturen. Maak in deze kopie het burgerservicenummer (BSN), MRZ (machine readable zone, de
-strook met nummers onderaan het paspoort), paspoortnummer en uw pasfoto zwart. Dit ter bescherming van uw privacy. StudyLivre zal zo snel mogelijk, maar in ieder
-geval binnen vier weken, op uw verzoek reageren. U kunt ons ook bereiken via: Website: www.studylivre.com. Mail: info@StudyLivre.com</target>
+                <target>
+                You have the right to see your personal information, correct information when wrong or delete it. You can do this yourself using the personal settings for your account. If that is not possible then you can send a request to: info@StudyLivre.com. Please enclose a copy of your identification so that we can verify your identity. Attach a copy of your passport so that we can protect your privacy. StudyLivre will respond as soon as possible to your request, in any case this should be within four weeks. You can also reach us via: Website: www.studylivre.com. Mail: info@StudyLivre.com
+                </target>
             </trans-unit>
             <trans-unit id="7038">
                 <source>privacy.security</source>
@@ -3902,10 +3872,11 @@ geval binnen vier weken, op uw verzoek reageren. U kunt ons ook bereiken via: We
             </trans-unit>
             <trans-unit id="7039">
                 <source>privacy.security.t_long_01</source>
-                <target>StudyLivre neemt de bescherming van uw gegevens serieus en neemt passende maatregelen om misbruik, verlies, onbevoegde toegang, ongewenste openbaarmaking en
-ongeoorloofde wijziging tegen te gaan. Als u de indruk heeft dat uw gegevens niet goed beveiligd zijn of er aanwijzingen zijn van misbruik, neem dan contact op met onze
-klantenservice of via info@StudyLivre.com.  TOT HIER PRIVACY BELEID DAT MOGELIJK DOOR KAN KNIPPEN EN PLAKKEN VAN INTERNET </target>
+                <target>
+            StudyLivre takes the protection of your data seriously and takes appropriate measures to prevent abuse, loss, unauthorized access, unwanted disclosure and to prevent unauthorized modification. If you have the impression that your data is not properly protected or there is evidence of abuse, please contact our customer service via info@StudyLivre.com.
+            </target>
             </trans-unit>
+
             <trans-unit id="7040">
                 <source>user.agree_user.agreement</source>
                 <target>Terms of Use</target>
@@ -3916,7 +3887,7 @@ klantenservice of via info@StudyLivre.com.  TOT HIER PRIVACY BELEID DAT MOGELIJK
             </trans-unit>
             <trans-unit id="7042">
                 <source>user.agree_user.general.t_long_01</source>
-                <target>When you access and /or use the information provided on this website you agree to the applicability of the conditions listed below. The website StudyLivre.com, hereinafter will be referred to as "website". You are not allowed to use the website, if you do not accept the terms. StudyLivre may at any time modify the conditions. We encourage you to read everything carefully. It is also advisable for the benefit of your records to print out your own copy of the Terms of Use.
+                <target>When you access and /or use the information provided on this website you agree to the applicability of the conditions listed below. The website StudyLivre.com, hereinafter will be referred to as "website". You are not allowed to use the website, if you do not accept the terms. StudyLivre may at any time modify the conditions. We encourage you to read everything carefully. It is advisable for the benefit of your records to print out your own copy of the Terms of Use.
 </target>
             </trans-unit>
             <trans-unit id="7043">
@@ -3935,7 +3906,7 @@ klantenservice of via info@StudyLivre.com.  TOT HIER PRIVACY BELEID DAT MOGELIJK
             </trans-unit>
             <trans-unit id="7046">
                 <source>user.agree.definitions.t_long_01</source>
-                <target>1. Content: text, images, sound, music, videos, audiovisual combinations, interactive features and other materials you can view using the Web site, which you can access, or you can place on the website.
+                <target>1. Content: text, images, sound, music, videos, audiovisual combinations, interactive features and other materials you can view using the website, which you can access, or you can place on the website.
 </target>
             </trans-unit>
             <trans-unit id="7047">
@@ -3952,12 +3923,12 @@ klantenservice of via info@StudyLivre.com.  TOT HIER PRIVACY BELEID DAT MOGELIJK
             </trans-unit>
             <trans-unit id="7050">
                 <source>user.agree.terms_of_use.t_long_02</source>
-                <target>You understand and acknowledge that when you use the Website, you may be exposed to content that is factually inaccurate, offensive, indecent or otherwise objectionable to you. You agree that we are not responsible for the content or third-party data or for damages resulting from the use of or reliance on such content or information.</target>
+                <target>You understand and acknowledge that when you use the website, you may be exposed to content that is factually inaccurate, offensive, indecent or otherwise objectionable to you. You agree that we are not responsible for the content or third-party data or for damages resulting from the use of or reliance on such content or information.</target>
             </trans-unit>
             <trans-unit id="7051">
                 <source>user.agree.terms_of_use.t_long_03</source>
                 <target>
-To use StudyLivre, you agree that you have only one StudyLivre account that should be on your real name. You agree that you are solely responsible for all activities occur on your account. </target>
+To use StudyLivre, you agree that you have only one StudyLivre account that should be your real name. You agree that you are solely responsible for all activities occur on your account. </target>
             </trans-unit>
             <trans-unit id="7052">
                 <source>user.agree.terms_of_use.t_long_04</source>
@@ -3970,16 +3941,16 @@ All intellectual property rights in the Content which are not posted by you or o
             </trans-unit>
             <trans-unit id="7054">
                 <source>user.agree.terms_of_use.t_long_06</source>
-                <target>You guarantee that no Content you have posted on the Web site, any copyrighted material from third parties or material resting on which third-party rights (including privacy and / or publicity rights) will contain, unless you have a formal license or official permission from the rightful owner has, or otherwise are legally entitled to post the material in question on the website. </target>
+                <target>You guarantee that no Content shall be posted on this Website which contains, any copyrighted material from third parties or material resting on which third-party rights (including privacy and / or publicity rights), unless you have a formal license or official permission from the rightful owner, or otherwise are legally entitled to post the material in question on the website. </target>
             </trans-unit>
             <trans-unit id="7055">
                 <source>user.agree.terms_of_use.t_long_07</source>
                 <target>
-If we receive indications and /or complaints by other users or we consider reasons that a particular user is not acting in accordance with the Terms, we can - if we do so as a reason - for safety reasons and to protect our users take action. StudyLivre may for example decide to restrict or exclude a user of the website or specific functions for this user. For example, suspension of an account or deleting course items, ratingss, and reviews. </target>
+If we receive indications and /or complaints by other users or we consider reasons that a particular user is not acting in accordance with the Terms, we can - if we do so as a reason - for safety reasons and to protect our users take action. StudyLivre may for example decide to restrict or exclude an user of the website or specific functions for this user. For example, suspension of an account or deleting course items, ratings, and reviews. </target>
             </trans-unit>
             <trans-unit id="7056">
                 <source>user.agree.terms_of_use.t_long_08</source>
-                <target>StudyLivre kan deze maatregelen eveneens treffen indien u op onredelijke wijze gebruik maakt van de website, bijvoorbeeld indien uw gebruik andere gebruikers hindert of de goede werking van de website verstoort. </target>
+                <target>StudyLivre can take preventive action when an user uses the website for unintended usage, for example when a user bullies other users or tries to hack the website. </target>
             </trans-unit>
             <trans-unit id="7057">
                 <source>user.agree.terms_of_use.t_long_09</source>
@@ -4019,7 +3990,7 @@ If we receive indications and /or complaints by other users or we consider reaso
             </trans-unit>
             <trans-unit id="7066">
                 <source>user.agree.terms_of_use.li.li_08</source>
-                <target>> Infringe on the rights of others (e.g. unauthorized sharing of copyrighted content or other copyrighted materials).</target>
+                <target> Infringe on the rights of others (e.g. unauthorized sharing of copyrighted content or other copyrighted materials).</target>
             </trans-unit>
             <trans-unit id="7067">
                 <source>user.agree.terms_of_use.li.li_09</source>
@@ -4061,7 +4032,7 @@ data;</target>
             </trans-unit>
             <trans-unit id="7076">
                 <source>user.agree.disclaimer.t_long_02</source>
-                <target>The fact that we offer services from third party website does not mean that the Livre Study recommends the products or services offered by these parties. The use of such services is entirely at the user's risk.</target>
+                <target>The fact that we offer services from third party website does not mean that the Livre Study recommends the products or services offered by these parties. The use of such services is entirely at the user's own risk.</target>
             </trans-unit>
             <trans-unit id="7077">
                 <source>user.agree_user.agreement.last_edited</source>
@@ -4069,7 +4040,7 @@ data;</target>
             </trans-unit>
             <trans-unit id="7078">
                 <source>user.agree_user.general.t_long_03</source>
-                <target>This  policy is governed by Dutch law. Disputes arising out of or related to these Terms, the website and / or information submitted to a court in the Netherlands.</target>
+                <target>This  policy is governed by Dutch law. Disputes arising out of or related to these Terms, the website and / or information will be submitted to a court in the Netherlands.</target>
             </trans-unit>
             <trans-unit id="7079">
                 <source></source>

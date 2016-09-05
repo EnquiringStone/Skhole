@@ -4,24 +4,12 @@
 {% endblock %}
 {% block panelBaseContents %}
     <div id="collection-items" class="panel-body page-controls" data-url="{{ url('app_home_ajax_page') }}" data-context="SELF" data-entity="Course\CourseCollectionItems" data-view="course-collection" data-default-search-attributes="">
-        <div>
-            <div class="pull-left">
-                <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#studyIntroductionModal">
-                    <span class="glyphicon glyphicon-info-sign"></span>
-                    {% trans %}o.button.follow_course{% endtrans %}
-                </button>
-                <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#courseReportIntroductionModal">
-                    <span class="glyphicon glyphicon-info-sign"></span>
-                    {% trans %}o.course_report.t.course_report{% endtrans %}
-                </button>
-            </div>
-            <div class="sort-field">
-                {% if is_granted('ROLE_USER') and totalItems > 0 %}
-                    {% include ':ajax/course-collection:sort.html.twig' %}
-                {% endif %}
-            </div>
+        <div class="sort-field">
+            {% if is_granted('ROLE_USER') and totalItems > 0 %}
+                {% include ':ajax/course-collection:sort.html.twig' %}
+            {% endif %}
         </div>
-        <hr />
+        <br />
         <div class="thumbnail">
             <div class="content-field">
                 {% if not is_granted('ROLE_USER') %}

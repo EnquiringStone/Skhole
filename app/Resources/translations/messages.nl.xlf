@@ -197,7 +197,7 @@
             </trans-unit>
             <trans-unit id="0033">
                 <source>t.t_long.no_course_selected</source>
-                <target>Zoek een cursus of selecteer een cursus uit je cursusmandje. Klik op onderstaande button voor meer informatie over het volgen van een cursus</target>
+                <target>Zoek een cursus of selecteer een cursus uit je cursusmandje (Mandje → Cursusmandje). Klik op onderstaande buttons voor meer informatie over het volgen van cursussen en het cursusrapport.</target>
             </trans-unit>
             <trans-unit id="0034">
                 <source>t.course_basket.login_is_required_for_usage</source>
@@ -839,7 +839,7 @@
             </trans-unit>
             <trans-unit id="10153">
                 <source>t.mentor_reports.t_long.no_mentor_requests</source>
-                <target>Er zijn momenteel geen deel verzoeken</target>
+                <target>Er zijn momenteel geen deel verzoeken.</target>
             </trans-unit>
             <trans-unit id="10154">
                 <source>t.create_course</source>
@@ -870,7 +870,7 @@
                 <target>Moeilijkheidsgraad</target>
             </trans-unit>
             <trans-unit id="10161">
-                <source>t.link.StudyLivre</source>
+                <source>t.link.study.livre</source>
                 <target>www.studylivre.com</target>
             </trans-unit>
              <trans-unit id="10162">
@@ -1771,7 +1771,7 @@
             </trans-unit>
             <trans-unit id="30149">
                 <source>o.report.no_reports_found_advice</source>
-                <target>Zodra je een cursus hebt afgerond kun je hier het bijbehorende cursusrapport terugvinden</target>
+                <target>Zodra je een cursus hebt afgerond kun je hier het bijbehorende cursusrapport terugvinden.</target>
             </trans-unit>
             <trans-unit id="30150">
                 <source>o.frequently_used.previous</source>
@@ -2097,7 +2097,7 @@
             </trans-unit>
             <trans-unit id="4026">
                 <source>mo.deleltion_cannot_be_undone</source>
-                <target>Verwijderen kan niet ongedaan worden. Weet je het zeker</target>
+                <target>Verwijderen kan niet ongedaan worden. Weet je het zeker?</target>
             </trans-unit>
             <trans-unit id="4027">
                 <source>mo.remove_provider_details_01</source>
@@ -2982,7 +2982,7 @@
             </trans-unit>
             <trans-unit id="50111">
                 <source>imo.course_report.sub_title</source>
-                <target>Krijg inzicht in je cursusresultaten of bekijk andermans rapporten</target>
+                <target>Bekijk je cursus resultaat in een rapport en deel het met anderen</target>
             </trans-unit>
             <trans-unit id="50113">
                 <source>imo.course_report.intro</source>
@@ -2998,7 +2998,7 @@
             </trans-unit>
             <trans-unit id="50116">
                 <source>imo.course_report.share_with_mentor.t_long_01</source>
-                <target>De cursist kan een cursusrapport delen met bijvoorbeeld een vriend, instructeur of begeleider (die ook in het bezit is van een StudyLivre account). Het enige wat de cursist hiervoor hoeft te doen is de unieke DEELCODE in te voeren van de persoon waarmee hij of zij het rapport wilt delen </target>
+                <target>De cursist kan een cursusrapport delen met bijvoorbeeld een vriend of docent (die ook in het bezit is van een StudyLivre account). Het enige wat de cursist hiervoor hoeft te doen is de unieke DEELCODE in te voeren van de persoon waarmee hij of zij het rapport wilt delen </target>
             </trans-unit>
             <trans-unit id="50117">
                 <source>imo.course_report.structure</source>
@@ -3034,7 +3034,7 @@
             </trans-unit>
             <trans-unit id="50125">
                 <source>imo.course_report.step_03.students_enter_mentor_code</source>
-                <target>Vult daarna de deelcode in</target>
+                <target>Vul de deelcode in van het persoon waarmee je wilt delen</target>
             </trans-unit>
             <trans-unit id="50126">
                 <source>imo.course_report.step_03.students_enter_mentor_code.t_long_01</source>
