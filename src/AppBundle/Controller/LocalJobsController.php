@@ -12,6 +12,7 @@ namespace AppBundle\Controller;
 use AppBundle\Util\FileHelper;
 use AppBundle\Util\ValidatorHelper;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -26,8 +27,14 @@ class LocalJobsController extends Controller
     /**
      * @Route("/jobs/clean-pictures", name="app_local_jobs_clean_unused_pictures")
      */
-    public function cleanAllUnusedPicturesAction()
+    public function cleanAllUnusedPicturesAction(Request $request)
     {
+        if(!$this->isLocalHost($request))
+        {
+            return $this->redirectToRoute('app_home_dashboard_page', array('_locale' => $request->getLocale()));
+        }
+
+
         $picturePaths = array();
 
         $users = $this->getDoctrine()->getRepository('AppBundle:User')->findAll();
@@ -83,5 +90,11 @@ class LocalJobsController extends Controller
         if ($length == 0) return true;
 
         return (substr($haystack, -$length) === $needle);
+    }
+
+    private function isLocalHost(Request $request)
+    {
+        $whiteList = array('127.0.0.1', '::1', 'localhost');
+        return in_array($request->getClientIp(), $whiteList);
     }
 }
