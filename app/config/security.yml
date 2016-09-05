@@ -49,6 +49,7 @@ security:
                 domain: ~
 
     access_control:
+        - {path: ^/jobs, roles: ROLE_USER_IP, ip: 127.0.0.1 }
         - {path: ^/[a-z][a-z]/home/messages, roles: ROLE_USER}
         - {path: ^/[a-z][a-z]/home/profile, roles: ROLE_USER}
         - {path: ^/[a-z][a-z]/teach/*, roles: ROLE_USER}
