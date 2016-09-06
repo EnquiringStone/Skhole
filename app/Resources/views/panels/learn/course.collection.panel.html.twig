@@ -22,7 +22,7 @@
                     <hr />
                     <div class="centrum">
                         <p class="lead">{% trans %}t.course_basket.no_courses_in_basket{% endtrans %}</p>
-                        <a class="btn btn-default" href="{{ path('app_search_page') }}">{% trans %}t.course.a.search.courses{% endtrans %}</a>
+                        <a class="btn btn-default" href="{{ path('app_home_dashboard_page') }}">{% trans %}t.course.a.search.courses{% endtrans %}</a>
                     </div>
                 {% else %}
                     {% for item in collection %}
