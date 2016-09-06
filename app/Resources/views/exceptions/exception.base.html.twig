@@ -12,15 +12,15 @@
                 <ul>
                     <li>
                         {% trans %}exception.base.explanation.two{% endtrans %}
-                        <a href="{{ path('app_learn_course_collection_page', {'_locale': locale}) }}">{% trans %}exception.base.explanation.link.text{% endtrans %}</a>
+                        <a href="{{ path('app_learn_course_collection_page', {'_locale': app.request.locale}) }}">{% trans %}exception.base.explanation.link.text{% endtrans %}</a>
                     </li>
                     <li>
                         {% trans %}exception.base.explanation.three{% endtrans %}
-                        <a href="{{ path('app_search_page', {'_locale': locale}) }}">{% trans %}exception.base.explanation.link.text{% endtrans %}</a>
+                        <a href="{{ path('app_search_page', {'_locale': app.request.locale}) }}">{% trans %}exception.base.explanation.link.text{% endtrans %}</a>
                     </li>
                     <li>
                         {% trans %}exception.base.explanation.four{% endtrans %}
-                        <a href="{{ path('app_other_contact', {'_locale': locale}) }}">{% trans %}exception.base.explanation.link.text{% endtrans %}</a>
+                        <a href="{{ path('app_other_contact', {'_locale': app.request.locale}) }}">{% trans %}exception.base.explanation.link.text{% endtrans %}</a>
                     </li>
                 </ul>
             {% endblock %}
@@ -31,9 +31,4 @@
             </div>
         </div>
     </div>
-    {% if app.environment == 'dev' %}
-        <hr>
-        <h4>{{ exception.getMessage }}</h4>
-        <p>{{ exception.getTraceAsString }}</p>
-    {% endif %}
 {% endblock %}

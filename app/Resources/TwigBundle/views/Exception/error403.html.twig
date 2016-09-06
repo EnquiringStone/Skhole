@@ -9,5 +9,5 @@
         <li>{% trans %}exception.access.denied.explanation.three{% endtrans %}</li>
         <li>{% trans %}exception.access.denied.explanation.four{% endtrans %}</li>
     </ul>
-    <p>{% trans %}exception.access.denied.explanation.five{% endtrans %} <a href="{{ path('app_other_contact', {'_locale': locale}) }}">{% trans %}exception.base.explanation.link.text{% endtrans %}</a></p>
+    <p>{% trans %}exception.access.denied.explanation.five{% endtrans %} <a href="{{ path('app_other_contact', {'_locale': app.request.locale}) }}">{% trans %}exception.base.explanation.link.text{% endtrans %}</a></p>
 {% endblock %}

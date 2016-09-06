@@ -13,12 +13,14 @@ use AppBundle\Exception\CourseRemovedException;
 use AppBundle\Exception\DelayException;
 use AppBundle\Exception\FrontEndException;
 use Monolog\Logger;
+use Symfony\Bundle\SecurityBundle\Security\FirewallContext;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Component\Security\Http\Firewall;
 use Symfony\Component\Translation\Translator;
 
 class ExceptionListener implements EventSubscriberInterface
@@ -65,7 +67,7 @@ class ExceptionListener implements EventSubscriberInterface
             $response->headers->set('Content-Type', 'application/json');
             $event->setResponse($response);
         }
-        else //ignore all exceptions on the base
+        else
         {
             $session = $event->getRequest()->getSession();
 
@@ -74,26 +76,15 @@ class ExceptionListener implements EventSubscriberInterface
                 $event->getRequest()->setLocale($session->get('locale'));
                 $this->translator->setLocale($session->get('locale'));
             }
-            $params = array('exception' => $exception, 'locale' => $event->getRequest()->getLocale(), 'menu' => '', 'subMenu' => '', 'context' => 'exception');
-            if ($exception instanceof AccessDeniedException || $exception instanceof \Symfony\Component\HttpFoundation\File\Exception\AccessDeniedException || $exception instanceof \Symfony\Component\HttpFoundation\File\Exception\AccessDeniedException || $exception instanceof \Symfony\Component\Finder\Exception\AccessDeniedException)
-            {
-                $event->setResponse($this->getNormalResponse($this->environment->render(':exceptions:access.denied.exception.html.twig', $params)));
-            }
-            elseif ($exception instanceof NotFoundHttpException)
-            {
-                $event->setResponse($this->getNormalResponse($this->environment->render(':exceptions:page.not.found.exception.html.twig', $params)));
-            }
-            elseif ($exception instanceof DelayException)
+            $params = array('exception' => $exception, 'locale' => $event->getRequest()->getLocale());
+
+            if ($exception instanceof DelayException)
             {
                 $event->setResponse($this->getNormalResponse($this->environment->render(':exceptions:delay.exception.html.twig', $params)));
             }
             elseif ($exception instanceof CourseRemovedException)
             {
                 $event->setResponse($this->getNormalResponse($this->environment->render(':exceptions:course.removed.exception.html.twig', $params)));
-            }
-            else
-            {
-                $event->setResponse($this->getNormalResponse($this->environment->render(':exceptions:default.exception.html.twig', $params)));
             }
         }
         return;
