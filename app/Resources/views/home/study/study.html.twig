@@ -6,11 +6,11 @@
             {% include ':elements:study.navigation.menu.html.twig' %}
         </div>
         <div id="study-contents">
-            {% include ':panels/learn/study/'~pageType~':study.'~pageType~'.'~name~'.panel.html.twig' %}
+            {% include ':panels/study/'~pageType~':study.'~pageType~'.'~name~'.panel.html.twig' %}
         </div>
         {% if pageType != 'standard' %}
             <div class="pagination-field">
-                {% include ':panels/learn/study/custom:study.pagination.html.twig' with {'offset': 0} %}
+                {% include ':panels/study/custom:study.pagination.html.twig' with {'offset': 0} %}
             </div>
         {% endif %}
         {% include ':panels/general:commercial.panel.html.twig' %}
@@ -34,5 +34,5 @@
     <script src="{{ asset('js/study/study.js') }}"></script>
 {% endblock %}
 
-{% set menu = 'learn' %}
+{% set menu = 'home' %}
 {% set subMenu = 'study' %}

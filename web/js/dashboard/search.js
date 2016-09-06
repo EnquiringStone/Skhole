@@ -1,5 +1,8 @@
 $(document).ready(function() {
     var body = $('body');
+    var searchResults = $('#search-results');
+
+    collapsePanel(searchResults);
 
     $('#simple-search').on('submit', function (event) {
         event.preventDefault();
@@ -40,6 +43,20 @@ $(document).ready(function() {
     });
 });
 
+function collapsePanel(context) {
+    var panel = $(context.parents('.panel'));
+    var span = $('.chevron', panel);
+    if ($('.glyphicon', span).hasClass('glyphicon-chevron-up'))
+        collapseByChevronSpan(span);
+}
+
+function showPanel(context) {
+    var panel = $(context.parents('.panel'));
+    var span = $('.chevron', panel);
+    if ($('.glyphicon', span).hasClass('glyphicon-chevron-down'))
+        collapseByChevronSpan(span);
+}
+
 function doComplexSearch() {
     $('.data-value').each(function(index, item) {
         var obj = $(item);
@@ -48,12 +65,11 @@ function doComplexSearch() {
         var search = $($('.search-value').filterByData('entity', name));
         search.val(obj.val() == -1 ? '' : obj.val());
     });
-    addLoadingScreen($('#search-results'));
+    addLoadingScreen($($('#search-forms').parents('.panel')));
     refreshPage($('.search-enabled'), true, true, function(args) {
         setCount(args);
-        $('#collapseSearch').collapse('hide');
         removeLoadingScreen();
-    });
+    }, true);
     updateReviewModals();
 }
 
@@ -67,19 +83,19 @@ function doSimpleSearch() {
 
     var search = $($('.search-value').filterByData('entity', 'courses'));
     search.val(searchValue);
-
-    addLoadingScreen($('#search-results'));
-
+    addLoadingScreen($($('#search-forms').parents('.panel')));
     refreshPage($('.search-enabled'), true, true, function(args) {
         setCount(args);
         removeLoadingScreen();
-    });
+    }, true);
     updateReviewModals();
 }
 
 function setCount(args) {
     var found = args['totalFound'];
     $('.search-result-count').html(found);
+    if (found <= 0) collapsePanel($('#search-results'));
+    else showPanel($('#search-results'));
 }
 
 function updateReviewModals() {

@@ -1,12 +1,12 @@
 <div class="panel-footer">
     {% if currentOrder + 1 <= total + 1 %}
         {% if currentOrder + 1 > total %}
-            <a href="{{ path('app_learn_study_panels_page', {'courseId': courseId, 'pageType': 'custom', 'name': 'final'}) }}" class="btn btn-default btn-sm pull-right next-page">
+            <a href="{{ path('app_home_study_panels_page', {'courseId': courseId, 'pageType': 'custom', 'name': 'final'}) }}" class="btn btn-default btn-sm pull-right next-page">
                 {% trans %}o.frequently_used.next{% endtrans %}
                 <span class="glyphicon glyphicon-arrow-right"></span>
             </a>
         {% else %}
-            <a href="{{ path('app_learn_study_pages_page', {'courseId': courseId, 'pageOrder': currentOrder + 1}) }}" class="btn btn-default btn-sm pull-right save-statistics next-page"
+            <a href="{{ path('app_home_study_pages_page', {'courseId': courseId, 'pageOrder': currentOrder + 1}) }}" class="btn btn-default btn-sm pull-right save-statistics next-page"
                 data-course-id="{{ courseId }}" data-order="{{ currentOrder }}">
                 {% trans %}o.frequently_used.next{% endtrans %}
                 <span class="glyphicon glyphicon-arrow-right"></span>
@@ -18,13 +18,13 @@
         {% endif %}
     {% endif %}
     {% if currentOrder > 0 %}
-        <a href="{{ path('app_learn_study_pages_page', {'courseId': courseId, 'pageOrder': currentOrder - 1}) }}" class="btn btn-default btn-sm">
+        <a href="{{ path('app_home_study_pages_page', {'courseId': courseId, 'pageOrder': currentOrder - 1}) }}" class="btn btn-default btn-sm">
             <span class="glyphicon glyphicon-arrow-left"></span>
             {% trans %}o.frequently_used.previous{% endtrans %}
         </a>
     {% endif %}
     {% if name == 'final' %}
-        <a href="{{ path('app_learn_study_page', {'clear': 'all'}) }}" class="btn btn-default btn-sm pull-right">
+        <a href="{{ path('app_home_study_page', {'clear': 'all'}) }}" class="btn btn-default btn-sm pull-right">
             {% trans %}o.frequently_used.close{% endtrans %}
         </a>
     {% endif %}

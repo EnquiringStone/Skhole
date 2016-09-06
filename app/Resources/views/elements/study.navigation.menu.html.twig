@@ -12,44 +12,44 @@
                     </button>
                     <ul class="dropdown-menu" role="menu">
                         <li class="{% if name == 'course-card' %}active{% endif %}">
-                            <a href="{{ path('app_learn_study_panels_page', {'courseId': course.id, 'name': 'course-card', 'pageType': 'standard'}) }}">
+                            <a href="{{ path('app_home_study_panels_page', {'courseId': course.id, 'name': 'course-card', 'pageType': 'standard'}) }}">
                                 <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
                                 {% trans %}o.frequently_used.course_card{% endtrans %}
                             </a>
                         </li>
                         <li class="{% if name == 'reviews' %}active{% endif %}">
-                            <a href="{{ path('app_learn_study_panels_page', {'courseId': course.id, 'name': 'reviews', 'pageType': 'standard'}) }}">
+                            <a href="{{ path('app_home_study_panels_page', {'courseId': course.id, 'name': 'reviews', 'pageType': 'standard'}) }}">
                                 <span class="glyphicon glyphicon-magnet" aria-hidden="true"></span>
                                 {% trans %}o.frequently_used.course_reviews{% endtrans %}
                             </a>
                         </li>
                         <li class="{% if name == 'announcements' %}active{% endif %}">
-                            <a href="{{ path('app_learn_study_panels_page', {'courseId': course.id, 'name': 'announcements', 'pageType': 'standard'}) }}">
+                            <a href="{{ path('app_home_study_panels_page', {'courseId': course.id, 'name': 'announcements', 'pageType': 'standard'}) }}">
                                 <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
                                 {% trans %}o.frequently_used.annoucements{% endtrans %}
                             </a>
                         </li>
                         <li class="{% if name == 'schedule' %}active{% endif %}">
-                            <a href="{{ path('app_learn_study_panels_page', {'courseId': course.id, 'name': 'schedule', 'pageType': 'standard'}) }}">
+                            <a href="{{ path('app_home_study_panels_page', {'courseId': course.id, 'name': 'schedule', 'pageType': 'standard'}) }}">
                                 <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
                                 {% trans %}o.frequently_used.planning{% endtrans %}
                             </a>
                         </li>
                         <li class="{% if name == 'documents' %}active{% endif %}">
-                            <a href="{{ path('app_learn_study_panels_page', {'courseId': course.id, 'name': 'documents', 'pageType': 'standard'}) }}">
+                            <a href="{{ path('app_home_study_panels_page', {'courseId': course.id, 'name': 'documents', 'pageType': 'standard'}) }}">
                                 <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
                                 {% trans %}o.documents{% endtrans %}
                             </a>
                         </li>
                         <li class="{% if name == 'page-overview' %}active{% endif %}">     
-                             <a href="{{ path('app_learn_study_panels_page', {'courseId': course.id, 'pageType': 'standard', 'name': 'page-overview'}) }}">
+                             <a href="{{ path('app_home_study_panels_page', {'courseId': course.id, 'pageType': 'standard', 'name': 'page-overview'}) }}">
                                 <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> 
                                 {% trans %}o.frequently_used.course_pages{% endtrans %}
                              </a>
                         </li>    
                     </ul>
                 </div>
-                <a href="{{ path('app_learn_study_page', {'clear': 'all'}) }}" class="btn btn-default btn-sm">
+                <a href="{{ path('app_home_study_page', {'clear': 'all'}) }}" class="btn btn-default btn-sm">
                     <span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span>
                     {% trans %}o.close_course{% endtrans %}
                 </a>

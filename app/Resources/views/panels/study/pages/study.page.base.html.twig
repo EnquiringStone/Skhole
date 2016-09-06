@@ -14,5 +14,5 @@
     </div>
 {% endblock %}
 {% block panelBaseFooter %}
-    {% include ':panels/learn/study/custom:study.custom.panel.footer.html.twig' with {'nextButton': true, 'previousButton': true, 'moreButton': true, 'currentOrder': page.pageOrder, 'total': totalPages, 'courseId': page.course.id, 'pageId': page.id} %}
+    {% include ':panels/study/custom:study.custom.panel.footer.html.twig' with {'nextButton': true, 'previousButton': true, 'moreButton': true, 'currentOrder': page.pageOrder, 'total': totalPages, 'courseId': page.course.id, 'pageId': page.id} %}
 {% endblock %}

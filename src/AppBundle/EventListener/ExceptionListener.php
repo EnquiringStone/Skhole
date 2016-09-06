@@ -56,6 +56,10 @@ class ExceptionListener implements EventSubscriberInterface
             {
                 $message = $this->translator->trans('authorization.error', array(), 'ajaxerrors');
             }
+            elseif ($exception instanceof CourseRemovedException)
+            {
+                $message = $this->translator->trans('course.removed.exception.message', array(), 'ajaxerrors');
+            }
             else
             {
                 $message = $this->translator->trans('general.error', array(), 'ajaxerrors');

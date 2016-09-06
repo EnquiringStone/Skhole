@@ -3,31 +3,26 @@
      {% trans %}o.frequently_used.search{% endtrans %}
 {% endblock %}
 {% block panelBaseContents %}
-    <div class="panel-body" data-url="{{ url('app_home_ajax_page') }}">
+    <div class="panel-body" data-url="{{ url('app_home_ajax_page') }}" id="search-forms">
         <br />
         <br />
-        <form class="form-horizontal" id="simple-search">
-            <div class="form-group">
-                <label class="control-label col-sm-2">{% trans %}h.search.search_term{% endtrans %}</label>
-                <div class="col-sm-10">
-                    <div class="input-group">
-                        <input type="text" class="form-control simple-search-value" placeholder="{% trans %}h.search.f_placeholder.search_query{% endtrans %}">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default simple-search" type="submit">
-                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                                {% trans %}h.search.search{% endtrans %}
-                            </button>
-                        </span>
-                    </div>
-                </div>
+        <form class="form-horizontal" id="simple-search" style="max-width: 600px; margin: 0 auto;">
+            <div class="input-group">
+                <input type="text" class="form-control simple-search-value" placeholder="{% trans %}h.search.f_placeholder.search_query{% endtrans %}">
+                <span class="input-group-btn">
+                    <button class="btn btn-default simple-search" type="submit">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        <span class="remove-responsive-400">{% trans %}h.search.search{% endtrans %}</span>
+                    </button>
+                </span>
             </div>
         </form>
         <br />
         <div class="panel-group" id="accordion" role="tablist">
             <div class="centrum">
-                <button type="submit" class="btn btn-primary btn-lg" data-toggle="collapse" data-parent="#accordion" href="#collapseSearch" aria-expanded="true" aria-controls="collapseSearch">
+                <a class="clickable" data-toggle="collapse" data-parent="#accordion" href="#collapseSearch" aria-expanded="true" aria-controls="collapseSearch">
                     {% trans %}h.search.advanced_search{% endtrans %}
-                </button>
+                </a>
             </div>
             <br />
             <div id="collapseSearch" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSearch" aria-expanded="true">
@@ -82,6 +77,11 @@
                     </div>
                 </form>
             </div>
+        </div>
+        <hr>
+        <div class="centrum">
+            <a href="#course-collection" class="btn btn-primary btn-lg">{% trans %}h.view_course_collection{% endtrans %}</a>
+            <a href="{{ path('app_home_getting_started_page') }}" class="btn btn-default">{% trans %}h.nav.getting_started{% endtrans %}</a>
         </div>
     </div>
 {% endblock %}

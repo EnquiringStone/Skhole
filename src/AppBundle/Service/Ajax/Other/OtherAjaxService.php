@@ -10,6 +10,7 @@ namespace AppBundle\Service\Ajax\Other;
 
 
 use AppBundle\Authorization\AuthorizationService;
+use AppBundle\Exception\CourseRemovedException;
 use AppBundle\Exception\FrontEndException;
 use AppBundle\Interfaces\AjaxInterface;
 use AppBundle\Validator\Validator;
@@ -84,8 +85,10 @@ class OtherAjaxService implements AjaxInterface
         $this->validator->validate($args, 'Report');
 
         $course = $this->manager->getRepository('AppBundle:Course\Courses')->find($args['name']);
-        if($course == null || $course->getState()->getStateCode() != 'OK' || $course->getIsUndesirable() || $course->getRemoved())
+        if($course == null || $course->getState()->getStateCode() != 'OK' || $course->getIsUndesirable())
             throw new FrontEndException('report.name.not.found', 'ajaxerrors');
+
+        if ($course->getRemoved()) throw new CourseRemovedException();
 
         $page = null;
         if($args['page'] > 0)

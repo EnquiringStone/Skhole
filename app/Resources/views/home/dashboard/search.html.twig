@@ -3,6 +3,7 @@
 {% block body %}
     {% include ':panels/dashboard:search.panel.html.twig' %}
     {% include ':panels/dashboard:search.results.panel.html.twig' %}
+    {% include ':panels/dashboard:courses.supply.panel.html.twig' %}
     {% include ':panels/general:commercial.panel.html.twig' %}
 {% endblock %}
 
@@ -11,7 +12,11 @@
 {% endblock %}
 
 {% block postscripts %}
-    {% if search is not null and search != '' %}
+    {% if login %}
+        <script>
+            $('#loginModal').modal('show');
+        </script>
+    {% elseif search is not null and search != '' %}
         <script>
             $('.simple-search-value').val('{{ search }}');
             doSimpleSearch();
@@ -20,4 +25,4 @@
 {% endblock %}
 
 {% set menu = 'home' %}
-{% set subMenu = 'search' %}
+{% set subMenu = 'dashboard' %}

@@ -24,6 +24,7 @@ use AppBundle\Entity\Report\SharedReports;
 use AppBundle\Entity\User;
 use AppBundle\Enum\CoursePageTypeEnum;
 use AppBundle\Enum\PageTypeEnum;
+use AppBundle\Exception\CourseRemovedException;
 use AppBundle\Exception\FrontEndException;
 use AppBundle\Interfaces\AjaxInterface;
 use Doctrine\ORM\EntityManager;
@@ -314,8 +315,10 @@ class StudyAjaxService implements AjaxInterface
     {
         if($course == null) throw new EntityNotFoundException();
 
-        if($course->getState()->getStateCode() == 'OK' && $course->getIsUndesirable() == false && $course->getRemoved() == false)
+        if($course->getState()->getStateCode() == 'OK' && $course->getIsUndesirable() == false)
             return;
+
+        if($course->getRemoved()) throw new CourseRemovedException();
 
         throw new AccessDeniedException();
     }

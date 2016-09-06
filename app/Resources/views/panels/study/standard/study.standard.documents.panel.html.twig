@@ -34,5 +34,5 @@
     </div>
 {% endblock %}
 {% block panelBaseFooter %}
-    {% include ':panels/learn/study/standard:study.standard.panel.footer.html.twig' with {'reportPath': path('app_other_report', {'course': course.id, 'coursePart': 'courseMaterial'})} %}
+    {% include ':panels/study/standard:study.standard.panel.footer.html.twig' with {'reportPath': path('app_other_report', {'course': course.id, 'coursePart': 'courseMaterial'})} %}
 {% endblock %}

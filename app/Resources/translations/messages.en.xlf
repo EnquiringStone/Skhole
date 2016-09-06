@@ -2530,6 +2530,10 @@ This course is published. Persons who follow this course are allowed to finish t
                 <source>mo.login.info_account.step_i_and_ii</source>
                 <target>Step I en II</target>
             </trans-unit>
+            <trans-unit id="40134">
+                <source>mo.error.select.at.least.one</source>
+                <target>At least one item should be selected</target>
+            </trans-unit>
 
 <!-- Einde modals -->
 <!-- Start infomodals 5000 tot 5999  -->	

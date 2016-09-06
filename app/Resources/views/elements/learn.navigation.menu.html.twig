@@ -1,6 +1,5 @@
 {% block learnNavigationMenu %}
     <ul class="nav nav-pills">
-        <li class="{% if subMenu == 'study'%}active{% endif %}"><a href="{{ path('app_learn_study_page') }}">{% trans %}o.frequently_used.study{% endtrans %}</a></li>
         <li class="{% if subMenu == 'courseCollection' %}active{% endif %}">
             <a href="{{ path('app_learn_course_collection_page') }}">{% trans %}l.nav.course.basket{% endtrans %}</a>
         </li>

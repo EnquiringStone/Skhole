@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block title %}{% trans %}o.frequently_used.study{% endtrans %}{% endblock %}
 {% block body %}
-    {% include ':panels/learn/study:study.default.panel.html.twig' %}
+    {% include ':panels/study:study.default.panel.html.twig' %}
     {% include ':panels/general:commercial.panel.html.twig' %}
     {% include ':panels/dashboard:courses.supply.panel.html.twig' %}
 {% endblock %}
@@ -15,5 +15,5 @@
     <script src="{{ asset('js/study/study.js') }}"></script>
 {% endblock %}
 
-{% set menu = 'learn' %}
+{% set menu = 'home' %}
 {% set subMenu = 'study' %}

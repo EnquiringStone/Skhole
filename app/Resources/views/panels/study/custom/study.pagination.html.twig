@@ -34,14 +34,14 @@
     <div class="centrum">
         <ul class="pagination" data-disable="true">
             <li class="disabled"><a class="unclickable"><b>{% trans %}o.frequently_used.pages{% endtrans %}</b></a></li>
-            <li class="clickable {% if name is defined and name == 'start' %}active{% endif %}"><a href="{{ path('app_learn_study_panels_page', {'pageType': 'custom', 'name': 'start', 'courseId': course is defined ? course.id : page.course.id}) }}">I</a></li>
+            <li class="clickable {% if name is defined and name == 'start' %}active{% endif %}"><a href="{{ path('app_home_study_panels_page', {'pageType': 'custom', 'name': 'start', 'courseId': course is defined ? course.id : page.course.id}) }}">I</a></li>
 
             {% for coursePage in coursePages|slice(startPage - 1, renderPages) %}
-                <li class="clickable {% if currentPage == coursePage.order %}active{% endif %}"><a href="{{ path('app_learn_study_pages_page', {'pageOrder': coursePage.order, 'courseId': course is defined ? course.id : page.course.id}) }}">{{ coursePage.order }}</a></li>
+                <li class="clickable {% if currentPage == coursePage.order %}active{% endif %}"><a href="{{ path('app_home_study_pages_page', {'pageOrder': coursePage.order, 'courseId': course is defined ? course.id : page.course.id}) }}">{{ coursePage.order }}</a></li>
             {% endfor %}
 
             <li class="clickable {% if name is defined and name == 'final' %}active{% endif %}">
-                <a href="{{ path('app_learn_study_panels_page', {'pageType': 'custom', 'name': 'final', 'courseId': course is defined ? course.id : page.course.id}) }}">II</a>
+                <a href="{{ path('app_home_study_panels_page', {'pageType': 'custom', 'name': 'final', 'courseId': course is defined ? course.id : page.course.id}) }}">II</a>
             </li>
         </ul>
     </div>

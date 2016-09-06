@@ -122,3 +122,7 @@ services:
     app.authorization.service:
         class: AppBundle\Authorization\AuthorizationService
         arguments: ["@security.token_storage", "@security.authorization_checker"]
+
+    app.controller.study.service:
+        class: AppBundle\Service\Controller\StudyService
+        arguments: ["@doctrine.orm.entity_manager", "@session", "@app.authorization.service"]

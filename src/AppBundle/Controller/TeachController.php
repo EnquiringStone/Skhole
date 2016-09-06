@@ -129,7 +129,7 @@ class TeachController extends Controller
     /**
      * @Route("/{_locale}/teach/progression-course-member/", name="app_teach_progression_course_members")
      */
-    public function progressionCourseMembers(Request $request)
+    public function progressionCourseMembers()
     {
         $limit = $this->getParameter('standard_query_limit');
         $maxPages = $this->getParameter('standard_pagination_max');

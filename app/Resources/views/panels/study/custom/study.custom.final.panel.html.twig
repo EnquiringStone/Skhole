@@ -70,5 +70,5 @@
     </div>
 {% endblock %}
 {% block panelBaseFooter %}
-    {% include ':panels/learn/study/custom:study.custom.panel.footer.html.twig' with {'moreButton': false, 'currentOrder': course.coursePages|length + 1, 'total': course.coursePages|length, 'courseId': course.id} %}
+    {% include ':panels/study/custom:study.custom.panel.footer.html.twig' with {'moreButton': false, 'currentOrder': course.coursePages|length + 1, 'total': course.coursePages|length, 'courseId': course.id} %}
 {% endblock %}

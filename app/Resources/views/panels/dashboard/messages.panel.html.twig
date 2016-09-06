@@ -1,6 +1,6 @@
 {% extends 'panels/panel.base.html.twig' %}
 {% block panelBaseTitle %}
-    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>{% trans %}o.inbox.messages{% endtrans %}
+    <span id="messages" class="glyphicon glyphicon-envelope" aria-hidden="true"></span>{% trans %}o.inbox.messages{% endtrans %}
 {% endblock %}
 {% block panelBaseContents %}
     {% set dataEntity = "Messages" %}

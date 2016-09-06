@@ -394,6 +394,10 @@
                 <source>authorization.error</source>
                 <target>Je bent niet bemachtigd om dit in te zien. Is dit onterecht? Neem contact met ons op</target>
             </trans-unit>
+            <trans-unit id="99">
+                <source>course.removed.exception.message</source>
+                <target>De geselecteerde cursus is verwijderd door de aanmaker</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

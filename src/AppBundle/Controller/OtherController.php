@@ -9,6 +9,7 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Exception\CourseRemovedException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -86,8 +87,9 @@ class OtherController extends Controller
 
         if($page != null) $course = $page->getCourse();
 
-        if($course != null && ($course->getIsUndesirable() || $course->getState()->getStateCode() != 'OK' || $course->getRemoved()))
+        if($course != null && ($course->getIsUndesirable() || $course->getState()->getStateCode() != 'OK'))
             throw new AccessDeniedException();
+        if($course->getRemoved()) throw new CourseRemovedException();
 
         return $this->render(':other:give.notice.html.twig', array('course' => $course, 'page' => $page, 'coursePart' => $coursePart));
     }

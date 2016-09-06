@@ -8,7 +8,7 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="{{ path('app_search_page', {'_locale': app.request.locale}) }}">{% trans %}o.frequently_used.search{% endtrans %}</a></li>
+                        <li><a href="{{ path('app_home_dashboard_page', {'_locale': app.request.locale}) }}">{% trans %}o.frequently_used.search{% endtrans %}</a></li>
                         <li><a href="{{ path('app_other_guidelines', {'_locale': app.request.locale}) }}">{% trans %}o.nav.guidlines{% endtrans %}</a></li>
                         <li>
                             <a class="clickable" data-toggle="modal" data-target="#languagePickerModal">
@@ -28,7 +28,7 @@
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ path('app_home_dashboard_pages_page', {'page': 'profile', '_locale': app.request.locale}) }}">{% trans %}o.nav.profile{% endtrans %}</a></li>
+                                <li><a href="{{ path('app_home_profile_page', {'_locale': app.request.locale}) }}">{% trans %}o.nav.profile{% endtrans %}</a></li>
                                 <li><a href="{{ path('app_learn_course_collection_page', {'_locale': app.request.locale}) }}">{% trans %}o.nav.course_basket{% endtrans %}</a></li>
                                 <li><a href="{{ path('app_teach_progression_course_members', {'_locale': app.request.locale}) }}">{% trans %}o.nav.progress_students{% endtrans %}</a></li>
                                 <li><a href="{{ path('app_teach_my_courses_page', {'_locale': app.request.locale}) }}">{% trans %}o.nav.my_courses{% endtrans %}</a></li>

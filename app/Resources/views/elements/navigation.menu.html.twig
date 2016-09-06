@@ -4,7 +4,7 @@
             <a href="{{ path('app_home_dashboard_page', {'_locale': app.request.locale}) }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>
         </li>
         <li class="{% if menu == 'learn' %}active{% endif %}" title="{% trans %}nav.basket{% endtrans %} ">
-            <a href="{{ path('app_learn_study_page', {'_locale': app.request.locale}) }}">
+            <a href="{{ path('app_learn_course_collection_page', {'_locale': app.request.locale}) }}">
                 <img src="{% if menu == 'learn' %}{{ asset('images/basket_black.png') }}{% else %}{{ asset('images/basket_blue.png') }}{% endif %}">
                 <span class="remove-responsive-400">{% trans %}nav.basket{% endtrans %}</span>
             </a>

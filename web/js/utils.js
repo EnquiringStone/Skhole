@@ -20,7 +20,7 @@ function goToUrl(url) {
     window.location.href = url;
 }
 
-function refreshPage(caller, resetPagination, resetSort, customFunction) {
+function refreshPage(caller, resetPagination, resetSort, customFunction, disableSpinner) {
     var base = $($(caller).parents('.page-controls'));
 
     if(base.length > 1)
@@ -71,9 +71,9 @@ function refreshPage(caller, resetPagination, resetSort, customFunction) {
     if(view != null && view != '')
         arguments['view'] = view;
 
-    addLoadingScreen(base);
+    if (disableSpinner == null || disableSpinner == false) addLoadingScreen(base);
     sendAjaxCall(url, arguments, function(args) {
-        removeLoadingScreen();
+        if (disableSpinner == null || disableSpinner == false) removeLoadingScreen();
         if(args['paginationHtml'] != null) {
             $('.pagination-field', base).empty();
             $('.pagination-field', base).append(args['paginationHtml']);
@@ -186,7 +186,17 @@ function removeLoadingScreen() {
     $("#loading").css('display', 'none');
 }
 
-
+function collapseByChevronSpan(context) {
+    if(!context.hasClass('panel-collapsed')) {
+        context.parents('.panel').find('.panel-body').slideUp();
+        context.addClass('panel-collapsed');
+        context.find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+    } else {
+        context.parents('.panel').find('.panel-body').slideDown();
+        context.removeClass('panel-collapsed');
+        context.find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+    }
+}
 
 //Extensions
 (function ($) {

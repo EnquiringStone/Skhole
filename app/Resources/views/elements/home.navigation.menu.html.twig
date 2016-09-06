@@ -1,10 +1,26 @@
 {% block homeNavigationMenu %}
     <ul class="nav nav-pills">
-        <li class="{% if subMenu == 'dashboard'%}active{% endif %}"><a href="{{ path('app_home_dashboard_page') }}">{% trans %}o.frequently_used.dashboard{% endtrans %}</a></li>
-        <li class="{% if subMenu == 'search'%}active{% endif %}"><a href="{{ path('app_search_page') }}">{% trans %}o.frequently_used.search{% endtrans %}</a></li>
+        <li class="{% if subMenu == 'dashboard' %}active{% endif %}">
+            <a href="{{ path('app_home_dashboard_page') }}">
+                <span class="glyphicon glyphicon-search"></span>
+                <span class="remove-responsive-400">{% trans %}o.frequently_used.search{% endtrans %}</span>
+            </a>
+        </li>
+        <li class="{% if subMenu == 'study' %}active{% endif %}">
+            <a href="{{ path('app_home_study_page') }}">
+                {% trans %}o.frequently_used.study{% endtrans %}
+            </a>
+        </li>
+        <li class="{% if subMenu == 'profile' %}active{% endif %}">
+            <a href="{{ path('app_home_profile_page') }}">
+                {% trans %}o.nav.profile{% endtrans %}
+            </a>
+        </li>
         <li role="presentation" class="dropdown {% if subMenu == 'introduction' or subMenu == 'followCourse' or subMenu == 'createCourse' or subMenu == 'courseReport'%}active{% endif %}">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                  {% trans %}h.nav.getting_started{% endtrans %} <span class="caret"></span>
+                <span class="glyphicon glyphicon-info-sign"></span>
+                <span class="remove-responsive-400">{% trans %}h.nav.getting_started{% endtrans %}</span>
+                <span class="remove-responsive-400 caret"></span>
             </a>
             <ul class="dropdown-menu">
                 <li class="{% if subMenu == 'introduction'%}active{% endif %}"><a href="{{ path('app_home_getting_started_custom_page', {'page': 'introduction'}) }}">{% trans %}h.nav.getting_started.intro{% endtrans %}</a></li>

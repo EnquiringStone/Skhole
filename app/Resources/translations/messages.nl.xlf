@@ -2528,6 +2528,10 @@
                 <source>mo.login.info_account.step_i_and_ii</source>
                 <target>Stap I en II</target>
             </trans-unit>
+            <trans-unit id="40134">
+                <source>mo.error.select.at.least.one</source>
+                <target>Er moet minimaal 1 item zijn geselecteerd</target>
+            </trans-unit>
 
 <!-- Einde modals -->
 <!-- Start infomodals 5000 tot 5999  -->	

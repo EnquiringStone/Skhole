@@ -1,4 +1,4 @@
-{% extends ':panels/learn/study/pages:study.page.base.html.twig' %}
+{% extends ':panels/study/pages:study.page.base.html.twig' %}
 {% block pageContents %}
     {% for question in page.questions %}
         {% if question.questionType.type == 'multiple-choice' %}

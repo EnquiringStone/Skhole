@@ -6,10 +6,10 @@
             {% include ':elements:study.navigation.menu.html.twig' with {'course': page.course} %}
         </div>
         <div id="study-contents">
-            {% include ':panels/learn/study/pages:study.'~type~name~'panel.html.twig' with {'page': page, 'totalPages': totalPages} %}
+            {% include ':panels/study/pages:study.'~type~name~'panel.html.twig' with {'page': page, 'totalPages': totalPages} %}
         </div>
         <div class="pagination-field">
-            {% include ':panels/learn/study/custom:study.pagination.html.twig' with {'offset': page.pageOrder} %}
+            {% include ':panels/study/custom:study.pagination.html.twig' with {'offset': page.pageOrder} %}
         </div>
         {% include ':panels/general:commercial.panel.html.twig' %}
     </div>
@@ -23,5 +23,5 @@
     <script src="{{ asset('js/study/study.js') }}"></script>
 {% endblock %}
 
-{% set menu = 'learn' %}
+{% set menu = 'home' %}
 {% set subMenu = 'study' %}

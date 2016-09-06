@@ -3,7 +3,7 @@
         <div class="centrum">
             <ol class="breadcrumb">
                 <li>
-                    <a class="unclickable">{{ course.name }}</a>
+                    <a href="{{ path('app_home_study_course_page', {'courseId': course.id}) }}">{{ course.name }}</a>
                 </li>
             </ol>
         </div>
@@ -14,7 +14,7 @@
                 </span>
                 <div class="pull-right">
                     <div class="btn-group-vertical">
-                        <a href="{{ path('app_learn_study_course_page', {'courseId': course.id}) }}" class="btn btn-primary btn-sm">
+                        <a href="{{ path('app_home_study_course_page', {'courseId': course.id}) }}" class="btn btn-primary btn-sm">
                             {% trans %}o.frequently_used.to_course{% endtrans %}
                         </a>
                         <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#courseCardDetailsModal{{ index }}">

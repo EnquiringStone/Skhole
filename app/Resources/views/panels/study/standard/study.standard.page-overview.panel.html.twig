@@ -1,0 +1,21 @@
+{% extends 'panels/panel.base.html.twig' %}
+{% block panelBaseTitle %}
+    <b><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> {% trans %}o.frequently_used.page_overview{% endtrans %}</b>
+{% endblock %}
+
+{% block panelBaseContents %}
+    <div class="panel-body panel-body-pages">
+        <ol>
+            <li><a href="{{ path('app_home_study_panels_page', {'pageType': 'custom', 'name': 'start', 'courseId': course.id}) }}">{% trans %}l.start_page.start_page{% endtrans %}</a></li>
+            {% for page in course.coursePages %}
+                <li>
+                    <a href="{{ path('app_home_study_pages_page', {'pageOrder': page.pageOrder, 'courseId': course.id}) }}">{{ page.title }}</a>
+                </li>
+            {% endfor %}
+            <li><a href="{{ path('app_home_study_panels_page', {'pageType': 'custom', 'name': 'final', 'courseId': course.id}) }}">{% trans %}l.start_page.last_page{% endtrans %}</a></li>
+        </ol>
+    </div>
+{% endblock %}
+{% block panelBaseFooter %}
+    {% include ':panels/study/standard:study.standard.panel.footer.html.twig' with {'reportPath': path('app_other_report', {'course': course.id, 'coursePart': 'other'})} %}
+{% endblock %}
