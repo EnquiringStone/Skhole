@@ -225,11 +225,17 @@
             </trans-unit>
             <trans-unit id="0040">
                 <source>l.start_page.t_instruction_03</source>
-                <target>,which is situated below in the right corner, in order to start the course.
-</target>
-            </trans-unit>  
-             
-<!-- Einde tab learn-->		
+                <target>,which is situated below in the right corner, in order to start the course.</target>
+            </trans-unit>
+            <trans-unit id="0041">
+                <source>l.note</source>
+                <target>Note</target>
+            </trans-unit>
+            <trans-unit id="0042">
+                <source>l.note.unanswered_questions_remain</source>
+                <target>There are unanswered questions on this page.</target>
+            </trans-unit>
+            <!-- Einde tab learn-->
 <!-- Tab teach: 1000 tot 1999 -->
 			<trans-unit id="1001">
                 <source>t.create_course.f_placeholder.type_your_answer</source>

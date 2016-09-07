@@ -145,6 +145,17 @@ class StudyAjaxService implements AjaxInterface
 
 
         $this->updateCourseReportToCompleteIfNeeded($report);
+
+        $questionsLength = $page->getQuestions()->count();
+        $answeredQuestionsLength = sizeof($this->manager->getRepository('AppBundle:Report\AnswerResults')->getAllAnsweredQuestionByCoursePage($report->getId(), $page->getId()));
+
+        $return = array('hint' => '');
+        if ($questionsLength != $answeredQuestionsLength)
+            $return['hint'] = $this->environment->render(':ajax/study:not.all.questions.answered.hint.html.twig', array(
+                'questionsUnfinished' => $questionsLength - $answeredQuestionsLength
+            ));
+
+        return $return;
     }
 
     public function addQuickCourseReview($args)

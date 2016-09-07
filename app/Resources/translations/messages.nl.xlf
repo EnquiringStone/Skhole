@@ -226,8 +226,16 @@
             <trans-unit id="0040">
                 <source>l.start_page.t_instruction_03</source>
                 <target>die je rechts onder kunt vinden om de cursus te starten.</target>
-            </trans-unit>    
-<!-- Einde tab learn-->		
+            </trans-unit>
+            <trans-unit id="0041">
+                <source> l.note</source>
+                <target>Let op</target>
+            </trans-unit>
+            <trans-unit id="0042">
+                <source>l.note.unanswered_questions_remain</source>
+                <target>Niet alle vragen op deze pagina zijn beantwoord</target>
+            </trans-unit>
+            <!-- Einde tab learn-->
 <!-- Tab teach: 1000 tot 1999 -->
 			<trans-unit id="1001">
                 <source>t.create_course.f_placeholder.type_your_answer</source>

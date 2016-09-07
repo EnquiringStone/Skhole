@@ -53,23 +53,19 @@ $(document).ready(function() {
 
     body.on('click', '.save-questions', function (event) {
         event.preventDefault();
-        saveAnswers(function () {
-            var url = $('.next-page').attr('href');
-            goToUrl(url);
+        saveAnswers(function (data) {
+            if (data['hint'] != '')
+            {
+                $('#hint-not-all-answered').empty();
+                $('#hint-not-all-answered').html(data['hint']);
+            }
+            else
+            {
+                var url = $('.next-page').attr('href');
+                goToUrl(url);
+            }
         });
     });
-
-    // body.on('click', 'a', function (event) {
-    //     event.preventDefault();
-    //     var destinationUrl = $(this).attr('href');
-    //     if(hasChanged == false) {
-    //         goToUrl(destinationUrl);
-    //         return;
-    //     }
-    //     saveAnswers(function () {
-    //         goToUrl(destinationUrl);
-    //     });
-    // });
 
     body.on('change', 'textarea', function () {
         hasChanged = true;
@@ -111,7 +107,7 @@ function saveAnswers(callBack) {
     data['multipleChoice'] = addMultipleChoice();
     data['openQuestion'] = addOpenQuestions();
     if($.isEmptyObject(data['multipleChoice']) && $.isEmptyObject(data['openQuestion'])){
-        callBack();
+        callBack({'hint': ''});
         return;
     }
 
