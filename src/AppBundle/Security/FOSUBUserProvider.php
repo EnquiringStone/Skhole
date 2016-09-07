@@ -84,9 +84,9 @@ class FOSUBUserProvider extends BaseClass
             $user->setRoles(array('ROLE_USER'));
             $user->setEnabled(true);
             $user->setAgreedToCookie(false);
-            $generator = new RandomStringGenerator();
-            $user->setMentorCode($generator->generate($this->mentorCodeLength));
+            $user->setMentorCode($this->getUniqueMentorCode());
             $this->userManager->updateUser($user);
+
             return $user;
         }
         $user = parent::loadUserByOAuthUserResponse($response);
@@ -94,5 +94,17 @@ class FOSUBUserProvider extends BaseClass
         $setter = 'set'.ucfirst($serviceName).'AccessToken';
         $user->$setter($response->getAccessToken());
         return $user;
+    }
+
+    function getUniqueMentorCode()
+    {
+        $generator = new RandomStringGenerator();
+        $mentorCode = $generator->generate($this->mentorCodeLength);
+
+        $user = $this->userManager->findUserBy(array('mentorCode' => $mentorCode));
+        if ($user != null)
+            $mentorCode = $this->getUniqueMentorCode();
+
+        return $mentorCode;
     }
 }

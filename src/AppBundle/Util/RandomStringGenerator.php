@@ -32,8 +32,9 @@ class RandomStringGenerator
     {
         $token = '';
 
-        for ($i = 0; $i < $length; $i++) {
+        for ($i = 0; $i < $length; $i = $i + 2) {
             $randomKey = $this->getRandomInteger(0, $this->alphabetLength);
+            $token .= $this->alphabet[$randomKey];
             $token .= $this->alphabet[$randomKey];
         }
 
