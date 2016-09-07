@@ -625,7 +625,6 @@ class CreateCourseAjaxService implements AjaxInterface
             $this->manager->persist($page);
             $entity->addCoursePage($page);
             $newPage = true;
-//            $this->manager->flush();
         }
 
         if(!$newPage && ($page->getCourseId() != $entity->getId() || $page->getPageType()->getType() != 'exercise'))
@@ -656,7 +655,6 @@ class CreateCourseAjaxService implements AjaxInterface
         }
         $question->setQuestion($args['question']);
         $page->addQuestion($question);
-//        $this->manager->flush();
 
         $hasNoCorrectAnswers = true;
         foreach($args['answers'] as $answer)
@@ -761,8 +759,6 @@ class CreateCourseAjaxService implements AjaxInterface
         }
         else if($type == 'overview')
         {
-
-
             $html = $this->environment->render(':ajax/create-courses/questions:question.order.overview.html.twig',
                 array('course' => $entity, 'exercise' => $page));
         }
@@ -824,46 +820,46 @@ class CreateCourseAjaxService implements AjaxInterface
     function saveCustomAnswers($answers, CourseQuestions $question, $isNew)
     {
         $noCorrectAnswers = true;
+        $highestOrder = $this->manager->getRepository('AppBundle:Course\CourseQuestions')->getAnswerHighestOrder($question->getId());
         foreach($answers as $answer)
         {
-            $this->validator->validate($answer, 'CourseAnswers');
-            if($answer['answerId'] > 0)
+            try
             {
-                $answerEntity = $this->manager->getRepository('AppBundle:Course\CourseAnswers')->find($answer['answerId']);
-                if($answerEntity == null)
+                $this->validator->validate($answer, 'CourseAnswers');
+                if($answer['answerId'] > 0)
                 {
-                    if($isNew)
-                    {
-                        $this->manager->remove($question);
-                        $this->manager->flush();
-                    }
-                    throw new EntityNotFoundException();
-                }
-                if($answerEntity->getCourseQuestionId() != $question->getId())
-                {
-                    if($isNew)
-                    {
-                        $this->manager->remove($question);
-                        $this->manager->flush();
-                    }
-                    throw new AccessDeniedException();
-                }
-            }
-            else
-            {
-                $answerEntity = new CourseAnswers();
-                $answerEntity->setCourseQuestion($question);
-                $answerEntity->setAnswerOrder($this->manager->getRepository('AppBundle:Course\CourseQuestions')->getAnswerHighestOrder($question->getId()) + 1);
-                $question->addCourseAnswer($answerEntity);
-            }
-            $answerEntity->setAnswer($answer['answer']);
-            $answerEntity->setIsCorrect($answer['correct'] == 'true');
-            $this->manager->persist($answerEntity);
+                    $answerEntity = $this->manager->getRepository('AppBundle:Course\CourseAnswers')->find($answer['answerId']);
+                    if($answerEntity == null)
+                        throw new EntityNotFoundException();
 
-            if($answer['correct'] == 'true') {
-                $noCorrectAnswers = false;
+                    if($answerEntity->getCourseQuestionId() != $question->getId())
+                        throw new AccessDeniedException();
+                }
+                else
+                {
+                    $highestOrder++;
+                    $answerEntity = new CourseAnswers();
+                    $answerEntity->setCourseQuestion($question);
+                    $answerEntity->setAnswerOrder($highestOrder);
+                    $question->addCourseAnswer($answerEntity);
+                }
+                $answerEntity->setAnswer($answer['answer']);
+                $answerEntity->setIsCorrect($answer['correct'] == 'true');
+                $this->manager->persist($answerEntity);
+
+                if($answer['correct'] == 'true') {
+                    $noCorrectAnswers = false;
+                }
             }
-            $this->manager->flush();
+            catch (\Exception $e)
+            {
+                if ($isNew)
+                {
+                    $this->manager->remove($question);
+                    $this->manager->flush();
+                }
+                throw $e;
+            }
         }
         if($noCorrectAnswers)
         {
@@ -874,6 +870,7 @@ class CreateCourseAjaxService implements AjaxInterface
             }
             throw new FrontEndException('course.edit.answer.no.correct', 'ajaxerrors');
         }
+        $this->manager->flush();
     }
 
     function removeCustomQuestions($args)
