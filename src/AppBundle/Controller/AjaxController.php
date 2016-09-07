@@ -67,7 +67,7 @@ class AjaxController extends Controller
         $pdf = new \mPDF();
         $pdf->WriteHTML($html);
 
-        $response = new Response($pdf->Output());
+        $response = new Response($pdf->Output($sharedReport->getReport()->getCourse()->getName().'.pdf', 'I'));
         $response->headers->set('Content-Type', 'application/pdf');
 
         return $response;
@@ -105,7 +105,7 @@ class AjaxController extends Controller
         $pdf = new \mPDF();
         $pdf->WriteHTML($html);
 
-        $response = new Response($pdf->Output());
+        $response = new Response($pdf->Output($report->getCourse()->getName().'.pdf', 'I'));
         $response->headers->set('Content-Type', 'application/pdf');
 
         return $response;
