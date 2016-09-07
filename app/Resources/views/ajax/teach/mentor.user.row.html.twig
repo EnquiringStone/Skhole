@@ -10,7 +10,7 @@
             </div>
         </div>
         <h4>
-            <img src="{{ asset('images/gebruiker.png') }}" class="img-rounded teacher-row-picture">
+            <img src="{% if user.picture is not null %}{{ asset(user.picture) }}{% else %}{{ asset('images/gebruiker.png') }}{% endif %}" class="img-rounded teacher-row-picture">
             <a class="clickable" data-target="#educationProfileModal{{ index }}" data-toggle="modal">
                 {{ user.firstName|capitalize }} {{ user.surname|capitalize }}
             </a>
