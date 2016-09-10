@@ -1,33 +1,44 @@
 {% extends '::base.html.twig' %}
 {% block title %}{% trans %}exception.base.page.title{% endtrans %}{% endblock %}
 {% block body %}
-    <div class="centrum">
-        <h3>{% block exceptionTitle %}{% trans %}exception.base.title{% endtrans %}{% endblock %}</h3>
-    </div>
-    <hr>
-    <div class="row">
-        <div class="col-md-6">
-            {% block exceptionExplain %}
-                <p>{% trans %}exception.base.explanation.one{% endtrans %}</p>
-                <ul>
-                    <li>
-                        {% trans %}exception.base.explanation.two{% endtrans %}
-                        <a href="{{ path('app_learn_course_collection_page', {'_locale': app.request.locale}) }}">{% trans %}exception.base.explanation.link.text{% endtrans %}</a>
-                    </li>
-                    <li>
-                        {% trans %}exception.base.explanation.three{% endtrans %}
-                        <a href="{{ path('app_home_dashboard_page', {'_locale': app.request.locale}) }}">{% trans %}exception.base.explanation.link.text{% endtrans %}</a>
-                    </li>
-                    <li>
-                        {% trans %}exception.base.explanation.four{% endtrans %}
-                        <a href="{{ path('app_other_contact', {'_locale': app.request.locale}) }}">{% trans %}exception.base.explanation.link.text{% endtrans %}</a>
-                    </li>
-                </ul>
-            {% endblock %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title centrum">
+                <span class="glyphicon glyphicon-alert"></span>
+                <b>{{ block('title') }}</b>
+                    <span class="pull-right clickable chevron"><i class="glyphicon glyphicon-chevron-up"></i></span>
+            </h4>
         </div>
-        <div class="col-md-6">
+        <div class="panel-body">
             <div class="centrum">
-                <img style="max-width: 200px; max-height: 200px;" class="img-rounded" src="{% block exceptionImage %}{{ asset('images/exceptions/general_exception_image.png') }}{% endblock %}">
+                <h3>{% block exceptionTitle %}{% trans %}exception.base.title{% endtrans %}{% endblock %}</h3>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    {% block exceptionExplain %}
+                        <p>{% trans %}exception.base.explanation.one{% endtrans %}</p>
+                        <ul>
+                            <li>
+                                {% trans %}exception.base.explanation.two{% endtrans %}
+                                <a href="{{ path('app_learn_course_collection_page', {'_locale': app.request.locale}) }}">{% trans %}exception.base.explanation.link.text{% endtrans %}</a>
+                            </li>
+                            <li>
+                                {% trans %}exception.base.explanation.three{% endtrans %}
+                                <a href="{{ path('app_home_dashboard_page', {'_locale': app.request.locale}) }}">{% trans %}exception.base.explanation.link.text{% endtrans %}</a>
+                            </li>
+                            <li>
+                                {% trans %}exception.base.explanation.four{% endtrans %}
+                                <a href="{{ path('app_other_contact', {'_locale': app.request.locale}) }}">{% trans %}exception.base.explanation.link.text{% endtrans %}</a>
+                            </li>
+                        </ul>
+                    {% endblock %}
+                </div>
+                <div class="col-md-6">
+                    <div class="centrum">
+                        <img style="max-width: 200px; max-height: 200px;" class="img-rounded" src="{% block exceptionImage %}{{ asset('images/exceptions/general_exception_image.png') }}{% endblock %}">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
