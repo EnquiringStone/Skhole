@@ -1,7 +1,7 @@
 {% block sharedReportsTableRow %}
     <tr data-report-id="{{ report.id }}">
         <td>
-            <a href="{{ path('app_learn_study_panels_page', {'pageType': 'standard', 'name': 'course-card', 'courseId': report.report.course.id}) }}">{{ report.report.course.name }}</a>
+            <a href="{{ path('app_home_study_panels_page', {'pageType': 'standard', 'name': 'course-card', 'courseId': report.report.course.id}) }}">{{ report.report.course.name }}</a>
             <span class="pull-right text-muted small">
                 <em>{{ report.insertDateTime|time_diff }}</em>
             </span>
