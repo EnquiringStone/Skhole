@@ -9,16 +9,28 @@
 {% endblock %}
 {% block modalBaseContents %}
     <div class="modal-body">
-        <br />
         <div class="explanation-background">
-            <div class="centrum">
-                <div class="embed-responsive embed-responsive-4by3">
-                    {#TODO change video#}
-                    <iframe class="embed-responsive-item" allowfullscreen="allowfullscreen" src="https://www.youtube.com/embed/AX7r61fyltc"></iframe>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="text-primary">{% trans %}ext_info.add_video.add_video.option_i{% endtrans %}</p>
+                    <p>{% trans %}ext_info.add_video.add_video.option_i.step_i{% endtrans %}.</p>
+                    <p>{% trans %}ext_info.add_video.add_video.option_i.step_ii{% endtrans %}.</p>
+                    <img src="{{ asset('images/'~app.request.locale~'/example_add_Youtube_option_01.png') }}" class="img-thumbnail">
+                </div>
+                <div class="col-md-6">
+                    <p class="text-primary">{% trans %}
+                        ext_info.add_video.add_video.option_ii
+                        {% endtrans %}</p>
+                    <p>{% trans %}
+                        ext_info.add_video.add_video.option_ii.li.step_a
+                        {% endtrans %}.</p>
+                    <p>{% trans %}
+                        ext_info.add_video.add_video.option_ii.li.step_b
+                        {% endtrans %}.</p>
+                    <img src="{{ asset('images/'~app.request.locale~'/example_add_Youtube_option_02.png') }}" class="img-thumbnail">
                 </div>
             </div>
         </div>
-        <br />
     </div>
 {% endblock %}
 
