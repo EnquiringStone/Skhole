@@ -68,7 +68,7 @@
 <!-- Tab learn: 0000 tot 0999 -->
 			<trans-unit id="0001">
                 <source>l.nav.course_reports</source>
-                <target>Reports</target>
+                <target>My reports</target>
             </trans-unit>
             <trans-unit id="0002">
                 <source>l.nav.course.basket</source>

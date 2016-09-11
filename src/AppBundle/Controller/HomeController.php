@@ -70,10 +70,7 @@ class HomeController extends Controller {
             unset($criteria['redirectRoute']);
             return $this->redirectToRoute($redirectPath, $criteria);
         }
-        return $this->render(':home/study:study.default.html.twig', array(
-            'courses' => $this->getRandomCourses(10),
-            'courseCollection' => $this->getCourseCollectionsForUser()
-        ));
+        return $this->render(':home/study:study.default.html.twig');
     }
 
     /**

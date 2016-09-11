@@ -36,7 +36,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="centrum">
-                        <img style="max-width: 200px; max-height: 200px;" class="img-rounded" src="{% block exceptionImage %}{{ asset('images/exceptions/general_exception_image.png') }}{% endblock %}">
+                        <img class="img-rounded" src="{% block exceptionImage %}{{ asset('images/'~ app.request.locale ~'/something_went_wrong.png') }}{% endblock %}">
                     </div>
                 </div>
             </div>

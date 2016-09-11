@@ -68,7 +68,7 @@
 <!-- Tab learn: 0000 tot 0999 -->
 			<trans-unit id="0001">
                 <source>l.nav.course_reports</source>
-                <target>Rapporten</target>
+                <target>Mijn rapporten</target>
             </trans-unit>
             <trans-unit id="0002">
                 <source>l.nav.course.basket</source>
@@ -228,7 +228,7 @@
                 <target>die je rechts onder kunt vinden om de cursus te starten.</target>
             </trans-unit>
             <trans-unit id="0041">
-                <source> l.note</source>
+                <source>l.note</source>
                 <target>Let op</target>
             </trans-unit>
             <trans-unit id="0042">

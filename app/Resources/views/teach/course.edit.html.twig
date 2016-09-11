@@ -20,9 +20,7 @@
             {% include ':ajax/create-courses:'~name~'.'~type~'.page.html.twig' %}
         </div>
     </div>
-    {% if name == 'start' and type == 'standard' %}
-        {% include ':panels/getting-started:extensive.information.panel.html.twig' %}
-    {% endif %}
+    {% include ':panels/getting-started:extensive.information.panel.html.twig' %}
 {% endblock %}
 {% block modals %}
     {% if name == 'card-teacher' %}
@@ -34,11 +32,10 @@
     {% elseif name == 'start' and type == 'custom' %}
         {% include ':modal/create-course/custom:course.choose.instruction.modal.html.twig' %}
         {% include ':modal/create-course/custom:course.add.exercise.modal.html.twig' %}
-    {% elseif name == 'course-resources' %}
-        {% include ':modal/create-course:course.resources.instruction.modal.html.twig' with {'modalId': 'resourceInstructionModal'} %}
     {% elseif name == 'start' %}
         {% include ':modal/dashboard:teach.introduction.modal.html.twig' with {'modalId': 'instructionsCreateCourseModal'} %}
     {% endif %}
+    {% include ':modal/create-course:course.resources.instruction.modal.html.twig' with {'modalId': 'resourceInstructionModal'} %}
     {% include ':modal/create-course/confirmations:not.saved.confirmation.modal.html.twig' with {'modalId': 'notSaveConfirmationModal'} %}
     {% include ':modal/create-course:course.remove.modal.html.twig' with {'modalId': 'removeCourseModal'} %}
     {% include ':modal/create-course:add.video.tutorial.modal.html.twig' %}
