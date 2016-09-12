@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block title %}{% trans %}o.nav.getting_started{% endtrans %}{% endblock %}
+{% block keywords %}{% trans %}meta.description_keywords.home_discover{% endtrans %}{% endblock %}
+{% block description %}{% trans %}meta.description_content.home_discover{% endtrans %}{% endblock %}
 {% block body %}
     {% if subMenu == 'introduction' %}
         {% include ':panels/getting-started:introduction.panel.html.twig' %}
@@ -18,6 +20,7 @@
     {% include ':modal/dashboard:study.introduction.modal.html.twig' with {'modalId' : 'studyIntroductionModal'} %}
     {% include ':modal/dashboard:teach.introduction.modal.html.twig' with {'modalId' : 'teachIntroductionModal'} %}
     {% include ':modal/dashboard:course.report.introduction.modal.html.twig' with {'modalId': 'courseReportIntroductionModal'} %}
+    {% include ':modal/create-course:course.resources.instruction.modal.html.twig' with {'modalId': 'resourceInstructionModal'} %}
 {% endblock %}
 
 {% block prescripts %}
