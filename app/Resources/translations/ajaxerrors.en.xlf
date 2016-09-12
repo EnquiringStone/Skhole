@@ -36,7 +36,7 @@
             </trans-unit>
             <trans-unit id="9">
                 <source>course.edit.estimated.duration.contains.characters</source>
-                <target>The course duration should contain only number. Comma’s or points are not allowed </target>
+                <target>The course duration should contain only numbers. Note: comma’s or points are not allowed. </target>
             </trans-unit>
             <trans-unit id="10">
                 <source>course.edit.estimated.duration.too.long</source>
@@ -52,7 +52,7 @@
             </trans-unit>
             <trans-unit id="13">
                 <source>course.edit.description.too.long</source>
-                <target>The description should contain no more tha 15.000 characters. You use now %size% characters</target>
+                <target>The description should contain less than 15.000 characters. You use now %size% characters.</target>
             </trans-unit>
             <trans-unit id="14">
                 <source>course.edit.tag.empty</source>
@@ -68,7 +68,7 @@
             </trans-unit>
             <trans-unit id="17">
                 <source>course.edit.card.youtube.url.or.description</source>
-                <target>At least a video or introduction text should be added. </target>
+                <target>At least a YouTube video or introduction text should be added. </target>
             </trans-unit>
             <trans-unit id="18">
                 <source>course.edit.card.youtube.url</source>
@@ -84,7 +84,7 @@
             </trans-unit>
             <trans-unit id="21">
                 <source>course.edit.card.too.long</source>
-                <target>The title is no longer then allowed.</target>
+                <target>The title is longer then allowed.</target>
             </trans-unit>
             <trans-unit id="22">
                 <source>course.edit.description.contains.coding</source>
@@ -148,7 +148,7 @@
             </trans-unit>
             <trans-unit id="37">
                 <source>course.edit.answer.too.few</source>
-                <target>At least to answers should be present</target>
+                <target>At least two answers should be present</target>
             </trans-unit>
             <trans-unit id="38">
                 <source>course.edit.exercise.too.many</source>
@@ -156,7 +156,7 @@
             </trans-unit>
             <trans-unit id="39">
                 <source>course.edit.answer.no.correct</source>
-                <target>Ate least one correct answer should be present </target>
+                <target>At least one correct answer should be present </target>
             </trans-unit>
             <trans-unit id="40">
                 <source>course.edit.publish</source>
@@ -192,7 +192,7 @@
             </trans-unit>
             <trans-unit id="48">
                 <source>profile.edit.email.empty</source>
-                <target>Email is not correct</target>
+                <target>Email address is not correct</target>
             </trans-unit>
             <trans-unit id="49">
                 <source>profile.edit.email.invalid</source>
@@ -200,7 +200,7 @@
             </trans-unit>
             <trans-unit id="50">
                 <source>profile.edit.date.of.birth.invalid</source>
-                <target>The date of birth is invallid</target>
+                <target>The date of birth is invalid</target>
             </trans-unit>
             <trans-unit id="51">
                 <source>profile.education.class.too.long</source>
@@ -224,15 +224,15 @@
             </trans-unit>
             <trans-unit id="56">
                 <source>profile.education.level.too.long</source>
-                <target>The level is too long. It cannot contain more than 50</target>
+                <target>The level is too long. It cannot contain more than 50 characters</target>
             </trans-unit>
             <trans-unit id="57">
                 <source>profile.education.level.illegal.character</source>
-                <target> The level may only contain numbers and letters. Characters like '; `[] {}, etc. are not allowed </target>
+                <target>The level may only contain numbers and letters. Characters like '; `[] {}, etc. are not allowed </target>
             </trans-unit>
             <trans-unit id="58">
                 <source>profile.edit.language.too.long</source>
-                <target>The language characters is limited to 255 characters. </target>
+                <target>The language is limited to 255 characters. </target>
             </trans-unit>
             <trans-unit id="59">
                 <source>profile.edit.language.illegal.characters</source>
@@ -244,7 +244,7 @@
             </trans-unit>
             <trans-unit id="61">
                 <source>profile.edit.country.illegal.characters</source>
-                <target>The country nam cannot contain numbers or programming code </target>
+                <target>The country name cannot contain numbers or programming code </target>
             </trans-unit>
             <trans-unit id="62">
                 <source>course.collection.item.already.exists</source>
@@ -284,7 +284,7 @@
             </trans-unit>
             <trans-unit id="71">
                 <source>course.reports.view.not.complete</source>
-                <target>This course report cannot be viewed yet. There can be two reasons: I.) there are no questions for this course. II.) Not all questions are answered. %1</target>
+                <target>This course report cannot be viewed yet. There can be two possible reasons: I.) there are no questions for this course. II.) Not all questions are answered. %1</target>
             </trans-unit>
             <trans-unit id="72">
                 <source>course.reports.shared.remove</source>
@@ -372,7 +372,7 @@
             </trans-unit>
             <trans-unit id="93">
                 <source>report.name.invalid</source>
-                <target>The specified name is invali</target>
+                <target>The specified name is invalid</target>
             </trans-unit>
             <trans-unit id="94">
                 <source>report.name.not.found</source>

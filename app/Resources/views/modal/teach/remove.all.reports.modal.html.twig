@@ -15,7 +15,7 @@
         </p>
         <br />
         <p class="centrum">
-            {% trans %}mo.remove_studen.t_long_01{% endtrans %} {{ user.firstName|capitalize }} {{ user.surname|capitalize }} {% trans %}mo.remove_studen.t_long_02{% endtrans %}
+            {% trans %}mo.remove_studen.t_long_01{% endtrans %} "<b>{{ user.firstName|capitalize }} {{ user.surname|capitalize }}"</b> {% trans %}mo.remove_studen.t_long_02{% endtrans %}
         </p>
     </div>
 {% endblock %}

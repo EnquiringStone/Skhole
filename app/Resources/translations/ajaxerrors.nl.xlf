@@ -36,35 +36,35 @@
             </trans-unit>
             <trans-unit id="9">
                 <source>course.edit.estimated.duration.contains.characters</source>
-                <target>De cursusduur mag alleen nummers bevatten. Het mag ook geen comma's of punten bevatten</target>
+                <target>De cursusduur mag alleen nummers bevatten. Het mag ook geen comma's of punten bevatten.</target>
             </trans-unit>
             <trans-unit id="10">
                 <source>course.edit.estimated.duration.too.long</source>
-                <target>De cursusduur moet onder de 10.000 minuten liggen</target>
+                <target>De cursusduur moet onder de 10.000 minuten liggen.</target>
             </trans-unit>
             <trans-unit id="11">
                 <source>course.edit.difficulty.contains.characters</source>
-                <target>De moeilijkheidsgraad mag alleen nummers bevatten</target>
+                <target>De moeilijkheidsgraad mag alleen nummers bevatten.</target>
             </trans-unit>
             <trans-unit id="12">
                 <source>course.edit.difficulty.too.long</source>
-                <target>De moeilijkheidsgraad kan niet meer dan 5 sterren zijn</target>
+                <target>De moeilijkheidsgraad kan niet meer dan 5 sterren zijn.</target>
             </trans-unit>
             <trans-unit id="13">
                 <source>course.edit.description.too.long</source>
-                <target>De omschrijving is te lang. Je mag tot 15.000 characters gebruiken. Momenteel heb je %size% characters</target>
+                <target>De omschrijving is te lang. Je mag tot 15.000 characters gebruiken. Momenteel heb je %size% characters.</target>
             </trans-unit>
             <trans-unit id="14">
                 <source>course.edit.tag.empty</source>
-                <target>Trefwoorden mogen niet leeg zijn</target>
+                <target>Trefwoorden mogen niet leeg zijn.</target>
             </trans-unit>
             <trans-unit id="15">
                 <source>course.edit.estimated.duration.minus</source>
-                <target>De geschatte cursusduur moet groter dan nul zijn</target>
+                <target>De geschatte cursusduur moet groter dan nul zijn.</target>
             </trans-unit>
             <trans-unit id="16">
                 <source>course.edit.difficulty.minus</source>
-                <target>De moeilijkheidsgraad kan niet minder dan nul sterren zijn</target>
+                <target>De moeilijkheidsgraad kan niet minder dan nul sterren zijn.</target>
             </trans-unit>
             <trans-unit id="17">
                 <source>course.edit.card.youtube.url.or.description</source>

@@ -63,6 +63,26 @@
                 <source>nav.more</source>
                 <target>More</target>
             </trans-unit>
+             <trans-unit id="16">
+                <source>meta.description_content.home_search</source>
+                <target>StudyLivre offers you the possibility to view, create and share courses. You can also view and share course reports. </target>
+            </trans-unit>
+             <trans-unit id="17">
+                <source>meta.description_keywords.home_search</source>
+                <target>Course, course report, StudyLivre</target>
+            </trans-unit>
+             <trans-unit id="18">
+                <source>meta.description_content.home_discover</source>
+                <target>The Discover menu offers an overview about the StudyLivre platform.</target>
+            </trans-unit>
+             <trans-unit id="19">
+                <source>meta.description_keywords.home_discover</source>
+                <target>StudyLivre, discover</target>
+            </trans-unit>
+             <trans-unit id="20">
+                <source></source>
+                <target></target>
+            </trans-unit>
 
 <!-- Einde messages -->
 <!-- Tab learn: 0000 tot 0999 -->
@@ -132,7 +152,7 @@
             </trans-unit>
             <trans-unit id="0017">
                 <source>l.last_page.text_info_course_report</source>
-                <target>A course report will be generated once you finish a course. The report is based on your answers. The report will be automatically saved at: Basket →  My reports. When you are not signed in all your progress will be lost once you close your internet browser.</target>
+                <target>A course report will be generated once you finish the course. The report is based on your answers. The report will be automatically saved at: Basket →  My reports. When you are not signed in all your progress will be lost once you close your internet browser</target>
             </trans-unit>
             <trans-unit id="0018">
                 <source>o.notify</source>
@@ -148,11 +168,11 @@
             </trans-unit>
             <trans-unit id="0021">
                 <source>t.start_page.report_info</source>
-            <target>A course report will be generated once you finish a course. The report is based on your answers. The report will be automatically saved at: Basket → My reports. NoTE: when you are not signed in all your progress will be lost once you close your internet browser.</target>
+            <target>A course report will be generated once you finish the course. The report is based on your answers. The report will be automatically saved at: Basket → My reports.</target>
             </trans-unit>
             <trans-unit id="0022">
-                <source>t.save_anwsers</source>
-                <target>Save anwsers</target>
+                <source>t.save_answers</source>
+                <target>Save answers</target>
             </trans-unit>
             <trans-unit id="0023">
                 <source>t.no_announcements</source>
@@ -209,7 +229,7 @@
             </trans-unit>
             <trans-unit id="0036">
                 <source>t.course.a.search.courses</source>
-                <target>Search course</target>
+                <target>Search  course</target>
             </trans-unit>
             <trans-unit id="0037">
                 <source>l.start_page.last_page</source>
@@ -239,7 +259,7 @@
 <!-- Tab teach: 1000 tot 1999 -->
 			<trans-unit id="1001">
                 <source>t.create_course.f_placeholder.type_your_answer</source>
-                <target>Enter an anwser</target>
+                <target>Enter an answer</target>
             </trans-unit>
             <trans-unit id="1002">
                 <source>t.create_course.page_overview</source>
@@ -331,15 +351,15 @@
                 <target>Enter a question. Next, add answers and mark the correct answer(s).</target>
             </trans-unit>
             <trans-unit id="1024">
-                <source>t.create_course.anwsers</source>
+                <source>t.create_course.answers</source>
                 <target>Answers</target>
             </trans-unit>
             <trans-unit id="1025">
-                <source>t.create_course.b.add_anwsers</source>
+                <source>t.create_course.b.add_answers</source>
                 <target>Add answer</target>
             </trans-unit>
             <trans-unit id="1026">
-                <source>t.create_course.correct_anwsers</source>
+                <source>t.create_course.correct_answers</source>
                 <target>Correct answer(s)</target>
             </trans-unit>
             <trans-unit id="1027">
@@ -412,7 +432,7 @@
             </trans-unit>
             <trans-unit id="1043">
                 <source>t.create_course.f_placeholder.textual_content</source>
-                <target>Enter an introductory text (optional field)</target>
+                <target>Introductory text (optional field)</target>
             </trans-unit>
             <trans-unit id="1044">
                 <source>t.create_course.f_label.prereq</source>
@@ -589,7 +609,7 @@
             </trans-unit>
             <trans-unit id="1086">
                 <source>t.create_course.t_long.before_you_publish_course</source>
-                <target>When your course is published it will be avaliable in the search results. A publication cannot be reversed! You can still edit the course once it is published, except from the assignment pages. Click on the button below in order to publish your course</target>
+                <target>When your course is published it will be avaliable in the search results. A publication cannot be reversed! You can still edit the course once it is published, except the assignment pages. Click on the button below in order to publish your course</target>
             </trans-unit>
             <trans-unit id="1087">
                 <source>t.create_course.b.publish_course</source>
@@ -629,7 +649,7 @@
             </trans-unit>
             <trans-unit id="1096">
                 <source>t.create_course.t.met_minimum_req</source>
-                <target>Does your course have met the minimum requirements?</target>
+                <target>Minimum requirements met?</target>
             </trans-unit>
             <trans-unit id="1097">
                 <source>t.create_course.t.met_minimum_req_search_date</source>
@@ -641,7 +661,7 @@
             </trans-unit>
             <trans-unit id="1099">
                 <source>t.create_course.t.met_minimum_req_added_one_item</source>
-                <target>Added at least one course page</target>
+                <target>At least one course page is present</target>
             </trans-unit>
             <trans-unit id="10100">
                 <source>t.create_course.met_al_req_question</source>
@@ -829,7 +849,7 @@
             </trans-unit>
             <trans-unit id="10148">
                 <source>t.own_created_courses.t_long.no_courses_yet</source>
-                <target>You don’t have created any course. Visit the Discover menu for more information</target>
+                <target>You don’t have created any course yet</target>
             </trans-unit>
             <trans-unit id="10149">
                 <source>t.mentor_reports.view_reports</source>
@@ -1000,7 +1020,7 @@
             </trans-unit>
             <trans-unit id="2025">
                 <source>h.search.f_placeholder.search_query</source>
-                <target>Search query</target>
+                <target>Search course</target>
             </trans-unit>
             <trans-unit id="2026">
                 <source>h.search.search</source>
@@ -1080,7 +1100,7 @@
             </trans-unit>
             <trans-unit id="2045">
                 <source>h.getting.started.create_course.text_01</source>
-                 <target>StudyLivre offers you the possibility to view, create and share courses. A course report will be generated once you finish a course. The report is based on your answers. You can share reports with other users.</target>
+                 <target>StudyLivre offers you the possibility create courses.Each course contains multiple pages. You can add or edit the following course pages</target>
             </trans-unit>
             <trans-unit id="2046">
                 <source>h.getting.started.create_course.text_02</source>
@@ -1104,7 +1124,7 @@
             </trans-unit>
             <trans-unit id="2049">
                 <source>h.getting.started.follow_course.li.learn_when_you_want</source>
-                <target>Learn when you want to</target>
+                <target>Learn whenever you want to</target>
             </trans-unit>
             <trans-unit id="2050">
                 <source>h.getting.started.follow_course.li.course_report</source>
@@ -1118,7 +1138,7 @@
             <trans-unit id="2054">
                 <source>h.getting.started.report.the_report.text</source>
                 <target>
-	A course report will be generated after you completed a course. You can view and share the report. A page will be generated for each assignment page (with open-ended and multiple choice questions). You can view the report online or download it as PDF file. 
+	A course report will be generated once you finish a course. You can view and share the report. A page will be generated for each assignment page (with open-ended and multiple choice questions). You can view the report online or download it as PDF file. 
                </target>
             </trans-unit>
   <trans-unit id="2055">
@@ -1127,7 +1147,7 @@
             </trans-unit>
             <trans-unit id="2056">
                 <source>h.getting.started.report.share_with.text_01</source>
-                <target>You can share a course report for example with an instructor, teacher or friend (which has also a StudyLivre account). The only thing you have to do is fill in the SHARE CODE from the person which you want to share with.</target>
+                <target>You can share a course report with other people, for example: a friend or a teacher. The only thing you have to do is fill in the SHARE CODE from the person which you want to share with</target>
             </trans-unit>
             <trans-unit id="2057">
                 <source>h.quickmenu</source>
@@ -1197,7 +1217,7 @@ StudyLivre offers you the possibility to view, create and share courses. A cours
             </trans-unit>
             <trans-unit id="3004">
                 <source>o.cookies.t_long_part_01</source>
-                <target>By visiting and usign this site you agree with our</target>
+                <target>By visiting and using this site you agree with our</target>
             </trans-unit>
             <trans-unit id="3005">
                 <source>o.cookies.a.privacy</source>
@@ -1413,7 +1433,7 @@ StudyLivre offers you the possibility to view, create and share courses. A cours
             </trans-unit>
             <trans-unit id="3057">
                 <source>o.course_report.percentage_right_questions</source>
-                <target>Percentage correct anwsers</target>
+                <target>Percentage correct answers</target>
             </trans-unit>
             <trans-unit id="3058">
                 <source>o.course_report.shared_with</source>
@@ -1757,7 +1777,7 @@ StudyLivre offers you the possibility to view, create and share courses. A cours
             </trans-unit>
             <trans-unit id="30144">
                 <source>o.given_anwser</source>
-                <target>Your anwser</target>
+                <target>Your answer</target>
             </trans-unit>
             <trans-unit id="30145">
                 <source>o.correct_anwser</source>
@@ -2023,11 +2043,11 @@ StudyLivre offers you the possibility to view, create and share courses. A cours
             </trans-unit>
             <trans-unit id="4006">
                 <source>mo.add_assignments</source>
-                <target>Add assignement page</target>
+                <target>Add assignment page</target>
             </trans-unit>
             <trans-unit id="4007">
                 <source>mo.what_name_assignment_page</source>
-                <target>What will be the title of this assignment page</target>
+                <target>What will be the title of assignment page</target>
             </trans-unit>
             <trans-unit id="4008">
                 <source>mo.f_placeholder.what_name_assignment_page</source>
@@ -2067,7 +2087,7 @@ StudyLivre offers you the possibility to view, create and share courses. A cours
             </trans-unit>
             <trans-unit id="4017">
                 <source>mo.provider.f_placeholder.provider_description</source>
-                <target>Short provider discription</target>
+                <target>Short discription about the provider</target>
             </trans-unit>
             <trans-unit id="4018">
                 <source>mo.add_instructor</source>
@@ -2103,19 +2123,19 @@ StudyLivre offers you the possibility to view, create and share courses. A cours
             </trans-unit>
             <trans-unit id="4026">
                 <source>mo.deleltion_cannot_be_undone</source>
-                <target>This delete action cannot be reversed. Are you sure?</target>
+                <target></target>
             </trans-unit>
             <trans-unit id="4027">
                 <source>mo.remove_provider_details_01</source>
-                <target>You are about to remove the provider</target>
+                <target>Are you sure you want to remove the provider</target>
             </trans-unit>
             <trans-unit id="4028">
                 <source>mo.remove_details_02</source>
-                <target>.</target>
+                <target></target>
             </trans-unit>
             <trans-unit id="4029">
                 <source>mo.remove_instructor_details_01</source>
-                <target>You are about to remove the instructor:</target>
+                <target>Are you sure you want to remove  the following instructor:</target>
             </trans-unit>
             <trans-unit id="4030">
                 <source>mo.remove_instructor</source>
@@ -2163,7 +2183,7 @@ StudyLivre offers you the possibility to view, create and share courses. A cours
             </trans-unit>
             <trans-unit id="4041">
                 <source>mo.remove_announcement_are_you_sure_01</source>
-                <target>Do you wan to remove the followin annoucement</target>
+                <target>Do you wan to remove the following annoucement</target>
             </trans-unit>
             <trans-unit id="4042">
                 <source>mo.remove_announcement</source>
@@ -2175,11 +2195,11 @@ StudyLivre offers you the possibility to view, create and share courses. A cours
             </trans-unit>
             <trans-unit id="4044">
                 <source>mo.remove_course.details_01</source>
-                <target>Je staat op het punt om de cursus #TODO</target>
+                <target>Are you sure you want to remove this course</target>
             </trans-unit>
             <trans-unit id="4045">
                 <source>mo.remove_course.which_has_no_name</source>
-                <target>Do you want to remove this course</target>
+                <target>Are you sure you want to remove this course</target>
             </trans-unit>
             <trans-unit id="4046">
                 <source>mo.message</source>
@@ -2395,7 +2415,7 @@ StudyLivre offers you the possibility to view, create and share courses. A cours
             </trans-unit>
             <trans-unit id="4099">
                 <source>mo.remove_report.t_long.remove_report</source>
-                <target>Remove course report which belongs to the course</target>
+                <target>Do you want to remove the report which belongs to the course</target>
             </trans-unit>
              
             <trans-unit id="40100">
@@ -2478,7 +2498,7 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="40119">
                 <source>mo.remove_studen.t_long_02</source>
-                <target>.All shared course reports will also be deleted.</target>
+                <target>? All shared course reports will also be deleted.</target>
             </trans-unit>
             <trans-unit id="40120">
                 <source>mo.remove_student_report</source>
@@ -2540,6 +2560,10 @@ This course is published. Persons who follow this course are allowed to finish t
                 <source>mo.error.select.at.least.one</source>
                 <target>At least one item should be selected</target>
             </trans-unit>
+             <trans-unit id="40135">
+                <source>mo.remove_details_are_you_sure</source>
+                <target>?</target>
+            </trans-unit>
 
 <!-- Einde modals -->
 <!-- Start infomodals 5000 tot 5999  -->	
@@ -2565,7 +2589,7 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="5006">
                 <source>imo.add_documents.google.li.step_01</source>
-                <target>sign in to Google drive and select the directory you want to share</target>
+                <target>Sign in to Google drive and select the directory you want to share</target>
             </trans-unit>
             <trans-unit id="5007">
                 <source>imo.add_documents.google.li.step_02</source>
@@ -2703,7 +2727,7 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="5040">
                 <source>ext_info.add_video</source>
-                <target>Add video</target>
+                <target>Add YouTube video</target>
             </trans-unit>
             <trans-unit id="5041">
                 <source>ext_info.plublish_course</source>
@@ -2747,7 +2771,7 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="5051">
                 <source>ext_info.t_long.explain_structure</source>
-                <target>The explanation of a topic starts with an introduction paragraph which contains a brief description. Next, a paragraph follows where you can find out how to edit the (course) component. Finally, an example will follow how the student will see the component once it is finished</target>
+                <target>The explanation of a topic starts with an introduction paragraph which contains a brief description. Next, a paragraph follows where you can find out how to edit the (course) component. Finally, you see an example of the course component once it is finished</target>
             </trans-unit>
             <trans-unit id="5052">
                 <source>ext_info.t_long.search_data</source>
@@ -2755,15 +2779,15 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="5053">
                 <source>ext_info.t_long.course_card_01</source>
-                <target>Each course has a course card where you can find a short course overview. This part is required. A course without this part cannot be published. </target>
+                <target>Each course contains a Course Card where you can find a short course overview. This part is required. A course without this part cannot be published. </target>
             </trans-unit>
             <trans-unit id="5054">
                 <source>ext_info.t_long.course_card_02</source>
-                <target>The Course Card contains</target>
+                <target>Course Card components</target>
             </trans-unit>
             <trans-unit id="5055">
                 <source>ext_info.course_card.li.details</source>
-                <target>a brief overview about the course attributes, like instructor, difficulty and the course duration (automatically generated)</target>
+                <target> a brief overview about the course attributes, like instructor, difficulty and the course duration (automatically generated)</target>
             </trans-unit>
             <trans-unit id="5056">
                 <source>ext_info.course_card.li.prereq</source>
@@ -2771,11 +2795,11 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="5057">
                 <source>ext_info.course_card.li.provider</source>
-                <target>institution or organization (optional part)</target>
+                <target> institution or organization (optional part)</target>
             </trans-unit>
             <trans-unit id="5058">
                 <source>ext_info.course_card.li.instructeurs</source>
-                <target>information about the instructor(s) (required part)</target>
+                <target> information about the instructor(s) (required part)</target>
             </trans-unit>
             <trans-unit id="5059">
                 <source>ext_info.t_long.planning</source>
@@ -2803,7 +2827,7 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="5065">
                 <source>ext_info.add_expl_page.edit_expl_page.option_ii</source>
-                <target>Option II: Textual explanation page</target>
+                <target>Option II: Text only explanation page</target>
             </trans-unit>
             <trans-unit id="5066">
                 <source>ext_info.add_expl_page.edit_expl_page.option_i.li.step_01</source>
@@ -2819,7 +2843,7 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="5069">
                 <source>ext_info.add_expl_page.edit_expl_page.option_i.li.step_04</source>
-                <target>When the page is saved it will appear in the Page Overview</target>
+                <target>Once the page is saved it will appear in the Page Overview</target>
             </trans-unit>
             <trans-unit id="5070">
                 <source>ext_info.add_expl_page.edit_expl_page.option_ii.li.step_01</source>
@@ -2835,7 +2859,7 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="5073">
                 <source>ext_info.add_expl_page.edit_expl_page.option_ii.li.step_04</source>
-                <target>When the page is saved it will appear in the Page Overview</target>
+                <target>Once the page is saved it will appear in the Page Overview</target>
             </trans-unit>
             <trans-unit id="5074">
                 <source>ext_info.add_expl_page.result_video_and_text</source>
@@ -2843,16 +2867,16 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="5075">
                 <source>ext_info.add_expl_page.result_text</source>
-                <target>Textual explanation page</target>
+                <target>Text only explanation page</target>
             </trans-unit>
             <trans-unit id="5076">
                 <source>ext_info.add_asign_page.t_long_01</source>
-                <target>An assignment page consists of open-ended and/or multiple choice questions. The number of questions per page varies from one to ten. At least one correct anwser should be checked for each multiple choice question. You can add as many pages as you like. Once a page is created it will appear in the Page Overview. 
+                <target>An assignment page consists of open-ended and/or multiple choice questions. The number of questions per page varies from one to ten. At least one correct answer should be checked for each multiple choice question. You can add as many pages as you like. Once a page is created it will appear in the Page Overview. 
 </target>
             </trans-unit>
             <trans-unit id="5077">
                 <source>ext_info.add_asign_page.edit_page</source>
-                <target>Edit assignement page</target>
+                <target>Edit assignment page</target>
             </trans-unit>
             <trans-unit id="5078">
                 <source>ext_info.add_asign_page.add_question</source>
@@ -2864,7 +2888,7 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="5080">
                 <source>ext_info.add_asign_page.li.step_02</source>
-                <target>Page title</target>
+                <target>Enter a page title</target>
             </trans-unit>
             <trans-unit id="5081">
                 <source>ext_info.add_asign_page.add_questions_to_page</source>
@@ -2892,11 +2916,11 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="5087">
                 <source>ext_info.add_asign_page.add_questions_to_page.open_quest.li.step_b</source>
-                <target>Enter a question and the corresponding answer options. Next, make the correct answer(s) checked. Next, click the button Save</target>
+                <target>Enter a question and several possible answers. Next, make the correct answer(s) checked. Next, click the button Save</target>
             </trans-unit>
             <trans-unit id="5088">
                 <source>ext_info.add_asign_page.add_questions_to_page.open_quest.li.step_c</source>
-                <target>The question appears on the assignment page. The maximum questions you can add per page is 10</target>
+                <target>The question appears on the assignment page. The maximum number of questions you can add per page is 10</target>
             </trans-unit>
             <trans-unit id="5089">
                 <source>ext_info.add_asign_page.add_questions_to_page.open_quest.li.step_d</source>
@@ -2904,7 +2928,7 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="5090">
                 <source>ext_info.add_video.t_long_01</source>
-                <target>There are two options to add a YouTube video to a course page</target>
+                <target>There are two options to add an YouTube video to a course page</target>
             </trans-unit>
             <trans-unit id="5091">
                 <source>ext_info.add_video.add_video</source>
@@ -2912,11 +2936,11 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="5092">
                 <source>ext_info.add_video.add_video.option_i.step_i</source>
-                <target>I. Visit YouTube and select a video. Copy the link from the address bar of your browser</target>
+                <target>I. Visit YouTube and select a video. Copy the link from the browser address bar</target>
             </trans-unit>
             <trans-unit id="5093">
                 <source>ext_info.add_video.add_video.option_i.step_ii</source>
-                <target>II. Paste link in the form field. Next, press the button + Video</target>
+                <target>II. Paste the link in the form field. Next, press the button + Video</target>
             </trans-unit>
             <trans-unit id="5094">
                 <source>ext_info.add_video.add_video.option_i</source>
@@ -2928,7 +2952,7 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="5096">
                 <source>ext_info.add_video.add_video.option_ii.li.step_a</source>
-                <target>A. Visit YouTube and select a video.  Hoover over the video and press the right mouse button. Select the option: “Copy video url”</target>
+                <target>A. Visit YouTube and select a video.  Hoover over the video and press the right mouse button. Next, select the option: “Copy video url”</target>
             </trans-unit>
             <trans-unit id="5097">
                 <source>ext_info.add_video.add_video.option_ii.li.step_b</source>
@@ -2948,7 +2972,7 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="50101">
                 <source>ext_info.publish.t_long.min_req_iii</source>
-                <target>added at least one course page</target>
+                <target>one or more course page(s)</target>
             </trans-unit>
             <trans-unit id="50102">
                 <source>ext_info.publish.t_long.min_req_02</source>
@@ -2964,7 +2988,7 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="50105">
                 <source>ext_info.page_overview.t_long_01</source>
-                <target>When a page is created it appears in the Page Overview. On this location you can select a page you want to edit or remove. You can rearrange the page order by drag and drop</target>
+                <target>Once a page is created it will appear in the Page Overview. On this location you can select a page you want to edit or remove. You can rearrange the page order by drag and drop</target>
             </trans-unit>
             <trans-unit id="50106">
                 <source>ext_info.page_overview.where_page_overview</source>
@@ -2972,7 +2996,7 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="50107">
                 <source>ext_info.remove_course.t_long_01</source>
-                <target>Navigate to: Create course → My courses. Select the course you want to remove. When a course is removed it will no longer appear in the search results. However, the course will still be available for someone who added it to his or her course basket, until the course has been removed from the basket</target>
+                <target>Navigate to: Create course → My courses. Select the course you want to remove. When a course is removed it will no longer appear in the search results. However, the course can still be available for those who have it in their course basket</target>
             </trans-unit>
             <trans-unit id="50108">
                 <source>ext_info.where_remove_course</source>
@@ -2988,7 +3012,7 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="50114">
                 <source>imo.course_report.t_long.intro_part_01</source>
-                <target>A course report will be generated once you finish a course. The report is based on your answers. You can view and share your reports. For each assignment page a page in the course report will be generated. You can view the report online or download a PDF version</target>
+                <target>A course report will be generated once you finish a course. The report is based on your answers. You can view and share your reports. For each assignment page a course report page will be generated. You can view the report online or download a PDF version</target>
  </trans-unit>
             <trans-unit id="50115">
                 <source>imo.course_report.share_with_mentor</source>
@@ -2996,7 +3020,7 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="50116">
                 <source>imo.course_report.share_with_mentor.t_long_01</source>
-                <target>The student can share a course report with someone else (who also has a StudyLivre account), for example a friend or a teacher. The only thing the student has to do is to fill in the unique SHARE CODE of the person with who he or she wants to share the report
+                <target>A student can share a course report with someone else (who also has a StudyLivre account), for example a friend or a teacher. The only thing the student has to do is to fill in the unique SHARE CODE of the person with who he or she wants to share the report
 </target>
             </trans-unit>
             <trans-unit id="50117">
@@ -3005,7 +3029,7 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="50118">
                 <source>imo.course_report.structure.t_long_01</source>
-                <target>The cover page shows general information such as course name, the student's name and the percentage of correctly answered multiple choice questions. The page layout is structured chronologically. The rest of the report shows questions and the  answers the student has given. For each multiple choice question you see the correct answer and the answer the student has given. For each open-end question you see the anwser which the student has given and an answer indication.</target>
+                <target>The cover page displays general information such as course name, the student's name and the percentage of correctly answered multiple choice questions. The page layout is structured chronologically. The rest of the report shows questions and the  answers the student has given. For each multiple choice question you see the correct answer and the answer the student has given. For each open-end question you see the answer which the student has given and an answer indication</target>
             </trans-unit>
             <trans-unit id="50119">
                 <source>imo.course_report.step_01.search_course</source>
@@ -3021,7 +3045,7 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="50122">
                 <source>imo.course_report.step_02.mentor_provides_mentor_code.t_long_01</source>
-                <target>Each StudyLivre account has its own share code. This code can be found on the following locations</target>
+                <target>Each StudyLivre account has its own share code. This code can be found at the following locations</target>
             </trans-unit>
             <trans-unit id="50123">
                 <source>imo.course_report.step_02.li.location_i</source>
@@ -3029,7 +3053,7 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="50124">
                 <source>imo.course_report.step_02.li.location_ii</source>
-                <target>Basket → Shared reports</target>
+                <target>Create course → Shared reports</target>
             </trans-unit>
             <trans-unit id="50125">
                 <source>imo.course_report.step_03.students_enter_mentor_code</source>
@@ -3046,12 +3070,12 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="50128">
                 <source>imo.course_report.step_04.mentor_accepts</source>
-                <target>A person receives after his or her share code is entered a share request (Basket → Shared reports). That person can either accept or decline the request 
+                <target>A person receives after his or her share code is entered a share request (Create course → Shared reports). That person can either accept or decline the request 
 </target>
             </trans-unit>
             <trans-unit id="50129">
                 <source>imo.course_report.step_04.mentor_declines</source>
-                <target>When a person accepts a share request he or she can view the report which belongs to the request (Basket → Shared reports)</target>
+                <target>When a person accepts a share request he or she can view the report which belongs to the request (Create course → Shared reports)</target>
             </trans-unit>
             <trans-unit id="50130">
                 <source>imo.course_report.step_05.view_report</source>
@@ -3067,7 +3091,7 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="50133">
                 <source>imo.course_report.step_05.t_long_01</source>
-                <target>You can view multiple reports for each student who shared reports with you. For each individual report you have a choice to accept or decline the share request</target>
+                <target>You can view multiple reports from a person. For each report you have to either accept or decline the share request</target>
             </trans-unit>             
 <trans-unit id="50134">
                 <source>imo.follow_course.step_01.li.to_course</source>
@@ -3119,7 +3143,7 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="50146">
                 <source>imo.follow_course.step_02.first_course_part.t_long</source>
-                <target>Each course starts with a Start page. On this page you can obtain information about how to follow a course and the course report.</target>
+                <target>Each course starts with a Start page</target>
             </trans-unit>
             <trans-unit id="50147">
                 <source>imo.follow_course.step_03.middle_part</source>
@@ -3163,7 +3187,7 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="50157">
                 <source>imo.follow_course.step_04.t_long_02</source>
-                <target>Not every course has the following pages: announcements, documents and planning</target>
+                <target>Note: some courses do not have the following pages: announcements, documents and planning</target>
             </trans-unit>
             <trans-unit id="50158">
                 <source>imo.follow_course.step_04.close_course.t_long</source>
@@ -3175,7 +3199,7 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="50160">
                 <source>imo.follow_course.step_05.closing_part.t_long</source>
-                <target>On the Last page you can grade the course. You can fill in a review or rate the course (between one and five stars)</target>
+                <target>On the Last page you can provide feedback about the course. You can fill in a review or rate the course (between one and five stars)</target>
             </trans-unit>
             <trans-unit id="50161">
                 <source>imo.create_course.course_structure</source>
@@ -3236,7 +3260,7 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="50175">
                 <source>imo.create_course.step_03.publish.t_long_01</source>
-                <target>When your course meets the minimum requirements you can publish it. After publication your course will appear in the search results. In other words: students can follow your course.</target>
+                <target>When your course meets the minimum requirements you can publish it. After publication your course will appear in the search results. In other words: students can follow your course</target>
             </trans-unit>            
             <trans-unit id="50176">
                 <source>imo.create_course.step_more.t_long_01</source>
@@ -3264,7 +3288,7 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="50182">
                 <source>imo.report_content.step_01.notify_content.li_01</source>
-                <target>Navigate to the course page for wich you want to submit a notification. Next, press the dropdown ** More. There you can select the option notify</target>
+                <target>Navigate to the course page for wich you want to submit a notification. Next, press the dropdown ** More. Next, select the option notify</target>
             </trans-unit>
             <trans-unit id="50183">
                 <source>imo.report_content.step_01.notify_content.li_02</source>
@@ -3289,7 +3313,7 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="50188">
                 <source>imo.report_content.step_03.feedback.result_negative</source>
-                <target>When the notification is found to be illegitimate the person who submitted the notification form will be informed.</target>
+                <target>When the notification is found to be illegitimate the person who submitted the notification form will be informed</target>
             </trans-unit>
             <trans-unit id="50189">
                 <source>imo.frequently_used.ter_info.t_03</source>
@@ -3305,7 +3329,7 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
              <trans-unit id="50192">
                 <source>imo.add_documents.dropbox_01</source>
-                <target>Sign in to Dropbox and select the directory you want to share. Next click the button: Share</target>
+                <target>Sign in to Dropbox and select the directory you want to share. Next, click the button: Share</target>
             </trans-unit>
             <trans-unit id="50193">
                 <source>imo.add_documents.dropbox_02</source>
@@ -3321,7 +3345,7 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="50196">
                 <source>imo.li.introduction_video_and_text</source>
-                <target>introduction video and/or text about the course (required part)</target>
+                <target> introduction video and/or text about the course (required part)</target>
             </trans-unit>
             <trans-unit id="50197">
                 <source></source>
@@ -3449,11 +3473,11 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="6030">
                 <source>m.author.t.widraw_claim</source>
-                <target> Withdraw  copyright infringement  notification </target>
+                <target>Withdraw a copyright infringement  notification </target>
             </trans-unit>
             <trans-unit id="6082">
                 <source>m.author.t_long.widraw_claim</source>
-                <target>After a notification of copyright infringement has been filed, the petitioner can change its mind and withdraw the claim. If this is the case than the notification procedure will be cancelled.  You can send an email info@StudyLivre.com if you wish to retract a claim.</target>
+                <target>Once a notification of copyright infringement has been filed, the petitioner can change its mind and withdraw the claim. If this is the case then the notification procedure will be cancelled.  You can send an email to info@StudyLivre.com if you wish to retract a claim.</target>
             </trans-unit>
             <trans-unit id="6031">
                 <source>m.author.t.submit_defense</source>
@@ -3461,7 +3485,7 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="6032">
                 <source>m.author.t_long.submit_defense</source>
-                <target>A defense is a request to restore a course item that has been removed because of (alleged) infringement. This procedure can only be invoked in cases where the course item was deleted or blocked. Send an email to info@StudyLivre.com  if you want to submit a defense.</target>
+                <target>A defense can be descriped as a request to restore a course item that has been removed due to an (alleged) infringement. This procedure can only be invoked in cases where the course item was deleted or blocked. Send an email to info@StudyLivre.com  if you want to submit a defense.</target>
             </trans-unit>
             <trans-unit id="6033">
                 <source>m.author.t.principles.copyright.complaints</source>
@@ -3469,11 +3493,11 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="6034">
                 <source>m.author.t_long.principles.copyright.complaints_part_01</source>
-                <target>You can get a warning because of a copyright notification. If this case it is very likely that a course item that you have created has been removed or blocked. When a copyright owner notifies us officially that you can’t use certain content, we are legally obliged to delete the item in question.</target>
+                <target>You can recieve a warning due to a copyright notification. If this case it is very likely that a course item that you have created has been removed or blocked. When a copyright owner notifies us officially that you are not allowed to use certain content, we are legally obliged to delete the item in question.</target>
             </trans-unit>
             <trans-unit id="6035">
                 <source>m.author.t_long.principles.copyright.complaints_part_02</source>
-                <target>An account which has received more than three copyright warnings will be removed. A person with a terminated account is no longer allowed to create new accounts. </target>
+                <target>An account which has received more than three copyright warnings will be removed. A person with a terminated account is no longer allowed to create a new  account. </target>
             </trans-unit>
 
             <!-- contact -->
@@ -3546,7 +3570,7 @@ If you want to contact StudyLivre with regard to  copyright issues or inappropri
             <trans-unit id="6051">
                 <source>m.guidelines.t_long.respect_guidlines</source>
                 <target>
-We ask you to not abuse this site. Each course item which is added involves a certain degree of trust. Our guidelines are basically common sense.</target>
+We ask you to make proper use of this website by adhering to the guidelines. Each course item which is added involves a certain degree of trust. Our guidelines are basically common sense.</target>
             </trans-unit>
             <trans-unit id="6052">
                 <source>m.guidelines.t_header.the_guidelines</source>
@@ -3554,7 +3578,7 @@ We ask you to not abuse this site. Each course item which is added involves a ce
             </trans-unit>
             <trans-unit id="6053">
                 <source>m.guidelines.t_long.the_guidelines</source>
-                <target>Below you will find rules which apply to this site. We would appreciate if you take these rules seriously. </target>
+                <target>Below you will find rules which apply to this site. We would appreciate if you take these rules seriously: </target>
             </trans-unit>
             <trans-unit id="6054">
                 <source>m.guidelines.t.copy_rights</source>
@@ -3562,7 +3586,7 @@ We ask you to not abuse this site. Each course item which is added involves a ce
             </trans-unit>
             <trans-unit id="6055">
                 <source>m.guidelines.t_long.copy_rights</source>
-                <target>Respect copyright. Use only course material that you created yourself or material for which you have been given permission to use. Visit the Author Righ menu for more information. </target>
+                <target>Respect copyright and intelectual property of other people. Try to use only course material that you created yourself or material for which you have been granted permission. Visit the Author Right menu for more information. </target>
             </trans-unit>
             <trans-unit id="6056">
                 <source>m.guidelines.t.sex_content</source>
@@ -3594,7 +3618,7 @@ We ask you to not abuse this site. Each course item which is added involves a ce
             </trans-unit>
             <trans-unit id="6063">
                 <source>m.guidelines.t_long.spam</source>
-                <target>Don’t create misleading descriptions or titles with the intention to get more course visits. It is not allowed to place undue, unwanted or repetitive content.</target>
+                <target>Don’t create misleading descriptions or titles with the intention to get more course views. It is not allowed to place undue, unwanted or repetitive content.</target>
             </trans-unit>
             <trans-unit id="6064">
                 <source>m.guidelines.t.how_to_report</source>
@@ -3602,7 +3626,7 @@ We ask you to not abuse this site. Each course item which is added involves a ce
             </trans-unit>
             <trans-unit id="6065">
                 <source>m.guidelines.t_long.how_to_report</source>
-                <target>You may not like all content that you encounter on StudyLivre. You can notify Studylivre by using the report form if you suspect that some course content is inappropriate. We will check your reports carefully. </target>
+                <target>When you encounter inappropriate content or a author right infringement you can notify StudyLivre with the notify form. </target>
             </trans-unit>
             <!-- >FAQ -->
             <trans-unit id="6066">
@@ -3627,7 +3651,7 @@ We ask you to not abuse this site. Each course item which is added involves a ce
             </trans-unit>
             <trans-unit id="6071">
                 <source>m.questions.anwser.report_content</source>
-                <target>You can use the notify form, which can be accessed from the page where you found the inappropriate content. Below each page there is a dropdown more, there you can find a link to the notify form. </target>
+                <target>You can use the notify form, which can be accessed from the page where you found the inappropriate content. Below each page there is a dropdown called ***more, there you can find a link to the notify form. </target>
             </trans-unit>
             <trans-unit id="6072">
                 <source>m.questions.question.create_acount_fb_and_google</source>
@@ -3647,11 +3671,11 @@ We ask you to not abuse this site. Each course item which is added involves a ce
             </trans-unit>
             <trans-unit id="6076">
                 <source>m.questions.question.which_personal_data_saved</source>
-                <target>Which personal data stores StudyLivre when I create an account?</target>
+                <target>Which personal data does StudyLivre save when I create an account?</target>
             </trans-unit>
             <trans-unit id="6077">
                 <source>m.questions.anwser.which_personal_data_saved</source>
-                <target>Email address, first and last name, social medium account you used. You can also add educational details on your profile page.</target>
+                <target>Email address, first and last name, social medium account you used during your first sign in. You can also add educational details on your profile page.</target>
             </trans-unit>   
             <trans-unit id="6078">
                 <source>m.contact.t.email_message</source>
@@ -3707,7 +3731,7 @@ We ask you to not abuse this site. Each course item which is added involves a ce
             </trans-unit> 
             <trans-unit id="6093">
                 <source>m.guidelines.t_long.volicence_content</source>
-                <target> It is not allowed to post shocking course material or material that can be considered sensational or disrespectful. If you use news or documentary videos that contain shocking images make sure that you provide the viewer with the right context so that he or she can understand what is happening. </target>
+                <target> It is not allowed to post shocking course material or material that can be considered sensational or disrespectful. When you use news or documentary videos that contain shocking images make sure that you provide the viewer with the right background information, so that he or she can understand what is happening. </target>
             </trans-unit> 
 
 <!-- Einde more tab-->  
@@ -4053,8 +4077,8 @@ data;</target>
                 <target>This  policy is governed by Dutch law. Disputes arising out of or related to these Terms, the website and / or information will be submitted to a court in the Netherlands.</target>
             </trans-unit>
             <trans-unit id="7079">
-                <source></source>
-                <target></target>
+                <source>note.to.translation</source>
+                <target>NOTE: this text is translated from Dutch to English. Due to translation, some words or sentences can lose their original meaning. Therefore, the Dutch text is leading with regard to juridical/legal interpretation. </target>
             </trans-unit>
             <trans-unit id="7080">
                 <source></source>

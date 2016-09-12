@@ -16,7 +16,7 @@
         <br />
           <br />
         <p class="centrum">
-            {% trans %}mo.remove_student_report.t_long_01{% endtrans %} {{ report.report.course.name }} {% trans %}mo.remove_student_report.t_long_02{% endtrans %} {{ report.user.firstName|capitalize }} {{ report.user.surname|capitalize }} {% trans %}mo.remove_details_02{% endtrans %}
+            {% trans %}mo.remove_student_report.t_long_01{% endtrans %} "<b>{{ report.report.course.name }}</b>" {% trans %}mo.remove_student_report.t_long_02{% endtrans %} "<b>{{ report.user.firstName|capitalize }} {{ report.user.surname|capitalize }}</b>" {% trans %}mo.remove_details_are_you_sure{% endtrans %}
         </p>
     </div>
 {% endblock %}
