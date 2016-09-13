@@ -96,7 +96,7 @@
             </trans-unit>
             <trans-unit id="24">
                 <source>course.edit.picture.invalid.extension</source>
-                <target>This file is not allowed. You can only use files which have the extention: %extensions% </target>
+                <target>This file is not allowed. You can only use files which have the extension: %extensions% </target>
             </trans-unit>
             <trans-unit id="25">
                 <source>course.edit.picture.unrecognized</source>
@@ -196,7 +196,7 @@
             </trans-unit>
             <trans-unit id="49">
                 <source>profile.edit.email.invalid</source>
-                <target>Please enter a valid email adress</target>
+                <target>Please enter a valid email address</target>
             </trans-unit>
             <trans-unit id="50">
                 <source>profile.edit.date.of.birth.invalid</source>
@@ -256,7 +256,7 @@
             </trans-unit>
             <trans-unit id="64">
                 <source>course.collection.course.removed</source>
-                <target>The selected course is removed and cannot be added to the course bakset</target>
+                <target>The selected course is removed and cannot be added to the course basket</target>
             </trans-unit>
             <trans-unit id="65">
                 <source>course.collection.course.not.published</source>
@@ -268,7 +268,7 @@
             </trans-unit>
             <trans-unit id="67">
                 <source>course.resources.invalid.dropbox</source>
-                <target>The DropBox link you provided is invalid </target>
+                <target>The Dropbox link you provided is invalid </target>
             </trans-unit>
             <trans-unit id="68">
                 <source>course.reviews.one.per.user</source>
