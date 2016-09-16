@@ -4,7 +4,7 @@
             <div id="logo">
                 <div class="btn-group">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="{% trans %}h.quickmenu{% endtrans %}">
-                        <img src="{{ asset('images/logo-skhole.png') }}" class="img-rounded" style="height: 35px;" />
+                        <img src="{{ asset('images/logo-skhole.png') }}" class="img-rounded" alt="{% trans %}alt.studylivre{% endtrans %}" title="{% trans %}alt.studylivre{% endtrans %}" height = "35" />
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" role="menu">
@@ -24,7 +24,7 @@
                     <div class="btn-group">
                         {% if app.user %}
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="{% trans %}o.nav.my_account{% endtrans %}">
-                                <img id="profile-picture-header" src="{{ app.user.picture is not null ? asset(app.user.picture) : asset('images/gebruiker.png') }}" class="img-rounded profile-picture"> {% trans %}o.my_account{% endtrans %}
+                                <img id="profile-picture-header" src="{{ app.user.picture is not null ? asset(app.user.picture) : asset('images/gebruiker.png') }}" class="img-rounded profile-picture" alt="{% trans %}alt.user{% endtrans %}" title="{% trans %}alt.user{% endtrans %}"> {% trans %}o.my_account{% endtrans %}
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
@@ -37,7 +37,7 @@
                             </ul>
                         {% else %}
                             <button type="button" class="btn btn-default" data-toggle="modal" data-target="#loginModal">
-                                <img src="{{ asset('images/gebruiker.png') }}" class="img-rounded profile-picture" />
+                                <img src="{{ asset('images/gebruiker.png') }}" class="img-rounded profile-picture" alt="{% trans %}alt.user{% endtrans %}" title="{% trans %}alt.user{% endtrans %}"/>
                                 {% trans %}o.nav.login{% endtrans %}
                             </button>
                         {% endif %}

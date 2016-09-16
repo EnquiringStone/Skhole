@@ -69,7 +69,7 @@
             </trans-unit>
              <trans-unit id="17">
                 <source>meta.description_keywords.home_search</source>
-                <target>Course, course report, StudyLivre</target>
+                <target>Course, course report, StudyLivre, Study, Livre</target>
             </trans-unit>
              <trans-unit id="18">
                 <source>meta.description_content.home_discover</source>
@@ -79,7 +79,87 @@
                 <source>meta.description_keywords.home_discover</source>
                 <target>StudyLivre, discover</target>
             </trans-unit>
-             <trans-unit id="20">
+            <trans-unit id="20">
+                <source>alt.studylivre</source>
+                <target>Logo StudyLivre</target>
+            </trans-unit>
+             <trans-unit id="21">
+                <source>meta.description.more_tab</source>
+                <target>The tab more contains supporting information about StudyLivre, for example: About us, contact and guidelines. </target>
+            </trans-unit>
+             <trans-unit id="22">
+                <source>meta.description.create_course_tab</source>
+                <target>The tab Create course offers you the opportunity to create your own courses. </target>
+            </trans-unit>
+             <trans-unit id="23">
+                <source>meta.description.basket_tab</source>
+                <target>The tab Basket consists of: Course basket and My reports. </target>
+            </trans-unit>
+             <trans-unit id="24">
+                <source>alt.star_rating</source>
+                <target>Star</target>
+            </trans-unit>
+             <trans-unit id="25">
+                <source>alt.user_picture</source>
+                <target>Image of an user</target>
+            </trans-unit>
+             <trans-unit id="26">
+                <source>alt.teachter_picture</source>
+                <target>Instructor image</target>
+            </trans-unit>
+             <trans-unit id="27">
+                <source>alt.user</source>
+                <target>User image</target>
+            </trans-unit>
+             <trans-unit id="28">
+                <source>alt.thinking_guy</source>
+                <target>Thinking statue</target>
+            </trans-unit>
+             <trans-unit id="29">
+                <source>alt.envelope</source>
+                <target>Messages</target>
+            </trans-unit>
+             <trans-unit id="30">
+                <source>alt.something_went_wrong</source>
+                <target>Something went wrong message</target>
+            </trans-unit>
+            <trans-unit id="31">
+                <source>alt.wise_guy</source>
+                <target>Instructor</target>
+            </trans-unit>
+            <trans-unit id="32">
+                <source></source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="33">
+                <source></source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="34">
+                <source></source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="35">
+                <source></source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="36">
+                <source></source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="37">
+                <source></source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="38">
+                <source></source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="39">
+                <source></source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="40">
                 <source></source>
                 <target></target>
             </trans-unit>
@@ -2699,7 +2779,7 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="5033">
                 <source>mo.create_course.sub_title</source>
-                <target>How to create a course?</target>
+                <target>Information about creating courses</target>
             </trans-unit>
             <trans-unit id="5034">
                 <source>imo.where_edit_this_part</source>
@@ -3004,7 +3084,7 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
 <trans-unit id="50111">
                 <source>imo.course_report.sub_title</source>
-                <target>View your course result in a report and share it with others</target>
+                <target>Information about the course report</target>
             </trans-unit>
             <trans-unit id="50113">
                 <source>imo.course_report.intro</source>

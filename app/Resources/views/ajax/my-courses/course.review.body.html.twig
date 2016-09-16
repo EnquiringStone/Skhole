@@ -2,7 +2,7 @@
     <div class="thumbnail">
         <div class="row">
             <div class="col-md-1">
-                <img src="{{ asset('images/gebruiker.png') }}" class="img-rounded" />
+                <img src="{{ asset('images/gebruiker.png') }}" class="img-rounded" alt="{% trans %}alt.user{% endtrans %}" title="{% trans %}alt.user{% endtrans %}"/>
             </div>
             <div class="col-md-11">
                 {% if review.insertUser is not null %}
@@ -13,7 +13,7 @@
                             <b>{% trans %}o.course_rating.t.course_rating{% endtrans %}:</b>
                             {% if review.contentRating is not null %}
                                 {% for z in 0..review.contentRating %}
-                                    <img src="{{ asset('images/star_rating.png') }}" class="img-rounded" />
+                                    <img src="{{ asset('images/star_rating.png') }}" class="img-rounded" alt="{% trans %}alt.star_rating{% endtrans %}" title="{% trans %}alt.star_rating{% endtrans %}"/>
                                 {% endfor %}
                             {% else %}
                                 -
@@ -31,7 +31,7 @@
                             <b>{% trans %}l.last_page.grade_course{% endtrans %}:</b>
                             {% if review.contentRating is not null %}
                                 {% for z in 1..review.contentRating %}
-                                    <img src="{{ asset('images/star_rating.png') }}" class="img-rounded" />
+                                    <img src="{{ asset('images/star_rating.png') }}" class="img-rounded" alt="{% trans %}alt.star_rating{% endtrans %}" title="{% trans %}alt.star_rating{% endtrans %}"/>
                                 {% endfor %}
                             {% else %}
                                 -

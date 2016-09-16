@@ -15,7 +15,7 @@
         </div>
         <div class="media-list">
             <div class="media">
-                <img class="media-object img-rounded pull-left remove-responsive-800" src="{{ asset('images/logo-skhole.png') }}"/>
+                <img class="media-object img-rounded pull-left remove-responsive-800" src="{{ asset('images/logo-skhole.png') }}" alt="{% trans %}alt.studylivre{% endtrans %}" title="{% trans %}alt.studylivre{% endtrans %}"/>
                 <div class="pull-right">
                     <div class="btn-group-vertical">
                         <a href="{{ path('app_teach_edit_course_page', {'id': course.id}) }}" class="btn btn-primary btn-sm">
@@ -60,7 +60,7 @@
                             <b>{% trans %}t.create_course.b.rating{% endtrans %}:</b>
                             {% if course.averageContentRating is not null %}
                                 {% for i in 0..course.averageContentRating|round %}
-                                    <img src="{{ asset('images/star_rating.png') }}" class="img-rounded">
+                                    <img src="{{ asset('images/star_rating.png') }}" class="img-rounded" alt="{% trans %}alt.star_rating{% endtrans %}" title="{% trans %}alt.star_rating{% endtrans %}">
                                 {% endfor %}
                             {% else %}
                                 -
@@ -82,7 +82,7 @@
                             <b>{% trans %}t.create_course.b.difficulty{% endtrans %}:</b>
                             {% if course.difficulty is not null %}
                                 {% for i in 1..course.difficulty %}
-                                    <img src="{{ asset('images/star_rating.png') }}" class="img-rounded">
+                                    <img src="{{ asset('images/star_rating.png') }}" class="img-rounded" alt="{% trans %}alt.star_rating{% endtrans %}" title="{% trans %}alt.star_rating{% endtrans %}">
                                 {% endfor %}
                             {% else %}
                                 -

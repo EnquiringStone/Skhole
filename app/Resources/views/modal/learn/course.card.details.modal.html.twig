@@ -77,7 +77,7 @@
                         <b>{% trans %}o.frequently_used.rating{% endtrans %}:</b>
                         {% if course.averageContentRating is not null %}
                             {% for i in 0..course.averageContentRating|round %}
-                                <img src="{{ asset('images/star_rating.png') }}" class="img-rounded">
+                                <img src="{{ asset('images/star_rating.png') }}" class="img-rounded" alt="{% trans %}alt.star_rating{% endtrans %}" title="{% trans %}alt.star_rating{% endtrans %}">
                             {% endfor %}
                         {% else %}
                             -
@@ -99,7 +99,7 @@
                         <b>{% trans %}o.frequently_used.difficulty{% endtrans %}:</b>
                         {% if course.difficulty is not null %}
                             {% for i in 1..course.difficulty %}
-                                <img src="{{ asset('images/star_rating.png') }}" class="img-rounded">
+                                <img src="{{ asset('images/star_rating.png') }}" class="img-rounded" alt="{% trans %}alt.star_rating{% endtrans %}" title="{% trans %}alt.star_rating{% endtrans %}">
                             {% endfor %}
                         {% else %}
                             -
@@ -152,7 +152,7 @@
                             {% for provider in course.courseCard.providers %}
                                 <div class="media">
                                     <div class="pull-left">
-                                        <img src="{{ asset('images/logo-skhole.png') }}" class="media-object">
+                                        <img src="{{ asset('images/logo-skhole.png') }}" class="media-object" alt="{% trans %}alt.studylivre{% endtrans %}" title="{% trans %}alt.studylivre{% endtrans %}">
                                     </div>
                                     <div class="media-body">
                                         <h4>{{ provider.name }}</h4>
@@ -177,7 +177,7 @@
                                 {% if not teacher.isUndesirable %}
                                     <div class="media">
                                         <div class="pull-left">
-                                            <img src="{{ teacher.pictureUrl is not null ? asset(teacher.pictureUrl) : asset('images/head-wiseguy.png') }}" class="media-object teacher-row-picture">
+                                            <img src="{{ teacher.pictureUrl is not null ? asset(teacher.pictureUrl) : asset('images/head-wiseguy.png') }}" class="media-object teacher-row-picture" alt="{% trans %}alt.wise_guy{% endtrans %}" title="{% trans %}alt.wise_guy{% endtrans %}">
                                         </div>
                                         <div class="media-body">
                                             <h4>{{ teacher.name }}</h4>

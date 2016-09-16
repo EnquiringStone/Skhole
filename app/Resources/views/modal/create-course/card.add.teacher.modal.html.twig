@@ -32,9 +32,9 @@
                                 <br />
                                 <div class="teacher-picture-preview" data-error="{% trans %}mo.select_img_right_extention{% endtrans %}">
                                     {% if teacher is defined and teacher.pictureUrl is not null %}
-                                        <img src="{{ asset(teacher.pictureUrl) }}" class="teacher-picture-preview-img">
+                                        <img src="{{ asset(teacher.pictureUrl) }}" class="teacher-picture-preview-img" alt="{% trans %}alt.teachter_picture{% endtrans %}" title="{% trans %}alt.teachter_picture{% endtrans %}">
                                     {% else %}
-                                        <img src="{{ asset('images/head-wiseguy.png') }}" class="teacher-picture-preview-img">
+                                        <img src="{{ asset('images/head-wiseguy.png') }}" class="teacher-picture-preview-img" alt="{% trans %}alt.teachter_picture{% endtrans %}" title="{% trans %}alt.teachter_picture{% endtrans %}">
                                     {% endif %}
                                     <span class="glyphicon glyphicon-trash clickable remove-teacher-picture-preview" data-standard-picture="{{ asset('images/head-wiseguy.png') }}"
                                         data-url="{{ path('app_home_ajax_page') }}"></span>

@@ -2,7 +2,7 @@
     <ul class="media-list">
         <li class="media" data-teacher-id="{{ teacher.id }}">
             <div class="pull-left teacher-picture-row-image">
-                <img src="{% if teacher.pictureUrl is not null %}{{ asset(teacher.pictureUrl) }}{% else %}{{ asset('images/head-wiseguy.png') }}{% endif %}" class="media-object teacher-row-picture">
+                <img src="{% if teacher.pictureUrl is not null %}{{ asset(teacher.pictureUrl) }}{% else %}{{ asset('images/head-wiseguy.png') }}{% endif %}" class="media-object teacher-row-picture" alt="{% trans %}alt.teachter_picture{% endtrans %}" title="{% trans %}alt.teachter_picture{% endtrans %}">
             </div>
             <div class="media-body">
                 <div class="btn-group-vertical pull-right">

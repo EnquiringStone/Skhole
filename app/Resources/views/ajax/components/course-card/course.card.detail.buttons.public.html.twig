@@ -20,7 +20,7 @@
         <b>{% trans %}o.frequently_used.rating{% endtrans %}:</b>
         {% if averageScore != -1 %}
             {% for i in 1..averageScore %}
-                <img src="{{ asset('images/star_rating.png') }}" class="img-rounded">
+                <img src="{{ asset('images/star_rating.png') }}" class="img-rounded" alt="{% trans %}alt.star_rating{% endtrans %}" title="{% trans %}alt.star_rating{% endtrans %}">>
             {% endfor %}
         {% else %}
             -
@@ -44,7 +44,7 @@
         <b>{% trans %}o.frequently_used.difficulty{% endtrans %}:</b>
         {% if course.difficulty is not null %}
             {% for i in 1..course.difficulty %}
-                <img src="{{ asset('images/star_rating.png') }}" class="img-rounded">
+                <img src="{{ asset('images/star_rating.png') }}" class="img-rounded" alt="{% trans %}alt.star_rating{% endtrans %}" title="{% trans %}alt.star_rating{% endtrans %}">
             {% endfor %}
         {% else %}
             -

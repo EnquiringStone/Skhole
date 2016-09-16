@@ -69,7 +69,7 @@
             </trans-unit>
              <trans-unit id="17">
                 <source>meta.description_keywords.home_search</source>
-                <target>Cursus, cursusrapport, StudyLivre</target>
+                <target>Cursus, cursusrapport, StudyLivre, Study, Livre</target>
             </trans-unit>
              <trans-unit id="18">
                 <source>meta.description_content.home_discover</source>
@@ -79,10 +79,93 @@
                 <source>meta.description_keywords.home_discover</source>
                 <target>StudyLivre, ontdek</target>
             </trans-unit>
-             <trans-unit id="20">
+            <trans-unit id="20">
+                <source>alt.studylivre</source>
+                <target>Logo StudyLivre</target>
+            </trans-unit>
+             <trans-unit id="21">
+                <source>meta.description.more_tab</source>
+                <target>De tab Meer herbergt ondersteunde informatie over StudyLivre, waaronder: over ons, contact en richtlijnen. </target>
+            </trans-unit>
+             <trans-unit id="22">
+                <source>meta.description.create_course_tab</source>
+                <target>De tab Maak cursus beidt je de mogelijkheid om zelf cursussen te maken.</target>
+            </trans-unit>
+             <trans-unit id="23">
+                <source>meta.description.basket_tab</source>
+                <target>De tab mandje is onderverdeeld in: Cursusmandje en Mijn rapporten.</target>
+            </trans-unit>
+             <trans-unit id="24">
+                <source>alt.star_rating</source>
+                <target>ster</target>
+            </trans-unit>
+             <trans-unit id="25">
+                <source>alt.user_picture</source>
+                <target>Afbeelding van gebruiker</target>
+            </trans-unit>
+             <trans-unit id="26">
+                <source>alt.teachter_picture</source>
+                <target>Afbeelding van instructeur</target>
+            </trans-unit>
+             <trans-unit id="27">
+                <source>alt.user</source>
+                <target>Gebruiker afbeelding</target>
+            </trans-unit>
+             <trans-unit id="28">
+                <source>alt.thinking_guy</source>
+                <target>Denkend standbeeld</target>
+            </trans-unit>
+             <trans-unit id="29">
+                <source>alt.envelope</source>
+                <target>Berichten</target>
+            </trans-unit>
+             <trans-unit id="30">
+                <source>alt.something_went_wrong</source>
+                <target>Er is iets misgegaan boodschap.</target>
+            </trans-unit>
+            <trans-unit id="31">
+                <source>alt.wise_guy</source>
+                <target>Instructeur</target>
+            </trans-unit>
+            <trans-unit id="32">
                 <source></source>
                 <target></target>
             </trans-unit>
+            <trans-unit id="33">
+                <source></source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="34">
+                <source></source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="35">
+                <source></source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="36">
+                <source></source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="37">
+                <source></source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="38">
+                <source></source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="39">
+                <source></source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="40">
+                <source></source>
+                <target></target>
+            </trans-unit>
+ 
+
+
 
 <!-- Einde messages -->
 <!-- Tab learn: 0000 tot 0999 -->
@@ -1843,7 +1926,7 @@
             </trans-unit>
             <trans-unit id="30160">
                 <source>o.course_card.t.no_instructors</source>
-                <target>Deze cursus heeft geen Instructeurs</target>
+                <target>Deze cursus heeft geen instructeurs</target>
             </trans-unit>
             <trans-unit id="30161">
                 <source>o.frequently_used.page_overview</source>
@@ -2017,9 +2100,6 @@
                 <source>o.close_report</source>
                 <target>Rapport sluiten</target>
             </trans-unit>
-
-
-
            
 <!-- Einde non tab related -->
 <!-- Start Modals 4000 tot 4999  -->	
@@ -2438,7 +2518,7 @@
             </trans-unit>
             <trans-unit id="40104">
                 <source>mo.share_report.t_long.info</source>
-                <target>Als je de deelcode invult, kan de ontvanger die aan de deelcode is gekoppeld jouw cursusrapport inzien. Het kan een tijdje duren voordat je verzoek word geaccepteerd. Pas als het verzoek GEACEPTEERD is, zie je de naam van de acceptant in het blokje ‘Gedeelt met:’ (zie afbeelding). Let op: je kunt een rapport dat je gedeeld hebt niet verwijderen.</target>
+                <target>Als je de deelcode invult, kan de ontvanger die aan de deelcode is gekoppeld jouw cursusrapport inzien. Het kan een tijdje duren voordat je verzoek word geaccepteerd. Pas als het verzoek GEACCEPTEERD is, zie je de naam van de acceptant in het blokje ‘Gedeeld met:’ (zie afbeelding). Let op: je kunt een rapport dat je gedeeld hebt niet verwijderen.</target>
             </trans-unit>
             <trans-unit id="40105">
                 <source>mo.added_on</source>
@@ -2677,7 +2757,7 @@
             </trans-unit>
             <trans-unit id="5028">
                 <source>imo.follow_course.sub_title</source>
-                <target>Volg eenvoudig een cursus</target>
+                <target>Informatie over cursus volgen</target>
             </trans-unit>
             <trans-unit id="5029">
                 <source>imo.follow_course.step_01.search_course</source>
@@ -2697,7 +2777,7 @@
             </trans-unit>
             <trans-unit id="5033">
                 <source>mo.create_course.sub_title</source>
-                <target>Maak eenvoudig je eigen cursussen</target>
+                <target>Informatie over het maken van cursussen</target>
             </trans-unit>
             <trans-unit id="5034">
                 <source>imo.where_edit_this_part</source>
@@ -3018,7 +3098,7 @@
             </trans-unit>
             <trans-unit id="50111">
                 <source>imo.course_report.sub_title</source>
-                <target>Bekijk je cursus resultaat in een rapport en deel het met anderen</target>
+                <target>Informatie over het cursusrapport</target>
             </trans-unit>
             <trans-unit id="50113">
                 <source>imo.course_report.intro</source>

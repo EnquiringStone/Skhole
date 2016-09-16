@@ -36,7 +36,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="centrum">
-                        <img class="img-rounded" src="{% block exceptionImage %}{{ asset('images/'~ app.request.locale ~'/something_went_wrong.png') }}{% endblock %}">
+                        <img class="img-rounded" src="{% block exceptionImage %}{{ asset('images/'~ app.request.locale ~'/something_went_wrong.png') }}{% endblock %}" alt="{% trans %}alt.something_went_wrong{% endtrans %}" title="{% trans %}alt.something_went_wrong{% endtrans %}">
                     </div>
                 </div>
             </div>

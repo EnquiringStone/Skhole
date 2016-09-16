@@ -5,7 +5,7 @@
 {% block panelBaseContents %}
     <div class="panel-body">
         <h4>
-            <img src="{{ asset('images/denker.png') }}" class="img-rounded">
+            <img src="{{ asset('images/denker.png') }}" class="img-rounded" alt="{% trans %}alt.thinking_guy{% endtrans %}" title="{% trans %}alt.thinking_guy{% endtrans %}">
             {% trans %}h.teach_data{% endtrans %}
         </h4>
         <button type="button" class="btn btn-default btn-xs unclickable"><b>{% trans %}h.teach_data.number_of_courses_created{% endtrans %}:</b> {{ createdCourses }}</button>

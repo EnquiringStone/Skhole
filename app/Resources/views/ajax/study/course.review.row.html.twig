@@ -9,7 +9,7 @@
                     {% else %}
                         {{ asset('images/gebruiker.png') }}
                     {% endif %}
-                    " class="img-rounded profile-picture-preview-img">
+                    " class="img-rounded profile-picture-preview-img" alt="{% trans %}alt.user{% endtrans %}" title="{% trans %}alt.user{% endtrans %}">
             </div>
             <div class="col-md-11">
                 <h4>{% if hasUser %}{{ review.insertUser.realName|capitalize }}{% else %}{% trans %}o.course_rating.anonymous{% endtrans %}{% endif %}</h4>
@@ -19,7 +19,7 @@
                         <b>{% trans %}o.course_rating.t.course_rating{% endtrans %}:</b>
                         {% if review.contentRating is not null %}
                             {% for i in 1..review.contentRating %}
-                                <img src="{{ asset('images/star_rating.png') }}" class="img-rounded">
+                                <img src="{{ asset('images/star_rating.png') }}" class="img-rounded" alt="{% trans %}alt.star_rating{% endtrans %}" title="{% trans %}alt.star_rating{% endtrans %}">
                             {% endfor %}
                         {% else %}
                             {% trans %}o.frequently_used.no_rating_yet{% endtrans %}

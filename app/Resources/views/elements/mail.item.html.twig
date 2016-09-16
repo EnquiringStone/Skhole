@@ -1,7 +1,7 @@
 {% block mailItem %}
     {% if is_granted('ROLE_USER') %}
         <a class="pull-right remove-responsive-400" href="{{ path('app_home_profile_page', {'page': 'messages'}) }}" style="position: relative;">
-            <img src="{{ asset('images/messages.png') }}" class="img-rounded" height="25px">
+            <img src="{{ asset('images/messages.png') }}" class="img-rounded" height="25px" alt="{% trans %}alt.envelope{% endtrans %}" title="{% trans %}alt.envelope{% endtrans %}">
             <span id="unread-messages-count" class="badge" data-url="{{ path('app_home_ajax_page') }}" style="left: 8px; position: absolute; text-align: center; top: 5px; width: 60%"></span>
         </a>
     {% endif %}

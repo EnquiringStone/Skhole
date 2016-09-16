@@ -34,7 +34,7 @@
                         <p>
                             {% trans %}l.last_page.you_graded_01{% endtrans %} {{ courseReview.insertDateTime|date('d-m-Y') }} {% trans %}l.last_page.you_graded_02{% endtrans %}:
                             {% for z in 1..courseReview.contentRating %}
-                                <img src="{{ asset('images/star_rating.png') }}" class="img-rounded" />
+                                <img src="{{ asset('images/star_rating.png') }}" class="img-rounded" alt="{% trans %}alt.star_rating{% endtrans %}" title="{% trans %}alt.star_rating{% endtrans %}"/>
                             {% endfor %}
                         </p>
                     {% endif %}

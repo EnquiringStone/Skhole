@@ -13,7 +13,7 @@
             <div class="form-group">
                 <div class="centrum">
                     <h4>
-                        <img src="{{ app.user.picture is null ? asset('images/gebruiker.png') : asset(app.user.picture) }}" class="img-rounded teacher-row-picture">
+                        <img src="{{ app.user.picture is null ? asset('images/gebruiker.png') : asset(app.user.picture) }}" class="img-rounded teacher-row-picture" alt="{% trans %}alt.user{% endtrans %}" title="{% trans %}alt.user{% endtrans %}">
                         {{ app.user.firstName }} {{ app.user.surname }}
                     </h4>
                 </div>
@@ -31,7 +31,7 @@
                     {% if courseReview is not null %}
                         <p>
                             {% for z in 1..courseReview.contentRating %}
-                                <img src="{{ asset('images/star_rating.png') }}" class="img-rounded" />
+                                <img src="{{ asset('images/star_rating.png') }}" class="img-rounded" alt="{% trans %}alt.star_rating{% endtrans %}" title="{% trans %}alt.star_rating{% endtrans %}"/>
                             {% endfor %}
                         </p>
                     {% else %}

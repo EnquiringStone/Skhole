@@ -1,7 +1,7 @@
 {% block reportFrontBody %}
     {% set pdfLayout = usePdfLayout is defined ? usePdfLayout : false %}
     <div class="centrum">
-        <img src="{{ asset('images/logo-schoolbook.png') }}" class="img-rounded">
+        <img src="{{ asset('images/logo-studylivre.png') }}" class="img-rounded" alt="{% trans %}alt.studylivre{% endtrans %}" title="{% trans %}alt.studylivre{% endtrans %}">
         <h1 class="text-primary">
             <samp>{% trans %}o.course_report.t.course_report{% endtrans %}</samp>
         </h1>
@@ -11,10 +11,10 @@
     <hr />
     <h4>
         {% if report.user is not null %}
-            <img src="{% if report.user.picture is not null %}{{ asset(report.user.picture) }}{% else %}{{ asset('images/gebruiker.png') }}{% endif %}" class="img-rounded teacher-row-picture">
+            <img src="{% if report.user.picture is not null %}{{ asset(report.user.picture) }}{% else %}{{ asset('images/gebruiker.png') }}{% endif %}" class="img-rounded teacher-row-picture" alt="{% trans %}alt.user{% endtrans %}" title="{% trans %}alt.user{% endtrans %}">
             {{ report.user.firstName|capitalize }} {{ report.user.surname|capitalize }}
         {% else %}
-            <img src="{{ asset('images/gebruiker.png') }}" class="img-rounded teacher-row-picture">
+            <img src="{{ asset('images/gebruiker.png') }}" class="img-rounded teacher-row-picture" alt="{% trans %}alt.user{% endtrans %}" title="{% trans %}alt.user{% endtrans %}">
             {% trans %}o.course_rating.anonymous{% endtrans %}
         {% endif %}
     </h4>
