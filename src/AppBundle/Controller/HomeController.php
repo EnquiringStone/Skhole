@@ -43,6 +43,7 @@ class HomeController extends Controller {
 
         $languages = $this->getDoctrine()->getRepository('AppBundle:Course\CourseLanguages')->findAll();
         $levels = $this->getDoctrine()->getRepository('AppBundle:Course\CourseLevels')->findAll();
+        $categories = $this->getDoctrine()->getRepository('AppBundle:Course\CourseCategories')->findAll();
 
         return $this->render(':home/dashboard:search.html.twig', array(
             'languages' => $languages,
@@ -50,7 +51,8 @@ class HomeController extends Controller {
             'search' => $search,
             'login' => $login,
             'courses' => $this->getRandomCourses(10),
-            'courseCollection' => $this->getCourseCollectionsForUser()
+            'courseCollection' => $this->getCourseCollectionsForUser(),
+            'categories' => $categories
         ));
     }
 

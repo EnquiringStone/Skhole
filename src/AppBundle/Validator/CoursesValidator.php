@@ -103,4 +103,10 @@ class CoursesValidator extends Validator
         if(strlen($description) > 15000)
             throw new FrontEndException('course.edit.description.too.long', $this->domain);
     }
+
+    protected function validateCategory($category)
+    {
+        if(ValidatorHelper::isStringNullOrEmpty($category))
+            throw new FrontEndException('course.edit.category.empty');
+    }
 }

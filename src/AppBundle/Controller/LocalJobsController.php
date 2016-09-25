@@ -9,6 +9,7 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Entity\Course\CourseCategories;
 use AppBundle\Util\FileHelper;
 use AppBundle\Util\ValidatorHelper;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -24,6 +25,49 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class LocalJobsController extends Controller
 {
+    /**
+     * @Route("/jobs/database/categories", name="app_local_jobs_add_categories_to_database")
+     */
+    public function addCategoriesToDatabase(Request $request)
+    {
+        if (!$this->isLocalHost($request))
+            return $this->redirectToRoute('app_home_dashboard_page', array('_locale' => $request->getLocale()));
+
+        $this->addCategory('Architecture', 'db.categories.category.architecture');
+        $this->addCategory('Art and Culture', 'db.categories.category.art.culture');
+        $this->addCategory('Biology and Life science', 'db.categories.category.biology.life.science');
+        $this->addCategory('Business and Management', 'db.categories.category.business.management');
+        $this->addCategory('Chemistry', 'db.categories.category.chemistry');
+        $this->addCategory('Communication', 'db.categories.category.communication');
+        $this->addCategory('Computer science', 'db.categories.category.computer.science');
+        $this->addCategory('Design', 'db.categories.category.design');
+        $this->addCategory('Economics and Finance', 'db.categories.category.economics.finance');
+        $this->addCategory('History', 'db.categories.category.history');
+        $this->addCategory('Humanities', 'db.categories.category.humanities');
+        $this->addCategory('Language', 'db.categories.category.language');
+        $this->addCategory('Law', 'db.categories.category.law');
+        $this->addCategory('Literature', 'db.categories.category.literature');
+        $this->addCategory('Mathematics', 'db.categories.category.mathematics');
+        $this->addCategory('Medicine', 'db.categories.category.medicine');
+        $this->addCategory('Music', 'db.categories.category.music');
+        $this->addCategory('Philosophy', 'db.categories.category.philosophy');
+        $this->addCategory('Science', 'db.categories.category.science');
+        $this->addCategory('Social science', 'db.categories.category.social.science');
+        $this->addCategory('Other', 'db.categories.category.other');
+
+        $this->getDoctrine()->getEntityManager()->flush();
+        exit;
+    }
+
+    private function addCategory($categoryName, $translation)
+    {
+        $category = new CourseCategories();
+        $category->setCategory($categoryName);
+        $category->setTranslation($translation);
+
+        $this->getDoctrine()->getEntityManager()->persist($category);
+    }
+
     /**
      * @Route("/jobs/clean-pictures", name="app_local_jobs_clean_unused_pictures")
      */

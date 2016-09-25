@@ -224,9 +224,16 @@ class TeachController extends Controller
         $languages = $this->getDoctrine()->getRepository('AppBundle:Course\CourseLanguages')->findAll();
         $tags = $this->getDoctrine()->getRepository('AppBundle:Tags')->findAll();
         $levels = $this->getDoctrine()->getRepository('AppBundle:Course\CourseLevels')->findAll();
+        $categories = $this->getDoctrine()->getRepository('AppBundle:Course\CourseCategories')->findAll();
 
-        return $this->render(':teach:course.edit.html.twig',
-            array('course' => $course, 'languages' => $languages, 'tags' => $tags, 'type' => $type, 'name' => $name, 'levels' => $levels));
+        return $this->render(':teach:course.edit.html.twig', array(
+            'course' => $course,
+            'languages' => $languages,
+            'tags' => $tags,
+            'type' => $type,
+            'name' => $name,
+            'levels' => $levels,
+            'categories' => $categories));
     }
 
     protected function createCardIntroductionStandardPage(Courses $course, $type, $name)

@@ -30,6 +30,14 @@
         <b>{% trans %}o.frequently_used.pages{% endtrans %}:</b>
         {{ course.coursePages|length }}
     </button>
+    <button type="button" class="unclickable btn btn-default btn-xs">
+        <b>{% trans %}t.create_course.f_label_category{% endtrans %}:</b>
+        {% if course.category is not null %}
+            {{ course.category.translation|trans({}, 'db') }}
+        {% else %}
+            -
+        {% endif %}
+    </button>
     {% for provider in course.courseCard.providers %}
         <button type="button" class="unclickable btn btn-default btn-xs">
             <b>{% trans %}o.frequently_used.provider{% endtrans %}:</b>

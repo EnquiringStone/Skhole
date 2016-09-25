@@ -135,6 +135,9 @@ class CreateCourseAjaxService implements AjaxInterface
             $this->manager->persist($object);
         }
 
+        if (array_key_exists('category', $args))
+            $entity->setCategory($this->manager->getRepository('AppBundle:Course\CourseCategories')->find($args['category']));
+
         $entity->setName($args['name']);
         $entity->setDescription($args['description']);
         $entity->setLanguage($this->manager->getRepository('AppBundle:Course\CourseLanguages')->findOneBy(array('languageCode' => $args['language'])));

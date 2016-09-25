@@ -398,6 +398,10 @@
                 <source>course.removed.exception.message</source>
                 <target>The selected course has been removed by the creator</target>
             </trans-unit>
+            <trans-unit id="100">
+                <source>course.edit.category.empty</source>
+                <target>You must pick a category</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

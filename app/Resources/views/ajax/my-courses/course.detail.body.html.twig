@@ -66,6 +66,14 @@
                                 -
                             {% endif %}
                         </button>
+                        <button type="button" class="btn btn-default btn-xs unclickable" data-toggle="tooltip" data-placement="top" title="{% trans %}t.create_course.f_label_category{% endtrans %}">
+                            <b>{% trans %}t.create_course.f_label_category{% endtrans %}:</b>
+                            {% if course.category is not null %}
+                                {{ course.category.translation|trans({}, 'db') }}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </button>
                         <button type="button" class="btn btn-default btn-xs unclickable" data-toggle="tooltip" data-placement="top">
                             <b>{% trans %}t.create_course.b.pages{% endtrans %}:</b> {{ course.coursePages|length }}
                         </button>

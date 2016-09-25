@@ -38,6 +38,90 @@
                 <source>db.email.subjects.bug</source>
                 <target>Error found</target>
             </trans-unit>
+            <trans-unit id="10">
+                <source>db.categories.category.architecture</source>
+                <target>Architecture</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>db.categories.category.art.culture</source>
+                <target>Art and Culture</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>db.categories.category.biology.life.science</source>
+                <target>Biology and Life science</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>db.categories.category.business.management</source>
+                <target>Business and Management</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>db.categories.category.chemistry</source>
+                <target>Chemistry</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>db.categories.category.communication</source>
+                <target>Communication</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>db.categories.category.computer.science</source>
+                <target>Computer science</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>db.categories.category.design</source>
+                <target>Design</target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source>db.categories.category.economics.finance</source>
+                <target>Economics and Finance</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>db.categories.category.history</source>
+                <target>History</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>db.categories.category.humanities</source>
+                <target>Humanities</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>db.categories.category.language</source>
+                <target>Language</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>db.categories.category.law</source>
+                <target>Law</target>
+            </trans-unit>
+            <trans-unit id="23">
+                <source>db.categories.category.literature</source>
+                <target>Literature</target>
+            </trans-unit>
+            <trans-unit id="24">
+                <source>db.categories.category.mathematics</source>
+                <target>Mathematics</target>
+            </trans-unit>
+            <trans-unit id="25">
+                <source>db.categories.category.medicine</source>
+                <target>Medicine</target>
+            </trans-unit>
+            <trans-unit id="26">
+                <source>db.categories.category.music</source>
+                <target>Music</target>
+            </trans-unit>
+            <trans-unit id="27">
+                <source>db.categories.category.philosophy</source>
+                <target>Philosophy</target>
+            </trans-unit>
+            <trans-unit id="28">
+                <source>db.categories.category.science</source>
+                <target>Science</target>
+            </trans-unit>
+            <trans-unit id="29">
+                <source>db.categories.category.social.science</source>
+                <target>Social science</target>
+            </trans-unit>
+            <trans-unit id="30">
+                <source>db.categories.category.other</source>
+                <target>Other</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

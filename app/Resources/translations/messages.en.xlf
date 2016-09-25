@@ -999,6 +999,10 @@
                 <source>o.frequently_used.course_report</source>
                 <target>Course report</target>
             </trans-unit>
+            <trans-unit id="10166">
+                <source>t.create_course.f_label_category</source>
+                <target>Category</target>
+            </trans-unit>
   
 <!-- einde tab teach --> 
 <!-- Tab home -->	
@@ -1260,7 +1264,7 @@ StudyLivre offers you the possibility to view, create and share courses. A cours
             </trans-unit>
             <trans-unit id="2064">
                 <source>mo.remove_account.email_for_acount_removal</source>
-                <target>Send an email to info@studyLivre.com where you indicate that you want to remove your account.</target>
+                <target>Send an email to m.kruithof@studyLivre.com where you indicate that you want to remove your account.</target>
             </trans-unit>
             <trans-unit id="2065">
                 <source>h.welcom.quick_menu.t_long</source>
@@ -3517,7 +3521,7 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="6018">
                 <source>m.about.t.emailadres</source>
-                <target>info@studyLivre.com</target>
+                <target>m.kruithof@studyLivre.com</target>
             </trans-unit>
             <trans-unit id="6019">
                 <source>m.about.head_title.about_us</source>
@@ -3557,7 +3561,7 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="6082">
                 <source>m.author.t_long.widraw_claim</source>
-                <target>Once a notification of copyright infringement has been filed, the petitioner can change its mind and withdraw the claim. If this is the case then the notification procedure will be cancelled.  You can send an email to info@studyLivre.com if you wish to retract a claim.</target>
+                <target>Once a notification of copyright infringement has been filed, the petitioner can change its mind and withdraw the claim. If this is the case then the notification procedure will be cancelled.  You can send an email to m.kruithof@studyLivre.com if you wish to retract a claim.</target>
             </trans-unit>
             <trans-unit id="6031">
                 <source>m.author.t.submit_defense</source>
@@ -3565,7 +3569,7 @@ This course is published. Persons who follow this course are allowed to finish t
             </trans-unit>
             <trans-unit id="6032">
                 <source>m.author.t_long.submit_defense</source>
-                <target>A defense can be described as a request to restore a course item that has been removed due to an (alleged) infringement. This procedure can only be invoked in cases where the course item was deleted or blocked. Send an email to info@studyLivre.com  if you want to submit a defense.</target>
+                <target>A defense can be described as a request to restore a course item that has been removed due to an (alleged) infringement. This procedure can only be invoked in cases where the course item was deleted or blocked. Send an email to m.kruithof@studyLivre.com  if you want to submit a defense.</target>
             </trans-unit>
             <trans-unit id="6033">
                 <source>m.author.t.principles.copyright.complaints</source>
@@ -3910,7 +3914,7 @@ StudyLivre processes personal information when you use our services and/or becau
             <trans-unit id="7023">
                 <source>privay.why_proces.t_long.part_02</source>
                 <target>We aim not to collect data about persons younger than 16 years old. Unless we have permission from a parent or guardian. However, we cannot check if a visitor is older than 16. We advise parents to keep an eye on the online activities of their children in order to prevent that data about their children is being collected without parental consent. If you're convinced
-that we have collected personal information without the consent of a minor, please contact us via info@studyLivre.com, we will remove this information as soon as possible
+that we have collected personal information without the consent of a minor, please contact us via m.kruithof@studyLivre.com, we will remove this information as soon as possible
             </target>
             </trans-unit>
             <trans-unit id="7024">
@@ -3976,7 +3980,7 @@ that we have collected personal information without the consent of a minor, plea
             <trans-unit id="7037">
                 <source>privacy.view_own_data_and_edit.t_long_01</source>
                 <target>
-                You have the right to see your personal information, correct information when wrong or delete it. You can do this yourself using the personal settings for your account. If that is not possible then you can send a request to: info@studyLivre.com. Please enclose a copy of your identification so that we can verify your identity. We ask for an identification document so that we can protect your privacy. StudyLivre will respond as soon as possible to your request, in any case this should be within four weeks. You can also reach us via our website: www.studylivre.com or email: info@studyLivre.com
+                You have the right to see your personal information, correct information when wrong or delete it. You can do this yourself using the personal settings for your account. If that is not possible then you can send a request to: m.kruithof@studyLivre.com. Please enclose a copy of your identification so that we can verify your identity. We ask for an identification document so that we can protect your privacy. StudyLivre will respond as soon as possible to your request, in any case this should be within four weeks. You can also reach us via our website: www.studylivre.com or email: m.kruithof@studyLivre.com
                 </target>
             </trans-unit>
             <trans-unit id="7038">
@@ -3986,7 +3990,7 @@ that we have collected personal information without the consent of a minor, plea
             <trans-unit id="7039">
                 <source>privacy.security.t_long_01</source>
                 <target>
-            StudyLivre takes the protection of your data seriously and takes appropriate measures to prevent abuse, loss, unauthorized access, unwanted disclosure and to prevent unauthorized modification. If you have the impression that your data is not properly protected or there is evidence of abuse, please contact our customer service via info@studyLivre.com.
+            StudyLivre takes the protection of your data seriously and takes appropriate measures to prevent abuse, loss, unauthorized access, unwanted disclosure and to prevent unauthorized modification. If you have the impression that your data is not properly protected or there is evidence of abuse, please contact our customer service via m.kruithof@studyLivre.com.
             </target>
             </trans-unit>
 
@@ -4212,7 +4216,7 @@ data.</target>
             </trans-unit>
             <trans-unit id="8011">
                 <source>exception.access.denied.explanation.five</source>
-                <target>Do you think that this error is unwarranted? Please contact us at info@studyLivre.com </target>
+                <target>Do you think that this error is unwarranted? Please contact us at m.kruithof@studyLivre.com </target>
             </trans-unit>
             <trans-unit id="8012">
                 <source>exception.course.removed.title</source>

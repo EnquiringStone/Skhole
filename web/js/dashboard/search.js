@@ -67,7 +67,7 @@ function doComplexSearch() {
     });
     addLoadingScreen($($('#search-forms').parents('.panel')));
     refreshPage($('.search-enabled'), true, true, function(args) {
-        setCount(args);
+        setCount(args, $('.search-enabled'));
         removeLoadingScreen();
     }, true);
     updateReviewModals();
@@ -85,17 +85,23 @@ function doSimpleSearch() {
     search.val(searchValue);
     addLoadingScreen($($('#search-forms').parents('.panel')));
     refreshPage($('.search-enabled'), true, true, function(args) {
-        setCount(args);
+        setCount(args, $('.search-enabled'));
         removeLoadingScreen();
     }, true);
     updateReviewModals();
 }
 
-function setCount(args) {
+function setCount(args, caller) {
     var found = args['totalFound'];
     $('.search-result-count').html(found);
-    if (found <= 0) collapsePanel($('#search-results'));
-    else showPanel($('#search-results'));
+    showPanel($('#search-results'));
+
+    if (found <= 0)
+    {
+        var base = $($(caller).parents('.page-controls'));
+        $('.content-field', base).append('<p class="lead centrum">'+$('#none-found').val()+'</p>');
+        $('.sort-field', base).empty();
+    }
 }
 
 function updateReviewModals() {

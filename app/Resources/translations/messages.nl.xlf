@@ -1000,6 +1000,10 @@
                 <source>o.frequently_used.course_report</source>
                 <target>Cursusrapport</target>
             </trans-unit>
+            <trans-unit id="10166">
+                <source>t.create_course.f_label_category</source>
+                <target>Categorie</target>
+            </trans-unit>
 
   
 
@@ -1264,7 +1268,7 @@
             </trans-unit>
             <trans-unit id="2064">
                 <source>mo.remove_account.email_for_acount_removal</source>
-                <target>Stuur een email naar info@studyLivre.com waarin je aangeeft dat je account wilt
+                <target>Stuur een email naar m.kruithof@studylivre.com waarin je aangeeft dat je account wilt
 	            	opheffen. Daarna zal je account verwijderd worden.</target>
             </trans-unit>
             <trans-unit id="2065">
@@ -3530,7 +3534,7 @@
             </trans-unit>
             <trans-unit id="6018">
                 <source>m.about.t.emailadres</source>
-                <target>info@studyLivre.com</target>
+                <target>m.kruithof@studyLivre.com</target>
             </trans-unit>
             <trans-unit id="6019">
                 <source>m.about.head_title.about_us</source>
@@ -3570,7 +3574,7 @@
             </trans-unit>
             <trans-unit id="6082">
                 <source>m.author.t_long.widraw_claim</source>
-                <target>Nadat een melding van een auteursrechtschending is ingediend kan de indiener zijn/haar mening herzien en de claim intrekken. Indien dit gebeurt vervalt de lopende rapportageprocedure. Stuur een email naar info@studyLivre.com als je een claim wilt intrekken. </target>
+                <target>Nadat een melding van een auteursrechtschending is ingediend kan de indiener zijn/haar mening herzien en de claim intrekken. Indien dit gebeurt vervalt de lopende rapportageprocedure. Stuur een email naar m.kruithof@studyLivre.com als je een claim wilt intrekken. </target>
             </trans-unit>
             <trans-unit id="6031">
                 <source>m.author.t.submit_defense</source>
@@ -3578,7 +3582,7 @@
             </trans-unit>
             <trans-unit id="6032">
                 <source>m.author.t_long.submit_defense</source>
-                <target>Een verweer is een verzoek om een cursusitem terug te zetten die is verwijderd wegens (vermeende) auteursrechtschending. De procedure kan alleen worden gevolgd in gevallen waar het cursusitem is verwijderd of geblokkeerd. Stuur een email naar info@studyLivre.com als je een verweer wilt indienen. </target>
+                <target>Een verweer is een verzoek om een cursusitem terug te zetten die is verwijderd wegens (vermeende) auteursrechtschending. De procedure kan alleen worden gevolgd in gevallen waar het cursusitem is verwijderd of geblokkeerd. Stuur een email naar m.kruithof@studyLivre.com als je een verweer wilt indienen. </target>
             </trans-unit>
             <trans-unit id="6033">
                 <source>m.author.t.principles.copyright.complaints</source>
@@ -3923,7 +3927,7 @@ persoonsgegevens die wij verwerken:</target>
                 <target>Gegevens van personen jonger dan 16 jaar: Onze website en/of dienst heeft niet de intentie gegevens te verzamelen over websitebezoekers die jonger zijn dan 16 jaar.
 Tenzij ze toestemming hebben van ouders of voogd. We kunnen echter niet controleren of een bezoeker ouder dan 16 is. Wij raden ouders dan ook aan betrokken te zijn bij
 de online activiteiten van hun kinderen, om zo te voorkomen dat er gegevens over kinderen verzameld worden zonder ouderlijke toestemming. Als je ervan overtuigd bent
-dat wij zonder die toestemming persoonlijke gegevens hebben verzameld over een minderjarige, neem dan contact met ons op via info@studyLivre.com, dan zullen wij
+dat wij zonder die toestemming persoonlijke gegevens hebben verzameld over een minderjarige, neem dan contact met ons op via m.kruithof@studyLivre.com, dan zullen wij
 deze informatie verwijderen</target>
             </trans-unit>
             <trans-unit id="7024">
@@ -3989,10 +3993,10 @@ informatie die eerder is opgeslagen via de instellingen van uw browser verwijder
             <trans-unit id="7037">
                 <source>privacy.view_own_data_and_edit.t_long_01</source>
                 <target>U heeft het recht om uw persoonsgegevens in te zien, te corrigeren of te verwijderen. Dit kan u zelf doen via de persoonlijke instellingen van uw account. Lukt het niet via
-deze instellingen of heeft u andere vragen/opmerkingen over de gegevensverwerking, stuur dan een gespecificeerd verzoek naar info@studyLivre.com. Om uw identiteit te
+deze instellingen of heeft u andere vragen/opmerkingen over de gegevensverwerking, stuur dan een gespecificeerd verzoek naar m.kruithof@studyLivre.com. Om uw identiteit te
 kunnen verifiëren, vragen wij u een kopie van uw identiteitsbewijs mee te sturen. Maak in deze kopie het burgerservicenummer (BSN), MRZ (machine readable zone, de
 strook met nummers onderaan het paspoort), paspoortnummer en uw pasfoto zwart. Dit ter bescherming van uw privacy. StudyLivre zal zo snel mogelijk, maar in ieder
-geval binnen vier weken, op uw verzoek reageren. U kunt ons ook bereiken via: Website: www.studylivre.com. Mail: info@studyLivre.com</target>
+geval binnen vier weken, op uw verzoek reageren. U kunt ons ook bereiken via: Website: www.studylivre.com. Mail: m.kruithof@studyLivre.com</target>
             </trans-unit>
             <trans-unit id="7038">
                 <source>privacy.security</source>
@@ -4002,7 +4006,7 @@ geval binnen vier weken, op uw verzoek reageren. U kunt ons ook bereiken via: We
                 <source>privacy.security.t_long_01</source>
                 <target>StudyLivre neemt de bescherming van uw gegevens serieus en neemt passende maatregelen om misbruik, verlies, onbevoegde toegang, ongewenste openbaarmaking en
 ongeoorloofde wijziging tegen te gaan. Als u de indruk heeft dat uw gegevens niet goed beveiligd zijn of er aanwijzingen zijn van misbruik, neem dan contact op met onze
-klantenservice of via info@studyLivre.com.</target>
+klantenservice of via m.kruithof@studyLivre.com.</target>
             </trans-unit>
             <trans-unit id="7040">
                 <source>user.agree_user.agreement</source>

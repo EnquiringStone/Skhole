@@ -119,6 +119,11 @@ class Courses implements UserStatisticsInterface, UserReportInterface, BasicDeta
     protected $publishedDateTime;
 
     /**
+     * @ORM\Column(type="integer", nullable=true, name="category_id")
+     */
+    protected $categoryId;
+
+    /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
      * @ORM\JoinColumn(name="user_inserted_id", referencedColumnName="id")
      */
@@ -200,6 +205,12 @@ class Courses implements UserStatisticsInterface, UserReportInterface, BasicDeta
      * )
      */
     private $tags;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Course\CourseCategories")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     */
+    private $category;
 
     public function isComplete()
     {
@@ -1050,5 +1061,53 @@ class Courses implements UserStatisticsInterface, UserReportInterface, BasicDeta
     public function getCourseResources()
     {
         return $this->courseResources;
+    }
+
+    /**
+     * Set categoryId
+     *
+     * @param integer $categoryId
+     *
+     * @return Courses
+     */
+    public function setCategoryId($categoryId)
+    {
+        $this->categoryId = $categoryId;
+
+        return $this;
+    }
+
+    /**
+     * Get categoryId
+     *
+     * @return integer
+     */
+    public function getCategoryId()
+    {
+        return $this->categoryId;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \AppBundle\Entity\Course\CourseCategories $category
+     *
+     * @return Courses
+     */
+    public function setCategory(\AppBundle\Entity\Course\CourseCategories $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \AppBundle\Entity\Course\CourseCategories
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 }

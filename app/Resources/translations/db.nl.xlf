@@ -38,6 +38,90 @@
                 <source>db.email.subjects.bug</source>
                 <target>Fout gevonden</target>
             </trans-unit>
+            <trans-unit id="10">
+                <source>db.categories.category.architecture</source>
+                <target>Architectuur</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>db.categories.category.art.culture</source>
+                <target>Kunst en Cultuur</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>db.categories.category.biology.life.science</source>
+                <target>Biologie en Levenwetenchap</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>db.categories.category.business.management</source>
+                <target>Business en Management</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>db.categories.category.chemistry</source>
+                <target>Chemie</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>db.categories.category.communication</source>
+                <target>Communicatie</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>db.categories.category.computer.science</source>
+                <target>Informatica</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>db.categories.category.design</source>
+                <target>Design</target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source>db.categories.category.economics.finance</source>
+                <target>Economie en Financiën</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>db.categories.category.history</source>
+                <target>Geschiedenis</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>db.categories.category.humanities</source>
+                <target>Geesteswetenschappen</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>db.categories.category.language</source>
+                <target>Taal</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>db.categories.category.law</source>
+                <target>Rechten</target>
+            </trans-unit>
+            <trans-unit id="23">
+                <source>db.categories.category.literature</source>
+                <target>Literatuur</target>
+            </trans-unit>
+            <trans-unit id="24">
+                <source>db.categories.category.mathematics</source>
+                <target>Wiskunde</target>
+            </trans-unit>
+            <trans-unit id="25">
+                <source>db.categories.category.medicine</source>
+                <target>Geneeskunde</target>
+            </trans-unit>
+            <trans-unit id="26">
+                <source>db.categories.category.music</source>
+                <target>Muziek</target>
+            </trans-unit>
+            <trans-unit id="27">
+                <source>db.categories.category.philosophy</source>
+                <target>Filosofie</target>
+            </trans-unit>
+            <trans-unit id="28">
+                <source>db.categories.category.science</source>
+                <target>Wetenschap</target>
+            </trans-unit>
+            <trans-unit id="29">
+                <source>db.categories.category.social.science</source>
+                <target>Sociale Wetenschappen</target>
+            </trans-unit>
+            <trans-unit id="30">
+                <source>db.categories.category.other</source>
+                <target>Overige</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
