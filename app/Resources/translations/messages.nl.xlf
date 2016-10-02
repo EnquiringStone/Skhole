@@ -128,12 +128,12 @@
                 <target>Instructeur</target>
             </trans-unit>
             <trans-unit id="32">
-                <source></source>
-                <target></target>
+                <source>youtube.introduction.video</source>
+                <target>https://www.youtube.com/embed/oZFNUTuFbPA</target>
             </trans-unit>
             <trans-unit id="33">
-                <source></source>
-                <target></target>
+                <source>youtube.create.course.video</source>
+                <target>https://www.youtube.com/embed/gT0AK-czmvE</target>
             </trans-unit>
             <trans-unit id="34">
                 <source></source>
