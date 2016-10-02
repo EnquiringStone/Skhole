@@ -46,11 +46,30 @@
         <script>
             var ENVIRONMENT = '{{ app.environment }}';
         </script>
+        <script src="https://apis.google.com/js/platform.js" async defer>
+            {% if app.request.locale == 'nl' %}
+                {lang: 'nl'}
+            {% else %}
+                {lang: 'en-GB'}
+            {% endif %}
+        </script>
         <script src="{{ asset('js/utils.js') }}"></script>
         <script src="{{ asset('js/main.js') }}"></script>
         {% block prescripts %}{% endblock %}
     </head>
     <body>
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+                {% if app.request.locale == 'nl' %}
+                    js.src = "//connect.facebook.net/nl_NL/sdk.js#xfbml=1&version=v2.7&appId=1667429226807902";
+                {% else %}
+                    js.src = "//connect.facebook.net/en_EN/sdk.js#xfbml=1&version=v2.7&appId=1667429226807902";
+                {% endif %}
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
         {% include 'elements/header.html.twig' %}
         <div class="container">
             {% if app.user is not null and is_granted('ROLE_USER') %}
