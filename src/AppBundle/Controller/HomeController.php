@@ -50,9 +50,9 @@ class HomeController extends Controller {
             'levels' => $levels,
             'search' => $search,
             'login' => $login,
-            'courses' => $this->getRandomCourses(10),
             'courseCollection' => $this->getCourseCollectionsForUser(),
-            'categories' => $categories
+            'categories' => $categories,
+            'categoryCounts' => $this->getDoctrine()->getRepository('AppBundle:Course\Courses')->getCountsPerCategory()
         ));
     }
 

@@ -91,8 +91,19 @@
         </div>
         <hr>
         <div class="centrum">
-            <a href="#course-collection" class="btn btn-primary btn-lg">{% trans %}h.view_course_collection{% endtrans %}</a>
+            <button id="show-search-categories" class="btn btn-primary btn-lg">{% trans %}h.view_course_collection{% endtrans %}</button>
             <a href="{{ path('app_home_getting_started_page') }}" class="btn btn-default">{% trans %}h.nav.getting_started{% endtrans %}</a>
+        </div>
+        <hr>
+        <div id="category-picker" class="panel-body-pages thumbnail centrum">
+            <ul class="list-group">
+                {% for category in categories %}
+                    <li class="list-group-item clickable search-for-category" data-category-id="{{ category.id }}">
+                        <span class="badge">{{ categoryCounts[category.category] }}</span>
+                        {{ category.translation|trans({}, 'db') }}
+                    </li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 {% endblock %}

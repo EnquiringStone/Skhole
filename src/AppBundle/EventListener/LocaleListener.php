@@ -110,7 +110,11 @@ class LocaleListener
         $this->session->set('locale', $preferredLanguage);
         $request->setSession($this->session);
 
-        $response = new RedirectResponse($this->urlGenerator->generate('app_home_dashboard_page', array('_locale' => $preferredLanguage, 'login' => $login)));
+        $parameters = array('_locale' => $preferredLanguage);
+        if ($login == 'true')
+            $parameters['login'] = $login;
+
+        $response = new RedirectResponse($this->urlGenerator->generate('app_home_dashboard_page', $parameters));
         $event->setResponse($response);
     }
 }

@@ -2,6 +2,8 @@ $(document).ready(function() {
     var body = $('body');
     var searchResults = $('#search-results');
 
+    $('#category-picker').hide();
+
     collapsePanel(searchResults);
 
     $('#simple-search').on('submit', function (event) {
@@ -41,6 +43,31 @@ $(document).ready(function() {
             showAjaxErrorModal(json['html']);
         });
     });
+
+    body.on('click', '.search-for-category', function () {
+        $('.search-value').each(function(index, item) {
+            $(item).val('');
+        });
+
+        var element = $(this);
+        var categoryId = element.data('category-id');
+
+        var searchValue = $('.search-value').filterByData('entity', 'categories');
+        $(searchValue).val(categoryId);
+
+        var formControl = $('.form-control').filterByData('value-name', 'categories');
+        $(formControl).val(categoryId);
+
+        doComplexSearch();
+    });
+
+    $('#show-search-categories').on('click', function () {
+        var element = $('#category-picker');
+        if (element.is(':visible'))
+            element.hide();
+        else
+            element.show();
+    });
 });
 
 function collapsePanel(context) {
@@ -58,6 +85,9 @@ function showPanel(context) {
 }
 
 function doComplexSearch() {
+    var search = $($('.search-value').filterByData('entity', 'courses'));
+    search.val($('.simple-search-value').val());
+
     $('.data-value').each(function(index, item) {
         var obj = $(item);
         var name = obj.data('value-name');

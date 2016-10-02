@@ -47,6 +47,25 @@ class CoursesRepository extends EntityRepository implements PageControlsInterfac
         return $query->getQuery()->getSingleScalarResult();
     }
 
+    public function getCountsPerCategory()
+    {
+        $categories = $this->getEntityManager()->getRepository('AppBundle:Course\CourseCategories')->findAll();
+
+        $countsByCategory = array();
+
+        foreach ($categories as $category)
+        {
+            $countsByCategory[$category->getCategory()] = $this->getCountByCriteria(
+                array('categoryId' => $category->getId(),
+                    'isUndesirable' => false,
+                    'removed' => false,
+                    'stateId' => $this->getEntityManager()->getRepository('AppBundle:Course\CourseStates')->findOneBy(array('stateCode' => 'OK'))->getId()
+                ));
+        }
+
+        return $countsByCategory;
+    }
+
     /**
      * @return bool
      */
@@ -98,7 +117,7 @@ class CoursesRepository extends EntityRepository implements PageControlsInterfac
     public function getRecordsBySearch($offset, $limit, $sort, $searchParams, $userId = 0, $sessionId = '')
     {
         $sort = $this->replaceSort($sort);
-        $searchQuery = new SearchQuery($searchParams['searchQuery'], $searchParams['correlationType'], $offset, $limit, $sort);
+        $searchQuery = new SearchQuery($searchParams['searchQuery'], SearchQuery::AndCorrelation, $offset, $limit, $sort);
 
         $qb = $this->createQueryBuilder('courses');
         $qb->select('distinct courses');
