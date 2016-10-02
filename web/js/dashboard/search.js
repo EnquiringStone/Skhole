@@ -45,9 +45,7 @@ $(document).ready(function() {
     });
 
     body.on('click', '.search-for-category', function () {
-        $('.search-value').each(function(index, item) {
-            $(item).val('');
-        });
+        reset();
 
         var element = $(this);
         var categoryId = element.data('category-id');
@@ -69,6 +67,22 @@ $(document).ready(function() {
             element.show();
     });
 });
+
+function reset() {
+    $('.search-value').each(function(index, item) {
+        $(item).attr('value', '');
+    });
+
+    $('.simple-search-value').val('');
+
+    $('.data-value', '#complex-search').each(function () {
+        var item = $(this);
+        if (item.is('input'))
+            item.val('');
+        else
+            item.val('-1');
+    });
+}
 
 function collapsePanel(context) {
     var panel = $(context.parents('.panel'));
@@ -107,9 +121,9 @@ function doSimpleSearch() {
     var searchValue = $('.simple-search-value').val();
     if(searchValue == null || searchValue == '') return;
 
-    $('.search-value').each(function(index, item) {
-        $(item).val('');
-    });
+    reset();
+
+    $('.simple-search-value').val(searchValue);
 
     var search = $($('.search-value').filterByData('entity', 'courses'));
     search.val(searchValue);
