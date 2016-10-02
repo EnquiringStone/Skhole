@@ -113,6 +113,7 @@ function doComplexSearch() {
     refreshPage($('.search-enabled'), true, true, function(args) {
         setCount(args, $('.search-enabled'));
         removeLoadingScreen();
+        moveToResultPanel();
     }, true);
     updateReviewModals();
 }
@@ -131,6 +132,7 @@ function doSimpleSearch() {
     refreshPage($('.search-enabled'), true, true, function(args) {
         setCount(args, $('.search-enabled'));
         removeLoadingScreen();
+        moveToResultPanel();
     }, true);
     updateReviewModals();
 }
@@ -146,6 +148,12 @@ function setCount(args, caller) {
         $('.content-field', base).append('<p class="lead centrum">'+$('#none-found').val()+'</p>');
         $('.sort-field', base).empty();
     }
+}
+
+function moveToResultPanel() {
+    $("body, html").animate({
+        scrollTop: $( $('#search-results') ).offset().top - 35
+    }, 600);
 }
 
 function updateReviewModals() {
