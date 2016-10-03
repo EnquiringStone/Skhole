@@ -15,6 +15,7 @@ parameters:
     mailer_user:       ~
     mailer_password:   ~
     mailer_dev_password: ~
+    mailer_port: ~
 
     email_receiver: ~
     send_email_to: ~
