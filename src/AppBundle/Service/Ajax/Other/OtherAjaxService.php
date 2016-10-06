@@ -71,7 +71,7 @@ class OtherAjaxService implements AjaxInterface
             ->setFrom($args['email'])
             ->setTo($this->emailTo)
             ->setBody(
-                $this->environment->render('mail/contact.mail.html.twig', array('user' => $user, 'name' => $name, 'message' => $args['message'])),
+                $this->environment->render('mail/contact.mail.html.twig', array('user' => $user, 'name' => $name, 'message' => $args['message'], 'email' => $args['email'])),
                 'text/html'
             );
 

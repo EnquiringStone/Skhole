@@ -1,4 +1,6 @@
 {% block contactMail %}
+    De volgende email is ingevuld: <b>{{ email }}</b>
+    <br>
     {% if user is defined and user is not null %}
         De gebruiker {{ user.realName }} met id {{ user.id }} heeft deze contactemail gestuurd.
         <br>
