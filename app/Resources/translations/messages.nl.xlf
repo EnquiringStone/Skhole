@@ -136,8 +136,8 @@
                 <target>https://www.youtube.com/embed/gT0AK-czmvE</target>
             </trans-unit>
             <trans-unit id="34">
-                <source></source>
-                <target></target>
+                <source>top_10_popular_courses</source>
+                <target> Top 10 populairste cursussen</target>
             </trans-unit>
             <trans-unit id="35">
                 <source></source>
@@ -1155,7 +1155,7 @@
             </trans-unit>
             <trans-unit id="2037">
                 <source>h.search.no_results_found</source>
-                <target>Geen resultaten gevonden</target>
+                <target>Geen resultaten gevonden voor de opgegeven zoekopdracht. Klik op bekijk cursusaanbod om alle cursussen door te zoeken. Of maak een nieuwe zoekopdracht aan</target>
             </trans-unit>
             <trans-unit id="2038">
                 <source>h.search.pagination.result</source>

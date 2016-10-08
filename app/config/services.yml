@@ -20,7 +20,7 @@ services:
             - { name: kernel.event_subscriber }
     app.ajax_listener:
         class: AppBundle\EventListener\AjaxListener
-        arguments: ["%ajax_configuration%", "@app.courses.ajax.service", "@app.home.messages.ajax.service", "@app.page.controls.ajax.service", "@app.create.course.ajax.service", "@app.profile.ajax.service", "@app.course.collection.ajax.service", "@app.learn.study.ajax.service", "@app.teach.shared.reports.ajax.service", "@app.other.ajax.service", "@app.cookie.ajax.service"]
+        arguments: ["%ajax_configuration%", "@app.courses.ajax.service", "@app.home.messages.ajax.service", "@app.page.controls.ajax.service", "@app.create.course.ajax.service", "@app.profile.ajax.service", "@app.course.collection.ajax.service", "@app.learn.study.ajax.service", "@app.teach.shared.reports.ajax.service", "@app.other.ajax.service", "@app.cookie.ajax.service", "@app.search.ajax.service"]
         tags:
             - { name: kernel.event_subscriber }
     app.entity.life.cycle.listener:
@@ -59,6 +59,9 @@ services:
     app.cookie.ajax.service:
         class: AppBundle\Service\Ajax\Home\CookieAjaxService
         arguments: ["@session", "@app.authorization.service", "@doctrine.orm.entity_manager"]
+    app.search.ajax.service:
+        class: AppBundle\Service\Ajax\Home\SearchAjaxService
+        arguments: ["@doctrine.orm.entity_manager", "@app.transform.manager"]
 
     app.transformer.messages:
         class: AppBundle\Transformer\MessagesTransformer

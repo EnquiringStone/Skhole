@@ -91,8 +91,8 @@
         </div>
         <hr>
         <div class="centrum">
-            <button id="show-search-categories" class="btn btn-primary btn-lg">{% trans %}h.view_course_collection{% endtrans %}</button>
-            <a href="{{ path('app_home_getting_started_page') }}" class="btn btn-default">{% trans %}h.nav.getting_started{% endtrans %}</a>
+            <button id="show-search-categories" class="btn btn-primary btn-lg">{% trans %}h.view_course_collection{% endtrans %} ({{ totalCourses }})</button>
+            <button id="show-most-popular-courses" class="btn btn-default" data-url="{{ path('app_home_ajax_page') }}">{% trans %}top_10_popular_courses{% endtrans %}</button>
         </div>
         <hr>
         <div id="category-picker" class="panel-body-pages thumbnail centrum">

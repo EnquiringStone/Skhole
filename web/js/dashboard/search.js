@@ -66,6 +66,22 @@ $(document).ready(function() {
         else
             element.show();
     });
+
+    $('#show-most-popular-courses').on('click', function () {
+        addLoadingScreen($($('#search-forms').parents('.panel')));
+        var url = $(this).data('url');
+        sendAjaxCall(url, {'ajax_key': 'SAS2', 'method': 'getMostViewedCourses'}, function (data) {
+            reset();
+            $('.sort-field', searchResults).empty();
+            $('.pagination-field', searchResults).empty();
+            $('.content-field', searchResults).html(data['html']);
+            setCount(data, $('.search-enabled'));
+            removeLoadingScreen();
+            moveToResultPanel();
+        }, function (error) {
+            showAjaxErrorModal(error['responseJSON']['html']);
+        })
+    });
 });
 
 function reset() {

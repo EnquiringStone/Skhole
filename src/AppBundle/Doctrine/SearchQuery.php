@@ -99,6 +99,8 @@ class SearchQuery
 
     private function getExpression(QueryBuilder $qb, $entity, $attribute, $value, $index)
     {
+        if ($attribute == 'id') $value = intval($value);
+
         $expression = $qb->expr()->like($entity.'.'.$attribute, '?'.$index);
         $qb->setParameter($index, is_string($value) ? '%'.$value.'%' : $value);
         return $expression;

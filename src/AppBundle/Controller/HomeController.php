@@ -44,6 +44,11 @@ class HomeController extends Controller {
         $languages = $this->getDoctrine()->getRepository('AppBundle:Course\CourseLanguages')->findAll();
         $levels = $this->getDoctrine()->getRepository('AppBundle:Course\CourseLevels')->findAll();
         $categories = $this->getDoctrine()->getRepository('AppBundle:Course\CourseCategories')->findAll();
+        $totalCourses = $this->getDoctrine()->getRepository('AppBundle:Course\Courses')->getCountByCriteria(
+            array('isUndesirable' => false,
+                'removed' => false,
+                'stateId' => $this->getDoctrine()->getRepository('AppBundle:Course\CourseStates')->findOneBy(array('stateCode' => 'OK'))->getId()
+            ));
 
         return $this->render(':home/dashboard:search.html.twig', array(
             'languages' => $languages,
@@ -52,7 +57,8 @@ class HomeController extends Controller {
             'login' => $login,
             'courseCollection' => $this->getCourseCollectionsForUser(),
             'categories' => $categories,
-            'categoryCounts' => $this->getDoctrine()->getRepository('AppBundle:Course\Courses')->getCountsPerCategory()
+            'categoryCounts' => $this->getDoctrine()->getRepository('AppBundle:Course\Courses')->getCountsPerCategory(),
+            'totalCourses' => $totalCourses
         ));
     }
 
