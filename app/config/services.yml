@@ -61,7 +61,7 @@ services:
         arguments: ["@session", "@app.authorization.service", "@doctrine.orm.entity_manager"]
     app.search.ajax.service:
         class: AppBundle\Service\Ajax\Home\SearchAjaxService
-        arguments: ["@doctrine.orm.entity_manager", "@app.transform.manager"]
+        arguments: ["@doctrine.orm.entity_manager", "@app.transform.manager", "@app.courses.ajax.service"]
 
     app.transformer.messages:
         class: AppBundle\Transformer\MessagesTransformer

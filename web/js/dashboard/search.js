@@ -75,12 +75,17 @@ $(document).ready(function() {
             $('.sort-field', searchResults).empty();
             $('.pagination-field', searchResults).empty();
             $('.content-field', searchResults).html(data['html']);
+            $('.review-modals-div', $(searchResults.parent())).html(data['modalHtml']);
             setCount(data, $('.search-enabled'));
             removeLoadingScreen();
             moveToResultPanel();
         }, function (error) {
             showAjaxErrorModal(error['responseJSON']['html']);
         })
+    });
+
+    $(document).on('refreshPageSucceeded', function () {
+        updateReviewModals();
     });
 });
 
@@ -131,7 +136,6 @@ function doComplexSearch() {
         removeLoadingScreen();
         moveToResultPanel();
     }, true);
-    updateReviewModals();
 }
 
 function doSimpleSearch() {
@@ -150,7 +154,6 @@ function doSimpleSearch() {
         removeLoadingScreen();
         moveToResultPanel();
     }, true);
-    updateReviewModals();
 }
 
 function setCount(args, caller) {

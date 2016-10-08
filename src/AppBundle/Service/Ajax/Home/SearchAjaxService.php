@@ -11,6 +11,7 @@ namespace AppBundle\Service\Ajax\Home;
 
 use AppBundle\Enum\ContextEnum;
 use AppBundle\Interfaces\AjaxInterface;
+use AppBundle\Service\Ajax\Teach\CoursesAjaxService;
 use AppBundle\Transformer\TransformManager;
 use Doctrine\ORM\EntityManager;
 
@@ -25,11 +26,16 @@ class SearchAjaxService implements AjaxInterface
      * @var TransformManager
      */
     private $transformer;
+    /**
+     * @var CoursesAjaxService
+     */
+    private $coursesService;
 
-    public function __construct(EntityManager $manager, TransformManager $transformer)
+    public function __construct(EntityManager $manager, TransformManager $transformer, CoursesAjaxService $coursesService)
     {
         $this->manager = $manager;
         $this->transformer = $transformer;
+        $this->coursesService = $coursesService;
     }
 
     public function getMostViewedCourses($args)
@@ -45,8 +51,9 @@ class SearchAjaxService implements AjaxInterface
             $count);
 
         $html = $this->transformer->getTransformerByName('CoursesTransformer')->transformToAjaxResponse($courses, ContextEnum::SEARCH_CONTEXT);
+        $modalHtml = $this->coursesService->getReviewModals(array('limit' => $count, 'sortAttribute' => 'views', 'sortValue' => 'DESC', 'context' => ContextEnum::PUBLIC_CONTEXT))['html'];
 
-        return array('html' => $html, 'totalFound' => sizeof($courses));
+        return array('html' => $html, 'totalFound' => sizeof($courses), 'modalHtml' => $modalHtml);
     }
 
     /**
