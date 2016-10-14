@@ -6,6 +6,8 @@
 {% block body %}
     {% include ':panels/my-courses:my.courses.panel.html.twig' %}
 {% endblock %}
+{% block keywords %}{% trans %}meta.description_keywords.create_my_courses{% endtrans %}{% endblock %}
+{% block description %}{% trans %}meta.description_content.create_my_courses{% endtrans %}{% endblock %}
 {% block postscripts %}
     <script>
         $(document).ready(function() {

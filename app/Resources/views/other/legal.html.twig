@@ -7,6 +7,9 @@
     {% include ':panels/general:commercial.panel.html.twig' %}
 {% endblock %}
 
+{% block keywords %}{% trans %}meta.description_keywords.more_jurdical{% endtrans %}{% endblock %}
+{% block description %}{% trans %}meta.description_content.more_jurdical{% endtrans %}{% endblock %}
+
 {% block postscripts %}
     <script>
         $(document).ready(function() {

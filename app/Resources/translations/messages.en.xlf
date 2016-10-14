@@ -140,12 +140,12 @@
                 <target>Top 10 most popular courses</target>
             </trans-unit>
             <trans-unit id="35">
-                <source></source>
-                <target></target>
+                <source>find.courses.promo</source>
+                <target>Find courses of the best tutors</target>
             </trans-unit>
             <trans-unit id="36">
-                <source></source>
-                <target></target>
+                <source>our.services.panel.title</source>
+                <target>Our services</target>
             </trans-unit>
             <trans-unit id="37">
                 <source></source>
@@ -163,8 +163,140 @@
                 <source></source>
                 <target></target>
             </trans-unit>
+            <trans-unit id="41">
+                <source>meta.description_content.home_study</source>
+                <target>The menu Study displays the course which an user has decided to follow. </target>
+            </trans-unit>
+            <trans-unit id="42">
+                <source>meta.description_keywords.home_study</source>
+                <target>Course, follow, StudyLivre</target>
+            </trans-unit>
+            <trans-unit id="43">
+                <source>meta.description_content.home_profile</source>
+                <target>People who have a StudyLivre account can view or change their personal data in the menu Profile. </target>
+            </trans-unit>
+            <trans-unit id="44">
+                <source>meta.description_keywords.home_profile</source>
+                <target>profile</target>
+            </trans-unit>
+            <trans-unit id="45">
+                <source>meta.description_content.home_discover</source>
+                <target>The menu Discover shows detailed information about the Study Livre platform. The main themes are: following a course, creating a course and the course report.</target>
+            </trans-unit>
+            <trans-unit id="46">
+                <source>meta.description_keywords.home_discover</source>
+                <target>Discover, course, course report, StudyLivre, create, follow</target>
+            </trans-unit>
+            <trans-unit id="47">
+                <source>meta.description_content.basket_coursebasket</source>
+                <target>In the Course basket you can save courses which you can follow right away or in the near future. </target>
+            </trans-unit>
+            <trans-unit id="48">
+                <source>meta.description_keywords.basket_reports</source>
+                <target>Course, basket, course</target>
+            </trans-unit>
+            <trans-unit id="49">
+                <source>meta.description_content.basket_reports</source>
+                <target>In the menu My Reports you can find course reports of courses you have completed.</target>
+            </trans-unit>
+            <trans-unit id="50">
+                <source>meta.description_content.create_my_courses</source>
+                <target>In the menu My Courses you can create a new course or edit existing courses.</target>
+            </trans-unit>
+            <trans-unit id="81">
+                <source>meta.description_keywords.create_my_courses</source>
+                <target>Course, report, StudyLivre, share</target>
+            </trans-unit>
+            <trans-unit id="52">
+                <source>meta.description_content.create_shared_reports</source>
+                <target>In the menu Shared reports you will find course reports of other users which have decided to share one or more course reports with you.</target>
+            </trans-unit>
+            <trans-unit id="51">
+                <source>meta.description_keywords.create_shared_reports</source>
+                <target>Course, report, StudyLivre, share</target>
+            </trans-unit>
+            <trans-unit id="53">
+                <source>meta.description_content.more_about_us</source>
+                <target>StudyLivre is founded in 2016. StudyLivre offers you the possibility to view, create and share courses.</target>
+            </trans-unit>
+            <trans-unit id="54">
+                <source>meta.description_keywords.more_about_us</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="55">
+                <source>meta.description_content.more_author_right</source>
+                <target>In the menu Copyright you can learn more about the copyright policy of StudyLivre.</target>
+            </trans-unit>
+            <trans-unit id="56">
+                <source>meta.description_keywords.more_author_right</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="57">
+                <source>meta.description_content.more_guidelines</source>
+                <target>In the menu Guidelines you can learn more about the guidelines on StudyLivre.</target>
+            </trans-unit>
+            <trans-unit id="58">
+                <source>meta.description_keywords.more_guidelines</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="59">
+                <source>meta.description_content.more_contact</source>
+                <target>In the menu Contact you can contact StudyLivre. </target>
+            </trans-unit>
+            <trans-unit id="60">
+                <source>meta.description_keywords.more_contact</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="61">
+                <source>meta.description_content.more_jurdical</source>
+                <target>In the menu Juridical you can learn more about the: Terms of Use, Privacy Policy and Cookie Policy. </target>
+            </trans-unit>
+            <trans-unit id="62">
+                <source>meta.description_keywords.more_jurdical</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="63">
+                <source>meta.description_content.more_questions</source>
+                <target>In the menu Questions you can find frequently answered questions about StudyLivre. </target>
+            </trans-unit>
+            <trans-unit id="64">
+                <source>meta.description_keywords.more_questions</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="70">
+                <source>promo.youtube_creators</source>
+                <target> YouTube tutorial creator</target>
+            </trans-unit>
+            <trans-unit id="71">
+                <source>promo.youtube_creators_text</source>
+                <target> Upgrade your YouTube tutorial videos into a course and help students.  Expand your course for example with: open-ended and multiple choice questions or unique course pages like announcements, documents or planning. </target>
+            </trans-unit>
+            <trans-unit id="72">
+                <source>promo.students</source>
+                <target> Students </target>
+            </trans-unit>
+            <trans-unit id="73">
+                <source>promo.students_text</source>
+                <target> Expand the educational capabilities of your students by letting them follow courses on StudyLivre. Select courses for your students which would enhance their learning experience or which suit their individual needs. Once a student has completed a course he or she can share the course report with other people, for example a teacher. </target>
+            </trans-unit>
+            <trans-unit id="76">
+                <source>promo.educators</source>
+                <target>Educators</target>
+            </trans-unit>
+            <trans-unit id="77">
+                <source>promo.educators_text</source>
+                <target> You can master any skill of your own choice, anytime when it suits you. Once you complete a course you get instant feedback when you view the course report. </target>
+            </trans-unit>
+            <trans-unit id="78">
+                <source>promo.target_audience.panel_title</source>
+                <target>Target audience</target>
+            </trans-unit>
+            <trans-unit id="79">
+                <source>promo.learn_more</source>
+                <target>Learn more</target>
+            </trans-unit>
 
-<!-- Einde messages -->
+            <!-- Einde messages -->
 <!-- Tab learn: 0000 tot 0999 -->
 			<trans-unit id="0001">
                 <source>l.nav.course_reports</source>
@@ -251,7 +383,7 @@
             <target>A course report will be generated once you finish the course. The report is based on your answers. The report will be automatically saved at: Basket → My reports.</target>
             </trans-unit>
             <trans-unit id="0022">
-                <source>t.save_answers</source>
+                <source>t.save_anwsers</source>
                 <target>Save answers</target>
             </trans-unit>
             <trans-unit id="0023">

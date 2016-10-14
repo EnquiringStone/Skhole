@@ -5,6 +5,9 @@
     {% include ':panels/teach:mentor.overview.panel.html.twig' %}
 {% endblock %}
 
+{% block keywords %}{% trans %}meta.description_keywords.create_shared_reports{% endtrans %}{% endblock %}
+{% block description %}{% trans %}meta.description_content.create_shared_reports{% endtrans %}{% endblock %}
+
 {% block modals %}
     {% include ':modal/dashboard:course.report.introduction.modal.html.twig' with {'modalId': 'courseReportIntroductionModal'} %}
 {% endblock %}

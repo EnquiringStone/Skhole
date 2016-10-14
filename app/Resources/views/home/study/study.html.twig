@@ -17,6 +17,9 @@
     </div>
 {% endblock %}
 
+{% block keywords %}{% trans %}meta.description_keywords.home_study{% endtrans %}{% endblock %}
+{% block description %}{% trans %}meta.description_content.home_study{% endtrans %}{% endblock %}
+
 {% block modals %}
     {% if pageType == 'custom' and name == 'start' %}
         {% include ':modal/dashboard:study.introduction.modal.html.twig' with {'modalId': 'studyIntroductionModal'} %}

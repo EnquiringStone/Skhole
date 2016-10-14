@@ -1,13 +1,18 @@
 {% extends 'base.html.twig' %}
-{% block title %}{% trans %}o.frequently_used.search{% endtrans %}{% endblock %}
 {% block body %}
     {% include ':panels/dashboard:search.panel.html.twig' %}
     {% include ':panels/dashboard:search.results.panel.html.twig' %}
+    {% include ':panels/dashboard:services.panel.html.twig' %}
+    {% include ':panels/dashboard:audience.panel.html.twig' %}
     {% include ':panels/general:commercial.panel.html.twig' %}
 {% endblock %}
 
 {% block prescripts %}
     <script src="{{ asset('js/dashboard/search.js') }}"></script>
+    <script src="https://clientcdn.pushengage.com/core/4780.js"></script>
+    <script>
+        _pe.subscribe();
+    </script>
 {% endblock %}
 
 {% block postscripts %}

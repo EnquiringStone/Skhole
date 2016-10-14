@@ -140,12 +140,12 @@
                 <target> Top 10 populairste cursussen</target>
             </trans-unit>
             <trans-unit id="35">
-                <source></source>
-                <target></target>
+                <source>find.courses.promo</source>
+                <target>Zoek cursussen</target>
             </trans-unit>
             <trans-unit id="36">
-                <source></source>
-                <target></target>
+                <source>our.services.panel.title</source>
+                <target>Onze services</target>
             </trans-unit>
             <trans-unit id="37">
                 <source></source>
@@ -163,11 +163,140 @@
                 <source></source>
                 <target></target>
             </trans-unit>
- 
+            <trans-unit id="41">
+                <source>meta.description_content.home_study</source>
+                <target>Het menu Studeer toont de cursus die je als gebruiker hebt uitgekozen om te volgen.</target>
+            </trans-unit>
+            <trans-unit id="42">
+                <source>meta.description_keywords.home_study</source>
+                <target>Cursus, volgen, StudyLivre </target>
+            </trans-unit>
+            <trans-unit id="43">
+                <source>meta.description_content.home_profile</source>
+                <target>Als je een profiel op StudyLivre bezit, kun je in het menu Profiel je gegevens inzien of aanpassen. </target>
+            </trans-unit>
+            <trans-unit id="44">
+                <source>meta.description_keywords.home_profile</source>
+                <target>profiel</target>
+            </trans-unit>
+            <trans-unit id="45">
+                <source>meta.description_content.home_discover</source>
+                <target>In het Ontdek menu kun je uitgebreide informatie vinden over het StudyLivre platform. De hoofdthema’s zijn als volgt: cursus volgen, cursus maken en cursusrapport.</target>
+            </trans-unit>
+            <trans-unit id="46">
+                <source>meta.description_keywords.home_discover</source>
+                <target>Ontdek, cursus, cursusrapport, StudyLivre, maken, volgen </target>
+            </trans-unit>
+            <trans-unit id="47">
+                <source>meta.description_content.basket_coursebasket</source>
+                <target>In het cursusmandje kun je cursussen bewaren die je nu of op een later tijdstip wilt gaan volgen.</target>
+            </trans-unit>
+            <trans-unit id="48">
+                <source>meta.description_keywords.basket_reports</source>
+                <target>cursusrapporten, cursus, rapport</target>
+            </trans-unit>
+            <trans-unit id="49">
+                <source>meta.description_content.basket_reports</source>
+                <target>In het menu Mijn rapporten kun je alle cursusrapporten terugvinden van cursussen die je hebt afgerond. </target>
+            </trans-unit>
+            <trans-unit id="51">
+                <source>meta.description_content.create_my_courses</source>
+                <target>In het menu Mijn cursussen kun je een nieuwe cursus aanmaken of een bestaande cursus bewerken. </target>
+            </trans-unit>
+            <trans-unit id="81">
+                <source>meta.description_keywords.create_my_courses</source>
+                <target>Cursus, maken</target>
+            </trans-unit>
+            <trans-unit id="52">
+                <source>meta.description_content.create_shared_reports</source>
+                <target>In het menu Gedeelde rapporten vind je alle cursusrapporten die andere StudyLivre gebruikers met jou gedeeld hebben. </target>
+            </trans-unit>
+            <trans-unit id="50">
+                <source>meta.description_keywords.create_shared_reports</source>
+                <target>Cursusrapport, rapport, StudyLivre, delen</target>
+            </trans-unit>
+            <trans-unit id="53">
+                <source>meta.description_content.more_about_us</source>
+                <target>StudyLivre is opgezet in 2016. StudyLivre biedt je de mogelijkheid om cursussen te bekijken, creëren en onderling te delen.</target>
+            </trans-unit>
+            <trans-unit id="54">
+                <source>meta.description_keywords.more_about_us</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="55">
+                <source>meta.description_content.more_author_right</source>
+                <target>In het menu Auteursrecht kun je meer te weten komen over het auteursrechtbeleid van StudyLivre.</target>
+            </trans-unit>
+            <trans-unit id="56">
+                <source>meta.description_keywords.more_author_right</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="57">
+                <source>meta.description_content.more_guidelines</source>
+                <target>In dit menu Richtlijnen kun je meer te weten komen over de richtlijnen op StudyLivre.</target>
+            </trans-unit>
+            <trans-unit id="58">
+                <source>meta.description_keywords.more_guidelines</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="59">
+                <source>meta.description_content.more_contact</source>
+                <target>In het menu Contact kun je contact opnemen met StudyLivre.</target>
+            </trans-unit>
+            <trans-unit id="60">
+                <source>meta.description_keywords.more_contact</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="61">
+                <source>meta.description_content.more_jurdical</source>
+                <target>In het menu juridische informatie kun je meer te weten komen over de gebruikersovereenkomst, het privacy- en cookiebeleid. </target>
+            </trans-unit>
+            <trans-unit id="62">
+                <source>meta.description_keywords.more_jurdical</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="63">
+                <source>meta.description_content.more_questions</source>
+                <target>In het menu vragen kun je antwoorden vinden op veel gestelde vragen over het StudyLivre platform.</target>
+            </trans-unit>
+            <trans-unit id="64">
+                <source>meta.description_keywords.more_questions</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="70">
+                <source>promo.youtube_creators</source>
+                <target> YouTube tutorial makers</target>
+            </trans-unit>
+            <trans-unit id="71">
+                <source>promo.youtube_creators_text</source>
+                <target> Maak van je YouTube tutorial video’s een volwaardige cursus en help studenten om de lesstof uit jouw video’s nog beter te begrijpen. Voeg aan je cursus open- en meerkeuzevragen toe of voeg unieke pagina’s toe met daarop: documenten, mededelingen of een planning.</target>
+            </trans-unit>
+            <trans-unit id="72">
+                <source>promo.students</source>
+                <target>Studenten</target>
+            </trans-unit>
+            <trans-unit id="73">
+                <source>promo.students_text</source>
+                <target> Je kunt leren waar en wanneer het jouw uitkomt. Zodra je een cursus heb afgerond, krijg je onmiddellijke feedback zodra je het cursusrapport opent (met daar de door jouw gegeven antwoorden). </target>
+            </trans-unit>
+            <trans-unit id="76">
+                <source>promo.educators</source>
+                <target> Onderwijzers</target>
+            </trans-unit>
+            <trans-unit id="77">
+                <source>promo.educators_text</source>
+                <target>Vergroot de educatieve mogelijkheden van je studenten door gebruik te maken van de cursussen op StudyLivre. Selecteer cursussen die de leerervaring van uw studenten verhoogt of die nauw aansluit bij hun behoeften. Zodra een student een cursus heeft afgerond, kan hij of zij een rapport delen met anderen, bijvoorbeeld een onderwijzer.</target>
+            </trans-unit>
+            <trans-unit id="78">
+                <source>promo.target_audience.panel_title</source>
+                <target>Doelgroep</target>
+            </trans-unit>
+            <trans-unit id="79">
+                <source>promo.learn_more</source>
+                <target>Meer weten?</target>
+            </trans-unit>
 
-
-
-<!-- Einde messages -->
+            <!-- Einde messages -->
 <!-- Tab learn: 0000 tot 0999 -->
 			<trans-unit id="0001">
                 <source>l.nav.course_reports</source>

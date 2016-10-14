@@ -1,0 +1,40 @@
+{% extends 'panels/panel.base.html.twig' %}
+{% block panelBaseTitle %}
+    {% trans %}promo.target_audience.panel_title{% endtrans %}
+{% endblock %}
+{% block panelBaseContents %}
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="centrum">
+                    <h1><span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span></h1>
+                    <h4><samp><b>{% trans %}promo.youtube_creators{% endtrans %}</b></samp></h4>
+                    <p>
+                        {% trans %}promo.youtube_creators_text{% endtrans %}
+                    </p>
+                    <a class="btn btn-default" href="{{ path('app_home_getting_started_custom_page', {'page': 'createCourse'}) }}">{% trans %}promo.learn_more{% endtrans %}</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="centrum">
+                    <h1><span class="glyphicon glyphicon-education" aria-hidden="true"></span></h1>
+                    <h4><samp><b>{% trans %}promo.students{% endtrans %}</b></samp></h4>
+                    <p>
+                        {% trans %}promo.students_text{% endtrans %}
+                    </p>
+                    <a class="btn btn-default" href="{{ path('app_home_getting_started_page') }}">{% trans %}promo.learn_more{% endtrans %}</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="centrum">
+                    <h1><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span></h1>
+                    <h4><samp><b>{% trans %}promo.educators{% endtrans %}</b></samp></h4>
+                    <p>
+                        {% trans %}promo.educators_text{% endtrans %}
+                    </p>
+                    <a class="btn btn-default" href="{{ path('app_home_getting_started_page') }}">{% trans %}promo.learn_more{% endtrans %}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

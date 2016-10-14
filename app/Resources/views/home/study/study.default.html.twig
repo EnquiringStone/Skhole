@@ -4,6 +4,8 @@
     {% include ':panels/study:study.default.panel.html.twig' %}
     {% include ':panels/general:commercial.panel.html.twig' %}
 {% endblock %}
+{% block keywords %}{% trans %}meta.description_keywords.home_study{% endtrans %}{% endblock %}
+{% block description %}{% trans %}meta.description_content.home_study{% endtrans %}{% endblock %}
 
 {% block modals %}
     {% include ':modal/dashboard:study.introduction.modal.html.twig' with {'modalId': 'studyIntroductionModal'} %}

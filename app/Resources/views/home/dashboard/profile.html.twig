@@ -7,6 +7,9 @@
     {% include ':panels/general:commercial.panel.html.twig' %}
 {% endblock %}
 
+{% block keywords %}{% trans %}meta.description_keywords.home_profile{% endtrans %}{% endblock %}
+{% block description %}{% trans %}meta.description_content.home_profile{% endtrans %}{% endblock %}
+
 {% block modals %}
     {% include ':modal/dashboard:profile.details.edit.modal.html.twig' with {'modalId': 'profilePersonalInfoModal'} %}
     {% include ':modal/dashboard:profile.education.edit.modal.html.twig' with {'modalId': 'profileEducationInfoModal'} %}

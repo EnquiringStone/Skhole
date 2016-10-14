@@ -4,6 +4,9 @@
     {% include 'panels/learn/course.collection.panel.html.twig' %}
 {% endblock %}
 
+{% block keywords %}{% trans %}meta.description_keywords.basket_reports{% endtrans %}{% endblock %}
+{% block description %}{% trans %}meta.description_content.basket_coursebasket{% endtrans %}{% endblock %}
+
 {% block modals %}
     {% include ':modal/dashboard:study.introduction.modal.html.twig' with {'modalId' : 'studyIntroductionModal'} %}
     {% include ':modal/dashboard:course.report.introduction.modal.html.twig' with {'modalId': 'courseReportIntroductionModal'} %}
