@@ -5,6 +5,7 @@
 {% block body %}
     {% if subMenu == 'introduction' %}
         {% include ':panels/getting-started:introduction.panel.html.twig' %}
+        {% include ':panels/getting-started:introduction.discover.panel.html.twig' %}
     {% elseif subMenu == 'createCourse' %}
         {% include ':panels/getting-started:course.create.panel.html.twig' %}
     {% elseif subMenu == 'followCourse' %}

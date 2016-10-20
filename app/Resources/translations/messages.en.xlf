@@ -295,6 +295,106 @@
                 <source>promo.learn_more</source>
                 <target>Learn more</target>
             </trans-unit>
+            <trans-unit id="101">
+                <source>info.whats.inside</source>
+                <target>What's inside?</target>
+            </trans-unit>
+            <trans-unit id="102">
+                <source>info.students</source>
+                <target>Students</target>
+            </trans-unit>
+            <trans-unit id="103">
+                <source>info.students.text_01</source>
+                <target>LEARN FOR FREE</target>
+            </trans-unit>
+            <trans-unit id="104">
+                <source>info.students.text_02</source>
+                <target>Watch videos</target>
+            </trans-unit>
+            <trans-unit id="105">
+                <source>info.students.text_03</source>
+                <target>Take quizzes</target>
+            </trans-unit>
+            <trans-unit id="106">
+                <source>info.students.text_04</source>
+                <target>Download course documents</target>
+            </trans-unit>
+            <trans-unit id="107">
+                <source>info.students.text_05</source>
+                <target>View quiz results in a report or download as PDF</target>
+            </trans-unit>
+            <trans-unit id="108">
+                <source>info.students.text_06</source>
+                <target>Store courses into your course basket</target>
+            </trans-unit>
+            <trans-unit id="109">
+                <source>info.students.text_07</source>
+                <target>Expand your knowledge</target>
+            </trans-unit>
+            <trans-unit id="110">
+                <source>info.youtube_creators</source>
+                <target>YouTube tutorial creators</target>
+            </trans-unit>
+            <trans-unit id="111">
+                <source>info.youtube_creators.text_01</source>
+                <target>CREATE COURSES FOR FREE</target>
+            </trans-unit>
+            <trans-unit id="112">
+                <source>info.youtube_creators.text_02</source>
+                <target>Create instruction videos</target>
+            </trans-unit>
+            <trans-unit id="113">
+                <source>info.youtube_creators.text_03</source>
+                <target>Create quizzes</target>
+            </trans-unit>
+            <trans-unit id="114">
+                <source>info.youtube_creators.text_04</source>
+                <target>Add course documents, announcements and a planning page</target>
+            </trans-unit>
+            <trans-unit id="115">
+                <source>info.youtube_creators.text_05</source>
+                <target>Help students learn new skills</target>
+            </trans-unit>
+            <trans-unit id="116">
+                <source>info.educators</source>
+                <target>Educators</target>
+            </trans-unit>
+            <trans-unit id="117">
+                <source>info.educators.text_01</source>
+                <target>INTEGRATE INTO YOUR CLASSES</target>
+            </trans-unit>
+            <trans-unit id="118">
+                <source>info.educators.text_02</source>
+                <target>Select courses for your students</target>
+            </trans-unit>
+            <trans-unit id="119">
+                <source>info.educators.text_03</source>
+                <target>Watch and grade course reports of students</target>
+            </trans-unit>
+            <trans-unit id="120">
+                <source>info.educators.text_04</source>
+                <target>Make use of different teaching styles and methods</target>
+            </trans-unit>
+            <trans-unit id="121">
+                <source>info.educators.text_05</source>
+                <target>Empower your lessons with StudyLivre</target>
+            </trans-unit>
+            <trans-unit id="122">
+                <source>promo.for_students_text</source>
+                <target>StudyLivre hosts various free courses with a wide range of subject categories. From computer science to economics, and from business development to literature there is something for everyone to learn.Our course material comes from top tutors around the globe. One can expand their educational capabilities by following courses on StudyLivre. Students will receive a report card after completion of course which is sharable</target>
+            </trans-unit>
+            <trans-unit id="123">
+                <source>promo.for_youtube_creators_text</source>
+                <target>With large number of users coming in, you won't find an audience like this anywhere else. You can convert your Youtube tutorial videos into a course with StudyLivre. Expand your course for example with: open-ended and multiple choice questions or unique course pages like announcements, documents or planning. With StudyLivre, you can reach out to a big number of students and can help them in learning new skills.</target>
+            </trans-unit>
+            <trans-unit id="124">
+                <source>promo.for_educators_text</source>
+                <target>Enrich your classes' learning experience with StudyLivre.  You can integrate courses into your classes or you can create your own courses. It is possible to view student results for those who have shared course reports with you. Don’t wait, many students are waiting for you.</target>
+            </trans-unit>
+            <trans-unit id="125">
+                <source>promo.how_to_benefit</source>
+                <target>How to be benefitted with StudyLivre </target>
+            </trans-unit>
 
             <!-- Einde messages -->
 <!-- Tab learn: 0000 tot 0999 -->

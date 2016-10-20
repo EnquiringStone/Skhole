@@ -1,37 +1,57 @@
 {% extends 'panels/panel.base.html.twig' %}
 {% block panelBaseTitle %}
-    {% trans %}promo.target_audience.panel_title{% endtrans %}
+    {% trans %}info.whats.inside{% endtrans %}
 {% endblock %}
 {% block panelBaseContents %}
     <div class="panel-body">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-sm-4">
                 <div class="centrum">
                     <h1><span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span></h1>
-                    <h4><samp><b>{% trans %}promo.youtube_creators{% endtrans %}</b></samp></h4>
-                    <p>
-                        {% trans %}promo.youtube_creators_text{% endtrans %}
-                    </p>
+                    <h4><samp><b>{% trans %}info.students{% endtrans %}</b></samp></h4>
+                </div>
+                <ul>
+                    <li>{% trans %}info.students.text_01{% endtrans %}</li>
+                    <li>{% trans %}info.students.text_02{% endtrans %} </li>
+                    <li>{% trans %}info.students.text_03{% endtrans %} </li>
+                    <li>{% trans %}info.students.text_04{% endtrans %} </li>
+                    <li>{% trans %}info.students.text_05{% endtrans %}</li>
+                    <li>{% trans %}info.students.text_06{% endtrans %}</li>
+                    <li class="text-muted"><b>{% trans %}info.students.text_07{% endtrans %}</b></li>
+                </ul>
+                <div class="centrum">
+                    <a class="btn btn-default" href="{{ path('app_home_getting_started_custom_page', {'page': 'followCourse'}) }}">{% trans %}promo.learn_more{% endtrans %}</a>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="centrum">
+                    <h1><span class="glyphicon glyphicon-education" aria-hidden="true"></span></h1>
+                    <h4><samp><b>{% trans %}info.youtube_creators{% endtrans %}</b></samp></h4>
+                </div>
+                <ul>
+                    <li>{% trans %}info.youtube_creators.text_01{% endtrans %}</li>
+                    <li>{% trans %}info.youtube_creators.text_02{% endtrans %}</li>
+                    <li>{% trans %}info.youtube_creators.text_03{% endtrans %} </li>
+                    <li>{% trans %}info.youtube_creators.text_04{% endtrans %}</li>
+                    <li class="text-muted"><b>{% trans %}info.youtube_creators.text_05{% endtrans %}</b> </li>
+                </ul>
+                <div class="centrum">
                     <a class="btn btn-default" href="{{ path('app_home_getting_started_custom_page', {'page': 'createCourse'}) }}">{% trans %}promo.learn_more{% endtrans %}</a>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="centrum">
-                    <h1><span class="glyphicon glyphicon-education" aria-hidden="true"></span></h1>
-                    <h4><samp><b>{% trans %}promo.students{% endtrans %}</b></samp></h4>
-                    <p>
-                        {% trans %}promo.students_text{% endtrans %}
-                    </p>
-                    <a class="btn btn-default" href="{{ path('app_home_getting_started_page') }}">{% trans %}promo.learn_more{% endtrans %}</a>
-                </div>
-            </div>
-            <div class="col-md-4">
+            <div class="col-sm-4">
                 <div class="centrum">
                     <h1><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span></h1>
-                    <h4><samp><b>{% trans %}promo.educators{% endtrans %}</b></samp></h4>
-                    <p>
-                        {% trans %}promo.educators_text{% endtrans %}
-                    </p>
+                    <h4><samp><b>{% trans %}info.educators{% endtrans %}</b></samp></h4>
+                </div>
+                <ul>
+                    <li>{% trans %}info.educators.text_01{% endtrans %}</li>
+                    <li>{% trans %}info.educators.text_02{% endtrans %}</li>
+                    <li>{% trans %}info.educators.text_03{% endtrans %}</li>
+                    <li>{% trans %}info.educators.text_04{% endtrans %}</li>
+                    <li class="text-muted"><b>{% trans %}info.educators.text_05{% endtrans %}</b></li>
+                </ul>
+                <div class="centrum">
                     <a class="btn btn-default" href="{{ path('app_home_getting_started_page') }}">{% trans %}promo.learn_more{% endtrans %}</a>
                 </div>
             </div>

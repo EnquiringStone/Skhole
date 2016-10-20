@@ -1,0 +1,32 @@
+{% extends 'panels/panel.base.html.twig' %}
+{% block panelBaseTitle %}
+    {% trans %}promo.how_to_benefit{% endtrans %}
+{% endblock %}
+{% block panelBaseContents %}
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="centrum">
+                    <h1><span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span></h1>
+                    <h4><samp><b>{% trans %}info.students{% endtrans %}</b></samp></h4>
+                </div>
+                <p>{% trans %}promo.for_students_text{% endtrans %} </p>
+            </div>
+            <div class="col-sm-4">
+                <div class="centrum">
+                    <h1><span class="glyphicon glyphicon-education" aria-hidden="true"></span></h1>
+                    <h4><samp><b>{% trans %}info.youtube_creators{% endtrans %}</b></samp></h4>
+                </div>
+                <p>{% trans %}promo.for_youtube_creators_text{% endtrans %} </p>
+            </div>
+            <div class="col-sm-4">
+                <div class="centrum">
+                    <h1><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span></h1>
+                    <h4><samp><b>{% trans %}info.educators{% endtrans %}</b></samp></h4>
+                </div>
+                <p>{% trans %}promo.for_educators_text{% endtrans %} </p>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

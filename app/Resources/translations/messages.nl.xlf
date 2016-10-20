@@ -295,6 +295,106 @@
                 <source>promo.learn_more</source>
                 <target>Meer weten?</target>
             </trans-unit>
+            <trans-unit id="101">
+                <source>info.whats.inside</source>
+                <target>Wat kun je doen?</target>
+            </trans-unit>
+            <trans-unit id="102">
+                <source>info.students</source>
+                <target>Studenten</target>
+            </trans-unit>
+            <trans-unit id="103">
+                <source>info.students.text_01</source>
+                <target>Leer GRATIS</target>
+            </trans-unit>
+            <trans-unit id="104">
+                <source>info.students.text_02</source>
+                <target>Bekijk video’s</target>
+            </trans-unit>
+            <trans-unit id="105">
+                <source>info.students.text_03</source>
+                <target>Beantwoord quizzen</target>
+            </trans-unit>
+            <trans-unit id="106">
+                <source>info.students.text_04</source>
+                <target>Download cursus documenten</target>
+            </trans-unit>
+            <trans-unit id="107">
+                <source>info.students.text_05</source>
+                <target>Bekijk quizresultaten in een rapport of download als PDF</target>
+            </trans-unit>
+            <trans-unit id="108">
+                <source>info.students.text_06</source>
+                <target>Bewaar cursussen in je cursusmandje</target>
+            </trans-unit>
+            <trans-unit id="109">
+                <source>info.students.text_07</source>
+                <target>Vergroot je kennis</target>
+            </trans-unit>
+            <trans-unit id="110">
+                <source>info.youtube_creators</source>
+                <target>YouTube tutorial creators</target>
+            </trans-unit>
+            <trans-unit id="111">
+                <source>info.youtube_creators.text_01</source>
+                <target>MAAK GRATIS CURSUSSEN</target>
+            </trans-unit>
+            <trans-unit id="112">
+                <source>info.youtube_creators.text_02</source>
+                <target>Maak instructievideo’s</target>
+            </trans-unit>
+            <trans-unit id="113">
+                <source>info.youtube_creators.text_03</source>
+                <target>Maak quizzen</target>
+            </trans-unit>
+            <trans-unit id="114">
+                <source>info.youtube_creators.text_04</source>
+                <target>Voeg toe: cursusdocumenten, mededelingen en een planning pagina</target>
+            </trans-unit>
+            <trans-unit id="115">
+                <source>info.youtube_creators.text_05</source>
+                <target>Help studenten bij het leren van nieuwe vaardigheden</target>
+            </trans-unit>
+            <trans-unit id="116">
+                <source>info.educators</source>
+                <target>Onderwijzers</target>
+            </trans-unit>
+            <trans-unit id="117">
+                <source>info.educators.text_01</source>
+                <target>INTEGREER IN JE LESSEN</target>
+            </trans-unit>
+            <trans-unit id="118">
+                <source>info.educators.text_02</source>
+                <target>Selecteer cursussen voor je leerlingen</target>
+            </trans-unit>
+            <trans-unit id="119">
+                <source>info.educators.text_03</source>
+                <target>Bekijk en beoordeel cursusrapporten van studenten</target>
+            </trans-unit>
+            <trans-unit id="120">
+                <source>info.educators.text_04</source>
+                <target>Maak gebruik van de verschillende onderwijsstijlen en methoden</target>
+            </trans-unit>
+            <trans-unit id="121">
+                <source>info.educators.text_05</source>
+                <target>Verrijk je onderwijsmethodes met StudyLivre</target>
+            </trans-unit>
+            <trans-unit id="122">
+                <source>promo.for_students_text</source>
+                <target>Volg cursussen over een uitgebreid scala aan onderwerpen op verschillende niveaus. Ons cursusmateriaal is afkomstig van docenten over de hele wereld. Na afloop van een cursus ontvang je een rapport met daarin je resultaten, die je eveneens kunt delen. </target>
+            </trans-unit>
+            <trans-unit id="123">
+                <source>promo.for_youtube_creators_text</source>
+                <target>Maak van je YouTube instructie video’s een volwaardige cursus en bereik een groter publiek. Breid uw cursus uit met bijvoorbeeld:  open- en/of meerkeuze vragen, unieke cursus pagina’s met daarop mededelingen,  documenten of een planning. StudyLivre is een webapplicatie die u ondersteunt bij het overbrengen van kennis en vaardigheden.  </target>
+            </trans-unit>
+            <trans-unit id="124">
+                <source>promo.for_educators_text</source>
+                <target>Verreik de leerervaring van studenten met StudyLivre. Integreer cursussen van andere docenten in je eigen les of maak zelf nieuwe cursussen aan. Je kunt de voortgang van studenten monitoren indien ze cursusrapporten met je gedeeld hebben. </target>
+            </trans-unit>
+            <trans-unit id="125">
+                <source>promo.how_to_benefit</source>
+                <target>Wat StudyLivre voor jouw kan beteken</target>
+            </trans-unit>
 
             <!-- Einde messages -->
 <!-- Tab learn: 0000 tot 0999 -->

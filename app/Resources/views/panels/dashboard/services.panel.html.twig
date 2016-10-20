@@ -5,14 +5,39 @@
 {% block panelBaseContents %}
     <div class="panel-body">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="embed-responsive embed-responsive-4by3">
                     <iframe class="embed-responsive-item" src="{% trans %}youtube.introduction.video{% endtrans %}" allowfullscreen></iframe>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <h4><b>{% trans %}o.frequently_used.introduction{% endtrans %}</b></h4>
                 <p>{% trans %} h.getting_started.intro_part_01{% endtrans %}.</p>
+                <div class="logo-background">
+                    <h4>
+                        <img src="{{ asset('images/logo-skhole.png') }}" class="img-rounded" height="28px" alt="{% trans %}alt.studylivre{% endtrans %}" title="{% trans %}alt.studylivre{% endtrans %}">
+                        <samp>
+                            <b>
+                                <span class="text-muted">{% trans %}Study{% endtrans %}</span>
+                                <span class="text-primary">{% trans %}Livre{% endtrans %}</span>
+                            </b>
+                            <small>{% trans %}empowering education{% endtrans %}</small>
+                        </samp>
+                    </h4>
+                </div>
+                <hr />
+                <a target="_blank" href="https://www.facebook.com/studylivre/">
+                    <img class="img-rounded" src="{{ asset('images/social-media-fb.png') }}">
+                </a>
+                <div class="fb-like" data-href="https://www.facebook.com/studylivre/" data-layout="button_count" data-action="like" data-size="large" data-show-faces="false" data-share="true"></div>
+                <br />
+                <br />
+                <div>
+                    <a target="_blank" href="https://plus.google.com/b/102712635638531679689/?pageId=102712635638531679689">
+                        <img class="img-rounded" src="{{ asset('images/social-media-gp.png') }}">
+                    </a>
+                    <div class="g-plusone" data-size="tall" data-annotation="inline" data-width="150" data-href="https://plus.google.com/b/102712635638531679689/?pageId=102712635638531679689"></div>
+                </div>
                 {% if not is_granted('ROLE_USER') %}
                     <hr />
                     <div class="centrum">
@@ -24,11 +49,6 @@
                     </div>
                     <hr/>
                 {% endif %}
-            </div>
-            <div class="col-md-4">
-                <div class="embed-responsive embed-responsive-4by3">
-                    <iframe class="embed-responsive-item" allowfullscreen="allowfullscreen" src="{% trans %}youtube.create.course.video{% endtrans %}"></iframe>
-                </div>
             </div>
         </div>
     </div>
