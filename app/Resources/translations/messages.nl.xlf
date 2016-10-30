@@ -395,6 +395,134 @@
                 <source>promo.how_to_benefit</source>
                 <target>Wat StudyLivre voor jouw kan beteken</target>
             </trans-unit>
+            <trans-unit id="126">
+                <source>promo.feature</source>
+                <target>Feature</target>
+            </trans-unit>
+            <trans-unit id="127">
+                <source>promo.no_account</source>
+                <target>Geen account</target>
+            </trans-unit>
+            <trans-unit id="128">
+                <source>promo.account</source>
+                <target>Account</target>
+            </trans-unit>
+            <trans-unit id="129">
+                <source>promo.follow_courses</source>
+                <target>Cursus volgen</target>
+            </trans-unit>
+            <trans-unit id="130">
+                <source>promo.view_reports</source>
+                <target>Cursusrapporten inzien</target>
+            </trans-unit>
+            <trans-unit id="131">
+                <source>promo.download_pdf</source>
+                <target>Cursusrapport downloaden (PDF)</target>
+            </trans-unit>
+            <trans-unit id="132">
+                <source>promo.share_reports</source>
+                <target>Cursusrapporten delen</target>
+            </trans-unit>
+            <trans-unit id="133">
+                <source>promo.save_reports</source>
+                <target>Cursusrapporten bewaren</target>
+            </trans-unit>
+            <trans-unit id="134">
+                <source>promo.rate_reports</source>
+                <target>Bekijk en beoordeel andermans rapporten</target>
+            </trans-unit>
+            <trans-unit id="135">
+                <source>promo.course_basket</source>
+                <target>Cursusmandje </target>
+            </trans-unit>
+            <trans-unit id="136">
+                <source>promo.create_courses</source>
+                <target>Cursussen maken</target>
+            </trans-unit>
+            <trans-unit id="137">
+                <source>promo.for_free</source>
+                <target>Alles is gratis!</target>
+            </trans-unit>
+            <trans-unit id="138">
+                <source>promo.account_benefits</source>
+                <target>Account voordelen</target>
+            </trans-unit>
+            <trans-unit id="139">
+                <source>promo.info_basket_title</source>
+                <target>Cursusmandje</target>
+            </trans-unit>
+            <trans-unit id="140">
+                <source>promo.info_basket_content</source>
+                <target>Cursussen bewaren in cursusmandje.</target>
+            </trans-unit>
+            <trans-unit id="141">
+                <source>promo.video_and_account</source>
+                <target>Introductie video &amp; account informatie</target>
+            </trans-unit>
+            <trans-unit id="142">
+                <source>search.browse_and_see</source>
+                <target> Selecteer een categorie en bekijk de bijbehorende cursussen </target>
+            </trans-unit>
+            <trans-unit id="143">
+                <source>promo_school.benefits_educators</source>
+                <target>Voordelen voor onderwijzers</target>
+            </trans-unit>
+            <trans-unit id="144">
+                <source>promo_school.students_teachters</source>
+                <target>1. Docenten en studenten staan centraal</target>
+            </trans-unit>
+            <trans-unit id="145">
+                <source>promo_school.students_teachters.text</source>
+                <target>Docenten en onderwijsinstellingen hebben allemaal een eigen visie op onderwijs. StudyLivre is opgezet zodat docenten en studenten zelf kunnen bepalen hoe en op welke manier ze deze website willen inzetten voor educatieve doeleinden. </target>
+            </trans-unit>
+            <trans-unit id="146">
+                <source>promo_school.platform_ascending</source>
+                <target>2. Een schooloverstijgend platform</target>
+            </trans-unit>
+            <trans-unit id="147">
+                <source>promo_school.platform_ascending.text</source>
+                <target>Als je een cursus toevoegt weet je een ding zeker: de les die je maakt zal een groter publiek bereiken dan alleen je eigen klas. Maak deel uit van een gemeenschap die helpt bij de verspreiding van gratis online onderwijs. </target>
+            </trans-unit>
+            <trans-unit id="148">
+                <source>promo_school.combine</source>
+                <target>3. Combineer het beste van twee werelden</target>
+            </trans-unit>
+            <trans-unit id="149">
+                <source>promo_school.combine.text</source>
+                <target>Studenten hebben natuurlijk het meeste baat bij individuele uitleg. In de praktijk is de tijd van docenten echter schaars. StudyLivre stelt docenten in staat om repetitieve taken uit te besteden d.m.v. uitlegvideo's en quizzen die automatisch worden nagekeken. </target>
+            </trans-unit>
+            <trans-unit id="150">
+                <source>promo_school.customize</source>
+                <target>4. Lever maatwerk</target>
+            </trans-unit>
+            <trans-unit id="151">
+                <source>promo_school.customize.text</source>
+                <target>Iedere student is uniek en leert anders. Selecteer daarom cursussen die het best aansluiten bij de behoeftes van uw leerlingen. Dankzij het cursusrapport kun je als docent de resultaten van studenten inzien. </target>
+            </trans-unit>
+            <trans-unit id="152">
+                <source>promo_school.ict_stuff</source>
+                <target>5. Geen gedoe met ICT</target>
+            </trans-unit>
+            <trans-unit id="153">
+                <source>promo_school.ict_stuff.text</source>
+                <target>Je hoeft geen dure hardware of software aan te schaffen. Het enige wat je nodig hebt om StudyLivre is een apparaat met een internet verbinding. </target>
+            </trans-unit>
+            <trans-unit id="154">
+                <source>promo_school.distance_learning</source>
+                <target>6. Maken leren op afstand makkelijker</target>
+            </trans-unit>
+            <trans-unit id="155">
+                <source>promo_school.distance_learning.text</source>
+                <target>Het is niet altijd mogelijk voor studenten om aanwezig te zijn bij klassikale lessen. StudyLivre  ondersteunt studenten en docenten bij het mogelijk maken van online onderwijs op afstand.</target>
+            </trans-unit>
+            <trans-unit id="156">
+                <source>promo_school.for_free</source>
+                <target>7. StudyLivre is helemaal gratis</target>
+            </trans-unit>
+            <trans-unit id="157">
+                <source>promo_school.for_free.text</source>
+                <target>Waarom betalen voor educatieve software als het ook gratis kan? Het gebruik van StudyLivre is en blijft gratis. </target>
+            </trans-unit>
 
             <!-- Einde messages -->
 <!-- Tab learn: 0000 tot 0999 -->

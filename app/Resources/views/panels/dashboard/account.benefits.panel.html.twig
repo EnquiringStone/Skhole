@@ -1,0 +1,132 @@
+{% extends 'panels/panel.base.html.twig' %}
+{% block panelBaseTitle %}
+    {% trans %}promo.account_benefits{% endtrans %}
+{% endblock %}
+{% block panelBaseContents %}
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-6">
+                <section id="carousel">
+                    <div class="carousel slide" id="fade-quote-carousel" data-ride="carousel" data-interval="6500">
+                        <!-- Carousel indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#fade-quote-carousel" data-slide-to="0"></li>
+                            <li data-target="#fade-quote-carousel" data-slide-to="1"></li>
+                            <li data-target="#fade-quote-carousel" data-slide-to="2" class="active"></li>
+                        </ol>
+                        <!-- Carousel items -->
+                        <div class="carousel-inner">
+                            <div class="item">
+                                <div class="centrum">
+                                    <h1><span class="glyphicon glyphicon-education" aria-hidden="true"></span></h1>
+                                    <h4><samp><b>{% trans %}info.students{% endtrans %}</b></samp></h4>
+                                </div>
+                                <ul>
+                                    <li>{% trans %}info.students.text_01{% endtrans %}</li>
+                                    <li>{% trans %}info.students.text_02{% endtrans %} </li>
+                                    <li>{% trans %}info.students.text_03{% endtrans %} </li>
+                                    <li>{% trans %}info.students.text_04{% endtrans %} </li>
+                                    <li>{% trans %}info.students.text_05{% endtrans %}</li>
+                                    <li>{% trans %}info.students.text_06{% endtrans %}</li>
+                                    <li class="text-muted"><b>{% trans %}info.students.text_07{% endtrans %}</b></li>
+                                </ul>
+                                <br/>
+                            </div>
+                            <div class="item">
+                                <div class="centrum">
+                                    <h1><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span></h1>
+                                    <h4><samp><b>{% trans %}info.educators{% endtrans %}</b></samp></h4>
+                                </div>
+                                <ul>
+                                    <li>{% trans %}info.educators.text_01{% endtrans %}</li>
+                                    <li>{% trans %}info.educators.text_02{% endtrans %}</li>
+                                    <li>{% trans %}info.educators.text_03{% endtrans %}</li>
+                                    <li>{% trans %}info.educators.text_04{% endtrans %}</li>
+                                    <li class="text-muted"><b>{% trans %}info.educators.text_05{% endtrans %}</b></li>
+                                </ul>
+                                <br/>
+                            </div>
+                            <div class="active item">
+                                <div class="centrum">
+                                    <h1><span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span></h1>
+                                    <h4><samp><b>{% trans %}info.youtube_creators{% endtrans %}</b></samp></h4>
+                                </div>
+                                <ul>
+                                    <li>{% trans %}info.youtube_creators.text_01{% endtrans %}</li>
+                                    <li>{% trans %}info.youtube_creators.text_02{% endtrans %}</li>
+                                    <li>{% trans %}info.youtube_creators.text_03{% endtrans %} </li>
+                                    <li>{% trans %}info.youtube_creators.text_04{% endtrans %}</li>
+                                    <li class="text-muted"><b>{% trans %}info.youtube_creators.text_05{% endtrans %}</b> </li>
+                                </ul>
+                                <br/>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-sm-6">
+                <table class="table table-condensed">
+                    <tr>
+                        <th><samp class="text-primary"><b>{% trans %}promo.feature{% endtrans %}</b></samp></th>
+                        <th><samp class="text-primary"><b>{% trans %}promo.no_account{% endtrans %}</b></samp></th>
+                        <th><samp class="text-primary"><b>{% trans %}promo.account{% endtrans %}</b></samp></th>
+                    </tr>
+                    <tr>
+                        <td>{% trans %}promo.follow_courses{% endtrans %}</td>
+                        <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+                        <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+                    </tr>
+                    <tr>
+                        <td>{% trans %}promo.view_reports{% endtrans %}</td>
+                        <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+                        <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+                    </tr>
+                    <tr>
+                        <td>{% trans %}promo.download_pdf{% endtrans %}</td>
+                        <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+                        <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+                    </tr>
+                    <tr>
+                        <td>{% trans %}promo.share_reports{% endtrans %}</td>
+                        <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+                        <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+                    </tr>
+                    <tr>
+                        <td>{% trans %}promo.rate_reports{% endtrans %}</td>
+                        <td><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></td>
+                        <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+                    </tr>
+                    <tr>
+                        <td>{% trans %}promo.save_reports{% endtrans %}</td>
+                        <td><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></td>
+                        <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+                    </tr>
+                    <tr>
+                        <td>{% trans %}promo.course_basket{% endtrans %}</td>
+                        <td><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></td>
+                        <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+                    </tr>
+                    <tr>
+                        <td>{% trans %}promo.create_courses{% endtrans %}</td>
+                        <td><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></td>
+                        <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+                    </tr>
+                    <tr>
+                        <td><b class="text-muted">{% trans %}promo.for_free{% endtrans %}</b></td>
+                        <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+                        <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+                    </tr>
+                </table>
+                {% if not is_granted('ROLE_USER') %}
+                    <div class="centrum">
+                        <button type="button" class="btn btn-lg btn-info" data-toggle="modal" data-target="#loginModal">
+                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                            {% trans %}o.create_account{% endtrans %}
+                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

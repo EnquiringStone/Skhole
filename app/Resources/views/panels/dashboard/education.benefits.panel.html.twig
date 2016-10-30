@@ -1,0 +1,68 @@
+{% extends 'panels/panel.base.html.twig' %}
+{% block panelBaseTitle %}
+    <span class="glyphicon glyphicon-education" aria-hidden="true"></span> {% trans %}promo_school.benefits_educators{% endtrans %}
+{% endblock %}
+{% block panelBaseContents %}
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-6">
+                <img src="{{ asset('images/'~app.request.locale~'/benefits-institutions.png') }}" class="img-responsive">
+            </div>
+            <div class="col-sm-6">
+                <section class="carousel">
+                    <div class="carousel slide" id="fade-quote-carousel-education" data-ride="carousel" data-interval="6500">
+                        <!-- Carousel indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#fade-quote-carousel-education" data-slide-to="0"></li>
+                            <li data-target="#fade-quote-carousel-education" data-slide-to="1"></li>
+                            <li data-target="#fade-quote-carousel-education" data-slide-to="2" class="active"></li>
+                            <li data-target="#fade-quote-carousel-education" data-slide-to="3"></li>
+                            <li data-target="#fade-quote-carousel-education" data-slide-to="4"></li>
+                            <li data-target="#fade-quote-carousel-education" data-slide-to="5"></li>
+                            <li data-target="#fade-quote-carousel-education" data-slide-to="6"></li>
+                        </ol>
+                        <!-- Carousel items -->
+                        <div class="carousel-inner">
+                            <div class="item">
+                                <h4><samp><b>{% trans %}promo_school.students_teachters{% endtrans %}</b></samp></h4>
+                                <p>{% trans %}promo_school.students_teachters.text{% endtrans %}</p>
+                                <br/>
+                            </div>
+                            <div class="item">
+                                <h4><samp><b>{% trans %}promo_school.platform_ascending{% endtrans %}</b></samp></h4>
+                                <p>{% trans %}promo_school.platform_ascending.text{% endtrans %}</p>
+                                <br/>
+                            </div>
+                            <div class="active item">
+                                <h4><samp><b>{% trans %}promo_school.combine{% endtrans %}</b></samp></h4>
+                                <p>{% trans %}promo_school.combine.text{% endtrans %}</p>
+                                <br/>
+                            </div>
+                            <div class="item">
+                                <h4><samp><b>{% trans %}promo_school.customize{% endtrans %}</b></samp></h4>
+                                <p>{% trans %}promo_school.customize.text{% endtrans %}</p>
+                                <br/>
+                            </div>
+                            <div class="item">
+                                <h4><samp><b>{% trans %}promo_school.ict_stuff{% endtrans %}</b></samp></h4>
+                                <p>{% trans %}promo_school.ict_stuff.text{% endtrans %}</p>
+                                <br/>
+                            </div>
+                            <div class="item">
+                                <h4><samp><b>{% trans %}promo_school.distance_learning{% endtrans %}</b></samp></h4>
+                                <p>{% trans %}promo_school.distance_learning.text{% endtrans %}</p>
+                                <br/>
+                            </div>
+                            <div class="item">
+                                <h4><samp><b>{% trans %}promo_school.for_free{% endtrans %}</b></samp></h4>
+                                <p>{% trans %}promo_school.for_free.text{% endtrans %}</p>
+                                <br/>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <br />
+        </div>
+    </div>
+{% endblock %}

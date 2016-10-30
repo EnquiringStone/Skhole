@@ -1,22 +1,36 @@
 {% extends 'panels/panel.base.html.twig' %}
 {% block panelBaseTitle %}
-    {% trans %}h.find_out_what_you_can_do{% endtrans %}
+    {% trans %}o.button.follow_course{% endtrans %}
 {% endblock %}
 {% block panelBaseContents %}
     <div class="panel-body">
-        <h4><b>{% trans %}o.button.follow_course{% endtrans %}</b></h4>
-        <p>{% trans %}h.getting_started.follow_course_part_01{% endtrans %}:</p>
-        <ol>
-            <li>{% trans %}h.getting.started.follow_course.li.choose_what_and_where{% endtrans %};</li>
-            <li>{% trans %}h.getting.started.follow_course.li.learn_when_you_want{% endtrans %};</li>
-            <li>{% trans %}h.getting.started.follow_course.li.course_report{% endtrans %}.</li>
-        </ol>
-        <p>{% trans %}h.getting.started.follow_course.text_02{% endtrans %}.</p>
-        <p>
-            <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#studyIntroductionModal">
-                <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-                {% trans %}o.button.follow_course{% endtrans %}
-            </button>
-        </p>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="centrum">
+                    <h1><span class="glyphicon glyphicon-education" aria-hidden="true"></span></h1>
+                    <h4><samp><b>{% trans %}info.students{% endtrans %}</b></samp></h4>
+                </div>
+                <p>{% trans %}h.getting_started.follow_course_part_01{% endtrans %}:</p>
+                <ol>
+                    <li>{% trans %}h.getting.started.follow_course.li.choose_what_and_where{% endtrans %};</li>
+                    <li>{% trans %}h.getting.started.follow_course.li.learn_when_you_want{% endtrans %};</li>
+                    <li>{% trans %}h.getting.started.follow_course.li.course_report{% endtrans %}.</li>
+                </ol>
+                <p>{% trans %}h.getting.started.follow_course.text_02{% endtrans %}.</p>
+                <p>
+                    <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#studyIntroductionModal">
+                        <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                        {% trans %}o.button.follow_course{% endtrans %}
+                    </button>
+                </p>
+            </div>
+            <div class="col-sm-6">
+                <div class="centrum">
+                    <h1><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span></h1>
+                    <h4><samp><b>{% trans %}info.educators{% endtrans %}</b></samp></h4>
+                </div>
+                <p>{% trans %}promo.for_educators_text{% endtrans %}</p>
+            </div>
+        </div>
     </div>
 {% endblock %}

@@ -10,9 +10,12 @@
         {% include ':panels/getting-started:course.create.panel.html.twig' %}
     {% elseif subMenu == 'followCourse' %}
         {% include ':panels/getting-started:course.follow.panel.html.twig' %}
+        {% include ':panels/getting-started:course.report.panel.html.twig' %}
     {% elseif subMenu == 'courseReport' %}
         {% include ':panels/getting-started:course.report.panel.html.twig' %}
     {% endif %}
+    {% include ':panels/dashboard:account.benefits.panel.html.twig' %}
+    {% include ':panels/dashboard:education.benefits.panel.html.twig' %}
     {% include ':panels/getting-started:extensive.information.panel.html.twig' %}
     {% include ':panels/general:commercial.panel.html.twig' %}
 {% endblock %}

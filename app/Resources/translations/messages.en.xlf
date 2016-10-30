@@ -395,6 +395,134 @@
                 <source>promo.how_to_benefit</source>
                 <target>How to be benefitted with StudyLivre </target>
             </trans-unit>
+            <trans-unit id="126">
+                <source>promo.feature</source>
+                <target>Feature</target>
+            </trans-unit>
+            <trans-unit id="127">
+                <source>promo.no_account</source>
+                <target>No account</target>
+            </trans-unit>
+            <trans-unit id="128">
+                <source>promo.account</source>
+                <target>Account</target>
+            </trans-unit>
+            <trans-unit id="129">
+                <source>promo.follow_courses</source>
+                <target>Follow courses</target>
+            </trans-unit>
+            <trans-unit id="130">
+                <source>promo.view_reports</source>
+                <target>View course reports</target>
+            </trans-unit>
+            <trans-unit id="131">
+                <source>promo.download_pdf</source>
+                <target>Download course report (PDF)</target>
+            </trans-unit>
+            <trans-unit id="132">
+                <source>promo.share_reports</source>
+                <target>Share course reports</target>
+            </trans-unit>
+            <trans-unit id="133">
+                <source>promo.save_reports</source>
+                <target>Save course reports</target>
+            </trans-unit>
+            <trans-unit id="134">
+                <source>promo.rate_reports</source>
+                <target>View and rate course reports of other people</target>
+            </trans-unit>
+            <trans-unit id="135">
+                <source>promo.course_basket</source>
+                <target>Course basket </target>
+            </trans-unit>
+            <trans-unit id="136">
+                <source>promo.create_courses</source>
+                <target>Create courses</target>
+            </trans-unit>
+            <trans-unit id="137">
+                <source>promo.for_free</source>
+                <target>Everything is for free!</target>
+            </trans-unit>
+            <trans-unit id="138">
+                <source>promo.account_benefits</source>
+                <target>Account benefits</target>
+            </trans-unit>
+            <trans-unit id="139">
+                <source>promo.info_basket_title</source>
+                <target>Course basket</target>
+            </trans-unit>
+            <trans-unit id="140">
+                <source>promo.info_basket_content</source>
+                <target>Store courses into a basket.</target>
+            </trans-unit>
+            <trans-unit id="141">
+                <source>promo.video_and_account</source>
+                <target>Introduction video &amp; account information</target>
+            </trans-unit>
+            <trans-unit id="142">
+                <source>search.browse_and_see</source>
+                <target> Select a category and see which courses are available </target>
+            </trans-unit>
+            <trans-unit id="143">
+                <source>promo_school.benefits_educators</source>
+                <target>Benefits for educators</target>
+            </trans-unit>
+            <trans-unit id="144">
+                <source>promo_school.students_teachters</source>
+                <target>1. Designed for teachers and students</target>
+            </trans-unit>
+            <trans-unit id="145">
+                <source>promo_school.students_teachters.text</source>
+                <target>Teachers and educational institutions have their own views about education. StudyLivre is created so that teachers and students can decide for themselves how they want to use this website for educational purposes.  </target>
+            </trans-unit>
+            <trans-unit id="146">
+                <source>promo_school.platform_ascending</source>
+                <target>2. A cross-school platform</target>
+            </trans-unit>
+            <trans-unit id="147">
+                <source>promo_school.platform_ascending.text</source>
+                <target>Each time when you create a course you know one thing for sure: the lesson you create will reach students beyond your own classroom. Become part of a larger community which helps to spread free online education. </target>
+            </trans-unit>
+            <trans-unit id="148">
+                <source>promo_school.combine</source>
+                <target>3. Combine the best of two worlds</target>
+            </trans-unit>
+            <trans-unit id="149">
+                <source>promo_school.combine.text</source>
+                <target>Students learn the most of individual explanation. In practice, however, the time of lecturers is scarce. StudyLivre enables instructors to outsource repetitive tasks by means of videos and quizzes that are automatically checked. </target>
+            </trans-unit>
+            <trans-unit id="150">
+                <source>promo_school.customize</source>
+                <target>4. Provide customized education</target>
+            </trans-unit>
+            <trans-unit id="151">
+                <source>promo_school.customize.text</source>
+                <target>Every student is unique and learns differently. Therefore, you can select courses which fit the needs of your students best. Thanks to the course report you can gain insight in the course results of your students. </target>
+            </trans-unit>
+            <trans-unit id="152">
+                <source>promo_school.ict_stuff</source>
+                <target>5. No ICT worries</target>
+            </trans-unit>
+            <trans-unit id="153">
+                <source>promo_school.ict_stuff.text</source>
+                <target>You don’t need to buy any expensive hardware or software. All you need to run StudyLivre is a device with an internet connection. </target>
+            </trans-unit>
+            <trans-unit id="154">
+                <source>promo_school.distance_learning</source>
+                <target>6. Make online distance learning easier</target>
+            </trans-unit>
+            <trans-unit id="155">
+                <source>promo_school.distance_learning.text</source>
+                <target>It is not always possible for students to attend classroom lessons. StudyLivre supports students and teachers with enabling online distance education.</target>
+            </trans-unit>
+            <trans-unit id="156">
+                <source>promo_school.for_free</source>
+                <target>7. StudyLivre is free</target>
+            </trans-unit>
+            <trans-unit id="157">
+                <source>promo_school.for_free.text</source>
+                <target>Why pay for educational software? The use of StudyLivre is and remains for free.</target>
+            </trans-unit>
 
             <!-- Einde messages -->
 <!-- Tab learn: 0000 tot 0999 -->
